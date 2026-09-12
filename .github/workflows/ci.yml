@@ -27,9 +27,13 @@ jobs:
         run: npm run check:syntax
       - name: Rule registry type check
         run: npm run typecheck
+      - name: Frontend discipline
+        run: npm run check:frontend
       - name: Unit and regression tests
         run: npm test
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract
         run: npm run validate:finch-contract
+      - name: Release verification
+        run: npm run verify:release

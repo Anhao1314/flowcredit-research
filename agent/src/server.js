@@ -30,6 +30,8 @@ const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const SITE_ROOT = resolve(process.env.FC_SITE_ROOT || "/site");
 const RUNTIME_ROOT = resolve(process.env.FC_RUNTIME_ROOT || join(ROOT, "..", "..", "fc-agent", "runtime"));
 const BODY_LIMIT = 64 * 1024;
+// Only honored over HTTPS by browsers; harmless on the plain-HTTP loopback development listener.
+const HSTS = "max-age=31536000; includeSubDomains";
 const sessions = new SessionStore();
 const logger = new SafeLogger(join(RUNTIME_ROOT, "logs"));
 const brain = new HarnessBrain({ root: ROOT, dshHome: join(RUNTIME_ROOT, "dsh-home"), workspace: join(RUNTIME_ROOT, "workspace") });
@@ -105,7 +107,8 @@ function sendJson(res, status, body, requestId, options = {}) {
   }
   res.writeHead(status, {
     "Content-Type": "application/json; charset=utf-8", "Content-Length": Buffer.byteLength(text),
-    "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", "Referrer-Policy": "no-referrer"
+    "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", "Referrer-Policy": "no-referrer",
+    "Strict-Transport-Security": HSTS
   });
   res.end(text);
   return output;
@@ -452,8 +455,8 @@ async function serveStatic(req, res) {
     if (!info.isFile()) return false;
     res.writeHead(200, {
       "Content-Type": MIME[extname(candidate).toLowerCase()] || "application/octet-stream",
-      "Content-Length": info.size, "X-Content-Type-Options": "nosniff",
-      "Content-Security-Policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'"
+      "Content-Length": info.size, "X-Content-Type-Options": "nosniff", "Strict-Transport-Security": HSTS,
+      "Content-Security-Policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
     });
     if (req.method === "HEAD") res.end(); else createReadStream(candidate).pipe(res);
     return true;
@@ -698,7 +701,7 @@ export function createFlowCreditServer(options = {}) {
   const limiter = new FixedWindowRateLimiter({ windowMs: security.rateLimitWindowMs, maxRequests: security.rateLimitMaxRequests, now: options.now || Date.now });
   const idempotency = options.idempotencyStore || new IdempotencyStore({ ttlMs: security.idempotencyTtlMs, maxEntries: security.idempotencyMaxEntries, now: options.now || Date.now });
   const context = { security, idempotency, assessmentRunner: options.assessmentRunner };
-  return createServer(async (req, res) => {
+  const server = createServer(async (req, res) => {
     const requestId = `fc-${randomUUID().replaceAll("-", "").slice(0, 16)}`;
     const started = Date.now();
     let output;
@@ -754,6 +757,9 @@ export function createFlowCreditServer(options = {}) {
       logger.write({ requestId, route: url.pathname, model: MODEL, durationMs: Date.now() - started, status, outputHash: output ? hash(output) : undefined, inputHash: output?.inputFingerprint || output?.data?.inputFingerprint, harnessStatus: output?.harnessStatus || output?.data?.harnessStatus, errorClass });
     }
   });
+  // Log appends are queued asynchronously; tests and shutdown await this before cleanup.
+  server.drainLogs = () => logger.drain();
+  return server;
 }
 
 const server = createFlowCreditServer();
@@ -769,6 +775,7 @@ if (process.env.NODE_ENV !== "test") {
       new Promise(resolveClose => server.close(resolveClose)),
       brain.close().catch(() => {})
     ]);
+    await server.drainLogs().catch(() => {});
     process.exitCode = 0;
   };
   process.on("SIGINT", shutdown);

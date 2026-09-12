@@ -2,6 +2,16 @@
 
 本文件记录 FlowCredit 的主要功能、规则与工程变更。
 
+## 2026-09-13 — 工程加固（稳定性、合规措辞与前端基线守护）
+
+- 修复 `agent/test/http.test.js` 临时目录清理竞态：`after()` 的递归删除会与 `SafeLogger` 的排队写入抢跑并抛出 `ENOTEMPTY`，导致 CI 随机变红（修复前本地 5 次运行 4 次失败）。`SafeLogger` 新增 `drain()`，`createFlowCreditServer()` 暴露 `server.drainLogs()`，服务优雅退出与测试清理都先排空日志队列再删除目录，并保留 `maxRetries`/`retryDelay` 退避；修复后连续 20 次运行全绿。
+- 将 v0.1 规则标识由 `flowcredit.audit_result/v0.1` 更正为 `flowcredit.risk_result/v0.1`（对外体现于 `/health` 的 `ruleVersion` 与 `ruleVersions.v01`），与 risk assessment 口径和 v0.2/v0.2.1 命名统一；该标识无外部消费者，`flowcredit.api/v1`、`flowcredit.intake/v0.3.1`、`flowcredit.risk_result/v0.2.1` 均不变。
+- 新增 `agent/test/frontend-baseline.test.js`：用 `vm` 桩加载 `data.js` + `state.js`，把前端冻结基线（CCI 795/668/320、PD 2.3/9.2/85.0、ValidNT 90.2/42.1/36.7、Efficiency 22857/33750/514286、SCU 3570/992/86.1、Credit 20000/6000/0、Deviation +3%/+9%/+186%）、Merkle 四条性质与 stress 帧（1.85→1.05→1.35 / 20000→12000→18000）纳入 `npm test` 与 CI。此前这些数值只存在于注释。
+- `agent/Dockerfile` 增加 `USER node` 并调整运行时目录属主，容器不再以 root 运行；静态资源响应 CSP 的 `script-src` 去掉 `'unsafe-inline'`（前端无内联脚本，`style-src` 因存在内联 style 属性保持不变）。
+- 所有 HTTP 响应新增 `Strict-Transport-Security: max-age=31536000; includeSubDomains`，补齐线上缺失的 HSTS（HTTPS 网关后生效，本地 http 被浏览器忽略）。
+- 新增 `agent/scripts/check-frontend-discipline.js`，静态校验 fetch 仅出现在 `assets/js/view-ai-live.js`、无 module/defer/CDN、无 emoji、用户可见文案无 audit；CI 增加「前端纪律」与 `verify:release` 两步。
+- 更新 `docs/public-deployment-checklist.md` 状态为「已部署」，勾选已完成的云端与公网契约项，并保留原部署前基线作为历史记录。
+
 ## 2026-09-10 — External Alpha v0.1.1 (Finch Direct API compatibility patch)
 
 - 将 Finch Direct API 契约 Schema 中官方不接受的 5 处 `pattern` 关键字替换为固定长度约束与说明：Input Schema 的 `monthlySeries[].period`，Output Schema 的 `requestId`、`assessmentId`、`inputFingerprint`、`assessmentFingerprint`；Schema 仍为 JSON Schema Draft 2020-12，结构约束（required/type/properties/additionalProperties/enum/const/本地 `$ref`）全部保留。

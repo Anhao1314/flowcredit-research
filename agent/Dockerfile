@@ -14,6 +14,7 @@ COPY scripts ./scripts
 COPY src ./src
 
 RUN mkdir -p /runtime/dsh-home /runtime/logs /runtime/workspace /site \
+    && chown -R node:node /runtime \
     && chmod 700 /runtime/dsh-home /runtime/logs /runtime/workspace
 
 ENV NODE_ENV=production \
@@ -22,6 +23,9 @@ ENV NODE_ENV=production \
     FC_RUNTIME_ROOT=/runtime \
     FC_MODEL=deepseek-v4-flash \
     DSH_TELEMETRY_MODE=DISABLED
+
+# The service never needs root: node owns the runtime tree and /site stays read-only.
+USER node
 
 EXPOSE 8787
 CMD ["node", "src/server.js"]
