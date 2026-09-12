@@ -1468,7 +1468,7 @@ button.hb-step:hover{border-color:rgba(45,212,191,.55);background:rgba(45,212,19
 }
 
 /* ============================================================
-   P0 workspace & account pages — product desk layout.
+   P0 workspace page — product desk layout.
    Reuses card/chip/metric system; only new structural pieces.
    ============================================================ */
 .ws-task{display:flex;flex-wrap:wrap;align-items:center;gap:12px}

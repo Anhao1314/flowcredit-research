@@ -61,10 +61,10 @@
     <p class="layer-desc">入口 index.html 按序加载 10 个脚本；无 module/defer/fetch/CDN/npm，双击即可运行。</p>
     <div class="grid">
       <div class="mod"><div class="mt"><i class="d-teal"></i>app.js — 产品外壳与路由</div>
-        <ul><li>路由白名单：landing｜workspace｜ingest｜audit｜report｜account（非法 hash 回落 landing）</li>
-        <li>顶栏：品牌、产品 Tab×3（Ingest P1 / Risk P2 / Monitor P3）、Mock-Live、共享钱包 Connect</li>
+        <ul><li>路由白名单：landing｜workspace｜ingest｜audit｜report（#/account 及其它非法 hash 一律回落 landing）</li>
+        <li>顶栏：品牌、产品 Tab×3（Ingest P1 / Risk P2 / Monitor P3）、Mock-Live、Workspace 入口（Demo Wallet 与 Demo Account 已按产品减法移除）</li>
         <li>Deep-link intent：跨页滚动定位、展开 How-it-works、脉冲提示</li>
-        <li>路由切换前 clearTimers，杜绝跨页残留回调；共享 <span class="mono">App.wallet</span> 状态</li></ul></div>
+        <li>路由切换前 clearTimers，杜绝跨页残留回调；共享 <span class="mono">App.state</span> 会话状态</li></ul></div>
       <div class="mod"><div class="mt"><i class="d-blue"></i>ui.js — 可视化组件库</div>
         <ul><li>内联 SVG 图标集（20+）、toast、modal</li><li>CCI 环形仪表（0→值填充）、区间轨道、锚点条</li>
         <li>R/C 双值折线图（含背离 2σ 标记）、链日志时间轴</li><li>格式化 esc/fmtInt/fmtMoney</li></ul></div>
@@ -97,9 +97,9 @@
         <ul><li>报告卡：CCI / PD / 建议额度 / 红旗四宫格</li>
         <li>Verify on-chain（root 匹配核验）；压力曲线逐帧自绘</li>
         <li>响应帧：Shock → De-risk → Notify → Partial → Recover（HF 与额度联动）</li></ul></div>
-      <div class="mod"><div class="mt"><i class="d-teal"></i>#/account · 账户页</div>
-        <ul><li>机构档案 + 共享钱包（地址/余额/连接状态）</li>
-        <li>当前授信卡（额度/等级/PD，VETO 红色横幅）</li><li>活动流（与工作台同一数据源）</li></ul></div>
+      <div class="mod"><div class="mt"><i class="d-teal"></i>#/account · 已移除</div>
+        <ul><li>Demo Wallet 模拟连接与 Demo Account 页不支撑任何用户任务，已按产品减法删除（App.wallet、toggleWallet、顶部入口一并移除）</li>
+        <li>该 hash 现按未知路由逻辑回落 #/landing</li></ul></div>
       <div class="mod"><div class="mt"><i class="d-green"></i>[浮层] 风控评估报告（白纸文档）</div>
         <ul><li>打开即"生成加载"：四步进度 → 报告纸张入场</li>
         <li>左侧章节导航（6 节）+ Back to top；中英双语、与页面同源现算</li>
