@@ -2664,3 +2664,12 @@ html.fc-v2{color-scheme:dark;--bg1:#0B1220;--bg2:#111D2C;--card:#111D2C;--card2:
 .fc-v2 .fc-report-actions h3{margin:0}
 @media(max-width:767px){.fc-v2 .intake-coverage-grid{grid-template-columns:1fr}.fc-v2 .fc-coverage-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.fc-v2 .fc-coverage-summary{grid-template-columns:1fr}.fc-v2 .fc-next-actions li{grid-template-columns:28px minmax(0,1fr)}}
+
+/* Workspace golden path: one-click worked example beside the guided start */
+.fc-v2 .workspace-primary .workspace-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end;flex:0 0 auto}
+.fc-v2 .workspace-primary .workspace-actions .btn{white-space:nowrap}
+@media(max-width:767px){
+  .fc-v2 .workspace-primary .workspace-actions{width:100%;flex-direction:column;align-items:stretch}
+  .fc-v2 .workspace-primary .workspace-actions .btn{width:100%;text-align:center}
+}
+@media(max-width:420px){.fc-v2 .workspace-primary .workspace-actions .btn{white-space:normal}}
