@@ -55,9 +55,6 @@ button{font-family:inherit}
 .seg-btn.on{color:#D6F9F4;background:rgba(45,212,191,.14);box-shadow:inset 0 0 0 1px rgba(45,212,191,.4)}
 .seg-btn.is-off{cursor:not-allowed}
 .seg-btn:hover:not(.on){color:var(--text2)}
-.wallet-btn{display:inline-flex;align-items:center;gap:7px;max-width:270px}
-.wallet-btn .addr{font-family:var(--mono);font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.wallet-btn.on{border-color:rgba(52,211,153,.45);color:#D1FAE5;background:rgba(52,211,153,.08)}
 .content{flex:1;width:100%;max-width:1440px;margin:0 auto;padding:18px 20px 110px}
 .foot{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(8,14,25,.92);backdrop-filter:blur(8px);
   border-top:1px solid var(--line);padding:7px 14px 8px;text-align:center}
@@ -1618,10 +1615,6 @@ pre.arch-pre{margin:0;padding:11px 13px;border:1px solid var(--line-soft);border
 .seg-addr{display:block;font:600 8.5px var(--mono);letter-spacing:.04em;
   color:var(--text3);margin-top:1px;text-transform:none}
 .seg-btn.on .seg-addr{color:rgba(214,249,244,.62)}
-.net-badge{font:600 8.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;
-  color:#99F6E4;border:1px solid rgba(45,212,191,.45);background:rgba(45,212,191,.1);
-  padding:1px 6px;border-radius:5px;margin-left:8px;flex:none}
-.wallet-btn[disabled]{opacity:.62;cursor:progress}
 @media (max-width:560px){
   .pf-row{grid-template-columns:max-content minmax(0,1fr);row-gap:2px}
   .pf-arr{display:none}
@@ -2634,7 +2627,7 @@ html.fc-v2{color-scheme:dark;--bg1:#0B1220;--bg2:#111D2C;--card:#111D2C;--card2:
   html.fc-v2,html.fc-v2 body{max-width:100%;overflow-x:hidden}
   .fc-v2 .v-top-inner,.fc-v2 .v-context,.fc-v2 .content{max-width:100%;box-sizing:border-box}
   .fc-v2 .v-top-inner{padding:12px 16px}
-  .fc-v2 .v-service,.fc-v2 .v-top-links a[data-top="account"]{display:none}
+  .fc-v2 .v-service{display:none}
   .fc-v2 .v-top-links{margin-left:auto}
   .fc-v2 .v-context{padding-left:16px;padding-right:16px}
   .fc-v2 .v-workflow{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}

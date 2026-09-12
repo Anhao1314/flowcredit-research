@@ -5,7 +5,6 @@
    ============================================================ */
 (function () {
   var App = window.App = window.App || {};
-  App.wallet = { connected: false, address: "0x7F3A…9C21", balance: "10,000 test USDC" };
   var TABS = [
     { hash: "#/ingest", key: "ingest", label: "New Assessment", sub: "01", icon: "db" },
     { hash: "#/audit", key: "audit", label: "Assessment", sub: "02", icon: "pulse" },
@@ -13,12 +12,10 @@
   ];
   var rootEl = null;
   var mainEl = null;
-  var walletConnected = false;
-  var walletConnecting = false;
   var booted = false;
 
   function routeKey(hash) {
-    var m = String(hash || "").match(/^#\/(landing|workspace|ingest|audit|report|account)$/);
+    var m = String(hash || "").match(/^#\/(landing|workspace|ingest|audit|report)$/);
     return m ? m[1] : "landing";
   }
   function currentRoute() {
@@ -108,7 +105,7 @@
     var u = App.ui;
     rootEl.innerHTML = '<div class="shell"><a class="v-skip" href="#view-main">Skip to content</a>' +
       '<header class="v-topbar"><div class="v-top-inner"><a class="v-brand" href="#/landing" aria-label="FlowCredit home">' + u.icon('layers', 26) + '<span>FlowCredit</span></a>' + u.tag('DEMO') +
-      '<nav class="v-top-links" aria-label="Main navigation"><a href="#/workspace" data-top="workspace">Workspace</a><a href="#/account" data-top="account">Demo Account</a></nav>' +
+      '<nav class="v-top-links" aria-label="Main navigation"><a href="#/workspace" data-top="workspace">Workspace</a></nav>' +
       '<span class="v-service" id="v-ai-service">' + u.icon('cpu', 15) + '<span>Saved AI results</span></span></div></header>' +
       '<div class="v-context"><div class="v-case-control"><label for="v-case-select">Current case</label><select id="v-case-select" aria-describedby="v-case-note">' +
       SUBJECT_ORDER.map(function (k) { return '<option value="' + k + '">' + u.esc(SUBJECTS[k].label) + '</option>'; }).join('') + '</select><span id="v-case-note">Switching cases resets the current demo run.</span></div>' +
@@ -119,53 +116,13 @@
     rootEl.querySelector('.v-skip').addEventListener('click', function (e) { e.preventDefault(); mainEl.focus(); });
     rootEl.querySelector('#v-case-select').addEventListener('change', function () { App.act.switchSubject(this.value); });
     window.addEventListener('fc:live', function (event) { var el = document.getElementById('v-ai-service'), service = event.fcDetail && event.fcDetail.serviceStatus || window.FC_SERVICE_STATUS || {}; if (el) el.innerHTML = u.icon('cpu', 15) + '<span>Risk engine ready · AI extraction ' + (service.aiExtraction === 'ready' ? 'available' : service.aiExtraction) + '</span>'; });
-    App.fn.addClearHook(function () { walletConnecting = false; });
-  }
-
-  function walletConnectedUi(btn, label, u) {
-    walletConnected = true;
-    App.wallet.connected = true;
-    if (btn && label) {
-      btn.disabled = false;
-      btn.classList.remove("is-busy");
-      btn.classList.add("on");
-      label.innerHTML = '<span class="addr">' + App.wallet.address + " · " + App.wallet.balance + "</span>" +
-        '<span class="net-badge">Sepolia · simulated</span>';
-    }
-    if (u && u.toast) { u.toast("Demo wallet connected · " + App.wallet.address); }
-    renderCurrent();
-  }
-
-  function toggleWallet() {
-    var u = App.ui;
-    var btn = rootEl.querySelector("#wallet-btn");
-    var label = rootEl.querySelector("#wallet-label");
-    if (!walletConnected) {
-      if (walletConnecting) { return; } // re-entry guard
-      walletConnecting = true;
-      if (btn) { btn.disabled = true; btn.classList.add("is-busy"); }
-      if (label) { label.innerHTML = '<span class="addr">Connecting…</span>'; }
-      App.fn.timeout(function () {
-        walletConnecting = false;
-        walletConnectedUi(btn, label, u);
-      }, 500);
-    } else {
-      walletConnected = false;
-      App.wallet.connected = false;
-      if (btn && label) {
-        btn.classList.remove("on");
-        label.textContent = "Connect Wallet";
-      }
-      if (u && u.toast) { u.toast("Demo wallet disconnected"); }
-      renderCurrent();
-    }
   }
 
   function highlightFlow() {
     var route = currentRoute(), st = App.state;
     document.body.setAttribute('data-route', route);
     var context = rootEl.querySelector('.v-context');
-    context.hidden = route === 'landing' || route === 'workspace' || route === 'account';
+    context.hidden = route === 'landing' || route === 'workspace';
     var sel = rootEl.querySelector('#v-case-select');
     var customDraft = window.FC_INTAKE && FC_INTAKE.active ? FC_INTAKE.active() : null;
     var caseControl = rootEl.querySelector('.v-case-control');
@@ -270,14 +227,13 @@
     if (bootMsg && bootMsg.parentNode) { bootMsg.parentNode.removeChild(bootMsg); }
     buildShell();
     window.addEventListener("hashchange", applyRoute);
-    if (!location.hash || !/^#\/(landing|workspace|ingest|audit|report|account)$/.test(location.hash)) {
+    if (!location.hash || !/^#\/(landing|workspace|ingest|audit|report)$/.test(location.hash)) {
       try { history.replaceState(null, "", "#/landing"); } catch (e) { location.hash = "#/landing"; }
     }
     App.nav = nav;
     App.navTo = navTo;
     App.applyRoute = applyRoute;
     App.renderCurrent = renderCurrent;
-    if (App.act) { App.act.toggleWallet = toggleWallet; }
     App.onChange(function () { if (booted) { renderCurrent(); } });
     applyRoute();
   }
