@@ -17,7 +17,7 @@
 - 上线路径：由人明确授权后，把已验证的改动移植到生产仓库；本仓库不承担任何发布动作。
 
 ## 1. 项目本质
-- 零构建静态站：原生 HTML/CSS/JS，普通 script 按序加载（data→state→ui→intake-v03→view-landing→view-ingest→view-audit→view-report→view-workspace→view-account→ai-ledger→view-ai→view-ai-live→app），无 module/defer/CDN/npm。
+- 零构建静态站：原生 HTML/CSS/JS，普通 script 按序加载（data→state→ui→intake-v03→view-landing→view-ingest→view-audit→view-report→view-workspace→ai-ledger→view-ai→view-ai-live→app），无 module/defer/CDN/npm。
 - fetch 唯一豁免：view-ai-live.js 允许同源 `/fc/ai/*` 的版本化 config/schema/run/extract/assess/ask 调用，必须带 try/catch、短超时、探测失败静默退出；其余所有文件仍禁 fetch。
 - 双击 index.html 以 file:// 离线可跑；UI 文案全英文；无 emoji（允许 → ← ✓ · σ ± 等符号）；图标只用 App.ui.icon 内联 SVG；数字 mono + tabular-nums。
 
@@ -36,7 +36,8 @@
 ## 2. 核心冻结区（默认一字不改；任务书明确点名才动）
 - 文件：assets/js/data.js、assets/js/ui.js、assets/js/app.js、assets/js/state.js、assets/js/view-landing.js。
 - v0.3 任务书对 app.js 的唯一例外：导航可见标签改为 New Assessment，并只读 FC_INTAKE 进度；路由、状态机、ID、计时和事件绑定继续冻结。
-- 内容：SUBJECTS / ANCHOR_W / STRESS_FRAMES / 全部公式与 mock 数值 / 路由 hash（landing|workspace|ingest|audit|report|account）/ 状态机语义 / 元素 id / 事件绑定 / 演示节奏（audit 350ms 步进、stress 约 2s 时序、ring 600ms、动画 200–350ms）。
+- 2026-09-13 解冻例外（产品减法任务授权）：仅解冻 app.js 的四处——顶栏导航链接、App.wallet 定义、toggleWallet/walletConnectedUi 及其 wallet 句柄、路由正则中的 account；用于删除不支撑任何用户任务的 Demo Wallet 模拟连接与 #/account 死胡同页。状态机语义、其余元素 id、事件绑定与演示节奏（audit 350ms 步进、stress 约 2s 时序、ring 600ms、动画 200–350ms）继续冻结；该次授权不外溢到本文件其他冻结内容。
+- 内容：SUBJECTS / ANCHOR_W / STRESS_FRAMES / 全部公式与 mock 数值 / 路由 hash（landing|workspace|ingest|audit|report）/ 状态机语义 / 元素 id / 事件绑定 / 演示节奏（audit 350ms 步进、stress 约 2s 时序、ring 600ms、动画 200–350ms）。
 - id 清单（保留）：run-audit / reset-audit / anchor-btn / anchor-btn-label / verify-btn / stress-btn / recover-btn / go-p1 / ring-slot / line-slot / chain-log。
 - L1 口径：Raw Token = d.l0.compute.Raw（healthy 80.0M / sybil 108.0M）；rawNT_M 是「已乘 w_model/w_task 后的 NT」（96.0M / 108.0M），只用于 L2「毛 NT」，绝不顶替 Raw Token。
 - Merkle：哈希输入 = 各叶摘要 + 时间戳 + 递增 nonce，每次 Anchor root 不同；anchor 保存最新 root；chainLogs 只增（switchSubject 时清空）。
