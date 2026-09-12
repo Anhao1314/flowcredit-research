@@ -11,6 +11,7 @@
 - 所有 HTTP 响应新增 `Strict-Transport-Security: max-age=31536000; includeSubDomains`，补齐线上缺失的 HSTS（HTTPS 网关后生效，本地 http 被浏览器忽略）。
 - 新增 `agent/scripts/check-frontend-discipline.js`，静态校验 fetch 仅出现在 `assets/js/view-ai-live.js`、无 module/defer/CDN、无 emoji、用户可见文案无 audit；CI 增加「前端纪律」与 `verify:release` 两步。
 - 更新 `docs/public-deployment-checklist.md` 状态为「已部署」，勾选已完成的云端与公网契约项，并保留原部署前基线作为历史记录。
+- 确立本仓库为开发/测试专用并强制隔离：新增 `docs/dev-isolation.md` 说明边界，新增 `agent/scripts/check-dev-isolation.js`（检测部署描述文件、部署型 workflow 步骤与写权限 token），以 `npm run check:isolation` 接入 `check` 链与 CI。生产面（Render API 与 GitHub Pages）仍由 `Anhao1314/flowcredit` 的 `main` 自动发布，本仓库未接入任何部署平台。
 
 ## 2026-09-10 — External Alpha v0.1.1 (Finch Direct API compatibility patch)
 

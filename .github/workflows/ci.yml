@@ -29,6 +29,8 @@ jobs:
         run: npm run typecheck
       - name: Frontend discipline
         run: npm run check:frontend
+      - name: Development isolation
+        run: npm run check:isolation
       - name: Unit and regression tests
         run: npm test
       - name: Public API contract

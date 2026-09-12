@@ -1,5 +1,7 @@
 # FlowCredit — Risk Intelligence Infrastructure for the AI-Native Economy
 
+> **Development workspace.** This repository is used for update testing and development only. It does not deploy and is not connected to the production service or the published demo; see [development isolation](docs/dev-isolation.md).
+
 An evidence-aware risk API for AI-native businesses and agents: normalize operational evidence, compute deterministic risk signals, and return review status and prioritized actions.
 
 **Evidence → Risk → Action**
