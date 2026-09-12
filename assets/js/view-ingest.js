@@ -28,8 +28,8 @@
       '<button class="intake-entry" type="button" data-new-mode="description"><span>01</span><b>Describe a case</b><small>Let AI organize supplied facts into a draft.</small></button>' +
       '<button class="intake-entry" type="button" data-new-mode="json"><span>02</span><b>Import JSON</b><small>Paste or open a structured file in your browser.</small></button>' +
       '<button class="intake-entry" type="button" data-new-mode="manual"><span>03</span><b>Enter manually</b><small>Complete a guided operating-data form.</small></button></div>' +
-      '<p class="v-caption">Drafts stay in this browser tab. Scoring, Peer values and weights are always server-authoritative.</p></section>' +
-      (!window.FC_LIVE ? '<div class="v-notice"><p><b>Local Agent required.</b> Connect through <span class="num">127.0.0.1:8787</span> to extract or assess real input. You can still prepare a draft here.</p></div>' : '') + '</div>';
+      '<p class="v-caption">Drafts stay in this browser tab. The deterministic risk rules ship with this page; only AI text extraction and explanation use the local agent.</p></section>' +
+      (!window.FC_LIVE ? '<div class="v-notice"><p><b>Deterministic assessment runs in your browser.</b> Only AI text extraction and explanation need the local agent.</p></div>' : '') + '</div>';
   }
   function modeHtml(draft, mode) {
     if (mode === "description") return '<section class="v-panel intake-source"><div class="v-section-head"><div><p class="v-eyebrow">DESCRIBE A CASE</p><h2>Start with what you know.</h2></div></div>' +
@@ -74,7 +74,7 @@
       '<details class="v-details"><summary>Evidence dictionary and local proof <span>Method details</span></summary><div class="v-details-body"><p>Evidence records identify a field, source domain, verification method, observation period, coverage and reference hash. Billing, GPU telemetry, bank or treasury, customer contracts, identity graphs and self-report remain distinct sources.</p><p>A local proof fingerprints the normalized Token, Compute, Business/Credit and Evidence groups with a fresh timestamp and nonce. It stays in this tab, makes no network claim and never changes the risk score.</p></div></details>' +
       '<label class="intake-consent"><input id="intake-review-consent" type="checkbox"' + (draft.modelConsent ? " checked" : "") + '><span>Send validated facts and the deterministic result to DeepSeek for explanation.</span></label>' +
       '<div class="v-action-row"><button class="btn btn-primary" id="intake-run" type="button"' + (errors.length || draft.status === "running" ? " disabled" : "") + '>' + (draft.status === "running" ? "Assessing…" : "Run assessment") + '</button><button class="btn" id="anchor-btn" type="button"' + (errors.length ? " disabled" : "") + '><span id="anchor-btn-label">' + (draft.proof ? "Create another proof" : "Create local proof") + '</span></button></div>' +
-      (!window.FC_LIVE ? '<p class="intake-offline"><b>Local Agent required.</b> Open this site through <span class="num">127.0.0.1:8787</span> to run the assessment.</p>' : '') +
+      (!window.FC_LIVE ? '<p class="intake-offline"><b>Deterministic assessment runs in your browser.</b> Only AI text extraction and explanation need the local agent.</p>' : '') +
       (draft.proof ? '<details class="v-details"><summary>Local proof <span>Does not affect scoring</span></summary><div class="v-details-body"><p class="num intake-proof">' + esc(draft.proof.root) + '</p><p class="v-caption">' + esc(draft.proof.time) + ' · nonce ' + esc(draft.proof.nonce) + '</p><div id="chain-log">Local browser proof created.</div></div></details>' : '<div id="chain-log" hidden></div>') + '<div id="intake-run-status" class="' + (draft.lastError ? 'intake-status bad' : '') + '" role="status" aria-live="polite">' + esc(draft.lastError || '') + '</div></aside>';
   }
   function draftHtml(draft) {
@@ -121,7 +121,7 @@
       draft.rawText = text; draft.modelConsent = consent; draft.lastError = null; FC_INTAKE.commit(draft, false);
       if (!consent) { status(host, "Confirm before sending this text to DeepSeek.", true); return; }
       if (!text) { status(host, "Describe the business and supplied data first.", true); return; }
-      if (!window.FC_AI || !FC_AI.extractDraft) { status(host, "Local Agent required. Your text remains in this tab.", true); return; }
+      if (!window.FC_AI || !FC_AI.extractDraft) { status(host, "AI text extraction needs the local agent. Your text remains in this tab.", true); return; }
       draft.status = "extracting"; FC_INTAKE.commit(draft, true);
       FC_AI.extractDraft(draft.draftId, text).then(function (payload) { modeByDraft[draft.draftId] = "review"; FC_INTAKE.setExtracted(payload); }, function (error) { draft.status = "draft"; draft.lastError = error.status === 504 || error.name === "AbortError" ? "AI extraction timed out. Retry or continue with JSON or manual entry." : error.status === 429 ? "AI extraction is busy. Retry shortly or continue without it." : "AI extraction is unavailable. Your text remains in this tab."; FC_INTAKE.commit(draft, true); });
     });
@@ -137,12 +137,27 @@
       var reader = new FileReader(); reader.onload = function () { importJson(String(reader.result || "")); }; reader.onerror = function () { status(host, "The file could not be read.", true); }; reader.readAsText(selected);
     });
     var proof = host.querySelector("#anchor-btn"); if (proof) proof.addEventListener("click", function () { collect(host, draft); FC_INTAKE.proof(); ui.toast("Local proof created"); });
+    /* Deterministic v0.2.1 scoring also runs in this tab; the local agent only adds the AI explanation layer. */
+    function runLocal() {
+      var local = window.FC_RISK_RUN ? FC_RISK_RUN(draft.input, draft.draftId) : null;
+      if (!local) { status(host, "The deterministic engine is unavailable in this browser. Your draft remains available in this tab.", true); return; }
+      if (local.ok) { draft.status = "review"; draft.lastError = null; FC_INTAKE.commit(draft, false); FC_INTAKE.setResult(local.result); App.nav("#/audit"); return; }
+      if ((local.fieldErrors || []).length) FC_INTAKE.applyServerValidation({ fieldErrors: local.fieldErrors, missingByGroup: local.missingByGroup, warnings: local.warnings });
+      else { draft.status = "review"; draft.lastError = local.error || "The deterministic assessment could not run. Your draft remains available in this tab."; FC_INTAKE.commit(draft, false); }
+      App.renderCurrent();
+    }
     var run = host.querySelector("#intake-run"); if (run) run.addEventListener("click", function () {
       draft = collect(host, draft); draft.modelConsent = !!host.querySelector("#intake-review-consent").checked;
       if (draft.errors.length) { App.renderCurrent(); return; }
-      if (!window.FC_AI || !FC_AI.assessDraft) { status(host, "Local Agent required. Your draft remains available in this tab.", true); return; }
+      if (!(window.FC_LIVE && window.FC_AI && FC_AI.assessDraft)) { runLocal(); return; }
       draft.status = "running"; draft.lastError = null; FC_INTAKE.commit(draft, true);
-      FC_AI.assessDraft(draft).then(function (result) { FC_INTAKE.setResult(result); App.nav("#/audit"); }, function (error) { if (error.data && error.data.fieldErrors) FC_INTAKE.applyServerValidation(error.data); else { draft.status = "review"; draft.lastError = error.status === 504 || error.name === "AbortError" ? "Assessment timed out. Your draft is ready to retry." : error.status === 429 ? "The risk engine is busy. Retry shortly." : "Assessment service unavailable. Your draft was preserved."; FC_INTAKE.commit(draft, false); } App.renderCurrent(); });
+      FC_AI.assessDraft(draft).then(function (result) { FC_INTAKE.setResult(result); App.nav("#/audit"); }, function (error) {
+        if (error.data && error.data.fieldErrors) { FC_INTAKE.applyServerValidation(error.data); App.renderCurrent(); return; }
+        /* The sidecar is an enhancement: fall back to the in-browser deterministic engine instead of a dead end. */
+        var fallback = window.FC_RISK_RUN ? FC_RISK_RUN(draft.input, draft.draftId) : null;
+        if (fallback && fallback.ok) { draft.status = "review"; draft.lastError = null; FC_INTAKE.commit(draft, false); FC_INTAKE.setResult(fallback.result); App.nav("#/audit"); return; }
+        draft.status = "review"; draft.lastError = error.status === 504 || error.name === "AbortError" ? "Assessment timed out. Your draft is ready to retry." : error.status === 429 ? "The risk engine is busy. Retry shortly." : "Assessment service unavailable. Your draft was preserved."; FC_INTAKE.commit(draft, false); App.renderCurrent();
+      });
     });
   }
   function render(host) { var draft = window.FC_INTAKE && FC_INTAKE.active(); host.innerHTML = draft ? draftHtml(draft) : entryHtml(); if (draft) showFieldErrors(host, draft); bind(host, draft); }

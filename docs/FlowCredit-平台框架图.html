@@ -49,16 +49,16 @@
   <p class="sub">链上可验证 AI 信用风控 · 概念演示平台 — On-chain Attestation · AI Risk Scoring · Dynamic Response</p>
   <div class="meta">
     <span class="tag t">零构建静态站 · file:// 可跑</span>
-    <span class="tag b">hash 路由 ×6</span>
+    <span class="tag b">hash 路由 ×5</span>
     <span class="tag g">纯函数现算 App.fn</span>
     <span class="tag a">五档等级 A/A-/B/C/D</span>
     <span class="tag r">红旗一票否决 VETO</span>
-    <span class="tag">10 JS · 4413 行 · 2026-09-05</span>
+    <span class="tag">15 JS · 4396 行 · 2026-09-13</span>
   </div>
 
   <section class="layer">
     <h2><span class="idx">0</span>应用外壳 · 路由与组件库</h2>
-    <p class="layer-desc">入口 index.html 按序加载 10 个脚本；无 module/defer/fetch/CDN/npm，双击即可运行。</p>
+    <p class="layer-desc">入口 index.html 按序加载 15 个脚本（data → state → ui → intake-v03 → risk-engine-v021 → example-v03 → view-landing → view-ingest → view-audit → view-report → view-workspace → ai-ledger → view-ai → view-ai-live → app）；无 module/defer/fetch/CDN/npm，双击即可运行。</p>
     <div class="grid">
       <div class="mod"><div class="mt"><i class="d-teal"></i>app.js — 产品外壳与路由</div>
         <ul><li>路由白名单：landing｜workspace｜ingest｜audit｜report（#/account 及其它非法 hash 一律回落 landing）</li>

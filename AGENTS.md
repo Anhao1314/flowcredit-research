@@ -17,7 +17,7 @@
 - 上线路径：由人明确授权后，把已验证的改动移植到生产仓库；本仓库不承担任何发布动作。
 
 ## 1. 项目本质
-- 零构建静态站：原生 HTML/CSS/JS，普通 script 按序加载（data→state→ui→intake-v03→risk-engine-v021→view-landing→view-ingest→view-audit→view-report→view-workspace→ai-ledger→view-ai→view-ai-live→app），无 module/defer/CDN/npm。
+- 零构建静态站：原生 HTML/CSS/JS，普通 script 按序加载（data→state→ui→intake-v03→risk-engine-v021→example-v03→view-landing→view-ingest→view-audit→view-report→view-workspace→ai-ledger→view-ai→view-ai-live→app），无 module/defer/CDN/npm。
 - assets/js/risk-engine-v021.js 是 agent/src 的生成产物（`cd agent && node scripts/build-browser-engine.mjs`），暴露 window.FC_RISK；禁止手工编辑，改动引擎后必须重跑生成脚本，`agent/test/browser-engine-equivalence.test.js` 会拦截漂移。
 - fetch 唯一豁免：view-ai-live.js 允许同源 `/fc/ai/*` 的版本化 config/schema/run/extract/assess/ask 调用，必须带 try/catch、短超时、探测失败静默退出；其余所有文件仍禁 fetch。
 - 双击 index.html 以 file:// 离线可跑；UI 文案全英文；无 emoji（允许 → ← ✓ · σ ± 等符号）；图标只用 App.ui.icon 内联 SVG；数字 mono + tabular-nums。

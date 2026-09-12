@@ -222,7 +222,7 @@
       FC_INTAKE.commit(draft, false);
       if (!consent) { output.textContent = 'Confirm before sending assessment facts to DeepSeek.'; return; }
       if (!input.value.trim()) { output.textContent = 'Enter a question first.'; return; }
-      if (!window.FC_AI || !FC_AI.askDraft) { output.textContent = 'Local Agent required.'; return; }
+      if (!window.FC_AI || !FC_AI.askDraft) { output.textContent = 'AI explanation needs the local agent.'; return; }
       button.disabled = true; output.textContent = 'Reviewing the current assessment…';
       FC_AI.askDraft(draft.sessionId, input.value.trim()).then(function (response) {
         output.innerHTML = '<p>' + ui.esc(response.answer) + '</p><p class="v-caption">Evidence ' + ui.esc((response.citations || []).join(', ') || 'not cited') + '</p>';
