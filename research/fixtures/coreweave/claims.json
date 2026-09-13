@@ -1,0 +1,38 @@
+[
+  {
+    "researchField": "top_customer_concentration",
+    "metric": "top1_revenue_share",
+    "operator": "gte",
+    "threshold": 30,
+    "unit": "percent",
+    "statement": "The latest disclosed largest customer contributes at least 30 percent of consolidated revenue.",
+    "maxAgeDays": 365
+  },
+  {
+    "researchField": "operating_margin",
+    "metric": "gaap_operating_margin",
+    "operator": "lt",
+    "threshold": 0,
+    "unit": "percent",
+    "statement": "The latest disclosed GAAP operating margin is negative.",
+    "maxAgeDays": 365
+  },
+  {
+    "researchField": "cash_flow",
+    "metric": "operating_cash_flow",
+    "operator": "gte",
+    "threshold": 0,
+    "unit": "USD",
+    "statement": "The latest disclosed quarterly operating cash flow is non-negative.",
+    "maxAgeDays": 365
+  },
+  {
+    "researchField": "growth",
+    "metric": "revenue_yoy_growth",
+    "operator": "gte",
+    "threshold": 100,
+    "unit": "percent",
+    "statement": "The reviewed annual revenue growth exceeds 100 percent; this does not imply future growth.",
+    "maxAgeDays": 365
+  }
+]

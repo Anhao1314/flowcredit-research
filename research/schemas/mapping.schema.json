@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:mapping:v0.1",
+  "title": "mapping",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "researchField",
+    "researchCategory",
+    "group",
+    "flowcreditField",
+    "flowcreditComponent",
+    "mappingStatus",
+    "availability",
+    "evidenceIds",
+    "transformation",
+    "notes",
+    "candidateValue"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "researchField": {
+      "type": "string",
+      "minLength": 1
+    },
+    "researchCategory": {
+      "type": "string",
+      "minLength": 1
+    },
+    "group": {
+      "enum": [
+        "public",
+        "operator"
+      ]
+    },
+    "flowcreditField": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "flowcreditComponent": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mappingStatus": {
+      "enum": [
+        "full",
+        "partial",
+        "unsupported",
+        "ambiguous"
+      ]
+    },
+    "availability": {
+      "enum": [
+        "available",
+        "unavailable",
+        "unverified"
+      ]
+    },
+    "evidenceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "transformation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidateValue": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "array"
+            },
+            {
+              "type": "object"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mappingStatus": {
+            "const": "full"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "flowcreditField": {
+            "type": "string",
+            "minLength": 1
+          },
+          "availability": {
+            "const": "available"
+          },
+          "evidenceIds": {
+            "minItems": 1,
+            "type": "array"
+          },
+          "candidateValue": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mappingStatus": {
+            "enum": [
+              "partial",
+              "unsupported",
+              "ambiguous"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "candidateValue": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

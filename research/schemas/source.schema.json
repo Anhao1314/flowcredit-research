@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:source:v0.1",
+  "title": "source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "subjectId",
+    "sourceType",
+    "title",
+    "publisher",
+    "url",
+    "documentDate",
+    "retrievedAt",
+    "fiscalPeriod",
+    "fiscalYear",
+    "isPrimarySource",
+    "contentHash",
+    "metadata"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceType": {
+      "enum": [
+        "sec_10k",
+        "sec_10q",
+        "sec_8k",
+        "earnings_release",
+        "investor_presentation",
+        "earnings_call_transcript",
+        "official_announcement"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "documentDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "retrievedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fiscalPeriod": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fiscalYear": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2100
+    },
+    "isPrimarySource": {
+      "type": "boolean"
+    },
+    "contentHash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "documentKey",
+        "hashStatus",
+        "hashScope",
+        "retrievalNote",
+        "discoveryUrl"
+      ],
+      "properties": {
+        "documentKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hashStatus": {
+          "enum": [
+            "verified_bytes",
+            "unavailable"
+          ]
+        },
+        "hashScope": {
+          "const": "document_bytes"
+        },
+        "retrievalNote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "discoveryUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "metadata": {
+            "properties": {
+              "hashStatus": {
+                "const": "verified_bytes"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "contentHash": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "contentHash": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

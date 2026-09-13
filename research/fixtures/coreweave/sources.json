@@ -1,0 +1,62 @@
+[
+  {
+    "subjectId": "coreweave",
+    "sourceType": "sec_10k",
+    "title": "2025 Form 10-K embedded in official annual report",
+    "publisher": "CoreWeave, Inc.",
+    "url": "https://s205.q4cdn.com/133937190/files/doc_financials/2025/ar/2025-Annual-Report.pdf",
+    "documentDate": "2026-03-02",
+    "retrievedAt": "2026-09-13T08:41:06Z",
+    "fiscalPeriod": "FY2025",
+    "fiscalYear": 2025,
+    "isPrimarySource": true,
+    "contentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d",
+    "metadata": {
+      "documentKey": "0001769628-26-000104",
+      "hashStatus": "verified_bytes",
+      "hashScope": "document_bytes",
+      "retrievalNote": "SHA-256 of 3,412,597 downloaded PDF bytes. Document date is the embedded 10-K filing date; wrapper publication date not asserted. SEC accession identifies the embedded filing, not wrapper hash.",
+      "discoveryUrl": "https://investors.coreweave.com/annual-reports/default.aspx"
+    }
+  },
+  {
+    "subjectId": "coreweave",
+    "sourceType": "sec_10q",
+    "title": "2026 second-quarter Form 10-Q",
+    "publisher": "CoreWeave, Inc.",
+    "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001769628/9f708637-612f-4da7-bef2-4a4b667f9d64.pdf",
+    "documentDate": "2026-08-11",
+    "retrievedAt": "2026-09-13T08:41:06Z",
+    "fiscalPeriod": "Q2 2026",
+    "fiscalYear": 2026,
+    "isPrimarySource": true,
+    "contentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a",
+    "metadata": {
+      "documentKey": "0001769628-26-000366",
+      "hashStatus": "verified_bytes",
+      "hashScope": "document_bytes",
+      "retrievalNote": "Official IR-linked PDF, accession on cover, signed August 11. SHA-256 of 1,167,386 downloaded bytes.",
+      "discoveryUrl": "https://investors.coreweave.com/overview/"
+    }
+  },
+  {
+    "subjectId": "coreweave",
+    "sourceType": "earnings_release",
+    "title": "2026 second-quarter earnings release, SEC Exhibit 99.1",
+    "publisher": "CoreWeave, Inc.",
+    "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm",
+    "documentDate": "2026-08-11",
+    "retrievedAt": "2026-09-13T08:41:06Z",
+    "fiscalPeriod": "Q2 2026",
+    "fiscalYear": 2026,
+    "isPrimarySource": true,
+    "contentHash": null,
+    "metadata": {
+      "documentKey": "0001769628-26-000362-ex99.1",
+      "hashStatus": "unavailable",
+      "hashScope": "document_bytes",
+      "retrievalNote": "Source reviewed via browser/web text. Direct byte download returned HTTP 403. Original content hash unavailable; no summary hash substituted.",
+      "discoveryUrl": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Second-Quarter-2026-Results/default.aspx"
+    }
+  }
+]

@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:evidence:v0.1",
+  "title": "evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "subjectId",
+    "sourceId",
+    "researchField",
+    "category",
+    "metric",
+    "scope",
+    "statement",
+    "rawValue",
+    "rawUnit",
+    "normalizedValue",
+    "unit",
+    "normalization",
+    "section",
+    "page",
+    "location",
+    "periodStart",
+    "periodEnd",
+    "observedAt",
+    "provenance",
+    "verificationLevel",
+    "confidence",
+    "contentHash",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "researchField": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "enum": [
+        "consolidated_company",
+        "ai_inference_api"
+      ]
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rawValue": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "rawUnit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalizedValue": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalization": {
+      "enum": [
+        "identity",
+        "usd_millions_to_usd",
+        "usd_billions_to_usd"
+      ]
+    },
+    "section": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "periodStart": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "periodEnd": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publisher",
+        "method",
+        "sourceContentHash"
+      ],
+      "properties": {
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "const": "reviewed_primary_disclosure"
+        },
+        "sourceContentHash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "verificationLevel": {
+      "enum": [
+        "primary_source",
+        "unverified"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

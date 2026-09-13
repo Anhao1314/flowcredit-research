@@ -1,0 +1,13 @@
+{
+  "name": "flowcredit-research-evidence-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "coverage": "node src/coverage.js coreweave"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  }
+}

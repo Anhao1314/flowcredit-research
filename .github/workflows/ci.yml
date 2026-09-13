@@ -33,6 +33,8 @@ jobs:
         run: npm run check:isolation
       - name: Unit and regression tests
         run: npm test
+      - name: Research Evidence Bridge tests
+        run: node --test ../research/test/*.test.js
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract
