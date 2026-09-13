@@ -115,7 +115,7 @@
     mainEl = rootEl.querySelector('#view-main');
     rootEl.querySelector('.v-skip').addEventListener('click', function (e) { e.preventDefault(); mainEl.focus(); });
     rootEl.querySelector('#v-case-select').addEventListener('change', function () { App.act.switchSubject(this.value); });
-    window.addEventListener('fc:live', function (event) { var el = document.getElementById('v-ai-service'), service = event.fcDetail && event.fcDetail.serviceStatus || window.FC_SERVICE_STATUS || {}; if (el) el.innerHTML = u.icon('cpu', 15) + '<span>Risk engine ready · AI extraction ' + (service.aiExtraction === 'ready' ? 'available' : service.aiExtraction) + '</span>'; });
+    window.addEventListener('fc:live', function (event) { var el = document.getElementById('v-ai-service'), service = event.fcDetail && event.fcDetail.serviceStatus || window.FC_SERVICE_STATUS || {}; if (el) el.innerHTML = u.icon('cpu', 15) + '<span>Risk engine ready · AI extraction ' + (service.aiExtraction === 'available' ? 'available' : 'unavailable') + '</span>'; });
   }
 
   function highlightFlow() {

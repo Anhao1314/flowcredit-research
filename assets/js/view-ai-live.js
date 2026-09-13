@@ -40,6 +40,12 @@
     return fetchTimeout(url, options, ms).then(function (response) {
       return response.json().then(function (data) {
         if (!response.ok) {
+          if (response.status === 401) {
+            window.FC_SERVICE_CONFIG = Object.assign({}, window.FC_SERVICE_CONFIG || {}, { authenticationRequired: true });
+            window.FC_LIVE = false;
+            window.FC_SERVICE_STATUS = { riskEngine: 'ready', aiExtraction: 'unavailable', reason: FC_INTAKE.capabilities(window.FC_SERVICE_CONFIG).reason };
+            emit('fc:live', { serviceStatus: window.FC_SERVICE_STATUS });
+          }
           var error = new Error(data && (typeof data.error === "string" ? data.error : data.error && data.error.message) || "Request failed");
           error.status = response.status; error.data = data; throw error;
         }
@@ -48,6 +54,7 @@
     });
   }
   function extractDraft(draftId, value) {
+    if (!FC_INTAKE.capabilities(window.FC_SERVICE_CONFIG).modelAvailable) return Promise.reject(new Error("AI extraction unavailable"));
     return requestJson(V03_BASE + "/extract", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ draftId: draftId, text: value, modelConsent: true })
@@ -56,12 +63,14 @@
   function intakeConfig() { return requestJson(V03_BASE + "/config", { method: "GET" }, 3000); }
   function intakeSchema() { return requestJson(V03_BASE + "/schema", { method: "GET" }, 3000); }
   function assessDraft(draft) {
+    if (!FC_INTAKE.capabilities(window.FC_SERVICE_CONFIG).canAssess) return Promise.reject(new Error("Local assessment only"));
     return requestJson(V03_BASE + "/assess", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ draftId: draft.draftId, draft: draft.input, modelConsent: draft.explanationConsent === true })
     }, 60000);
   }
   function askDraft(sessionId, question) {
+    if (!sessionId || !FC_INTAKE.capabilities(window.FC_SERVICE_CONFIG).modelAvailable) return Promise.reject(new Error("Online AI session required"));
     return requestJson(V03_BASE + "/ask", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sessionId: sessionId, question: question, modelConsent: true })
@@ -70,9 +79,11 @@
   function boot() {
     if (window.location.protocol === 'file:') { window.FC_LIVE = false; return; }
     intakeConfig().then(function (config) {
-      window.FC_LIVE = true;
+      window.FC_SERVICE_CONFIG = config;
+      var capabilities = FC_INTAKE.capabilities(config);
+      window.FC_LIVE = capabilities.canAssess;
       MODEL_LABEL = String(config.model || 'AI');
-      window.FC_SERVICE_STATUS = { riskEngine: 'ready', aiExtraction: config.extractionStatus || 'unavailable' };
+      window.FC_SERVICE_STATUS = { riskEngine: 'ready', aiExtraction: capabilities.modelAvailable ? 'available' : 'unavailable', reason: capabilities.reason };
       window.FC_AI = { model: MODEL_LABEL, intakeConfig: intakeConfig, intakeSchema: intakeSchema, extractDraft: extractDraft, assessDraft: assessDraft, askDraft: askDraft };
       emit('fc:live', { serviceStatus: window.FC_SERVICE_STATUS });
       App.setState({});

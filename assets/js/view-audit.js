@@ -3,15 +3,17 @@
   "use strict";
   var App = window.App, ui = App.ui;
   function renderCustom(host, draft) {
-    var run = draft.result;
+    var run = draft.result, caps = FC_INTAKE.capabilities(window.FC_SERVICE_CONFIG), canAsk = caps.modelAvailable && !!draft.sessionId;
     host.innerHTML = '<div class="v-page custom-assessment">' + ui.pageHead('02 / ASSESSMENT', draft.input.label || 'Custom operator', 'A deterministic result from your confirmed facts.') +
       '<div class="intake-topline"><a class="btn" href="#/ingest">← Edit input</a><span class="spacer"></span><a class="btn btn-primary" href="#/report">Open report →</a></div>' +
-      (App.liveResultHtml ? App.liveResultHtml(run, draft.draftId) : '<section class="v-panel"><h2>Assessment complete</h2><p>' + ui.esc(run.trace || '') + '</p></section>') +
+      (App.liveResultHtml ? App.liveResultHtml(run, draft.draftId, draft) : '<section class="v-panel"><h2>Assessment complete</h2><p>' + ui.esc(run.trace || '') + '</p></section>') +
       '<section class="v-panel fc-ai-review"><div class="v-section-head"><div><p class="v-eyebrow">AI EXPLANATION</p><h2>Ask about this result.</h2></div><span class="v-muted">Current session only</span></div>' +
-      App.consentHtml('custom-ask-consent', draft.explanationConsent, 'Send this question and the assessment facts to DeepSeek.') +
-      '<div class="ask-row"><input id="custom-ask-input" maxlength="500" aria-label="Question about this assessment" placeholder="What prevents a complete TAI or CCI?"><button class="btn btn-primary" id="custom-ask" type="button">Ask</button></div><div id="custom-ask-output" class="ask-output" role="status" aria-live="polite"></div></section></div>';
+      (canAsk ? App.consentHtml('custom-ask-consent', draft.explanationConsent, 'Send this question and the assessment facts to DeepSeek.') : '<p>' + ui.esc(caps.modelAvailable ? 'Only a local result is available. Re-run and authorize AI explanation to start an online session.' : caps.reason) + '</p><a class="btn" href="#/ingest">Re-run and authorize AI explanation</a>') +
+      '<div class="ask-row"><input id="custom-ask-input"' + (canAsk ? '' : ' disabled') + ' maxlength="500" aria-label="Question about this assessment" placeholder="What prevents a complete TAI or CCI?"><button class="btn btn-primary" id="custom-ask" type="button"' + (canAsk ? '' : ' disabled') + '>Ask</button></div><div id="custom-ask-output" class="ask-output" role="status" aria-live="polite"></div></section></div>';
+    App.bindResultActions(host,run);
     var button = host.querySelector('#custom-ask');
     if (button) button.addEventListener('click', function () {
+      if (!canAsk) return;
       var consent = host.querySelector('#custom-ask-consent').checked, input = host.querySelector('#custom-ask-input'), output = host.querySelector('#custom-ask-output');
       draft.explanationConsent = consent;
       FC_INTAKE.commit(draft, false);
@@ -22,7 +24,7 @@
       FC_AI.askDraft(draft.sessionId, input.value.trim()).then(function (response) {
         if (FC_INTAKE.active() !== draft || App.state.route !== '#/audit') return;
         output.innerHTML = '<p>' + ui.esc(response.answer) + '</p><p class="v-caption">Evidence ' + ui.esc((response.citations || []).join(', ') || 'not cited') + '</p>';
-      }, function (error) { if (FC_INTAKE.active() !== draft || App.state.route !== '#/audit') return; output.textContent = error.status === 504 || error.name === 'AbortError' ? 'AI explanation timed out. The assessment remains available.' : error.status === 429 ? 'AI explanation is busy. Retry shortly.' : 'AI explanation is unavailable. The assessment remains available.'; }).then(function () { button.disabled = false; });
+      }, function (error) { if (FC_INTAKE.active() !== draft || App.state.route !== '#/audit') return; if (error.status === 401 || error.status === 404) { draft.sessionId = null; draft.explanationConsent = false; FC_INTAKE.commit(draft, true); return; } output.textContent = error.status === 504 || error.name === 'AbortError' ? 'AI explanation timed out. The assessment remains available.' : error.status === 429 ? 'AI explanation is busy. Retry shortly.' : 'AI explanation is unavailable. The assessment remains available.'; }).then(function () { button.disabled = false; });
     });
   }
   function render(host) {

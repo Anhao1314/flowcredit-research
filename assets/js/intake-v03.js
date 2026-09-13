@@ -5,6 +5,7 @@
   var KEY = "flowcredit.intake.v03", MAX = 5, PRODUCT_VERSION = "flowcredit.intake/v0.3.1", SNAPSHOT_FORMAT = "flowcredit.snapshot/v1", data = { activeId: null, drafts: [] };
   var REQUIRED_FIELDS = ["periodStart", "periodEnd", "inputTokensM", "outputTokensM", "modelTier", "taskType", "normalizationProfileId", "validRatePct", "gpuHours", "gpuModel", "peerProfileId", "revenueUsd", "computeSpendUsd", "monthlySeries", "repaymentRatePct", "overdue30Pct", "payingCustomers", "top5ConcentrationPct", "monthlyRevenueUsd", "monthlyComputeSpendUsd", "operatingHistoryDays", "dataCoveragePct", "R", "C"];
 
+  var undoState = null, storageStatus = "Memory only", intent = null;
   function now() { return new Date().toISOString(); }
   function id() {
     try { return crypto.randomUUID(); }
@@ -26,6 +27,7 @@
   function dropKey(store) { try { if (store) store.removeItem(KEY); } catch (e) { /* nothing to clear */ } }
   function load() {
     var local = localStore(), session = sessionStore(), raw = readKey(local);
+    try { if (session && session.getItem(KEY + ".fallback") === "1" && readKey(session) != null) raw = readKey(session); } catch (e) { /* blocked storage */ }
     if (raw == null) {
       var legacy = readKey(session);
       if (legacy != null) {
@@ -37,7 +39,7 @@
     try {
       var parsed = JSON.parse(raw);
       if (parsed && Array.isArray(parsed.drafts)) {
-        data = parsed;
+        data = parsed; data.drafts = data.drafts.slice(0, MAX); storageStatus = raw === readKey(local) ? "Saved in this browser" : "Saved for this tab";
         data.drafts.forEach(function (draft) {
           draft.extractionConsent = false; draft.explanationConsent = false; draft.modelConsent = false; draft.sessionId = null;
           if (draft.status === 'running' || draft.status === 'extracting') draft.status = 'draft';
@@ -47,10 +49,14 @@
   }
   function save() {
     var text = JSON.stringify(data);
-    if (writeKey(localStore(), text)) return;
-    writeKey(sessionStore(), text);
+    var local = localStore(), session = sessionStore();
+    if (writeKey(local, text)) { storageStatus = "Saved in this browser"; try { if (session) session.removeItem(KEY + ".fallback"); } catch (e) {} }
+    else if (writeKey(session, text)) { storageStatus = "Saved for this tab"; try { session.setItem(KEY + ".fallback", "1"); } catch (e) {} }
+    else storageStatus = "Memory only";
+    return storageStatus;
   }
   function touch(draft) {
+    undoState = null;
     draft.updatedAt = now();
     data.drafts = [draft].concat(data.drafts.filter(function (item) { return item.draftId !== draft.draftId; })).slice(0, MAX);
     data.activeId = draft.draftId;
@@ -65,7 +71,7 @@
     var stamp = now(), normalized = normalizeInput(Object.assign({ modelTier: "flagship", taskType: "inference" }, seed || {})), checked = validate(normalized.input);
     return touch({
       draftId: id(), createdAt: stamp, updatedAt: stamp, status: "draft", source: source || "manual",
-      input: normalized.input, errors: checked.errors, warnings: checked.warnings,
+      input: normalized.input, extraInput: normalized.extraInput, errors: checked.errors, warnings: checked.warnings,
       missingByGroup: checked.missingByGroup, readinessStatus: checked.readinessStatus, evidenceCoverage: evidenceCoverage(normalized.input), ignoredInputs: normalized.ignoredInputs, extractionConsent: false, explanationConsent: false, modelConsent: false, result: null, sessionId: null, proof: null
     });
   }
@@ -74,7 +80,7 @@
     if (!item) return null;
     return touch(item);
   }
-  function deactivate() { data.activeId = null; save(); }
+  function deactivate() { undoState = null; data.activeId = null; save(); }
   function commit(draft, rerender) { if (!draft) return null; touch(draft); if (rerender && App.renderCurrent) App.renderCurrent(); return draft; }
   function numeric(value) {
     if (value === "" || value == null) return null;
@@ -137,22 +143,22 @@
   }
   function normalizeInput(input) {
     var source = clone(input || {}), nested = ["scope", "tokenActivity", "computeBusiness", "creditProfile", "historyCrossCheck"];
-    var out = {}, ignored = [], allowed = ["label", "subjectId", "address", "periodStart", "periodEnd", "assessmentAsOf", "modelTier", "taskType", "rawTokensM", "inputTokensM", "outputTokensM", "validRatePct", "tokenBucketsM", "gpuHours", "gpuModel", "revenueUsd", "computeSpendUsd", "monthlySeries", "repaymentRatePct", "overdue30Pct", "payingCustomers", "top5ConcentrationPct", "customerHHI", "relatedPartyRevenuePct", "operatingHistoryDays", "dataCoveragePct", "R", "C", "loopWashRatePct", "evidence", "integrityEvents", "currentExposure"];
+    var extras = {}, out = {}, ignored = [], allowed = ["label", "subjectId", "address", "periodStart", "periodEnd", "assessmentAsOf", "modelTier", "taskType", "rawTokensM", "inputTokensM", "outputTokensM", "validRatePct", "tokenBucketsM", "gpuHours", "gpuModel", "revenueUsd", "computeSpendUsd", "monthlySeries", "repaymentRatePct", "overdue30Pct", "payingCustomers", "top5ConcentrationPct", "customerHHI", "relatedPartyRevenuePct", "operatingHistoryDays", "dataCoveragePct", "R", "C", "loopWashRatePct", "evidence", "integrityEvents", "currentExposure"];
     nested.forEach(function (group) { if (source[group] && typeof source[group] === "object") Object.keys(source[group]).forEach(function (key) { out[key] = source[group][key]; }); });
     Object.keys(source).forEach(function (key) { if (nested.indexOf(key) < 0) out[key] = source[key]; });
-    Object.keys(out).forEach(function (key) { if (allowed.indexOf(key) < 0) { ignored.push(key); delete out[key]; } });
+    Object.keys(out).forEach(function (key) { if (allowed.indexOf(key) < 0) { ignored.push(key); if (!/^(?:__proto__|constructor|prototype|cci|tai|pd|riskGrade|grade|weights?|scores?|normalized.*|peerProfileId|normalizationProfileId)$/i.test(key)) extras[key] = clone(out[key]); delete out[key]; } });
     Object.keys(out).forEach(function (key) {
       if (["tokenBucketsM"].indexOf(key) >= 0 && out[key]) Object.keys(out[key]).forEach(function (name) { out[key][name] = numeric(out[key][name]); });
-      else if (["R", "C", "monthlyRevenueUsd", "monthlyComputeSpendUsd"].indexOf(key) >= 0 && typeof out[key] === "string") out[key] = out[key].split(",").map(numeric).filter(function (x) { return typeof x === "number"; });
+      else if (["R", "C", "monthlyRevenueUsd", "monthlyComputeSpendUsd"].indexOf(key) >= 0 && typeof out[key] === "string") out[key] = out[key].split(",").map(numeric);
       else if (["R", "C", "monthlyRevenueUsd", "monthlyComputeSpendUsd"].indexOf(key) >= 0 && Array.isArray(out[key])) out[key] = out[key].map(numeric);
-      else if (key === "monthlySeries" && Array.isArray(out[key])) out[key] = out[key].map(function (row) { return { period: String(row.period || ""), rawTokensM: numeric(row.rawTokensM), validRatePct: numeric(row.validRatePct), revenueUsd: numeric(row.revenueUsd), computeSpendUsd: numeric(row.computeSpendUsd) }; });
-      else if (key === "evidence" && Array.isArray(out[key])) out[key] = out[key].reduce(function (records, item) { var fields = Array.isArray(item.fields) ? item.fields : item.field ? [item.field] : []; fields.filter(function (field, index) { return REQUIRED_FIELDS.indexOf(field) >= 0 && fields.indexOf(field) === index; }).forEach(function (field) { var record = clone(item); delete record.fields; record.field = field; records.push(record); }); return records; }, []);
+      else if (key === "monthlySeries" && Array.isArray(out[key])) out[key] = out[key].map(function (row) { return Object.assign({}, row, { period: String(row.period || ""), rawTokensM: numeric(row.rawTokensM), validRatePct: numeric(row.validRatePct), revenueUsd: numeric(row.revenueUsd), computeSpendUsd: numeric(row.computeSpendUsd) }); });
+      else if (key === "evidence" && Array.isArray(out[key])) out[key] = out[key].reduce(function (records, item) { if (!item || typeof item !== "object") return records; var fields = Array.isArray(item.fields) ? item.fields : item.field ? [item.field] : []; if (!fields.length) { records.push(clone(item)); return records; } fields.filter(function (field, index) { return typeof field === "string" && fields.indexOf(field) === index; }).forEach(function (field) { var record = clone(item); delete record.fields; record.field = field; records.push(record); }); return records; }, []);
       else if (["label", "subjectId", "address", "periodStart", "periodEnd", "assessmentAsOf", "modelTier", "taskType", "gpuModel", "monthlySeries", "evidence", "integrityEvents"].indexOf(key) < 0) out[key] = numeric(out[key]);
     });
     out.gpuModel = canonicalGpu(out.gpuModel);
     if (out.gpuModel === "h100-equivalent") out.modelTier = "flagship";
     else if (out.gpuModel === "mixed") out.modelTier = "general";
-    return { input: out, ignoredInputs: ignored };
+    return { input: out, ignoredInputs: ignored, extraInput: extras };
   }
   function update(input, options) {
     var draft = active() || create();
@@ -161,7 +167,7 @@
       draft.result = null; draft.sessionId = null; draft.proof = null; draft.status = 'draft';
       draft.explanationConsent = false;
     }
-    draft.input = normalized.input;
+    draft.input = normalized.input; draft.extraInput = normalized.extraInput;
     draft.ignoredInputs = Array.from(new Set((draft.ignoredInputs || []).concat(normalized.ignoredInputs)));
     var checked = validate(draft.input);
     draft.errors = checked.errors; draft.warnings = checked.warnings; draft.missingByGroup = checked.missingByGroup;
@@ -174,7 +180,9 @@
   }
   function setExtracted(payload) {
     var draft = active() || create();
-    draft.input = normalizeInput(payload.draft || {}).input;
+    var normalized = normalizeInput(payload.draft || {});
+    draft.input = normalized.input; draft.extraInput = normalized.extraInput;
+    draft.result = null; draft.sessionId = null; draft.proof = null; draft.explanationConsent = false;
     var checked = validate(draft.input);
     draft.source = "description"; draft.rawText = null; draft.fieldConfidence = payload.fieldConfidence || {};
     draft.errors = checked.errors; draft.warnings = (payload.warnings || []).concat(checked.warnings); draft.missingByGroup = payload.missingByGroup || checked.missingByGroup;
@@ -218,11 +226,13 @@
     touch(draft); if (App.renderCurrent) App.renderCurrent(); return draft;
   }
   function remove(draftId) {
+    if (!data.drafts.some(function (draft) { return draft.draftId === draftId; })) return;
+    undoState = clone(data);
     data.drafts = data.drafts.filter(function (draft) { return draft.draftId !== draftId; });
     if (data.activeId === draftId) data.activeId = data.drafts.length ? data.drafts[0].draftId : null;
     save(); if (App.renderCurrent) App.renderCurrent();
   }
-  function clear() { data = { activeId: null, drafts: [] }; dropKey(localStore()); dropKey(sessionStore()); if (App.renderCurrent) App.renderCurrent(); }
+  function clear() { undoState = clone(data); data = { activeId: null, drafts: [] }; dropKey(localStore()); dropKey(sessionStore()); try { var session = sessionStore(); if (session) session.removeItem(KEY + ".fallback"); } catch (e) {} if (App.renderCurrent) App.renderCurrent(); }
   function applyServerValidation(payload) {
     var draft = active(); if (!draft) return null;
     draft.errors = payload && payload.fieldErrors || [];
@@ -261,7 +271,7 @@
         productVersion: result && result.productVersion || PRODUCT_VERSION
       },
       draft: {
-        input: draft.input || {}, result: result, proof: draft.proof || null,
+        input: editableInput(draft), result: result, proof: draft.proof || null,
         status: draft.status || "draft", source: draft.source || "manual", modelConsent: false
       }
     });
@@ -295,12 +305,34 @@
     }
   }
 
+
+  function editableInput(draft) { return clone(Object.assign({}, draft.extraInput || {}, draft.input || {})); }
+  function undo() { if (!undoState) return false; data = undoState; undoState = null; save(); if (App.renderCurrent) App.renderCurrent(); return true; }
+  function locate(action) { var draft = active(); if (!draft) return; intent = { draftId: draft.draftId, fields: (action.fields || []).slice(), evidence: /evidence|source|verification/i.test(action.category || "") }; App.nav("#/ingest"); }
+  function takeIntent() { var value = intent; intent = null; return value && active() && value.draftId === active().draftId ? value : null; }
+  function capabilities(config) {
+    config = config || {};
+    var auth = config.authenticationRequired === true, model = config.extractionStatus || "unavailable";
+    var sidecar = config.enabled !== false && config.deterministicStatus === "ready";
+    var reason = auth ? "This service requires authentication. Page calls are disabled; local assessment remains available." : !sidecar ? "The local agent is offline. Deterministic assessment still runs in this browser." : model === "unconfigured" ? "AI is not configured on the local agent." : model !== "available" ? "The AI model is unavailable. Continue with manual entry or JSON." : "";
+    return { sidecar: sidecar, authenticationRequired: auth, modelStatus: model, modelAvailable: sidecar && model === "available" && !auth, canAssess: sidecar && !auth, reason: reason };
+  }
+  function summary(run, draft) {
+    run = run || {}; var statuses = { "insufficient-evidence": "More evidence needed", "enhanced-review": "Further review required", "standard-review": "Standard manual review required", "eligible-for-review": "Eligible for manual review", "simulation-only": "Example assessment", "reject-confirmed-integrity": "Confirmed integrity concern" };
+    var confirmed = run.confirmedIntegrityEvents || [], missing = Object.keys(run.missingByGroup || {}).reduce(function (all, key) { return all.concat(run.missingByGroup[key]); }, []);
+    var incomplete = (run.tokenComponents || []).concat(run.anchors || []).filter(function (item) { return item.score == null; });
+    var actions = run.requiredActions || [], next = actions.reduce(function (best, item) { var rank = Number(item.priority); return !best || (isFinite(rank) && rank < (isFinite(Number(best.priority)) ? Number(best.priority) : Infinity)) ? item : best; }, null);
+    var text = function (item) { return typeof item === "string" ? item : item && (item.message || item.note || item.code); };
+    var reason = confirmed.length ? text(confirmed[0]) : incomplete.length ? incomplete[0].reason || "Some assessment dimensions cannot be calculated." : missing.length ? "Missing inputs: " + missing.map(function (key) { return App.fieldLabel ? App.fieldLabel(key) : key; }).join(", ") : (run.limitations || [])[0] || (run.tokenMeteringStatus && run.tokenMeteringStatus !== "complete" ? "Metering status: " + run.tokenMeteringStatus.replace(/-/g, " ") : "Evidence readiness must be reviewed independently of the rule risk grade.");
+    return { title: run.vetoApplied === true ? "Confirmed integrity concern" : statuses[run.decisionStatus] || "Review required", reason: reason || "Review the supporting evidence.", next: next, synthetic: !!(draft && draft.source === "example" || run.assessmentMode === "simulation" || run.decisionStatus === "simulation-only" || run.evidenceStrength === "simulated") };
+  }
+
   load();
   window.FC_INTAKE = {
     productVersion: PRODUCT_VERSION, create: create, active: active,
     list: function () { return data.drafts.slice(); }, choose: choose, deactivate: deactivate, commit: commit, update: update, validate: validate, evidenceCoverage: evidenceCoverage,
     setExtracted: setExtracted, setResult: setResult, applyServerValidation: applyServerValidation, remove: remove, clear: clear, proof: proof,
-    snapshot: snapshot, restore: restore,
+    snapshot: snapshot, restore: restore, editableInput: editableInput, summary: summary, capabilities: capabilities, locate: locate, takeIntent: takeIntent, hasIntent: function () { return !!(intent && active() && intent.draftId === active().draftId); }, undo: undo, canUndo: function () { return !!undoState; }, saveStatus: function () { return storageStatus; },
     isActive: function () { return !!active(); }
   };
 })();

@@ -30,7 +30,7 @@
   function actionsHtml(actions) {
     var items = actions || [];
     return '<section class="fc-result-section fc-next-actions"><div class="v-section-head"><h3>What to provide next</h3><span class="v-muted">Prioritized completion path</span></div>' +
-      (items.length ? '<ol>' + items.map(function (item) { return '<li><span class="num">P' + u.esc(item.priority) + '</span><div><b>' + u.esc(words(item.category)) + '</b><p>' + u.esc(item.message) + '</p>' + (item.fields && item.fields.length ? '<small>' + u.esc(item.fields.map(App.fieldLabel).join(' · ')) + '</small>' : '') + '</div></li>'; }).join('') + '</ol>' : '<p>No additional input is required by the current deterministic screen.</p>') + '</section>';
+      (items.length ? '<ol>' + items.map(function (item) { return '<li><span class="num">P' + u.esc(item.priority) + '</span><div><b>' + u.esc(words(item.category)) + '</b><p>' + u.esc(item.message) + '</p>' + (item.fields && item.fields.length ? '<small>' + u.esc(item.fields.map(App.fieldLabel).join(' · ')) + '</small>' : '') + '<button class="btn" type="button" data-missing-action="' + items.indexOf(item) + '">Add missing data</button></div></li>'; }).join('') + '</ol>' : '<p>No additional input is required by the current deterministic screen.</p>') + '</section>';
   }
   function tokenChain(run) {
     var m = run.tokenMetrics || {}, correlation = m.tokenRevenueCorrelation;
@@ -47,24 +47,23 @@
         (index < nodes.length - 1 ? '<span class="fc-token-arrow" aria-hidden="true">→</span>' : '');
     }).join("") + '</div>';
   }
-  function liveHtml(run, key) {
+  function summaryHtml(run, draft) {
+    var summary=FC_INTAKE.summary(run,draft);
+    return '<div class="fc-conclusion"><p class="v-eyebrow">Assessment conclusion</p><h2>' + u.esc(summary.title) + '</h2>' + (summary.synthetic ? '<span class="status-chip">Synthetic data</span>' : '') + '<p>' + u.esc(summary.reason) + '</p><div class="fc-priority-action"><strong>Next step</strong><p>' + u.esc(summary.next ? summary.next.message : 'Review the supporting evidence and save this report for manual review.') + '</p>' + (summary.next ? '<button class="btn" type="button" data-missing-action="' + (run.requiredActions || []).indexOf(summary.next) + '">Add missing data</button>' : '') + '</div><p class="v-caption">Rule risk grade and evidence readiness are separate. A high grade does not establish sufficient evidence or approve credit.</p></div>';
+  }
+  function bindActions(host,run) { host.querySelectorAll('[data-missing-action]').forEach(function (button) { button.addEventListener('click',function () { FC_INTAKE.locate((run.requiredActions || [])[Number(button.getAttribute('data-missing-action'))] || {}); }); }); }
+  function liveHtml(run, key, draft) {
     var veto = run.vetoApplied === true || run.verdict === "reject";
-    var tone = veto ? "red" : run.decisionStatus === "simulation-only" || run.decisionStatus === "enhanced-review" || run.decisionStatus === "insufficient-evidence" ? "amber" : "green";
     var eq = run.evidenceQuality || {}, signals = run.integritySignals || [], confirmed = run.confirmedIntegrityEvents || [];
     var weights = { ai_token_activity: "40%", repayment_quality: "25%", customer_resilience: "15%", unit_economics: "10%", operating_continuity: "10%" };
     var evidenceValue = run.evidenceStrength === "simulated" ? "Simulated" : eq.score == null ? words(run.evidenceStrength) : eq.score + " / 100";
     return '<section class="v-panel ai-card ai-card-report fc-live-screen" data-subject="' + u.esc(key) + '">' +
-      '<div class="v-section-head"><div><p class="v-eyebrow">DETERMINISTIC ASSESSMENT</p><h2>Token-adjusted risk screen</h2></div>' +
-      u.tag(words(run.decisionStatus).toUpperCase(), tone) + '</div>' +
-      '<p class="fc-live-provenance">Experimental rules · ' + (run.model ? 'Optional explanation by ' + u.esc(run.model) : 'Runs in this browser') + '</p>' +
-      '<div class="fc-decision-line"><div><small>Decision status</small><strong>' + u.esc(words(run.decisionStatus)) + '</strong>' +
-      (run.simulatedDecisionStatus ? '<span>Scenario outcome: ' + u.esc(words(run.simulatedDecisionStatus)) + '</span>' : '') + '</div>' +
-      '<div class="fc-integrity-state ' + (veto ? 'is-veto' : '') + '"><small>Integrity</small><strong>' + (veto ? 'Confirmed Veto' : 'No confirmed Veto') + '</strong></div></div>' +
+      summaryHtml(run, draft) +
       '<div class="v-metrics fc-primary-metrics">' +
       u.metric("AI Token Activity Index", value(run.tai), "TAI / 100 · " + words(run.tokenActivityBand)) +
       u.metric("Credibility index", value(run.cci), "CCI / 1,000 · 40% TAI") +
-      u.metric("Risk grade", value(run.grade), "Manual-review screen") +
-      u.metric("Evidence", evidenceValue, words(run.tokenMeteringStatus) + " metering") + '</div>' +
+      u.metric("Rule risk grade", value(run.grade), "Manual-review screen") +
+      u.metric("Evidence readiness", evidenceValue, words(run.tokenMeteringStatus) + " metering") + '</div>' +
       '<section class="fc-result-section"><div class="v-section-head"><h3>Token metering chain</h3><span class="v-muted">Rule-defined conversion</span></div>' + tokenChain(run) + '</section>' +
       '<div class="fc-result-grid"><section class="fc-result-section"><div class="v-section-head"><h3>TAI composition</h3><span class="v-muted">Activity coherence</span></div>' +
       scoreRows(run.tokenComponents) + '</section><section class="fc-result-section"><div class="v-section-head"><h3>CCI composition</h3><span class="v-muted">40 / 25 / 15 / 10 / 10</span></div>' +
@@ -81,5 +80,5 @@
       (run.limitations || []).map(function (x) { return '<li>' + u.esc(x) + '</li>'; }).join("") +
       '</ul><p class="v-caption">TAI measures activity coherence. It is not revenue, a credit limit or a probability of default.</p></div></details></section>';
   }
-  App.liveResultHtml = liveHtml;
+  App.liveResultHtml = liveHtml; App.resultSummaryHtml = summaryHtml; App.actionsHtml = actionsHtml; App.bindResultActions = bindActions;
 })();
