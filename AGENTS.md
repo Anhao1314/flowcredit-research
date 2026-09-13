@@ -38,6 +38,7 @@
 - 文件：assets/js/data.js、assets/js/ui.js、assets/js/app.js、assets/js/state.js、assets/js/view-landing.js。
 - v0.3 任务书对 app.js 的唯一例外：导航可见标签改为 New Assessment，并只读 FC_INTAKE 进度；路由、状态机、ID、计时和事件绑定继续冻结。
 - 2026-09-13 解冻例外（产品减法任务授权）：仅解冻 app.js 的四处——顶栏导航链接、App.wallet 定义、toggleWallet/walletConnectedUi 及其 wallet 句柄、路由正则中的 account；用于删除不支撑任何用户任务的 Demo Wallet 模拟连接与 #/account 死胡同页。状态机语义、其余元素 id、事件绑定与演示节奏（audit 350ms 步进、stress 约 2s 时序、ring 600ms、动画 200–350ms）继续冻结；该次授权不外溢到本文件其他冻结内容。
+- 2026-09-13 剩余体验任务解冻：用户授权完成产品收敛；仅允许修改 app.js 的导航可见标签、首页/页脚/服务状态文案、highlightFlow 的展示进度与案例选择器可见性，以及 view-landing.js 的展示内容。用于统一单一确定性结果、消除未实现连接/监控承诺、将 proof 与场景从完成条件移除。路由、事件绑定、状态机、公式、数值和计时继续冻结；App.flow 内部接口保留。
 - 内容：SUBJECTS / ANCHOR_W / STRESS_FRAMES / 全部公式与 mock 数值 / 路由 hash（landing|workspace|ingest|audit|report）/ 状态机语义 / 元素 id / 事件绑定 / 演示节奏（audit 350ms 步进、stress 约 2s 时序、ring 600ms、动画 200–350ms）。
 - id 清单（保留）：run-audit / reset-audit / anchor-btn / anchor-btn-label / verify-btn / stress-btn / recover-btn / go-p1 / ring-slot / line-slot / chain-log。
 - L1 口径：Raw Token = d.l0.compute.Raw（healthy 80.0M / sybil 108.0M）；rawNT_M 是「已乘 w_model/w_task 后的 NT」（96.0M / 108.0M），只用于 L2「毛 NT」，绝不顶替 Raw Token。
