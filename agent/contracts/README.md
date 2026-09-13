@@ -78,3 +78,7 @@ Storage is an in-memory bounded TTL store suitable for a single-instance Pilot o
 ## Proxy Safety
 
 `TRUST_PROXY=false` is the default. Enable it only when direct access to Node is blocked and a controlled reverse proxy overwrites `X-Forwarded-For`. Never trust arbitrary forwarding headers from the public internet.
+
+## OpenAPI reference
+
+[`openapi.json`](openapi.json) describes `POST /api/v1/assess` and its error envelope. It references the existing shared JSON schemas; keep the three JSON files together. See [API integration notes](../../docs/public-api-v1.md#integration-reference) for quotas, error handling and readiness behavior.

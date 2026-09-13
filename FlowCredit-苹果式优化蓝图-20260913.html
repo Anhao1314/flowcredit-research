@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FlowCredit 苹果式优化蓝图 · 2026-09-13</title>
+<style>
+  :root{
+    --teal:#0d7a72; --teal-soft:#e6f2f1;
+    --amber:#b45309; --amber-soft:#fdf3e7;
+    --red:#b42318; --red-soft:#fdecea;
+    --blue:#1d4ed8; --blue-soft:#eaf1ff;
+    --gray:#475467; --gray2:#667085; --line:#e4e7ec; --bg:#f7f8fa; --card:#fff;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:#1d2939;font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:32px 22px 56px}
+  h1{font-size:24px;margin:0 0 4px}
+  .meta{color:var(--gray2);font-size:13px;margin-bottom:22px}
+  h2{font-size:18px;margin:30px 0 12px;padding-top:8px}
+  h3{font-size:15px;margin:14px 0 8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+  .lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;padding:18px 20px;font-size:16px;line-height:1.75;margin-bottom:26px}
+  .lead b{color:var(--teal)}
+  code{font-family:var(--mono);font-size:12px;background:#f2f4f7;border-radius:4px;padding:1px 5px;color:#344054}
+  .defpair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.defpair{grid-template-columns:1fr}}
+  .def{border-radius:10px;padding:14px 16px;border:1px solid var(--line)}
+  .def.now{background:#fcfcfd}
+  .def.new{background:var(--teal-soft);border-color:#b9dcd8}
+  .def .tag{font-size:11px;font-weight:800;letter-spacing:.06em;margin-bottom:6px}
+  .def.now .tag{color:var(--gray2)} .def.new .tag{color:var(--teal)}
+  .def p{margin:6px 0 0;font-size:13.5px}
+  .essence{font-size:17px;font-weight:700;line-height:1.55}
+  /* tracks */
+  .track{border-radius:10px;border:1px solid var(--line);padding:12px 14px;margin-bottom:12px;background:#fff}
+  .track.before{border-left:4px solid var(--red)}
+  .track.after{border-left:4px solid var(--teal)}
+  .track .tl{font-size:12px;font-weight:800;letter-spacing:.05em;margin-bottom:8px}
+  .track.before .tl{color:var(--red)} .track.after .tl{color:var(--teal)}
+  .steps{display:flex;align-items:stretch;gap:0;overflow-x:auto}
+  .stp{flex:1 0 130px;padding:8px 10px;border:1px solid var(--line);border-right:none;background:#fcfcfd;position:relative}
+  .stp:first-child{border-radius:8px 0 0 8px}
+  .stp:last-child{border-right:1px;border-radius:0 8px 8px 0}
+  .stp::after{content:"→";position:absolute;right:-7px;top:8px;color:#98a2b3;font-size:12px;z-index:2}
+  .stp:last-child::after{content:""}
+  .stp .t{font-family:var(--mono);font-size:10.5px;color:var(--gray2)}
+  .stp b{display:block;font-size:12.5px;margin:2px 0 3px}
+  .stp span{font-size:11.5px;color:var(--gray);line-height:1.45;display:block}
+  .stp.bad{background:var(--red-soft)}
+  .stp.warn{background:var(--amber-soft)}
+  .stp.good{background:var(--teal-soft)}
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f9fafb;font-size:12px;letter-spacing:.03em}
+  td .d{font-size:11.5px;color:var(--gray2);display:block;margin-top:2px}
+  .pill{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:1px 8px;white-space:nowrap}
+  .p-keep{background:var(--teal-soft);color:var(--teal)}
+  .p-merge{background:var(--blue-soft);color:var(--blue)}
+  .p-down{background:var(--amber-soft);color:var(--amber)}
+  .p-cut{background:var(--red-soft);color:var(--red)}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:820px){.three{grid-template-columns:1fr}}
+  .core{border:1.5px solid var(--teal);border-radius:10px;padding:14px;background:var(--teal-soft)}
+  .core .n{font-size:11px;font-weight:800;color:var(--teal);letter-spacing:.08em}
+  .core b{display:block;font-size:14.5px;margin:4px 0}
+  .core p{margin:0;font-size:12.5px;color:#344054}
+  .notdo{border:1px solid var(--line);border-radius:10px;background:#fff;padding:6px 18px}
+  .notdo li{margin:7px 0;font-size:13.5px}
+  .notdo li b{color:var(--red)}
+  .phase{display:flex;gap:12px;margin:10px 0}
+  .phase .n{flex:0 0 30px;height:30px;border-radius:50%;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px;color:#fff}
+  .p0 .n{background:var(--red)} .p1 .n{background:var(--teal)} .p2 .n{background:var(--blue)}
+  .phase .b{flex:1;border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px 14px}
+  .phase .b b{font-size:14px}
+  .phase .b p{margin:3px 0 0;font-size:13px;color:#344054}
+  .north{background:#102a28;color:#eaf5f3;border-radius:10px;padding:16px 18px;font-size:15px;line-height:1.7}
+  .north code{background:rgba(255,255,255,.12);color:#fff}
+  .foot{font-size:12.5px;color:var(--gray2);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+  ul.tight{margin:6px 0;padding-left:20px}
+  ul.tight li{margin:5px 0;font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>FlowCredit 苹果式优化蓝图</h1>
+  <div class="meta">2026-09-13 · 方法：定义本质 → 做减法 → 补断点（体验倒推、端到端、深层简洁、工艺、原型裁决）· 承接《实用性评估》《体验问题评估》两份结论 · B2B 强监管场景下对消费电子原则做了显式修正</div>
+
+  <div class="lead">
+    <b>核心主张：</b>不要再加功能，先把产品收敛成<b>一句话、一条路、一份能带走的报告</b>。当前所有 P0 体验问题的共同根源是「演进史外露」——解法不是把旧东西折叠藏起来（表层极简），而是在<b>底层消化复杂度</b>：浏览器与服务端共用同一个确定性引擎、全产品只出一套结论。北极星只有一个：<b>从打开到看到第一份可信结论的时间</b>。
+  </div>
+
+  <h2>一、重写本质：先回答用户要完成什么任务</h2>
+  <div class="defpair">
+    <div class="def now">
+      <div class="tag">现状定义（能力/参数罗列）</div>
+      <p>「Risk Intelligence API for AI-native economic actors」「Connect compute, cash flow and on-chain activity」「Evidence → Risk → Action」。</p>
+      <p>问题：是工程语言与愿景清单，遮住产品名后脑中没有具体画面；「Connect / on-chain」还承诺了不存在的能力。</p>
+    </div>
+    <div class="def new">
+      <div class="tag">重写后（用户任务、有画面、无参数）</div>
+      <p class="essence">把你自己的经营数字，变成一份敢直接递给交易对手的风险结论——五分钟、零安装。</p>
+      <p>对标「1,000 songs in your pocket」：不强调引擎/版本/API，而强调「一份拿得出手的结论」这个结果。完成任务后的情绪词定为 <b>Confident（我知道结论怎么来的、我敢发出去）</b>，不是「惊艳」。</p>
+    </div>
+  </div>
+
+  <h2>二、体验倒推：黄金路径 vs 现状路径</h2>
+  <div class="card">
+    <div class="track before">
+      <div class="tl">现状路径 · 情绪在「点运行」处坠底</div>
+      <div class="steps">
+        <div class="stp warn"><span class="t">0:00</span><b>落地</b><span>被「Connect 四源」抬高预期</span></div>
+        <div class="stp warn"><span class="t">0:30</span><b>选路分叉</b><span>新评估 / Legacy 并列，不知点哪</span></div>
+        <div class="stp bad"><span class="t">2:00+</span><b>24 个空字段</b><span>HHI、R/C 无释义，报错是字段 key</span></div>
+        <div class="stp bad"><span class="t">谷底</span><b>点 Run</b><span>Local Agent required，静态站到此终止</span></div>
+        <div class="stp warn"><span class="t">绕路</span><b>改走 Legacy</b><span>三套结果、三个 CCI 要自己对</span></div>
+        <div class="stp bad"><span class="t">最后</span><b>报告</b><span>模态关掉即失，发不出去</span></div>
+      </div>
+    </div>
+    <div class="track after">
+      <div class="tl">黄金路径 · 先看到成品，再换成自己的数据</div>
+      <div class="steps">
+        <div class="stp good"><span class="t">0:00</span><b>打开即成品</b><span>预填示例，浏览器内确定性引擎直接出分</span></div>
+        <div class="stp good"><span class="t">0:30</span><b>读懂结论</b><span>一套结果 + 每个分数可展开看由来</span></div>
+        <div class="stp good"><span class="t">2:00</span><b>换成我的数据</b><span>示例即模板，9 个最小字段先出有限结论</span></div>
+        <div class="stp good"><span class="t">边填边补</span><b>补证清单</b><span>缺什么、补了能改变什么，逐项引导</span></div>
+        <div class="stp good"><span class="t">5:00</span><b>带走报告</b><span>打印 PDF / 导出 JSON 快照 / 可恢复</span></div>
+        <div class="stp good"><span class="t">可选</span><b>问为什么</b><span>Ask 只做解释，不再并列第二个分数</span></div>
+      </div>
+    </div>
+    <div class="foot" style="border:0;margin:8px 0 0;padding:0">被技术绑架的关键妥协点：评分只存在于 Node 侧车，于是访客被迫「自己起服务」。体验倒推的结论是反过来——把无外部依赖的 <code>risk-core-v021.js</code> 编译为浏览器可跑版本，让静态站自己出分；需要 DeepSeek 时才提示连接。这是整个蓝图的技术支点（见第五节 H1 原型）。</div>
+  </div>
+
+  <h2>三、功能取舍表：逐个判定，不做「精简」空话</h2>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <tr><th style="width:21%">功能</th><th style="width:24%">服务的核心任务</th><th style="width:13%">判定</th><th>理由 / 复杂度去向</th></tr>
+      <tr><td>确定性风险引擎</td><td>产出唯一权威结论</td><td><span class="pill p-keep">保留强化</span></td><td>核心资产；强化方向是浏览器/服务端<b>同一份代码</b>，从底层消灭两套口径</td></tr>
+      <tr><td>三个示例案例</td><td>让人看懂「成品长什么样」</td><td><span class="pill p-keep">保留强化</span></td><td>从「legacy 绕路」升级为<b>默认开场</b>：预填→自动出分→可编辑</td></tr>
+      <tr><td>requiredActions 补证清单</td><td>把 null 翻译成下一步</td><td><span class="pill p-keep">保留强化</span></td><td>渐进披露的主引擎：先给有限结论，再告诉用户补什么能改变结论</td></tr>
+      <tr><td>错误分级文案 / 草稿保护 / consent</td><td>异常路径的信任</td><td><span class="pill p-keep">保留强化</span></td><td>已高于平均，是要守住的工艺资产</td></tr>
+      <tr><td>v0.1 / Live v0.2.1 / Saved AI 三套结果</td><td>—</td><td><span class="pill p-merge">合并</span></td><td>合并为一套 v0.2.1 主结果；AI 只解释不出第二个分；复杂度在引擎层消除，而非折叠藏起</td></tr>
+      <tr><td>audit/report 的三种环境布局</td><td>—</td><td><span class="pill p-merge">合并</span></td><td>一套响应式布局，离线/在线只是「AI 能力有无」的状态差</td></tr>
+      <tr><td>抽取同意 / 解释同意</td><td>合规授权</td><td><span class="pill p-merge">合并</span></td><td>共用同一同意组件但状态独立，不再共用 <code>modelConsent</code></td></tr>
+      <tr><td>Local Merkle proof</td><td>本地一致性留痕</td><td><span class="pill p-down">下沉二级</span></td><td>结果页一行轻量入口，不与 Run 等权，不进工作流完成条件；措辞改「一致性校验」</td></tr>
+      <tr><td>HHI / R-C 序列 / evidence JSON / L0–L5 细节</td><td>专家级增强</td><td><span class="pill p-down">下沉二级</span></td><td>默认收起、自然路径可发现；最小 9 字段即可出 limited 结论</td></tr>
+      <tr><td>本机侧车连接（127.0.0.1）</td><td>开发者用真实 AI</td><td><span class="pill p-down">下沉二级</span></td><td>降为开发者入口；访客路径永不出现「起服务」死按钮</td></tr>
+      <tr><td>Stress 场景</td><td>敏感度示意</td><td><span class="pill p-down">下沉二级</span></td><td>改名 Scenario 放报告附录；不叫 Monitor</td></tr>
+      <tr><td>Demo Wallet / Sepolia 假连接</td><td>无</td><td><span class="pill p-cut">删除</span></td><td>不支撑任何用户任务，只传递过时链上信号</td></tr>
+      <tr><td>Demo Account 页</td><td>无</td><td><span class="pill p-cut">删除</span></td><td>假机构 + v0.1 残留；「我的评估」已由 Workspace 承担</td></tr>
+      <tr><td>Connect / on-chain / Monitor 措辞</td><td>—</td><td><span class="pill p-cut">删除</span></td><td>承诺了不存在的能力，改为「Organize supplied evidence」式如实表述</td></tr>
+      <tr><td>L0–L5 的 350ms 假步进「计算表演」</td><td>—</td><td><span class="pill p-cut">删除主叙事</span></td><td>真计算在浏览器内是毫秒级；步进只保留为「展开看分数由来」的解释动画，不再伪装计算过程</td></tr>
+    </table>
+  </div>
+
+  <h2>四、重定义后的 v1 边界</h2>
+  <h3>只做三件核心能力（默认对其余一切说不）</h3>
+  <div class="three">
+    <div class="core"><div class="n">CORE 1</div><b>零安装出一份评估</b><p>浏览器内确定性引擎；示例默认开场，30 秒内看到完整成品结论。</p></div>
+    <div class="core"><div class="n">CORE 2</div><b>引导式换成自己的数据</b><p>示例即模板、字段说人话、最小字段先出结论，补证清单引导增强。</p></div>
+    <div class="core"><div class="n">CORE 3</div><b>一份带得走的报告</b><p>打印/PDF、JSON 快照导出与恢复，不依赖任何后端。</p></div>
+  </div>
+  <h3>明确不做清单（每个「不做」都写明顶住的是什么诱惑）</h3>
+  <div class="card notdo">
+    <ul>
+      <li><b>不做真实数据连接器</b>——顶住「four sources connect」的叙事诱惑；v1 只接受用户提供的数据并如实标注证据等级（self-reported 封顶规则保留）。</li>
+      <li><b>不出 PD / 预期损失 / 推荐额度数字</b>——顶住「看起来像完整风控产品」的诱惑；校准完成前保持 null，绝不用 mock 的 2.3% / $20,000 填充界面。</li>
+      <li><b>不做持续监控/周期重评</b>——顶住 P3「Monitor」的诱惑；只做单期评估 + 场景附录，直到真有新数据回路再改名。</li>
+      <li><b>不做钱包与链上交互</b>——顶住旧定位惯性。</li>
+      <li><b>不做多版本结果并存</b>——顶住「所有历史演示都要能跑」的兼容诱惑；git 历史保留，用户界面只有一套。</li>
+      <li><b>不做账户/登录体系</b>——顶住产品模板惯性；External Alpha 阶段无此任务。</li>
+      <li><b>AI 不评分</b>——顶住「AI 原生」名头的诱惑；AI 只做抽取与解释，评分权永远在确定性引擎。</li>
+    </ul>
+  </div>
+
+  <h2>五、端到端链条：自控关键断点，开放处做兜底</h2>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <tr><th>环节</th><th style="width:16%">控制状态</th><th>处理原则（B 端无法全链自控，故自控关键断点 + 开放处兜底）</th></tr>
+      <tr><td>首次打开</td><td><span class="pill p-keep">必须自控</span></td><td>零安装出分；不能把「起 Node 服务」甩给访客——这是当前最严重的出戏点</td></tr>
+      <tr><td>数据录入</td><td><span class="pill p-merge">自控模板 / 开放格式</span></td><td>表单、JSON、描述三种入口，校验与示例由我方兜底</td></tr>
+      <tr><td>评分</td><td><span class="pill p-keep">完全自控</span></td><td>浏览器与服务端共用同一份 risk-core，保证口径一致、结果可复现</td></tr>
+      <tr><td>证据真实性</td><td><span class="pill p-cut">当前不受控</span></td><td>不假装核验：证据等级封顶 + requiredActions 明示「自报」局限，而非用 Verified 对勾粉饰</td></tr>
+      <tr><td>AI 抽取/解释</td><td><span class="pill p-down">合作 · 可失败</span></td><td>DeepSeek 不可用时静默降级为纯确定性（现有机制保留），任何路径都不因 AI 挂掉而断</td></tr>
+      <tr><td>报告交付</td><td><span class="pill p-keep">自控</span></td><td>打印/导出全部本地完成，不依赖后端、不依赖标签页存活</td></tr>
+      <tr><td>API 集成</td><td><span class="pill p-down">开放 · 文档兜底</span></td><td>OpenAPI、错误码→处置表、真实 host 示例、配额与冷启动幂等说明</td></tr>
+    </table>
+  </div>
+
+  <h2>六、用原型裁决的三个关键假设（别开会，做出来看）</h2>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <tr><th>假设（按失败杀伤力排序）</th><th>最小原型</th><th>通过 / 否决标准</th><th style="width:9%">时间</th></tr>
+      <tr><td><b>H1</b> risk-core 能在浏览器内跑，且与 Node 结果一致</td><td>把 <code>risk-core-v021.js</code> 打包为 IIFE，静态站直接调用</td><td>现有 contracts/固定演练用例（93.8/929/A 等）全部字节级一致即通过；否则保留侧车方案</td><td>1 天 spike</td></tr>
+      <tr><td><b>H2</b>「先看示例成品」优于「先填空表单」</td><td>两版入口 A/B，3–5 人按脚本走查</td><td>任务「5 分钟内得到评估并复述结论」：完成率与耗时显著占优才定为默认</td><td>3 天</td></tr>
+      <tr><td><b>H3</b> 决策者要「可带走」胜过「在线交互」</td><td>上线打印/JSON 导出，访谈 3 个目标伙伴</td><td>导出被实际使用、或访谈明确指向 PDF/快照；否则再议在线看板优先级</td><td>1 周</td></tr>
+    </table>
+  </div>
+
+  <h2>七、决策机制：一个北极星 + 单一负责人</h2>
+  <div class="north">
+    北极星指标：<code>Time-to-first-credible-result</code> —— 从打开页面到看到第一份完整评估的时间，目标 &lt; 30 秒（示例路径）。<br>
+    规则：任何新功能、新入口、新措辞，若增加这条时间或制造新的路径分叉，默认否决；黄金路径指定<b>一名 DRI</b> 对端到端体验负责，有权对「不够好」说不。数据用来排除错误选项，品味在剩余选项中裁决。
+  </div>
+
+  <h2>八、三阶段落地顺序（含仓库铁律约束）</h2>
+  <div class="phase p0"><div class="n">0</div><div class="b">
+    <b>减法周 · 都是可逆的「双向门」，快速做</b>
+    <p>删 Demo Wallet 与 Account 页；合并为一套结果/一套布局；清用户可见版本号碎片；Connect/on-chain/Monitor 措辞对齐；proof 降级、工作流完成与 proof 解绑。<b>注意：app.js、view-landing.js 属 AGENTS.md 冻结区，须先按 §2 修改 AGENTS.md 写明解冻理由并出任务书，每步在 <code>agent/</code> 跑完全套自检（syntax / discipline / isolation / node --test / verify-release）。</b></p>
+  </div></div>
+  <div class="phase p1"><div class="n">1</div><div class="b">
+    <b>黄金路径（1–2 周）· 核心战役</b>
+    <p>H1 引擎浏览器化 spike 并落地；示例默认开场；表单渐进披露（最小 9 字段先出 limited 结论）；报告打印样式 + JSON 导出/导入；草稿由 sessionStorage 升 localStorage。里程碑：静态站双击打开，30 秒内看到一份完整、唯一、可导出的评估。</p>
+  </div></div>
+  <div class="phase p2"><div class="n">2</div><div class="b">
+    <b>信任与深度（2–4 周）· 单向门慢做</b>
+    <p>字段人话化 + Fill with example + 错误 key→标签；术语体系统一（一套编号、Anchor 消歧）；DX 补 OpenAPI/错误码表/配额/冷启动说明。对外契约（<code>flowcredit.api/v1</code> 等版本标识、API 字段、冻结基线数值）是单向门，改动须在交付说明单列。</p>
+  </div></div>
+
+  <h2>九、刻意保留、不要在减法中误伤的东西</h2>
+  <div class="card">
+    <ul class="tight">
+      <li>失败保留草稿、504/429/离线三态文案、模型调用前强制 consent——异常路径的工艺资产。</li>
+      <li>报告模态的 section 导航、Esc、焦点陷阱、aria-modal 与 skip link、aria-live、prefers-reduced-motion——导出改造时在打印版与新版中延续。</li>
+      <li>证据等级封顶、自报局限、「非审计意见」免责口径——这是合规红线，减法不能减掉诚实。</li>
+      <li>确定性引擎的固定演练基线与版本标识纪律——内部收敛口径时，对外契约仍按流程变更。</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    方法依据：苹果产品设计十原则（本质定义 / 聚焦说不 / 体验倒推 / 端到端 / 深层简洁 / 工艺 / 人文 / 原型裁决 / 品味机制），并按 B 端强监管场景修正：证据与生态环节必须开放，以「自控评分与报告 + 开放处兜底」替代消费电子式全栈自研。本蓝图为产品方案，未改动任何代码；落地时遵守仓库 AGENTS.md 冻结区与自检流程。
+  </div>
+
+</div>
+</body>
+</html>

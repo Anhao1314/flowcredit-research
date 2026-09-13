@@ -22,18 +22,21 @@ Current release baseline: `external-alpha-v0.1.1` (Finch Direct API compatibilit
 System Node is not required for Docker operation.
 
 ```sh
-git clone https://github.com/Anhao1314/flowcredit.git
-cd flowcredit/agent
-cp .env.example .env
+git clone https://github.com/Anhao1314/flowcredit-v2.git
+cd flowcredit-v2/agent
+export FC_RUNTIME_ROOT="/Users/yimingyang/fc-agent/runtime"
+mkdir -p "$FC_RUNTIME_ROOT"
+cp .env.example "$FC_RUNTIME_ROOT/.env"
+chmod 600 "$FC_RUNTIME_ROOT/.env"
 node scripts/set-key.js
-docker compose up --build -d
+docker compose --env-file "$FC_RUNTIME_ROOT/.env" up --build -d
 ```
 
-Open `http://127.0.0.1:8787/` after the health check passes. If Node is not installed locally, set `FLOWCREDIT_API_KEY` directly in the untracked `.env` file instead of using `scripts/set-key.js`.
+Open `http://127.0.0.1:8787/` after the health check passes. If Node is not installed locally, set `FLOWCREDIT_API_KEY` directly in the external `$FC_RUNTIME_ROOT/.env` file instead of using `scripts/set-key.js`.
 
 Without a configured key, deterministic assessment, presets, page serving, and grounded fallback answers still work. `/health` reports Harness as unconfigured.
 
-For Docker configuration, copy `.env.example` to `.env`. The default Compose host publication is `127.0.0.1`; `PUBLISH_HOST=0.0.0.0` must only be used with `AUTH_ENABLED=true` and an HTTPS reverse proxy or managed gateway.
+For Docker configuration, keep `.env` outside the repository and pass its absolute path with `--env-file`. The default Compose host publication is `127.0.0.1`; `PUBLISH_HOST=0.0.0.0` must only be used with `AUTH_ENABLED=true` and an HTTPS reverse proxy or managed gateway.
 
 `HOST` and `PORT` configure a direct Node process. Docker uses `CONTAINER_HOST` for the container interface and `PUBLISH_HOST` for host exposure because a container must listen on its internal interface to receive a published port.
 
@@ -87,7 +90,7 @@ node src/cli.js assess --rule v0.2.1 --file case.json
 ## Operations
 
 ```sh
-docker compose up --build -d
+docker compose --env-file "$FC_RUNTIME_ROOT/.env" up --build -d
 docker compose ps
 docker compose logs --tail=100
 docker compose restart

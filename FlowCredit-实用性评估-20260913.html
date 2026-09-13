@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FlowCredit 实用性评估 · 2026-09-13</title>
+<style>
+  :root{
+    --teal:#0d7a72; --teal-soft:#e6f2f1;
+    --amber:#b45309; --amber-soft:#fdf3e7;
+    --red:#b42318; --red-soft:#fdecea;
+    --gray:#475467; --gray2:#667085; --line:#e4e7ec; --bg:#f7f8fa; --card:#fff;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:#1d2939;font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 22px 56px}
+  h1{font-size:24px;margin:0 0 4px}
+  .meta{color:var(--gray2);font-size:13px;margin-bottom:22px}
+  .verdict{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;padding:18px 20px;font-size:16px;line-height:1.75;margin-bottom:26px}
+  .verdict b{color:var(--teal)}
+  h2{font-size:18px;margin:30px 0 12px;padding-top:8px}
+  h3{font-size:15px;margin:18px 0 8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+  .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+  @media (max-width:820px){.grid2{grid-template-columns:1fr}}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--gray);margin:4px 0 2px}
+  .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+  .lg-cur{background:rgba(13,122,114,.25);border:2px solid var(--teal)}
+  .lg-thr{background:rgba(180,83,9,.10);border:2px dashed var(--amber)}
+  .note{font-size:12.5px;color:var(--gray2);margin-top:6px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#fafbfc;color:#344054;font-weight:600;white-space:nowrap}
+  td.s{text-align:center;font-weight:700;font-family:var(--mono);white-space:nowrap}
+  .ok{color:var(--teal)} .warn{color:var(--amber)} .bad{color:var(--red)}
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+  .stage{flex:1 1 120px;min-width:120px;border:1px solid var(--line);border-radius:8px;padding:10px 11px;background:#fcfcfd;position:relative}
+  .stage .bar{height:4px;border-radius:2px;margin:-10px -11px 8px}
+  .stage b{display:block;font-size:13.5px;line-height:1.4;margin-bottom:3px}
+  .stage p{margin:0;font-size:12px;color:var(--gray);line-height:1.55}
+  .tag{display:inline-block;font-size:11px;font-weight:700;border-radius:20px;padding:1px 9px;margin-bottom:6px;letter-spacing:.02em}
+  .t-ok{background:var(--teal-soft);color:var(--teal)}
+  .t-amber{background:var(--amber-soft);color:var(--amber)}
+  .t-bad{background:var(--red-soft);color:var(--red)}
+  .issue{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:14px 18px;margin-bottom:12px}
+  .issue .hd{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+  .lvl{font-size:11px;font-weight:800;border-radius:5px;padding:2px 8px;letter-spacing:.05em;white-space:nowrap}
+  .lvl.fatal{background:var(--red);color:#fff}
+  .lvl.major{background:var(--amber);color:#fff}
+  .lvl.minor{background:#e4e7ec;color:#344054}
+  .issue .hd b{font-size:15px}
+  .issue dl{margin:8px 0 0}
+  .issue dt{font-size:12px;font-weight:700;color:#344054;margin-top:7px}
+  .issue dd{margin:2px 0 0;font-size:13.5px;color:#344054}
+  code{font-family:var(--mono);font-size:12px;background:#f2f4f7;border-radius:4px;padding:1px 5px;color:#344054}
+  ul.tight{margin:6px 0;padding-left:20px}
+  ul.tight li{margin:5px 0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:820px){.cols{grid-template-columns:1fr}}
+  .okbox{border-top:3px solid var(--teal)}
+  .nobox{border-top:3px solid var(--red)}
+  .step{display:flex;gap:12px;margin:8px 0}
+  .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .step p{margin:0;font-size:13.5px}
+  .foot{font-size:12.5px;color:var(--gray2);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>FlowCredit 实用性评估</h1>
+  <div class="meta">评估日期 2026-09-13 · 对象：本地开发仓库 <code>fc.v1</code>（flowcredit-v2，External Alpha v0.1.1 / 引擎 v0.2.1 / intake v0.3.1）· 方法：逐文件读代码与文档后的产品级评审，非运行时压测</div>
+
+  <div class="verdict">
+    <b>一句话总判断：</b>工程工艺在黑客松出身的项目里属于顶尖水平，但作为「产品」，它现在交付的是<b>一份高质量的证据问卷 + 一把未经校准的尺子</b>。真正决定实用性的两环——<b>证据独立核验</b>与<b>风险结果校准</b>——尚不存在。今天它最成立的身份，是「人工复核前置的<b>证据完备性检查器</b>」，而不是能输出信用结论的评估产品。作为代码资产可给 A−，作为可售卖产品目前仍是 pre-MVP 骨架。
+  </div>
+
+  <h2>一、能力剖面：当前状态 vs 实用门槛</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="legend">
+        <span><i class="lg-cur"></i>当前状态（分析师评分）</span>
+        <span><i class="lg-thr"></i>持续被使用的最低门槛</span>
+      </div>
+      <svg viewBox="0 0 520 460" width="100%" role="img" aria-label="八维能力雷达图">
+        <!-- grid rings -->
+        <polygon points="260.0,212.0 283.3,221.7 293.0,245.0 283.3,268.3 260.0,278.0 236.7,268.3 227.0,245.0 236.7,221.7" fill="none" stroke="#e8eaed"/>
+        <polygon points="260.0,179.0 306.7,198.3 326.0,245.0 306.7,291.7 260.0,311.0 213.3,291.7 194.0,245.0 213.3,198.3" fill="none" stroke="#e8eaed"/>
+        <polygon points="260.0,146.0 330.0,175.0 359.0,245.0 330.0,315.0 260.0,344.0 190.0,315.0 161.0,245.0 190.0,175.0" fill="none" stroke="#e0e3e7"/>
+        <polygon points="260.0,113.0 353.3,151.7 392.0,245.0 353.3,338.3 260.0,377.0 166.7,338.3 128.0,245.0 166.7,151.7" fill="none" stroke="#e8eaed"/>
+        <polygon points="260.0,80.0 376.7,128.3 425.0,245.0 376.7,361.7 260.0,410.0 143.3,361.7 95.0,245.0 143.3,128.3" fill="none" stroke="#d8dce1"/>
+        <!-- axes -->
+        <line x1="260" y1="245" x2="260.0" y2="80.0" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="376.7" y2="128.3" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="425.0" y2="245.0" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="376.7" y2="361.7" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="260.0" y2="410.0" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="143.3" y2="361.7" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="95.0" y2="245.0" stroke="#e4e7ec"/>
+        <line x1="260" y1="245" x2="143.3" y2="128.3" stroke="#e4e7ec"/>
+        <!-- threshold polygon -->
+        <polygon points="260.0,146.0 330.0,175.0 359.0,245.0 330.0,315.0 260.0,327.5 213.3,291.7 161.0,245.0 190.0,175.0"
+          fill="rgba(180,83,9,0.08)" stroke="#b45309" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <!-- current polygon -->
+        <polygon points="260.0,104.8 341.7,163.3 367.2,245.0 277.5,262.5 260.0,261.5 254.2,250.8 194.0,245.0 155.0,140.0"
+          fill="rgba(13,122,114,0.20)" stroke="#0d7a72" stroke-width="2.2"/>
+        <!-- current vertices -->
+        <circle cx="260.0" cy="104.8" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="341.7" cy="163.3" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="367.2" cy="245.0" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="277.5" cy="262.5" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="260.0" cy="261.5" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="254.2" cy="250.8" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="194.0" cy="245.0" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="155.0" cy="140.0" r="3.6" fill="#0d7a72" stroke="#fff" stroke-width="1.2"/>
+        <!-- current score labels -->
+        <g font-size="11" font-weight="700" fill="#0d7a72" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">
+          <text x="260" y="97">85</text>
+          <text x="352" y="153" text-anchor="start">70</text>
+          <text x="378" y="249" text-anchor="start">65</text>
+          <text x="289" y="276">15</text>
+          <text x="260" y="284">10</text>
+          <text x="242" y="266" text-anchor="end">5</text>
+          <text x="183" y="249" text-anchor="end">40</text>
+          <text x="144" y="130" text-anchor="end">90</text>
+        </g>
+        <!-- dimension labels -->
+        <g font-size="12.5" fill="#344054" font-weight="600">
+          <text x="260" y="50" text-anchor="middle">工程与测试纪律</text>
+          <text x="398" y="107" text-anchor="start">规则引擎完成度</text>
+          <text x="455" y="249" text-anchor="start">API 产品化</text>
+          <text x="398" y="383" text-anchor="start">证据自动核验</text>
+          <text x="260" y="440" text-anchor="middle">风险校准</text>
+          <text x="122" y="383" text-anchor="end">外部用户验证</text>
+          <text x="65" y="249" text-anchor="end">产品定义聚焦</text>
+          <text x="122" y="107" text-anchor="end">文档表述诚信</text>
+        </g>
+      </svg>
+      <div class="note">示意性评分（0–100）：评分为基于代码与文档的分析师主观判断，不是测量值；「门槛」是该维度达到「有人愿意持续使用」所需的最低水平。</div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:2px">评分依据（逐项可追溯）</h3>
+      <table>
+        <thead><tr><th>维度</th><th>分</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>工程与测试纪律</td><td class="s ok">85</td><td>67 测试全过、CI、冻结基线、开发/生产双仓隔离与 pre-push 钩子</td></tr>
+          <tr><td>规则引擎完成度</td><td class="s warn">70</td><td>对账/插值/相关性/veto 真实存在；但 peer 基准仅 2 档且全部 <code>simulation:true</code></td></tr>
+          <tr><td>API 产品化</td><td class="s warn">65</td><td>Bearer、限流、幂等、版本契约、Docker 齐全；存储为单实例内存，托管在 Render 免费档</td></tr>
+          <tr><td>证据自动核验</td><td class="s bad">15</td><td>6 个来源域只是输入枚举，核验等级由调用方自报，零连接器</td></tr>
+          <tr><td>风险校准</td><td class="s bad">10</td><td>权重与 18 条节点曲线全为专家拍定；无任何真实结果样本；PD/EL/额度恒 <code>null</code></td></tr>
+          <tr><td>外部用户验证</td><td class="s bad">5</td><td>0 外部用户；Finch 未提交；「External Assessment #1」是自跑固定演练案例</td></tr>
+          <tr><td>产品定义聚焦</td><td class="s warn">40</td><td>on-chain 信用 / risk API / 数字金融平台 / Finch agent 四种表述并存，demo 与 API 口径不一</td></tr>
+          <tr><td>文档表述诚信</td><td class="s ok">90</td><td>严格区分「已验证工程能力」与「模拟」，不虚构客户与精度，属罕见优点</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>二、承诺的价值闭环，现在走到哪一环</h2>
+  <div class="card">
+    <div class="chain">
+      <div class="stage"><div class="bar" style="background:var(--teal)"></div><span class="tag t-ok">已建</span><b>1 · 证据填报与契约</b><p>intake v0.3.1 + Ajv 校验，LLM 仅可选抽取；手工填报</p></div>
+      <div class="stage"><div class="bar" style="background:var(--red)"></div><span class="tag t-bad">缺失</span><b>2 · 证据独立核验</b><p>账单/遥测/银行等 6 类连接器一个都没有；<code>verification</code> 由申报方自己填</p></div>
+      <div class="stage"><div class="bar" style="background:var(--teal)"></div><span class="tag t-ok">已建 · 扎实</span><b>3 · 归一化与对账</b><p>Token 分桶 1% 对账、6 月连续序列校验、忽略申报方自带权重</p></div>
+      <div class="stage"><div class="bar" style="background:var(--amber)"></div><span class="tag t-amber">部分</span><b>4 · TAI / CCI 评分</b><p>规则真实可跑；权重与曲线专家拍定，对标 peer 中位数是模拟 fixture</p></div>
+      <div class="stage"><div class="bar" style="background:var(--red)"></div><span class="tag t-bad">刻意留空</span><b>5 · PD / 额度 / EL</b><p>未校准，恒为 null；但前端 demo 仍展示 PD 2.3/85% 与 $20,000</p></div>
+      <div class="stage"><div class="bar" style="background:var(--teal)"></div><span class="tag t-ok">已建</span><b>6 · 复核结论与补证动作</b><p>decision band、missingInputs、确认事件 veto，输出克制</p></div>
+      <div class="stage"><div class="bar" style="background:var(--red)"></div><span class="tag t-bad">未开始</span><b>7 · 真实用户回路</b><p>roadmap 漏斗停在「首个外部评估」之前；无复购、无补证重跑样本</p></div>
+    </div>
+    <div class="note">环节 2 与环节 5 恰是信用风控产品的价值主体：前者决定「证据可不可信」，后者决定「分数能不能换成决策」。中间的 3、4、6 环做得再好，也无法替两端创造价值。</div>
+  </div>
+
+  <h2>三、问题分级与替代方案</h2>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl fatal">致命</span><b>P1 · 价值闭环缺两环：核验靠自报标签、评分零校准</b></div>
+    <dl>
+      <dt>证据</dt>
+      <dd><code>rules-v021.js</code> 中 6 个 sourceDomain 只是字符串集合，VERIFICATION_SCORES 直接采信调用方申报；PEER_PROFILES 全部 <code>simulation:true</code>，sampleSize 120 是 fixture 元数据；<code>risk-core-v021.js</code> 中 PD_pct / recommendedLimit / expectedLoss 恒为 null；中文进展说明 2.2 自己把「真实数据源接入」「PD 校准」列为高风险待验证，并称违约样本是「根本瓶颈」。</dd>
+      <dt>替代方案</dt>
+      <dd>不要按「评分产品」卖。v1 明确定位为 <b>Evidence Readiness Screener（证据完备性筛查器）</b>：买家不是放款方，而是愿意做人工终审的早期投资人、算力中介或 FA；产品输出「缺什么证据、哪里对不上、优先补什么」。</dd>
+      <dt>第一步</dt>
+      <dd>找 1 家真实 AI 算力/API 服务商，拿真实账单与发票跑一次 intake，逐字段标注「拿不到 / 拿得到但无法核验 / 可独立核验」——这张表就是连接器路线图的优先级依据。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl fatal">致命</span><b>P2 · 一句话定义在四种身份间漂移</b></div>
+    <dl>
+      <dt>证据</dt>
+      <dd><code>index.html</code> 标题是「On-chain AI Credit Risk」；README 是「evidence-aware risk API」；进展说明是「Web3 与数字金融 AI 信用风控智能平台」；Finch 材料又是 Marketplace Agent。买家、场景、付费方均未锁定。</dd>
+      <dt>替代方案</dt>
+      <dd>收敛成一句任务定义，例如：<b>「给需要判断 AI 算力/API 服务商可信度的人，10 分钟产出一份可追溯的证据缺口清单。」</b></dd>
+      <dt>第一步</dt>
+      <dd>把 README 首句、index.html title、进展说明定位、Finch LISTING 改成同一句；凡与这句无关的功能进 not-doing list。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl major">重要</span><b>I1 · Intake 对早期公司过重，最常见输出是「无法计算」</b></div>
+    <dl>
+      <dt>证据</dt>
+      <dd>24 个必填决策字段、6 个月连续月度序列，且 peer 必须同时匹配 modelTier/taskType/gpuModel，否则直接 critical 阻断（<code>profilesFor()</code>）。目标客户（早期 AI 企业）通常凑不齐，结果就是 not-computable / insufficient-evidence——诚实，但没有独立使用价值。</dd>
+      <dt>替代方案</dt>
+      <dd>定义 ≤8 个字段的「最小可评估包」（raw tokens、valid rate、GPU 小时、月度收入/算力支出、回款率），其余改为加分项；peer 缺失时降级为只输出 token 层原始指标（null 机制已具备，把 profile 缺失从 critical 改为降级即可）。</dd>
+      <dt>第一步</dt>
+      <dd>对 healthy/watch/sybil 三个固定案例做字段消融：逐个删字段，删掉任何不改变 decision band 的必填项。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl major">重要</span><b>I2 · Demo 与 API 口径分裂，且存在三条互相分歧的评分轨</b></div>
+    <dl>
+      <dt>证据</dt>
+      <dd>前端冻结基线展示 PD 2.3%/85%、授信 $20,000；API v0.2.1 刻意全部 null。另有 DeepSeek 裁决轨，CCI 与确定性轨不一致（795 vs 834/866，进展说明 1.5.1）。买家看完 demo 会以为产品能给授信结论；LLM 分数并列展示会稀释「确定性、可问责」这一唯一差异化卖点。</dd>
+      <dt>替代方案</dt>
+      <dd>前端 PD/额度永久标注 simulation calibration（或直接隐藏）；AI VERDICT 卡只展示证据抽取质量与解释，不再输出 LLM 打的 CCI/PD/额度。LLM 定位严格回到「抽取与解释，不得碰权威分数」——这条你们自己在 README 里已经写明，需要让 UI 也遵守。</dd>
+      <dt>第一步</dt>
+      <dd>报告页 PD/额度处加不可移除的模拟标记；<code>view-ai.js</code> 移除 LLM 分数区。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl major">重要</span><b>I3 · 分发零进展且在持续消耗维护成本</b></div>
+    <dl>
+      <dt>证据</dt>
+      <dd>Finch 提交包自 v0.1 起标注 Ready 但至今未提交；SUBMISSION.md 自己备注 Render 免费档冷启动与 Marketplace 要求冲突；roadmap 的「External Assessment #1 Passed（TAI 93.8/CCI 929）」对照 AGENTS.md 可知正是固定演练案例值，不是外部客户。</dd>
+      <dt>替代方案</dt>
+      <dd>给 Finch 提交设硬截止日期，或明确撤包；把「第一个外部评估」重新定义为非本人、用真实主体完成的评估。</dd>
+      <dt>第一步</dt>
+      <dd>两周内二选一：提交 Finch，或删除所有「ready/passed」类表述，停止维护这套材料。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl minor">打磨</span><b>N1 · Peer 覆盖面过窄</b></div>
+    <dl>
+      <dt>证据与动作</dt>
+      <dd>仅有 H100-equivalent / mixed 两档 inference peer，其他画像直接 PEER_PROFILE_NOT_FOUND。补「无 peer 时输出原始指标 + 不打 physical/commercial 分」的降级路径，而不是报错阻断。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl minor">打磨</span><b>N2 · 三套引擎版本并存</b></div>
+    <dl>
+      <dt>证据与动作</dt>
+      <dd><code>risk-core.js / -v02.js / -v021.js</code> 与三份 normalize 并存，冻结纪律已在持续消耗精力。确认无外部调用方后删除旧版，别让「以后可能用」的兼容层继续累积。</dd>
+    </dl>
+  </div>
+
+  <h2>四、今天就能用的，与不能声称的</h2>
+  <div class="cols">
+    <div class="card okbox">
+      <h3 style="margin-top:2px" class="ok">现在就有实用价值</h3>
+      <ul class="tight">
+        <li><b>AI 企业尽调/证据打包清单</b>：24 字段模型、分桶对账规则、自报证据 49 分上限，本身就是一份高质量 checklist，分析师今天就能拿去做材料质控。</li>
+        <li><b>可复用的确定性评分骨架</b>：版本化规则、缺数据给 null 而非凑分、veto 与评分分离、契约先行——真数据到位后不需要重构。</li>
+        <li><b>试点敲门砖</b>：67 个测试、Docker、鉴权/限流/幂等、JSON Schema 契约，工程卖相足以换来一次正式试点对话。</li>
+        <li><b>架构参考</b>：确定性引擎拥有权威输出、LLM 只做抽取解释的权责切分，设计正确且克制。</li>
+      </ul>
+    </div>
+    <div class="card nobox">
+      <h3 style="margin-top:2px" class="bad">当前不能对外声称</h3>
+      <ul class="tight">
+        <li>不能声称能预测违约或给出授信：PD/EL/额度恒 null 且无校准。</li>
+        <li>不能声称证据已被核验：核验等级是申报标签，没有任何连接器。</li>
+        <li>不能声称 peer 基准真实：全部是 simulation fixture。</li>
+        <li>不能声称有客户或市场验证：0 外部用户、Finch 未提交、无重复调用。</li>
+        <li>不能把前端 demo 的 PD/额度数字当成引擎输出。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>五、90 天行动排序（按实用性杠杆，而非技术难度）</h2>
+  <div class="card">
+    <div class="step"><div class="n">1</div><p><b>第 1–2 周 · 收口径</b>：统一一句话定位；demo 与 API 口径对齐（I2）；Finch 提交或撤包（I3）。</p></div>
+    <div class="step"><div class="n">2</div><p><b>第 3–6 周 · 见真人</b>：用 1 个真实主体跑通「最小可评估包」，产出第一份真实证据缺口清单；据此做 intake 减法（I1）。</p></div>
+    <div class="step"><div class="n">3</div><p><b>第 7–10 周 · 补一环</b>：只做一个证据连接器——优先最可能拿到的 billing/API 用量或 GPU 遥测，而不是银行流水——把一个 sourceDomain 从「自报」变成「系统直取」。</p></div>
+    <div class="step"><div class="n">4</div><p><b>第 11–12 周 · 攒样本</b>：积累 10 个真实评估（即使没有违约标签），用人工复核结果回校 knot 曲线；但在拿到结果数据前，继续不输出 PD/额度。</p></div>
+  </div>
+
+  <div class="foot">
+    评估依据：仓库源码 <code>agent/src/risk-core-v021.js</code>、<code>rules-v021.js</code>、<code>server.js</code>、<code>assets/js/*</code>；文档 README.md、roadmap.md、portfolio-validation.md、docs/进展说明-20260905.md、docs/finch/SUBMISSION.md、AGENTS.md。评分为分析判断，分数用于横向比较而非精确测量。
+  </div>
+
+</div>
+</body>
+</html>

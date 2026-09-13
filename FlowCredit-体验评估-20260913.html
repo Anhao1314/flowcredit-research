@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FlowCredit 用户体验评估 · 2026-09-13</title>
+<style>
+  :root{
+    --teal:#0d7a72; --teal-soft:#e6f2f1;
+    --amber:#b45309; --amber-soft:#fdf3e7;
+    --red:#b42318; --red-soft:#fdecea;
+    --blue:#1d4ed8; --blue-soft:#eaf1ff;
+    --gray:#475467; --gray2:#667085; --line:#e4e7ec; --bg:#f7f8fa; --card:#fff;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:#1d2939;font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:32px 22px 56px}
+  h1{font-size:24px;margin:0 0 4px}
+  .meta{color:var(--gray2);font-size:13px;margin-bottom:22px}
+  .verdict{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;padding:18px 20px;font-size:16px;line-height:1.75;margin-bottom:26px}
+  .verdict b{color:var(--teal)}
+  h2{font-size:18px;margin:30px 0 12px;padding-top:8px}
+  h3{font-size:15px;margin:16px 0 8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+  .note{font-size:12.5px;color:var(--gray2);margin-top:8px}
+  code{font-family:var(--mono);font-size:12px;background:#f2f4f7;border-radius:4px;padding:1px 5px;color:#344054}
+  /* journey */
+  .journey{display:flex;gap:0;align-items:stretch;overflow-x:auto;padding-bottom:6px}
+  .jstep{flex:1 0 150px;position:relative;padding:10px 12px 12px;border:1px solid var(--line);border-right:none;background:#fcfcfd}
+  .jstep:first-child{border-radius:8px 0 0 8px}
+  .jstep:last-child{border-right:1px solid var(--line);border-radius:0 8px 8px 0}
+  .jstep::after{content:"→";position:absolute;right:-7px;top:10px;z-index:2;color:#98a2b3;font-size:13px}
+  .jstep:last-child::after{content:""}
+  .jstep .jn{font-size:11px;font-weight:800;color:var(--gray2);letter-spacing:.08em}
+  .jstep b{display:block;font-size:13.5px;margin:2px 0 5px}
+  .jstep p{margin:0;font-size:12px;color:var(--gray);line-height:1.5}
+  .jstep .st{display:inline-block;font-size:10.5px;font-weight:700;border-radius:20px;padding:1px 8px;margin-bottom:5px}
+  .s-ok{background:var(--teal-soft);color:var(--teal)}
+  .s-mid{background:var(--amber-soft);color:var(--amber)}
+  .s-bad{background:var(--red-soft);color:var(--red)}
+  .jtop{height:4px;margin:-10px -12px 8px;border-radius:8px 8px 0 0}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--gray);margin:2px 0 8px}
+  .legend i{display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:6px;vertical-align:2px}
+  /* issues */
+  .issue{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:14px 18px;margin-bottom:12px}
+  .issue .hd{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+  .lvl{font-size:11px;font-weight:800;border-radius:5px;padding:2px 8px;letter-spacing:.05em;white-space:nowrap}
+  .lvl.p0{background:var(--red);color:#fff}
+  .lvl.p1{background:var(--amber);color:#fff}
+  .lvl.p2{background:#e4e7ec;color:#344054}
+  .issue .hd b{font-size:15px}
+  .issue dl{margin:8px 0 0}
+  .issue dt{font-size:12px;font-weight:700;color:#344054;margin-top:7px}
+  .issue dd{margin:2px 0 0;font-size:13.5px;color:#344054}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:820px){.cols{grid-template-columns:1fr}}
+  ul.tight{margin:6px 0;padding-left:20px}
+  ul.tight li{margin:5px 0;font-size:13.5px}
+  .keep{border-top:3px solid var(--teal)}
+  .step{display:flex;gap:12px;margin:8px 0}
+  .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .step p{margin:0;font-size:13.5px}
+  .foot{font-size:12.5px;color:var(--gray2);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>FlowCredit 用户体验评估</h1>
+  <div class="meta">评估日期 2026-09-13 · 视角：两类用户的完整体验链路——① 打开演示站的访客（landing → workspace → ingest → audit → report → account）② 接入 API 的开发者 · 依据：逐行阅读 <code>assets/js/*</code> 全部视图与 <code>docs/public-api-v1.md</code></div>
+
+  <div class="verdict">
+    <b>一句话总判断：</b>视觉与微观工艺（空状态、错误文案、焦点管理）在同类 demo 里属于上游，但用户要独自穿过四堵「迷宫墙」——<b>双路径分叉、离线跑不通、三套结果并存、版本术语泄漏</b>；而 B2B 风控产品最关键的最后一公里——<b>把报告带走、发给决策人</b>——是断的。问题不在审美，而在<b>内部工程演进史被直接转嫁给了用户</b>。
+  </div>
+
+  <h2>一、用户旅程地图：演示访客</h2>
+  <div class="card">
+    <div class="journey">
+      <div class="jstep"><div class="jtop" style="background:var(--teal)"></div><span class="st s-ok">基本顺畅</span><div class="jn">STAGE 1</div><b>落地 Landing</b><p>视觉完整、叙事清晰；但「Connect four sources」「on-chain」暗示真实连接与链上能力，实际全部模拟，首屏预期被抬高</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--amber)"></div><span class="st s-mid">分叉</span><div class="jn">STAGE 2</div><b>选路径 Workspace</b><p>「Start a new assessment」（v0.3 新流程）与「Try an example · Legacy demo path」并列，不解释区别，用户不知道该点哪个</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--red)"></div><span class="st s-bad">高摩擦</span><div class="jn">STAGE 3</div><b>填数据 Ingest</b><p>24 个字段、HHI/R-C 序列/valid rate 等引擎术语，无字段释义与示例填充；报错显示字段 key 而非人话</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--red)"></div><span class="st s-bad">撞墙</span><div class="jn">STAGE 4</div><b>点运行</b><p>静态站（file:// 或 GitHub Pages）上唯一主按钮回报「Local Agent required · 127.0.0.1:8787」，新流程到此终止，且没有引导转去可跑的示例</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--amber)"></div><span class="st s-mid">认知负担</span><div class="jn">STAGE 5</div><b>看评估 Audit</b><p>L0–L5 动画精致，但规则结果、Saved AI、Legacy v0.1 三套结论并列（CCI 795 / 929 / 834），要用户自己做版本考古</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--amber)"></div><span class="st s-mid">断在最后</span><div class="jn">STAGE 6</div><b>拿报告 Report</b><p>全屏报告内容扎实，但不能导出/打印/分享；草稿只存当前标签页 sessionStorage，关 tab 即丢；「Verified ✓」措辞比实际证明力更强</p></div>
+    </div>
+  </div>
+
+  <h2>二、首次访客的情绪曲线：预期在哪里掉下去</h2>
+  <div class="card">
+    <div class="legend">
+      <span><i style="background:#98a2b3;border-top:2px dashed #98a2b3"></i>用户预期（被首屏抬高）</span>
+      <span><i style="background:var(--teal)"></i>实际体验（示意，基于流程走查）</span>
+    </div>
+    <svg viewBox="0 0 560 210" width="100%" role="img" aria-label="用户预期与实际体验情绪曲线">
+      <line x1="46" y1="96" x2="544" y2="96" stroke="#d0d5dd" stroke-dasharray="3 4"/>
+      <line x1="46" y1="168" x2="544" y2="168" stroke="#eef0f3"/>
+      <line x1="46" y1="132" x2="544" y2="132" stroke="#eef0f3"/>
+      <line x1="46" y1="60" x2="544" y2="60" stroke="#eef0f3"/>
+      <line x1="46" y1="24" x2="544" y2="24" stroke="#eef0f3"/>
+      <g font-size="10" fill="#98a2b3" font-family="ui-monospace,Menlo,monospace">
+        <text x="10" y="30">+2</text><text x="10" y="64">+1</text><text x="14" y="100">0</text><text x="8" y="136">-1</text><text x="8" y="172">-2</text>
+      </g>
+      <polygon points="46.0,60.0 145.6,52.8 245.2,60.0 344.8,52.8 444.4,60.0 544.0,49.2 544,168 46,168" fill="rgba(13,122,114,0.05)"/>
+      <polyline points="46.0,42.0 145.6,52.8 245.2,60.0 344.8,52.8 444.4,60.0 544.0,49.2"
+        fill="none" stroke="#98a2b3" stroke-width="2" stroke-dasharray="5 4"/>
+      <polyline points="46.0,60.0 145.6,103.2 245.2,132.0 344.8,150.0 444.4,96.0 544.0,88.8"
+        fill="rgba(13,122,114,0.08)" stroke="#0d7a72" stroke-width="2.4" stroke-linejoin="round"/>
+      <g fill="#0d7a72">
+        <circle cx="46.0" cy="60.0" r="3.6"/><circle cx="145.6" cy="103.2" r="3.6"/><circle cx="245.2" cy="132.0" r="3.6"/>
+        <circle cx="344.8" cy="150.0" r="4.4" stroke="#fff" stroke-width="1.4"/><circle cx="444.4" cy="96.0" r="3.6"/><circle cx="544.0" cy="88.8" r="3.6"/>
+      </g>
+      <g font-size="12" fill="#344054" font-weight="600" text-anchor="middle">
+        <text x="46" y="190">落地</text><text x="145.6" y="190">选路径</text><text x="245.2" y="190">填数据</text>
+        <text x="344.8" y="190">点运行</text><text x="444.4" y="190">看评估</text><text x="544" y="190">拿报告</text>
+      </g>
+      <g font-size="10.5" fill="#b42318" text-anchor="middle">
+        <text x="344.8" y="164">谷底：离线墙</text>
+      </g>
+    </svg>
+    <div class="note">示意曲线：数值为走查判断而非测量；谷底精确对应「填完 24 个字段点 Run，却被告知要自己起本机服务」的时刻——沉没成本最高处被挡住，是体验最差的设计。</div>
+  </div>
+
+  <h2>三、API 集成者旅程（DX）</h2>
+  <div class="card">
+    <div class="journey">
+      <div class="jstep"><div class="jtop" style="background:var(--teal)"></div><span class="st s-ok">顺畅</span><div class="jn">DX 1</div><b>发现</b><p><code>/health</code> <code>/ready</code> <code>/api/v1</code> 匿名可探，版本三层标识清晰</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--amber)"></div><span class="st s-mid">有门槛</span><div class="jn">DX 2</div><b>首发请求</b><p>文档完整但 curl 用占位域名 example、无 OpenAPI/Postman、限流配额数值未写，要自己试错</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--teal)"></div><span class="st s-ok">较好</span><div class="jn">DX 3</div><b>报错恢复</b><p>统一版本化信封、字段级错误、429/504 区分；缺一张「错误码 → 怎么修」对照表</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--amber)"></div><span class="st s-mid">需解读</span><div class="jn">DX 4</div><b>理解结果</b><p>TAI/CCI 常为 null、6 种 decisionStatus 词汇要学；requiredActions 补证清单是亮点</p></div>
+      <div class="jstep"><div class="jtop" style="background:var(--red)"></div><span class="st s-bad">隐性坑</span><div class="jn">DX 5</div><b>可靠性预期</b><p>幂等存储是单实例内存，Render 免费档冷启动后清空，「重放同一响应」的承诺会静默失效</p></div>
+    </div>
+  </div>
+
+  <h2>四、体验问题分级（每条含证据与第一步）</h2>
+
+  <h3>P0 · 挡住用户拿到第一次价值</h3>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p0">P0</span><b>E1 · 双路径分叉 + 离线墙：新用户主流程在演示环境跑不通</b></div>
+    <dl>
+      <dt>用户遭遇</dt>
+      <dd>Workspace 同时给「新评估」和「Legacy 示例」两条路；走新评估填完表单点 Run，得到一句「Local Agent required · 127.0.0.1:8787」。而 AGENTS.md 承诺「双击 index.html 以 file:// 离线可跑」——离线能跑的只有 legacy 路径，当前主推的 v0.3 路径必须自建 Node 侧车 + 16 位 API key。</dd>
+      <dt>证据</dt>
+      <dd><code>view-ai-live.js</code>：file:// 协议直接置 <code>FC_LIVE=false</code>；<code>view-ingest.js</code>：非 LIVE 时 Run 旁常驻「Local Agent required」且 assessDraft 不存在即报错；<code>intake-v03.js</code> 浏览器端只做校验与 sessionStorage 草稿，不含评分引擎。</dd>
+      <dt>替代方案</dt>
+      <dd>给访客一条「零安装即得结果」的路：把 v0.2.1 确定性引擎编译为浏览器可跑的纯 JS（本就无外部依赖），静态站直接出分，需要 DeepSeek 抽取时再提示连侧车；开发者路径另入口。</dd>
+      <dt>第一步</dt>
+      <dd>在入口页检测 <code>!FC_LIVE</code>：主按钮变成「Try a live example（runs in your browser）」，把「Connect local agent」降为开发者次级链接；先消除死按钮，再评估引擎浏览器化。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p0">P0</span><b>E2 · 三套结果、三种页面布局：逼用户做版本考古</b></div>
+    <dl>
+      <dt>用户遭遇</dt>
+      <dd>同一主体在页面上同时出现规则 v0.1（CCI 795、PD 2.3%、额度 $20,000）、Live v0.2.1（CCI 929、PD 为 null）、Saved AI（834/866）三套数；audit 页在 live / 离线 / 自定义草稿三种环境下是三套布局，report 同理。用户无法回答最朴素的问题：「所以结论到底是什么？」</dd>
+      <dt>证据</dt>
+      <dd><code>view-audit.js</code> 的 renderCustom / live / 离线三分支与「Two assessments, separate conclusions」提示；<code>view-report.js</code> 的 open() 与 openLiveReport() 是两份几乎独立的报告；<code>data.js</code> 冻结基线与 <code>risk-core-v021.js</code> 口径不同。</dd>
+      <dt>替代方案</dt>
+      <dd>只保留一套面向用户的结论与布局：v0.2.1 为唯一主结果；v0.1 收进默认折叠的「历史方法」附录（live 下已部分这么做，离线也要一致）；AI 只以「解释/问答」形态出现，不再并列第三个分数。</dd>
+      <dt>第一步</dt>
+      <dd>删掉用户可见处的版本号碎片（报告里的 <code>rule v0.1</code> chip、账户页 Rule version v0.1），一个页面只出现一个 CCI。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p0">P0</span><b>E3 · 报告带不走：B2B 产品的最后一公里是断的</b></div>
+    <dl>
+      <dt>用户遭遇</dt>
+      <dd>「Open Full Report」是一个关掉就消失的全屏模态：没有打印、PDF、导出、分享链接；草稿只存 sessionStorage，关标签页/发链接给同事都看不到。风控报告的核心任务是「拿给另一个决策人看」，现在出不了浏览器标签页。</dd>
+      <dt>证据</dt>
+      <dd><code>view-report.js</code> 报告渲染为 <code>#layers</code> 内 overlay，无任何导出入口；<code>intake-v03.js</code> 持久化用 <code>sessionStorage</code>（KEY = flowcredit.intake.v03），workspace 文案也写明「without being written to … a database」。</dd>
+      <dt>替代方案</dt>
+      <dd>加「Print / Save PDF」（打印样式表即可，零后端依赖）+「Export report JSON」+ 可导入恢复；草稿从 sessionStorage 升 localStorage 或导出文件，让「填一半明天继续」成立。</dd>
+      <dt>第一步</dt>
+      <dd>先给报告模态加 <code>@media print</code> 与打印按钮（工作量最小、价值最直接），再补 JSON 导出。</dd>
+    </dl>
+  </div>
+
+  <h3>P1 · 明显损害核心体验</h3>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p1">P1</span><b>E4 · 表单按引擎字段设计，而不是按用户手里有什么数据设计</b></div>
+    <dl>
+      <dt>证据与遭遇</dt>
+      <dd>「Customer HHI」「Claimed valid rate」「R: Declared / C: Credible series」没有一句「这是什么、为什么要、去哪拿」；缺字段时报错直接显示 <code>inputTokensM</code> 这类字段 key（<code>readinessHtml</code> 渲染 item.field）；手动表单没有「用示例填一遍」按钮（示例只走 legacy 路径，不会预填新表单）。</dd>
+      <dt>替代方案</dt>
+      <dd>每个字段加一行人话说明与示例值；错误信息映射回字段中文/英文标签；表单顶部加「Fill with example」供边改边学；R/C、HHI、evidence JSON 这类高级项整体下沉折叠（部分已做，继续收口）。</dd>
+      <dt>第一步</dt>
+      <dd>先做「Fill with example」按钮 + 错误字段 key→label 映射，两处改动小、立刻降低挫败。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p1">P1</span><b>E5 · 动作层级错位，且「Verified ✓」过度授予信任</b></div>
+    <dl>
+      <dt>证据与遭遇</dt>
+      <dd>「Create local proof」与「Run assessment」同排等权重，且顶部工作流把 01 步完成态绑定到 proof（<code>app.js</code>：ingest 完成条件是 anchored），让用户以为打指纹是必经步骤——但它不影响任何分数。验证弹窗写「4-leaf Merkle proof verified locally ✓」，对非专家读起来像真实加密核验，小字才说只是本地一致性。</dd>
+      <dt>替代方案</dt>
+      <dd>proof 降为结果区一行轻量「本地指纹（可选，不影响评分）」；工作流完成只看评估是否跑通；弹窗措辞改「Internal consistency check passed（本地一致性校验）」，去掉对勾式信任符号。</dd>
+      <dt>第一步</dt>
+      <dd>把工作流进度的完成条件从 anchored 改为「draft confirmed / run complete」。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p1">P1</span><b>E6 · 旧定位残留持续制造认知噪音</b></div>
+    <dl>
+      <dt>证据与遭遇</dt>
+      <dd>Landing 写「Connect compute, cash flow and on-chain activity」（无连接能力）；Demo Account 页有假钱包连接、Sepolia test USDC、500ms 模拟连接（<code>app.js toggleWallet</code>），账户页本身没有任何真实任务；「Report &amp; Monitor」的 Monitor 是约 2 秒预设动画，不是持续监控，也没有「新一期数据进来后变化」的回路。</dd>
+      <dt>替代方案</dt>
+      <dd>动词对齐能力：Connect → Organize supplied evidence；删除假钱包与空账户页（或并入「我的评估」）；Monitor 改名 Scenario，直到真有周期性重评再叫监控。</dd>
+      <dt>第一步</dt>
+      <dd>先删 Demo Wallet 控件与导航入口——它不支撑任何用户任务，只传递「这是个链上项目」的过时信号。</dd>
+    </dl>
+  </div>
+
+  <h3>P2 · 打磨项</h3>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p2">P2</span><b>E7 · 术语体系三套并行</b></div>
+    <dl>
+      <dt>证据与动作</dt>
+      <dd>P1/P2/P3、01/02/03、L0–L5 三套编号并存；L3「Anchor Check」（同业对标）与 L5「Anchor」（Merkle 指纹）同名异义。统一为一套 01/02/03 主流程编号，L 层改名为 Normalize/Filter/Peer check/Score/Proof。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p2">P2</span><b>E8 · 同意状态与重渲染的小毛刺</b></div>
+    <dl>
+      <dt>证据与动作</dt>
+      <dd>抽取同意与解释同意共用 <code>draft.modelConsent</code>，在一个屏勾选、另一屏也被勾上——拆成两个独立同意位；表单每次 blur 全量重渲染（现有焦点保留逻辑可兜底，但滚动与折叠态应继续验证）。</dd>
+    </dl>
+  </div>
+
+  <div class="issue">
+    <div class="hd"><span class="lvl p2">P2</span><b>E9 · DX 补齐清单</b></div>
+    <dl>
+      <dt>证据与动作</dt>
+      <dd>补 OpenAPI/Postman collection；curl 示例换成真实 host；公开限流配额与 Retry-After 语义；在幂等章节显式标注「免费档冷启动会清空内存幂等记录」；补一张错误码→处置表。</dd>
+    </dl>
+  </div>
+
+  <h2>五、已经做对、要保留的工艺</h2>
+  <div class="card keep">
+    <ul class="tight">
+      <li><b>失败时保住用户劳动</b>：504/429/服务不可用分别给不同文案，且明确「Your draft was preserved」（view-ingest.js）。</li>
+      <li><b>模型调用先同意</b>：抽取与解释都有显式 consent 勾选，并写明「model cannot score」。</li>
+      <li><b>报告模态的无障碍工艺</b>：section 导航、Esc 关闭、焦点陷阱与归还（focusDialog）、aria-modal/dialog。</li>
+      <li><b>空状态不空</b>：workspace 空列表、report 未评估都有说明与下一步 CTA（ui.pending）。</li>
+      <li><b>全局健壮性</b>：skip link、aria-current、aria-live、prefers-reduced-motion、动画中切页清 timer、视图渲染 try/catch fallback。</li>
+      <li><b>克制的免责口径</b>：关键决策点基本都有 demo/simulation 标注（问题主要在视觉层级，而非缺失）。</li>
+    </ul>
+  </div>
+
+  <h2>六、建议的整改顺序</h2>
+  <div class="card">
+    <div class="step"><div class="n">1</div><p><b>第 1 周 · 拆掉迷宫墙</b>：非 LIVE 访客默认走可跑通的示例路径、隐藏死按钮（E1）；清理用户可见版本号、一页只留一个 CCI（E2）。</p></div>
+    <div class="step"><div class="n">2</div><p><b>第 1–2 周 · 打通最后一公里</b>：报告打印/PDF + JSON 导出，草稿可跨标签页（E3）；工作流完成与 proof 解绑、验证弹窗改措辞（E5）。</p></div>
+    <div class="step"><div class="n">3</div><p><b>第 2–3 周 · 降低填写摩擦</b>：字段人话说明、Fill with example、错误 key→标签（E4）；删假钱包/空账户页、Landing 动词对齐能力、Monitor 改名（E6）。</p></div>
+    <div class="step"><div class="n">4</div><p><b>第 4 周 · DX 与术语收口</b>：OpenAPI、错误码表、配额文档、冷启动幂等说明（E9）；统一编号与 Anchor 命名（E7）。</p></div>
+  </div>
+
+  <div class="foot">
+    评估依据：<code>assets/js/</code> 下 app.js、view-landing/workspace/ingest/audit/report/account/ai-live.js、intake-v03.js、data.js，以及 <code>docs/public-api-v1.md</code>。情绪曲线为走查示意，非用户实测数据；建议用 3–5 名真实受试者按脚本走一遍以量化验证。
+  </div>
+
+</div>
+</body>
+</html>

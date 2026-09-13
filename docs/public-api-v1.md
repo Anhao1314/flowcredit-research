@@ -164,3 +164,23 @@ The validator compiles the shared Draft 2020-12 schemas, calls the real HTTP rou
 - No representative default-outcome calibration or automatic lending decision.
 - No hosted domain, TLS, managed identity, distributed rate limiting, shared idempotency store or persistent assessment database in this repository.
 - Real use requires verified inputs, production Peer registries, privacy/legal review, monitoring and independent model validation.
+
+## Integration reference
+
+[OpenAPI 3.1 reference](../agent/contracts/openapi.json) describes the assessment endpoint and references the existing input/output schemas directly. Keep all three JSON files together when loading the reference. No endpoint or schema version changed for this documentation update.
+
+| HTTP | Error code | Client action |
+| --- | --- | --- |
+| 400 | `INVALID_INPUT`, `INVALID_JSON`, `INVALID_IDEMPOTENCY_KEY` | Correct the request or highlighted fields; do not retry unchanged input. |
+| 401 | `UNAUTHORIZED` | Supply the configured Bearer token; never embed it in static JavaScript. |
+| 409 | `IDEMPOTENCY_CONFLICT` | Reuse the original payload or use a new key for a new assessment. |
+| 413 | `PAYLOAD_TOO_LARGE` | Reduce the JSON body below 65,536 bytes. |
+| 415 | `UNSUPPORTED_MEDIA_TYPE` | Send `Content-Type: application/json`. |
+| 429 | `RATE_LIMIT_EXCEEDED`, `SERVICE_BUSY` | Respect `Retry-After` when present; use bounded backoff. |
+| 500 | `INTERNAL_ERROR`, `RESPONSE_TOO_LARGE` | Preserve the request ID for investigation; the response is never truncated. |
+| 502 | `UPSTREAM_UNAVAILABLE` | Retry later; optional model availability is separate from deterministic scoring. |
+| 504 | `INVOCATION_TIMEOUT`, `UPSTREAM_TIMEOUT` | Use bounded retries with the same idempotency key and payload. |
+
+The default client quota is **30 protected POST requests per 60-second window**, shared across protected endpoints for the client address. Operators may configure `RATE_LIMIT_MAX_REQUESTS` and `RATE_LIMIT_WINDOW_MS`; this is not a distributed quota or a commercial plan. `TRUST_PROXY` determines whether the forwarded address is trusted. Inspect the response's rate-limit headers rather than assuming a hosted quota.
+
+A sleeping or restarting host may take time before `/ready` responds; this repository makes no cold-start latency guarantee. Use a bounded readiness check before invocation. The browser can run structured assessments locally while the optional agent is unavailable. A 401 must not prompt users to paste API keys into the page.

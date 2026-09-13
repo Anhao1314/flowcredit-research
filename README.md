@@ -16,7 +16,7 @@ An evidence-aware risk API for AI-native businesses and agents: normalize operat
 
 | Verified capability | Scope / evidence |
 | --- | --- |
-| **67/67 tests passed** | Local Node.js 24.19.0 run on 2026-09-12; [validation record](docs/portfolio-validation.md) |
+| **100/100 tests passed** | Local regression run on 2026-09-13; [current progress and validation](docs/进展说明-20260913.md) |
 | **5 TAI components; 5 CCI dimensions** | Versioned deterministic weights, [rule registry](agent/src/rules-v021.js) |
 | **6 evidence source domains; 3 confirmed-event veto codes** | Input/provenance model, not six connected external providers; [rules](agent/src/rules-v021.js) |
 | Public API + Finch contract validators passed | Synthetic fixtures; no Finch approval or publication implied |
@@ -104,15 +104,18 @@ Read canonical business fields under `data.*`. Bearer authentication, bounded pa
 ## Quick Start
 
 ```bash
-git clone https://github.com/Anhao1314/flowcredit.git
-cd flowcredit/agent
-cp .env.example .env
+git clone https://github.com/Anhao1314/flowcredit-v2.git
+cd flowcredit-v2/agent
+export FC_RUNTIME_ROOT="/Users/yimingyang/fc-agent/runtime"
+mkdir -p "$FC_RUNTIME_ROOT"
+cp .env.example "$FC_RUNTIME_ROOT/.env"
+chmod 600 "$FC_RUNTIME_ROOT/.env"
 ```
 
-Set a unique `FLOWCREDIT_API_KEY` of at least 16 characters in the untracked `.env`, then:
+Set a unique `FLOWCREDIT_API_KEY` of at least 16 characters in the external runtime configuration described in [agent setup](agent/README.md), then:
 
 ```bash
-docker compose up --build -d
+docker compose --env-file "$FC_RUNTIME_ROOT/.env" up --build -d
 curl --fail http://127.0.0.1:8787/ready
 ```
 
@@ -122,7 +125,7 @@ For a local authenticated assessment, replace the key placeholder:
 curl --fail-with-body -X POST http://127.0.0.1:8787/api/v1/assess   -H 'Authorization: Bearer <YOUR_LOCAL_API_KEY>'   -H 'Content-Type: application/json'   -H 'Idempotency-Key: example-assessment-001'   --data-binary @contracts/finch-test-input.json
 ```
 
-Open `http://127.0.0.1:8787/` for the interface. Public-style configuration protects browser mutating calls too; never embed the API secret in static JavaScript. DeepSeek is optional. Offline simulated browsing remains available by opening root `index.html`.
+Open `http://127.0.0.1:8787/` for the interface. Public-style configuration protects browser mutating calls too; never embed the API secret in static JavaScript. DeepSeek is optional. Open root `index.html` directly for browser-local structured assessment: explore the worked example, edit nine basic fields, add evidence, then print or export a restorable JSON snapshot. Offline and online use one deterministic result layout; optional AI extraction and explanation have separate consent.
 
 ## Docker
 
