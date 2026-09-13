@@ -68,3 +68,5 @@ See [pre-implementation audit](REPOSITORY_AUDIT.md), [corpus notes](fixtures/cor
 Independent [Research Retrieval Layer v0.3](retrieval/README.md) searches verified raw documents and validates Candidate citations. It never writes accepted Evidence or Claim revisions.
 
 [Evidence Admission Layer v0.4](admission/README.md) adds explicit immutable human reviews, atomic Evidence admission and duplicate recognition. It never changes Claims.
+
+Research Evidence Analyst v0.5: [CLI and boundary](analyst/README.md), [delivery](../docs/research-evidence-analyst-v0.5.md).

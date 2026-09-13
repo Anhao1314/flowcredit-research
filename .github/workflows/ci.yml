@@ -47,6 +47,8 @@ jobs:
         run: node --test ../research/retrieval-test/*.test.js
       - name: Evidence Admission Layer tests
         run: node --test ../research/admission-test/*.test.js
+      - name: Research Evidence Analyst tests
+        run: node --test ../research/analyst-test/*.test.js
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract

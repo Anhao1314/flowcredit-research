@@ -1,0 +1,901 @@
+{
+  "label": "Gold-replay deterministic mock pipeline sanity, NOT independent LLM extraction quality or real model benchmark",
+  "realModelEvaluation": {
+    "status": "unavailable",
+    "reason": "Real LLM extraction benchmark unavailable",
+    "mode": "direct_chunk",
+    "goldEvidenceCount": 32,
+    "indexedGoldCount": 19
+  },
+  "directChunk": {
+    "status": "mock_evaluation_not_real_model",
+    "provider": {
+      "kind": "test",
+      "provider": "deterministic-test",
+      "model": "gold-replay-oracle",
+      "modelVersion": "v1",
+      "temperature": 0
+    },
+    "model": "gold-replay-oracle",
+    "promptVersion": "evidence-analyst/v1",
+    "validationVersion": "evidence-analyst-validation/v1",
+    "validatorHash": "sha256:ee87726459059c62ac3b62585d45f72eea34c1e64a9eaa2ee4efb6aae09bd789",
+    "mode": "direct_chunk",
+    "asOf": "2026-09-13",
+    "timeMode": "replay",
+    "goldEvidenceCount": 32,
+    "indexedGoldCount": 19,
+    "literalGoldCount": 16,
+    "uniqueProposals": 16,
+    "proposalPrecision": 1,
+    "proposalRecall": 0.5,
+    "indexedGoldRecall": 0.8421052631578947,
+    "citationValidity": 1,
+    "numericAccuracy": 1,
+    "unitAccuracy": 1,
+    "periodAccuracy": 1,
+    "unsupportedProposalRate": 1,
+    "hallucinationRate": 0,
+    "duplicateProposalRate": 0,
+    "repeatedOutputRate": 0,
+    "duplicateProposalRateNote": "Same-ID repeats reuse immutable stored Proposals; repeatedOutputRate reports repeated emissions across runs.",
+    "validatedGoldRecall": 0,
+    "falsePositiveRate": null,
+    "falsePositiveRateNote": "CoreWeave positive gold only; separate negative/adversarial fixture suite measures abstention.",
+    "futureLeakage": 0,
+    "futureLeakageNote": "Verified by inspecting actual provider input snapshots below, not by gold membership.",
+    "inputRuns": [
+      {
+        "target": "CHUNK-34a75f1f934c7f3deda4ad44",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-34a75f1f934c7f3deda4ad44"
+        ],
+        "proposalIds": [
+          "PROP-04dd527c5657114217b4c7b7",
+          "PROP-798839a7e4c0395218a0db7e"
+        ]
+      },
+      {
+        "target": "CHUNK-2223cab8302d364a8440382e",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-2223cab8302d364a8440382e"
+        ],
+        "proposalIds": [
+          "PROP-79738b7b7517b1bc000b92e3",
+          "PROP-1d801a421cc2cd460a69990d",
+          "PROP-997cf935d6edb2e99746e306"
+        ]
+      },
+      {
+        "target": "CHUNK-44fc3703586a5975a2a90424",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-44fc3703586a5975a2a90424"
+        ],
+        "proposalIds": []
+      },
+      {
+        "target": "CHUNK-8796f15b4e42495987a385f3",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-8796f15b4e42495987a385f3"
+        ],
+        "proposalIds": [
+          "PROP-ceb3c3b5af6d81dc068331fa",
+          "PROP-f49ca459f9fccf3f25fb0271",
+          "PROP-dc6c24a195d30a1100094db0"
+        ]
+      },
+      {
+        "target": "CHUNK-245c272183e7b3d5227f70ff",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-245c272183e7b3d5227f70ff"
+        ],
+        "proposalIds": [
+          "PROP-28a3cd56ef3d9cce01207fbf",
+          "PROP-ade9cf0fc717031d116c640a",
+          "PROP-8bf212590988f1b678ff1e92",
+          "PROP-355ad843f867e898243aa2ee",
+          "PROP-7f46ee15a28c908cffee4458"
+        ]
+      },
+      {
+        "target": "CHUNK-b209888dde9875314e5d8071",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-b209888dde9875314e5d8071"
+        ],
+        "proposalIds": [
+          "PROP-be853d51500fced7b599357b"
+        ]
+      },
+      {
+        "target": "CHUNK-d97b32fd73827505b0e13548",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-d97b32fd73827505b0e13548"
+        ],
+        "proposalIds": [
+          "PROP-07d7ba26d2375dd909369413"
+        ]
+      },
+      {
+        "target": "CHUNK-da5344938869f07f5d0dcabb",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-da5344938869f07f5d0dcabb"
+        ],
+        "proposalIds": []
+      },
+      {
+        "target": "CHUNK-459628441b923d19deef40e6",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-459628441b923d19deef40e6"
+        ],
+        "proposalIds": [
+          "PROP-086584173f8a5ce2e2ef7d63"
+        ]
+      },
+      {
+        "target": "CHUNK-7e6f61fd1b80c53776427611",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-7e6f61fd1b80c53776427611"
+        ],
+        "proposalIds": []
+      }
+    ],
+    "validationRows": [
+      {
+        "proposalId": "PROP-04dd527c5657114217b4c7b7",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-01e98f7104a3898b78561892"
+        ]
+      },
+      {
+        "proposalId": "PROP-798839a7e4c0395218a0db7e",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-581b270af3a7cb05cb3c8d76"
+        ]
+      },
+      {
+        "proposalId": "PROP-79738b7b7517b1bc000b92e3",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-0d73c529dbe08a3224eeae92"
+        ]
+      },
+      {
+        "proposalId": "PROP-1d801a421cc2cd460a69990d",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "numeric_unit_binding_invalid",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-105cce7840c6d7d991199463"
+        ]
+      },
+      {
+        "proposalId": "PROP-997cf935d6edb2e99746e306",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-e257578fb0269a439eb67676"
+        ]
+      },
+      {
+        "proposalId": "PROP-ceb3c3b5af6d81dc068331fa",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-1bd669d2eaff75004e3144c8"
+        ]
+      },
+      {
+        "proposalId": "PROP-f49ca459f9fccf3f25fb0271",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-55de53767427d2546ea5a131"
+        ]
+      },
+      {
+        "proposalId": "PROP-dc6c24a195d30a1100094db0",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-b5554a7e7040c07b95cf24cc"
+        ]
+      },
+      {
+        "proposalId": "PROP-28a3cd56ef3d9cce01207fbf",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-33fce161495522ddc4db205c"
+        ]
+      },
+      {
+        "proposalId": "PROP-ade9cf0fc717031d116c640a",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-9d1a6c004a3030203ca7357b"
+        ]
+      },
+      {
+        "proposalId": "PROP-8bf212590988f1b678ff1e92",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-b7667065291b5ef49830ce7e"
+        ]
+      },
+      {
+        "proposalId": "PROP-355ad843f867e898243aa2ee",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-d6bd9f44f58d10087bfb051f"
+        ]
+      },
+      {
+        "proposalId": "PROP-7f46ee15a28c908cffee4458",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-d80a92ea485d42e2b259840f"
+        ]
+      },
+      {
+        "proposalId": "PROP-be853d51500fced7b599357b",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "unknown_or_unsupported_unit",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-430ce62f5da87b41027d09b0"
+        ]
+      },
+      {
+        "proposalId": "PROP-07d7ba26d2375dd909369413",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-57d9fb7c9e0d01968f63e86d"
+        ]
+      },
+      {
+        "proposalId": "PROP-086584173f8a5ce2e2ef7d63",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-9972e75db9572973a07822ea"
+        ]
+      }
+    ]
+  },
+  "retrievalAssisted": {
+    "status": "mock_evaluation_not_real_model",
+    "provider": {
+      "kind": "test",
+      "provider": "deterministic-test",
+      "model": "gold-replay-oracle",
+      "modelVersion": "v1",
+      "temperature": 0
+    },
+    "model": "gold-replay-oracle",
+    "promptVersion": "evidence-analyst/v1",
+    "validationVersion": "evidence-analyst-validation/v1",
+    "validatorHash": "sha256:ee87726459059c62ac3b62585d45f72eea34c1e64a9eaa2ee4efb6aae09bd789",
+    "mode": "retrieval_assisted",
+    "asOf": "2026-09-13",
+    "timeMode": "replay",
+    "goldEvidenceCount": 32,
+    "indexedGoldCount": 19,
+    "literalGoldCount": 16,
+    "uniqueProposals": 16,
+    "proposalPrecision": 1,
+    "proposalRecall": 0.5,
+    "indexedGoldRecall": 0.8421052631578947,
+    "citationValidity": 1,
+    "numericAccuracy": 1,
+    "unitAccuracy": 1,
+    "periodAccuracy": 1,
+    "unsupportedProposalRate": 1,
+    "hallucinationRate": 0,
+    "duplicateProposalRate": 0,
+    "repeatedOutputRate": 0.5675675675675675,
+    "duplicateProposalRateNote": "Same-ID repeats reuse immutable stored Proposals; repeatedOutputRate reports repeated emissions across runs.",
+    "validatedGoldRecall": 0,
+    "falsePositiveRate": null,
+    "falsePositiveRateNote": "CoreWeave positive gold only; separate negative/adversarial fixture suite measures abstention.",
+    "futureLeakage": 0,
+    "futureLeakageNote": "Verified by inspecting actual provider input snapshots below, not by gold membership.",
+    "inputRuns": [
+      {
+        "target": "us geographic revenue 2025",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-34a75f1f934c7f3deda4ad44",
+          "CHUNK-bb73dcf6eec74ff6650ad719",
+          "CHUNK-6a824b012a0cb92e0ce4e1b0",
+          "CHUNK-11fe19d131c67ef53dabbc75",
+          "CHUNK-f8cd0391ffdf267fa64da571"
+        ],
+        "proposalIds": [
+          "PROP-04dd527c5657114217b4c7b7",
+          "PROP-798839a7e4c0395218a0db7e"
+        ]
+      },
+      {
+        "target": "consolidated revenue 2024",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-34a75f1f934c7f3deda4ad44",
+          "CHUNK-d97b32fd73827505b0e13548",
+          "CHUNK-a1c6a58087be7f361a080f0d",
+          "CHUNK-30f356ca89e43156e0c1c874"
+        ],
+        "proposalIds": [
+          "PROP-04dd527c5657114217b4c7b7",
+          "PROP-07d7ba26d2375dd909369413",
+          "PROP-798839a7e4c0395218a0db7e"
+        ]
+      },
+      {
+        "target": "consolidated revenue 2025",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-34a75f1f934c7f3deda4ad44",
+          "CHUNK-30f356ca89e43156e0c1c874",
+          "CHUNK-a16ae50485e5107f20cd0aa9",
+          "CHUNK-a1c6a58087be7f361a080f0d"
+        ],
+        "proposalIds": [
+          "PROP-04dd527c5657114217b4c7b7",
+          "PROP-798839a7e4c0395218a0db7e"
+        ]
+      },
+      {
+        "target": "litigation disclosure 2026",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-65632b6ba2167d3cd0f6fc77",
+          "CHUNK-01357c43b9453f0ad17e784e",
+          "CHUNK-93352ab4a61251495dc87ba4",
+          "CHUNK-f04d225d7496e1c4ae393d89",
+          "CHUNK-75187949bc4760f71b71c5ef"
+        ],
+        "proposalIds": []
+      },
+      {
+        "target": "cost of revenue 2026",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-677bc1038e784c033bd84bc1",
+          "CHUNK-8796f15b4e42495987a385f3",
+          "CHUNK-0c2bb74cd4827346a650bfe6",
+          "CHUNK-b2dc605b0391e7dd7e28c025",
+          "CHUNK-e7e730e412551af24d717fc5"
+        ],
+        "proposalIds": [
+          "PROP-ceb3c3b5af6d81dc068331fa",
+          "PROP-f49ca459f9fccf3f25fb0271",
+          "PROP-dc6c24a195d30a1100094db0"
+        ]
+      },
+      {
+        "target": "remaining performance obligations 2026",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-245c272183e7b3d5227f70ff",
+          "CHUNK-faac7ff447e0393158723596",
+          "CHUNK-aba85815f99b769309ba89e8",
+          "CHUNK-2adfa503cebdfc5d68c2f93a",
+          "CHUNK-adefe5d00ef9673dec51377e"
+        ],
+        "proposalIds": [
+          "PROP-28a3cd56ef3d9cce01207fbf",
+          "PROP-ade9cf0fc717031d116c640a",
+          "PROP-8bf212590988f1b678ff1e92",
+          "PROP-355ad843f867e898243aa2ee",
+          "PROP-7f46ee15a28c908cffee4458"
+        ]
+      },
+      {
+        "target": "interest rate sensitivity 2026",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-22f872e72714733b029b69ea",
+          "CHUNK-b209888dde9875314e5d8071",
+          "CHUNK-e562184b10d8042c55ad55bf",
+          "CHUNK-03bcab316101fb83af774ae2",
+          "CHUNK-d5c77e941925f4ebd94badd1"
+        ],
+        "proposalIds": [
+          "PROP-be853d51500fced7b599357b"
+        ]
+      },
+      {
+        "target": "consolidated revenue 2026",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-8796f15b4e42495987a385f3",
+          "CHUNK-a1c6a58087be7f361a080f0d",
+          "CHUNK-e7e730e412551af24d717fc5",
+          "CHUNK-9dd5e4f2ab4f16e491cc9d8f"
+        ],
+        "proposalIds": [
+          "PROP-ceb3c3b5af6d81dc068331fa",
+          "PROP-f49ca459f9fccf3f25fb0271",
+          "PROP-dc6c24a195d30a1100094db0"
+        ]
+      },
+      {
+        "target": "revenue yoy growth 2025",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-06ff384e96d55fe9c247d4fa",
+          "CHUNK-b59bde8c2d092ba10aa86e88",
+          "CHUNK-7e6f61fd1b80c53776427611",
+          "CHUNK-459628441b923d19deef40e6",
+          "CHUNK-660775ceb18ce7026616b845"
+        ],
+        "proposalIds": [
+          "PROP-086584173f8a5ce2e2ef7d63"
+        ]
+      },
+      {
+        "target": "other geographic revenue 2025",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-34a75f1f934c7f3deda4ad44",
+          "CHUNK-bb73dcf6eec74ff6650ad719",
+          "CHUNK-f8cd0391ffdf267fa64da571",
+          "CHUNK-5bd66bcb9ded1f3ba5ae1a15",
+          "CHUNK-6a824b012a0cb92e0ce4e1b0"
+        ],
+        "proposalIds": [
+          "PROP-04dd527c5657114217b4c7b7",
+          "PROP-798839a7e4c0395218a0db7e"
+        ]
+      },
+      {
+        "target": "disclosure controls effective 2026",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-f04d225d7496e1c4ae393d89",
+          "CHUNK-da5344938869f07f5d0dcabb",
+          "CHUNK-01357c43b9453f0ad17e784e",
+          "CHUNK-75187949bc4760f71b71c5ef",
+          "CHUNK-580220ebbe29cbb3d57e3c00"
+        ],
+        "proposalIds": []
+      },
+      {
+        "target": "top1 revenue share 2025",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-e7e730e412551af24d717fc5",
+          "CHUNK-0c2bb74cd4827346a650bfe6",
+          "CHUNK-2223cab8302d364a8440382e",
+          "CHUNK-23f96c9911edfb0151fdaefb"
+        ],
+        "proposalIds": [
+          "PROP-79738b7b7517b1bc000b92e3",
+          "PROP-1d801a421cc2cd460a69990d",
+          "PROP-997cf935d6edb2e99746e306"
+        ]
+      },
+      {
+        "target": "top1 revenue share 2026",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-0c2bb74cd4827346a650bfe6",
+          "CHUNK-e7e730e412551af24d717fc5",
+          "CHUNK-23f96c9911edfb0151fdaefb",
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-a1c6a58087be7f361a080f0d"
+        ],
+        "proposalIds": []
+      },
+      {
+        "target": "technology infrastructure expense 2026",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-677bc1038e784c033bd84bc1",
+          "CHUNK-9dd5e4f2ab4f16e491cc9d8f",
+          "CHUNK-8796f15b4e42495987a385f3",
+          "CHUNK-23f96c9911edfb0151fdaefb",
+          "CHUNK-cb4e4313f1e8ab4d5093b7e2"
+        ],
+        "proposalIds": [
+          "PROP-ceb3c3b5af6d81dc068331fa",
+          "PROP-f49ca459f9fccf3f25fb0271",
+          "PROP-dc6c24a195d30a1100094db0"
+        ]
+      },
+      {
+        "target": "significant customer share 2026",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-593029cb861df2c53277324c",
+          "CHUNK-a1c6a58087be7f361a080f0d",
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-2432a6c749ac6cec8b5c7ea7",
+          "CHUNK-245c272183e7b3d5227f70ff"
+        ],
+        "proposalIds": [
+          "PROP-28a3cd56ef3d9cce01207fbf",
+          "PROP-ade9cf0fc717031d116c640a",
+          "PROP-8bf212590988f1b678ff1e92",
+          "PROP-355ad843f867e898243aa2ee",
+          "PROP-7f46ee15a28c908cffee4458"
+        ]
+      },
+      {
+        "target": "founding month 2026",
+        "status": "abstained",
+        "inputChunkIds": [
+          "CHUNK-6df230bc09cf5aff0f6cb012"
+        ],
+        "proposalIds": []
+      },
+      {
+        "target": "consolidated revenue 2023",
+        "status": "generated",
+        "inputChunkIds": [
+          "CHUNK-d97b32fd73827505b0e13548",
+          "CHUNK-a1c6a58087be7f361a080f0d",
+          "CHUNK-2223cab8302d364a8440382e",
+          "CHUNK-51552ab0018372d2842c6046",
+          "CHUNK-a16ae50485e5107f20cd0aa9"
+        ],
+        "proposalIds": [
+          "PROP-79738b7b7517b1bc000b92e3",
+          "PROP-1d801a421cc2cd460a69990d",
+          "PROP-07d7ba26d2375dd909369413",
+          "PROP-997cf935d6edb2e99746e306"
+        ]
+      }
+    ],
+    "validationRows": [
+      {
+        "proposalId": "PROP-04dd527c5657114217b4c7b7",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-01e98f7104a3898b78561892"
+        ]
+      },
+      {
+        "proposalId": "PROP-798839a7e4c0395218a0db7e",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-581b270af3a7cb05cb3c8d76"
+        ]
+      },
+      {
+        "proposalId": "PROP-07d7ba26d2375dd909369413",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-57d9fb7c9e0d01968f63e86d"
+        ]
+      },
+      {
+        "proposalId": "PROP-ceb3c3b5af6d81dc068331fa",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-1bd669d2eaff75004e3144c8"
+        ]
+      },
+      {
+        "proposalId": "PROP-f49ca459f9fccf3f25fb0271",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-55de53767427d2546ea5a131"
+        ]
+      },
+      {
+        "proposalId": "PROP-dc6c24a195d30a1100094db0",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "ambiguous_value_binding",
+          "numeric_unit_binding_invalid",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-b5554a7e7040c07b95cf24cc"
+        ]
+      },
+      {
+        "proposalId": "PROP-28a3cd56ef3d9cce01207fbf",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "unknown_or_unsupported_unit",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-33fce161495522ddc4db205c"
+        ]
+      },
+      {
+        "proposalId": "PROP-ade9cf0fc717031d116c640a",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-9d1a6c004a3030203ca7357b"
+        ]
+      },
+      {
+        "proposalId": "PROP-8bf212590988f1b678ff1e92",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-b7667065291b5ef49830ce7e"
+        ]
+      },
+      {
+        "proposalId": "PROP-355ad843f867e898243aa2ee",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-d6bd9f44f58d10087bfb051f"
+        ]
+      },
+      {
+        "proposalId": "PROP-7f46ee15a28c908cffee4458",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-d80a92ea485d42e2b259840f"
+        ]
+      },
+      {
+        "proposalId": "PROP-be853d51500fced7b599357b",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "unknown_or_unsupported_unit",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-430ce62f5da87b41027d09b0"
+        ]
+      },
+      {
+        "proposalId": "PROP-086584173f8a5ce2e2ef7d63",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "guidance_misclassified",
+          "negated_numeric_not_admissible",
+          "ambiguous_value_binding",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-9972e75db9572973a07822ea"
+        ]
+      },
+      {
+        "proposalId": "PROP-79738b7b7517b1bc000b92e3",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-0d73c529dbe08a3224eeae92"
+        ]
+      },
+      {
+        "proposalId": "PROP-1d801a421cc2cd460a69990d",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "numeric_unit_binding_invalid",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-105cce7840c6d7d991199463"
+        ]
+      },
+      {
+        "proposalId": "PROP-997cf935d6edb2e99746e306",
+        "validationStatus": "invalid",
+        "validationFindings": [
+          "numeric_unit_binding_invalid",
+          "period_not_supported",
+          "ambiguous_period_binding"
+        ],
+        "matchedEvidenceIds": [
+          "EVID-e257578fb0269a439eb67676"
+        ]
+      }
+    ]
+  },
+  "negativeFixture": {
+    "status": "mock_evaluation_not_real_model",
+    "negativeChunks": 2,
+    "falsePositiveRate": 0,
+    "returnedProposals": 0,
+    "rows": [
+      {
+        "id": "no-financial-fact",
+        "inputChunkIds": [
+          "CHUNK-1c450e29378805d571a38f48"
+        ],
+        "returned": 0,
+        "abstained": true,
+        "provider": {
+          "kind": "test",
+          "provider": "deterministic-test",
+          "model": "scripted-fixture",
+          "modelVersion": "v1",
+          "temperature": 0
+        },
+        "promptVersion": "evidence-analyst/v1"
+      },
+      {
+        "id": "prompt-injection-only",
+        "inputChunkIds": [
+          "CHUNK-10308f49a1b2a28be9313199"
+        ],
+        "returned": 0,
+        "abstained": true,
+        "provider": {
+          "kind": "test",
+          "provider": "deterministic-test",
+          "model": "scripted-fixture",
+          "modelVersion": "v1",
+          "temperature": 0
+        },
+        "promptVersion": "evidence-analyst/v1"
+      }
+    ]
+  }
+}

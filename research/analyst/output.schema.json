@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:analyst:output:v0.5",
+  "type": "array",
+  "maxItems": 20,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "subjectId",
+      "sourceIds",
+      "chunkIds",
+      "statement",
+      "quotedText",
+      "researchField",
+      "category",
+      "metric",
+      "scope",
+      "factType",
+      "rawValue",
+      "proposedNormalizedValue",
+      "rawUnit",
+      "unit",
+      "normalization",
+      "observedAt",
+      "periodStart",
+      "periodEnd",
+      "periodStatus",
+      "periodBasis"
+    ],
+    "properties": {
+      "subjectId": {
+        "type": "string",
+        "minLength": 1
+      },
+      "sourceIds": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "chunkIds": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "statement": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 6000
+      },
+      "quotedText": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 6000
+      },
+      "researchField": {
+        "type": "string",
+        "minLength": 1
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "revenue",
+          "growth",
+          "revenue_concentration",
+          "customer_concentration",
+          "top_customer_concentration",
+          "debt",
+          "cash",
+          "cash_flow",
+          "capex",
+          "backlog_rpo",
+          "guidance",
+          "liquidity",
+          "operating_history",
+          "compute_spend",
+          "risk_factors",
+          "integrity_legal_reporting"
+        ]
+      },
+      "metric": {
+        "type": "string",
+        "minLength": 1
+      },
+      "scope": {
+        "type": "string",
+        "enum": [
+          "consolidated_company",
+          "ai_inference_api"
+        ]
+      },
+      "factType": {
+        "type": "string",
+        "enum": [
+          "explicit",
+          "derived"
+        ]
+      },
+      "rawValue": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "proposedNormalizedValue": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "rawUnit": {
+        "type": "string",
+        "minLength": 1
+      },
+      "unit": {
+        "type": "string",
+        "minLength": 1
+      },
+      "normalization": {
+        "type": "string",
+        "minLength": 1
+      },
+      "observedAt": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "periodStart": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "periodEnd": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "periodStatus": {
+        "type": "string",
+        "enum": [
+          "known",
+          "unknown"
+        ]
+      },
+      "periodBasis": {
+        "type": "string",
+        "enum": [
+          "quote",
+          "source_metadata",
+          "unknown"
+        ]
+      }
+    }
+  }
+}

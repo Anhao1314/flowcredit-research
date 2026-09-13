@@ -1,0 +1,93 @@
+{
+  "label": "Deterministic mock/test pipeline; synthetic Primary Source; system_test review, not real model or human performance",
+  "provider": {
+    "kind": "test",
+    "provider": "deterministic-test",
+    "model": "scripted-fixture",
+    "modelVersion": "v1",
+    "temperature": 0
+  },
+  "promptVersion": "evidence-analyst/v1",
+  "proposalId": "PROP-a83996ac2137d94e5cf5b59b",
+  "validationStatus": "validated",
+  "normalizedValue": 32000000,
+  "inputHash": "sha256:b5d6c042a5394817b308f70e2d2a15af0dfc8b6b875f78f8cc666d82fd49c32a",
+  "outputHash": "sha256:e903d9c3166f7f9b24f32c188d26a34d70393945a907a7499f280024730f73fb",
+  "chain": {
+    "chunkId": "CHUNK-e2bb0091e5ec9a5a07978919",
+    "proposalId": "PROP-a83996ac2137d94e5cf5b59b",
+    "candidateId": "CANDIDATE-ebb13570821055941f605c39",
+    "reviewId": "REVIEW-ebdb3b2a4bf21a4fe54ab38d",
+    "evidenceId": "EVID-df420281eef64fc5ac66ee45",
+    "sourceId": "SRC-b525f8e85531f2d45e737bf2",
+    "documentId": "DOC-ea66bba8d62f4bd3940e20e1"
+  },
+  "before": {
+    "source": 3,
+    "evidence": 32,
+    "identity": 4,
+    "revision": 4,
+    "correction": 0
+  },
+  "afterAnalysis": {
+    "source": 3,
+    "evidence": 32,
+    "identity": 4,
+    "revision": 4,
+    "correction": 0
+  },
+  "afterPromotion": {
+    "source": 3,
+    "evidence": 32,
+    "identity": 4,
+    "revision": 4,
+    "correction": 0
+  },
+  "afterReview": {
+    "source": 4,
+    "evidence": 33,
+    "identity": 4,
+    "revision": 4,
+    "correction": 0
+  },
+  "negativeEvaluation": {
+    "status": "mock_evaluation_not_real_model",
+    "negativeChunks": 2,
+    "falsePositiveRate": 0,
+    "returnedProposals": 0,
+    "rows": [
+      {
+        "id": "no-financial-fact",
+        "inputChunkIds": [
+          "CHUNK-1c450e29378805d571a38f48"
+        ],
+        "returned": 0,
+        "abstained": true,
+        "provider": {
+          "kind": "test",
+          "provider": "deterministic-test",
+          "model": "scripted-fixture",
+          "modelVersion": "v1",
+          "temperature": 0
+        },
+        "promptVersion": "evidence-analyst/v1"
+      },
+      {
+        "id": "prompt-injection-only",
+        "inputChunkIds": [
+          "CHUNK-10308f49a1b2a28be9313199"
+        ],
+        "returned": 0,
+        "abstained": true,
+        "provider": {
+          "kind": "test",
+          "provider": "deterministic-test",
+          "model": "scripted-fixture",
+          "modelVersion": "v1",
+          "temperature": 0
+        },
+        "promptVersion": "evidence-analyst/v1"
+      }
+    ]
+  }
+}

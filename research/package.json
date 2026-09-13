@@ -11,7 +11,9 @@
     "retrieval": "node src/retrieval.js",
     "test:retrieval": "node --test retrieval-test/*.test.js",
     "admission": "node src/admission.js",
-    "test:admission": "node --test admission-test/*.test.js"
+    "test:admission": "node --test admission-test/*.test.js",
+    "analyst": "node src/analyst.js",
+    "test:analyst": "node --test analyst-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
