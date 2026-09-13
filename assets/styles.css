@@ -2692,3 +2692,14 @@ html.fc-v2{color-scheme:dark;--bg1:#0B1220;--bg2:#111D2C;--card:#111D2C;--card2:
   body.report-overlay-open .v-report-frame{max-width:none;border:0;border-radius:0;background:#fff;overflow:visible}
   body.report-overlay-open .v-report-layout{display:block;overflow:visible}
 }
+
+/* Task completion: one report, optional appendices and readable print output. */
+.fc-v2 .custom-report,.fc-v2 .custom-assessment,.fc-v2 .intake-fields>*{min-width:0;overflow-wrap:anywhere}
+.fc-v2 .report-section-nav{gap:8px;flex-wrap:wrap}
+.fc-v2 .custom-report [id^="report-section-"]{scroll-margin-top:24px}
+@media print{
+  .fc-v2 .custom-report{--text:#000;--text2:#000;--text3:#000;--teal:#000;--amber:#000;--green:#000;--red:#000;--card:#fff;--card2:#fff;--line:#000}
+  .fc-v2 .custom-report .report-section-nav,.fc-v2 .custom-report button{display:none!important}
+  .fc-v2 .custom-report h2,.fc-v2 .custom-report h3{break-after:avoid}
+  .fc-v2 .custom-report .v-records>div,.fc-v2 .custom-report li{break-inside:avoid}
+}

@@ -8,7 +8,7 @@
   var TABS = [
     { hash: "#/ingest", key: "ingest", label: "New Assessment", sub: "01", icon: "db" },
     { hash: "#/audit", key: "audit", label: "Assessment", sub: "02", icon: "pulse" },
-    { hash: "#/report", key: "report", label: "Report & Monitor", sub: "03", icon: "shield" }
+    { hash: "#/report", key: "report", label: "Report", sub: "03", icon: "shield" }
   ];
   var rootEl = null;
   var mainEl = null;
@@ -106,12 +106,12 @@
     rootEl.innerHTML = '<div class="shell"><a class="v-skip" href="#view-main">Skip to content</a>' +
       '<header class="v-topbar"><div class="v-top-inner"><a class="v-brand" href="#/landing" aria-label="FlowCredit home">' + u.icon('layers', 26) + '<span>FlowCredit</span></a>' + u.tag('DEMO') +
       '<nav class="v-top-links" aria-label="Main navigation"><a href="#/workspace" data-top="workspace">Workspace</a></nav>' +
-      '<span class="v-service" id="v-ai-service">' + u.icon('cpu', 15) + '<span>Saved AI results</span></span></div></header>' +
+      '<span class="v-service" id="v-ai-service">' + u.icon('cpu', 15) + '<span>Assessment ready in this browser</span></span></div></header>' +
       '<div class="v-context"><div class="v-case-control"><label for="v-case-select">Current case</label><select id="v-case-select" aria-describedby="v-case-note">' +
       SUBJECT_ORDER.map(function (k) { return '<option value="' + k + '">' + u.esc(SUBJECTS[k].label) + '</option>'; }).join('') + '</select><span id="v-case-note">Switching cases resets the current demo run.</span></div>' +
       '<nav class="v-workflow" aria-label="Assessment workflow">' + TABS.map(function (t) { return '<a href="' + t.hash + '" data-route="' + t.key + '"><span class="v-step-number">' + t.sub + '</span><span>' + t.label + '<small data-progress="' + t.key + '"></small></span>' + u.icon('check', 16) + '</a>'; }).join('') + '</nav></div>' +
       '<main class="content" id="view-main" tabindex="-1"></main>' +
-      '<footer class="foot"><a class="v-brand" href="#/landing">FlowCredit<span> / Risk intelligence</span></a><p>Interactive demo · Simulated data · No custody or lending</p><p>Risk analytics, not a statutory audit. Not financial advice. Demo calibration.</p></footer></div>';
+      '<footer class="foot"><a class="v-brand" href="#/landing">FlowCredit<span> / Risk intelligence</span></a><p>Supplied evidence · Local drafts · No custody or lending</p><p>Risk analytics, not a statutory audit. Not financial advice. Experimental rules.</p></footer></div>';
     mainEl = rootEl.querySelector('#view-main');
     rootEl.querySelector('.v-skip').addEventListener('click', function (e) { e.preventDefault(); mainEl.focus(); });
     rootEl.querySelector('#v-case-select').addEventListener('change', function () { App.act.switchSubject(this.value); });
@@ -126,18 +126,18 @@
     var sel = rootEl.querySelector('#v-case-select');
     var customDraft = window.FC_INTAKE && FC_INTAKE.active ? FC_INTAKE.active() : null;
     var caseControl = rootEl.querySelector('.v-case-control');
-    if (caseControl) caseControl.hidden = route === 'ingest' || !!customDraft;
+    if (caseControl) caseControl.hidden = true;
     sel.value = st.subject; sel.disabled = st.running;
     var done = st.auditStage === 4 && !st.running;
     var customDone = !!(customDraft && customDraft.status === 'complete' && customDraft.result);
     var progress = customDraft
       ? {ingest: customDone ? 'Input confirmed' : customDraft.status === 'running' ? 'Assessing…' : 'Draft in progress', audit: customDone ? 'Complete' : 'Not started', report: customDone ? 'Ready to explore' : 'Assessment required'}
-      : {ingest: st.anchored ? 'Proof created' : 'Review sources', audit: done ? 'Complete' : st.running ? 'Running…' : 'Not started', report: done ? 'Ready to explore' : 'Assessment required'};
+      : {ingest: 'Start with supplied facts', audit: 'Not started', report: 'Assessment required'};
     var links = rootEl.querySelectorAll('.v-workflow a');
     for (var i=0; i<links.length; i++) {
       var key = links[i].getAttribute('data-route');
       links[i].classList.toggle('on', key === route);
-      links[i].classList.toggle('complete', customDraft ? (key === 'ingest' || ((key === 'audit' || key === 'report') && customDone)) : key === 'ingest' ? st.anchored : key === 'audit' ? done : st.stress === 'recover');
+      links[i].classList.toggle('complete', customDone);
       if (key === route) links[i].setAttribute('aria-current','step'); else links[i].removeAttribute('aria-current');
       links[i].querySelector('small').textContent = progress[key];
     }

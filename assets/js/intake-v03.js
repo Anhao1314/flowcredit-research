@@ -36,7 +36,13 @@
     if (raw == null) return;
     try {
       var parsed = JSON.parse(raw);
-      if (parsed && Array.isArray(parsed.drafts)) data = parsed;
+      if (parsed && Array.isArray(parsed.drafts)) {
+        data = parsed;
+        data.drafts.forEach(function (draft) {
+          draft.extractionConsent = false; draft.explanationConsent = false; draft.modelConsent = false; draft.sessionId = null;
+          if (draft.status === 'running' || draft.status === 'extracting') draft.status = 'draft';
+        });
+      }
     } catch (e) { data = { activeId: null, drafts: [] }; }
   }
   function save() {
@@ -60,7 +66,7 @@
     return touch({
       draftId: id(), createdAt: stamp, updatedAt: stamp, status: "draft", source: source || "manual",
       input: normalized.input, errors: checked.errors, warnings: checked.warnings,
-      missingByGroup: checked.missingByGroup, readinessStatus: checked.readinessStatus, evidenceCoverage: evidenceCoverage(normalized.input), ignoredInputs: normalized.ignoredInputs, modelConsent: false, result: null, sessionId: null, proof: null
+      missingByGroup: checked.missingByGroup, readinessStatus: checked.readinessStatus, evidenceCoverage: evidenceCoverage(normalized.input), ignoredInputs: normalized.ignoredInputs, extractionConsent: false, explanationConsent: false, modelConsent: false, result: null, sessionId: null, proof: null
     });
   }
   function choose(draftId) {
@@ -151,6 +157,10 @@
   function update(input, options) {
     var draft = active() || create();
     var normalized = normalizeInput(input);
+    if (JSON.stringify(draft.input) !== JSON.stringify(normalized.input)) {
+      draft.result = null; draft.sessionId = null; draft.proof = null; draft.status = 'draft';
+      draft.explanationConsent = false;
+    }
     draft.input = normalized.input;
     draft.ignoredInputs = Array.from(new Set((draft.ignoredInputs || []).concat(normalized.ignoredInputs)));
     var checked = validate(draft.input);
@@ -252,7 +262,7 @@
       },
       draft: {
         input: draft.input || {}, result: result, proof: draft.proof || null,
-        status: draft.status || "draft", source: draft.source || "manual", modelConsent: draft.modelConsent === true
+        status: draft.status || "draft", source: draft.source || "manual", modelConsent: false
       }
     });
   }
@@ -270,11 +280,11 @@
       if (result.decisionStatus == null && result.tai == null && result.cci == null && result.grade == null) return { ok: false, error: "The snapshot result is incomplete." };
       var source = typeof body.source === "string" && body.source ? body.source : options && options.source || "import";
       var draft = create(clone(input), source);
-      draft.modelConsent = body.modelConsent === true;
+      draft.modelConsent = false; draft.extractionConsent = false; draft.explanationConsent = false;
       if (body.proof && typeof body.proof === "object" && !Array.isArray(body.proof)) draft.proof = clone(body.proof);
       draft.result = clone(result);
       draft.status = draft.errors.length ? "review" : "complete";
-      draft.sessionId = result.sessionId == null ? null : result.sessionId;
+      draft.sessionId = null;
       draft.readinessStatus = result.readinessStatus || draft.readinessStatus;
       draft.evidenceCoverage = result.evidenceCoverage || draft.evidenceCoverage || null;
       draft.requiredActions = Array.isArray(result.requiredActions) ? clone(result.requiredActions) : [];
