@@ -37,7 +37,7 @@ Workspace 只突出 `Start a new assessment`。预置案例位于 `Try an exampl
 
 ## 隐私与会话
 
-- 草稿、结果和 sessionId 位于当前标签页 `sessionStorage`，最多 5 项，关闭标签后清除。
+- 草稿和结果位于当前浏览器 `localStorage`（最多 5 项，关闭浏览器后仍在，可在 Workspace 一键清除或导出 JSON 快照）；旧版本遗留的 `sessionStorage` 数据在首次加载时自动迁移并清除。`sessionId` 仍只属于当前页面会话。
 - 原始 JSON 文件不上传；自然语言提取完成后删除原始文本。
 - 没有授权时，真实经营数据不得发送给 DeepSeek。
 - 授权复核只发送白名单结构化字段、确定性结果或 F1–F12 事实。

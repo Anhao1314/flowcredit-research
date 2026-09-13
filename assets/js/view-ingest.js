@@ -28,7 +28,7 @@
       '<button class="intake-entry" type="button" data-new-mode="description"><span>01</span><b>Describe a case</b><small>Let AI organize supplied facts into a draft.</small></button>' +
       '<button class="intake-entry" type="button" data-new-mode="json"><span>02</span><b>Import JSON</b><small>Paste or open a structured file in your browser.</small></button>' +
       '<button class="intake-entry" type="button" data-new-mode="manual"><span>03</span><b>Enter manually</b><small>Complete a guided operating-data form.</small></button></div>' +
-      '<p class="v-caption">Drafts stay in this browser tab. The deterministic risk rules ship with this page; only AI text extraction and explanation use the local agent.</p></section>' +
+      '<p class="v-caption">Drafts stay in this browser. The deterministic risk rules ship with this page; only AI text extraction and explanation use the local agent.</p></section>' +
       (!window.FC_LIVE ? '<div class="v-notice"><p><b>Deterministic assessment runs in your browser.</b> Only AI text extraction and explanation need the local agent.</p></div>' : '') + '</div>';
   }
   function modeHtml(draft, mode) {
@@ -36,7 +36,7 @@
       '<label class="intake-field intake-wide"><span>Business and assessment context</span><textarea id="intake-description" rows="7" maxlength="10000" placeholder="Assess an AI inference provider using its last six months of Token usage, GPU activity, revenue and repayment data.">' + esc(draft.rawText || "") + '</textarea></label>' +
       '<label class="intake-consent"><input id="intake-extract-consent" type="checkbox"' + (draft.modelConsent ? " checked" : "") + '><span>Send this text to DeepSeek to organize it into a draft. The model cannot score the case.</span></label>' +
       '<div class="v-action-row"><button class="btn btn-primary" id="intake-extract" type="button"' + (draft.status === "extracting" ? " disabled" : "") + '>' + (draft.status === "extracting" ? "Organizing…" : draft.lastError ? "Retry extraction" : "Organize into draft") + '</button><button class="btn" data-mode="json" type="button">Import JSON</button><button class="btn" data-mode="manual" type="button">Enter manually</button></div><div id="intake-source-status" class="' + (draft.lastError ? 'intake-status bad' : '') + '" role="status" aria-live="polite">' + esc(draft.lastError || '') + '</div></section>';
-    if (mode === "json") return '<section class="v-panel intake-source"><div class="v-section-head"><div><p class="v-eyebrow">IMPORT JSON</p><h2>Bring structured data into this tab.</h2></div><span class="v-muted">64 KB maximum</span></div>' +
+    if (mode === "json") return '<section class="v-panel intake-source"><div class="v-section-head"><div><p class="v-eyebrow">IMPORT JSON</p><h2>Bring structured data into this browser.</h2></div><span class="v-muted">64 KB maximum</span></div>' +
       '<label class="intake-field intake-wide"><span>JSON object <small>64 KB maximum</small></span><textarea id="intake-json" rows="8" maxlength="65536" placeholder="{ &quot;label&quot;: &quot;Example operator&quot;, &quot;inputTokensM&quot;: 64 }"></textarea></label>' +
       '<div class="v-action-row"><button class="btn btn-primary" id="intake-parse-json" type="button">Review JSON</button><label class="btn intake-file">Open .json<input type="file" id="intake-file" accept="application/json,.json"></label><button class="btn" data-mode="manual" type="button">Enter manually</button></div><div id="intake-source-status" role="status" aria-live="polite"></div></section>';
     return "";
@@ -71,7 +71,7 @@
       (names.length ? '<p>A deterministic assessment can continue, but missing dimensions remain Not computable.</p><ul class="intake-issues">' + names.map(function (name) { return '<li><b>' + esc(name) + '</b> · ' + esc(groups[name].join(", ")) + '</li>'; }).join("") + '</ul>' : '<p>All core groups are present. Evidence quality may still limit the decision.</p>') +
       (draft.ignoredInputs && draft.ignoredInputs.length ? '<p class="v-caption">Ignored untrusted inputs: ' + esc(draft.ignoredInputs.join(", ")) + '</p>' : '') +
       coverageHtml(draft) +
-      '<details class="v-details"><summary>Evidence dictionary and local proof <span>Method details</span></summary><div class="v-details-body"><p>Evidence records identify a field, source domain, verification method, observation period, coverage and reference hash. Billing, GPU telemetry, bank or treasury, customer contracts, identity graphs and self-report remain distinct sources.</p><p>A local proof fingerprints the normalized Token, Compute, Business/Credit and Evidence groups with a fresh timestamp and nonce. It stays in this tab, makes no network claim and never changes the risk score.</p></div></details>' +
+      '<details class="v-details"><summary>Evidence dictionary and local proof <span>Method details</span></summary><div class="v-details-body"><p>Evidence records identify a field, source domain, verification method, observation period, coverage and reference hash. Billing, GPU telemetry, bank or treasury, customer contracts, identity graphs and self-report remain distinct sources.</p><p>A local proof fingerprints the normalized Token, Compute, Business/Credit and Evidence groups with a fresh timestamp and nonce. It stays in this browser, makes no network claim and never changes the risk score.</p></div></details>' +
       '<label class="intake-consent"><input id="intake-review-consent" type="checkbox"' + (draft.modelConsent ? " checked" : "") + '><span>Send validated facts and the deterministic result to DeepSeek for explanation.</span></label>' +
       '<div class="v-action-row"><button class="btn btn-primary" id="intake-run" type="button"' + (errors.length || draft.status === "running" ? " disabled" : "") + '>' + (draft.status === "running" ? "Assessing…" : "Run assessment") + '</button><button class="btn" id="anchor-btn" type="button"' + (errors.length ? " disabled" : "") + '><span id="anchor-btn-label">' + (draft.proof ? "Create another proof" : "Create local proof") + '</span></button></div>' +
       (!window.FC_LIVE ? '<p class="intake-offline"><b>Deterministic assessment runs in your browser.</b> Only AI text extraction and explanation need the local agent.</p>' : '') +
@@ -121,9 +121,9 @@
       draft.rawText = text; draft.modelConsent = consent; draft.lastError = null; FC_INTAKE.commit(draft, false);
       if (!consent) { status(host, "Confirm before sending this text to DeepSeek.", true); return; }
       if (!text) { status(host, "Describe the business and supplied data first.", true); return; }
-      if (!window.FC_AI || !FC_AI.extractDraft) { status(host, "AI text extraction needs the local agent. Your text remains in this tab.", true); return; }
+      if (!window.FC_AI || !FC_AI.extractDraft) { status(host, "AI text extraction needs the local agent. Your text remains in this browser.", true); return; }
       draft.status = "extracting"; FC_INTAKE.commit(draft, true);
-      FC_AI.extractDraft(draft.draftId, text).then(function (payload) { modeByDraft[draft.draftId] = "review"; FC_INTAKE.setExtracted(payload); }, function (error) { draft.status = "draft"; draft.lastError = error.status === 504 || error.name === "AbortError" ? "AI extraction timed out. Retry or continue with JSON or manual entry." : error.status === 429 ? "AI extraction is busy. Retry shortly or continue without it." : "AI extraction is unavailable. Your text remains in this tab."; FC_INTAKE.commit(draft, true); });
+      FC_AI.extractDraft(draft.draftId, text).then(function (payload) { modeByDraft[draft.draftId] = "review"; FC_INTAKE.setExtracted(payload); }, function (error) { draft.status = "draft"; draft.lastError = error.status === 504 || error.name === "AbortError" ? "AI extraction timed out. Retry or continue with JSON or manual entry." : error.status === 429 ? "AI extraction is busy. Retry shortly or continue without it." : "AI extraction is unavailable. Your text remains in this browser."; FC_INTAKE.commit(draft, true); });
     });
     function importJson(text) {
       try { var bytes = typeof Blob !== "undefined" ? new Blob([text]).size : unescape(encodeURIComponent(text)).length; if (bytes > FILE_LIMIT) throw new Error("Use JSON no larger than 64 KB."); var parsed = JSON.parse(text); if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("Use one JSON object."); draft = FC_INTAKE.update(parsed, { source: "json", silent: true }); modeByDraft[draft.draftId] = "review"; App.renderCurrent(); }
@@ -137,13 +137,13 @@
       var reader = new FileReader(); reader.onload = function () { importJson(String(reader.result || "")); }; reader.onerror = function () { status(host, "The file could not be read.", true); }; reader.readAsText(selected);
     });
     var proof = host.querySelector("#anchor-btn"); if (proof) proof.addEventListener("click", function () { collect(host, draft); FC_INTAKE.proof(); ui.toast("Local proof created"); });
-    /* Deterministic v0.2.1 scoring also runs in this tab; the local agent only adds the AI explanation layer. */
+    /* Deterministic v0.2.1 scoring also runs in this browser; the local agent only adds the AI explanation layer. */
     function runLocal() {
       var local = window.FC_RISK_RUN ? FC_RISK_RUN(draft.input, draft.draftId) : null;
-      if (!local) { status(host, "The deterministic engine is unavailable in this browser. Your draft remains available in this tab.", true); return; }
+      if (!local) { status(host, "The deterministic engine is unavailable in this browser. Your draft remains available here.", true); return; }
       if (local.ok) { draft.status = "review"; draft.lastError = null; FC_INTAKE.commit(draft, false); FC_INTAKE.setResult(local.result); App.nav("#/audit"); return; }
       if ((local.fieldErrors || []).length) FC_INTAKE.applyServerValidation({ fieldErrors: local.fieldErrors, missingByGroup: local.missingByGroup, warnings: local.warnings });
-      else { draft.status = "review"; draft.lastError = local.error || "The deterministic assessment could not run. Your draft remains available in this tab."; FC_INTAKE.commit(draft, false); }
+      else { draft.status = "review"; draft.lastError = local.error || "The deterministic assessment could not run. Your draft remains available here."; FC_INTAKE.commit(draft, false); }
       App.renderCurrent();
     }
     var run = host.querySelector("#intake-run"); if (run) run.addEventListener("click", function () {

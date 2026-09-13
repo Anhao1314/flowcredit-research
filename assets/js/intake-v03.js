@@ -11,14 +11,38 @@
     catch (e) { return "draft-" + Date.now() + "-" + Math.random().toString(16).slice(2); }
   }
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
+  /* ---------- persistence: localStorage, one-time sessionStorage migration, memory fallback ----------
+     Every access is guarded: file:// documents and private windows may throw on read or write,
+     in which case the controller keeps working from the in-memory `data` object alone. */
+  function localStore() { try { return typeof localStorage !== "undefined" ? localStorage : null; } catch (e) { return null; } }
+  function sessionStore() { try { return typeof sessionStorage !== "undefined" ? sessionStorage : null; } catch (e) { return null; } }
+  function readKey(store) {
+    try { return store ? store.getItem(KEY) : null; } catch (e) { return null; }
+  }
+  function writeKey(store, text) {
+    if (!store) return false;
+    try { store.setItem(KEY, text); return true; } catch (e) { return false; }
+  }
+  function dropKey(store) { try { if (store) store.removeItem(KEY); } catch (e) { /* nothing to clear */ } }
   function load() {
+    var local = localStore(), session = sessionStore(), raw = readKey(local);
+    if (raw == null) {
+      var legacy = readKey(session);
+      if (legacy != null) {
+        raw = legacy;
+        if (writeKey(local, legacy)) dropKey(session);
+      }
+    }
+    if (raw == null) return;
     try {
-      var parsed = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      var parsed = JSON.parse(raw);
       if (parsed && Array.isArray(parsed.drafts)) data = parsed;
     } catch (e) { data = { activeId: null, drafts: [] }; }
   }
   function save() {
-    try { sessionStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { /* session storage may be unavailable */ }
+    var text = JSON.stringify(data);
+    if (writeKey(localStore(), text)) return;
+    writeKey(sessionStore(), text);
   }
   function touch(draft) {
     draft.updatedAt = now();
@@ -188,7 +212,7 @@
     if (data.activeId === draftId) data.activeId = data.drafts.length ? data.drafts[0].draftId : null;
     save(); if (App.renderCurrent) App.renderCurrent();
   }
-  function clear() { data = { activeId: null, drafts: [] }; try { sessionStorage.removeItem(KEY); } catch (e) {} if (App.renderCurrent) App.renderCurrent(); }
+  function clear() { data = { activeId: null, drafts: [] }; dropKey(localStore()); dropKey(sessionStore()); if (App.renderCurrent) App.renderCurrent(); }
   function applyServerValidation(payload) {
     var draft = active(); if (!draft) return null;
     draft.errors = payload && payload.fieldErrors || [];
