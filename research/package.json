@@ -19,7 +19,9 @@
     "analyst-staged": "node analyst-staged/cli.js",
     "test:analyst-staged": "node --test analyst-staged-test/*.test.js",
     "grounding": "node grounding/cli.js",
-    "test:grounding": "node --test grounding-test/*.test.js"
+    "test:grounding": "node --test grounding-test/*.test.js",
+    "evidence-support": "node evidence-support/cli.js",
+    "test:evidence-support": "node --test evidence-support-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

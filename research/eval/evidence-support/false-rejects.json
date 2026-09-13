@@ -1,0 +1,158 @@
+{
+ "version": "evidence-support-false-rejects/v0.9",
+ "definition": "The 11 v0.8 validator false rejects (annotated span selected, deterministic parse matched locked Gold, frozen v0.5 contiguous-quote validator refused) replayed against the v0.9 support contract on the same locked 16 cases.",
+ "summary": {
+  "total": 11,
+  "resolvedByTableSupport": 9,
+  "resolvedBySentenceSpans": 1,
+  "contractResolvedSelectionMiss": 1,
+  "stillFalseRejected": 0
+ },
+ "records": [
+  {
+   "caseId": "GOLD-01",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-02",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-03",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-05",
+   "legacyBinding": "narrative",
+   "expectedSupportType": "text",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-07",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-09",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-11",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-12",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-13",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": false,
+    "proposalValidated": false,
+    "converted": true,
+    "findings": [
+     "WRONG_SUPPORT_SELECTION"
+    ]
+   },
+   "disposition": "contract_resolved_selection_miss"
+  },
+  {
+   "caseId": "GOLD-14",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  },
+  {
+   "caseId": "GOLD-16",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "v08Finding": "VALIDATOR_FALSE_REJECT",
+   "v09": {
+    "targetSelected": true,
+    "proposalValidated": true,
+    "converted": true,
+    "findings": []
+   },
+   "disposition": "resolved"
+  }
+ ]
+}

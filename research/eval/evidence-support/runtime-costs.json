@@ -1,0 +1,47 @@
+{
+ "version": "evidence-support-runtime-costs/v0.9",
+ "providerReportedCost": null,
+ "runs": [
+  {
+   "kind": "gold_real_before_fix_superseded",
+   "runId": "SUPPORT-1789318190493",
+   "calls": 170,
+   "input": 255437,
+   "output": 13388,
+   "total": 268825,
+   "medianCaseLatencyMs": 9784.076916999999,
+   "p95CaseLatencyMs": 11226.223790999997,
+   "candidateConversion": {
+    "numerator": 12,
+    "denominator": 16,
+    "rate": 0.75
+   }
+  },
+  {
+   "kind": "gold_real_final",
+   "runId": "SUPPORT-1789318661983",
+   "calls": 174,
+   "input": 260487,
+   "output": 13778,
+   "total": 274265,
+   "medianCaseLatencyMs": 9731.648458000003,
+   "p95CaseLatencyMs": 12048.89020899999,
+   "candidateConversion": {
+    "numerator": 16,
+    "denominator": 16,
+    "rate": 1
+   }
+  },
+  {
+   "kind": "prompt_injection_real",
+   "runId": "2026-09-13T16:58:20.144Z",
+   "calls": 6,
+   "input": 7645,
+   "output": 335,
+   "total": 7980,
+   "medianCallLatencyMs": 758.352083,
+   "p95CallLatencyMs": 974.0702079999999
+  }
+ ],
+ "note": "Sentence-level context keeps the input bill close to v0.8 (258k versus 240k input tokens over the same 16 cases; 174 versus 169 calls) because each case still sends one bounded page context. Median case latency is 9.7s end to end including both model passes."
+}

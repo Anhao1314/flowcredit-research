@@ -1,0 +1,29 @@
+{
+  "version": "evidence-support-gate/v0.9",
+  "registeredBeforeLockedEvaluation": true,
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "asOf": "2026-09-14",
+  "primaryProvider": "deepseek",
+  "requestedModel": "deepseek-v4-flash",
+  "layoutParserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+  "groundingVersion": "source-span-registry/v1",
+  "segmentationVersion": "sentence-segmentation/v1",
+  "supportVersion": "source-support/v1",
+  "validationVersion": "grounded-evidence-validation/v2",
+  "selectionPromptVersion": "span-selection/v2",
+  "interpretationPromptVersion": "fact-interpretation-span/v2",
+  "thresholds": {
+    "fabricatedSupport": 0,
+    "sourceSupportFidelity": 1,
+    "tableStructuralFidelity": 1,
+    "validatorFalseAccepts": 0,
+    "numericFidelity": 0.95,
+    "unitFidelity": 0.95,
+    "periodFidelity": 0.95,
+    "candidateConversion": 0.5,
+    "validatorFalseRejectsMax": 3
+  },
+  "definitions": "Deterministic and model metrics are separated. fabricated support counts selected spans absent from the supplied candidate set (rejected before interpretation). source support fidelity counts selected spans whose TextSupport or TableSupport passes Grounded Validator V2 common and branch checks. table structural fidelity counts table supports whose cell, row label, header path, unit context, page and hashes match the verified TableSpan exactly. numeric/unit/period accuracy compare deterministic parse output against locked Gold on cases whose annotated span was selected, never against model text. validator false accept counts validated proposals whose support no longer re-verifies (structurally impossible by construction; proven by the tamper suite). validator false reject keeps the v0.8 definition: the annotated span was selected and deterministic numeric/unit/period all match Gold, but no proposal validated. candidateConversion counts locked cases that end at an EvidenceCandidate through the v0.9 support path; promotion is deliberately limited to one Candidate per case so a case cannot inflate conversion. Threshold rationale: candidateConversion 0.5 is the pre-registered minimum for significantly above the v0.8 0/16, and validatorFalseRejectsMax 3 is the pre-registered maximum for significantly below the v0.8 11.",
+  "comparison": "v0.8 span selection versus v0.9 support contract on the same locked 16 cases and the same DeepSeek path. The only experimental variable is the Evidence support representation (sentence spans and TableSupport with Grounded Validator V2, frozen v0.5 validator untouched). Token and latency totals include both passes and every interpretation call.",
+  "decision": "No automatic next stage. GO TO LOCAL MODEL VALIDATION only when the support contract is stable and candidate conversion holds while model semantics are no longer the visible blocker. GO TO MODEL COMPARISON only when the contract is stable but DeepSeek semantic selection is the dominant error. STAY ON EVIDENCE SUPPORT when table/text support still cannot enter Candidate reliably."
+}

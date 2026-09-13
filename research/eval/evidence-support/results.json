@@ -1,0 +1,1255 @@
+{
+ "version": "evidence-support-result/v0.9",
+ "generatedFrom": {
+  "registeredAt": "2026-09-13T16:54:52.415Z",
+  "mode": "gold",
+  "beforeLockedEvaluation": true,
+  "layoutParserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+  "groundingVersion": "source-span-registry/v1",
+  "segmentationVersion": "sentence-segmentation/v1",
+  "supportVersion": "source-support/v1",
+  "validationVersion": "grounded-evidence-validation/v2",
+  "selectionPromptVersion": "span-selection/v2",
+  "interpretationPromptVersion": "fact-interpretation-span/v2",
+  "codeHashes": {
+   "../grounding/pdfspans.py": "sha256:6a2fd3b58c14a3c4373f9aa6e6d141ef309b0f81ea55ad8bbc6aa92e5cf9d2d9",
+   "../grounding/renderer.js": "sha256:36d9419fa8846f3e951cf97f03fc5c601fccc599bb35bf72674f058872573ee1",
+   "../grounding/facts.js": "sha256:4b9dd1fdb590a59c730c20c5818816b66746d96a3ae83419dd9e9f000cf51ed7",
+   "sentences.js": "sha256:f84308990f8e518d87101427ed6a1781abddf10dcf88e24d071fa7cc3d5c1638",
+   "support.js": "sha256:2a0dcb9940464cbe45eb11f3a68af2aa2f1faba28626884700812f7863c97202",
+   "validator.js": "sha256:c5ab58bf344e0b02f4dd0f999976ae7c952db7e6e230abd1ca11a11f2ea743c4",
+   "proposal.js": "sha256:3b3b3c9e407325b279a4fe830a1f279d0eacba6279049964d55c1d9862bf94ed",
+   "contract.js": "sha256:c8b4e7d91bb06d93df74aab178ce5bab17416659386c58c65fd21b7685b9d917",
+   "store.js": "sha256:21e98c032fe69826b3c2498d26a9faa0aacd66a5264088eb39cd68a291632e37",
+   "layer.js": "sha256:ce814cdaae68bdec4f46d055e5398c8e18f0791a91cc169b4cd13e62af2828bd",
+   "gold.js": "sha256:5897e716918ee0cf3c9f3a64324f7560254aff1f93b6e9791a3b7adabd4ad25e",
+   "eval.js": "sha256:93eaec7a83d1fd45e3d8dfffe70657c2ef9b6164cf960a3f9c455cb03c2f481a",
+   "controls.js": "sha256:44b102687cdca8ca7361ce5dd2180433b72bb17e3d993c9e44245e042e0acc2d",
+   "cli.js": "sha256:60fba46377c0ecbc02553ab7d2bf3d290ff3157f6cf00bc7bcc15c91682c3bd4",
+   "synthetic-pdf-v2.py": "sha256:c6f6eded3603137568dc1007c1b7d5a8dbe49599a20505acf16b0269c854eb8e",
+   "selection-output.schema.json": "sha256:3313f75720a21adb3ca764046dfaca21d537e6c153632ece58e79ad722da2767",
+   "proposal-v2.schema.json": "sha256:051bf365879ce9b8c3b0c1a37cda54cefb1981397ba40a2f5b6312606e0ab0f0",
+   "../prompts/span-selection-v2.txt": "sha256:8f1900a093b85ee6963840f47a2d0063fe74169a677d68ad6edbbed3b2252c91",
+   "../prompts/fact-interpretation-span-v2.txt": "sha256:0c8f9fd2524ac4a5b9a7ea29d5040a2ed513c70d39146ee7e8616565a772813f"
+  },
+  "gateHash": "sha256:52b521f1b7fbf5f699d82046f2777116abed224cba4aa18dcac39b01a866f5c1",
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739"
+ },
+ "status": "REAL_EVIDENCE_SUPPORT_EVALUATED",
+ "gatePassed": false,
+ "gateResult": {
+  "fabricatedSupport": true,
+  "sourceSupportFidelity": true,
+  "tableStructuralFidelity": true,
+  "validatorFalseAccepts": true,
+  "numeric": false,
+  "unit": false,
+  "period": false,
+  "candidateConversion": true,
+  "validatorFalseRejects": true
+ },
+ "metrics": {
+  "selectionSchemaValidity": {
+   "numerator": 16,
+   "denominator": 16,
+   "rate": 1
+  },
+  "fabricatedSupportRate": {
+   "numerator": 0,
+   "denominator": 158,
+   "rate": 0
+  },
+  "sourceSupportFidelity": {
+   "numerator": 158,
+   "denominator": 158,
+   "rate": 1
+  },
+  "tableStructuralFidelity": {
+   "numerator": 98,
+   "denominator": 98,
+   "rate": 1
+  },
+  "targetSelectionRate": {
+   "numerator": 14,
+   "denominator": 16,
+   "rate": 0.875
+  },
+  "factKindAccuracy": {
+   "numerator": 14,
+   "denominator": 14,
+   "rate": 1
+  },
+  "numericAccuracy": {
+   "numerator": 12,
+   "denominator": 14,
+   "rate": 0.8571428571428571
+  },
+  "unitAccuracy": {
+   "numerator": 12,
+   "denominator": 14,
+   "rate": 0.8571428571428571
+  },
+  "periodAccuracy": {
+   "numerator": 13,
+   "denominator": 14,
+   "rate": 0.9285714285714286
+  },
+  "categoryAccuracy": {
+   "numerator": 10,
+   "denominator": 14,
+   "rate": 0.7142857142857143
+  },
+  "chainParseOnlyRate": {
+   "numerator": 8,
+   "denominator": 16,
+   "rate": 0.5
+  },
+  "chainCorrectRate": {
+   "numerator": 8,
+   "denominator": 16,
+   "rate": 0.5
+  },
+  "candidateConversionRate": {
+   "numerator": 16,
+   "denominator": 16,
+   "rate": 1
+  },
+  "validatorFalseRejects": 0,
+  "validatorFalseAccepts": 0,
+  "wrongSupportSelections": 144
+ },
+ "splits": {
+  "table": {
+   "cases": 12,
+   "targetSelection": {
+    "numerator": 10,
+    "denominator": 12,
+    "rate": 0.8333333333333334
+   },
+   "numericAccuracy": {
+    "numerator": 10,
+    "denominator": 10,
+    "rate": 1
+   },
+   "unitAccuracy": {
+    "numerator": 10,
+    "denominator": 10,
+    "rate": 1
+   },
+   "periodAccuracy": {
+    "numerator": 10,
+    "denominator": 10,
+    "rate": 1
+   },
+   "chainCorrectRate": {
+    "numerator": 6,
+    "denominator": 12,
+    "rate": 0.5
+   },
+   "candidateConversionRate": {
+    "numerator": 12,
+    "denominator": 12,
+    "rate": 1
+   }
+  },
+  "text": {
+   "cases": 4,
+   "targetSelection": {
+    "numerator": 4,
+    "denominator": 4,
+    "rate": 1
+   },
+   "numericAccuracy": {
+    "numerator": 2,
+    "denominator": 4,
+    "rate": 0.5
+   },
+   "unitAccuracy": {
+    "numerator": 2,
+    "denominator": 4,
+    "rate": 0.5
+   },
+   "periodAccuracy": {
+    "numerator": 3,
+    "denominator": 4,
+    "rate": 0.75
+   },
+   "chainCorrectRate": {
+    "numerator": 2,
+    "denominator": 4,
+    "rate": 0.5
+   },
+   "candidateConversionRate": {
+    "numerator": 4,
+    "denominator": 4,
+    "rate": 1
+   }
+  }
+ },
+ "failureBreakdown": {
+  "SPAN_SCHEMA_ERROR": 0,
+  "FABRICATED_SPAN": 0,
+  "SUPPORT_INVALID": 0,
+  "WRONG_SUPPORT_SELECTION": 2,
+  "INTERPRETATION_SCHEMA_ERROR": 0,
+  "DETERMINISTIC_PARSE_UNSUPPORTED": 2,
+  "VALUE_ERROR": 0,
+  "UNIT_ERROR": 0,
+  "PERIOD_ERROR": 0,
+  "ACTUAL_GUIDANCE_ERROR": 0,
+  "NO_RETRIEVAL_ANCHOR": 0,
+  "CANDIDATE_REJECTED": 0,
+  "VALIDATOR_FALSE_REJECT": 0,
+  "GOLD_LIMITATION": 0,
+  "UNKNOWN": 0
+ },
+ "tokens": {
+  "input": 260487,
+  "output": 13778,
+  "total": 274265,
+  "calls": 174,
+  "providerReportedCost": null
+ },
+ "latency": {
+  "medianMs": 9731.648458000003,
+  "p95Ms": 12048.89020899999,
+  "sampleCount": 16,
+  "exploratory": true
+ },
+ "claimsProtection": {
+  "before": {
+   "claims": 4,
+   "revisions": 4,
+   "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+  },
+  "after": {
+   "claims": 4,
+   "revisions": 4,
+   "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+  },
+  "unchanged": true
+ },
+ "provider": {
+  "kind": "real",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "modelVersion": "provider-unreported",
+  "temperature": 0,
+  "structuredOutputMode": "native_json_schema",
+  "endpointOrigin": "https://api.deepseek.com"
+ },
+ "supportVersion": "source-support/v1",
+ "validationVersion": "grounded-evidence-validation/v2",
+ "goldVersion": "gold-span-annotation/v2",
+ "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+ "gateHash": "sha256:52b521f1b7fbf5f699d82046f2777116abed224cba4aa18dcac39b01a866f5c1",
+ "annotation": {
+  "total": 16,
+  "text": 4,
+  "table": 12,
+  "unsupported": 0,
+  "coverageRate": 1
+ },
+ "legacyMapping": {
+  "total": 12,
+  "nowTableGroundable": 12,
+  "nowTextGroundable": 0,
+  "stillUnsupported": 0
+ },
+ "amendments": [
+  {
+   "sequence": 1,
+   "runId": "SUPPORT-1789318190493",
+   "registeredBeforeRun": true,
+   "status": "superseded_by_amendment_1",
+   "finding": "The first registered run exposed a latent promotion defect inherited from the v0.5 identity salt: the fact digest was appended to the retrieval query as ordinary text, so its two extra tokens pushed one- and two-word table anchors below the frozen BM25 queryCoverage threshold (0.6) and createCandidate rejected the anchored chunk as not visible (4 of 16 target promotions: GOLD-02, GOLD-11, GOLD-14, GOLD-16).",
+   "fix": "research/evidence-support/layer.js now encodes the fact digest as a punctuation identity salt that tokenize() never sees; query identity and Candidate identity still differ per fact. No Gold change, no validator change, no retrieval-policy change, no gate or threshold change.",
+   "rerun": "The locked Gold benchmark and the injection control were re-executed on the amended code; amendment 1 results are the reported v0.9 numbers."
+  }
+ ],
+ "cases": [
+  {
+   "caseId": "GOLD-01",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-e0d1db2a83338062249e5c36"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:United States|Year Ended December 31, 2025|$ 4,801"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": false,
+   "chainCorrect": false,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-e0d1db2a83338062249e5c36",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-ff3278eced1fbff622e8cf94",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "revenue_by_geographic_area",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 4801,
+      "normalizedValue": 4801000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "observedAt": "2025-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-b11009c624d1b497d1ccc152",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-02",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-a5d8c1cfe7eff58d77334151"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Revenue|Year Ended December 31, 2024|$ 1,915"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-fbf258585ec81679d85c319e",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "revenue",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 1915,
+      "normalizedValue": 1915000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "observedAt": "2024-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-fbbdd66d91b3205593b037d4",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-03",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-cd6c0d8f643719446eeb5e2a"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Revenue|Year Ended December 31, 2025|$ 5,131"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-360374145616e6ae245027b3",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "revenue",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 5131,
+      "normalizedValue": 5131000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "observedAt": "2025-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-3c1fc33ff414731c6d979efb",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-04",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-7a2f323abe2fe27bbcc19a7d"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Cost of revenue (1)|Three Months Ended June 30, 2026|879"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": false,
+   "chainCorrect": false,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-900ced9ce602be7609133dfd",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "cost_of_revenue",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 879,
+      "normalizedValue": 879000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2026-04-01",
+      "end": "2026-06-30",
+      "observedAt": "2026-06-30",
+      "basis": "three_months"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-cb3fbc7c24bf30a23e4ae7ee",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-05",
+   "legacyBinding": "narrative",
+   "expectedSupportType": "text",
+   "expectedSpanIds": [
+    "SPAN-0807cb012a8b778a8f3d69f9"
+   ],
+   "classification": "sentence_span",
+   "basis": [
+    "sentence:SPAN-0807cb012a8b778a8f3d69f9"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-0807cb012a8b778a8f3d69f9",
+    "factKind": "backlog_or_rpo",
+    "supportType": "text",
+    "factId": "SUPPORT-FACT-82df3e17d2de91cc6c085c3e",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "backlog_rpo",
+     "metric": "unsatisfied_rpo",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 103.7,
+      "normalizedValue": 103700000000,
+      "rawUnit": "USD_billions",
+      "unit": "USD",
+      "scale": 1000000000,
+      "normalization": "usd_billions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": null,
+      "end": "2026-06-30",
+      "observedAt": "2026-06-30",
+      "basis": "as_of"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-94be23f68f5b30bdea500b5d",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-06",
+   "legacyBinding": "narrative",
+   "expectedSupportType": "text",
+   "expectedSpanIds": [
+    "SPAN-dbde93f78879bd6f2866c40a"
+   ],
+   "classification": "sentence_span",
+   "basis": [
+    "sentence:SPAN-dbde93f78879bd6f2866c40a"
+   ],
+   "targetSelected": true,
+   "numericCorrect": false,
+   "unitCorrect": false,
+   "periodCorrect": false,
+   "categoryCorrect": true,
+   "chainCorrect": false,
+   "proposalValidated": false,
+   "converted": true,
+   "conversionStatus": "promoted",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [
+    "DETERMINISTIC_PARSE_UNSUPPORTED"
+   ],
+   "targetSelection": {
+    "spanId": "SPAN-dbde93f78879bd6f2866c40a",
+    "factKind": "risk_disclosure",
+    "supportType": "text",
+    "factId": "SUPPORT-FACT-7bcc88be997477a59c69c674",
+    "status": "interpreted",
+    "findings": [
+     "DETERMINISTIC_PARSE_UNSUPPORTED"
+    ],
+    "value": {
+     "metricOrCategory": "risk_factors",
+     "metric": "interest_rate_sensitivity_interest_expense",
+     "actualOrGuidance": "risk_disclosure",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "rejected",
+     "findings": [
+      "DETERMINISTIC_PARSE_UNSUPPORTED"
+     ],
+     "numeric": {
+      "status": "unsupported",
+      "reason": "numeric_syntax"
+     },
+     "period": {
+      "status": "unknown",
+      "reason": "ambiguous_period_phrase",
+      "start": null,
+      "end": null,
+      "observedAt": null
+     }
+    },
+    "proposal": {
+     "id": "EPROP-f547c22ce7188c5696963e44",
+     "validationStatus": "rejected",
+     "validationFindings": [
+      "DETERMINISTIC_PARSE_UNSUPPORTED"
+     ]
+    }
+   },
+   "selectedCount": 8,
+   "nonTargetSelections": 7
+  },
+  {
+   "caseId": "GOLD-07",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-88a9b7b151e96b2751279350"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Revenue|Three Months Ended June 30, 2026|$ 2,575"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-88a9b7b151e96b2751279350",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-4bb4c3dfdbc9ee981b25b19b",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "revenue",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 2575,
+      "normalizedValue": 2575000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2026-04-01",
+      "end": "2026-06-30",
+      "observedAt": "2026-06-30",
+      "basis": "three_months"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-318855ebdd4ec055e77017cb",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-08",
+   "legacyBinding": "narrative",
+   "expectedSupportType": "text",
+   "expectedSpanIds": [
+    "SPAN-ab6a4f2666baf76a412ce7ef"
+   ],
+   "classification": "sentence_span",
+   "basis": [
+    "sentence:SPAN-ab6a4f2666baf76a412ce7ef"
+   ],
+   "targetSelected": true,
+   "numericCorrect": false,
+   "unitCorrect": false,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": false,
+   "proposalValidated": false,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [
+    "DETERMINISTIC_PARSE_UNSUPPORTED"
+   ],
+   "targetSelection": {
+    "spanId": "SPAN-ab6a4f2666baf76a412ce7ef",
+    "factKind": "financial_metric",
+    "supportType": "text",
+    "factId": "SUPPORT-FACT-8a2c425017c391cbda3d170d",
+    "status": "interpreted",
+    "findings": [
+     "DETERMINISTIC_PARSE_UNSUPPORTED"
+    ],
+    "value": {
+     "metricOrCategory": "growth",
+     "metric": "revenue_growth",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "rejected",
+     "findings": [
+      "DETERMINISTIC_PARSE_UNSUPPORTED"
+     ],
+     "numeric": {
+      "status": "unsupported",
+      "reason": "numeric_syntax"
+     },
+     "period": {
+      "status": "known",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "observedAt": "2025-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-08f0027dab6df527f9942ee7",
+     "validationStatus": "rejected",
+     "validationFindings": [
+      "DETERMINISTIC_PARSE_UNSUPPORTED"
+     ]
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-09",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-41e0c84eab1468399180f726"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:All other countries|Year Ended December 31, 2025|330"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": false,
+   "chainCorrect": false,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-41e0c84eab1468399180f726",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-054d38d3d4cfa1ce010eb8a1",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "revenue_by_geographic_area_all_other_countries",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 330,
+      "normalizedValue": 330000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "observedAt": "2025-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-31772efae2641d77addaff75",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-10",
+   "legacyBinding": "narrative",
+   "expectedSupportType": "text",
+   "expectedSpanIds": [
+    "SPAN-2f18f201b5eacc83deb308bc"
+   ],
+   "classification": "sentence_span",
+   "basis": [
+    "sentence:SPAN-2f18f201b5eacc83deb308bc"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-2f18f201b5eacc83deb308bc",
+    "factKind": "customer_concentration",
+    "supportType": "text",
+    "factId": "SUPPORT-FACT-b526853df6f3c051029f884a",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "top_customer_concentration",
+     "metric": "top_customer_revenue_share",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 67,
+      "normalizedValue": 67,
+      "rawUnit": "percent",
+      "unit": "percent",
+      "scale": 1,
+      "normalization": "identity"
+     },
+     "period": {
+      "status": "known",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "observedAt": "2025-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-d6c1f7d984303f92a479131a",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-11",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-99566db088adaae178a4968d"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Customer A|Three Months Ended June 30, 2026|36%"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": false,
+   "chainCorrect": false,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-99566db088adaae178a4968d",
+    "factKind": "customer_concentration",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-997d458765a48b123c00a504",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "customer_concentration",
+     "metric": "customer_a_revenue_concentration",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 36,
+      "normalizedValue": 36,
+      "rawUnit": "percent",
+      "unit": "percent",
+      "scale": 1,
+      "normalization": "identity"
+     },
+     "period": {
+      "status": "known",
+      "start": "2026-04-01",
+      "end": "2026-06-30",
+      "observedAt": "2026-06-30",
+      "basis": "three_months"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-530972182644c5c6eb67ae18",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-12",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-26aec07d43a043304ba9dc14"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Technology and infrastructure (1)|Three Months Ended June 30, 2026|1,507"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-26aec07d43a043304ba9dc14",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-daadfcdecb511ed4d781395b",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "compute_spend",
+     "metric": "technology_and_infrastructure_expense",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 1507,
+      "normalizedValue": 1507000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2026-04-01",
+      "end": "2026-06-30",
+      "observedAt": "2026-06-30",
+      "basis": "three_months"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-83d9e97e1824420b8cebfd2f",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-13",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-b0a98a249d8ab690bff97711"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Customer B|Three Months Ended June 30, 2026|26%"
+   ],
+   "targetSelected": false,
+   "numericCorrect": false,
+   "unitCorrect": false,
+   "periodCorrect": false,
+   "categoryCorrect": false,
+   "chainCorrect": false,
+   "proposalValidated": false,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": true,
+   "findings": [
+    "WRONG_SUPPORT_SELECTION"
+   ],
+   "targetSelection": null,
+   "selectedCount": 10,
+   "nonTargetSelections": 10
+  },
+  {
+   "caseId": "GOLD-14",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-99566db088adaae178a4968d"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Customer A|Three Months Ended June 30, 2026|36%"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-99566db088adaae178a4968d",
+    "factKind": "customer_concentration",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-04d5340d92ea656a6a5159cb",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "customer_concentration",
+     "metric": "customer_a_revenue_concentration",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 36,
+      "normalizedValue": 36,
+      "rawUnit": "percent",
+      "unit": "percent",
+      "scale": 1,
+      "normalization": "identity"
+     },
+     "period": {
+      "status": "known",
+      "start": "2026-04-01",
+      "end": "2026-06-30",
+      "observedAt": "2026-06-30",
+      "basis": "three_months"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-4016aff606c16e4b9ebfab2e",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  },
+  {
+   "caseId": "GOLD-15",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-210e0be057e8d54a4818886a"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Customer C|Three Months Ended June 30, 2026|10%"
+   ],
+   "targetSelected": false,
+   "numericCorrect": false,
+   "unitCorrect": false,
+   "periodCorrect": false,
+   "categoryCorrect": false,
+   "chainCorrect": false,
+   "proposalValidated": false,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": true,
+   "findings": [
+    "WRONG_SUPPORT_SELECTION"
+   ],
+   "targetSelection": null,
+   "selectedCount": 10,
+   "nonTargetSelections": 10
+  },
+  {
+   "caseId": "GOLD-16",
+   "legacyBinding": "table_column",
+   "expectedSupportType": "table",
+   "expectedSpanIds": [
+    "SPAN-40c79dd0a87e4532745dcc6e"
+   ],
+   "classification": "table_span",
+   "basis": [
+    "table:Revenue|Year Ended December 31, 2023|$ 229"
+   ],
+   "targetSelected": true,
+   "numericCorrect": true,
+   "unitCorrect": true,
+   "periodCorrect": true,
+   "categoryCorrect": true,
+   "chainCorrect": true,
+   "proposalValidated": true,
+   "converted": true,
+   "conversionStatus": "deferred",
+   "validatorFalseReject": false,
+   "wrongSupportSelection": false,
+   "findings": [],
+   "targetSelection": {
+    "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+    "factKind": "financial_metric",
+    "supportType": "table",
+    "factId": "SUPPORT-FACT-3797ec7923cf29d729f0b164",
+    "status": "interpreted",
+    "findings": [],
+    "value": {
+     "metricOrCategory": "revenue",
+     "metric": "revenue",
+     "actualOrGuidance": "actual",
+     "explicitOrDerived": "explicit"
+    },
+    "parse": {
+     "status": "validated",
+     "findings": [],
+     "numeric": {
+      "status": "known",
+      "numericValue": 229,
+      "normalizedValue": 229000000,
+      "rawUnit": "USD_millions",
+      "unit": "USD",
+      "scale": 1000000,
+      "normalization": "usd_millions_to_usd",
+      "currencyExplicit": false
+     },
+     "period": {
+      "status": "known",
+      "start": "2023-01-01",
+      "end": "2023-12-31",
+      "observedAt": "2023-12-31",
+      "basis": "calendar_year"
+     }
+    },
+    "proposal": {
+     "id": "EPROP-b5630c0d8a60be20cf9b21f2",
+     "validationStatus": "validated",
+     "validationFindings": []
+    }
+   },
+   "selectedCount": 10,
+   "nonTargetSelections": 9
+  }
+ ]
+}

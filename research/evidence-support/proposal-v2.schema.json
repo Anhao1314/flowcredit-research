@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:evidence-support:proposal:v2",
+  "title": "evidence-proposal-v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "proposalVersion",
+    "subjectId",
+    "category",
+    "metric",
+    "scope",
+    "support",
+    "fact",
+    "rawValueText",
+    "rawUnitText",
+    "periodText",
+    "value",
+    "period",
+    "provenance",
+    "inputHash",
+    "outputHash",
+    "rawResponseHash",
+    "createdAt",
+    "validation"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "proposalVersion": {"const": "evidence-proposal/v2"},
+    "subjectId": {"type": "string", "minLength": 1},
+    "category": {"type": "string", "minLength": 1},
+    "metric": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,79}$"},
+    "scope": {"const": "consolidated_company"},
+    "support": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "supportVersion", "subjectId", "sourceId", "documentId", "spanId", "parentSpanId", "page", "section", "text", "textHash", "charStart", "charEnd", "documentCharStart", "documentCharEnd", "lineStart", "lineEnd", "parserVersion", "groundingVersion", "segmentationVersion", "spanHash", "availableAt", "supportHash"],
+          "properties": {
+            "type": {"const": "text"},
+            "supportVersion": {"const": "source-support/v1"},
+            "subjectId": {"type": "string", "minLength": 1},
+            "sourceId": {"type": "string", "minLength": 1},
+            "documentId": {"type": "string", "minLength": 1},
+            "spanId": {"type": "string", "minLength": 1},
+            "parentSpanId": {"type": "string", "minLength": 1},
+            "page": {"type": "integer", "minimum": 1},
+            "section": {"type": "string", "minLength": 1},
+            "text": {"type": "string", "minLength": 1},
+            "textHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+            "charStart": {"type": "integer", "minimum": 0},
+            "charEnd": {"type": "integer", "minimum": 1},
+            "documentCharStart": {"type": "integer", "minimum": 0},
+            "documentCharEnd": {"type": "integer", "minimum": 1},
+            "lineStart": {"type": "integer", "minimum": 0},
+            "lineEnd": {"type": "integer", "minimum": 0},
+            "parserVersion": {"type": "string", "minLength": 1},
+            "groundingVersion": {"type": "string", "minLength": 1},
+            "segmentationVersion": {"type": "string", "minLength": 1},
+            "spanHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+            "availableAt": {"type": "string", "minLength": 1},
+            "supportHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "supportVersion", "subjectId", "sourceId", "documentId", "spanId", "tableId", "page", "tableIndex", "rowIndex", "columnIndex", "rowLabel", "columnLabel", "headerPath", "cellText", "cellHash", "unitContext", "tableTitle", "parserVersion", "groundingVersion", "spanHash", "availableAt", "supportHash"],
+          "properties": {
+            "type": {"const": "table"},
+            "supportVersion": {"const": "source-support/v1"},
+            "subjectId": {"type": "string", "minLength": 1},
+            "sourceId": {"type": "string", "minLength": 1},
+            "documentId": {"type": "string", "minLength": 1},
+            "spanId": {"type": "string", "minLength": 1},
+            "tableId": {"type": "string", "minLength": 1},
+            "page": {"type": "integer", "minimum": 1},
+            "tableIndex": {"type": "integer", "minimum": 0},
+            "rowIndex": {"type": "integer", "minimum": 0},
+            "columnIndex": {"type": "integer", "minimum": 0},
+            "rowLabel": {"type": "string"},
+            "columnLabel": {"type": "string"},
+            "headerPath": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "cellText": {"type": "string", "minLength": 1},
+            "cellHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+            "unitContext": {
+              "anyOf": [
+                {"type": "null"},
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["match", "scale", "currency", "captionText"],
+                  "properties": {
+                    "match": {"type": "string", "minLength": 1},
+                    "scale": {"enum": ["thousands", "millions", "billions"]},
+                    "currency": {"const": "USD"},
+                    "captionText": {"type": "string"}
+                  }
+                }
+              ]
+            },
+            "tableTitle": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+            "parserVersion": {"type": "string", "minLength": 1},
+            "groundingVersion": {"type": "string", "minLength": 1},
+            "spanHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+            "availableAt": {"type": "string", "minLength": 1},
+            "supportHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+          }
+        }
+      ]
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actualOrGuidance", "explicitOrDerived"],
+      "properties": {
+        "actualOrGuidance": {"enum": ["actual", "guidance", "risk_disclosure", "other"]},
+        "explicitOrDerived": {"enum": ["explicit", "derived"]}
+      }
+    },
+    "rawValueText": {"anyOf": [{"type": "string", "minLength": 1, "maxLength": 150}, {"type": "null"}]},
+    "rawUnitText": {"anyOf": [{"type": "string", "minLength": 1, "maxLength": 80}, {"type": "null"}]},
+    "periodText": {"anyOf": [{"type": "string", "minLength": 1, "maxLength": 180}, {"type": "null"}]},
+    "value": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rawValue", "normalizedValue", "rawUnit", "unit", "normalization"],
+          "properties": {
+            "rawValue": {"type": "number"},
+            "normalizedValue": {"type": "number"},
+            "rawUnit": {"enum": ["USD", "USD_millions", "USD_billions", "percent", "days", "customers"]},
+            "unit": {"enum": ["USD", "percent", "days", "customers"]},
+            "normalization": {"enum": ["identity", "usd_millions_to_usd", "usd_billions_to_usd"]}
+          }
+        }
+      ]
+    },
+    "period": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end", "observedAt", "basis"],
+          "properties": {
+            "start": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]},
+            "end": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]},
+            "observedAt": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]},
+            "basis": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supportContractVersion", "validationVersion", "validatorHash", "parserVersion", "groundingVersion", "segmentationVersion", "modelProvider", "modelName", "modelVersion", "providerKind", "temperature", "selectionPromptVersion", "selectionPromptHash", "interpretationPromptVersion", "interpretationPromptHash"],
+      "properties": {
+        "supportContractVersion": {"const": "source-support/v1"},
+        "validationVersion": {"const": "grounded-evidence-validation/v2"},
+        "validatorHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "parserVersion": {"type": "string", "minLength": 1},
+        "groundingVersion": {"type": "string", "minLength": 1},
+        "segmentationVersion": {"anyOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "modelProvider": {"type": "string", "minLength": 1},
+        "modelName": {"type": "string", "minLength": 1},
+        "modelVersion": {"type": "string", "minLength": 1},
+        "providerKind": {"enum": ["test", "real"]},
+        "temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "selectionPromptVersion": {"type": "string", "minLength": 1},
+        "selectionPromptHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "interpretationPromptVersion": {"type": "string", "minLength": 1},
+        "interpretationPromptHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    },
+    "inputHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "outputHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "rawResponseHash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "findings", "version"],
+      "properties": {
+        "status": {"enum": ["validated", "rejected"]},
+        "findings": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "version": {"const": "grounded-evidence-validation/v2"}
+      }
+    }
+  }
+}

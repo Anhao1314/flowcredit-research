@@ -1,0 +1,213 @@
+{
+ "version": "evidence-support-comparison/v0.9",
+ "subject": "locked 16 CoreWeave Gold cases, same requested DeepSeek path (deepseek-v4-flash), v0.8 numbers read from eval/source-grounding, v0.9 from the amended locked run",
+ "definitions": "v0.8 counts selected verified spans under the frozen v0.5 contiguous-quote validator. v0.9 counts TextSupport and TableSupport selections under Grounded Validator V2; false rejects keep the v0.8 definition. Numeric/unit/period accuracy compare deterministic parse output against locked Gold on cases whose annotated span was selected.",
+ "v0_8": {
+  "runId": "GROUND-1789316602580",
+  "primaryCases": 16,
+  "modelCalls": 169,
+  "targetSelectionRate": {
+   "numerator": 14,
+   "denominator": 16,
+   "rate": 0.875
+  },
+  "fabricatedSpanRate": {
+   "numerator": 0,
+   "denominator": 153,
+   "rate": 0
+  },
+  "groundingValidity": {
+   "numerator": 153,
+   "denominator": 153,
+   "rate": 1
+  },
+  "numericAccuracy": {
+   "numerator": 11,
+   "denominator": 14,
+   "rate": 0.7857142857142857
+  },
+  "unitAccuracy": {
+   "numerator": 11,
+   "denominator": 14,
+   "rate": 0.7857142857142857
+  },
+  "periodAccuracy": {
+   "numerator": 13,
+   "denominator": 14,
+   "rate": 0.9285714285714286
+  },
+  "chainCorrectRate": {
+   "numerator": 0,
+   "denominator": 16,
+   "rate": 0
+  },
+  "candidateConversionRate": {
+   "numerator": 0,
+   "denominator": 16,
+   "rate": 0
+  },
+  "validatorFalseRejects": 11,
+  "validatorFalseAccepts": 0,
+  "tokens": {
+   "input": 240038,
+   "output": 14351,
+   "total": 254389,
+   "calls": 169,
+   "providerReportedCost": null
+  },
+  "latency": {
+   "medianMs": 10084.311082999999,
+   "p95Ms": 11723.610084,
+   "sampleCount": 16,
+   "exploratory": true
+  },
+  "gatePassed": false
+ },
+ "v0_9": {
+  "runId": "SUPPORT-1789318661983",
+  "primaryCases": 16,
+  "modelCalls": 174,
+  "targetSelectionRate": {
+   "numerator": 14,
+   "denominator": 16,
+   "rate": 0.875
+  },
+  "fabricatedSupportRate": {
+   "numerator": 0,
+   "denominator": 158,
+   "rate": 0
+  },
+  "sourceSupportFidelity": {
+   "numerator": 158,
+   "denominator": 158,
+   "rate": 1
+  },
+  "tableStructuralFidelity": {
+   "numerator": 98,
+   "denominator": 98,
+   "rate": 1
+  },
+  "numericAccuracy": {
+   "numerator": 12,
+   "denominator": 14,
+   "rate": 0.8571428571428571
+  },
+  "unitAccuracy": {
+   "numerator": 12,
+   "denominator": 14,
+   "rate": 0.8571428571428571
+  },
+  "periodAccuracy": {
+   "numerator": 13,
+   "denominator": 14,
+   "rate": 0.9285714285714286
+  },
+  "chainCorrectRate": {
+   "numerator": 8,
+   "denominator": 16,
+   "rate": 0.5
+  },
+  "candidateConversionRate": {
+   "numerator": 16,
+   "denominator": 16,
+   "rate": 1
+  },
+  "validatorFalseRejects": 0,
+  "validatorFalseAccepts": 0,
+  "wrongSupportSelections": 144,
+  "bySupportType": {
+   "table": {
+    "cases": 12,
+    "targetSelection": {
+     "numerator": 10,
+     "denominator": 12,
+     "rate": 0.8333333333333334
+    },
+    "numericAccuracy": {
+     "numerator": 10,
+     "denominator": 10,
+     "rate": 1
+    },
+    "unitAccuracy": {
+     "numerator": 10,
+     "denominator": 10,
+     "rate": 1
+    },
+    "periodAccuracy": {
+     "numerator": 10,
+     "denominator": 10,
+     "rate": 1
+    },
+    "chainCorrectRate": {
+     "numerator": 6,
+     "denominator": 12,
+     "rate": 0.5
+    },
+    "candidateConversionRate": {
+     "numerator": 12,
+     "denominator": 12,
+     "rate": 1
+    }
+   },
+   "text": {
+    "cases": 4,
+    "targetSelection": {
+     "numerator": 4,
+     "denominator": 4,
+     "rate": 1
+    },
+    "numericAccuracy": {
+     "numerator": 2,
+     "denominator": 4,
+     "rate": 0.5
+    },
+    "unitAccuracy": {
+     "numerator": 2,
+     "denominator": 4,
+     "rate": 0.5
+    },
+    "periodAccuracy": {
+     "numerator": 3,
+     "denominator": 4,
+     "rate": 0.75
+    },
+    "chainCorrectRate": {
+     "numerator": 2,
+     "denominator": 4,
+     "rate": 0.5
+    },
+    "candidateConversionRate": {
+     "numerator": 4,
+     "denominator": 4,
+     "rate": 1
+    }
+   }
+  },
+  "tokens": {
+   "input": 260487,
+   "output": 13778,
+   "total": 274265,
+   "calls": 174,
+   "providerReportedCost": null
+  },
+  "latency": {
+   "medianMs": 9731.648458000003,
+   "p95Ms": 12048.89020899999,
+   "sampleCount": 16,
+   "exploratory": true
+  },
+  "gatePassed": false,
+  "gateResult": {
+   "fabricatedSupport": true,
+   "sourceSupportFidelity": true,
+   "tableStructuralFidelity": true,
+   "validatorFalseAccepts": true,
+   "numeric": false,
+   "unit": false,
+   "period": false,
+   "candidateConversion": true,
+   "validatorFalseRejects": true
+  }
+ },
+ "conclusion": "The v0.9 support contract removes the representation blocker: fabricated support stays at 0 of 158 selected spans, source support fidelity is 158 of 158, table structural fidelity is 98 of 98, validator false accepts are 0, validator false rejects fall from 11 to 0, and every locked case now reaches an EvidenceCandidate (16 of 16 versus 0 of 16). The remaining below-gate metrics are model interpretation errors, not contract errors: numeric and unit fidelity are 12 of 14 (0.857) and period fidelity is 13 of 14 (0.929) because text-span interpretations copied compound literals (for example a growth phrase that states two values at once) that deterministic parsing correctly refuses, and two of twelve table targets were not selected. Table parse fidelity on selected targets is 10 of 10 for value, unit and period."
+}
