@@ -3,6 +3,7 @@ import {readFileSync,statSync,existsSync,realpathSync} from 'node:fs';
 import {resolve,relative,sep,isAbsolute} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {digest} from '../src/identity.js';
+import {configuredLocalProvider} from '../local-model/provider.js';
 const repository=fileURLToPath(new URL('../../',import.meta.url));
 export const defaultCredential=resolve(repository,'..','fc-agent','runtime','dsh-home','.credentials.yaml');
 export function readCredential({env=process.env,path=defaultCredential}={}){
@@ -38,9 +39,11 @@ export function responsesProvider({key,model='deepseek-v4-flash',modelVersion='p
    return texts[0];
   }};
 }
-export function configuredProvider({env=process.env,credentialPath,provider='deepseek'}={}){
- if(provider==='unavailable')return null;
- if(provider!=='deepseek')throw new Error('Unknown configured provider; hosts may inject any v0.5 pure provider');
+export function configuredProvider({env=process.env,credentialPath,provider=null}={}){
+ const mode=provider??env.FC_LLM_MODE??'cloud';
+ if(mode==='unavailable'||mode==='off')return null;
+ if(mode==='local')return configuredLocalProvider({env});
+ if(mode!=='cloud'&&mode!=='deepseek')throw new Error('Unknown provider mode; expected off|local|cloud');
  const key=readCredential({env,path:credentialPath??defaultCredential});if(!key)return null;
  return responsesProvider({key,model:env.DEEPSEEK_MODEL??env.FC_MODEL??'deepseek-v4-flash',modelVersion:env.FC_REAL_MODEL_VERSION??'provider-unreported',structuredOutputMode:env.FC_REAL_STRUCTURED_MODE??'native_json_schema'});
 }

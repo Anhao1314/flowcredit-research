@@ -21,7 +21,9 @@
     "grounding": "node grounding/cli.js",
     "test:grounding": "node --test grounding-test/*.test.js",
     "evidence-support": "node evidence-support/cli.js",
-    "test:evidence-support": "node --test evidence-support-test/*.test.js"
+    "test:evidence-support": "node --test evidence-support-test/*.test.js",
+    "local-model": "node local-model/cli.js",
+    "test:local-model": "node --test local-model-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

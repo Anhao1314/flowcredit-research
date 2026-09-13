@@ -1,0 +1,53 @@
+{
+ "platform": "darwin",
+ "release": "25.6.0",
+ "arch": "arm64",
+ "osVersion": "26.6",
+ "hardwareModel": "Mac17,3",
+ "cpuModel": "Apple M5",
+ "cpuCores": 10,
+ "memoryBytes": 17179869184,
+ "diskFreeBytes": 790898798592,
+ "runtimeDirectory": "/Users/yimingyang/fc-agent/tools/ollama",
+ "runtimeBytes": 694001664,
+ "gpuUtilization": "unavailable",
+ "provider": {
+  "kind": "real",
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "temperature": 0,
+  "contextLength": 8192,
+  "think": false,
+  "structuredOutputMode": "ollama_json_schema",
+  "endpointOrigin": "http://127.0.0.1:11434",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  },
+  "modelInfo": {
+   "size": 6594474711,
+   "family": "qwen35",
+   "parameterSize": "9.7B",
+   "quantization": "Q4_K_M",
+   "contextLength": 262144,
+   "format": "gguf"
+  }
+ },
+ "endpoint": "http://127.0.0.1:11434",
+ "coldStartMs": 281,
+ "modelLoadMs": 1,
+ "resource": {
+  "samples": 1,
+  "ollamaRssBytes": {
+   "first": 6521208832,
+   "peak": 6521208832,
+   "last": 6521208832
+  },
+  "swapUsedBytes": {
+   "first": 10322769347,
+   "peak": 10322769347,
+   "last": 10322769347
+  }
+ }
+}

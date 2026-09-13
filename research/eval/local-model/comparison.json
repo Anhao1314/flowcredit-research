@@ -1,0 +1,122 @@
+{
+ "version": "local-model-comparison/v0.10",
+ "subject": "locked 16 CoreWeave Gold, identical prompts, SourceSpans, SourceSupport, EvidenceProposal contract, Grounded Validator V2 and Candidate conversion; the only experimental variable is the model/provider runtime",
+ "baseline": {
+  "provider": "deepseek",
+  "runId": "SUPPORT-1789318661983",
+  "artifacts": "research/eval/evidence-support/{results,comparison,false-rejects,injection,runtime-costs}.json",
+  "modelCalls": 174,
+  "tokens": {
+   "input": 260487,
+   "output": 13778,
+   "total": 274265,
+   "calls": 174,
+   "providerReportedCost": null
+  },
+  "latency": {
+   "medianMs": 9731.648458000003,
+   "p95Ms": 12048.89020899999,
+   "sampleCount": 16,
+   "exploratory": true
+  }
+ },
+ "local": {
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "modelCalls": 142,
+  "tokens": {
+   "input": 166630,
+   "output": 15374,
+   "total": 182004,
+   "calls": 142,
+   "providerReportedCost": null
+  },
+  "latency": {
+   "medianMs": 110462.481292,
+   "p95Ms": 238695.95304200007,
+   "sampleCount": 16,
+   "exploratory": true
+  }
+ },
+ "table": [
+  {
+   "metric": "target selection",
+   "local": 0.6875,
+   "baseline": 0.875,
+   "delta": -0.1875
+  },
+  {
+   "metric": "table selection",
+   "local": 0.6666666666666666,
+   "baseline": 0.8333333333333334,
+   "delta": -0.16666666666666674
+  },
+  {
+   "metric": "text selection",
+   "local": 0.75,
+   "baseline": 1,
+   "delta": -0.25
+  },
+  {
+   "metric": "schema validity",
+   "local": 1,
+   "baseline": 1,
+   "delta": 0
+  },
+  {
+   "metric": "numeric accuracy",
+   "local": 0.8181818181818182,
+   "baseline": 0.8571428571428571,
+   "delta": -0.03896103896103886
+  },
+  {
+   "metric": "unit accuracy",
+   "local": 0.8181818181818182,
+   "baseline": 0.8571428571428571,
+   "delta": -0.03896103896103886
+  },
+  {
+   "metric": "period accuracy",
+   "local": 1,
+   "baseline": 0.9285714285714286,
+   "delta": 0.0714285714285714
+  },
+  {
+   "metric": "category accuracy",
+   "local": 0.5454545454545454,
+   "baseline": 0.7142857142857143,
+   "delta": -0.1688311688311689
+  },
+  {
+   "metric": "full chain",
+   "local": 0.375,
+   "baseline": 0.5,
+   "delta": -0.125
+  },
+  {
+   "metric": "candidate conversion",
+   "local": 0.6875,
+   "baseline": 1,
+   "delta": -0.3125
+  },
+  {
+   "metric": "fabricated support",
+   "local": 0,
+   "baseline": 0,
+   "delta": 0
+  },
+  {
+   "metric": "validator false accept",
+   "local": 0,
+   "baseline": 0,
+   "delta": 0
+  },
+  {
+   "metric": "validator false reject",
+   "local": 1,
+   "baseline": 0,
+   "delta": 1
+  }
+ ]
+}

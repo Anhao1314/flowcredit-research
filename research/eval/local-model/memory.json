@@ -1,0 +1,70 @@
+{
+ "version": "local-model-memory/v0.10",
+ "generatedAt": "2026-09-14T02:30:00+08:00",
+ "runtimeReportedFootprint": {
+  "row": [
+   "qwen3.5:9b",
+   "6488c96fa5fa",
+   "5.7",
+   "GB",
+   "100%",
+   "GPU",
+   "8192",
+   "29",
+   "minutes",
+   "from",
+   "now"
+  ],
+  "sizeGb": 5.7,
+  "processor": "100% GPU",
+  "context": 8192,
+  "source": "ollama ps while the model was loaded"
+ },
+ "systemStateLoaded": {
+  "wiredBytes": 9623076864,
+  "freeBytes": 70696960,
+  "activeBytes": 1327300608,
+  "inactiveBytes": 1196081152,
+  "swapUsedBytes": 4209109893
+ },
+ "systemStateUnloaded": {
+  "wiredBytes": 2634645504,
+  "freeBytes": 8114765824,
+  "activeBytes": 1623638016,
+  "inactiveBytes": 1413726208,
+  "swapUsedBytes": 4209109893
+ },
+ "deltaMiBWhileLoaded": {
+  "wiredBytes": 6664.7,
+  "freeBytes": -7671.4,
+  "activeBytes": -282.6,
+  "inactiveBytes": -207.6,
+  "swapUsedBytes": 0.0
+ },
+ "interpretation": {
+  "wiredMemoryDeltaMiB": 6664.7,
+  "freeMemoryDeltaMiB": -7671.4,
+  "swapDeltaMiB": 0.0,
+  "note": "Loading the 9B Q4_K_M model at 8192 context adds about 6.5 GiB of wired memory on a 16 GiB unified-memory machine and adds no measurable swap across a load/unload cycle. The state was captured with the model loaded and again five seconds after the runtime released it."
+ },
+ "method": "macOS vm_stat page counts (wired, free, active, inactive) multiplied by the 16 KiB page size, plus sysctl vm.swapusage, sampled immediately after a real inference call loaded the model and again after ollama stop released it. The runtime footprint row comes from the runtime itself.",
+ "inRunSample": {
+  "samples": 1,
+  "ollamaRssBytes": {
+   "first": 6521208832,
+   "peak": 6521208832,
+   "last": 6521208832
+  },
+  "swapUsedBytes": {
+   "first": 10322769347,
+   "peak": 10322769347,
+   "last": 10322769347
+  }
+ },
+ "limitations": [
+  "Process RSS under-reports model memory on Apple silicon because the Metal allocation is not fully attributed to the runner process; the wired-memory delta and the runtime footprint row are the reliable figures.",
+  "The in-run sampler recorded a single end-of-run sample because the benchmark used a CLI revision whose sampler was constructed but not started; the sampler start was fixed afterwards and the dedicated load/unload measurement above is the figure of record.",
+  "GPU utilization is unavailable without elevated third-party tooling and is reported as unavailable rather than estimated.",
+  "Swap usage on this machine fluctuates with unrelated workloads (measured between 3.9 GiB and 11.6 GiB during the session); only the load/unload delta is attributable to the model."
+ ]
+}

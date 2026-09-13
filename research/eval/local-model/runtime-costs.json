@@ -1,0 +1,144 @@
+{
+ "version": "local-model-runtime-costs/v0.10",
+ "generatedAt": "2026-09-13T18:04:51.933Z",
+ "provider": {
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  }
+ },
+ "paidInferenceApiCostUsd": 0,
+ "paidInferenceApiCalls": 0,
+ "coldStartMs": 281,
+ "modelLoadMs": 1,
+ "gold": {
+  "calls": 140,
+  "inputTokens": 164167,
+  "outputTokens": 15370,
+  "totalTokens": 179537,
+  "callLatency": {
+   "count": 140,
+   "median": 8044.9094160000095,
+   "p95": 34578.496667,
+   "min": 6393.301792000013,
+   "max": 57790.731499999994
+  },
+  "tokensPerSecond": {
+   "count": 140,
+   "median": 14.47865604787609,
+   "p95": 15.869409935665068,
+   "min": 11.781176169089795,
+   "max": 32.67386580843312
+  },
+  "failureCodes": []
+ },
+ "injection": {
+  "calls": 2,
+  "inputTokens": 2463,
+  "outputTokens": 4,
+  "totalTokens": 2467,
+  "callLatency": {
+   "count": 2,
+   "median": 2328.912375,
+   "p95": 2685.6870419999996,
+   "min": 2328.912375,
+   "max": 2685.6870419999996
+  },
+  "tokensPerSecond": {
+   "count": 2,
+   "median": 32.75574044351273,
+   "p95": 35.62966525929489,
+   "min": 32.75574044351273,
+   "max": 35.62966525929489
+  },
+  "failureCodes": []
+ },
+ "total": {
+  "calls": 142,
+  "inputTokens": 166630,
+  "outputTokens": 15374,
+  "totalTokens": 182004,
+  "callLatency": {
+   "count": 142,
+   "median": 8007.8297500000335,
+   "p95": 34578.496667,
+   "min": 2328.912375,
+   "max": 57790.731499999994
+  },
+  "tokensPerSecond": {
+   "count": 142,
+   "median": 14.483683941939614,
+   "p95": 16.076133742833093,
+   "min": 11.781176169089795,
+   "max": 35.62966525929489
+  },
+  "failureCodes": []
+ },
+ "phases": {
+  "gold": {
+   "selection": {
+    "calls": 16,
+    "errors": 3,
+    "latencyMs": {
+     "count": 16,
+     "median": 35612.00054200005,
+     "p95": 60018.528541999985,
+     "min": 12080.379749999964,
+     "max": 60018.528541999985
+    }
+   },
+   "interpretation": {
+    "calls": 127,
+    "errors": 0,
+    "latencyMs": {
+     "count": 127,
+     "median": 7915.196249999921,
+     "p95": 9397.969792000018,
+     "min": 6393.640875000012,
+     "max": 11074.593041999964
+    }
+   }
+  },
+  "injection": {
+   "selection": {
+    "calls": 2,
+    "errors": 0,
+    "latencyMs": {
+     "count": 2,
+     "median": 2329.7527919999998,
+     "p95": 2689.247791,
+     "min": 2329.7527919999998,
+     "max": 2689.247791
+    }
+   },
+   "interpretation": {
+    "calls": 0,
+    "errors": 0,
+    "latencyMs": {
+     "count": 0,
+     "median": null,
+     "p95": null,
+     "min": null,
+     "max": null
+    }
+   }
+  }
+ },
+ "resource": {
+  "samples": 1,
+  "ollamaRssBytes": {
+   "first": 6521208832,
+   "peak": 6521208832,
+   "last": 6521208832
+  },
+  "swapUsedBytes": {
+   "first": 10322769347,
+   "peak": 10322769347,
+   "last": 10322769347
+  }
+ },
+ "note": "Paid inference API cost is zero because no paid inference API was called. Hardware, electricity, disk and elapsed time are not zero and are reported separately. Gold and injection totals are reported separately; total covers both."
+}
