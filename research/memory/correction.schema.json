@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:memory:correction:v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "subjectId",
+    "supersedesEvidenceId",
+    "replacementEvidenceId",
+    "correctionReason",
+    "note",
+    "createdAt",
+    "effectiveAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supersedesEvidenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "replacementEvidenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correctionReason": {
+      "enum": [
+        "unit_extraction_error",
+        "value_extraction_error",
+        "locator_error",
+        "manual_review"
+      ]
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "effectiveAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

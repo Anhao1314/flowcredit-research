@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:memory:revision:v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "subjectId",
+    "claimId",
+    "version",
+    "previousVersion",
+    "previousRevisionId",
+    "claim",
+    "effectiveAt",
+    "createdAt",
+    "revisionReason",
+    "note",
+    "staleEvaluation"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claimId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previousVersion": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "previousRevisionId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "claim": {
+      "type": "object"
+    },
+    "effectiveAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revisionReason": {
+      "enum": [
+        "initial_ingest",
+        "new_supporting_evidence",
+        "new_counter_evidence",
+        "evidence_corrected",
+        "stale_evidence",
+        "manual_review",
+        "rule_change"
+      ]
+    },
+    "note": {
+      "type": "string"
+    },
+    "staleEvaluation": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "referenceDate",
+            "maxAgeDays",
+            "latestObservedAt"
+          ],
+          "properties": {
+            "referenceDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "maxAgeDays": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "latestObservedAt": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

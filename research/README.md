@@ -61,6 +61,6 @@ Existing FlowCredit Risk Engine **≠** Research Coverage Engine.
 
 Revenue/costs require matching AI inference API scope, exact metric, validated units and the actual 27–31-day date-difference window. Consolidated quarter/year revenue is partial context. Accounting cost of revenue is not compute spend; Top-one/Top-three is not Top-five; founding age is not covered operating records. Legal/control disclosures are not confirmed Sybil, tampering or related-party hard events. SEC/IR publication is not system API, cryptographic or cross-verified operator evidence. A checksum detects changed bytes, not authenticity or financial truth.
 
-No API, TAI/CCI/grade calculation, Finch schema/version, UI, authentication or deployment behavior is changed. Only development syntax/CI/full verification checks gain Research coverage. Claim Store is recommended next, **not implemented**.
+No API, TAI/CCI/grade calculation, Finch schema/version, UI, authentication or deployment behavior is changed. Only development syntax/CI/full verification checks gain Research coverage. The v0.1 fixture pipeline remains unchanged; the independent [Research Memory Core v0.2](memory/README.md) now persists Sources, Evidence and Claim revisions with historical queries.
 
 See [pre-implementation audit](REPOSITORY_AUDIT.md), [corpus notes](fixtures/coreweave/README.md) and [full compatibility report](../docs/research-evidence-bridge-v0.1.md).
