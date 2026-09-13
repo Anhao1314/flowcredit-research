@@ -51,6 +51,8 @@ jobs:
         run: node --test ../research/analyst-test/*.test.js
       - name: Research Evidence Analyst Real Validation offline tests
         run: node --test ../research/analyst-real-test/*.test.js
+      - name: Evidence Analyst Contract Stabilization offline tests
+        run: node --test ../research/analyst-staged-test/*.test.js
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract

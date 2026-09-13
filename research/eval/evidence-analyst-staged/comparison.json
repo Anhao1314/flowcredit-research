@@ -1,0 +1,154 @@
+{
+  "historicalComparison": true,
+  "sameRequestedProviderModel": true,
+  "modelSnapshotUnavailable": true,
+  "originalV1Retained": true,
+  "v1": {
+    "runId": "REAL-1789310233599",
+    "primaryCases": 16,
+    "schemaValid": 2,
+    "legalProposals": 20,
+    "exactQuote": {
+      "correct": 20,
+      "total": 20
+    },
+    "fullCorrect": 0,
+    "candidates": 0,
+    "numericClosedGold": {
+      "correct": 3,
+      "total": 20
+    },
+    "unitClosedGold": {
+      "correct": 0,
+      "total": 20
+    },
+    "periodClosedGold": {
+      "correct": 0,
+      "total": 20
+    },
+    "categoryClosedGold": {
+      "correct": 3,
+      "total": 20
+    },
+    "confirmedDateHallucinationInPrimary": 1,
+    "tokens": {
+      "input": 45778,
+      "output": 54768,
+      "total": 100546
+    },
+    "providerLatency": {
+      "medianMs": 10139.726167000015,
+      "p95Ms": 11901.880042000004,
+      "endToEndNotRecorded": true
+    }
+  },
+  "v2": {
+    "runId": "STAGED-1789311715966",
+    "primaryCases": 16,
+    "modelCalls": 128,
+    "metrics": {
+      "schemaValidity": {
+        "numerator": 16,
+        "denominator": 16,
+        "rate": 1
+      },
+      "nativeSchemaValidity": {
+        "numerator": 13,
+        "denominator": 16,
+        "rate": 0.8125
+      },
+      "exactQuoteValidity": {
+        "numerator": 112,
+        "denominator": 171,
+        "rate": 0.6549707602339181
+      },
+      "hallucinatedQuoteRate": {
+        "numerator": 59,
+        "denominator": 171,
+        "rate": 0.34502923976608185
+      },
+      "factKindAccuracy": {
+        "numerator": 14,
+        "denominator": 14,
+        "rate": 1
+      },
+      "interpretationSchemaValidity": {
+        "numerator": 110,
+        "denominator": 112,
+        "rate": 0.9821428571428571
+      },
+      "numericAccuracy": {
+        "numerator": 0,
+        "denominator": 2,
+        "rate": 0
+      },
+      "unitAccuracy": {
+        "numerator": 0,
+        "denominator": 2,
+        "rate": 0
+      },
+      "periodAccuracy": {
+        "numerator": 0,
+        "denominator": 2,
+        "rate": 0
+      },
+      "categoryAccuracy": {
+        "numerator": 0,
+        "denominator": 2,
+        "rate": 0
+      },
+      "fullCorrectEligible": {
+        "numerator": 0,
+        "denominator": 16,
+        "rate": 0
+      },
+      "candidateConversionRate": {
+        "numerator": 0,
+        "denominator": 16,
+        "rate": 0
+      },
+      "correctAbstention": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null
+      },
+      "falseAccepts": 0,
+      "unadjudicatedAccepted": 0,
+      "falseRejects": 0,
+      "goldMappingLimitations": 12
+    },
+    "nativeInterpretationValid": 110,
+    "tokens": {
+      "input": 159952,
+      "output": 13796,
+      "total": 173748,
+      "providerReportedCost": null
+    },
+    "endToEndLatency": {
+      "medianMs": 9575.11504199999,
+      "p95Ms": 27343.696041999996,
+      "sampleCount": 16,
+      "exploratory": true
+    },
+    "providerSummedLatency": {
+      "medianMs": 6054.321167000016,
+      "p95Ms": 14117.143204999971
+    },
+    "independentReview": {
+      "acceptance": {
+        "numerator": 2,
+        "denominator": 14
+      },
+      "falseAccept": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "falseReject": {
+        "numerator": 4,
+        "denominator": 6
+      },
+      "note": "Includes independently reviewed non-Gold extras. Gold target full-correct remains0/16 and target false-reject denominator0. Existing validator not modified; complex comparative binding rejects remain correct under configured representation policy."
+    }
+  },
+  "denominatorNote": "v1 numeric/unit/period/category are closed-Gold Proposal field agreement, v2 are target case agreement on applicable verified narrative spans; different populations. Always show counts, do not present accuracy deltas as comparable scores. Quote rates conditional on emitted legal records; malformed v1 output never repaired."
+}

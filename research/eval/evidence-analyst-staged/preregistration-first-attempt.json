@@ -1,0 +1,19 @@
+{
+  "registeredAt": "2026-09-13T14:53:40.587Z",
+  "beforeLockedEvaluation": true,
+  "spanPromptHash": "sha256:319946df76d16b51856226817fb8a2bc1848906d96e249d5b993f76a0030cd95",
+  "interpretationPromptHash": "sha256:305dbb75c1be000adf25f2f1c299613de08b02e6b7f36274ca8dd20147a9f55c",
+  "fileHashes": {
+    "research/analyst-staged/layer.js": "sha256:2d112b4ceea55fea987156d4924da9d5cdd437d89c56e84ba9ef997c9ef23e54",
+    "research/analyst-staged/parsers.js": "sha256:18c12a993f37ce136a570727bc7149a3895955359e1b1d29aa2cd551160bf987",
+    "research/analyst-staged/contract.js": "sha256:44a91463600ba081e875d8000133072f6419593ea58afd80f45a3470656d607b",
+    "research/analyst-staged/development.json": "sha256:7e5d0e16e3146f1ecabf6f4e82e6d935ab5c2d6c79efeeb729e3195fcc4ddba4",
+    "research/eval/evidence-analyst-real/locked.json": "sha256:dfcce623dc8a1bea56e981bac56ee9911bb2935cd7287cac3584c1c522245267"
+  },
+  "developmentRunId": "STAGED-1789311190915",
+  "nativeStructure": "native_json_schema",
+  "wrapperRule": "Only one full-response literal ```json newline body newline ``` wrapper; strict schema afterwards; no field/root/semantic repair",
+  "plannedCases": 16,
+  "additionalProvider": false,
+  "interpretationSchemaThreshold": 0.9
+}

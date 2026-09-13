@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:interpretation-output:v0.7",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metricOrCategory",
+    "metric",
+    "rawValueText",
+    "rawUnitText",
+    "periodText",
+    "actualOrGuidance",
+    "explicitOrDerived"
+  ],
+  "properties": {
+    "metricOrCategory": {
+      "enum": [
+        "revenue",
+        "growth",
+        "revenue_concentration",
+        "customer_concentration",
+        "top_customer_concentration",
+        "debt",
+        "cash",
+        "cash_flow",
+        "capex",
+        "backlog_rpo",
+        "guidance",
+        "liquidity",
+        "operating_history",
+        "compute_spend",
+        "risk_factors",
+        "integrity_legal_reporting"
+      ]
+    },
+    "metric": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,79}$"
+    },
+    "rawValueText": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rawUnitText": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "periodText": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "actualOrGuidance": {
+      "enum": [
+        "actual",
+        "guidance",
+        "risk_disclosure",
+        "other"
+      ]
+    },
+    "explicitOrDerived": {
+      "enum": [
+        "explicit",
+        "derived"
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "evidence-analyst-contract-gate/v0.7",
+  "registeredBeforeLockedEvaluation": true,
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "primaryProvider": "deepseek",
+  "requestedModel": "deepseek-v4-flash",
+  "spanPromptVersion": "evidence-span/v1",
+  "interpretationPromptVersion": "fact-interpretation/v1",
+  "thresholds": {"schemaValid":0.9,"exactQuoteValid":1,"hallucinatedQuoteOrDate":0,"numericAccuracy":0.95,"unitAccuracy":0.95,"periodAccuracy":0.95,"fullCorrectEligible":0.8,"validatorFalseAccepts":0},
+  "denominators": "Always show numerator/denominator.16 original eligible cases remain full-correct denominator. General tables excluded only from applicable parser accuracy, with explicit Gold mapping limitation; never removed from16. Empty applicability cannot pass a gate.",
+  "comparison": "Preserve immutable actual v0.6 Contract v1 baseline. Same16 Gold and same DeepSeek path/model for Contract v2; historical comparison, no claim of contemporaneous controlled model snapshot. Token comparison includes primary16 end-to-end separately from controls/repeats/development.",
+  "decision": "No automatic next stage. GO only if all gates pass and context discovery is demonstrably main bottleneck; otherwise STAY or CONSIDER MODEL COMPARISON when structurally stable and model errors dominate."
+}

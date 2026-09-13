@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:span-output:v0.7",
+  "type": "array",
+  "maxItems": 12,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "quote",
+      "factKind"
+    ],
+    "properties": {
+      "quote": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      },
+      "factKind": {
+        "enum": [
+          "financial_metric",
+          "customer_concentration",
+          "guidance",
+          "risk_disclosure",
+          "operating_fact",
+          "liquidity_fact",
+          "debt_fact",
+          "cash_flow_fact",
+          "capex_fact",
+          "backlog_or_rpo",
+          "other_explicit_fact"
+        ]
+      }
+    }
+  }
+}

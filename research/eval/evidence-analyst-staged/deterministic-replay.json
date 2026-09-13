@@ -1,0 +1,10 @@
+{
+  "runId": "STAGED-1789311715966",
+  "originalRawUnchanged": true,
+  "modelRecalled": false,
+  "interpretationsReplayed": 110,
+  "changedParseResults": 0,
+  "originalPreregistrationRetained": true,
+  "currentParserHash": "sha256:34a608eb21e9c139d478a196564b5f5b64b2726c0167914a6b7a3d2af5852133",
+  "reason": "Conservative post-run fix for independent synthetic Q2 fiscal-vs-calendar ambiguity. No captured real period uses ambiguous Q labels; all110 actual fact parse results identical. Original Gold/prompt/provider output and primary metrics unchanged."
+}

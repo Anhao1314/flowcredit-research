@@ -72,3 +72,5 @@ Independent [Research Retrieval Layer v0.3](retrieval/README.md) searches verifi
 Research Evidence Analyst v0.5: [CLI and boundary](analyst/README.md), [delivery](../docs/research-evidence-analyst-v0.5.md).
 
 Research Evidence Analyst Real Model Validation v0.6: [opt-in CLI and offline tests](analyst-real/README.md), [actual experiment and A–P delivery](../docs/research-evidence-analyst-real-validation-v0.6.md). The configured real model did not meet the conversion gate; recommendation is STAY on Evidence Analyst.
+
+Evidence Analyst Contract Stabilization v0.7 introduces [two-pass quote discovery and raw-text interpretation](analyst-staged/README.md), conservative deterministic parsing and the unchanged final validator. Actual capability and phase-gate findings are recorded in the [v0.7 delivery](../docs/evidence-analyst-contract-stabilization-v0.7.md).

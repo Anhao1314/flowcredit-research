@@ -15,7 +15,9 @@
     "analyst": "node src/analyst.js",
     "test:analyst": "node --test analyst-test/*.test.js",
     "analyst-real": "node analyst-real/cli.js",
-    "test:analyst-real": "node --test analyst-real-test/*.test.js"
+    "test:analyst-real": "node --test analyst-real-test/*.test.js",
+    "analyst-staged": "node analyst-staged/cli.js",
+    "test:analyst-staged": "node --test analyst-staged-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

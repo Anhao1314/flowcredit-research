@@ -1,0 +1,479 @@
+{
+  "runId": "STAGED-1789311715966",
+  "quoteFailures": [
+    {
+      "caseId": "GOLD-04",
+      "spanProposalId": "SPAN-1525395f3b00aab60a8ee560",
+      "quoteHash": "sha256:b9b357de1758f3405530bfcd328758a6d2ad11ca63fcfac1f2025df57d33a80d",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-04",
+      "spanProposalId": "SPAN-91b8dbf05ad76a1b8581eae2",
+      "quoteHash": "sha256:ac2b75a9d0ac4ae9ec644739a7ace6a58dcd9026060050f930bb7e04e572e0c4",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-04",
+      "spanProposalId": "SPAN-9e7aaecce0197f241ea9d724",
+      "quoteHash": "sha256:8ced743add39fffa1315b828056000351c6c86daac7cb4dd0c4573d65c5b00ff",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-04",
+      "spanProposalId": "SPAN-5557f915c8502a2fc83d9a0e",
+      "quoteHash": "sha256:dbc654f1d23988da2d38a807eca5552ae5792e5e224a7304b2879fc911f35731",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-04",
+      "spanProposalId": "SPAN-3f8cf2292b988897f9b8bbd5",
+      "quoteHash": "sha256:567d58e3f59f5443c3e829ce6136354c900b2acb2f623838a6a4d459dc7fc743",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-04",
+      "spanProposalId": "SPAN-7e9ff3e0175d5f7dfe706695",
+      "quoteHash": "sha256:e14257a2a6f7e76cbd95b22907238f5d7cc94f9f77d0b3834a3ec20cdceb0746",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "spanProposalId": "SPAN-d3579dc9627ff815c90d5f1d",
+      "quoteHash": "sha256:c1930495297d7994330d237c80e3d453d817523e046b0e7c9dd90210955b831f",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "spanProposalId": "SPAN-1daa748b4e1d835d8a4383a3",
+      "quoteHash": "sha256:72348debb0ff748cbb73047e5b28652165c867cf2fc37689de11097a839179eb",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "spanProposalId": "SPAN-bb29e0d30c9e3afe718b4006",
+      "quoteHash": "sha256:cd84eb40ddc59526068b37de8295e989cc921976cda02b81aa6cf45565c3293b",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "spanProposalId": "SPAN-009949dd99c75e70433a8f71",
+      "quoteHash": "sha256:df148af4a2869af37d509e4df0b4e2184e7a0b9d66d454eb6cf30f38ffbb567e",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "spanProposalId": "SPAN-9fde22657d9add759295c57c",
+      "quoteHash": "sha256:a3cbe7c2477220c8d9a59b1d9b9ca8e0bdb2522cd8ac28ec7abfddef3af4eb7c",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "spanProposalId": "SPAN-63b703caed000a0e8b67e995",
+      "quoteHash": "sha256:6723f68d488cab7e26b656cfcebc943ae67d60166baffeb0114123bd0b71a2a7",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-0c5101ed8a6162d6b227f20e",
+      "quoteHash": "sha256:30eb8e1390bd44fbcf6e5248c099ad7cea52fb2c9f0362a6d42f6324ece55ec4",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-8b06aab2b26da8e367562bfb",
+      "quoteHash": "sha256:6def0c6f03e10e453d2d88243e3eb36512543491e677a792a3d7794fd37f26de",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-869187c98416e23cbcce09b9",
+      "quoteHash": "sha256:a3f631b428601f665c656adc79c415e5d1c2b48c865b4a5d6fe26c57bf65cd08",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-33c5e59e2584c694e7db673d",
+      "quoteHash": "sha256:c8bc1a466ad997d8de1ded972b16b35de7dbf12ed5e3e5e38569fcd0e073f5ef",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-d482d513bdfcd90f15fa3c80",
+      "quoteHash": "sha256:992d9b7c2864b502bda003aaed2278c0ab73fa15babd050d211169f9f6bab2de",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-a2dbb662eea861b5ac966e92",
+      "quoteHash": "sha256:7a4b054992715cca17048ff469285cd705514d2a54d389f4959af5c4619b96f1",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-db7094907ab21d73ad5c3610",
+      "quoteHash": "sha256:99d103a86378586f43ab660ed59dc71e34da8fdf6695f06f909247148a185048",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-06",
+      "spanProposalId": "SPAN-41cc552e216ff095874ebe63",
+      "quoteHash": "sha256:dfbebccc0a4633a07aa411f41f1e2b8feaed7c4bc5918ea6f214c02ffa3acfca",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-781b58afee2657727cd1ddd0",
+      "quoteHash": "sha256:b9b357de1758f3405530bfcd328758a6d2ad11ca63fcfac1f2025df57d33a80d",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-7c7f6e547dcf3a1ebaa55348",
+      "quoteHash": "sha256:dd770c07b67f23d8cfbaf51f082e415ed3e7393e66425bf663255d396562182e",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-2b6b99aaf3249788ce2eb294",
+      "quoteHash": "sha256:28de5f71f138c05329b4e4ac3f3a2111e4a314395f5b51d7efdadd5ecbdabc6e",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-a9e9c19206a10fd566103a1c",
+      "quoteHash": "sha256:ac2b75a9d0ac4ae9ec644739a7ace6a58dcd9026060050f930bb7e04e572e0c4",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-8fba67270280f02acda40108",
+      "quoteHash": "sha256:8ced743add39fffa1315b828056000351c6c86daac7cb4dd0c4573d65c5b00ff",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-340ae33f8f4f7bcc4287a807",
+      "quoteHash": "sha256:dbc654f1d23988da2d38a807eca5552ae5792e5e224a7304b2879fc911f35731",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-c934ed9dc36e9fd634e5b0a3",
+      "quoteHash": "sha256:567d58e3f59f5443c3e829ce6136354c900b2acb2f623838a6a4d459dc7fc743",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "spanProposalId": "SPAN-ec0fab3e00c29ab57d7cdec9",
+      "quoteHash": "sha256:e14257a2a6f7e76cbd95b22907238f5d7cc94f9f77d0b3834a3ec20cdceb0746",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-10",
+      "spanProposalId": "SPAN-3b238efd417f9d5766c8c391",
+      "quoteHash": "sha256:d6bba2eb2a4015ae851f627f9a588657c4d96073e0621ca7663c3f54c89eb9b2",
+      "chunkId": "CHUNK-459628441b923d19deef40e6",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "spanProposalId": "SPAN-7b98d51da02301d23cde39d4",
+      "quoteHash": "sha256:c1930495297d7994330d237c80e3d453d817523e046b0e7c9dd90210955b831f",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "spanProposalId": "SPAN-7e9b00eb713645959cfecdc2",
+      "quoteHash": "sha256:72348debb0ff748cbb73047e5b28652165c867cf2fc37689de11097a839179eb",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "spanProposalId": "SPAN-370890faa7c6ebccfb2c76b3",
+      "quoteHash": "sha256:cd84eb40ddc59526068b37de8295e989cc921976cda02b81aa6cf45565c3293b",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "spanProposalId": "SPAN-11228f64d20344a66c0c50bb",
+      "quoteHash": "sha256:df148af4a2869af37d509e4df0b4e2184e7a0b9d66d454eb6cf30f38ffbb567e",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "spanProposalId": "SPAN-8b19d4f52823b77b8bf6422e",
+      "quoteHash": "sha256:a3cbe7c2477220c8d9a59b1d9b9ca8e0bdb2522cd8ac28ec7abfddef3af4eb7c",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "spanProposalId": "SPAN-655e2e3e58c48ae7cc6aacd2",
+      "quoteHash": "sha256:6723f68d488cab7e26b656cfcebc943ae67d60166baffeb0114123bd0b71a2a7",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "spanProposalId": "SPAN-ee058095770587e06c3dce1c",
+      "quoteHash": "sha256:b9b357de1758f3405530bfcd328758a6d2ad11ca63fcfac1f2025df57d33a80d",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "spanProposalId": "SPAN-6e8d7a954f22ed0f8a6ead91",
+      "quoteHash": "sha256:ac2b75a9d0ac4ae9ec644739a7ace6a58dcd9026060050f930bb7e04e572e0c4",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "spanProposalId": "SPAN-90efc747a41bd5e259cc03d0",
+      "quoteHash": "sha256:8ced743add39fffa1315b828056000351c6c86daac7cb4dd0c4573d65c5b00ff",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "spanProposalId": "SPAN-6285cee0ee5360c2b148f319",
+      "quoteHash": "sha256:dbc654f1d23988da2d38a807eca5552ae5792e5e224a7304b2879fc911f35731",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "spanProposalId": "SPAN-e8b77f93bcd977a3e8a9c02c",
+      "quoteHash": "sha256:567d58e3f59f5443c3e829ce6136354c900b2acb2f623838a6a4d459dc7fc743",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "spanProposalId": "SPAN-fca734d75114e95a14ee1765",
+      "quoteHash": "sha256:0561f92e230ce4b19977ef1251cf54a98a9b6670d81f3bc50297cc10d4ecfdb6",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-13",
+      "spanProposalId": "SPAN-931b56ce1168190147d46ebf",
+      "quoteHash": "sha256:c1930495297d7994330d237c80e3d453d817523e046b0e7c9dd90210955b831f",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-13",
+      "spanProposalId": "SPAN-0448bba0f519ffe78a772871",
+      "quoteHash": "sha256:72348debb0ff748cbb73047e5b28652165c867cf2fc37689de11097a839179eb",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-13",
+      "spanProposalId": "SPAN-05a7c4010fec0e804fccc0a8",
+      "quoteHash": "sha256:cd84eb40ddc59526068b37de8295e989cc921976cda02b81aa6cf45565c3293b",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-13",
+      "spanProposalId": "SPAN-4e2d981816fd6706846fd6a7",
+      "quoteHash": "sha256:df148af4a2869af37d509e4df0b4e2184e7a0b9d66d454eb6cf30f38ffbb567e",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-13",
+      "spanProposalId": "SPAN-9f2e3ad35239c2f51324ee49",
+      "quoteHash": "sha256:a3cbe7c2477220c8d9a59b1d9b9ca8e0bdb2522cd8ac28ec7abfddef3af4eb7c",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-13",
+      "spanProposalId": "SPAN-a6f1f73d60c54ea7a2a01126",
+      "quoteHash": "sha256:6723f68d488cab7e26b656cfcebc943ae67d60166baffeb0114123bd0b71a2a7",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-14",
+      "spanProposalId": "SPAN-ab140a25f2beb60dea62a171",
+      "quoteHash": "sha256:c1930495297d7994330d237c80e3d453d817523e046b0e7c9dd90210955b831f",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-14",
+      "spanProposalId": "SPAN-d99f660e31aae7169116ecb5",
+      "quoteHash": "sha256:72348debb0ff748cbb73047e5b28652165c867cf2fc37689de11097a839179eb",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-14",
+      "spanProposalId": "SPAN-933cf3bb496edef38392a62e",
+      "quoteHash": "sha256:cd84eb40ddc59526068b37de8295e989cc921976cda02b81aa6cf45565c3293b",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-14",
+      "spanProposalId": "SPAN-d29c31b87a3a03bf4b8cb011",
+      "quoteHash": "sha256:df148af4a2869af37d509e4df0b4e2184e7a0b9d66d454eb6cf30f38ffbb567e",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-14",
+      "spanProposalId": "SPAN-403571303bb528f96a4314fa",
+      "quoteHash": "sha256:a3cbe7c2477220c8d9a59b1d9b9ca8e0bdb2522cd8ac28ec7abfddef3af4eb7c",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-14",
+      "spanProposalId": "SPAN-da05dbc0434ae7738420a3dd",
+      "quoteHash": "sha256:6723f68d488cab7e26b656cfcebc943ae67d60166baffeb0114123bd0b71a2a7",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-15",
+      "spanProposalId": "SPAN-27e83809fb3145412d45542c",
+      "quoteHash": "sha256:c1930495297d7994330d237c80e3d453d817523e046b0e7c9dd90210955b831f",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-15",
+      "spanProposalId": "SPAN-74d91c2bb29d0e14030138ba",
+      "quoteHash": "sha256:72348debb0ff748cbb73047e5b28652165c867cf2fc37689de11097a839179eb",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-15",
+      "spanProposalId": "SPAN-80e04d4c8fa3d05c9b44e098",
+      "quoteHash": "sha256:cd84eb40ddc59526068b37de8295e989cc921976cda02b81aa6cf45565c3293b",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-15",
+      "spanProposalId": "SPAN-1891a54997603ba02bb5acee",
+      "quoteHash": "sha256:df148af4a2869af37d509e4df0b4e2184e7a0b9d66d454eb6cf30f38ffbb567e",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-15",
+      "spanProposalId": "SPAN-df2efa667e3ae338e9aa140c",
+      "quoteHash": "sha256:a3cbe7c2477220c8d9a59b1d9b9ca8e0bdb2522cd8ac28ec7abfddef3af4eb7c",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    },
+    {
+      "caseId": "GOLD-15",
+      "spanProposalId": "SPAN-4acedbc197ab96d48f1e3403",
+      "quoteHash": "sha256:6723f68d488cab7e26b656cfcebc943ae67d60166baffeb0114123bd0b71a2a7",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "reason": "WHITESPACE_CHANGED_QUOTE",
+      "promoted": false
+    }
+  ],
+  "dateFailures": [],
+  "definition": "Every absent exact quote is rejected; whitespace-only and rewrite/noncontiguous subtypes do not permit fuzzy acceptance."
+}

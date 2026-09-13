@@ -1,0 +1,52 @@
+{
+  "providerReportedCost": null,
+  "runs": [
+    {
+      "folder": "session-1789311004347",
+      "kind": "development_or_preflight",
+      "calls": 0,
+      "input": 0,
+      "output": 0
+    },
+    {
+      "folder": "session-1789311020918",
+      "kind": "development_or_preflight",
+      "calls": 7,
+      "input": 6228,
+      "output": 165
+    },
+    {
+      "folder": "session-1789311116669",
+      "kind": "development_or_preflight",
+      "calls": 12,
+      "input": 12111,
+      "output": 463
+    },
+    {
+      "folder": "session-1789311179247",
+      "kind": "development_or_preflight",
+      "calls": 12,
+      "input": 12109,
+      "output": 462
+    },
+    {
+      "folder": "session-1789311220690",
+      "kind": "invalidated_first_attempt",
+      "calls": 68,
+      "input": 88653,
+      "output": 10358
+    },
+    {
+      "folder": "session-1789311479747",
+      "kind": "final_primary",
+      "calls": 128,
+      "input": 159952,
+      "output": 13796
+    }
+  ],
+  "total": {
+    "calls": 227,
+    "input": 279053,
+    "output": 25244
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "runId": "STAGED-1789311350878",
+  "excludedFromFinalComparison": true,
+  "reason": "Immutable Span ID collision caused9 incomplete case results. These are harness failures, not model schema failures.",
+  "actualFirstPassSchema": {
+    "valid": 16,
+    "total": 16
+  },
+  "apiCalls": 68,
+  "tokens": {
+    "input": 88653,
+    "output": 10358
+  },
+  "oldIncorrectCaseSummary": {
+    "numerator": 7,
+    "denominator": 16,
+    "rate": 0.4375
+  },
+  "retainedExternalRaw": true
+}
