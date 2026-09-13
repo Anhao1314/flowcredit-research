@@ -1,0 +1,4201 @@
+{
+  "version": "source-grounding-result/v0.8",
+  "generatedFrom": {
+    "registeredAt": "2026-09-13T16:20:40.032Z",
+    "mode": "gold",
+    "beforeLockedEvaluation": true,
+    "layoutParserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+    "groundingVersion": "source-span-registry/v1",
+    "selectionPromptVersion": "span-selection/v1",
+    "interpretationPromptVersion": "fact-interpretation-span/v1",
+    "codeHashes": {
+      "grounding.js": "sha256:8f68d8bb1c26090d2ca91997cf8bb63f4927928eedc22c03413212bb7f7b02cb",
+      "registry.js": "sha256:a9a39c8a0c14542591a353c0a3b0177015f1ac9a86838e512b813b443cb7bc1e",
+      "renderer.js": "sha256:36d9419fa8846f3e951cf97f03fc5c601fccc599bb35bf72674f058872573ee1",
+      "contract.js": "sha256:d04e1bdf48771f6b629ebef12ce29b6d259d6e987443255c5184f4f081df9e70",
+      "facts.js": "sha256:4b9dd1fdb590a59c730c20c5818816b66746d96a3ae83419dd9e9f000cf51ed7",
+      "layer.js": "sha256:14617dd72323242d0ea513820b44b1090a2c97ead114e3d1a1abfd399c81841b",
+      "gold.js": "sha256:c5645209a149cda39415a6a4cb363dbda71c792792ac1de2f3a44ca75787fc38",
+      "eval.js": "sha256:e635a7f289ae5df21e28d6d1d501cabe290f582df54b3e4a24ccab05de8eec15",
+      "cli.js": "sha256:439676dd37e46a5dd9fe0d0f82734788d44974d4b98471f30b9505014f8364d1",
+      "controls.js": "sha256:d795f5b59c41908a1cc4e234d4eef79eab4abaa7852244338400e55984e169b3",
+      "pdfspans.py": "sha256:6a2fd3b58c14a3c4373f9aa6e6d141ef309b0f81ea55ad8bbc6aa92e5cf9d2d9",
+      "synthetic-pdf.py": "sha256:5c63bd5753121584f07de2b2749cc570c10904b51aa0e78d3be6b045844151df",
+      "selection-output.schema.json": "sha256:8dff03c9b87e07ae519a8b2323cfc76b8582f11d3e9a622b0bc0755fa1a3ee4e"
+    },
+    "gateHash": "sha256:211ff65435f9f0d61417b0bc7d69db9a288640fc3427a773f933e0cbc444a8ab",
+    "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739"
+  },
+  "status": "REAL_GROUNDING_EVALUATED",
+  "gatePassed": false,
+  "gateResult": {
+    "fabricatedSpan": true,
+    "spanFidelity": true,
+    "numeric": false,
+    "unit": false,
+    "period": false,
+    "targetSelection": true,
+    "chainCorrect": false,
+    "validatorFalseAccepts": true
+  },
+  "metrics": {
+    "selectionSchemaValidity": {
+      "numerator": 16,
+      "denominator": 16,
+      "rate": 1
+    },
+    "fabricatedSpanRate": {
+      "numerator": 0,
+      "denominator": 153,
+      "rate": 0
+    },
+    "groundingValidity": {
+      "numerator": 153,
+      "denominator": 153,
+      "rate": 1
+    },
+    "targetSelectionRate": {
+      "numerator": 14,
+      "denominator": 16,
+      "rate": 0.875
+    },
+    "factKindAccuracy": {
+      "numerator": 12,
+      "denominator": 14,
+      "rate": 0.8571428571428571
+    },
+    "numericAccuracy": {
+      "numerator": 11,
+      "denominator": 14,
+      "rate": 0.7857142857142857
+    },
+    "unitAccuracy": {
+      "numerator": 11,
+      "denominator": 14,
+      "rate": 0.7857142857142857
+    },
+    "periodAccuracy": {
+      "numerator": 13,
+      "denominator": 14,
+      "rate": 0.9285714285714286
+    },
+    "categoryAccuracy": {
+      "numerator": 9,
+      "denominator": 14,
+      "rate": 0.6428571428571429
+    },
+    "chainCorrectRate": {
+      "numerator": 0,
+      "denominator": 16,
+      "rate": 0
+    },
+    "candidateConversionRate": {
+      "numerator": 0,
+      "denominator": 16,
+      "rate": 0
+    },
+    "validatorFalseRejects": 11,
+    "wrongSpanSelections": 137,
+    "goldMappingLimitations": "see annotation"
+  },
+  "failureBreakdown": {
+    "SPAN_SCHEMA_ERROR": 0,
+    "FABRICATED_SPAN": 0,
+    "WRONG_SPAN_SELECTION": 2,
+    "INTERPRETATION_SCHEMA_ERROR": 0,
+    "VALUE_ERROR": 1,
+    "UNIT_ERROR": 0,
+    "PERIOD_ERROR": 14,
+    "ACTUAL_GUIDANCE_ERROR": 6,
+    "DETERMINISTIC_PARSE_UNSUPPORTED": 10,
+    "NO_SOURCE_RANGE": 0,
+    "VALIDATOR_CORRECT_REJECT": 0,
+    "VALIDATOR_FALSE_REJECT": 11,
+    "GOLD_LIMITATION": 0,
+    "UNKNOWN": 0
+  },
+  "tokens": {
+    "input": 240038,
+    "output": 14351,
+    "total": 254389,
+    "calls": 169,
+    "providerReportedCost": null
+  },
+  "latency": {
+    "medianMs": 10084.311082999999,
+    "p95Ms": 11723.610084,
+    "sampleCount": 16,
+    "exploratory": true
+  },
+  "claimsProtection": {
+    "claims": 4,
+    "revisions": 4,
+    "beforeHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3",
+    "afterHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3",
+    "unchanged": true
+  },
+  "provider": {
+    "kind": "real",
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "modelVersion": "provider-unreported",
+    "temperature": 0,
+    "structuredOutputMode": "native_json_schema",
+    "endpointOrigin": "https://api.deepseek.com"
+  },
+  "groundingVersion": "gold-span-annotation/v1",
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "gateHash": "sha256:211ff65435f9f0d61417b0bc7d69db9a288640fc3427a773f933e0cbc444a8ab",
+  "annotation": {
+    "totals": {
+      "total": 16,
+      "text": 4,
+      "table": 12,
+      "unsupported": 0,
+      "coverageRate": 1
+    },
+    "legacyTableMapping": {
+      "total": 12,
+      "nowTableGroundable": 12,
+      "nowTextGroundable": 0,
+      "stillUnsupported": 0
+    },
+    "cases": [
+      {
+        "caseId": "GOLD-01",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-e0d1db2a83338062249e5c36"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:United States|Year Ended December 31, 2025|$ 4,801"
+        ]
+      },
+      {
+        "caseId": "GOLD-02",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-a5d8c1cfe7eff58d77334151"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Revenue|Year Ended December 31, 2024|$ 1,915"
+        ]
+      },
+      {
+        "caseId": "GOLD-03",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-cd6c0d8f643719446eeb5e2a"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Revenue|Year Ended December 31, 2025|$ 5,131"
+        ]
+      },
+      {
+        "caseId": "GOLD-04",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-7a2f323abe2fe27bbcc19a7d"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Cost of revenue (1)|Three Months Ended June 30, 2026|879"
+        ]
+      },
+      {
+        "caseId": "GOLD-05",
+        "legacyBinding": "narrative",
+        "classification": "text_span",
+        "spanIds": [
+          "SPAN-d8bd775fee59978a279f8f56"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "text:SPAN-d8bd775fee59978a279f8f56"
+        ]
+      },
+      {
+        "caseId": "GOLD-06",
+        "legacyBinding": "narrative",
+        "classification": "text_span",
+        "spanIds": [
+          "SPAN-6e2c58d8f89666f95bf6acaa",
+          "SPAN-2c89e57d6a64fc3f92a7ccae",
+          "SPAN-bd6d1d7fbb5d34f820487954"
+        ],
+        "spanCount": 3,
+        "basis": [
+          "text:SPAN-6e2c58d8f89666f95bf6acaa",
+          "text:SPAN-2c89e57d6a64fc3f92a7ccae",
+          "text:SPAN-bd6d1d7fbb5d34f820487954"
+        ]
+      },
+      {
+        "caseId": "GOLD-07",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-88a9b7b151e96b2751279350"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Revenue|Three Months Ended June 30, 2026|$ 2,575"
+        ]
+      },
+      {
+        "caseId": "GOLD-08",
+        "legacyBinding": "narrative",
+        "classification": "text_span",
+        "spanIds": [
+          "SPAN-8cd27e3c179a20802c46cfb9"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "text:SPAN-8cd27e3c179a20802c46cfb9"
+        ]
+      },
+      {
+        "caseId": "GOLD-09",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-41e0c84eab1468399180f726"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:All other countries|Year Ended December 31, 2025|330"
+        ]
+      },
+      {
+        "caseId": "GOLD-10",
+        "legacyBinding": "narrative",
+        "classification": "text_span",
+        "spanIds": [
+          "SPAN-545b278c557735989038df5b"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "text:SPAN-545b278c557735989038df5b"
+        ]
+      },
+      {
+        "caseId": "GOLD-11",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-99566db088adaae178a4968d"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Customer A|Three Months Ended June 30, 2026|36%"
+        ]
+      },
+      {
+        "caseId": "GOLD-12",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-26aec07d43a043304ba9dc14"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Technology and infrastructure (1)|Three Months Ended June 30, 2026|1,507"
+        ]
+      },
+      {
+        "caseId": "GOLD-13",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-b0a98a249d8ab690bff97711"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Customer B|Three Months Ended June 30, 2026|26%"
+        ]
+      },
+      {
+        "caseId": "GOLD-14",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-99566db088adaae178a4968d"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Customer A|Three Months Ended June 30, 2026|36%"
+        ]
+      },
+      {
+        "caseId": "GOLD-15",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-210e0be057e8d54a4818886a"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Customer C|Three Months Ended June 30, 2026|10%"
+        ]
+      },
+      {
+        "caseId": "GOLD-16",
+        "legacyBinding": "table_column",
+        "classification": "table_span",
+        "spanIds": [
+          "SPAN-40c79dd0a87e4532745dcc6e"
+        ],
+        "spanCount": 1,
+        "basis": [
+          "table:Revenue|Year Ended December 31, 2023|$ 229"
+        ]
+      }
+    ]
+  },
+  "cases": [
+    {
+      "caseId": "GOLD-01",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-e0d1db2a83338062249e5c36",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4801000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-fed0548cc5586fc7f8c10b48",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1797000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-68dd70deec34f0686a1837be",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 201000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-41e0c84eab1468399180f726",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 330000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-2b154eca7884845aeb9320a3",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 118000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-183f2695b1a3d9d02877b5c2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 28000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c106328c0cadd096bac38ff0",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-3aad467599de9b15c6fd000a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8be23231d2f90b1a38c279ef",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-a6ab638ceff011961270f884",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 88,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-02",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-65ba590f0b1b66b6e18283e7",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1453000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-54634c5946778532f2ff5133",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2929000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-fb6d42c30f0ccb45aeba8ed8",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5177000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34935b6bbfed81087cccae64",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1591000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9318bafd3ead97babf00c85c",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 243000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8325ba7b4ca0b1f583888d71",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 651000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-f090c7021dcb298dd0b0a379",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 144000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-03",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-65ba590f0b1b66b6e18283e7",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1453000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-54634c5946778532f2ff5133",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2929000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-fb6d42c30f0ccb45aeba8ed8",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5177000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34935b6bbfed81087cccae64",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1591000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9318bafd3ead97babf00c85c",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 243000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8325ba7b4ca0b1f583888d71",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 651000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-f090c7021dcb298dd0b0a379",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 144000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-04",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": false,
+      "factKindCorrect": false,
+      "numericCorrect": false,
+      "unitCorrect": false,
+      "periodCorrect": false,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": false,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 10,
+      "findings": [
+        "WRONG_SPAN_SELECTION",
+        "PERIOD_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-88a9b7b151e96b2751279350",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2575000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8239e9a33aca660689b3cd8",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1212000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-6c01a61ab909f5e203039ac3",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4653000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-ea51cf6816a0a084a8804685",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2194000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7504dec410a6b55e1288ba74",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": -626,
+              "rawUnit": "USD"
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-80a56556055dfcd9db184fc5",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2624000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-0e65b77be3015fd1a77ab37e",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1193000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-595cea0d17fb425d396a218b",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4846000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-e504af56503e60518d03cdeb",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2202000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-0714a2533213e82c86c472b7",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-05",
+      "legacyBinding": "narrative",
+      "groundingClass": "text_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "ACTUAL_GUIDANCE_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-c56f419cb703ded4573b385d",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 98,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-e530e1ba49de5ed62a1b3df2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 9700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8bd775fee59978a279f8f56",
+          "factKind": "backlog_or_rpo",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 103700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 36,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c2c40c016e6a492124f6a4e7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 71,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-846e00ee48fc07138f6adcfe",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 40,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34084942012415a83188e287",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 72,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 26,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 23,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-06",
+      "legacyBinding": "narrative",
+      "groundingClass": "text_span",
+      "targetSelected": true,
+      "factKindCorrect": false,
+      "numericCorrect": false,
+      "unitCorrect": false,
+      "periodCorrect": false,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": false,
+      "interpretedSpans": 7,
+      "nonTargetSelections": 4,
+      "findings": [
+        "DETERMINISTIC_PARSE_UNSUPPORTED",
+        "ACTUAL_GUIDANCE_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-6e2c58d8f89666f95bf6acaa",
+          "factKind": "liquidity_fact",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5500000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-2c89e57d6a64fc3f92a7ccae",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-bd6d1d7fbb5d34f820487954",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1800000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-de432f8765b46c9eea50654a",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-3f6ae9cc0e667214ed9cc022",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-07cb54fe67893e64614566ba",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-267fbb44ecc695455e07465f",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-07",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-88a9b7b151e96b2751279350",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2575000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8239e9a33aca660689b3cd8",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1212000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-6c01a61ab909f5e203039ac3",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4653000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-ea51cf6816a0a084a8804685",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2194000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7504dec410a6b55e1288ba74",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": -626,
+              "rawUnit": "USD"
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-0714a2533213e82c86c472b7",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1400000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 879000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-26aec07d43a043304ba9dc14",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1507000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-80a56556055dfcd9db184fc5",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2624000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-595cea0d17fb425d396a218b",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4846000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-08",
+      "legacyBinding": "narrative",
+      "groundingClass": "text_span",
+      "targetSelected": true,
+      "factKindCorrect": false,
+      "numericCorrect": false,
+      "unitCorrect": false,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": false,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "PERIOD_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-62e029512b0f5661dc59a0be",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c83b19906c4d3d637fdc5537",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-240b92c16fd8c32c14f80c98",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-5d8f599bf6562465d92631ce",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1453000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-ee7014c60c4d2a44099655be",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2929000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7b4bb0843377d7e044202019",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5177000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-bf4258f299b51fed0b0fe76a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 651000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8cd27e3c179a20802c46cfb9",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 3200000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-5d17066f1389b35c530ab2a9",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 630000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-1cf0648be83d0e457c57fdd4",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-09",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-e0d1db2a83338062249e5c36",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4801000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-fed0548cc5586fc7f8c10b48",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1797000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-68dd70deec34f0686a1837be",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 201000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-41e0c84eab1468399180f726",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 330000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-2b154eca7884845aeb9320a3",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 118000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-183f2695b1a3d9d02877b5c2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 28000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c106328c0cadd096bac38ff0",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-3aad467599de9b15c6fd000a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8be23231d2f90b1a38c279ef",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-a6ab638ceff011961270f884",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 88,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-10",
+      "legacyBinding": "narrative",
+      "groundingClass": "text_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": false,
+      "unitCorrect": false,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": false,
+      "interpretedSpans": 6,
+      "nonTargetSelections": 5,
+      "findings": [
+        "ACTUAL_GUIDANCE_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-545b278c557735989038df5b",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8658be2674d30d3786237d31",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-3fad8ad8b0a38bfbf5b39e20",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c83a1ebc07438e7d073f6bc4",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7aeca736725a19019501a49f",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-f043aa7e96f475100ba7f0dd",
+          "factKind": "risk_disclosure",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-11",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-c56f419cb703ded4573b385d",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 98,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 36,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c2c40c016e6a492124f6a4e7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 71,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-846e00ee48fc07138f6adcfe",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 40,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34084942012415a83188e287",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 72,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 26,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 23,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-210e0be057e8d54a4818886a",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 10,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-e530e1ba49de5ed62a1b3df2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 9700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-12",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED",
+        "VALUE_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-88a9b7b151e96b2751279350",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2575000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8239e9a33aca660689b3cd8",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1212000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-6c01a61ab909f5e203039ac3",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 4653000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-ea51cf6816a0a084a8804685",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2194000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 879000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-26aec07d43a043304ba9dc14",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1507000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-80a56556055dfcd9db184fc5",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2624000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-7504dec410a6b55e1288ba74",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": -626,
+              "rawUnit": "USD"
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-0714a2533213e82c86c472b7",
+          "factKind": "operating_fact",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1400000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-3808253ec94bb8d58332526a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "VALUE_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "unknown",
+              "start": null,
+              "end": null
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-13",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR",
+        "DETERMINISTIC_PARSE_UNSUPPORTED",
+        "ACTUAL_GUIDANCE_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-c56f419cb703ded4573b385d",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 98,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-e530e1ba49de5ed62a1b3df2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 9700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8bd775fee59978a279f8f56",
+          "factKind": "backlog_or_rpo",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 103700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 36,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c2c40c016e6a492124f6a4e7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 71,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-846e00ee48fc07138f6adcfe",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 40,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34084942012415a83188e287",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 72,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 26,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 23,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-14",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR",
+        "ACTUAL_GUIDANCE_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-c56f419cb703ded4573b385d",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 98,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 32,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-e530e1ba49de5ed62a1b3df2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 9700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8bd775fee59978a279f8f56",
+          "factKind": "backlog_or_rpo",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 103700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 36,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c2c40c016e6a492124f6a4e7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 71,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-846e00ee48fc07138f6adcfe",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 40,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34084942012415a83188e287",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 72,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 26,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 23,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-15",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": false,
+      "factKindCorrect": false,
+      "numericCorrect": false,
+      "unitCorrect": false,
+      "periodCorrect": false,
+      "categoryCorrect": false,
+      "chainCorrect": false,
+      "validatorFalseReject": false,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 10,
+      "findings": [
+        "WRONG_SPAN_SELECTION",
+        "DETERMINISTIC_PARSE_UNSUPPORTED",
+        "ACTUAL_GUIDANCE_ERROR",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-c56f419cb703ded4573b385d",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 98,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "normalizedValue": null,
+              "rawUnit": null
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-e530e1ba49de5ed62a1b3df2",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [],
+          "parser": {
+            "status": "parsed",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 9700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-d8bd775fee59978a279f8f56",
+          "factKind": "backlog_or_rpo",
+          "status": "interpreted",
+          "findings": [
+            "ACTUAL_GUIDANCE_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 103700000000,
+              "rawUnit": "USD_billions"
+            },
+            "period": {
+              "status": "known",
+              "start": null,
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 36,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-c2c40c016e6a492124f6a4e7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 71,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-04-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-846e00ee48fc07138f6adcfe",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 40,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34084942012415a83188e287",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 72,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 26,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-04-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "factKind": "customer_concentration",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 23,
+              "rawUnit": "percent"
+            },
+            "period": {
+              "status": "known",
+              "start": "2026-01-01",
+              "end": "2026-06-30"
+            }
+          },
+          "validator": null
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-16",
+      "legacyBinding": "table_column",
+      "groundingClass": "table_span",
+      "targetSelected": true,
+      "factKindCorrect": true,
+      "numericCorrect": true,
+      "unitCorrect": true,
+      "periodCorrect": true,
+      "categoryCorrect": true,
+      "chainCorrect": false,
+      "validatorFalseReject": true,
+      "interpretedSpans": 10,
+      "nonTargetSelections": 9,
+      "findings": [
+        "VALIDATOR_FALSE_REJECT",
+        "PERIOD_ERROR"
+      ],
+      "selections": [
+        {
+          "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-65ba590f0b1b66b6e18283e7",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1453000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-54634c5946778532f2ff5133",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 2929000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-fb6d42c30f0ccb45aeba8ed8",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 5177000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-34935b6bbfed81087cccae64",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 1591000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2024-01-01",
+              "end": "2024-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-9318bafd3ead97babf00c85c",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 243000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2023-01-01",
+              "end": "2023-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-8325ba7b4ca0b1f583888d71",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 651000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        },
+        {
+          "spanId": "SPAN-f090c7021dcb298dd0b0a379",
+          "factKind": "financial_metric",
+          "status": "interpreted",
+          "findings": [
+            "PERIOD_ERROR"
+          ],
+          "parser": {
+            "status": "unsupported",
+            "numeric": {
+              "status": "known",
+              "reason": null,
+              "normalizedValue": 144000000,
+              "rawUnit": "USD_millions"
+            },
+            "period": {
+              "status": "known",
+              "start": "2025-01-01",
+              "end": "2025-12-31"
+            }
+          },
+          "validator": null
+        }
+      ]
+    }
+  ]
+}

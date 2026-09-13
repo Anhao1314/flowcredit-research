@@ -1,0 +1,113 @@
+{
+  "version": "source-grounding-hallucination-report/v0.8",
+  "fabricatedSpanRate": {
+    "numerator": 0,
+    "denominator": 153,
+    "rate": 0
+  },
+  "definition": "A fabricated span is a selected spanId absent from the supplied candidate set. It is rejected before any interpretation call.",
+  "fabricated": [],
+  "wrongSpanSelection": {
+    "definition": "A wrong span selection selects an existing, verified span that does not support the locked Gold fact. This is a semantic model error, never a contract error, and is reported separately from fabrication.",
+    "count": 137,
+    "note": "Non-target selections are not automatically wrong facts: the selection contract asks for up to 10 useful facts per page while only one Gold fact per case is adjudicated. GOLD-04 and GOLD-15 are the two cases where the adjudicated Gold fact was not selected at all."
+  },
+  "cases": [
+    {
+      "caseId": "GOLD-01",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-02",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-03",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-04",
+      "targetSelected": false,
+      "nonTargetSelections": 10,
+      "validatorFalseReject": false
+    },
+    {
+      "caseId": "GOLD-05",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-06",
+      "targetSelected": true,
+      "nonTargetSelections": 4,
+      "validatorFalseReject": false
+    },
+    {
+      "caseId": "GOLD-07",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-08",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": false
+    },
+    {
+      "caseId": "GOLD-09",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-10",
+      "targetSelected": true,
+      "nonTargetSelections": 5,
+      "validatorFalseReject": false
+    },
+    {
+      "caseId": "GOLD-11",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-12",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-13",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-14",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    },
+    {
+      "caseId": "GOLD-15",
+      "targetSelected": false,
+      "nonTargetSelections": 10,
+      "validatorFalseReject": false
+    },
+    {
+      "caseId": "GOLD-16",
+      "targetSelected": true,
+      "nonTargetSelections": 9,
+      "validatorFalseReject": true
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "version": "source-grounding-comparison/v0.8",
+  "subject": "locked 16 CoreWeave Gold cases, same requested DeepSeek path (deepseek-v4-flash), historical not contemporaneous snapshot",
+  "definitions": "v0.7 numbers are read from eval/evidence-analyst-staged (immutable v0.7 run, primary 16 cases). v0.8 numbers are the primary gold run at a real provider. Denominators differ by construction: v0.7 counts model-generated spans/proposals; v0.8 counts verified span selections. Fabricated citation is a hallucinated quote in v0.7 and an id outside the supplied candidate set in v0.8.",
+  "v0_7": {
+    "runId": "STAGED-1789311715966",
+    "primaryCases": 16,
+    "modelCalls": 128,
+    "schemaValidity": {
+      "numerator": 16,
+      "denominator": 16,
+      "rate": 1
+    },
+    "nativeSchemaValidity": {
+      "numerator": 13,
+      "denominator": 16,
+      "rate": 0.8125
+    },
+    "exactQuoteValidity": {
+      "numerator": 112,
+      "denominator": 171,
+      "rate": 0.6549707602339181
+    },
+    "hallucinatedQuoteRate": {
+      "numerator": 59,
+      "denominator": 171,
+      "rate": 0.34502923976608185
+    },
+    "factKindAccuracy": {
+      "numerator": 14,
+      "denominator": 14,
+      "rate": 1
+    },
+    "interpretationSchemaValidity": {
+      "numerator": 110,
+      "denominator": 112,
+      "rate": 0.9821428571428571
+    },
+    "numericAccuracy": {
+      "numerator": 0,
+      "denominator": 2,
+      "rate": 0
+    },
+    "unitAccuracy": {
+      "numerator": 0,
+      "denominator": 2,
+      "rate": 0
+    },
+    "periodAccuracy": {
+      "numerator": 0,
+      "denominator": 2,
+      "rate": 0
+    },
+    "categoryAccuracy": {
+      "numerator": 0,
+      "denominator": 2,
+      "rate": 0
+    },
+    "fullCorrectEligible": {
+      "numerator": 0,
+      "denominator": 16,
+      "rate": 0
+    },
+    "candidateConversionRate": {
+      "numerator": 0,
+      "denominator": 16,
+      "rate": 0
+    },
+    "falseRejects": 0,
+    "goldMappingLimitations": 12,
+    "tokens": {
+      "input": 159952,
+      "output": 13796,
+      "total": 173748,
+      "providerReportedCost": null
+    },
+    "gate": {
+      "registered": "eval/evidence-analyst-staged/phase-gate.json",
+      "passed": false,
+      "reasons": [
+        "exactQuoteValidity 0.655 below 1",
+        "numeric/unit/period accuracy 0 of 2 applicable",
+        "fullCorrectEligible 0 of 16"
+      ]
+    }
+  },
+  "v0_8": {
+    "runId": "GROUND-1789316602580",
+    "primaryCases": 16,
+    "modelCalls": 169,
+    "schemaValidity": {
+      "numerator": 16,
+      "denominator": 16,
+      "rate": 1
+    },
+    "groundingValidity": {
+      "numerator": 153,
+      "denominator": 153,
+      "rate": 1
+    },
+    "fabricatedSpanRate": {
+      "numerator": 0,
+      "denominator": 153,
+      "rate": 0
+    },
+    "targetSelectionRate": {
+      "numerator": 14,
+      "denominator": 16,
+      "rate": 0.875
+    },
+    "factKindAccuracy": {
+      "numerator": 12,
+      "denominator": 14,
+      "rate": 0.8571428571428571
+    },
+    "numericAccuracy": {
+      "numerator": 11,
+      "denominator": 14,
+      "rate": 0.7857142857142857
+    },
+    "unitAccuracy": {
+      "numerator": 11,
+      "denominator": 14,
+      "rate": 0.7857142857142857
+    },
+    "periodAccuracy": {
+      "numerator": 13,
+      "denominator": 14,
+      "rate": 0.9285714285714286
+    },
+    "categoryAccuracy": {
+      "numerator": 9,
+      "denominator": 14,
+      "rate": 0.6428571428571429
+    },
+    "chainCorrectRate": {
+      "numerator": 0,
+      "denominator": 16,
+      "rate": 0
+    },
+    "candidateConversionRate": {
+      "numerator": 0,
+      "denominator": 16,
+      "rate": 0
+    },
+    "validatorFalseRejects": 11,
+    "wrongSpanSelections": 137,
+    "tokens": {
+      "input": 240038,
+      "output": 14351,
+      "total": 254389,
+      "calls": 169,
+      "providerReportedCost": null
+    },
+    "latency": {
+      "medianMs": 10084.311082999999,
+      "p95Ms": 11723.610084,
+      "sampleCount": 16,
+      "exploratory": true
+    },
+    "gate": {
+      "registered": "eval/source-grounding/phase-gate.json",
+      "passed": false,
+      "reasons": [
+        "numericAccuracy 0.786 below 0.95",
+        "unitAccuracy 0.786 below 0.95",
+        "periodAccuracy 0.929 below 0.95",
+        "chainCorrectRate 0 below 0.5"
+      ],
+      "bySpanType": {
+        "table": {
+          "targetSelected": 10,
+          "numeric": 10,
+          "unit": 10,
+          "period": 10,
+          "category": 6,
+          "validatorFalseRejects": 10
+        },
+        "text": {
+          "targetSelected": 4,
+          "numeric": 1,
+          "unit": 1,
+          "period": 3,
+          "category": 3
+        }
+      }
+    }
+  },
+  "conclusion": "Span selection removes fabricated citations (0 of 153) and keeps deterministic table grounding exact (10 of 10 selected table spans parse to the locked Gold value, unit and period). The remaining blockers are representation/contract, not model grounding: every selected table fact is classified VALIDATOR_FALSE_REJECT because the frozen v0.5 contiguous-quote validator cannot bind a table unit and period that live outside the cell, and 3 of 4 text cases fail numeric fidelity because block-level text spans hold several facts each."
+}

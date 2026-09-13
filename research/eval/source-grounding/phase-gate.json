@@ -1,0 +1,25 @@
+{
+  "version": "source-grounding-gate/v0.8",
+  "registeredBeforeLockedEvaluation": true,
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "asOf": "2026-09-14",
+  "primaryProvider": "deepseek",
+  "requestedModel": "deepseek-v4-flash",
+  "layoutParserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+  "groundingVersion": "source-span-registry/v1",
+  "selectionPromptVersion": "span-selection/v1",
+  "interpretationPromptVersion": "fact-interpretation-span/v1",
+  "thresholds": {
+    "fabricatedSpan": 0,
+    "spanFidelity": 1,
+    "numericFidelity": 0.95,
+    "unitFidelity": 0.95,
+    "periodFidelity": 0.95,
+    "targetSelection": 0.5,
+    "chainCorrect": 0.5,
+    "validatorFalseAccepts": 0
+  },
+  "definitions": "Deterministic and model metrics are separated. fabricated span rate counts selected span ids absent from the supplied candidate set (rejected before any interpretation). span fidelity counts every span that passes registry hash/identity verification. target selection counts cases whose annotated Gold span was selected by the model. numeric/unit/period fidelity are measured on cases where the Gold span was selected, comparing deterministic parse output against locked Gold, never against model text. chainCorrect counts Gold span selected AND category AND numeric AND unit AND period all matching locked Gold. Validator acceptance and VALIDATOR_FALSE_REJECT are reported separately and never relaxed: the unchanged v0.5 validator still decides Candidate conversion, so a source-correct table fact whose quote cannot satisfy the contiguous-quote/unit/period rules is classified VALIDATOR_FALSE_REJECT rather than promoted.",
+  "comparison": "v0.7 staged quote generation versus v0.8 span selection on the same locked 16 cases and the same DeepSeek path. Token and latency totals include both passes and every interpretation call.",
+  "decision": "No automatic next stage. GO TO MODEL COMPARISON only when grounding is stable but DeepSeek span selection is the dominant error. GO TO REAL SEMANTIC RETRIEVAL only when grounding and extraction are both reliable. STAY ON SOURCE GROUNDING when table/span fidelity remains the bottleneck."
+}

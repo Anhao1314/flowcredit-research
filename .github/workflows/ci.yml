@@ -15,6 +15,7 @@ jobs:
       NODE_ENV: test
       DSH_TELEMETRY_MODE: DISABLED
       FC_RETRIEVAL_PYTHON: python
+      FC_GROUNDING_PYTHON: python
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -53,6 +54,8 @@ jobs:
         run: node --test ../research/analyst-real-test/*.test.js
       - name: Evidence Analyst Contract Stabilization offline tests
         run: node --test ../research/analyst-staged-test/*.test.js
+      - name: Source Grounding Layer offline tests
+        run: node --test ../research/grounding-test/*.test.js
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract

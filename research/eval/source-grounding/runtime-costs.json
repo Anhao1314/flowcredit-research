@@ -1,0 +1,33 @@
+{
+  "version": "source-grounding-runtime-costs/v0.8",
+  "providerReportedCost": null,
+  "runs": [
+    {
+      "kind": "primary_gold_real",
+      "runId": "GROUND-1789316602580",
+      "calls": 169,
+      "input": 240038,
+      "output": 14351,
+      "total": 254389,
+      "medianCaseLatencyMs": 10084.311082999999,
+      "p95CaseLatencyMs": 11723.610084
+    },
+    {
+      "kind": "prompt_injection_real",
+      "runId": "GROUND-1789316739945",
+      "calls": 10,
+      "input": 11957,
+      "output": 719,
+      "total": 12676,
+      "medianCallLatencyMs": 820.5662919999995,
+      "p95CallLatencyMs": 961.2219169999998
+    },
+    {
+      "kind": "offline_dry_run_dev_and_injection",
+      "calls": 0,
+      "input": 0,
+      "output": 0
+    }
+  ],
+  "note": "The span-selection contract pays a larger input bill than v0.7 staged quote generation (240038 versus 159952 input tokens) because each case sends a bounded page context of rendered spans (4855-8994 characters). Latency in v0.8 is recorded end to end per case in the primary run and per provider call in the injection run."
+}

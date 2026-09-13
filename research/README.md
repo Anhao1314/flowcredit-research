@@ -74,3 +74,5 @@ Research Evidence Analyst v0.5: [CLI and boundary](analyst/README.md), [delivery
 Research Evidence Analyst Real Model Validation v0.6: [opt-in CLI and offline tests](analyst-real/README.md), [actual experiment and A–P delivery](../docs/research-evidence-analyst-real-validation-v0.6.md). The configured real model did not meet the conversion gate; recommendation is STAY on Evidence Analyst.
 
 Evidence Analyst Contract Stabilization v0.7 introduces [two-pass quote discovery and raw-text interpretation](analyst-staged/README.md), conservative deterministic parsing and the unchanged final validator. Actual capability and phase-gate findings are recorded in the [v0.7 delivery](../docs/evidence-analyst-contract-stabilization-v0.7.md).
+
+Source Grounding Layer v0.8 replaces quote generation with deterministic [SourceSpan grounding and LLM span selection](grounding/README.md): TextSpan/TableSpan registry, stable ids and hashes, explicit `unsupported_table_layout` abstention and the unchanged final validator. The real benchmark, Gold reclassification and phase decision are recorded in the [v0.8 delivery](../docs/source-grounding-layer-v0.8.md).

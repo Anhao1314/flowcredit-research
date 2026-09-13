@@ -17,7 +17,9 @@
     "analyst-real": "node analyst-real/cli.js",
     "test:analyst-real": "node --test analyst-real-test/*.test.js",
     "analyst-staged": "node analyst-staged/cli.js",
-    "test:analyst-staged": "node --test analyst-staged-test/*.test.js"
+    "test:analyst-staged": "node --test analyst-staged-test/*.test.js",
+    "grounding": "node grounding/cli.js",
+    "test:grounding": "node --test grounding-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
