@@ -2673,3 +2673,22 @@ html.fc-v2{color-scheme:dark;--bg1:#0B1220;--bg2:#111D2C;--card:#111D2C;--card2:
   .fc-v2 .workspace-primary .workspace-actions .btn{width:100%;text-align:center}
 }
 @media(max-width:420px){.fc-v2 .workspace-primary .workspace-actions .btn{white-space:normal}}
+
+/* Print / Save PDF: the report sheet only — no shell chrome, controls or fixed bars */
+@media print{
+  html.fc-v2,html.fc-v2 body{background:#fff !important;color:#000 !important}
+  .fc-v2 .v-topbar,.fc-v2 .v-context,.fc-v2 .v-workflow,.fc-v2 .foot,.fc-v2 .v-action-row,.fc-v2 .v-skip,
+  .fc-v2 .toast-layer,.fc-v2 .v-report-toolbar,.fc-v2 .v-report-layout>nav,.fc-v2 #v-report-close,.fc-v2 #v-report-verify{display:none !important}
+  .fc-v2 .v-panel,.fc-v2 .v-paper{background:#fff !important;color:#000 !important;border-color:#000 !important;box-shadow:none !important}
+  .fc-v2 .v-paper{padding:0 !important;overflow:visible !important;max-height:none !important;font-size:11.5pt;line-height:1.6}
+  .fc-v2 .v-paper table{font-size:10pt}
+  .fc-v2 .v-paper tr,.fc-v2 .v-paper li,.fc-v2 .v-paper .fc-score-row{break-inside:avoid}
+  .fc-v2 .v-paper h1,.fc-v2 .v-paper h2,.fc-v2 .v-paper h3{break-after:avoid}
+  a[href]::after,a[href]::before{content:none !important}
+  body.report-overlay-open *{visibility:hidden}
+  body.report-overlay-open .v-report-overlay,body.report-overlay-open .v-report-overlay *{visibility:visible}
+  body.report-overlay-open #app{display:none !important}
+  body.report-overlay-open .v-report-overlay{position:static;inset:auto;display:block;padding:0;background:#fff;max-height:none;overflow:visible}
+  body.report-overlay-open .v-report-frame{max-width:none;border:0;border-radius:0;background:#fff;overflow:visible}
+  body.report-overlay-open .v-report-layout{display:block;overflow:visible}
+}

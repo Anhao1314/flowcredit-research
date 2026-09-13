@@ -126,6 +126,19 @@
   }
 
   function customReport(host, draft) {
+    function snapshotFileName() {
+      return "flowcredit-report-" + new Date().toISOString().slice(0, 10) + "-" + String(draft.draftId || "draft").slice(0, 8) + ".json";
+    }
+    function downloadJson(payload) {
+      try {
+        var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+        var url = URL.createObjectURL(blob), link = document.createElement("a");
+        link.href = url; link.download = snapshotFileName();
+        document.body.appendChild(link); link.click(); link.remove();
+        if (App.fn && App.fn.timeout) App.fn.timeout(function () { URL.revokeObjectURL(url); }, 0);
+        else URL.revokeObjectURL(url);
+      } catch (error) { ui.toast("The JSON snapshot could not be downloaded.", "warn"); }
+    }
     var run = draft.result, m = run.tokenMetrics || {}, eq = run.evidenceQuality || {};
     function shown(value, suffix) { return value == null ? "Not computable" : ui.esc(value) + (suffix || ""); }
     function listScores(items) { return (items || []).map(function (item) { return '<li><span>' + ui.esc(String(item.name || '').replace(/[-_]/g, ' ')) + (item.score == null && item.reason ? '<small class="fc-score-reason">' + ui.esc(item.reason) + '</small>' : '') + '</span><b class="num">' + shown(item.score) + '</b></li>'; }).join(''); }
@@ -140,7 +153,16 @@
       '<section class="v-panel"><div class="v-section-head"><div><p class="v-eyebrow">5 · EVIDENCE AND INTEGRITY</p><h2>' + (veto ? 'Confirmed integrity Veto' : 'No confirmed Veto') + '</h2></div>' + ui.tag(veto ? 'CONFIRMED VETO' : 'NO CONFIRMED VETO', veto ? 'red' : 'green') + '</div><p>EQS: <b class="num">' + shown(eq.score) + '</b> · ' + ui.esc(run.evidenceStrength || 'not-rated') + '</p>' + (coverage ? '<div class="fc-coverage-summary"><span><b class="num">' + ui.esc(coverage.covered) + '</b><small>Covered</small></span><span><b class="num">' + ui.esc(coverage.missingEvidence) + '</b><small>Needs evidence</small></span><span><b class="num">' + ui.esc(coverage.missingData) + '</b><small>Missing data</small></span><span><b class="num">' + ui.esc(coverage.serverDerived) + '</b><small>Server-derived</small></span></div><p class="v-caption">' + ui.esc(coverage.covered) + ' of ' + ui.esc(coverage.total) + ' decision fields have field-level evidence.</p>' : '') + '<ul class="intake-issues">' + (run.integritySignals || []).concat(run.confirmedIntegrityEvents || []).map(function (item) { return '<li>' + ui.esc(item.message || item.code || String(item)) + '</li>'; }).join('') + '</ul></section>' +
       '<section class="v-panel"><div class="v-section-head"><div><p class="v-eyebrow">6 · METHODOLOGY AND LIMITATIONS</p><h2>What this result does not claim</h2></div></div><div class="fc-report-actions"><h3>What to provide next</h3>' + ((run.requiredActions || []).length ? '<ol class="intake-action-list">' + actionList(run.requiredActions) + '</ol>' : '<p>No additional input is required by the current deterministic screen.</p>') + '</div><ul class="intake-issues">' + (run.limitations || []).map(function (item) { return '<li>' + ui.esc(item) + '</li>'; }).join('') + '</ul><p class="v-caption">This is a conservative risk screen, not a statutory audit, lending decision or financial advice. TAI measures activity coherence, not revenue or creditworthiness.</p></section>' +
       (draft.proof ? '<details class="v-details"><summary>Local evidence proof <span>Session-only fingerprint</span></summary><div class="v-details-body"><p class="num intake-proof">' + ui.esc(draft.proof.root) + '</p></div></details>' : '') +
-      '<div class="v-action-row"><a class="btn" href="#/ingest">Edit input</a><a class="btn" href="#/audit">Ask about this result</a></div></div>';
+      '<div class="v-action-row"><a class="btn" href="#/ingest">Edit input</a><a class="btn" href="#/audit">Ask about this result</a><button class="btn" id="report-print" type="button">Print / Save PDF</button><button class="btn" id="report-export" type="button">Download JSON</button></div></div>';
+    var printButton = host.querySelector('#report-print');
+    if (printButton) printButton.addEventListener('click', function () { document.body.classList.remove('report-overlay-open'); window.print(); });
+    var exportButton = host.querySelector('#report-export');
+    if (exportButton) exportButton.addEventListener('click', function () {
+      if (!window.FC_INTAKE || typeof FC_INTAKE.snapshot !== 'function') { ui.toast('The JSON snapshot is unavailable in this browser.', 'warn'); return; }
+      var payload = FC_INTAKE.snapshot(draft.draftId);
+      if (!payload) { ui.toast('There is no saved assessment to export.', 'warn'); return; }
+      downloadJson(payload);
+    });
   }
 
   function render(host) {
@@ -331,6 +353,7 @@
   }
   function close() {
     if (!overlay) return;
+    document.body.classList.remove("report-overlay-open");
     document.removeEventListener("keydown", onKey);
     overlay.remove();
     overlay = null;
@@ -339,6 +362,35 @@
   }
   function reportWords(value) { return String(value || "not rated").replace(/[-_]/g, " "); }
   function reportValue(value, suffix) { return value == null ? "Not computable" : String(value) + (suffix || ""); }
+  function downloadJson(fileName, payload) {
+    try {
+      var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      var url = URL.createObjectURL(blob), link = document.createElement("a");
+      link.href = url; link.download = fileName;
+      document.body.appendChild(link); link.click(); link.remove();
+      if (App.fn && App.fn.timeout) App.fn.timeout(function () { URL.revokeObjectURL(url); }, 0);
+      else URL.revokeObjectURL(url);
+    } catch (error) { App.ui.toast("The JSON snapshot could not be downloaded.", "warn"); }
+  }
+  function reportPayload(kind, run, metrics) {
+    return {
+      format: "flowcredit.report/v1", exportedAt: new Date().toISOString(), report: kind,
+      subject: App.state.subject, capture: App.fn && App.fn.nowStamp ? App.fn.nowStamp() : new Date().toISOString(),
+      run: run || null, metrics: metrics || null
+    };
+  }
+  function reportFileName(kind) {
+    return "flowcredit-report-" + new Date().toISOString().slice(0, 10) + "-" + String(App.state.subject || "case") + "-" + kind + ".json";
+  }
+  /* Print the open overlay on its own: the class lets the print sheet drop the shell behind it. */
+  function printOverlay() {
+    var root = document.body;
+    root.classList.add("report-overlay-open");
+    var settle = function () { window.removeEventListener("afterprint", settle); root.classList.toggle("report-overlay-open", !!overlay); };
+    window.addEventListener("afterprint", settle);
+    window.print();
+    settle();
+  }
   function openLiveReport(run) {
     var u = App.ui, f = App.fn, st = App.state, d = SUBJECTS[st.subject], anchor = st.anchor;
     var returned = document.activeElement, captured = f.nowStamp(), m = run.tokenMetrics || {}, eq = run.evidenceQuality || {};
@@ -376,8 +428,11 @@
     overlay = document.createElement("div");
     overlay.className = "v-report-overlay";
     overlay.setAttribute("role","dialog"); overlay.setAttribute("aria-modal","true"); overlay.setAttribute("aria-label","Token-adjusted risk assessment report");
-    overlay.innerHTML = '<div class="v-report-frame"><header class="v-report-toolbar"><span>' + u.icon("layers",20) + ' Token-adjusted risk assessment report</span>' + u.tag("LIVE v0.2.1") + '<button class="btn" id="v-report-close">Close ' + u.icon("x",16) + '</button></header><div class="v-report-layout"><nav aria-label="Report sections">' + sections.map(function (item) { return '<a href="#report-' + item[0] + '">' + item[1] + '</a>'; }).join("") + '</nav><article class="v-paper" tabindex="0" aria-label="Report content"><header class="v-paper-head"><p class="v-eyebrow">FLOWCREDIT / TOKEN RISK DESK</p><h1>Token-adjusted risk assessment</h1><h2>' + u.esc(d.label) + '</h2><p>Generated ' + captured + ' · Live session result</p></header>' + body + '<footer>Snapshot of the live browser session at report creation. Reopen to capture updated results.</footer></article></div></div>';
+    overlay.innerHTML = '<div class="v-report-frame"><header class="v-report-toolbar"><span>' + u.icon("layers",20) + ' Token-adjusted risk assessment report</span>' + u.tag("LIVE v0.2.1") + '<span class="spacer"></span><button class="btn" id="live-report-print" type="button">Print / Save PDF</button><button class="btn" id="live-report-export" type="button">Download JSON</button><button class="btn" id="v-report-close">Close ' + u.icon("x",16) + '</button></header><div class="v-report-layout"><nav aria-label="Report sections">' + sections.map(function (item) { return '<a href="#report-' + item[0] + '">' + item[1] + '</a>'; }).join("") + '</nav><article class="v-paper" tabindex="0" aria-label="Report content"><header class="v-paper-head"><p class="v-eyebrow">FLOWCREDIT / TOKEN RISK DESK</p><h1>Token-adjusted risk assessment</h1><h2>' + u.esc(d.label) + '</h2><p>Generated ' + captured + ' · Live session result</p></header>' + body + '<footer>Snapshot of the live browser session at report creation. Reopen to capture updated results.</footer></article></div></div>';
     document.getElementById("layers").appendChild(overlay);
+    document.body.classList.add("report-overlay-open");
+    overlay.querySelector("#live-report-print").addEventListener("click", printOverlay);
+    overlay.querySelector("#live-report-export").addEventListener("click", function () { downloadJson(reportFileName("v021"), reportPayload("live-v0.2.1", run)); });
     overlay.querySelector("#v-report-close").addEventListener("click",close);
     overlay.querySelectorAll("nav a").forEach(function (link) { link.addEventListener("click",function (event) { event.preventDefault(); var target=overlay.querySelector(link.getAttribute("href")); target.setAttribute("tabindex","-1"); target.focus({preventScroll:true}); target.scrollIntoView({block:"start"}); }); });
     var verify=overlay.querySelector("#v-report-verify");
@@ -589,6 +644,9 @@
       u.icon("layers", 20) +
       " Risk assessment report</span>" +
       u.tag("DEMO SNAPSHOT") +
+      '<span class="spacer"></span>' +
+      '<button class="btn" id="legacy-report-print" type="button">Print / Save PDF</button>' +
+      '<button class="btn" id="legacy-report-export" type="button">Download JSON</button>' +
       '<button class="btn" id="v-report-close">Close ' +
       u.icon("x", 16) +
       '</button></header><div class="v-report-layout"><nav aria-label="Report sections">' +
@@ -611,6 +669,14 @@
       body +
       "<footer>Snapshot of the demo session at report creation. Reopen to capture updated results.</footer></article></div></div>";
     document.getElementById("layers").appendChild(overlay);
+    document.body.classList.add("report-overlay-open");
+    overlay.querySelector("#legacy-report-print").addEventListener("click", printOverlay);
+    overlay.querySelector("#legacy-report-export").addEventListener("click", function () {
+      downloadJson(reportFileName("legacy"), reportPayload("legacy-v0.1", null, {
+        cci: cci, pdPct: pd, creditLine: credit, expectedLoss: f.expectedLoss(d),
+        vetoed: veto, stress: st.stress, stressEligible: d.stressEligible !== false, anchor: anchor || null
+      }));
+    });
     overlay.querySelector("#v-report-close").addEventListener("click", close);
     overlay.querySelectorAll("nav a").forEach(function (a) {
       a.addEventListener("click", function (e) {

@@ -2,7 +2,7 @@
 (function () {
   "use strict";
   var App = window.App = window.App || {};
-  var KEY = "flowcredit.intake.v03", MAX = 5, data = { activeId: null, drafts: [] };
+  var KEY = "flowcredit.intake.v03", MAX = 5, PRODUCT_VERSION = "flowcredit.intake/v0.3.1", SNAPSHOT_FORMAT = "flowcredit.snapshot/v1", data = { activeId: null, drafts: [] };
   var REQUIRED_FIELDS = ["periodStart", "periodEnd", "inputTokensM", "outputTokensM", "modelTier", "taskType", "normalizationProfileId", "validRatePct", "gpuHours", "gpuModel", "peerProfileId", "revenueUsd", "computeSpendUsd", "monthlySeries", "repaymentRatePct", "overdue30Pct", "payingCustomers", "top5ConcentrationPct", "monthlyRevenueUsd", "monthlyComputeSpendUsd", "operatingHistoryDays", "dataCoveragePct", "R", "C"];
 
   function now() { return new Date().toISOString(); }
@@ -214,11 +214,59 @@
     touch(draft); if (App.renderCurrent) App.renderCurrent(); return draft.proof;
   }
 
+  /* ---------- portable JSON snapshot (no DOM, no storage, no timers) ---------- */
+  function snapshot(draftId) {
+    var draft = draftId ? data.drafts.filter(function (item) { return item.draftId === draftId; })[0] : active();
+    if (!draft) return null;
+    var result = draft.result || null;
+    return clone({
+      format: SNAPSHOT_FORMAT,
+      exportedAt: now(),
+      versions: {
+        ruleVersion: result && result.ruleVersion || window.FC_RISK && FC_RISK.ruleVersion || null,
+        productVersion: result && result.productVersion || PRODUCT_VERSION
+      },
+      draft: {
+        input: draft.input || {}, result: result, proof: draft.proof || null,
+        status: draft.status || "draft", source: draft.source || "manual", modelConsent: draft.modelConsent === true
+      }
+    });
+  }
+  function restore(payload, options) {
+    try {
+      if (!payload || typeof payload !== "object" || Array.isArray(payload)) return { ok: false, error: "A snapshot must be one JSON object." };
+      if (payload.format !== SNAPSHOT_FORMAT) return { ok: false, error: "Unsupported snapshot format. Use a FlowCredit assessment export." };
+      var versions = payload.versions && typeof payload.versions === "object" ? payload.versions : {};
+      if (versions.productVersion && versions.productVersion !== PRODUCT_VERSION) return { ok: false, error: "This snapshot belongs to another intake version and was not loaded." };
+      var body = payload.draft;
+      if (!body || typeof body !== "object" || Array.isArray(body)) return { ok: false, error: "The snapshot does not contain a draft." };
+      var input = body.input, result = body.result;
+      if (!input || typeof input !== "object" || Array.isArray(input)) return { ok: false, error: "The snapshot draft has no input facts." };
+      if (!result || typeof result !== "object" || Array.isArray(result)) return { ok: false, error: "The snapshot has no assessment result." };
+      if (result.decisionStatus == null && result.tai == null && result.cci == null && result.grade == null) return { ok: false, error: "The snapshot result is incomplete." };
+      var source = typeof body.source === "string" && body.source ? body.source : options && options.source || "import";
+      var draft = create(clone(input), source);
+      draft.modelConsent = body.modelConsent === true;
+      if (body.proof && typeof body.proof === "object" && !Array.isArray(body.proof)) draft.proof = clone(body.proof);
+      draft.result = clone(result);
+      draft.status = draft.errors.length ? "review" : "complete";
+      draft.sessionId = result.sessionId == null ? null : result.sessionId;
+      draft.readinessStatus = result.readinessStatus || draft.readinessStatus;
+      draft.evidenceCoverage = result.evidenceCoverage || draft.evidenceCoverage || null;
+      draft.requiredActions = Array.isArray(result.requiredActions) ? clone(result.requiredActions) : [];
+      touch(draft);
+      return { ok: true, draft: draft };
+    } catch (error) {
+      return { ok: false, error: "The snapshot could not be restored." };
+    }
+  }
+
   load();
   window.FC_INTAKE = {
-    productVersion: "flowcredit.intake/v0.3.1", create: create, active: active,
+    productVersion: PRODUCT_VERSION, create: create, active: active,
     list: function () { return data.drafts.slice(); }, choose: choose, deactivate: deactivate, commit: commit, update: update, validate: validate, evidenceCoverage: evidenceCoverage,
     setExtracted: setExtracted, setResult: setResult, applyServerValidation: applyServerValidation, remove: remove, clear: clear, proof: proof,
+    snapshot: snapshot, restore: restore,
     isActive: function () { return !!active(); }
   };
 })();
