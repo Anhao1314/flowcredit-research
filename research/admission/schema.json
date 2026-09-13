@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:admission:v0.4",
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "researchField",
+        "category",
+        "metric",
+        "scope",
+        "rawValue",
+        "rawUnit",
+        "unit",
+        "normalization",
+        "periodStart",
+        "periodEnd",
+        "observedAt",
+        "confidence"
+      ],
+      "properties": {
+        "researchField": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metric": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "enum": [
+            "consolidated_company",
+            "ai_inference_api"
+          ]
+        },
+        "rawValue": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "array"
+            },
+            {
+              "type": "object"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "rawUnit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalization": {
+          "enum": [
+            "identity",
+            "usd_millions_to_usd",
+            "usd_billions_to_usd"
+          ]
+        },
+        "periodStart": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "periodEnd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "candidateId",
+        "subjectId",
+        "version",
+        "previousReviewId",
+        "decision",
+        "reasonCode",
+        "reviewerType",
+        "reviewerId",
+        "reviewedAt",
+        "note",
+        "candidateHash",
+        "requestHash",
+        "validationSnapshot",
+        "snapshot",
+        "resultingEvidenceId",
+        "factKey",
+        "mapping",
+        "availableAt",
+        "candidateCreatedAt",
+        "acceptedAt",
+        "evidenceMemoryCreatedAt",
+        "outcome",
+        "recordedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidateId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "previousReviewId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decision": {
+          "enum": [
+            "accepted",
+            "rejected"
+          ]
+        },
+        "reasonCode": {
+          "enum": [
+            "verified_primary_source",
+            "verified_existing_evidence",
+            "wrong_subject",
+            "wrong_period",
+            "wrong_metric",
+            "wrong_unit",
+            "insufficient_context",
+            "unsupported_inference",
+            "duplicate",
+            "stale_candidate",
+            "citation_invalid",
+            "source_not_authoritative",
+            "not_material",
+            "other"
+          ]
+        },
+        "reviewerType": {
+          "enum": [
+            "human",
+            "system_test"
+          ]
+        },
+        "reviewerId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidateHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "requestHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "validationSnapshot": {
+          "type": "object"
+        },
+        "snapshot": {
+          "type": "object"
+        },
+        "resultingEvidenceId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "factKey": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mapping": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "availableAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidateCreatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "acceptedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidenceMemoryCreatedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "accepted",
+            "already_accepted",
+            "rejected"
+          ]
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

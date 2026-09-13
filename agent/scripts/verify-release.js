@@ -77,6 +77,8 @@ const memoryTests = (await readdir(resolve(REPOSITORY_ROOT, "research/memory-tes
 run("Research Memory Core tests", ["--test", ...memoryTests]);
 const retrievalTests = (await readdir(resolve(REPOSITORY_ROOT, "research/retrieval-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/retrieval-test/${name}`);
 run("Research Retrieval Layer tests", ["--test", ...retrievalTests]);
+const admissionTests = (await readdir(resolve(REPOSITORY_ROOT, "research/admission-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/admission-test/${name}`);
+run("Evidence Admission Layer tests", ["--test", ...admissionTests]);
 run("Public API tests", ["--test", "test/public-api.test.js"]);
 run("Finch contract tests", ["--test", "test/finch-contract.test.js"]);
 run("Public API validator", ["scripts/validate-public-api.js"]);

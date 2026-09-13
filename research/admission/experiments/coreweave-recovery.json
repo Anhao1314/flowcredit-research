@@ -1,0 +1,140 @@
+{
+  "label": "Explicit system_test recovery on isolated database; no LLM/human authority claim",
+  "reviewed": 13,
+  "matchedExisting": 13,
+  "newEvidence": 0,
+  "duplicates": 0,
+  "before": {
+    "source": 3,
+    "evidence": 32,
+    "identity": 4,
+    "revision": 4,
+    "correction": 0
+  },
+  "after": {
+    "source": 3,
+    "evidence": 32,
+    "identity": 4,
+    "revision": 4,
+    "correction": 0
+  },
+  "rows": [
+    {
+      "candidateId": "CANDIDATE-778e17b56d3606d6bcfcc220",
+      "evidenceId": "EVID-0d73c529dbe08a3224eeae92",
+      "reviewId": "REVIEW-1ef36dbcbf63772269d42fb8",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "page": 93,
+      "query": "FY2025 revenue 5,131 2024"
+    },
+    {
+      "candidateId": "CANDIDATE-a812ba14d59eed002dc1c554",
+      "evidenceId": "EVID-105cce7840c6d7d991199463",
+      "reviewId": "REVIEW-a406bf7520b1768a67a2f3ba",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "page": 93,
+      "query": "FY2025 revenue 5,131 2025"
+    },
+    {
+      "candidateId": "CANDIDATE-0a19df9500e784c136c53f76",
+      "evidenceId": "EVID-e257578fb0269a439eb67676",
+      "reviewId": "REVIEW-18eddeeeb35ee7e26006e320",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "page": 93,
+      "query": "FY2025 revenue 5,131 2023"
+    },
+    {
+      "candidateId": "CANDIDATE-482fb9b32471ff24dc74a20c",
+      "evidenceId": "EVID-57d9fb7c9e0d01968f63e86d",
+      "reviewId": "REVIEW-4c0af7d4db20e0dc379d4006",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "page": 77,
+      "query": "revenue change 168 2025"
+    },
+    {
+      "candidateId": "CANDIDATE-46f3f1b522ae9fac763302bd",
+      "evidenceId": "EVID-9972e75db9572973a07822ea",
+      "reviewId": "REVIEW-46e640a4b64eb7805d450415",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "page": 26,
+      "query": "Microsoft revenue 67 2025"
+    },
+    {
+      "candidateId": "CANDIDATE-dedd7cd8b590f8abd608423b",
+      "evidenceId": "EVID-01e98f7104a3898b78561892",
+      "reviewId": "REVIEW-bc0d7fbf7c84596388fbbefa",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "page": 140,
+      "query": "United States revenue 4,801 2025"
+    },
+    {
+      "candidateId": "CANDIDATE-668da54bc8aafd7ce5118f47",
+      "evidenceId": "EVID-55de53767427d2546ea5a131",
+      "reviewId": "REVIEW-b0b265ebffb36978f9a8d381",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 46,
+      "query": "2026 revenue 2,575 2026"
+    },
+    {
+      "candidateId": "CANDIDATE-3ab11d4e0f2a92471c056393",
+      "evidenceId": "EVID-1bd669d2eaff75004e3144c8",
+      "reviewId": "REVIEW-876a1352033cdbd6007618ef",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 46,
+      "query": "cost revenue 879 2026"
+    },
+    {
+      "candidateId": "CANDIDATE-7ecf7807004e91ed9eedf982",
+      "evidenceId": "EVID-b5554a7e7040c07b95cf24cc",
+      "reviewId": "REVIEW-d304fc9adc35bddae00974ea",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 46,
+      "query": "technology infrastructure 1,507 2026"
+    },
+    {
+      "candidateId": "CANDIDATE-b3604f404c7c0c40152ea379",
+      "evidenceId": "EVID-b7667065291b5ef49830ce7e",
+      "reviewId": "REVIEW-e7fe7c03362f99a63b6a035d",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 18,
+      "query": "Customer A 36% 2026"
+    },
+    {
+      "candidateId": "CANDIDATE-080c0a82f970cea9d71f7996",
+      "evidenceId": "EVID-d6bd9f44f58d10087bfb051f",
+      "reviewId": "REVIEW-a03e17fc5f56a2faae883c52",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 18,
+      "query": "Customer B 26% 2026"
+    },
+    {
+      "candidateId": "CANDIDATE-36a7d4f23069c6456c5bea50",
+      "evidenceId": "EVID-33fce161495522ddc4db205c",
+      "reviewId": "REVIEW-dd55bb2bf6baf933fa4c72fd",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 18,
+      "query": "remaining performance obligations 103.7 2026"
+    },
+    {
+      "candidateId": "CANDIDATE-8de9322ffc137b68282a3ca9",
+      "evidenceId": "EVID-430ce62f5da87b41027d09b0",
+      "reviewId": "REVIEW-acff06684ffa5cd3bf31eca5",
+      "outcome": "already_accepted",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "page": 52,
+      "query": "interest expense basis points 30 2026"
+    }
+  ]
+}

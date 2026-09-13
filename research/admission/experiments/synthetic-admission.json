@@ -1,0 +1,45 @@
+{
+  "label": "Synthetic controlled-clock fixture, not CoreWeave data or human review",
+  "candidateId": "CANDIDATE-ac2d18170881279b03f67dc8",
+  "reviewId": "REVIEW-40c2165969c5b0dd23584e5f",
+  "evidenceId": "EVID-ce75956e86293f371e6c5d15",
+  "availableAt": "2026-06-01T00:00:00.000Z",
+  "candidateCreatedAt": "2026-07-01T12:00:00.000Z",
+  "reviewedAt": "2026-09-13T12:00:00.000Z",
+  "acceptedAt": "2026-09-13T12:00:00.000Z",
+  "normalizedValue": 32000000,
+  "before": {
+    "source": 0,
+    "evidence": 0,
+    "identity": 0,
+    "revision": 0,
+    "correction": 0
+  },
+  "after": {
+    "source": 1,
+    "evidence": 1,
+    "identity": 0,
+    "revision": 0,
+    "correction": 0
+  },
+  "rejection": {
+    "candidateId": "CANDIDATE-e00f5e48dc52dcce47f1484b",
+    "reviewId": "REVIEW-ee664ecd9af011f93e31ec33",
+    "citationValidation": "valid",
+    "reason": "wrong_period"
+  },
+  "deepProvenance": {
+    "evidenceId": "EVID-ce75956e86293f371e6c5d15",
+    "sourceId": "SRC-a7de48b7810bb01bcb9f8c2d",
+    "reviewId": "REVIEW-40c2165969c5b0dd23584e5f",
+    "candidateId": "CANDIDATE-ac2d18170881279b03f67dc8",
+    "chunkId": "CHUNK-40b3a9654e5b328ecff39074",
+    "documentId": "DOC-459fcdc772174ffdafe2400e"
+  },
+  "stats": {
+    "pending": 0,
+    "accepted": 1,
+    "rejected": 1,
+    "stale": 0
+  }
+}

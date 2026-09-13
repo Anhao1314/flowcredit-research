@@ -66,3 +66,5 @@ No API, TAI/CCI/grade calculation, Finch schema/version, UI, authentication or d
 See [pre-implementation audit](REPOSITORY_AUDIT.md), [corpus notes](fixtures/coreweave/README.md) and [full compatibility report](../docs/research-evidence-bridge-v0.1.md).
 
 Independent [Research Retrieval Layer v0.3](retrieval/README.md) searches verified raw documents and validates Candidate citations. It never writes accepted Evidence or Claim revisions.
+
+[Evidence Admission Layer v0.4](admission/README.md) adds explicit immutable human reviews, atomic Evidence admission and duplicate recognition. It never changes Claims.

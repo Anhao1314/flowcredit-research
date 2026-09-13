@@ -109,5 +109,44 @@ export class SQLiteBackend {
     const statement = this.#db.prepare('INSERT INTO links VALUES(?,?,?,?,?)');
     for (const link of links) statement.run(kind,payload.id,link.kind,link.id,link.role);
   }
+  // Optional Admission participant: separate tables, same transaction/connection.
+  // Existing records schema and storage version remain unchanged.
+  admissionRecords() {
+    this.transaction(()=>this.#db.exec(`
+      CREATE TABLE IF NOT EXISTS admission_reviews (
+        id TEXT PRIMARY KEY, candidate_id TEXT NOT NULL, version INTEGER NOT NULL CHECK(version>0),
+        previous_id TEXT REFERENCES admission_reviews(id), payload TEXT NOT NULL CHECK(json_valid(payload)),
+        content_hash TEXT NOT NULL, created_at TEXT NOT NULL,
+        evidence_kind TEXT CHECK(evidence_kind='evidence'), evidence_id TEXT,
+        UNIQUE(candidate_id,version), FOREIGN KEY(evidence_kind,evidence_id) REFERENCES records(kind,id),
+        CHECK((json_extract(payload,'$.decision')='accepted' AND evidence_kind='evidence' AND evidence_id IS NOT NULL)
+           OR (json_extract(payload,'$.decision')='rejected' AND evidence_kind IS NULL AND evidence_id IS NULL))
+      ) STRICT;
+      CREATE TABLE IF NOT EXISTS admission_fact_links (
+        fact_key TEXT PRIMARY KEY, evidence_kind TEXT NOT NULL CHECK(evidence_kind='evidence'), evidence_id TEXT NOT NULL,
+        FOREIGN KEY(evidence_kind,evidence_id) REFERENCES records(kind,id)
+      ) STRICT;
+      CREATE TRIGGER IF NOT EXISTS immutable_reviews_update BEFORE UPDATE ON admission_reviews BEGIN SELECT RAISE(ABORT,'Immutable Review'); END;
+      CREATE TRIGGER IF NOT EXISTS immutable_reviews_delete BEFORE DELETE ON admission_reviews BEGIN SELECT RAISE(ABORT,'Immutable Review'); END;
+      CREATE TRIGGER IF NOT EXISTS immutable_fact_links_update BEFORE UPDATE ON admission_fact_links BEGIN SELECT RAISE(ABORT,'Immutable admission lineage'); END;
+      CREATE TRIGGER IF NOT EXISTS immutable_fact_links_delete BEFORE DELETE ON admission_fact_links BEGIN SELECT RAISE(ABORT,'Immutable admission lineage'); END;
+    `));
+    return Object.freeze({
+      list:()=>this.#db.prepare('SELECT * FROM admission_reviews ORDER BY created_at,candidate_id,version').all().map(row=>this.#decode(row).payload),
+      get:id=>{const row=this.#db.prepare('SELECT * FROM admission_reviews WHERE id=?').get(id);return row?this.#decode(row).payload:null;},
+      fact:key=>this.#db.prepare('SELECT evidence_id FROM admission_fact_links WHERE fact_key=?').get(key)?.evidence_id??null,
+      append:review=>{
+        if(!this.#depth)throw new Error('Review append requires shared transaction');
+        const latest=this.#db.prepare('SELECT MAX(t) AS latest FROM (SELECT created_at t FROM records UNION ALL SELECT created_at t FROM admission_reviews)').get().latest;
+        if(latest && review.recordedAt<latest)throw new Error('Review clock cannot move backwards');
+        this.#db.prepare('INSERT INTO admission_reviews VALUES(?,?,?,?,?,?,?,?,?)').run(review.id,review.candidateId,review.version,review.previousReviewId,JSON.stringify(canonical(review)),digest(review),review.recordedAt,review.resultingEvidenceId?'evidence':null,review.resultingEvidenceId);
+        if(review.factKey){
+          const existing=this.#db.prepare('SELECT evidence_id FROM admission_fact_links WHERE fact_key=?').get(review.factKey);
+          if(existing && existing.evidence_id!==review.resultingEvidenceId)throw new Error('Admission duplicate lineage conflict');
+          if(!existing)this.#db.prepare("INSERT INTO admission_fact_links VALUES(?,'evidence',?)").run(review.factKey,review.resultingEvidenceId);
+        }
+      }
+    });
+  }
   close() { this.#db.close(); }
 }
