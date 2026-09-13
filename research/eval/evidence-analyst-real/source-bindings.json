@@ -1,0 +1,258 @@
+[
+  {
+    "caseId": "GOLD-01",
+    "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+    "contentHash": "sha256:7a6a3af23d501efb6b881a2aa9b6d87d39961a90577c6eaff042eed29127aba0",
+    "valueSpan": {
+      "start": 3125,
+      "end": 3130
+    },
+    "contextSpan": {
+      "start": 2905,
+      "end": 3305
+    },
+    "contextQuote": "based on the address of the customer as specified in the Company's customer contracts. The \nfollowing table sets forth revenue by geographic area (in millions):\n\nYear Ended December 31,\n\n2025\n2024\n2023\n\nUnited States\n$ \n4,801 $ \n1,797 $ \n201 \n\nAll other countries\n \n330  \n118  \n28 \n\nTotal revenue\n$ \n5,131 $ \n1,915 $ \n229 \n\nThe Company's long-lived assets are attributed to a country based on the phy",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-02",
+    "chunkId": "CHUNK-2223cab8302d364a8440382e",
+    "contentHash": "sha256:7bd75ed9abe00971929619c3e566de8eb9fbb924d680a204618de1e86a6b8bd0",
+    "valueSpan": {
+      "start": 197,
+      "end": 202
+    },
+    "contextSpan": {
+      "start": 0,
+      "end": 377
+    },
+    "contextQuote": "Table of Contents\n\nCOREWEAVE, INC. \nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS \n\n(in millions, except per share data)\n\nYear Ended December 31,\n2025\n2024\n2023\n\nRevenue\n$ \n5,131 $ \n1,915 $ \n229 \nOperating expenses:\n\nCost of revenue\n \n1,453  \n493  \n69 \nTechnology and infrastructure\n \n2,929  \n961  \n131 \nSales and marketing\n \n144  \n18  \n13 \nGeneral and administr",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-03",
+    "chunkId": "CHUNK-2223cab8302d364a8440382e",
+    "contentHash": "sha256:7bd75ed9abe00971929619c3e566de8eb9fbb924d680a204618de1e86a6b8bd0",
+    "valueSpan": {
+      "start": 188,
+      "end": 193
+    },
+    "contextSpan": {
+      "start": 0,
+      "end": 368
+    },
+    "contextQuote": "Table of Contents\n\nCOREWEAVE, INC. \nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS \n\n(in millions, except per share data)\n\nYear Ended December 31,\n2025\n2024\n2023\n\nRevenue\n$ \n5,131 $ \n1,915 $ \n229 \nOperating expenses:\n\nCost of revenue\n \n1,453  \n493  \n69 \nTechnology and infrastructure\n \n2,929  \n961  \n131 \nSales and marketing\n \n144  \n18  \n13 \nGeneral and ",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-04",
+    "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+    "contentHash": "sha256:87d0b1f3919909d9833bf88b0cc9050434f33961224433382cf0a8b251c7c7b8",
+    "valueSpan": {
+      "start": 596,
+      "end": 599
+    },
+    "contextSpan": {
+      "start": 376,
+      "end": 776
+    },
+    "contextQuote": "ive loss data for the periods indicated:\n\nThree Months Ended June 30,\nSix Months Ended June 30,\n\n2026\n2025\n2026\n2025\n\n(in millions)\n\nRevenue\n$\n2,575 \n$\n1,212 \n$\n4,653 \n$\n2,194 \n\nOperating expenses:\n\n(1)\n\nCost of revenue\n879 \n313 \n1,595 \n575 \n\n(1)\n\nTechnology and infrastructure\n1,507 \n670 \n2,780 \n1,231 \n\n(1)\n\nSales and marketing\n60 \n36 \n129 \n47 \n\n(1)\n\nGeneral and administrative\n178 \n174 \n342 \n349 \n",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-05",
+    "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+    "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+    "valueSpan": {
+      "start": 2688,
+      "end": 2693
+    },
+    "contextSpan": {
+      "start": 2468,
+      "end": 2868
+    },
+    "contextQuote": "ecific facts and circumstances of the committed contracts included in the Company's RPO. RPO\nincludes both billed and unbilled consideration from the Company's committed contracts.\n\nAs of June 30, 2026, the Company had $103.7 billion of unsatisfied RPO, of which 41% was expected to be recognized over the initial 24 months ending\nJune 30, 2028, 39% between months 25 and 48, and the remaining balanc",
+    "binding": "narrative",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-06",
+    "chunkId": "CHUNK-b209888dde9875314e5d8071",
+    "contentHash": "sha256:813136039540b83ccf112931ede8d55f7abead24edf70dad8cf3735fda8fbba6",
+    "valueSpan": {
+      "start": 918,
+      "end": 920
+    },
+    "contextSpan": {
+      "start": 698,
+      "end": 1098
+    },
+    "contextQuote": "isk, foreign currency risk, and inflation risk. Market risk\nrepresents the risk of loss that may impact our financial position due to adverse changes in financial market prices and rates.\n\nInterest Rate Risk\n\nAs of June 30, 2026, we had cash, cash equivalents, and marketable securities of $5.5 billion. In addition, we had $1.4 billion of restricted cash and cash\nequivalents, primarily consisting o",
+    "binding": "narrative",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-07",
+    "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+    "contentHash": "sha256:87d0b1f3919909d9833bf88b0cc9050434f33961224433382cf0a8b251c7c7b8",
+    "valueSpan": {
+      "start": 519,
+      "end": 524
+    },
+    "contextSpan": {
+      "start": 299,
+      "end": 699
+    },
+    "contextQuote": "sets forth our condensed consolidated statements of operations and comprehensive loss data for the periods indicated:\n\nThree Months Ended June 30,\nSix Months Ended June 30,\n\n2026\n2025\n2026\n2025\n\n(in millions)\n\nRevenue\n$\n2,575 \n$\n1,212 \n$\n4,653 \n$\n2,194 \n\nOperating expenses:\n\n(1)\n\nCost of revenue\n879 \n313 \n1,595 \n575 \n\n(1)\n\nTechnology and infrastructure\n1,507 \n670 \n2,780 \n1,231 \n\n(1)\n\nSales and mar",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-08",
+    "chunkId": "CHUNK-d97b32fd73827505b0e13548",
+    "contentHash": "sha256:da9748a82a03c76ce62bfe07f0113730ceb357075f7aa3f3961561d0849424c7",
+    "valueSpan": {
+      "start": 2143,
+      "end": 2146
+    },
+    "contextSpan": {
+      "start": 1923,
+      "end": 2323
+    },
+    "contextQuote": "63  \n17  \n6 \nTotal\n$ \n630 $ \n31 $ \n15 \n\n \nComparison of the Year Ended December 31, 2025 and 2024 \n\nRevenue \n\nYear Ended December 31,\n2025\n2024\nChange\n% Change\n\n(dollars in millions)\nRevenue\n$ \n5,131 $ \n1,915 $ \n3,216 \n 168 %\n\nRevenue for the year ended December 31, 2025 increased by $3.2 billion, or 168%, compared to the year ended \nDecember 31, 2024. This substantial growth was related to increa",
+    "binding": "narrative",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-09",
+    "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+    "contentHash": "sha256:7a6a3af23d501efb6b881a2aa9b6d87d39961a90577c6eaff042eed29127aba0",
+    "valueSpan": {
+      "start": 3171,
+      "end": 3174
+    },
+    "contextSpan": {
+      "start": 2951,
+      "end": 3351
+    },
+    "contextQuote": "ied in the Company's customer contracts. The \nfollowing table sets forth revenue by geographic area (in millions):\n\nYear Ended December 31,\n\n2025\n2024\n2023\n\nUnited States\n$ \n4,801 $ \n1,797 $ \n201 \n\nAll other countries\n \n330  \n118  \n28 \n\nTotal revenue\n$ \n5,131 $ \n1,915 $ \n229 \n\nThe Company's long-lived assets are attributed to a country based on the physical location of the assets. It defines \nlong",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-10",
+    "chunkId": "CHUNK-459628441b923d19deef40e6",
+    "contentHash": "sha256:4ccdab93497f31cb2936815aea2748e824ddf996bb34264947052a61949e2b46",
+    "valueSpan": {
+      "start": 1303,
+      "end": 1305
+    },
+    "contextSpan": {
+      "start": 1083,
+      "end": 1483
+    },
+    "contextQuote": "ould adversely affect our business, operating results, \nfinancial condition, and prospects. \n\nA substantial portion of our revenue is driven by a limited number of customers. We recognized an aggregate of \napproximately 67% of our revenue from our top customer, Microsoft, for the year ended December 31, 2025. We \nrecognized an aggregate of approximately 77% of our revenue from our top two customer",
+    "binding": "narrative",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-11",
+    "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+    "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+    "valueSpan": {
+      "start": 709,
+      "end": 711
+    },
+    "contextSpan": {
+      "start": 489,
+      "end": 889
+    },
+    "contextQuote": "2025.\n\nSignificant Customers\n\nThe following customers accounted for 10% or more of the Company's revenue for the periods presented:\n\nThree Months Ended June 30,\nSix Months Ended June 30,\n\n2026\n2025\n2026\n2025\n\nCustomer A\n36%\n71%\n40%\n72%\n\nCustomer B\n26%\n*\n23%\n*\n\nCustomer C\n10%\n*\n*\n*\n\nCustomer D\n*\n*\n*\n*\n\n* Customer did not represent 10% or more of revenue.\nThe customer references of A through D may r",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-12",
+    "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+    "contentHash": "sha256:87d0b1f3919909d9833bf88b0cc9050434f33961224433382cf0a8b251c7c7b8",
+    "valueSpan": {
+      "start": 654,
+      "end": 659
+    },
+    "contextSpan": {
+      "start": 434,
+      "end": 834
+    },
+    "contextQuote": "ed June 30,\nSix Months Ended June 30,\n\n2026\n2025\n2026\n2025\n\n(in millions)\n\nRevenue\n$\n2,575 \n$\n1,212 \n$\n4,653 \n$\n2,194 \n\nOperating expenses:\n\n(1)\n\nCost of revenue\n879 \n313 \n1,595 \n575 \n\n(1)\n\nTechnology and infrastructure\n1,507 \n670 \n2,780 \n1,231 \n\n(1)\n\nSales and marketing\n60 \n36 \n129 \n47 \n\n(1)\n\nGeneral and administrative\n178 \n174 \n342 \n349 \n\nTotal operating expenses\n2,624 \n1,193 \n4,846 \n2,202 \n\nOpe",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-13",
+    "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+    "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+    "valueSpan": {
+      "start": 408,
+      "end": 410
+    },
+    "contextSpan": {
+      "start": 188,
+      "end": 588
+    },
+    "contextQuote": " on-demand\nservices. Revenue recognized related to customer commitments, including revenue from delivering capacity prior to commitment start dates, represented 98%\nof total revenue for the three months ended June 30, 2026 and 2025, and 98% of total revenue for the six months ended June 30, 2026 and 2025.\n\nSignificant Customers\n\nThe following customers accounted for 10% or more of the Company's re",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-14",
+    "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+    "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+    "valueSpan": {
+      "start": 709,
+      "end": 711
+    },
+    "contextSpan": {
+      "start": 489,
+      "end": 889
+    },
+    "contextQuote": "2025.\n\nSignificant Customers\n\nThe following customers accounted for 10% or more of the Company's revenue for the periods presented:\n\nThree Months Ended June 30,\nSix Months Ended June 30,\n\n2026\n2025\n2026\n2025\n\nCustomer A\n36%\n71%\n40%\n72%\n\nCustomer B\n26%\n*\n23%\n*\n\nCustomer C\n10%\n*\n*\n*\n\nCustomer D\n*\n*\n*\n*\n\n* Customer did not represent 10% or more of revenue.\nThe customer references of A through D may r",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-15",
+    "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+    "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+    "valueSpan": {
+      "start": 557,
+      "end": 559
+    },
+    "contextSpan": {
+      "start": 337,
+      "end": 737
+    },
+    "contextQuote": "represented 98%\nof total revenue for the three months ended June 30, 2026 and 2025, and 98% of total revenue for the six months ended June 30, 2026 and 2025.\n\nSignificant Customers\n\nThe following customers accounted for 10% or more of the Company's revenue for the periods presented:\n\nThree Months Ended June 30,\nSix Months Ended June 30,\n\n2026\n2025\n2026\n2025\n\nCustomer A\n36%\n71%\n40%\n72%\n\nCustomer B\n",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  },
+  {
+    "caseId": "GOLD-16",
+    "chunkId": "CHUNK-2223cab8302d364a8440382e",
+    "contentHash": "sha256:7bd75ed9abe00971929619c3e566de8eb9fbb924d680a204618de1e86a6b8bd0",
+    "valueSpan": {
+      "start": 206,
+      "end": 209
+    },
+    "contextSpan": {
+      "start": 0,
+      "end": 386
+    },
+    "contextQuote": "Table of Contents\n\nCOREWEAVE, INC. \nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS \n\n(in millions, except per share data)\n\nYear Ended December 31,\n2025\n2024\n2023\n\nRevenue\n$ \n5,131 $ \n1,915 $ \n229 \nOperating expenses:\n\nCost of revenue\n \n1,453  \n493  \n69 \nTechnology and infrastructure\n \n2,929  \n961  \n131 \nSales and marketing\n \n144  \n18  \n13 \nGeneral and administrative\n \n6",
+    "binding": "table_column",
+    "note": "Source-only diagnostic anchor; value span is not proof of period/unit binding. Full locked Chunk is still provider input. Gold and prompt unchanged."
+  }
+]

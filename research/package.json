@@ -13,7 +13,9 @@
     "admission": "node src/admission.js",
     "test:admission": "node --test admission-test/*.test.js",
     "analyst": "node src/analyst.js",
-    "test:analyst": "node --test analyst-test/*.test.js"
+    "test:analyst": "node --test analyst-test/*.test.js",
+    "analyst-real": "node analyst-real/cli.js",
+    "test:analyst-real": "node --test analyst-real-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

@@ -1,0 +1,222 @@
+{
+  "proposals": 16,
+  "rows": [
+    {
+      "proposalId": "PROP-04dd527c5657114217b4c7b7",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "numeric_unit_binding_invalid",
+        "period_not_supported",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-01e98f7104a3898b78561892"
+      ]
+    },
+    {
+      "proposalId": "PROP-798839a7e4c0395218a0db7e",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "numeric_unit_binding_invalid",
+        "period_not_supported",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-581b270af3a7cb05cb3c8d76"
+      ]
+    },
+    {
+      "proposalId": "PROP-79738b7b7517b1bc000b92e3",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "numeric_unit_binding_invalid",
+        "period_not_supported",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-0d73c529dbe08a3224eeae92"
+      ]
+    },
+    {
+      "proposalId": "PROP-1d801a421cc2cd460a69990d",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "numeric_unit_binding_invalid",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-105cce7840c6d7d991199463"
+      ]
+    },
+    {
+      "proposalId": "PROP-997cf935d6edb2e99746e306",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "numeric_unit_binding_invalid",
+        "period_not_supported",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-e257578fb0269a439eb67676"
+      ]
+    },
+    {
+      "proposalId": "PROP-ceb3c3b5af6d81dc068331fa",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "ambiguous_value_binding",
+        "numeric_unit_binding_invalid",
+        "unknown_or_unsupported_unit",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-1bd669d2eaff75004e3144c8"
+      ]
+    },
+    {
+      "proposalId": "PROP-f49ca459f9fccf3f25fb0271",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "ambiguous_value_binding",
+        "numeric_unit_binding_invalid",
+        "unknown_or_unsupported_unit",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-55de53767427d2546ea5a131"
+      ]
+    },
+    {
+      "proposalId": "PROP-dc6c24a195d30a1100094db0",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "ambiguous_value_binding",
+        "numeric_unit_binding_invalid",
+        "unknown_or_unsupported_unit",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-b5554a7e7040c07b95cf24cc"
+      ]
+    },
+    {
+      "proposalId": "PROP-28a3cd56ef3d9cce01207fbf",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "unknown_or_unsupported_unit",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-33fce161495522ddc4db205c"
+      ]
+    },
+    {
+      "proposalId": "PROP-ade9cf0fc717031d116c640a",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-9d1a6c004a3030203ca7357b"
+      ]
+    },
+    {
+      "proposalId": "PROP-8bf212590988f1b678ff1e92",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-b7667065291b5ef49830ce7e"
+      ]
+    },
+    {
+      "proposalId": "PROP-355ad843f867e898243aa2ee",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-d6bd9f44f58d10087bfb051f"
+      ]
+    },
+    {
+      "proposalId": "PROP-7f46ee15a28c908cffee4458",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-d80a92ea485d42e2b259840f"
+      ]
+    },
+    {
+      "proposalId": "PROP-be853d51500fced7b599357b",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "unknown_or_unsupported_unit",
+        "period_not_supported",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-430ce62f5da87b41027d09b0"
+      ]
+    },
+    {
+      "proposalId": "PROP-07d7ba26d2375dd909369413",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "ambiguous_value_binding",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-57d9fb7c9e0d01968f63e86d"
+      ]
+    },
+    {
+      "proposalId": "PROP-086584173f8a5ce2e2ef7d63",
+      "validationStatus": "invalid",
+      "validationFindings": [
+        "guidance_misclassified",
+        "negated_numeric_not_admissible",
+        "ambiguous_value_binding",
+        "ambiguous_period_binding"
+      ],
+      "matchedEvidenceIds": [
+        "EVID-9972e75db9572973a07822ea"
+      ]
+    }
+  ],
+  "reasonCounts": {
+    "negated_numeric_not_admissible": 9,
+    "ambiguous_value_binding": 13,
+    "numeric_unit_binding_invalid": 8,
+    "period_not_supported": 5,
+    "ambiguous_period_binding": 16,
+    "unknown_or_unsupported_unit": 5,
+    "guidance_misclassified": 7
+  },
+  "assessment": "Whole-page oracle quotes are fixture defects. Global value/period/guidance heuristics also risk false rejection; rates require independently bound real output. No validator changes."
+}

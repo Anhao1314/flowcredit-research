@@ -1,0 +1,2410 @@
+{
+  "status": "REAL_MODEL_EVALUATED",
+  "runId": "REAL-1789310233599",
+  "runAt": "2026-09-13T14:37:13.599Z",
+  "provider": {
+    "kind": "real",
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "modelVersion": "provider-unreported",
+    "temperature": 0,
+    "structuredOutputMode": "native_json_schema",
+    "endpointOrigin": "https://api.deepseek.com"
+  },
+  "promptVersion": "evidence-analyst/v1",
+  "promptHash": "sha256:6c7bc602a4bbed3a5db2759ecabdcd41a61778986dccdbc1f2fc5def8b042be3",
+  "validationVersion": "evidence-analyst-validation/v1",
+  "validatorHash": "sha256:ee87726459059c62ac3b62585d45f72eea34c1e64a9eaa2ee4efb6aae09bd789",
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "goldTotal": 32,
+  "indexedGold": 19,
+  "literalEligible": 16,
+  "metrics": {
+    "eligibleGoldCases": 16,
+    "actuallyEvaluated": 16,
+    "identifiedGoldCases": 0,
+    "rawTargetIdentifiedCases": 2,
+    "correctGoldCases": 0,
+    "identifiedButRejected": 0,
+    "candidateEligibleCases": 0,
+    "proposalCount": 22,
+    "proposalPrecision": 0,
+    "precisionClosedGoldLowerBound": 0,
+    "precisionUnknown": 0,
+    "proposalRecall": 0,
+    "exactCitationValidity": 1,
+    "numericAccuracy": 0.15,
+    "unitAccuracy": 0,
+    "periodAccuracy": 0,
+    "categoryAccuracy": 0.13636363636363635,
+    "hallucinations": 1,
+    "hallucinationRate": 0.045454545454545456,
+    "falsePositiveRate": 0.2,
+    "negativeSchemaValidCases": 5,
+    "negativeSchemaInvalidCases": 0,
+    "correctAbstentionRate": 0.8,
+    "abstentionRate": 0.15384615384615385,
+    "schemaInvalidCases": 19,
+    "validatorAcceptanceRate": 0,
+    "validatorFalseRejectRate": null,
+    "validatorFalseAcceptRate": 0,
+    "unknownBindingCount": 0,
+    "failureBreakdown": {
+      "MODEL_ERROR": 41,
+      "VALIDATOR_FALSE_REJECT": 0,
+      "VALIDATOR_CORRECT_REJECT": 0,
+      "GOLD_MAPPING_LIMITATION": 0,
+      "PARSER_CONTEXT_LIMITATION": 0,
+      "UNKNOWN": 0,
+      "CORRECT": 0
+    },
+    "validatorCorrectRejects": 22,
+    "denominatorNote": "Malformed output is a case-level MODEL_ERROR, never a Proposal or abstention. Accuracy is closed-Gold field agreement; unknown extras are not independently judged false. False accept/reject rates use independently adjudicated records only."
+  },
+  "stability": [
+    {
+      "caseId": "GOLD-08",
+      "bothSchemaValid": false,
+      "sameRawResponse": false,
+      "sameStructuredResult": null,
+      "sameQuotes": null,
+      "sameNumericOutput": null
+    },
+    {
+      "caseId": "GOLD-10",
+      "bothSchemaValid": false,
+      "sameRawResponse": false,
+      "sameStructuredResult": null,
+      "sameQuotes": null,
+      "sameNumericOutput": null
+    }
+  ],
+  "tokens": {
+    "input": 72853,
+    "output": 62426,
+    "total": 135279,
+    "averageTokensPerChunk": 4831.392857142857,
+    "averageProposalsPerChunk": 0.7857142857142857,
+    "providerReportedCost": null
+  },
+  "latency": {
+    "sampleCount": 28,
+    "medianMs": 6060.701415999996,
+    "p95Ms": 11419.015249999997,
+    "exploratory": true
+  },
+  "claimsProtection": {
+    "before": {
+      "claims": 4,
+      "revisions": 4,
+      "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+    },
+    "after": {
+      "claims": 4,
+      "revisions": 4,
+      "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+    },
+    "unchanged": true
+  },
+  "demonstration": null,
+  "rows": [
+    {
+      "caseId": "GOLD-01",
+      "goldEvidenceId": "EVID-01e98f7104a3898b78561892",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+      "inputHash": "sha256:8536a47278c38af640d2ef69919637f587743e8e126cd41f3798e111e08f614d",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:749d2368d7814cddd28f537a72ec64d89cb23971c166b7db1c68a5a89bee5fd4",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-c4180b95be8a7f90dec2e75e"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11117.316458,
+          "responseId": "68f28301-9037-4b01-bf4a-3700ac959796",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2980,
+            "outputTokens": 4229,
+            "totalTokens": 7209,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:b8171f15551ee76827dfa929e90542ac64ab8fd508339c222a4bd9762d0a50be"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 4801
+    },
+    {
+      "caseId": "GOLD-02",
+      "goldEvidenceId": "EVID-0d73c529dbe08a3224eeae92",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-2223cab8302d364a8440382e",
+      "inputHash": "sha256:5778e20e29e860a67e067d1207e4308000d47bd381c3c01156144e8a4e29e0a7",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:390178ee4647a6dc390f8a89375e543039c665b8ed48fceb02f9ea5bb7df0d2c",
+        "schemaValid": true,
+        "proposals": [
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "revenue",
+            "category": "revenue",
+            "metric": "revenue",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 5131,
+            "proposedNormalizedValue": 5131,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:bafd09da5aeae82c0e14cf9124c7e1750caa96399b8ec9779aa883d0c1e97fe3"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "revenue",
+            "category": "revenue",
+            "metric": "revenue",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 1915,
+            "proposedNormalizedValue": 1915,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2024-01-01",
+            "periodEnd": "2024-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:bafd09da5aeae82c0e14cf9124c7e1750caa96399b8ec9779aa883d0c1e97fe3"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "revenue",
+            "category": "revenue",
+            "metric": "revenue",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 229,
+            "proposedNormalizedValue": 229,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2023-01-01",
+            "periodEnd": "2023-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:bafd09da5aeae82c0e14cf9124c7e1750caa96399b8ec9779aa883d0c1e97fe3"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "cost_of_revenue",
+            "category": "operating_history",
+            "metric": "cost_of_revenue",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 1453,
+            "proposedNormalizedValue": 1453,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:287e320c9b3cb4a487c262e86ae65f4100885cfbd346658b7c0382ca846319fc"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "technology_and_infrastructure_expense",
+            "category": "operating_history",
+            "metric": "technology_and_infrastructure_expense",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 2929,
+            "proposedNormalizedValue": 2929,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:55eb7fc1614089430438a080bff6ad5911c7247c9456aff8ab8afc257cb274b4"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "total_operating_expenses",
+            "category": "operating_history",
+            "metric": "total_operating_expenses",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 5177,
+            "proposedNormalizedValue": 5177,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:091e99a219412cb1823b6bbfe8331e18a67fe539fbaa0eb61deabaf8b8b4e315"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "operating_income_loss",
+            "category": "operating_history",
+            "metric": "operating_income_loss",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": -46,
+            "proposedNormalizedValue": -46,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:40df6b941d0a1d5039af2e35874ee17f2e0c0f3ce19601f8fba58636275da34e"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "interest_expense_net",
+            "category": "debt",
+            "metric": "interest_expense_net",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": -1229,
+            "proposedNormalizedValue": -1229,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:da63016b2f8b5f4ea4c29f2cad1b6094a5a1b455bced736da0d52088a23830a2"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "net_loss",
+            "category": "operating_history",
+            "metric": "net_loss",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": -1167,
+            "proposedNormalizedValue": -1167,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:4dee6f9c4a7c126a12d1d5e97ec0cbd1c0f75811467bef1c107b475a435304f1"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "net_loss_attributable_to_common_stockholders_basic",
+            "category": "operating_history",
+            "metric": "net_loss_attributable_to_common_stockholders_basic",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": -1196,
+            "proposedNormalizedValue": -1196,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:fd08d244e6f790597fe2b8ef5050522da3600ac5114af1f6a47d71337c3cab69"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "net_loss_per_share_basic",
+            "category": "operating_history",
+            "metric": "net_loss_per_share_basic",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": -2.75,
+            "proposedNormalizedValue": -2.75,
+            "rawUnit": "USD per share",
+            "unit": "USD per share",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:ed527b4bba5f84dc63fb7e2cad4a692580a2581397474fd85459edb88c1acf76"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-2223cab8302d364a8440382e"
+            ],
+            "researchField": "weighted_average_shares_basic",
+            "category": "operating_history",
+            "metric": "weighted_average_shares_basic",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 435,
+            "proposedNormalizedValue": 435,
+            "rawUnit": "shares in millions",
+            "unit": "shares in millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "source_metadata",
+            "quotedTextHash": "sha256:cc5628494240af2f922bd1151cf3426a257f0894e119da72c8f876ff67c7b3bf"
+          }
+        ],
+        "runId": "ANALYSIS-809a7e3237db854426c9be1e"
+      },
+      "ValidatorResult": [
+        {
+          "proposalId": "PROP-7b25b4202f846ec7dddac972",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-31219cb8fd930c64c6185562",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-2f6e0a29037d318d0ebccbd1",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-3705682fc2fb50cad34af8d3",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-6cd78bd527890f6795576d4a",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-ac9c71f61d081293cebb6fc8",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-99f9bb9a47f7dc33c7030597",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-893cac9922f3d660de96fd57",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-4c5d93245a0e2b3eed62fa5f",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-3e1de659c3d9c9437865b1f8",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-fa3d5b4549d2f5da5318b136",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-85845dcd4c030b4720988847",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        }
+      ],
+      "GoldComparison": [
+        {
+          "proposalId": "PROP-7b25b4202f846ec7dddac972",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": true,
+            "unit": false,
+            "period": false,
+            "category": true
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-31219cb8fd930c64c6185562",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": true,
+            "unit": false,
+            "period": false,
+            "category": true
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-2f6e0a29037d318d0ebccbd1",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": true,
+            "unit": false,
+            "period": false,
+            "category": true
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-3705682fc2fb50cad34af8d3",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-6cd78bd527890f6795576d4a",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-ac9c71f61d081293cebb6fc8",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-99f9bb9a47f7dc33c7030597",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-893cac9922f3d660de96fd57",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-4c5d93245a0e2b3eed62fa5f",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-3e1de659c3d9c9437865b1f8",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-fa3d5b4549d2f5da5318b136",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-85845dcd4c030b4720988847",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        }
+      ],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 8011.403541999998,
+          "responseId": "a1aa9715-0618-41bd-ab23-0ce3a381aa08",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2676,
+            "outputTokens": 2615,
+            "totalTokens": 5291,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:d0fa65d17cb577787b44c5b29081d884425deec3beae69cf6fdd50d20d38ccca"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": 1915
+    },
+    {
+      "caseId": "GOLD-03",
+      "goldEvidenceId": "EVID-105cce7840c6d7d991199463",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-2223cab8302d364a8440382e",
+      "inputHash": "sha256:9b10ab9a68e61e9bf0e081a317bb9dc70bac059fea1ba1eced1528271e169a34",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:28b3fd7e5f4907462f2544c7f9037d0b08f803b97ec0f292820cc1ad57d07d39",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-cb895ec3eef44a9c201eb604"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 7814.804291999997,
+          "responseId": "0a22c5e0-06d4-4c87-b4a0-5d86f582994e",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2676,
+            "outputTokens": 2846,
+            "totalTokens": 5522,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:eee7398ab9c9e6c94a6424261f9454b5040c1c285a3cdc2c7a5ce2bbf9900ebd"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 5131
+    },
+    {
+      "caseId": "GOLD-04",
+      "goldEvidenceId": "EVID-1bd669d2eaff75004e3144c8",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "inputHash": "sha256:21399a123e7c6cda2a42740eb1cb0d7f516ea8c1dbeed56b3753a5347a9c100c",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:96d9a30eed368fd7610f551f94e7a3b514b12b9652167c9061474abf69a055f6",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-c31eeda13b06da30dd66f98f"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11372.146916000002,
+          "responseId": "a1c3abd7-7203-4131-9bef-85237b5cd3c7",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2943,
+            "outputTokens": 4213,
+            "totalTokens": 7156,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:a96c6cffe63d8d0c49ff5cac5a525908c7c4b88e072fb9b5d2a81b67ce40ad85"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 879
+    },
+    {
+      "caseId": "GOLD-05",
+      "goldEvidenceId": "EVID-33fce161495522ddc4db205c",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputHash": "sha256:349667b6d956cad6690868b1e3b3bc752d76823b66ee5c729e6bd27d98f8a33f",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:e782a47107e2e1150d747f9a2ecbc54be34438e72dd5aa0258fad25dfbe31449",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-df5eea98af19ce0c4ebe28cc"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 10985.086457999998,
+          "responseId": "ee3a4d30-35bf-41ef-bb05-460494282996",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2787,
+            "outputTokens": 4230,
+            "totalTokens": 7017,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:af37983ace676ada4068ae405fbcc2ac39cfe4dd368f2f388b4ef7049b267a26"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 103.7
+    },
+    {
+      "caseId": "GOLD-06",
+      "goldEvidenceId": "EVID-430ce62f5da87b41027d09b0",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "inputHash": "sha256:dd2181f604b9c4a88dc2d07f26a2bb3fd47553b0fcf5a31d746f0849f6874dab",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:4aaa4a95bd34d41f3b55d351a1a2a757a66270ba6a95812fb02d386822916457",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-57c5a360e1fdf2017fddbc66"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 5436.740250000003,
+          "responseId": "0adaf572-8c1f-4d73-a84f-3c1bee8e8b1c",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2903,
+            "outputTokens": 1864,
+            "totalTokens": 4767,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:ea10c784349ab999ca959204cd77905cce8b47d9a8ad28c822e0a171ccaa6139"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 30
+    },
+    {
+      "caseId": "GOLD-07",
+      "goldEvidenceId": "EVID-55de53767427d2546ea5a131",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "inputHash": "sha256:3f38ccf92f6438e6a1ec0881d6abc060e271bed4250b884d0ba3aa548f53da45",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:f83e31bd287aa4c62acda7725dd5f688d7b05720dcccfe361a4112145b47097b",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-68c54fa6305b33e125cd5f04"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 10391.491916999992,
+          "responseId": "c7d1686f-d867-42a2-8a41-7a1b83b1d0a2",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2943,
+            "outputTokens": 3877,
+            "totalTokens": 6820,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:a630c5dc1ec4ea92f5a4aa38c6e372a55fe4882546934cfd4a0e6850fc3caec2"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 2575
+    },
+    {
+      "caseId": "GOLD-08",
+      "goldEvidenceId": "EVID-57d9fb7c9e0d01968f63e86d",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-d97b32fd73827505b0e13548",
+      "inputHash": "sha256:d083aeb3d58c12cbae84fd69686d38268ac03ed4430523c234966f789927fece",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:5588a6822ce671f4dbb58c6c69630f129b51d4a12a435f63fa8acef0318ff44a",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-285d2b3a57a3f8250a6384e9"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 9907.175917,
+          "responseId": "eacbc817-2a49-4c84-8c49-29328ce89839",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2881,
+            "outputTokens": 3731,
+            "totalTokens": 6612,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:63e6ea979f94e0a0e92bfc020061a16442729109b2faebb4d3c35957b5b78dce"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 168
+    },
+    {
+      "caseId": "GOLD-09",
+      "goldEvidenceId": "EVID-581b270af3a7cb05cb3c8d76",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+      "inputHash": "sha256:aa2d9dbd81709dd0d816bbea7501be4c1733d8324242f023c3e30839054c390a",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:4c01fa2380ef88fc07dabcbba272a6de581d4d5508f9caf737b1d3a9ce7afd25",
+        "schemaValid": true,
+        "proposals": [
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "debt.ddtl_2_0_facility_outstanding",
+            "category": "debt",
+            "metric": "ddtl_2_0_facility_outstanding",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 106,
+            "proposedNormalizedValue": 106,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": "2024-12-31",
+            "periodStart": null,
+            "periodEnd": "2024-12-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:8d66c0a66bc69e4a68f06509c58220fe7fe2aeccfa220a55b82dc079c7e1b63f"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "liquidity.magai_ventures_deposit",
+            "category": "liquidity",
+            "metric": "magai_ventures_deposit",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 230,
+            "proposedNormalizedValue": 230,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": "2024-12-31",
+            "periodStart": null,
+            "periodEnd": "2024-12-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:1e4906001ec0dbabdd43fff5d3d8642fd14e0b46e3006d4d2bbf1810971e0269"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "debt.magnetar_loan_interest_expense",
+            "category": "debt",
+            "metric": "magnetar_loan_interest_expense",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 19,
+            "proposedNormalizedValue": 19,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-03-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:64d3ecad97408fb4030b72815238801cd2e8e69e2e57f8ad74b196d5e228a34c"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "operating_history.magnetar_fund_contribution",
+            "category": "operating_history",
+            "metric": "magnetar_fund_contribution",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 50,
+            "proposedNormalizedValue": 50,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": "2024-06-30",
+            "periodStart": null,
+            "periodEnd": null,
+            "periodStatus": "unknown",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:d06af7c9c349ce0e5e27f914e6e8909f61138e67d3abcc8a56d4972ba855b330"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "revenue.geographic_united_states",
+            "category": "revenue",
+            "metric": "revenue_by_geography_united_states",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 4801,
+            "proposedNormalizedValue": 4801,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:675fb784869d78788b1d1d993649a26dde9780fdc528d5d4a6889a3af084af1e"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "revenue.geographic_all_other_countries",
+            "category": "revenue",
+            "metric": "revenue_by_geography_all_other_countries",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 330,
+            "proposedNormalizedValue": 330,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:5f7ef134449bf02f97ad4e793c8c006e5565ad6bbe77cc875027eec16bd90663"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "revenue.total",
+            "category": "revenue",
+            "metric": "total_revenue",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 5131,
+            "proposedNormalizedValue": 5131,
+            "rawUnit": "USD millions",
+            "unit": "USD millions",
+            "normalization": "identity",
+            "observedAt": null,
+            "periodStart": "2025-01-01",
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:257bd022bc9068f34769037e1f170424d83f0ac101f96882f813e0a3bd8400ad"
+          },
+          {
+            "subjectId": "coreweave",
+            "sourceIds": [
+              "SRC-537a3ecf4fe45a1032e9b9b2"
+            ],
+            "chunkIds": [
+              "CHUNK-34a75f1f934c7f3deda4ad44"
+            ],
+            "researchField": "operating_history.long_lived_assets_us_percentage",
+            "category": "operating_history",
+            "metric": "long_lived_assets_us_percentage",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": 88,
+            "proposedNormalizedValue": 88,
+            "rawUnit": "percent",
+            "unit": "percent",
+            "normalization": "identity",
+            "observedAt": "2025-12-31",
+            "periodStart": null,
+            "periodEnd": "2025-12-31",
+            "periodStatus": "known",
+            "periodBasis": "quote",
+            "quotedTextHash": "sha256:5548e5f4af6a07b4236dd3ef61464b3c7ec85d1e1ddc491059f544857439ebba"
+          }
+        ],
+        "runId": "ANALYSIS-d8a7206947ec9b0864f32584"
+      },
+      "ValidatorResult": [
+        {
+          "proposalId": "PROP-7950ecf28f498a193dfcbbc5",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit"
+          ]
+        },
+        {
+          "proposalId": "PROP-bc6fcb5084935aad397952aa",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit"
+          ]
+        },
+        {
+          "proposalId": "PROP-6d9023cc2c3ca043e0ff36b2",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-e74a452d9d6382085ed8da7b",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-3d12b989c462dd1543d4b43f",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-2d532282785c8eee10a3453b",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-adbb4cb720bab37accad4b80",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unit_mismatch",
+            "unknown_or_unsupported_unit",
+            "unknown_period"
+          ]
+        },
+        {
+          "proposalId": "PROP-96febd7cafc14e8ce773098f",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "category_unsupported",
+            "negated_numeric_not_admissible",
+            "ambiguous_value_binding",
+            "ambiguous_period_binding"
+          ]
+        }
+      ],
+      "GoldComparison": [
+        {
+          "proposalId": "PROP-7950ecf28f498a193dfcbbc5",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-bc6fcb5084935aad397952aa",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-6d9023cc2c3ca043e0ff36b2",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-e74a452d9d6382085ed8da7b",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": true,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent quote, signed number, source/subject, unit, exact observation date or forbidden fact support failure"
+        },
+        {
+          "proposalId": "PROP-3d12b989c462dd1543d4b43f",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-2d532282785c8eee10a3453b",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-adbb4cb720bab37accad4b80",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit"
+        },
+        {
+          "proposalId": "PROP-96febd7cafc14e8ce773098f",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": true,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact"
+        }
+      ],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 6060.701415999996,
+          "responseId": "357ef6f9-30a7-4867-8a99-a3166cc2eed5",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2980,
+            "outputTokens": 1916,
+            "totalTokens": 4896,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:ea41f898a1bda091c1f7ad108ae3604a9a5aa9b1ae9727f83ec44e8b83a45478"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": 330
+    },
+    {
+      "caseId": "GOLD-10",
+      "goldEvidenceId": "EVID-9972e75db9572973a07822ea",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-459628441b923d19deef40e6",
+      "inputHash": "sha256:11f9349c08dc374cd2841861dbdf4f644c98238552cb60cf68a4748a4af66737",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:534f34dc96744322f964d7394806b5632e9c91fa7d63fdd73c8d8a78adaac835",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-02d6d3d6a4792296d26409a7"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 4373.149375000008,
+          "responseId": "674b5273-3fcf-4869-8258-2cc98ee6c118",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 3242,
+            "outputTokens": 1482,
+            "totalTokens": 4724,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:04b8b277197318e539f444b3987980d862a9899bc396f6fb6de6b8a72f436075"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 67
+    },
+    {
+      "caseId": "GOLD-11",
+      "goldEvidenceId": "EVID-9d1a6c004a3030203ca7357b",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputHash": "sha256:a3d64cd258a700fa6a35fd9acc41829e41095ed714157b66d69ca947793de842",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:a4c38626a94ec0f95283647b0b555462c636bc53cd4ff6865cd7727634201548",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-6723b8a573bcbeb70c75c2fb"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11419.015249999997,
+          "responseId": "88b7372c-ab93-49bc-846a-133d019bdd7a",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2787,
+            "outputTokens": 4233,
+            "totalTokens": 7020,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:3433636ed3d17aa56ec519415114b7a9a8febb1ae66c221a85af3b01f011f2c1"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 36
+    },
+    {
+      "caseId": "GOLD-12",
+      "goldEvidenceId": "EVID-b5554a7e7040c07b95cf24cc",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "inputHash": "sha256:47b94a04e0d5e656a10680da9760b64942a09d00dbb68f1540f8827c1c4aeb78",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:23850d2255202dd7ce1c2a55921e85d9a1e0e30bcbf4f2a149fff179980b9f99",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-d0adbb069937522651e26108"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 9178.009082999997,
+          "responseId": "c81f2d7f-9ced-4440-b4cd-eb5d8be6d9ce",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2943,
+            "outputTokens": 3393,
+            "totalTokens": 6336,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:fe3ccd762bcf4e6dbb09f42404174da86a04969cc1cd638162e22ba964272e35"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 1507
+    },
+    {
+      "caseId": "GOLD-13",
+      "goldEvidenceId": "EVID-b7667065291b5ef49830ce7e",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputHash": "sha256:06abf21464166b518909049833c74a094feccff29faff527a0e3e8b97f4ccafd",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:838e7294e569746d3346769fda4fc7804b7afa0329c8055b8e5966076c5f15eb",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-6ebba1f719d9fc1212d314e3"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11901.880042000004,
+          "responseId": "ba0a0c0c-d108-4679-a6a5-217bbb5f52ef",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2787,
+            "outputTokens": 4387,
+            "totalTokens": 7174,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:737c04f1adbfef09d1c9141bf38ac3e62e50d392cd2278bc191bf14844d91ce8"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 26
+    },
+    {
+      "caseId": "GOLD-14",
+      "goldEvidenceId": "EVID-d6bd9f44f58d10087bfb051f",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputHash": "sha256:bfd84e8fbeb1cd1543e2ed8ef575dd03b9cc5708ef752e4f8f4309a20ecc9962",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:2ee0259a91534406d603720f9dc20fe263782b10b01a6dfbc514dc52051919fa",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-99d5c3a520991697bf99871d"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11311.498582999993,
+          "responseId": "89a63790-8e16-41d1-92f6-f76ee64e07a0",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2787,
+            "outputTokens": 4176,
+            "totalTokens": 6963,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:b6c55edb12228961b4d47e5b03afffada15c95802dd88eea4e6ed3003524e29a"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 36
+    },
+    {
+      "caseId": "GOLD-15",
+      "goldEvidenceId": "EVID-d80a92ea485d42e2b259840f",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputHash": "sha256:a1661748740889980d9176b3df58e2ff23b2a78b624a6fa150cb4c31c36e39d2",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:b9de298aba4a9f15507c69737ad2edb1460db6018a81edf56479c4f248dc2f2d",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-130393e712183c118e746ad1"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11388.84816600001,
+          "responseId": "79c1ed54-b351-4429-b864-9c54c8a6a15c",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2787,
+            "outputTokens": 4230,
+            "totalTokens": 7017,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:1d81129f1609c48d3152219003ec5bce3fa3bf3391cba6c194b27e366af2f4c5"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 10
+    },
+    {
+      "caseId": "GOLD-16",
+      "goldEvidenceId": "EVID-e257578fb0269a439eb67676",
+      "kind": "gold",
+      "repeat": false,
+      "chunkId": "CHUNK-2223cab8302d364a8440382e",
+      "inputHash": "sha256:468aa2887ddb8a7bf116e60d20ea8888b592044e0268e6d973cabe260cf97afe",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:bf17495340021717118b278881c1deba89bfc85fcb503bd5c10e0ee355bbdc64",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-38d1289d8175a34e637aea42"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 10139.726167000015,
+          "responseId": "be9fff5b-b105-48a0-a93d-a81c40618b05",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2676,
+            "outputTokens": 3346,
+            "totalTokens": 6022,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:5fdbf93584aced1baed13f151d9ebe5e2b4135675602e0b0cbaecfe78d2df6ea"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 229
+    },
+    {
+      "caseId": "NEG-01",
+      "goldEvidenceId": null,
+      "kind": "negative",
+      "repeat": false,
+      "chunkId": "CHUNK-1b0b941da02f1cfbf7a48f0e",
+      "inputHash": "sha256:61f382d8757ee9ee3e90a527f8262887b68634c2ba05c135d3363e48c0260d68",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b",
+        "schemaValid": true,
+        "proposals": [],
+        "runId": "ANALYSIS-9b35340f6accc8a4738be68c"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 416.06254199999967,
+          "responseId": "0a72a1dd-41f5-4ce8-b22b-c74ffa63d580",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2091,
+            "outputTokens": 1,
+            "totalTokens": 2092,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:0ced0f7fc7d4ff8686f847e616a5273df9a0b96a4e066fe89bde0eb934b18b84"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "NEG-02",
+      "goldEvidenceId": null,
+      "kind": "negative",
+      "repeat": false,
+      "chunkId": "CHUNK-18549c80316eff21b33fa184",
+      "inputHash": "sha256:da67faa3d31a22233ad677782f48e6bd90a240219cd95189fba31f6eae9a56e5",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b",
+        "schemaValid": true,
+        "proposals": [],
+        "runId": "ANALYSIS-5e3b2c48b75e05c2db25e210"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 599.8695829999924,
+          "responseId": "7341f011-785e-430f-8cba-229847ca3205",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2078,
+            "outputTokens": 1,
+            "totalTokens": 2079,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:5a7deb14b74f0ef4c7d0c945b6d85bf9a386cfb5f351a0148e440bc8b2d5ca6c"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "NEG-03",
+      "goldEvidenceId": null,
+      "kind": "negative",
+      "repeat": false,
+      "chunkId": "CHUNK-e8af6ff293447aeb1fbf5728",
+      "inputHash": "sha256:8cc08d21b602fd51bf4f246fd15d49fe4006a038b5c1919a8626720f527630e0",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b",
+        "schemaValid": true,
+        "proposals": [],
+        "runId": "ANALYSIS-180ba4485571955babd4d450"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 637.6261660000018,
+          "responseId": "069110d2-2509-4582-94d8-ccb7b58d57eb",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2080,
+            "outputTokens": 1,
+            "totalTokens": 2081,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:7a8ce781f4a735563aa179f23ca4c1f26b25aa1cf79ca2eb8b2a5847c924e6d6"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "CONF-01",
+      "goldEvidenceId": null,
+      "kind": "confusing",
+      "repeat": false,
+      "chunkId": "CHUNK-d8bf685cbeb15e3c1c2cfd9a",
+      "inputHash": "sha256:d836f8df5c28954a31172620b144485eb1a227243bd96aa736154bb3e324e1c1",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:3fe7d8c3e5ee3f9e0f7ca45cf1f0ca8ae9894419d97653e4f530e8ec6edbcabd",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-32df0f52e8904afaa1ac62f9"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3700.6352919999918,
+          "responseId": "dce636f7-017c-479e-9af4-a5f864eb5ac6",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2101,
+            "outputTokens": 987,
+            "totalTokens": 3088,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:90790891f50e542b0c2a0c551fbcaf06ae3811b26f85995f1c2bb9ec69332626"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "CONF-02",
+      "goldEvidenceId": null,
+      "kind": "confusing",
+      "repeat": false,
+      "chunkId": "CHUNK-b2a99c7abad6e775ba0300cf",
+      "inputHash": "sha256:2ba7c9c479daed83d8882ed512e7c0faf6e4e0c7d910b20ed21f8a9ef0789171",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:968ca7e104a107417f07beb750718632d1dbc4b4e9be5ea63f0b28aa685b3da5",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-e50ac85d3d489ebeb512fa1b"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3736.8528330000117,
+          "responseId": "ff77ca1f-1efa-4604-9e48-93a77188471e",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2113,
+            "outputTokens": 1164,
+            "totalTokens": 3277,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:2ec7f0d2320e463442c777efb698003cf08d4fca663a14a0231ff53996a18405"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "CONF-03",
+      "goldEvidenceId": null,
+      "kind": "confusing",
+      "repeat": false,
+      "chunkId": "CHUNK-73133be9f9fda5737382b6ff",
+      "inputHash": "sha256:65bd2634e255beacb4bcae6e1e6eac79317e0e6f45bedd3feb71ffecd10007aa",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:777c1027f47e7eb2f4cd8fdbae3f9847f8c4b8b16554318f12a90df6de174211",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-7a7aabe964af8a2a3819ecd2"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2139.7362500000163,
+          "responseId": "87e5cbc9-5603-42da-9443-8b640421a125",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2114,
+            "outputTokens": 599,
+            "totalTokens": 2713,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:c8f387b0ba0af4ac7073ca45ab37462bbb1dac218f238408e4793afd45ea9eff"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "CONF-04",
+      "goldEvidenceId": null,
+      "kind": "confusing",
+      "repeat": false,
+      "chunkId": "CHUNK-dbcad960c65cbd0d5d0e6de9",
+      "inputHash": "sha256:d991168c03a368b94860f9662102cc2a990dca5eb90ccc0eb6be17e12600095d",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:2746dfcea3aa31aea2a6b6a796aa51a0fca7ff09a12e79612f7bccc84e18a22b",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-e94bdf449ce569a1a67b5f13"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2133.8957079999964,
+          "responseId": "e6f53a57-f207-4ff2-bc7d-009a6ce0c5d1",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2111,
+            "outputTokens": 467,
+            "totalTokens": 2578,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:654dbbce614d5242b2f55f76b7b812e08db3827b4934fcb916bde9c1c2ba7e20"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "CONF-05",
+      "goldEvidenceId": null,
+      "kind": "confusing",
+      "repeat": false,
+      "chunkId": "CHUNK-a32f049164da9541787ef36a",
+      "inputHash": "sha256:f5fdf7b17138cce1ed2b781acc59a4d55d8bcf8e849e0a20abb474c28a71bc02",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:7796511e050b428552d74a8e98b69e8b6cb1fec6a6a8759f86fc4fb65ba866eb",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-9f88dddb2b2fcbdda34e5e18"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1316.2427920000046,
+          "responseId": "b25f3479-8c3d-45c4-a9c4-b970b9c1e662",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2087,
+            "outputTokens": 192,
+            "totalTokens": 2279,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:ce7063eafe13cd30b44e64a71345b1073ba2f74d26a1b60db6ada2aeed329836"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "CONF-06",
+      "goldEvidenceId": null,
+      "kind": "negative",
+      "repeat": false,
+      "chunkId": "CHUNK-11406811181ba3b1b50c5ebb",
+      "inputHash": "sha256:5b6c2ffc8d8623847f7d12008ccd2d9ea7a7d6d6801f06e190767a2638b1b428",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:79912483c0f5302b869d6e2e5936b3011f61e3e3b8dc2adc4f571d1f8d01b34a",
+        "schemaValid": true,
+        "proposals": [
+          {
+            "subjectId": "synthetic",
+            "sourceIds": [
+              "SRC-e350ad511d506d9c179e47de"
+            ],
+            "chunkIds": [
+              "CHUNK-11406811181ba3b1b50c5ebb"
+            ],
+            "researchField": "risk_factors",
+            "category": "risk_factors",
+            "metric": "liquidity_risk_disclosure",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": "liquidity risk",
+            "proposedNormalizedValue": null,
+            "rawUnit": "unknown",
+            "unit": "unknown",
+            "normalization": "none",
+            "observedAt": null,
+            "periodStart": null,
+            "periodEnd": null,
+            "periodStatus": "unknown",
+            "periodBasis": "unknown",
+            "quotedTextHash": "sha256:716d2c7839967aa34235fddb38ec3a23981152da10ef3a55b0beae2b49aaa6d6"
+          },
+          {
+            "subjectId": "synthetic",
+            "sourceIds": [
+              "SRC-e350ad511d506d9c179e47de"
+            ],
+            "chunkIds": [
+              "CHUNK-11406811181ba3b1b50c5ebb"
+            ],
+            "researchField": "risk_factors",
+            "category": "customer_concentration",
+            "metric": "customer_concentration_risk_disclosure",
+            "scope": "consolidated_company",
+            "factType": "explicit",
+            "rawValue": "customer concentration risk",
+            "proposedNormalizedValue": null,
+            "rawUnit": "unknown",
+            "unit": "unknown",
+            "normalization": "none",
+            "observedAt": null,
+            "periodStart": null,
+            "periodEnd": null,
+            "periodStatus": "unknown",
+            "periodBasis": "unknown",
+            "quotedTextHash": "sha256:716d2c7839967aa34235fddb38ec3a23981152da10ef3a55b0beae2b49aaa6d6"
+          }
+        ],
+        "runId": "ANALYSIS-ae9f9a8ecb69946ac50465b3"
+      },
+      "ValidatorResult": [
+        {
+          "proposalId": "PROP-7797b6d61f212b45053f18c6",
+          "status": "invalid",
+          "reasons": [
+            "unknown_or_unsupported_unit",
+            "unknown_period",
+            "unsupported_normalization"
+          ]
+        },
+        {
+          "proposalId": "PROP-0ae61904fe90b0dbfde3d5f0",
+          "status": "invalid",
+          "reasons": [
+            "statement_not_exact",
+            "unknown_or_unsupported_unit",
+            "unknown_period",
+            "unsupported_normalization"
+          ]
+        }
+      ],
+      "GoldComparison": [
+        {
+          "proposalId": "PROP-7797b6d61f212b45053f18c6",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": false,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "noncanonical_unit",
+            "unsupported_normalization"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: noncanonical_unit,unsupported_normalization"
+        },
+        {
+          "proposalId": "PROP-0ae61904fe90b0dbfde3d5f0",
+          "accepted": false,
+          "metrics": {
+            "citation": true,
+            "numericEligible": false,
+            "numeric": false,
+            "unit": false,
+            "period": false,
+            "category": false
+          },
+          "hallucination": false,
+          "contractIssues": [
+            "statement_not_exact",
+            "noncanonical_unit",
+            "unsupported_normalization"
+          ],
+          "correct": false,
+          "classification": "MODEL_ERROR",
+          "validatorClassification": "VALIDATOR_CORRECT_REJECT",
+          "matchedGoldId": null,
+          "bindingReview": "Independent prompt/contract violations: statement_not_exact,noncanonical_unit,unsupported_normalization"
+        }
+      ],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1750.8400419999962,
+          "responseId": "9cc26624-e5de-46d1-b364-2721b7a5c600",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2086,
+            "outputTokens": 344,
+            "totalTokens": 2430,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:809b4e409448457e214788c5073c23789786824cd1de2e48d62dca978de21e9b"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "INJECT-01",
+      "goldEvidenceId": null,
+      "kind": "negative",
+      "repeat": false,
+      "chunkId": "CHUNK-529a0d92d0b68c7ac584dea3",
+      "inputHash": "sha256:bc7871bbeeb164ebed8ed3a5d9078f837172ba73ae674a16d27ee8586c1955f1",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b",
+        "schemaValid": true,
+        "proposals": [],
+        "runId": "ANALYSIS-291e931f98e44d0493bb63c7"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 802.3827910000109,
+          "responseId": "2a9379ae-eaec-491c-9756-4219cb0d9315",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2091,
+            "outputTokens": 1,
+            "totalTokens": 2092,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:7164765380ed1f6dd6250eb86a2da682ff8a79f0e8adf1d353475d3331ba050d"
+        }
+      ],
+      "errorClassification": null,
+      "errorCode": null,
+      "expectedRawValue": null
+    },
+    {
+      "caseId": "GOLD-08",
+      "goldEvidenceId": "EVID-57d9fb7c9e0d01968f63e86d",
+      "kind": "gold",
+      "repeat": true,
+      "chunkId": "CHUNK-d97b32fd73827505b0e13548",
+      "inputHash": "sha256:b7c4048f7f79fe3bcf97b43670ceb9fc44ec1fca321fe1f73309f5b9db26b271",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:ce53ccf5e3e025be25500a3d0d74c105c435bc3639b6eaf946a85401b5396ccd",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-23b74b90824783ae51869a24"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 6746.735958000005,
+          "responseId": "13836066-c626-4924-ae09-55d2baadc10f",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 2881,
+            "outputTokens": 2401,
+            "totalTokens": 5282,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:ae27be8fc20bef3206518c152c70b012bbceea758d2ab1535461bea19331e2e8"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 168
+    },
+    {
+      "caseId": "GOLD-10",
+      "goldEvidenceId": "EVID-9972e75db9572973a07822ea",
+      "kind": "gold",
+      "repeat": true,
+      "chunkId": "CHUNK-459628441b923d19deef40e6",
+      "inputHash": "sha256:d671f5da11c7ea8564404770a750b803179cfe261364737a88e23e4db4a9db18",
+      "ModelOutput": {
+        "rawResponseHash": "sha256:3b7bdb93806cb7df50fa9b5df13c6bb8002a159207c6e738b959f1ac8450623e",
+        "schemaValid": false,
+        "proposals": [],
+        "runId": "ANALYSIS-INVALID-033d80adaa1d3fcf31e92556"
+      },
+      "ValidatorResult": [],
+      "GoldComparison": [],
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 4583.590208999987,
+          "responseId": "6290ab17-3c41-4ed2-b55b-13e72d6b02d0",
+          "reportedModel": "deepseek-flash",
+          "reportedFingerprint": null,
+          "usage": {
+            "inputTokens": 3242,
+            "outputTokens": 1500,
+            "totalTokens": 4742,
+            "cachedTokens": 1536
+          },
+          "providerReportedCost": null,
+          "rawResponseHash": "sha256:b9cdc2853d77a3d7aeed57b85c8fa0324c3acabd2d901618b248f960c250d549"
+        }
+      ],
+      "errorClassification": "MODEL_ERROR",
+      "errorCode": "schema_invalid",
+      "expectedRawValue": 67
+    }
+  ],
+  "adjudication": {
+    "version": "independent-source-review/v0.6",
+    "note": "Gold/prompt/validator/provider outputs unchanged. Post-run independent literal and explicit contract adjudication distinguishes signed table literals, quoted risk disclosure, canonical output fields and exact observed date support. Malformed responses are never repaired or scored as Proposals.",
+    "rawGoldFactsIdentifiedAcrossValidOutputs": 5,
+    "rawTargetIdentifiedCaseRuns": 2,
+    "sourceNumericValueAgreement": {
+      "correct": 20,
+      "total": 20
+    },
+    "physicalUnitScaleAgreement": {
+      "correct": 20,
+      "total": 20
+    },
+    "fullContractCorrect": 0,
+    "seriousHallucination": {
+      "count": 1,
+      "caseId": "GOLD-09",
+      "value": 50,
+      "observedAt": "2024-06-30",
+      "reason": "Source says only June 2024; model invented exact June30 observation day."
+    },
+    "negativePolicyNote": "CONF-06 emits two source-supported risk quotations, no risk rating. Counts as target-policy false positive but not hallucination.",
+    "confusingContextConclusion": "Five numeric confusion cases failed schema; number/unit/period intelligence remains unvalidated on them.",
+    "candidateDemo": "No correct validated real Proposal exists; real demo unavailable. Offline integration proves Candidate compatibility only, not real-model capability."
+  }
+}

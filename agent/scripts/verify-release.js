@@ -81,6 +81,8 @@ const admissionTests = (await readdir(resolve(REPOSITORY_ROOT, "research/admissi
 run("Evidence Admission Layer tests", ["--test", ...admissionTests]);
 const analystTests = (await readdir(resolve(REPOSITORY_ROOT, "research/analyst-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/analyst-test/${name}`);
 run("Research Evidence Analyst tests", ["--test", ...analystTests]);
+const analystRealTests = (await readdir(resolve(REPOSITORY_ROOT, "research/analyst-real-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/analyst-real-test/${name}`);
+run("Research Evidence Analyst Real Validation offline tests", ["--test", ...analystRealTests]);
 run("Public API tests", ["--test", "test/public-api.test.js"]);
 run("Finch contract tests", ["--test", "test/finch-contract.test.js"]);
 run("Public API validator", ["scripts/validate-public-api.js"]);

@@ -1,0 +1,1102 @@
+{
+  "version": "flowcredit.analyst_real_benchmark/v0.6",
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "goldTotal": 32,
+  "indexed": 19,
+  "eligible": 16,
+  "promptVersion": "evidence-analyst/v1",
+  "repeats": [
+    "GOLD-08",
+    "GOLD-10"
+  ],
+  "cases": [
+    {
+      "caseId": "GOLD-01",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+      "inputReference": {
+        "contentHash": "sha256:7a6a3af23d501efb6b881a2aa9b6d87d39961a90577c6eaff042eed29127aba0",
+        "locator": {
+          "unitIndex": 133,
+          "unitStart": 0,
+          "unitEnd": 3764,
+          "raw": {
+            "type": "pdf_page",
+            "page": 140,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "revenue_concentration",
+      "expectedRawValue": 4801,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "observedAt": "2025-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "4801"
+      },
+      "goldEvidenceId": "EVID-01e98f7104a3898b78561892",
+      "expected": {
+        "researchField": "revenue_concentration",
+        "category": "revenue_concentration",
+        "metric": "us_geographic_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2025 US revenue by customer contract address reported in USD millions.",
+        "rawValue": 4801,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Note 15 — geographic information",
+        "page": 140,
+        "location": "Printed p134; US row, FY2025 column",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 4801000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:01e98f7104a3898b7856189249f36e3ba730c7e7d92f9006807fecdeaee42532",
+        "id": "EVID-01e98f7104a3898b78561892"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-02",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-2223cab8302d364a8440382e",
+      "inputReference": {
+        "contentHash": "sha256:7bd75ed9abe00971929619c3e566de8eb9fbb924d680a204618de1e86a6b8bd0",
+        "locator": {
+          "unitIndex": 86,
+          "unitStart": 0,
+          "unitEnd": 1611,
+          "raw": {
+            "type": "pdf_page",
+            "page": 93,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "revenue",
+      "expectedRawValue": 1915,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "observedAt": "2024-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "1915"
+      },
+      "goldEvidenceId": "EVID-0d73c529dbe08a3224eeae92",
+      "expected": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2024 consolidated revenue reported in USD millions.",
+        "rawValue": 1915,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 8 — consolidated operations",
+        "page": 93,
+        "location": "Printed 10-K p87; revenue row, FY2024 column",
+        "periodStart": "2024-01-01",
+        "periodEnd": "2024-12-31",
+        "observedAt": "2024-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 1915000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:0d73c529dbe08a3224eeae920aad844080067baf5f94350e058b824a8bcfb767",
+        "id": "EVID-0d73c529dbe08a3224eeae92"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-03",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-2223cab8302d364a8440382e",
+      "inputReference": {
+        "contentHash": "sha256:7bd75ed9abe00971929619c3e566de8eb9fbb924d680a204618de1e86a6b8bd0",
+        "locator": {
+          "unitIndex": 86,
+          "unitStart": 0,
+          "unitEnd": 1611,
+          "raw": {
+            "type": "pdf_page",
+            "page": 93,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "revenue",
+      "expectedRawValue": 5131,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "observedAt": "2025-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "5131"
+      },
+      "goldEvidenceId": "EVID-105cce7840c6d7d991199463",
+      "expected": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2025 consolidated revenue reported in USD millions.",
+        "rawValue": 5131,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 8 — consolidated operations",
+        "page": 93,
+        "location": "Printed 10-K p87; revenue row, FY2025 column",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 5131000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:105cce7840c6d7d991199463bf7c1746ce67092cbaeec697f45ef867a6584716",
+        "id": "EVID-105cce7840c6d7d991199463"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-04",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "inputReference": {
+        "contentHash": "sha256:87d0b1f3919909d9833bf88b0cc9050434f33961224433382cf0a8b251c7c7b8",
+        "locator": {
+          "unitIndex": 45,
+          "unitStart": 0,
+          "unitEnd": 2467,
+          "raw": {
+            "type": "pdf_page",
+            "page": 46,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "compute_spend",
+      "expectedRawValue": 879,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "879"
+      },
+      "goldEvidenceId": "EVID-1bd669d2eaff75004e3144c8",
+      "expected": {
+        "researchField": "compute_spend",
+        "category": "compute_spend",
+        "metric": "cost_of_revenue",
+        "scope": "consolidated_company",
+        "statement": "Q2 cost of revenue is an accounting expense line, not separately disclosed inference compute spend.",
+        "rawValue": 879,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 2 — results of operations",
+        "page": 46,
+        "location": "Printed p43; cost of revenue row, Q2 2026",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 879000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:1bd669d2eaff75004e3144c86f400fb5a005e6976f6133a9b7adf8ea2404241b",
+        "id": "EVID-1bd669d2eaff75004e3144c8"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-05",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputReference": {
+        "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+        "locator": {
+          "unitIndex": 17,
+          "unitStart": 0,
+          "unitEnd": 2911,
+          "raw": {
+            "type": "pdf_page",
+            "page": 18,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "backlog_rpo",
+      "expectedRawValue": 103.7,
+      "expectedUnit": "USD_billions",
+      "expectedPeriod": {
+        "start": null,
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "103.7"
+      },
+      "goldEvidenceId": "EVID-33fce161495522ddc4db205c",
+      "expected": {
+        "researchField": "backlog_rpo",
+        "category": "backlog_rpo",
+        "metric": "remaining_performance_obligations",
+        "scope": "consolidated_company",
+        "statement": "Unsatisfied RPO is disclosed as 103.7 billion USD; recognition depends on future performance.",
+        "rawValue": 103.7,
+        "rawUnit": "USD_billions",
+        "unit": "USD",
+        "normalization": "usd_billions_to_usd",
+        "section": "Note 2 — remaining performance obligations",
+        "page": 18,
+        "location": "Printed p15; unsatisfied RPO as of June 30 2026",
+        "periodStart": null,
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 103700000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:33fce161495522ddc4db205c0c9e0ad16943e2aebb23eb2c769052586934b516",
+        "id": "EVID-33fce161495522ddc4db205c"
+      },
+      "binding": "narrative"
+    },
+    {
+      "caseId": "GOLD-06",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-b209888dde9875314e5d8071",
+      "inputReference": {
+        "contentHash": "sha256:813136039540b83ccf112931ede8d55f7abead24edf70dad8cf3735fda8fbba6",
+        "locator": {
+          "unitIndex": 51,
+          "unitStart": 0,
+          "unitEnd": 4118,
+          "raw": {
+            "type": "pdf_page",
+            "page": 52,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "risk_factors",
+      "expectedRawValue": 30,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "30"
+      },
+      "goldEvidenceId": "EVID-430ce62f5da87b41027d09b0",
+      "expected": {
+        "researchField": "risk_factors",
+        "category": "risk_factors",
+        "metric": "interest_rate_sensitivity",
+        "scope": "consolidated_company",
+        "statement": "The filing estimates a 100-basis-point rate change would alter Q2 interest expense by about 30 million USD.",
+        "rawValue": 30,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 3 — interest rate risk",
+        "page": 52,
+        "location": "Printed p49; Q2 interest sensitivity to 100 basis points",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 30000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:430ce62f5da87b41027d09b050c308bc7a42609cc89309f2982f62e604eb9d82",
+        "id": "EVID-430ce62f5da87b41027d09b0"
+      },
+      "binding": "narrative"
+    },
+    {
+      "caseId": "GOLD-07",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "inputReference": {
+        "contentHash": "sha256:87d0b1f3919909d9833bf88b0cc9050434f33961224433382cf0a8b251c7c7b8",
+        "locator": {
+          "unitIndex": 45,
+          "unitStart": 0,
+          "unitEnd": 2467,
+          "raw": {
+            "type": "pdf_page",
+            "page": 46,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "revenue",
+      "expectedRawValue": 2575,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "2575"
+      },
+      "goldEvidenceId": "EVID-55de53767427d2546ea5a131",
+      "expected": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "Q2 2026 consolidated revenue reported in USD millions.",
+        "rawValue": 2575,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 2 — results of operations",
+        "page": 46,
+        "location": "Printed p43; revenue row, three months ended June 30 2026",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 2575000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:55de53767427d2546ea5a13175e7e25a7ecf7e4a12033b265e3f23794eea0e0e",
+        "id": "EVID-55de53767427d2546ea5a131"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-08",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-d97b32fd73827505b0e13548",
+      "inputReference": {
+        "contentHash": "sha256:da9748a82a03c76ce62bfe07f0113730ceb357075f7aa3f3961561d0849424c7",
+        "locator": {
+          "unitIndex": 70,
+          "unitStart": 0,
+          "unitEnd": 2490,
+          "raw": {
+            "type": "pdf_page",
+            "page": 77,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "growth",
+      "expectedRawValue": 168,
+      "expectedUnit": "percent",
+      "expectedPeriod": {
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "observedAt": "2025-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "168"
+      },
+      "goldEvidenceId": "EVID-57d9fb7c9e0d01968f63e86d",
+      "expected": {
+        "researchField": "growth",
+        "category": "growth",
+        "metric": "revenue_yoy_growth",
+        "scope": "consolidated_company",
+        "statement": "The annual revenue comparison reports 168 percent year-on-year growth.",
+        "rawValue": 168,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Item 7 — revenue comparison",
+        "page": 77,
+        "location": "Printed p71; FY2025 versus FY2024 revenue % change",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 168,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:57d9fb7c9e0d01968f63e86d53bfcb26b002e9635400fded7ad252e8bfe769dc",
+        "id": "EVID-57d9fb7c9e0d01968f63e86d"
+      },
+      "binding": "narrative"
+    },
+    {
+      "caseId": "GOLD-09",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+      "inputReference": {
+        "contentHash": "sha256:7a6a3af23d501efb6b881a2aa9b6d87d39961a90577c6eaff042eed29127aba0",
+        "locator": {
+          "unitIndex": 133,
+          "unitStart": 0,
+          "unitEnd": 3764,
+          "raw": {
+            "type": "pdf_page",
+            "page": 140,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "revenue_concentration",
+      "expectedRawValue": 330,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "observedAt": "2025-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "330"
+      },
+      "goldEvidenceId": "EVID-581b270af3a7cb05cb3c8d76",
+      "expected": {
+        "researchField": "revenue_concentration",
+        "category": "revenue_concentration",
+        "metric": "other_geographic_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2025 non-US revenue reported in USD millions.",
+        "rawValue": 330,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Note 15 — geographic information",
+        "page": 140,
+        "location": "Printed p134; all other countries row, FY2025 column",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 330000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:581b270af3a7cb05cb3c8d7643d1c342a327473b612cebadff6adcf5344ca78f",
+        "id": "EVID-581b270af3a7cb05cb3c8d76"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-10",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-459628441b923d19deef40e6",
+      "inputReference": {
+        "contentHash": "sha256:4ccdab93497f31cb2936815aea2748e824ddf996bb34264947052a61949e2b46",
+        "locator": {
+          "unitIndex": 19,
+          "unitStart": 0,
+          "unitEnd": 5681,
+          "raw": {
+            "type": "pdf_page",
+            "page": 26,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "top_customer_concentration",
+      "expectedRawValue": 67,
+      "expectedUnit": "percent",
+      "expectedPeriod": {
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "observedAt": "2025-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "67"
+      },
+      "goldEvidenceId": "EVID-9972e75db9572973a07822ea",
+      "expected": {
+        "researchField": "top_customer_concentration",
+        "category": "top_customer_concentration",
+        "metric": "top1_revenue_share",
+        "scope": "consolidated_company",
+        "statement": "The filing attributes approximately 67 percent of FY2025 revenue to Microsoft.",
+        "rawValue": 67,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Item 1A — customer concentration",
+        "page": 26,
+        "location": "Printed p20; named Microsoft annual revenue concentration",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 67,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:9972e75db9572973a07822ea52f03d142cca33e241fbe70676983c4dc65cce7c",
+        "id": "EVID-9972e75db9572973a07822ea"
+      },
+      "binding": "narrative"
+    },
+    {
+      "caseId": "GOLD-11",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputReference": {
+        "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+        "locator": {
+          "unitIndex": 17,
+          "unitStart": 0,
+          "unitEnd": 2911,
+          "raw": {
+            "type": "pdf_page",
+            "page": 18,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "top_customer_concentration",
+      "expectedRawValue": 36,
+      "expectedUnit": "percent",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "36"
+      },
+      "goldEvidenceId": "EVID-9d1a6c004a3030203ca7357b",
+      "expected": {
+        "researchField": "top_customer_concentration",
+        "category": "top_customer_concentration",
+        "metric": "top1_revenue_share",
+        "scope": "consolidated_company",
+        "statement": "The largest disclosed Q2 customer share is 36 percent, without assigning a named identity.",
+        "rawValue": 36,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 — significant customers",
+        "page": 18,
+        "location": "Printed p15; largest listed customer Q2 share; identity not inferred",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 36,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:9d1a6c004a3030203ca7357b5b42e56ae83e70b0713f6c8323659c6e6a1df488",
+        "id": "EVID-9d1a6c004a3030203ca7357b"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-12",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+      "inputReference": {
+        "contentHash": "sha256:87d0b1f3919909d9833bf88b0cc9050434f33961224433382cf0a8b251c7c7b8",
+        "locator": {
+          "unitIndex": 45,
+          "unitStart": 0,
+          "unitEnd": 2467,
+          "raw": {
+            "type": "pdf_page",
+            "page": 46,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "compute_spend",
+      "expectedRawValue": 1507,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "1507"
+      },
+      "goldEvidenceId": "EVID-b5554a7e7040c07b95cf24cc",
+      "expected": {
+        "researchField": "compute_spend",
+        "category": "compute_spend",
+        "metric": "technology_infrastructure_expense",
+        "scope": "consolidated_company",
+        "statement": "Q2 technology and infrastructure expense is separately classified from cost of revenue.",
+        "rawValue": 1507,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 2 — results of operations",
+        "page": 46,
+        "location": "Printed p43; technology/infrastructure row, Q2 2026",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 1507000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:b5554a7e7040c07b95cf24cc99b3d1dd2f35c9e3e9c1c6c1bb067df55182603d",
+        "id": "EVID-b5554a7e7040c07b95cf24cc"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-13",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputReference": {
+        "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+        "locator": {
+          "unitIndex": 17,
+          "unitStart": 0,
+          "unitEnd": 2911,
+          "raw": {
+            "type": "pdf_page",
+            "page": 18,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "customer_concentration",
+      "expectedRawValue": 26,
+      "expectedUnit": "percent",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "26"
+      },
+      "goldEvidenceId": "EVID-b7667065291b5ef49830ce7e",
+      "expected": {
+        "researchField": "customer_concentration",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "scope": "consolidated_company",
+        "statement": "Anonymous customer B represents 26 percent of Q2 revenue; labels may change across periods.",
+        "rawValue": 26,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 — significant customers",
+        "page": 18,
+        "location": "Printed p15; Customer B row, Q2 2026 column; labels are not persistent identities",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 26,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:b7667065291b5ef49830ce7ea3eed5799d100f9dabddad30ef296e6a39c3f14a",
+        "id": "EVID-b7667065291b5ef49830ce7e"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-14",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputReference": {
+        "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+        "locator": {
+          "unitIndex": 17,
+          "unitStart": 0,
+          "unitEnd": 2911,
+          "raw": {
+            "type": "pdf_page",
+            "page": 18,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "customer_concentration",
+      "expectedRawValue": 36,
+      "expectedUnit": "percent",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "36"
+      },
+      "goldEvidenceId": "EVID-d6bd9f44f58d10087bfb051f",
+      "expected": {
+        "researchField": "customer_concentration",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "scope": "consolidated_company",
+        "statement": "Anonymous customer A represents 36 percent of Q2 revenue; labels may change across periods.",
+        "rawValue": 36,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 — significant customers",
+        "page": 18,
+        "location": "Printed p15; Customer A row, Q2 2026 column; labels are not persistent identities",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 36,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:d6bd9f44f58d10087bfb051f253f4dae314f7b2be4d22c3e321a1bfa44118a0c",
+        "id": "EVID-d6bd9f44f58d10087bfb051f"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-15",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+      "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+      "inputReference": {
+        "contentHash": "sha256:33a4eb03603d4f98388788881eff0a93eebfcbe2977b6d25380d1995f016d6bd",
+        "locator": {
+          "unitIndex": 17,
+          "unitStart": 0,
+          "unitEnd": 2911,
+          "raw": {
+            "type": "pdf_page",
+            "page": 18,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "customer_concentration",
+      "expectedRawValue": 10,
+      "expectedUnit": "percent",
+      "expectedPeriod": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "observedAt": "2026-06-30"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "10"
+      },
+      "goldEvidenceId": "EVID-d80a92ea485d42e2b259840f",
+      "expected": {
+        "researchField": "customer_concentration",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "scope": "consolidated_company",
+        "statement": "Anonymous customer C represents 10 percent of Q2 revenue; labels may change across periods.",
+        "rawValue": 10,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 — significant customers",
+        "page": 18,
+        "location": "Printed p15; Customer C row, Q2 2026 column; labels are not persistent identities",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 10,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:d80a92ea485d42e2b259840f00159698e88e66aad4d1a815bf4001562a902ca4",
+        "id": "EVID-d80a92ea485d42e2b259840f"
+      },
+      "binding": "table_column"
+    },
+    {
+      "caseId": "GOLD-16",
+      "subjectId": "coreweave",
+      "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+      "chunkId": "CHUNK-2223cab8302d364a8440382e",
+      "inputReference": {
+        "contentHash": "sha256:7bd75ed9abe00971929619c3e566de8eb9fbb924d680a204618de1e86a6b8bd0",
+        "locator": {
+          "unitIndex": 86,
+          "unitStart": 0,
+          "unitEnd": 1611,
+          "raw": {
+            "type": "pdf_page",
+            "page": 93,
+            "bbox": [
+              0,
+              0,
+              612,
+              792
+            ]
+          }
+        }
+      },
+      "expectedCategory": "revenue",
+      "expectedRawValue": 229,
+      "expectedUnit": "USD_millions",
+      "expectedPeriod": {
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "observedAt": "2023-12-31"
+      },
+      "acceptedQuoteSpan": {
+        "policy": "Exact contiguous source substring with fact binding; table headers may be outside quote and require human review",
+        "valueLiteral": "229"
+      },
+      "goldEvidenceId": "EVID-e257578fb0269a439eb67676",
+      "expected": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2023 consolidated revenue reported in USD millions.",
+        "rawValue": 229,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 8 — consolidated operations",
+        "page": 93,
+        "location": "Printed 10-K p87; revenue row, FY2023 column",
+        "periodStart": "2023-01-01",
+        "periodEnd": "2023-12-31",
+        "observedAt": "2023-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 229000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:e257578fb0269a439eb67676f0d40b7e2e5d2059edd17cd5bd3cedd8b1fde8ee",
+        "id": "EVID-e257578fb0269a439eb67676"
+      },
+      "binding": "table_column"
+    }
+  ]
+}

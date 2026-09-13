@@ -1,0 +1,44 @@
+import {digest} from '../src/identity.js';
+export const taxonomy=['MODEL_ERROR','VALIDATOR_FALSE_REJECT','VALIDATOR_CORRECT_REJECT','GOLD_MAPPING_LIMITATION','PARSER_CONTEXT_LIMITATION','UNKNOWN','CORRECT'];
+const same=(a,b)=>digest(a)===digest(b);
+export function compareProposal(p,chunk,references,{negative=false}={}){
+ const citation=typeof p.quotedText==='string'&&p.quotedText.length>0&&chunk.text.includes(p.quotedText)&&p.chunkIds.length===1&&p.chunkIds[0]===chunk.id&&p.sourceIds.length===1&&p.sourceIds[0]===chunk.sourceId;
+ const tokens=(chunk.text.match(/\(?[-−]?\d[\d,]*(?:\.\d+)?\)?/g)??[]).map(t=>Number(t.replace(/[(),−-]/g,''))*(t.startsWith('(')||/^[-−]/.test(t)?-1:1));
+ const literal=typeof p.rawValue==='number'?tokens.includes(p.rawValue):typeof p.rawValue==='string'&&chunk.text.includes(p.rawValue);
+ const subject=p.subjectId===chunk.subjectId;
+ const relevant=references.filter(r=>r.expected.category===p.category&&same(r.expected.rawValue,p.rawValue));
+ const hit=relevant.find(r=>['rawUnit','unit','periodStart','periodEnd','observedAt','scope'].every(k=>same(p[k],r.expected[k]))&&same(p.proposedNormalizedValue,r.expected.normalizedValue));
+ const metrics={citation,numericEligible:typeof p.rawValue==='number',numeric:relevant.length>0,unit:relevant.some(r=>same(p.rawUnit,r.expected.rawUnit)&&same(p.unit,r.expected.unit)),period:relevant.some(r=>['periodStart','periodEnd','observedAt'].every(k=>same(p[k],r.expected[k]))),category:references.some(r=>r.expected.category===p.category)};
+ const monetary=/USD|dollar|\$/i.test(p.rawUnit??'');
+ const unitPresent=!monetary||/(?:\$|USD|dollars?)/i.test(chunk.text);
+ const scalePresent=!/million/i.test(p.rawUnit)||/million/i.test(chunk.text);
+ const billionPresent=!/billion/i.test(p.rawUnit)||/billion/i.test(chunk.text);
+ const yearPresent=!p.periodEnd||chunk.text.includes(p.periodEnd.slice(0,4));
+ const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+ const datePresent=date=>{if(!date)return true;const [y,m,d]=date.split('-');return chunk.text.includes(date)||new RegExp('\\b'+months[Number(m)-1]+'\\s+'+Number(d)+',?\\s+'+y+'\\b','i').test(chunk.text);};
+ const observedSupported=datePresent(p.observedAt)||(p.periodBasis==='source_metadata'&&p.observedAt===chunk.documentDate&&!p.periodStart&&!p.periodEnd);
+ const percentPresent=!/percent|%/i.test(p.rawUnit)||/%|percent/i.test(chunk.text);
+ const forbidden=/risk_grade|risk_score|accepted|target_price|\bbuy\b|\bsell\b/i.test(p.metric+' '+p.researchField);
+ const hallucination=!citation||!literal||!subject||!unitPresent||!scalePresent||!billionPresent||!yearPresent||!percentPresent||!observedSupported||forbidden;
+ const contractIssues=[...(p.statement!==p.quotedText?['statement_not_exact']:[]),...(!['USD','USD_millions','USD_billions','percent','text','quoted_text'].includes(p.rawUnit)?['noncanonical_unit']:[]),...(!['identity','usd_millions_to_usd','usd_billions_to_usd'].includes(p.normalization)?['unsupported_normalization']:[]),...(p.factType!=='explicit'?['not_explicit']:[])];
+ let correct=null,classification='UNKNOWN',bindingReview='Unmatched facts require independent review; absence from Gold is not proof of hallucination';
+ if(hallucination){correct=false;classification='MODEL_ERROR';bindingReview='Independent quote, signed number, source/subject, unit, exact observation date or forbidden fact support failure';}
+ else if(contractIssues.length){correct=false;classification='MODEL_ERROR';bindingReview='Independent prompt/contract violations: '+contractIssues.join(',');}
+ else if(negative){correct=false;classification='MODEL_ERROR';bindingReview='Negative target policy expects no explicit fact; this is a false positive, not automatically hallucination';}
+ else if(hit){
+  // A table cell can match every Gold field without its quote carrying the column header.
+  // Such records are not counted as validator false rejects before manual binding review.
+  if(hit.binding==='table_column'){classification=p.validationStatus==='validated'?'UNKNOWN':'GOLD_MAPPING_LIMITATION';bindingReview='Gold fields match, but table column binding requires independent human review';}
+  else if((p.quotedText.includes(String(p.rawValue))||p.quotedText.includes(Number(p.rawValue).toLocaleString('en-US')))&&p.quotedText.includes(p.periodEnd?.slice(0,4))&&(/million|billion|%|percent/i.test(p.quotedText))&&!/\b(?:expects?|guidance|not)\b/i.test(p.quotedText)){correct=true;classification=p.statement!==p.quotedText?'MODEL_ERROR':p.validationStatus==='validated'?'CORRECT':'VALIDATOR_FALSE_REJECT';bindingReview='Literal narrative Gold field match; source passage retains number and period context';}
+ }
+ else if(relevant.length){correct=false;classification='MODEL_ERROR';bindingReview='Known Gold numeric fact has conflicting unit, normalization, period or scope';}
+ if(correct===false&&p.validationStatus!=='validated')return {metrics,hallucination,contractIssues,correct,classification,validatorClassification:'VALIDATOR_CORRECT_REJECT',matchedGoldId:hit?.goldEvidenceId??null,bindingReview};
+ return {metrics,hallucination,contractIssues,correct,classification,validatorClassification:correct===true&&p.statement!==p.quotedText&&p.validationStatus!=='validated'?'VALIDATOR_CORRECT_REJECT':classification,matchedGoldId:hit?.goldEvidenceId??null,bindingReview};
+}
+export const rate=(n,d)=>d?n/d:null;
+export function summarize(rows,eligible){
+ const primary=rows.filter(r=>!r.repeat),gold=primary.filter(r=>r.kind==='gold'),neg=primary.filter(r=>r.kind==='negative'),outputs=primary.flatMap(r=>r.GoldComparison??[]),valid=primary.flatMap(r=>r.ValidatorResult??[]);
+ const correct=outputs.filter(x=>x.correct===true),wrong=outputs.filter(x=>x.correct===false),unknown=outputs.length-correct.length-wrong.length;
+ const identified=gold.filter(r=>r.GoldComparison?.some(x=>x.matchedGoldId===r.goldEvidenceId)),verified=gold.filter(r=>r.GoldComparison?.some(x=>x.matchedGoldId===r.goldEvidenceId&&x.correct===true));
+ return {eligibleGoldCases:eligible,actuallyEvaluated:gold.length,identifiedGoldCases:identified.length,rawTargetIdentifiedCases:gold.filter(r=>r.ModelOutput.proposals.some(p=>p.rawValue===r.expectedRawValue)).length,correctGoldCases:verified.length,identifiedButRejected:identified.filter(r=>!r.ValidatorResult.some(x=>x.status==='validated'&&r.GoldComparison.find(y=>y.proposalId===x.proposalId)?.matchedGoldId===r.goldEvidenceId)).length,candidateEligibleCases:gold.filter(r=>r.GoldComparison?.some(x=>x.correct===true&&x.matchedGoldId===r.goldEvidenceId&&r.ValidatorResult.find(v=>v.proposalId===x.proposalId)?.status==='validated')).length,proposalCount:outputs.length,proposalPrecision:rate(correct.length,correct.length+wrong.length),precisionClosedGoldLowerBound:rate(correct.length,outputs.length),precisionUnknown:unknown,proposalRecall:rate(verified.length,eligible),exactCitationValidity:rate(outputs.filter(x=>x.metrics.citation).length,outputs.length),...Object.fromEntries(['numeric','unit','period','category'].map(k=>[k+'Accuracy',rate(outputs.filter(x=>x.metrics[k]).length,k==='numeric'?outputs.filter(x=>x.metrics.numericEligible).length:outputs.length)])),hallucinations:outputs.filter(x=>x.hallucination).length,hallucinationRate:rate(outputs.filter(x=>x.hallucination).length,outputs.length),falsePositiveRate:rate(neg.filter(r=>r.ModelOutput.schemaValid&&r.ModelOutput.proposals.length>0).length,neg.filter(r=>r.ModelOutput.schemaValid).length),negativeSchemaValidCases:neg.filter(r=>r.ModelOutput.schemaValid).length,negativeSchemaInvalidCases:neg.filter(r=>!r.ModelOutput.schemaValid).length,correctAbstentionRate:rate(neg.filter(r=>r.ModelOutput.schemaValid&&r.ModelOutput.proposals.length===0).length,neg.length),abstentionRate:rate(primary.filter(r=>r.ModelOutput.schemaValid&&r.ModelOutput.proposals.length===0).length,primary.length),schemaInvalidCases:primary.filter(r=>r.ModelOutput.schemaValid===false).length,validatorAcceptanceRate:rate(valid.filter(x=>x.status==='validated').length,valid.length),validatorFalseRejectRate:rate(correct.filter(x=>x.classification==='VALIDATOR_FALSE_REJECT').length,correct.filter(x=>x.validatorClassification!=='VALIDATOR_CORRECT_REJECT').length),validatorFalseAcceptRate:rate(wrong.filter(x=>x.accepted).length,wrong.length),unknownBindingCount:unknown,failureBreakdown:Object.fromEntries(taxonomy.map(k=>[k,outputs.filter(x=>x.classification===k).length+primary.filter(r=>r.errorClassification===k).length])),validatorCorrectRejects:outputs.filter(x=>x.validatorClassification==='VALIDATOR_CORRECT_REJECT').length,denominatorNote:'Malformed output is a case-level MODEL_ERROR, never a Proposal or abstention. Accuracy is closed-Gold field agreement; unknown extras are not independently judged false. False accept/reject rates use independently adjudicated records only.'};
+}
