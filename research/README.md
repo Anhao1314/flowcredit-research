@@ -64,3 +64,5 @@ Revenue/costs require matching AI inference API scope, exact metric, validated u
 No API, TAI/CCI/grade calculation, Finch schema/version, UI, authentication or deployment behavior is changed. Only development syntax/CI/full verification checks gain Research coverage. The v0.1 fixture pipeline remains unchanged; the independent [Research Memory Core v0.2](memory/README.md) now persists Sources, Evidence and Claim revisions with historical queries.
 
 See [pre-implementation audit](REPOSITORY_AUDIT.md), [corpus notes](fixtures/coreweave/README.md) and [full compatibility report](../docs/research-evidence-bridge-v0.1.md).
+
+Independent [Research Retrieval Layer v0.3](retrieval/README.md) searches verified raw documents and validates Candidate citations. It never writes accepted Evidence or Claim revisions.

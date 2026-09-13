@@ -1,0 +1,11 @@
+# Retrieval v0.3 pre-code audit — 2026-09-13
+
+Confirmed clean HEAD and origin/main `842486c7d0c5eb77f13bb92bc8083578d7a88d9f`. Read Research README/audit, all v0.1 schemas, source/observation/claim fixtures, normalization/extraction/claim/mapping/coverage modules, Memory backend/store/temporal/revision/correction schemas/CLI/tests, both delivery reports and CI. Baseline 109 Agent + 25 Research + 49 Memory = 183 passed, no skips. Isolation passes; origin is development, upstream push disabled, executable production-blocking hook intact.
+
+Source v0.1 rejects extra properties and has no public-availability timestamp. documentDate is only a date (Q2 uses signature date); it must not be inferred as market availability. Add independent Retrieval Document availability metadata rather than change immutable accepted Source payloads or Memory schema/storage version. Audit retrieval knowledge depends on actual raw retrieval and indexing createdAt; Replay depends on reviewed availableAt only and never writes Memory.
+
+Downloaded the two original official PDF URLs outside the repository; byte SHA-256 matches existing manifests exactly. Release SEC and IR direct bytes returned HTTP 403; do not substitute summaries as raw documents. Release remains unindexed unless its original bytes can be obtained/verified. HTML parser will be tested independently.
+
+SEC filing indexes actually report annual accepted 2026-03-02 16:14:01 and Q2 accepted 2026-08-11 19:24:42 (annual EST; Q2 EDT). Annual PDF wrapper publication is unknown: scope Replay to embedded filing pages, excluding wrapper. Q2 PDF reproduces the accepted filing; timestamp describes filing content, not first publication of the IR PDF URL. Keep basis and content scope explicit. Unknown availability excludes Replay.
+
+Choose isolated faithful PDF/HTML parsers, versioned deterministic page/section chunking, dependency-free BM25 and RRF. Native SQLite persists a separate retrieval index; do not alter/reuse Memory write access. Semantic provider interface must record model/dimension/version. No real provider/key is configured: deterministic provider is test-only and production CLI semantic reports unavailable; hybrid explicitly reports lexical-only degradation. Real-document lexical benchmark must not be represented as real semantic validation.

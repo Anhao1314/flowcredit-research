@@ -1,0 +1,8 @@
+{
+  "subjectId":"coreweave",
+  "documents":[
+    {"sourceKey":"0001769628-26-000104","file":"annual.pdf","format":"pdf","availability":{"availableAt":"2026-03-02T21:14:01Z","basis":"SEC index accepted 2026-03-02 16:14:01 EST; applies only to embedded filing content, not annual PDF wrapper publication. https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm","scope":"embedded_filing","firstPage":7}},
+    {"sourceKey":"0001769628-26-000366","file":"q2.pdf","format":"pdf","availability":{"availableAt":"2026-08-11T23:24:42Z","basis":"SEC index accepted 2026-08-11 19:24:42 EDT; official PDF reproduction of accepted filing content, not first publication of IR URL. https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/0001769628-26-000366-index.htm","scope":"embedded_filing","firstPage":1}}
+  ],
+  "excluded":[{"sourceKey":"0001769628-26-000362-ex99.1","reason":"SEC and IR direct bytes HTTP 403; no faithful original-byte corpus substitution. Original v0.1 facts remain accepted, not indexed."}]
+}

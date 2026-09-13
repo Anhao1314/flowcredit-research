@@ -1,0 +1,407 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:flowcredit:research:retrieval:v0.3",
+  "$defs": {
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "subjectId",
+        "parserVersion",
+        "contentHash",
+        "documentDate",
+        "availableAt",
+        "retrievedAt",
+        "createdAt",
+        "source",
+        "format",
+        "filename",
+        "textHash",
+        "text",
+        "units",
+        "pageCount",
+        "availabilityBasis",
+        "availabilityScope",
+        "firstPage"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parserVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "documentDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "availableAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "type": "object"
+        },
+        "format": {
+          "enum": [
+            "pdf",
+            "html"
+          ]
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "textHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "units": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          }
+        },
+        "pageCount": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "availabilityBasis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "availabilityScope": {
+          "enum": [
+            "entire_document",
+            "embedded_filing"
+          ]
+        },
+        "firstPage": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "chunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "subjectId",
+        "parserVersion",
+        "contentHash",
+        "documentDate",
+        "availableAt",
+        "retrievedAt",
+        "createdAt",
+        "documentId",
+        "text",
+        "section",
+        "page",
+        "locator",
+        "charStart",
+        "charEnd",
+        "chunkerVersion"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parserVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "documentDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "availableAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "documentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "locator": {
+          "type": "object"
+        },
+        "charStart": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "charEnd": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "chunkerVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "queryId",
+        "subjectId",
+        "sourceId",
+        "chunkId",
+        "quotedText",
+        "locator",
+        "retrievalMethod",
+        "retrievalRank",
+        "availableAt",
+        "asOf",
+        "timeMode",
+        "contentHash",
+        "documentHash",
+        "proposedCategory",
+        "proposedRawValue",
+        "createdAt",
+        "validationStatus"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "queryId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "chunkId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quotedText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "object"
+        },
+        "retrievalMethod": {
+          "enum": [
+            "lexical",
+            "semantic",
+            "hybrid"
+          ]
+        },
+        "retrievalRank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "availableAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "asOf": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeMode": {
+          "enum": [
+            "audit",
+            "replay"
+          ]
+        },
+        "contentHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "documentHash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "proposedCategory": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "proposedRawValue": {
+          "type": "null"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "validationStatus": {
+          "enum": [
+            "pending",
+            "valid",
+            "invalid"
+          ]
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "hybridResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chunkId",
+        "lexicalRank",
+        "semanticRank",
+        "hybridScore",
+        "finalRank"
+      ],
+      "properties": {
+        "chunkId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lexicalRank": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "semanticRank": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hybridScore": {
+          "type": "number",
+          "minimum": 0
+        },
+        "finalRank": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

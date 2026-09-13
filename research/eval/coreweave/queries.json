@@ -1,0 +1,365 @@
+[
+  {
+    "id": "annual-revenue",
+    "query": "FY2025 revenue 5,131",
+    "subjectId": "coreweave",
+    "category": "revenue",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "page": 93,
+        "textIncludes": "5,131"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-0d73c529dbe08a3224eeae92",
+      "EVID-105cce7840c6d7d991199463",
+      "EVID-e257578fb0269a439eb67676"
+    ]
+  },
+  {
+    "id": "annual-prior-revenue",
+    "query": "2024 revenue 1,915",
+    "subjectId": "coreweave",
+    "category": "revenue",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "page": 93,
+        "textIncludes": "1,915"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-0d73c529dbe08a3224eeae92",
+      "EVID-105cce7840c6d7d991199463",
+      "EVID-e257578fb0269a439eb67676"
+    ]
+  },
+  {
+    "id": "annual-growth",
+    "query": "revenue change 168",
+    "subjectId": "coreweave",
+    "category": "growth",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "page": 77,
+        "textIncludes": "168"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-57d9fb7c9e0d01968f63e86d"
+    ]
+  },
+  {
+    "id": "annual-largest-customer",
+    "query": "Microsoft revenue 67",
+    "subjectId": "coreweave",
+    "category": "top_customer_concentration",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "page": 26,
+        "textIncludes": "67"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-9972e75db9572973a07822ea"
+    ]
+  },
+  {
+    "id": "geographic-revenue",
+    "query": "United States revenue 4,801",
+    "subjectId": "coreweave",
+    "category": "revenue_concentration",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "page": 140,
+        "textIncludes": "4,801"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-01e98f7104a3898b78561892",
+      "EVID-581b270af3a7cb05cb3c8d76"
+    ]
+  },
+  {
+    "id": "q2-revenue",
+    "query": "2026 revenue 2,575",
+    "subjectId": "coreweave",
+    "category": "revenue",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 46,
+        "textIncludes": "2,575"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-55de53767427d2546ea5a131"
+    ]
+  },
+  {
+    "id": "cost-revenue",
+    "query": "cost revenue 879",
+    "subjectId": "coreweave",
+    "category": "compute_spend",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 46,
+        "textIncludes": "879"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-1bd669d2eaff75004e3144c8",
+      "EVID-b5554a7e7040c07b95cf24cc"
+    ]
+  },
+  {
+    "id": "technology",
+    "query": "technology infrastructure 1,507",
+    "subjectId": "coreweave",
+    "category": "compute_spend",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 46,
+        "textIncludes": "1,507"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-1bd669d2eaff75004e3144c8",
+      "EVID-b5554a7e7040c07b95cf24cc"
+    ]
+  },
+  {
+    "id": "significant-customers",
+    "query": "Customer A 36%",
+    "subjectId": "coreweave",
+    "category": "customer_concentration",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 18,
+        "textIncludes": "36%"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-b7667065291b5ef49830ce7e",
+      "EVID-d6bd9f44f58d10087bfb051f",
+      "EVID-d80a92ea485d42e2b259840f"
+    ]
+  },
+  {
+    "id": "customer-b",
+    "query": "Customer B 26%",
+    "subjectId": "coreweave",
+    "category": "customer_concentration",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 18,
+        "textIncludes": "26%"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-b7667065291b5ef49830ce7e",
+      "EVID-d6bd9f44f58d10087bfb051f",
+      "EVID-d80a92ea485d42e2b259840f"
+    ]
+  },
+  {
+    "id": "rpo",
+    "query": "remaining performance obligations 103.7",
+    "subjectId": "coreweave",
+    "category": "backlog_rpo",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 18,
+        "textIncludes": "103.7"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-33fce161495522ddc4db205c"
+    ]
+  },
+  {
+    "id": "history",
+    "query": "founded September 2017",
+    "subjectId": "coreweave",
+    "category": "operating_history",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 60,
+        "textIncludes": "2017"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-d8d76adfb6af7422b28a0005"
+    ]
+  },
+  {
+    "id": "rate-risk",
+    "query": "interest expense basis points 30",
+    "subjectId": "coreweave",
+    "category": "risk_factors",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 52,
+        "textIncludes": "30"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-430ce62f5da87b41027d09b0"
+    ]
+  },
+  {
+    "id": "controls",
+    "query": "disclosure controls ineffective material weaknesses",
+    "subjectId": "coreweave",
+    "category": "integrity_legal_reporting",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 53,
+        "textIncludes": "ineffective"
+      }
+    ],
+    "expectedEvidenceIds": [
+      "EVID-91cd18734700296cbf2f5c4d"
+    ]
+  },
+  {
+    "id": "cash",
+    "query": "cash equivalents",
+    "subjectId": "coreweave",
+    "category": "cash",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 7,
+        "textIncludes": "Cash"
+      }
+    ],
+    "expectedEvidenceIds": []
+  },
+  {
+    "id": "debt",
+    "query": "recourse debt",
+    "subjectId": "coreweave",
+    "category": "debt",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 7,
+        "textIncludes": "debt"
+      }
+    ],
+    "expectedEvidenceIds": []
+  },
+  {
+    "id": "liquidity",
+    "query": "total current liabilities",
+    "subjectId": "coreweave",
+    "category": "liquidity",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 7,
+        "textIncludes": "Total current liabilities"
+      }
+    ],
+    "expectedEvidenceIds": []
+  },
+  {
+    "id": "cash-flow",
+    "query": "net cash operating activities",
+    "subjectId": "coreweave",
+    "category": "cash_flow",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 13,
+        "textIncludes": "operating activities"
+      }
+    ],
+    "expectedEvidenceIds": []
+  },
+  {
+    "id": "capex",
+    "query": "purchases property equipment capitalized software",
+    "subjectId": "coreweave",
+    "category": "capex",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [
+      {
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "page": 13,
+        "textIncludes": "capitalized software"
+      }
+    ],
+    "expectedEvidenceIds": []
+  },
+  {
+    "id": "negative-token",
+    "query": "daily billed inference token reconciliation coverage",
+    "subjectId": "coreweave",
+    "category": "compute_context",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [],
+    "expectedEvidenceIds": []
+  },
+  {
+    "id": "negative-quantum",
+    "query": "quantum unicorn burn reconciliation",
+    "subjectId": "coreweave",
+    "category": "negative",
+    "timeMode": "replay",
+    "asOf": "2026-09-13",
+    "expected": [],
+    "expectedEvidenceIds": []
+  }
+]

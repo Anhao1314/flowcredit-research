@@ -1,0 +1,1113 @@
+{
+  "queries": 21,
+  "positiveQueries": 19,
+  "negativeQueries": 2,
+  "methods": {
+    "lexical": {
+      "status": "real_document_baseline",
+      "recallAt1": 0.4211,
+      "recallAt3": 0.8421,
+      "recallAt5": 0.8421,
+      "mrr": 0.6128,
+      "citationValidityRate": 1,
+      "futureLeakageRate": 0,
+      "wrongSubjectRate": 0,
+      "negativeAbstentions": 2,
+      "returned": 92,
+      "rows": [
+        {
+          "id": "annual-revenue",
+          "expectedEvidenceIds": [
+            "EVID-0d73c529dbe08a3224eeae92",
+            "EVID-105cce7840c6d7d991199463",
+            "EVID-e257578fb0269a439eb67676"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 93,
+              "textIncludes": "5,131"
+            }
+          ],
+          "query": "FY2025 revenue 5,131",
+          "resultChunkIds": [
+            "CHUNK-d97b32fd73827505b0e13548",
+            "CHUNK-2223cab8302d364a8440382e",
+            "CHUNK-34a75f1f934c7f3deda4ad44"
+          ],
+          "firstRelevantRank": 2,
+          "results": 3,
+          "valid": 3,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "annual-prior-revenue",
+          "expectedEvidenceIds": [
+            "EVID-0d73c529dbe08a3224eeae92",
+            "EVID-105cce7840c6d7d991199463",
+            "EVID-e257578fb0269a439eb67676"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 93,
+              "textIncludes": "1,915"
+            }
+          ],
+          "query": "2024 revenue 1,915",
+          "resultChunkIds": [
+            "CHUNK-d97b32fd73827505b0e13548",
+            "CHUNK-bd61532f2664973c86944e7f",
+            "CHUNK-2223cab8302d364a8440382e",
+            "CHUNK-8377e2b90335b536b11081ed",
+            "CHUNK-34a75f1f934c7f3deda4ad44"
+          ],
+          "firstRelevantRank": 3,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "annual-growth",
+          "expectedEvidenceIds": [
+            "EVID-57d9fb7c9e0d01968f63e86d"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 77,
+              "textIncludes": "168"
+            }
+          ],
+          "query": "revenue change 168",
+          "resultChunkIds": [
+            "CHUNK-d97b32fd73827505b0e13548",
+            "CHUNK-30f356ca89e43156e0c1c874",
+            "CHUNK-660775ceb18ce7026616b845",
+            "CHUNK-bd61532f2664973c86944e7f",
+            "CHUNK-677bc1038e784c033bd84bc1"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "annual-largest-customer",
+          "expectedEvidenceIds": [
+            "EVID-9972e75db9572973a07822ea"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 26,
+              "textIncludes": "67"
+            }
+          ],
+          "query": "Microsoft revenue 67",
+          "resultChunkIds": [
+            "CHUNK-459628441b923d19deef40e6",
+            "CHUNK-c0e8945b78579319a118359b",
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-11fe19d131c67ef53dabbc75",
+            "CHUNK-a55772a78d802638bf6549cc"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "geographic-revenue",
+          "expectedEvidenceIds": [
+            "EVID-01e98f7104a3898b78561892",
+            "EVID-581b270af3a7cb05cb3c8d76"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 140,
+              "textIncludes": "4,801"
+            }
+          ],
+          "query": "United States revenue 4,801",
+          "resultChunkIds": [
+            "CHUNK-34a75f1f934c7f3deda4ad44",
+            "CHUNK-bb73dcf6eec74ff6650ad719",
+            "CHUNK-ac2bf28861e2624a5552003a",
+            "CHUNK-11fe19d131c67ef53dabbc75",
+            "CHUNK-580f1a5ac6d9f58a1f4a2471"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "q2-revenue",
+          "expectedEvidenceIds": [
+            "EVID-55de53767427d2546ea5a131"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 46,
+              "textIncludes": "2,575"
+            }
+          ],
+          "query": "2026 revenue 2,575",
+          "resultChunkIds": [
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-e7e730e412551af24d717fc5",
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-bb73dcf6eec74ff6650ad719",
+            "CHUNK-e2960170441a4f8aa253787e"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "cost-revenue",
+          "expectedEvidenceIds": [
+            "EVID-1bd669d2eaff75004e3144c8",
+            "EVID-b5554a7e7040c07b95cf24cc"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 46,
+              "textIncludes": "879"
+            }
+          ],
+          "query": "cost revenue 879",
+          "resultChunkIds": [
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-e7e730e412551af24d717fc5",
+            "CHUNK-660775ceb18ce7026616b845",
+            "CHUNK-bd61532f2664973c86944e7f"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "technology",
+          "expectedEvidenceIds": [
+            "EVID-1bd669d2eaff75004e3144c8",
+            "EVID-b5554a7e7040c07b95cf24cc"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 46,
+              "textIncludes": "1,507"
+            }
+          ],
+          "query": "technology infrastructure 1,507",
+          "resultChunkIds": [
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-e7e730e412551af24d717fc5",
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-660775ceb18ce7026616b845",
+            "CHUNK-bd61532f2664973c86944e7f"
+          ],
+          "firstRelevantRank": 3,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "significant-customers",
+          "expectedEvidenceIds": [
+            "EVID-b7667065291b5ef49830ce7e",
+            "EVID-d6bd9f44f58d10087bfb051f",
+            "EVID-d80a92ea485d42e2b259840f"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 18,
+              "textIncludes": "36%"
+            }
+          ],
+          "query": "Customer A 36%",
+          "resultChunkIds": [
+            "CHUNK-109eede2d645e764553942d2",
+            "CHUNK-245c272183e7b3d5227f70ff",
+            "CHUNK-43d7e81f2954f79254b96322",
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-77e53dec19c1074ec2cb7de7"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "customer-b",
+          "expectedEvidenceIds": [
+            "EVID-b7667065291b5ef49830ce7e",
+            "EVID-d6bd9f44f58d10087bfb051f",
+            "EVID-d80a92ea485d42e2b259840f"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 18,
+              "textIncludes": "26%"
+            }
+          ],
+          "query": "Customer B 26%",
+          "resultChunkIds": [
+            "CHUNK-245c272183e7b3d5227f70ff",
+            "CHUNK-90e9700b7297adf1ce2ff6b1",
+            "CHUNK-0d6eb43f9b97681c998162cb",
+            "CHUNK-bd61532f2664973c86944e7f",
+            "CHUNK-660775ceb18ce7026616b845"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "rpo",
+          "expectedEvidenceIds": [
+            "EVID-33fce161495522ddc4db205c"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 18,
+              "textIncludes": "103.7"
+            }
+          ],
+          "query": "remaining performance obligations 103.7",
+          "resultChunkIds": [
+            "CHUNK-245c272183e7b3d5227f70ff",
+            "CHUNK-aba85815f99b769309ba89e8",
+            "CHUNK-ecd336ebde5400a4ae2a60b8",
+            "CHUNK-d527fd008f241e27672f119a",
+            "CHUNK-faac7ff447e0393158723596"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "history",
+          "expectedEvidenceIds": [
+            "EVID-d8d76adfb6af7422b28a0005"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 60,
+              "textIncludes": "2017"
+            }
+          ],
+          "query": "founded September 2017",
+          "resultChunkIds": [
+            "CHUNK-7e6f61fd1b80c53776427611",
+            "CHUNK-b59bde8c2d092ba10aa86e88",
+            "CHUNK-491b8cca034fb156c4cebf8e",
+            "CHUNK-a53f5cd664065fb52be1d032"
+          ],
+          "firstRelevantRank": 1,
+          "results": 4,
+          "valid": 4,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "rate-risk",
+          "expectedEvidenceIds": [
+            "EVID-430ce62f5da87b41027d09b0"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 52,
+              "textIncludes": "30"
+            }
+          ],
+          "query": "interest expense basis points 30",
+          "resultChunkIds": [
+            "CHUNK-9dd5e4f2ab4f16e491cc9d8f",
+            "CHUNK-b74d4e00eff36c2b81c03cd5",
+            "CHUNK-b209888dde9875314e5d8071",
+            "CHUNK-2adfa503cebdfc5d68c2f93a",
+            "CHUNK-23f96c9911edfb0151fdaefb"
+          ],
+          "firstRelevantRank": 3,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "controls",
+          "expectedEvidenceIds": [
+            "EVID-91cd18734700296cbf2f5c4d"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 53,
+              "textIncludes": "ineffective"
+            }
+          ],
+          "query": "disclosure controls ineffective material weaknesses",
+          "resultChunkIds": [
+            "CHUNK-f04d225d7496e1c4ae393d89",
+            "CHUNK-da5344938869f07f5d0dcabb",
+            "CHUNK-01357c43b9453f0ad17e784e",
+            "CHUNK-75187949bc4760f71b71c5ef",
+            "CHUNK-93352ab4a61251495dc87ba4"
+          ],
+          "firstRelevantRank": null,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "cash",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 7,
+              "textIncludes": "Cash"
+            }
+          ],
+          "query": "cash equivalents",
+          "resultChunkIds": [
+            "CHUNK-f4879c4341d05867d7d9c027",
+            "CHUNK-92084f274e382ce8e619deaf",
+            "CHUNK-6c13d127b82aea518c2abd60",
+            "CHUNK-8377e2b90335b536b11081ed",
+            "CHUNK-e2960170441a4f8aa253787e"
+          ],
+          "firstRelevantRank": 7,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "debt",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 7,
+              "textIncludes": "debt"
+            }
+          ],
+          "query": "recourse debt",
+          "resultChunkIds": [
+            "CHUNK-03bcab316101fb83af774ae2",
+            "CHUNK-0c2bb74cd4827346a650bfe6",
+            "CHUNK-0e33dfd9cf07ef828d3fb327",
+            "CHUNK-6df230bc09cf5aff0f6cb012",
+            "CHUNK-3db79bfc4b5aa1d6506669ad"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "liquidity",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 7,
+              "textIncludes": "Total current liabilities"
+            }
+          ],
+          "query": "total current liabilities",
+          "resultChunkIds": [
+            "CHUNK-8377e2b90335b536b11081ed",
+            "CHUNK-0c2bb74cd4827346a650bfe6",
+            "CHUNK-b8a65cbb562aab1700dba5c3",
+            "CHUNK-77e53dec19c1074ec2cb7de7",
+            "CHUNK-ab8327d6181ab85e88888505"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "cash-flow",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 13,
+              "textIncludes": "operating activities"
+            }
+          ],
+          "query": "net cash operating activities",
+          "resultChunkIds": [
+            "CHUNK-e2960170441a4f8aa253787e",
+            "CHUNK-93cefa39227c216b810454ed",
+            "CHUNK-8a14899965ca4e1bb06def1b",
+            "CHUNK-53dbdeeae8caf2d7066bc90c",
+            "CHUNK-f4879c4341d05867d7d9c027"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "capex",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 13,
+              "textIncludes": "capitalized software"
+            }
+          ],
+          "query": "purchases property equipment capitalized software",
+          "resultChunkIds": [
+            "CHUNK-fda41e2cfbcab6c2c9d5be75",
+            "CHUNK-9973c16f55457416b201195b",
+            "CHUNK-1d8bbaf000818a724fe823a0",
+            "CHUNK-93cefa39227c216b810454ed",
+            "CHUNK-e2960170441a4f8aa253787e"
+          ],
+          "firstRelevantRank": null,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "negative-token",
+          "expectedEvidenceIds": [],
+          "expected": [],
+          "query": "daily billed inference token reconciliation coverage",
+          "resultChunkIds": [],
+          "firstRelevantRank": null,
+          "results": 0,
+          "valid": 0,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": true
+        },
+        {
+          "id": "negative-quantum",
+          "expectedEvidenceIds": [],
+          "expected": [],
+          "query": "quantum unicorn burn reconciliation",
+          "resultChunkIds": [],
+          "firstRelevantRank": null,
+          "results": 0,
+          "valid": 0,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": true
+        }
+      ]
+    },
+    "semantic": {
+      "status": "unavailable",
+      "reason": "No real embedding provider configured; no fabricated semantic benchmark"
+    },
+    "hybrid": {
+      "status": "lexical_only_degraded",
+      "recallAt1": 0.4211,
+      "recallAt3": 0.8421,
+      "recallAt5": 0.8421,
+      "mrr": 0.6128,
+      "citationValidityRate": 1,
+      "futureLeakageRate": 0,
+      "wrongSubjectRate": 0,
+      "negativeAbstentions": 2,
+      "returned": 92,
+      "rows": [
+        {
+          "id": "annual-revenue",
+          "expectedEvidenceIds": [
+            "EVID-0d73c529dbe08a3224eeae92",
+            "EVID-105cce7840c6d7d991199463",
+            "EVID-e257578fb0269a439eb67676"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 93,
+              "textIncludes": "5,131"
+            }
+          ],
+          "query": "FY2025 revenue 5,131",
+          "resultChunkIds": [
+            "CHUNK-d97b32fd73827505b0e13548",
+            "CHUNK-2223cab8302d364a8440382e",
+            "CHUNK-34a75f1f934c7f3deda4ad44"
+          ],
+          "firstRelevantRank": 2,
+          "results": 3,
+          "valid": 3,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "annual-prior-revenue",
+          "expectedEvidenceIds": [
+            "EVID-0d73c529dbe08a3224eeae92",
+            "EVID-105cce7840c6d7d991199463",
+            "EVID-e257578fb0269a439eb67676"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 93,
+              "textIncludes": "1,915"
+            }
+          ],
+          "query": "2024 revenue 1,915",
+          "resultChunkIds": [
+            "CHUNK-d97b32fd73827505b0e13548",
+            "CHUNK-bd61532f2664973c86944e7f",
+            "CHUNK-2223cab8302d364a8440382e",
+            "CHUNK-8377e2b90335b536b11081ed",
+            "CHUNK-34a75f1f934c7f3deda4ad44"
+          ],
+          "firstRelevantRank": 3,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "annual-growth",
+          "expectedEvidenceIds": [
+            "EVID-57d9fb7c9e0d01968f63e86d"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 77,
+              "textIncludes": "168"
+            }
+          ],
+          "query": "revenue change 168",
+          "resultChunkIds": [
+            "CHUNK-d97b32fd73827505b0e13548",
+            "CHUNK-30f356ca89e43156e0c1c874",
+            "CHUNK-660775ceb18ce7026616b845",
+            "CHUNK-bd61532f2664973c86944e7f",
+            "CHUNK-677bc1038e784c033bd84bc1"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "annual-largest-customer",
+          "expectedEvidenceIds": [
+            "EVID-9972e75db9572973a07822ea"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 26,
+              "textIncludes": "67"
+            }
+          ],
+          "query": "Microsoft revenue 67",
+          "resultChunkIds": [
+            "CHUNK-459628441b923d19deef40e6",
+            "CHUNK-c0e8945b78579319a118359b",
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-11fe19d131c67ef53dabbc75",
+            "CHUNK-a55772a78d802638bf6549cc"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "geographic-revenue",
+          "expectedEvidenceIds": [
+            "EVID-01e98f7104a3898b78561892",
+            "EVID-581b270af3a7cb05cb3c8d76"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+              "page": 140,
+              "textIncludes": "4,801"
+            }
+          ],
+          "query": "United States revenue 4,801",
+          "resultChunkIds": [
+            "CHUNK-34a75f1f934c7f3deda4ad44",
+            "CHUNK-bb73dcf6eec74ff6650ad719",
+            "CHUNK-ac2bf28861e2624a5552003a",
+            "CHUNK-11fe19d131c67ef53dabbc75",
+            "CHUNK-580f1a5ac6d9f58a1f4a2471"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "q2-revenue",
+          "expectedEvidenceIds": [
+            "EVID-55de53767427d2546ea5a131"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 46,
+              "textIncludes": "2,575"
+            }
+          ],
+          "query": "2026 revenue 2,575",
+          "resultChunkIds": [
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-e7e730e412551af24d717fc5",
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-bb73dcf6eec74ff6650ad719",
+            "CHUNK-e2960170441a4f8aa253787e"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "cost-revenue",
+          "expectedEvidenceIds": [
+            "EVID-1bd669d2eaff75004e3144c8",
+            "EVID-b5554a7e7040c07b95cf24cc"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 46,
+              "textIncludes": "879"
+            }
+          ],
+          "query": "cost revenue 879",
+          "resultChunkIds": [
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-e7e730e412551af24d717fc5",
+            "CHUNK-660775ceb18ce7026616b845",
+            "CHUNK-bd61532f2664973c86944e7f"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "technology",
+          "expectedEvidenceIds": [
+            "EVID-1bd669d2eaff75004e3144c8",
+            "EVID-b5554a7e7040c07b95cf24cc"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 46,
+              "textIncludes": "1,507"
+            }
+          ],
+          "query": "technology infrastructure 1,507",
+          "resultChunkIds": [
+            "CHUNK-677bc1038e784c033bd84bc1",
+            "CHUNK-e7e730e412551af24d717fc5",
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-660775ceb18ce7026616b845",
+            "CHUNK-bd61532f2664973c86944e7f"
+          ],
+          "firstRelevantRank": 3,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "significant-customers",
+          "expectedEvidenceIds": [
+            "EVID-b7667065291b5ef49830ce7e",
+            "EVID-d6bd9f44f58d10087bfb051f",
+            "EVID-d80a92ea485d42e2b259840f"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 18,
+              "textIncludes": "36%"
+            }
+          ],
+          "query": "Customer A 36%",
+          "resultChunkIds": [
+            "CHUNK-109eede2d645e764553942d2",
+            "CHUNK-245c272183e7b3d5227f70ff",
+            "CHUNK-43d7e81f2954f79254b96322",
+            "CHUNK-8796f15b4e42495987a385f3",
+            "CHUNK-77e53dec19c1074ec2cb7de7"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "customer-b",
+          "expectedEvidenceIds": [
+            "EVID-b7667065291b5ef49830ce7e",
+            "EVID-d6bd9f44f58d10087bfb051f",
+            "EVID-d80a92ea485d42e2b259840f"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 18,
+              "textIncludes": "26%"
+            }
+          ],
+          "query": "Customer B 26%",
+          "resultChunkIds": [
+            "CHUNK-245c272183e7b3d5227f70ff",
+            "CHUNK-90e9700b7297adf1ce2ff6b1",
+            "CHUNK-0d6eb43f9b97681c998162cb",
+            "CHUNK-bd61532f2664973c86944e7f",
+            "CHUNK-660775ceb18ce7026616b845"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "rpo",
+          "expectedEvidenceIds": [
+            "EVID-33fce161495522ddc4db205c"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 18,
+              "textIncludes": "103.7"
+            }
+          ],
+          "query": "remaining performance obligations 103.7",
+          "resultChunkIds": [
+            "CHUNK-245c272183e7b3d5227f70ff",
+            "CHUNK-aba85815f99b769309ba89e8",
+            "CHUNK-ecd336ebde5400a4ae2a60b8",
+            "CHUNK-d527fd008f241e27672f119a",
+            "CHUNK-faac7ff447e0393158723596"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "history",
+          "expectedEvidenceIds": [
+            "EVID-d8d76adfb6af7422b28a0005"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 60,
+              "textIncludes": "2017"
+            }
+          ],
+          "query": "founded September 2017",
+          "resultChunkIds": [
+            "CHUNK-7e6f61fd1b80c53776427611",
+            "CHUNK-b59bde8c2d092ba10aa86e88",
+            "CHUNK-491b8cca034fb156c4cebf8e",
+            "CHUNK-a53f5cd664065fb52be1d032"
+          ],
+          "firstRelevantRank": 1,
+          "results": 4,
+          "valid": 4,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "rate-risk",
+          "expectedEvidenceIds": [
+            "EVID-430ce62f5da87b41027d09b0"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 52,
+              "textIncludes": "30"
+            }
+          ],
+          "query": "interest expense basis points 30",
+          "resultChunkIds": [
+            "CHUNK-9dd5e4f2ab4f16e491cc9d8f",
+            "CHUNK-b74d4e00eff36c2b81c03cd5",
+            "CHUNK-b209888dde9875314e5d8071",
+            "CHUNK-2adfa503cebdfc5d68c2f93a",
+            "CHUNK-23f96c9911edfb0151fdaefb"
+          ],
+          "firstRelevantRank": 3,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "controls",
+          "expectedEvidenceIds": [
+            "EVID-91cd18734700296cbf2f5c4d"
+          ],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 53,
+              "textIncludes": "ineffective"
+            }
+          ],
+          "query": "disclosure controls ineffective material weaknesses",
+          "resultChunkIds": [
+            "CHUNK-f04d225d7496e1c4ae393d89",
+            "CHUNK-da5344938869f07f5d0dcabb",
+            "CHUNK-01357c43b9453f0ad17e784e",
+            "CHUNK-75187949bc4760f71b71c5ef",
+            "CHUNK-93352ab4a61251495dc87ba4"
+          ],
+          "firstRelevantRank": null,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "cash",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 7,
+              "textIncludes": "Cash"
+            }
+          ],
+          "query": "cash equivalents",
+          "resultChunkIds": [
+            "CHUNK-f4879c4341d05867d7d9c027",
+            "CHUNK-92084f274e382ce8e619deaf",
+            "CHUNK-6c13d127b82aea518c2abd60",
+            "CHUNK-8377e2b90335b536b11081ed",
+            "CHUNK-e2960170441a4f8aa253787e"
+          ],
+          "firstRelevantRank": 7,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "debt",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 7,
+              "textIncludes": "debt"
+            }
+          ],
+          "query": "recourse debt",
+          "resultChunkIds": [
+            "CHUNK-03bcab316101fb83af774ae2",
+            "CHUNK-0c2bb74cd4827346a650bfe6",
+            "CHUNK-0e33dfd9cf07ef828d3fb327",
+            "CHUNK-6df230bc09cf5aff0f6cb012",
+            "CHUNK-3db79bfc4b5aa1d6506669ad"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "liquidity",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 7,
+              "textIncludes": "Total current liabilities"
+            }
+          ],
+          "query": "total current liabilities",
+          "resultChunkIds": [
+            "CHUNK-8377e2b90335b536b11081ed",
+            "CHUNK-0c2bb74cd4827346a650bfe6",
+            "CHUNK-b8a65cbb562aab1700dba5c3",
+            "CHUNK-77e53dec19c1074ec2cb7de7",
+            "CHUNK-ab8327d6181ab85e88888505"
+          ],
+          "firstRelevantRank": 2,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "cash-flow",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 13,
+              "textIncludes": "operating activities"
+            }
+          ],
+          "query": "net cash operating activities",
+          "resultChunkIds": [
+            "CHUNK-e2960170441a4f8aa253787e",
+            "CHUNK-93cefa39227c216b810454ed",
+            "CHUNK-8a14899965ca4e1bb06def1b",
+            "CHUNK-53dbdeeae8caf2d7066bc90c",
+            "CHUNK-f4879c4341d05867d7d9c027"
+          ],
+          "firstRelevantRank": 1,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "capex",
+          "expectedEvidenceIds": [],
+          "expected": [
+            {
+              "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+              "page": 13,
+              "textIncludes": "capitalized software"
+            }
+          ],
+          "query": "purchases property equipment capitalized software",
+          "resultChunkIds": [
+            "CHUNK-fda41e2cfbcab6c2c9d5be75",
+            "CHUNK-9973c16f55457416b201195b",
+            "CHUNK-1d8bbaf000818a724fe823a0",
+            "CHUNK-93cefa39227c216b810454ed",
+            "CHUNK-e2960170441a4f8aa253787e"
+          ],
+          "firstRelevantRank": null,
+          "results": 5,
+          "valid": 5,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": false
+        },
+        {
+          "id": "negative-token",
+          "expectedEvidenceIds": [],
+          "expected": [],
+          "query": "daily billed inference token reconciliation coverage",
+          "resultChunkIds": [],
+          "firstRelevantRank": null,
+          "results": 0,
+          "valid": 0,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": true
+        },
+        {
+          "id": "negative-quantum",
+          "expectedEvidenceIds": [],
+          "expected": [],
+          "query": "quantum unicorn burn reconciliation",
+          "resultChunkIds": [],
+          "firstRelevantRank": null,
+          "results": 0,
+          "valid": 0,
+          "leakage": 0,
+          "wrongSubject": 0,
+          "abstained": true
+        }
+      ]
+    }
+  }
+}

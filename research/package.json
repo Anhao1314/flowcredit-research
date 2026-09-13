@@ -7,7 +7,9 @@
     "test": "node --test test/*.test.js",
     "coverage": "node src/coverage.js coreweave",
     "memory": "node src/memory.js",
-    "test:memory": "node --test memory-test/*.test.js"
+    "test:memory": "node --test memory-test/*.test.js",
+    "retrieval": "node src/retrieval.js",
+    "test:retrieval": "node --test retrieval-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
