@@ -1,0 +1,49 @@
+{
+ "version": "claim-relation-spike-preregistration/v1",
+ "frozenAt": "2026-09-14T08:36:13.766Z",
+ "pairs": 41,
+ "bundles": 4,
+ "relationTaxonomy": [
+  "SUPPORTS",
+  "COUNTERS",
+  "NEUTRAL",
+  "AMBIGUOUS"
+ ],
+ "architectures": [
+  "deterministic-only",
+  "nli-only",
+  "qwen-only",
+  "hybrid-no-qwen",
+  "hybrid-with-qwen"
+ ],
+ "nliParams": {
+  "default": {
+   "tauSupport": 0.5,
+   "tauCounter": 0.5,
+   "tauNeutral": 0.5,
+   "margin": 0,
+   "minicheckVeto": true
+  },
+  "calibrated": {
+   "tauSupport": 0.5,
+   "tauCounter": 0.5,
+   "tauNeutral": 0.4,
+   "margin": 0.15,
+   "minicheckVeto": true
+  }
+ },
+ "runPlan": {
+  "nli": "one run of nli/run_nli.py over all frozen dev pairs (sequential latency pass + batch throughput pass)",
+  "qwen": "one run of cli.js qwen --opt-in over all frozen dev pairs, qwen3.5:9b Q4_K_M, temperature 0, non-thinking, context 8192"
+ },
+ "hashes": {
+  "dev-set.json": "sha256:5aee9f1571050251011a61f1ffb7f0b24004d545f5683f06bc05a6797e7ffcf0",
+  "prompts/claim-relation-spike-v1.txt": "sha256:21ececda08f528b398dfa11f27c874d69739d7cc1fbff1b91fc4a44bb67d5ad1",
+  "lib/text.js": "sha256:e361172ebd6a1bf71cc1af3880f1ddfd9f452c72c00a35ed9f0843e2c648df7f",
+  "lib/deterministic.js": "sha256:daac7e62427807d8e818be67a9d1acd71575519daae919bb0da21b40dd7117fb",
+  "lib/hybrid.js": "sha256:686b498ed3b0c7552fd586e8e51696b0787a0455cb98182a974f563b9891092b",
+  "nli/run_nli.py": "sha256:89d91836dd65c5afa4f1e3f19ceb8feea6d46c83b0c571aee148c899c7844b5d",
+  "cli.js": "sha256:51bac8e9df8856262caa4cce6fefc86c50ceb489eebd14da5401e396dc4392f1"
+ },
+ "note": "Threshold parameters may only be calibrated on this dev set, never on the historical locked 18. The locked 18 are not re-run by this spike."
+}

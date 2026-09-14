@@ -1,0 +1,403 @@
+{
+ "runner": "nli/run_nli.py",
+ "device": "mps",
+ "python": "3.9.6",
+ "torch": "2.2.2",
+ "batchSize": 8,
+ "models": {
+  "minicheck": {
+   "hf": "lytang/MiniCheck-DeBERTa-v3-Large",
+   "snapshot": "2f2d01a54fa022a7ffadb76260e1ea8bc88c82bb",
+   "params": 435063810
+  },
+  "mnli": {
+   "hf": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+   "snapshot": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
+   "params": 184424451
+  }
+ },
+ "loadSeconds": 3.186690092086792,
+ "batchSeconds": 2.2189927101135254,
+ "batchThroughputPairsPerSecond": 18.47685204783859,
+ "batchVsSequentialMaxAbsDiff": {
+  "minicheck": 6.705522537231445e-07,
+  "mnli": 1.3709068298339844e-06
+ },
+ "latencyMs": {
+  "min": 51.248417000000046,
+  "median": 53.86320799999922,
+  "max": 3157.256041
+ },
+ "peakRssBytes": 2082029568,
+ "pairs": {
+  "DEV-001": {
+   "minicheck": 0.020820802077651024,
+   "mnli": {
+    "entailment": 0.008496083319187164,
+    "neutral": 0.9839832782745361,
+    "contradiction": 0.007520640268921852
+   },
+   "latencyMs": 3157.256041
+  },
+  "DEV-002": {
+   "minicheck": 0.019249826669692993,
+   "mnli": {
+    "entailment": 0.002779460046440363,
+    "neutral": 0.993446409702301,
+    "contradiction": 0.0037740860134363174
+   },
+   "latencyMs": 319.9918749999995
+  },
+  "DEV-003": {
+   "minicheck": 0.017209794372320175,
+   "mnli": {
+    "entailment": 0.0047990973107516766,
+    "neutral": 0.9931867122650146,
+    "contradiction": 0.0020142148714512587
+   },
+   "latencyMs": 160.77454199999863
+  },
+  "DEV-004": {
+   "minicheck": 0.02951940707862377,
+   "mnli": {
+    "entailment": 0.0032873647287487984,
+    "neutral": 0.9926637411117554,
+    "contradiction": 0.004048955161124468
+   },
+   "latencyMs": 61.71729099999901
+  },
+  "DEV-005": {
+   "minicheck": 0.017968904227018356,
+   "mnli": {
+    "entailment": 0.0008688089437782764,
+    "neutral": 0.9967116117477417,
+    "contradiction": 0.002419521799311042
+   },
+   "latencyMs": 198.97350000000102
+  },
+  "DEV-006": {
+   "minicheck": 0.021276991814374924,
+   "mnli": {
+    "entailment": 0.012125038541853428,
+    "neutral": 0.9687038064002991,
+    "contradiction": 0.019171109423041344
+   },
+   "latencyMs": 54.65520799999979
+  },
+  "DEV-007": {
+   "minicheck": 0.231943279504776,
+   "mnli": {
+    "entailment": 0.008728270418941975,
+    "neutral": 0.981927216053009,
+    "contradiction": 0.009344530291855335
+   },
+   "latencyMs": 52.79754100000034
+  },
+  "DEV-008": {
+   "minicheck": 0.9561014771461487,
+   "mnli": {
+    "entailment": 0.9971131086349487,
+    "neutral": 0.0025494296569377184,
+    "contradiction": 0.00033749695285223424
+   },
+   "latencyMs": 163.16595799999868
+  },
+  "DEV-009": {
+   "minicheck": 0.012608970515429974,
+   "mnli": {
+    "entailment": 0.00020785495871677995,
+    "neutral": 0.011532949283719063,
+    "contradiction": 0.9882591962814331
+   },
+   "latencyMs": 54.79099999999981
+  },
+  "DEV-010": {
+   "minicheck": 0.03144552558660507,
+   "mnli": {
+    "entailment": 0.0013207459123805165,
+    "neutral": 0.317537397146225,
+    "contradiction": 0.6811418533325195
+   },
+   "latencyMs": 174.0385419999999
+  },
+  "DEV-011": {
+   "minicheck": 0.012798234820365906,
+   "mnli": {
+    "entailment": 0.000735259847715497,
+    "neutral": 0.1081714853644371,
+    "contradiction": 0.8910931944847107
+   },
+   "latencyMs": 166.11624999999998
+  },
+  "DEV-012": {
+   "minicheck": 0.022556781768798828,
+   "mnli": {
+    "entailment": 0.0019321910804137588,
+    "neutral": 0.9976790547370911,
+    "contradiction": 0.00038881125510670245
+   },
+   "latencyMs": 158.694208
+  },
+  "DEV-013": {
+   "minicheck": 0.02542019821703434,
+   "mnli": {
+    "entailment": 0.011726200580596924,
+    "neutral": 0.4333709478378296,
+    "contradiction": 0.5549029111862183
+   },
+   "latencyMs": 164.40608299999937
+  },
+  "DEV-014": {
+   "minicheck": 0.18393561244010925,
+   "mnli": {
+    "entailment": 0.002291200216859579,
+    "neutral": 0.3751925528049469,
+    "contradiction": 0.6225162148475647
+   },
+   "latencyMs": 54.53783300000126
+  },
+  "DEV-015": {
+   "minicheck": 0.020168017596006393,
+   "mnli": {
+    "entailment": 0.0007687888573855162,
+    "neutral": 0.27521654963493347,
+    "contradiction": 0.7240146994590759
+   },
+   "latencyMs": 156.72383299999916
+  },
+  "DEV-016": {
+   "minicheck": 0.013084392994642258,
+   "mnli": {
+    "entailment": 0.0001499087957199663,
+    "neutral": 0.011806290596723557,
+    "contradiction": 0.9880437254905701
+   },
+   "latencyMs": 53.73854199999961
+  },
+  "DEV-017": {
+   "minicheck": 0.01493002101778984,
+   "mnli": {
+    "entailment": 0.005166340619325638,
+    "neutral": 0.08981029689311981,
+    "contradiction": 0.905023455619812
+   },
+   "latencyMs": 53.86320799999922
+  },
+  "DEV-018": {
+   "minicheck": 0.01959470845758915,
+   "mnli": {
+    "entailment": 0.0008232285617850721,
+    "neutral": 0.9985834360122681,
+    "contradiction": 0.0005933780921623111
+   },
+   "latencyMs": 157.3061669999998
+  },
+  "DEV-019": {
+   "minicheck": 0.017694810405373573,
+   "mnli": {
+    "entailment": 0.0002075190277537331,
+    "neutral": 0.9776309132575989,
+    "contradiction": 0.022161545231938362
+   },
+   "latencyMs": 53.734709000000436
+  },
+  "DEV-020": {
+   "minicheck": 0.01517451275140047,
+   "mnli": {
+    "entailment": 0.0013004299253225327,
+    "neutral": 0.997597873210907,
+    "contradiction": 0.0011016877833753824
+   },
+   "latencyMs": 52.437499999999915
+  },
+  "DEV-021": {
+   "minicheck": 0.01761729270219803,
+   "mnli": {
+    "entailment": 0.002445450983941555,
+    "neutral": 0.6689327359199524,
+    "contradiction": 0.32862183451652527
+   },
+   "latencyMs": 51.32079200000028
+  },
+  "DEV-022": {
+   "minicheck": 0.027433885261416435,
+   "mnli": {
+    "entailment": 0.0008291809353977442,
+    "neutral": 0.9987329840660095,
+    "contradiction": 0.00043789626215584576
+   },
+   "latencyMs": 53.443125000001146
+  },
+  "DEV-023": {
+   "minicheck": 0.014525160193443298,
+   "mnli": {
+    "entailment": 0.0015474988613277674,
+    "neutral": 0.946509063243866,
+    "contradiction": 0.05194339528679848
+   },
+   "latencyMs": 53.68883300000071
+  },
+  "DEV-024": {
+   "minicheck": 0.013682970777153969,
+   "mnli": {
+    "entailment": 0.0017692003166303039,
+    "neutral": 0.9973257780075073,
+    "contradiction": 0.0009050373337231576
+   },
+   "latencyMs": 52.927167
+  },
+  "DEV-025": {
+   "minicheck": 0.014558794908225536,
+   "mnli": {
+    "entailment": 0.002480449853464961,
+    "neutral": 0.9733690023422241,
+    "contradiction": 0.024150513112545013
+   },
+   "latencyMs": 170.96712499999887
+  },
+  "DEV-026": {
+   "minicheck": 0.01064290665090084,
+   "mnli": {
+    "entailment": 0.00027351369499228895,
+    "neutral": 0.9984942674636841,
+    "contradiction": 0.00123216537758708
+   },
+   "latencyMs": 51.63570799999917
+  },
+  "DEV-027": {
+   "minicheck": 0.01092264149338007,
+   "mnli": {
+    "entailment": 0.002019977429881692,
+    "neutral": 0.7186893820762634,
+    "contradiction": 0.27929064631462097
+   },
+   "latencyMs": 52.63433400000039
+  },
+  "DEV-028": {
+   "minicheck": 0.011480648070573807,
+   "mnli": {
+    "entailment": 0.0018491126829758286,
+    "neutral": 0.024193571880459785,
+    "contradiction": 0.973957359790802
+   },
+   "latencyMs": 394.144583000001
+  },
+  "DEV-029": {
+   "minicheck": 0.011524787172675133,
+   "mnli": {
+    "entailment": 0.013877686113119125,
+    "neutral": 0.9599252343177795,
+    "contradiction": 0.02619706094264984
+   },
+   "latencyMs": 54.42700000000045
+  },
+  "DEV-030": {
+   "minicheck": 0.03098120167851448,
+   "mnli": {
+    "entailment": 0.5096836686134338,
+    "neutral": 0.40846607089042664,
+    "contradiction": 0.08185023069381714
+   },
+   "latencyMs": 51.96424999999927
+  },
+  "DEV-031": {
+   "minicheck": 0.025336820632219315,
+   "mnli": {
+    "entailment": 0.020703237503767014,
+    "neutral": 0.8567021489143372,
+    "contradiction": 0.12259457260370255
+   },
+   "latencyMs": 52.24025000000054
+  },
+  "DEV-032": {
+   "minicheck": 0.14298619329929352,
+   "mnli": {
+    "entailment": 0.012764626182615757,
+    "neutral": 0.9851377010345459,
+    "contradiction": 0.002097631338983774
+   },
+   "latencyMs": 52.49449999999989
+  },
+  "DEV-033": {
+   "minicheck": 0.012659088708460331,
+   "mnli": {
+    "entailment": 0.014897508546710014,
+    "neutral": 0.9540426731109619,
+    "contradiction": 0.03105986677110195
+   },
+   "latencyMs": 51.260249999998564
+  },
+  "DEV-034": {
+   "minicheck": 0.013631526380777359,
+   "mnli": {
+    "entailment": 0.02365940995514393,
+    "neutral": 0.6759987473487854,
+    "contradiction": 0.30034175515174866
+   },
+   "latencyMs": 51.91433299999915
+  },
+  "DEV-035": {
+   "minicheck": 0.018505070358514786,
+   "mnli": {
+    "entailment": 0.005813670344650745,
+    "neutral": 0.983748197555542,
+    "contradiction": 0.0104381637647748
+   },
+   "latencyMs": 52.43854199999909
+  },
+  "DEV-036": {
+   "minicheck": 0.017560366541147232,
+   "mnli": {
+    "entailment": 0.016726434230804443,
+    "neutral": 0.9779787659645081,
+    "contradiction": 0.005294797010719776
+   },
+   "latencyMs": 52.92295799999991
+  },
+  "DEV-037": {
+   "minicheck": 0.017343586310744286,
+   "mnli": {
+    "entailment": 0.00211669341661036,
+    "neutral": 0.9968731999397278,
+    "contradiction": 0.0010101584484800696
+   },
+   "latencyMs": 53.88795800000068
+  },
+  "DEV-038": {
+   "minicheck": 0.01710963062942028,
+   "mnli": {
+    "entailment": 0.0018028481863439083,
+    "neutral": 0.017666667699813843,
+    "contradiction": 0.9805305004119873
+   },
+   "latencyMs": 52.017124999999
+  },
+  "DEV-039": {
+   "minicheck": 0.03960343450307846,
+   "mnli": {
+    "entailment": 0.014964555390179157,
+    "neutral": 0.918684184551239,
+    "contradiction": 0.06635131686925888
+   },
+   "latencyMs": 51.248417000000046
+  },
+  "DEV-040": {
+   "minicheck": 0.024677230045199394,
+   "mnli": {
+    "entailment": 0.00976392813026905,
+    "neutral": 0.9881628155708313,
+    "contradiction": 0.0020732306875288486
+   },
+   "latencyMs": 54.156084000000604
+  },
+  "DEV-041": {
+   "minicheck": 0.0331871435046196,
+   "mnli": {
+    "entailment": 0.00215160078369081,
+    "neutral": 0.9963366985321045,
+    "contradiction": 0.0015116783324629068
+   },
+   "latencyMs": 52.97574999999988
+  }
+ }
+}

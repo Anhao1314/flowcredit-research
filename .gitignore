@@ -15,3 +15,12 @@ Thumbs.db
 *.pfx
 credentials*
 secrets*
+
+# local research runtime artifacts (pipelines keep these outside the repo by default)
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# one local machine-state trace; the spike's reproducibility artifacts stay tracked
+research/claim-reasoning-spike/artifacts/cleanup.json

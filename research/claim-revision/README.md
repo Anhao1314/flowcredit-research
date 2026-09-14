@@ -10,7 +10,7 @@ node research/claim-revision/cli.js dev
 # After required repository/offline gates PASS, register once:
 node research/claim-revision/cli.js register
 # Start existing local Ollama only after registration, cloud disabled:
-OLLAMA_NO_CLOUD=1 OLLAMA_MODELS=/Users/yimingyang/fc-agent/ollama-models /Users/yimingyang/fc-agent/tools/ollama/ollama serve
+OLLAMA_NO_CLOUD=1 OLLAMA_MODELS=~/fc-agent/ollama-models ~/fc-agent/tools/ollama/ollama serve
 # Separate terminal; one locked run only:
 caffeinate -i node research/claim-revision/cli.js locked --opt-in
 # Stop Ollama afterward.

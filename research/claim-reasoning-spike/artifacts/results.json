@@ -1,0 +1,1087 @@
+{
+ "version": "claim-relation-spike-results/v1",
+ "ranAt": "2026-09-14T08:42:28.697Z",
+ "architectures": {
+  "deterministic-only": {
+   "cases": 41,
+   "accuracy": 0.7317073170731707,
+   "correct": 30,
+   "macroF1": 0.8243423243423242,
+   "byClass": {
+    "SUPPORTS": {
+     "support": 11,
+     "tp": 10,
+     "precision": 1,
+     "recall": 0.9090909090909091,
+     "f1": 0.9523809523809523
+    },
+    "COUNTERS": {
+     "support": 12,
+     "tp": 10,
+     "precision": 1,
+     "recall": 0.8333333333333334,
+     "f1": 0.9090909090909091
+    },
+    "NEUTRAL": {
+     "support": 10,
+     "tp": 5,
+     "precision": 1,
+     "recall": 0.5,
+     "f1": 0.6666666666666666
+    },
+    "AMBIGUOUS": {
+     "support": 8,
+     "tp": 5,
+     "precision": 1,
+     "recall": 0.625,
+     "f1": 0.7692307692307693
+    }
+   },
+   "coverage": 0.7317073170731707,
+   "abstention": 0.12195121951219512,
+   "falseSupportRate": 0,
+   "falseCounterRate": 0,
+   "confusion": {
+    "SUPPORTS->SUPPORTS": 10,
+    "SUPPORTS->ABSTAIN": 1,
+    "COUNTERS->COUNTERS": 10,
+    "COUNTERS->ABSTAIN": 2,
+    "NEUTRAL->ABSTAIN": 5,
+    "NEUTRAL->NEUTRAL": 5,
+    "AMBIGUOUS->ABSTAIN": 3,
+    "AMBIGUOUS->AMBIGUOUS": 5
+   }
+  },
+  "nli-only": {
+   "cases": 41,
+   "accuracy": 0.4634146341463415,
+   "correct": 19,
+   "macroF1": 0.3975274725274725,
+   "byClass": {
+    "SUPPORTS": {
+     "support": 11,
+     "tp": 1,
+     "precision": 1,
+     "recall": 0.09090909090909091,
+     "f1": 0.16666666666666669
+    },
+    "COUNTERS": {
+     "support": 12,
+     "tp": 8,
+     "precision": 0.8888888888888888,
+     "recall": 0.6666666666666666,
+     "f1": 0.761904761904762
+    },
+    "NEUTRAL": {
+     "support": 10,
+     "tp": 9,
+     "precision": 0.3103448275862069,
+     "recall": 0.9,
+     "f1": 0.4615384615384615
+    },
+    "AMBIGUOUS": {
+     "support": 8,
+     "tp": 1,
+     "precision": 0.5,
+     "recall": 0.125,
+     "f1": 0.2
+    }
+   },
+   "coverage": 1,
+   "abstention": 0.04878048780487805,
+   "falseSupportRate": 0,
+   "falseCounterRate": 0,
+   "confusion": {
+    "SUPPORTS->NEUTRAL": 10,
+    "SUPPORTS->SUPPORTS": 1,
+    "COUNTERS->COUNTERS": 8,
+    "COUNTERS->NEUTRAL": 3,
+    "COUNTERS->AMBIGUOUS": 1,
+    "NEUTRAL->NEUTRAL": 9,
+    "NEUTRAL->COUNTERS": 1,
+    "AMBIGUOUS->NEUTRAL": 7,
+    "AMBIGUOUS->AMBIGUOUS": 1
+   }
+  },
+  "qwen-only": {
+   "cases": 41,
+   "accuracy": 0.8048780487804879,
+   "correct": 33,
+   "macroF1": 0.7728174603174603,
+   "byClass": {
+    "SUPPORTS": {
+     "support": 11,
+     "tp": 11,
+     "precision": 0.6470588235294118,
+     "recall": 1,
+     "f1": 0.7857142857142858
+    },
+    "COUNTERS": {
+     "support": 12,
+     "tp": 11,
+     "precision": 0.9166666666666666,
+     "recall": 0.9166666666666666,
+     "f1": 0.9166666666666666
+    },
+    "NEUTRAL": {
+     "support": 10,
+     "tp": 8,
+     "precision": 1,
+     "recall": 0.8,
+     "f1": 0.888888888888889
+    },
+    "AMBIGUOUS": {
+     "support": 8,
+     "tp": 3,
+     "precision": 0.75,
+     "recall": 0.375,
+     "f1": 0.5
+    }
+   },
+   "coverage": 1,
+   "abstention": 0.0975609756097561,
+   "falseSupportRate": 0.024390243902439025,
+   "falseCounterRate": 0,
+   "confusion": {
+    "SUPPORTS->SUPPORTS": 11,
+    "COUNTERS->COUNTERS": 11,
+    "NEUTRAL->NEUTRAL": 8,
+    "NEUTRAL->AMBIGUOUS": 1,
+    "NEUTRAL->COUNTERS": 1,
+    "AMBIGUOUS->AMBIGUOUS": 3,
+    "AMBIGUOUS->SUPPORTS": 5,
+    "COUNTERS->SUPPORTS": 1
+   }
+  },
+  "hybrid-no-qwen": {
+   "cases": 41,
+   "accuracy": 0.7804878048780488,
+   "correct": 32,
+   "macroF1": 0.8481047937569677,
+   "byClass": {
+    "SUPPORTS": {
+     "support": 11,
+     "tp": 11,
+     "precision": 1,
+     "recall": 1,
+     "f1": 1
+    },
+    "COUNTERS": {
+     "support": 12,
+     "tp": 11,
+     "precision": 1,
+     "recall": 0.9166666666666666,
+     "f1": 0.9565217391304348
+    },
+    "NEUTRAL": {
+     "support": 10,
+     "tp": 5,
+     "precision": 1,
+     "recall": 0.5,
+     "f1": 0.6666666666666666
+    },
+    "AMBIGUOUS": {
+     "support": 8,
+     "tp": 5,
+     "precision": 1,
+     "recall": 0.625,
+     "f1": 0.7692307692307693
+    }
+   },
+   "coverage": 0.7804878048780488,
+   "abstention": 0.12195121951219512,
+   "falseSupportRate": 0,
+   "falseCounterRate": 0,
+   "confusion": {
+    "SUPPORTS->SUPPORTS": 11,
+    "COUNTERS->COUNTERS": 11,
+    "COUNTERS->ABSTAIN": 1,
+    "NEUTRAL->ABSTAIN": 5,
+    "NEUTRAL->NEUTRAL": 5,
+    "AMBIGUOUS->ABSTAIN": 3,
+    "AMBIGUOUS->AMBIGUOUS": 5
+   }
+  },
+  "hybrid-with-qwen": {
+   "cases": 41,
+   "accuracy": 0.926829268292683,
+   "correct": 38,
+   "macroF1": 0.9160087719298244,
+   "byClass": {
+    "SUPPORTS": {
+     "support": 11,
+     "tp": 11,
+     "precision": 0.8461538461538461,
+     "recall": 1,
+     "f1": 0.9166666666666666
+    },
+    "COUNTERS": {
+     "support": 12,
+     "tp": 12,
+     "precision": 1,
+     "recall": 1,
+     "f1": 1
+    },
+    "NEUTRAL": {
+     "support": 10,
+     "tp": 9,
+     "precision": 1,
+     "recall": 0.9,
+     "f1": 0.9473684210526316
+    },
+    "AMBIGUOUS": {
+     "support": 8,
+     "tp": 6,
+     "precision": 0.8571428571428571,
+     "recall": 0.75,
+     "f1": 0.7999999999999999
+    }
+   },
+   "coverage": 1,
+   "abstention": 0.17073170731707318,
+   "falseSupportRate": 0,
+   "falseCounterRate": 0,
+   "confusion": {
+    "SUPPORTS->SUPPORTS": 11,
+    "COUNTERS->COUNTERS": 12,
+    "NEUTRAL->NEUTRAL": 9,
+    "NEUTRAL->AMBIGUOUS": 1,
+    "AMBIGUOUS->AMBIGUOUS": 6,
+    "AMBIGUOUS->SUPPORTS": 2
+   }
+  }
+ },
+ "calibration": {
+  "policy": {
+   "contradictionGate": 0.9,
+   "minicheckSupportGate": 0.5
+  },
+  "devOnly": true,
+  "note": "Routing thresholds calibrated on the frozen spike dev set only, before the single Qwen run. Never applied to the historical locked 18."
+ },
+ "routing": {
+  "deterministic": 30,
+  "minicheck-support": 1,
+  "qwen": 9,
+  "nli-contradiction": 1
+ },
+ "perPair": [
+  {
+   "id": "DEV-001",
+   "expected": "SUPPORTS",
+   "category": "support_explicit_threshold",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the specific revenue amount of 57 USD, which is greater than the claimed threshold of 40 USD for the same subject and period.",
+   "nliProbs": {
+    "entailment": 0.0085,
+    "neutral": 0.984,
+    "contradiction": 0.0075,
+    "minicheck": 0.0208
+   }
+  },
+  {
+   "id": "DEV-002",
+   "expected": "SUPPORTS",
+   "category": "support_restatement_delta",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the specific revenue amount is 57 USD, which satisfies the claim that it was greater than 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0028,
+    "neutral": 0.9934,
+    "contradiction": 0.0038,
+    "minicheck": 0.0192
+   }
+  },
+  {
+   "id": "DEV-003",
+   "expected": "SUPPORTS",
+   "category": "support_partial_to_complete",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the specific revenue amount was 57 USD, which is greater than the claimed threshold of 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0048,
+    "neutral": 0.9932,
+    "contradiction": 0.002,
+    "minicheck": 0.0172
+   }
+  },
+  {
+   "id": "DEV-004",
+   "expected": "SUPPORTS",
+   "category": "support_two_independent_agreements",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a specific December tool revenue of 57 USD, which is greater than the claimed amount of 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0033,
+    "neutral": 0.9927,
+    "contradiction": 0.004,
+    "minicheck": 0.0295
+   }
+  },
+  {
+   "id": "DEV-005",
+   "expected": "SUPPORTS",
+   "category": "support_guidance_confirmed",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence confirms that December tool revenue met the earlier expectation of being above 40 USD by reaching 57 USD.",
+   "nliProbs": {
+    "entailment": 0.0009,
+    "neutral": 0.9967,
+    "contradiction": 0.0024,
+    "minicheck": 0.018
+   }
+  },
+  {
+   "id": "DEV-006",
+   "expected": "SUPPORTS",
+   "category": "support_unit_normalized",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the December tool revenue was 57,000 USD, which is greater than the 40,000 USD claimed.",
+   "nliProbs": {
+    "entailment": 0.0121,
+    "neutral": 0.9687,
+    "contradiction": 0.0192,
+    "minicheck": 0.0213
+   }
+  },
+  {
+   "id": "DEV-007",
+   "expected": "SUPPORTS",
+   "category": "support_table_row_lookup",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the specific value of 57 USD for tool revenue in December, which is greater than the claimed threshold of 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0087,
+    "neutral": 0.9819,
+    "contradiction": 0.0093,
+    "minicheck": 0.2319
+   }
+  },
+  {
+   "id": "DEV-008",
+   "expected": "SUPPORTS",
+   "category": "support_scope_all_segments",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "SUPPORTS",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "minicheck-support",
+   "layerRule": "L2_MINICHECK_SUPPORT",
+   "qwenReason": "The evidence states that all three segments reported growth in December, which directly affirms the claim that they all grew during that period.",
+   "nliProbs": {
+    "entailment": 0.9971,
+    "neutral": 0.0025,
+    "contradiction": 0.0003,
+    "minicheck": 0.9561
+   }
+  },
+  {
+   "id": "DEV-009",
+   "expected": "COUNTERS",
+   "category": "counter_direct_contradiction",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a specific value of 22 USD, which is incompatible with the claim that revenue was greater than 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0002,
+    "neutral": 0.0115,
+    "contradiction": 0.9883,
+    "minicheck": 0.0126
+   }
+  },
+  {
+   "id": "DEV-010",
+   "expected": "COUNTERS",
+   "category": "counter_correction",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a corrected value of 22 USD, which is incompatible with the claim that revenue was greater than 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0013,
+    "neutral": 0.3175,
+    "contradiction": 0.6811,
+    "minicheck": 0.0314
+   }
+  },
+  {
+   "id": "DEV-011",
+   "expected": "COUNTERS",
+   "category": "counter_period_update_latest_claim",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a specific value of 31 USD for the latest period, which is incompatible with the claim that the revenue exceeds 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0007,
+    "neutral": 0.1082,
+    "contradiction": 0.8911,
+    "minicheck": 0.0128
+   }
+  },
+  {
+   "id": "DEV-012",
+   "expected": "COUNTERS",
+   "category": "counter_broad_claim_partial",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence states that a smaller unit declined, which contradicts the claim that revenue expansion is broadly maintained across the company.",
+   "nliProbs": {
+    "entailment": 0.0019,
+    "neutral": 0.9977,
+    "contradiction": 0.0004,
+    "minicheck": 0.0226
+   }
+  },
+  {
+   "id": "DEV-013",
+   "expected": "COUNTERS",
+   "category": "counter_unit_normalized",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "AMBIGUOUS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the revenue was 0.9 million USD, which is an incompatible value to the claim that it was greater than 1.0 million USD.",
+   "nliProbs": {
+    "entailment": 0.0117,
+    "neutral": 0.4334,
+    "contradiction": 0.5549,
+    "minicheck": 0.0254
+   }
+  },
+  {
+   "id": "DEV-014",
+   "expected": "COUNTERS",
+   "category": "counter_table_arithmetic",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R2_TREND_ARITHMETIC",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R2_TREND_ARITHMETIC",
+   "qwenReason": "The evidence states that 2026 tool revenue (96 USD) is lower than 2025 tool revenue (120 USD), which contradicts the claim that it grew.",
+   "nliProbs": {
+    "entailment": 0.0023,
+    "neutral": 0.3752,
+    "contradiction": 0.6225,
+    "minicheck": 0.1839
+   }
+  },
+  {
+   "id": "DEV-015",
+   "expected": "COUNTERS",
+   "category": "counter_multi_fact_sentence",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the specific December service margin was 17 percent, which directly contradicts the claim that it was above 20 percent.",
+   "nliProbs": {
+    "entailment": 0.0008,
+    "neutral": 0.2752,
+    "contradiction": 0.724,
+    "minicheck": 0.0202
+   }
+  },
+  {
+   "id": "DEV-016",
+   "expected": "COUNTERS",
+   "category": "counter_conflicting_pair_counter_item",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a specific value of 40 USD for December service revenue, which contradicts the claim that it exceeded 52 USD.",
+   "nliProbs": {
+    "entailment": 0.0001,
+    "neutral": 0.0118,
+    "contradiction": 0.988,
+    "minicheck": 0.0131
+   }
+  },
+  {
+   "id": "DEV-017",
+   "expected": "COUNTERS",
+   "category": "counter_scope_narrowed_by_scope_qualifier",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "nli-contradiction",
+   "layerRule": "L1_NLI_CONTRADICTION",
+   "qwenReason": "The evidence states that the services division did not grow in April, which directly contradicts the claim that it grew in every month of the year.",
+   "nliProbs": {
+    "entailment": 0.0052,
+    "neutral": 0.0898,
+    "contradiction": 0.905,
+    "minicheck": 0.0149
+   }
+  },
+  {
+   "id": "DEV-018",
+   "expected": "COUNTERS",
+   "category": "counter_guidance_missed",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states that December tool revenue was 22 USD, which directly contradicts the claim that it was expected to be above 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0008,
+    "neutral": 0.9986,
+    "contradiction": 0.0006,
+    "minicheck": 0.0196
+   }
+  },
+  {
+   "id": "DEV-019",
+   "expected": "NEUTRAL",
+   "category": "neutral_irrelevant_true_fact",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence describes a change in the team's location and does not provide any information regarding the specific revenue amount. ",
+   "nliProbs": {
+    "entailment": 0.0002,
+    "neutral": 0.9776,
+    "contradiction": 0.0222,
+    "minicheck": 0.0177
+   }
+  },
+  {
+   "id": "DEV-020",
+   "expected": "NEUTRAL",
+   "category": "neutral_same_subject_different_metric",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "AMBIGUOUS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence provides a margin percentage but lacks the revenue figure or total sales needed to determine if revenue exceeded 40 USD. ",
+   "nliProbs": {
+    "entailment": 0.0013,
+    "neutral": 0.9976,
+    "contradiction": 0.0011,
+    "minicheck": 0.0152
+   }
+  },
+  {
+   "id": "DEV-021",
+   "expected": "NEUTRAL",
+   "category": "neutral_same_metric_wrong_period",
+   "deterministic": "NEUTRAL",
+   "deterministicRule": "R5_PERIOD_MISMATCH",
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "deterministic",
+   "layerRule": "R5_PERIOD_MISMATCH",
+   "qwenReason": "The evidence refers to February revenue, whereas the claim specifies December revenue, so they address different periods.",
+   "nliProbs": {
+    "entailment": 0.0024,
+    "neutral": 0.6689,
+    "contradiction": 0.3286,
+    "minicheck": 0.0176
+   }
+  },
+  {
+   "id": "DEV-022",
+   "expected": "NEUTRAL",
+   "category": "neutral_other_subject",
+   "deterministic": "NEUTRAL",
+   "deterministicRule": "R11_SUBJECT_SCOPE",
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "deterministic",
+   "layerRule": "R11_SUBJECT_SCOPE",
+   "qwenReason": "The evidence refers to a different subject (a comparable peer) rather than the specific entity making the claim.",
+   "nliProbs": {
+    "entailment": 0.0008,
+    "neutral": 0.9987,
+    "contradiction": 0.0004,
+    "minicheck": 0.0274
+   }
+  },
+  {
+   "id": "DEV-023",
+   "expected": "NEUTRAL",
+   "category": "neutral_parent_only_scope",
+   "deterministic": "NEUTRAL",
+   "deterministicRule": "R11_SUBJECT_SCOPE",
+   "nli": "NEUTRAL",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "deterministic",
+   "layerRule": "R11_SUBJECT_SCOPE",
+   "qwenReason": "The evidence states the subsidiary's revenue was 57 USD, which contradicts the claim that group revenue was greater than 40 USD by implying a specific lower value for the whole or a component inconsistent with the broad claim.",
+   "nliProbs": {
+    "entailment": 0.0015,
+    "neutral": 0.9465,
+    "contradiction": 0.0519,
+    "minicheck": 0.0145
+   }
+  },
+  {
+   "id": "DEV-024",
+   "expected": "NEUTRAL",
+   "category": "neutral_reporting_process_fact",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence describes the reporting location of tool revenue but provides no information regarding its specific monetary value or period. ",
+   "nliProbs": {
+    "entailment": 0.0018,
+    "neutral": 0.9973,
+    "contradiction": 0.0009,
+    "minicheck": 0.0137
+   }
+  },
+  {
+   "id": "DEV-025",
+   "expected": "NEUTRAL",
+   "category": "neutral_dated_claim_newer_period",
+   "deterministic": "NEUTRAL",
+   "deterministicRule": "R5_PERIOD_MISMATCH",
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "deterministic",
+   "layerRule": "R5_PERIOD_MISMATCH",
+   "qwenReason": "The evidence provides data for January, which differs from the December period specified in the claim.",
+   "nliProbs": {
+    "entailment": 0.0025,
+    "neutral": 0.9734,
+    "contradiction": 0.0242,
+    "minicheck": 0.0146
+   }
+  },
+  {
+   "id": "DEV-026",
+   "expected": "NEUTRAL",
+   "category": "neutral_duplicate_metric_other_unit_family",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence provides headcount data which does not address the claim regarding revenue figures.",
+   "nliProbs": {
+    "entailment": 0.0003,
+    "neutral": 0.9985,
+    "contradiction": 0.0012,
+    "minicheck": 0.0106
+   }
+  },
+  {
+   "id": "DEV-027",
+   "expected": "NEUTRAL",
+   "category": "neutral_table_missing_column",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence lists the table's column headers but does not provide any data regarding tool revenue. ",
+   "nliProbs": {
+    "entailment": 0.002,
+    "neutral": 0.7187,
+    "contradiction": 0.2793,
+    "minicheck": 0.0109
+   }
+  },
+  {
+   "id": "DEV-028",
+   "expected": "NEUTRAL",
+   "category": "neutral_true_but_non_material_direction",
+   "deterministic": "NEUTRAL",
+   "deterministicRule": "R5_PERIOD_MISMATCH",
+   "nli": "COUNTERS",
+   "qwen": "NEUTRAL",
+   "hybridWithQwen": "NEUTRAL",
+   "decidedBy": "deterministic",
+   "layerRule": "R5_PERIOD_MISMATCH",
+   "qwenReason": "The evidence refers to February, which is a different period than the December specified in the claim.",
+   "nliProbs": {
+    "entailment": 0.0018,
+    "neutral": 0.0242,
+    "contradiction": 0.974,
+    "minicheck": 0.0115
+   }
+  },
+  {
+   "id": "DEV-029",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_qualitative_note",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "AMBIGUOUS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence mentions favorable description but lacks the specific revenue amount and reporting period needed to verify the claim.",
+   "nliProbs": {
+    "entailment": 0.0139,
+    "neutral": 0.9599,
+    "contradiction": 0.0262,
+    "minicheck": 0.0115
+   }
+  },
+  {
+   "id": "DEV-030",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_truncated_table",
+   "deterministic": "AMBIGUOUS",
+   "deterministicRule": "R10_TRUNCATED",
+   "nli": "AMBIGUOUS",
+   "qwen": "AMBIGUOUS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "deterministic",
+   "layerRule": "R10_TRUNCATED",
+   "qwenReason": "The evidence is incomplete and does not provide the specific revenue value needed to determine if it exceeds 40 USD.",
+   "nliProbs": {
+    "entailment": 0.5097,
+    "neutral": 0.4085,
+    "contradiction": 0.0819,
+    "minicheck": 0.031
+   }
+  },
+  {
+   "id": "DEV-031",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_unit_unclear",
+   "deterministic": "AMBIGUOUS",
+   "deterministicRule": "R8_UNIT_MISSING",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "deterministic",
+   "layerRule": "R8_UNIT_MISSING",
+   "qwenReason": "The evidence states the December tool revenue was 57, which is greater than the claimed value of 40.",
+   "nliProbs": {
+    "entailment": 0.0207,
+    "neutral": 0.8567,
+    "contradiction": 0.1226,
+    "minicheck": 0.0253
+   }
+  },
+  {
+   "id": "DEV-032",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_hedged_estimate",
+   "deterministic": "AMBIGUOUS",
+   "deterministicRule": "R7_HEDGED_QUANTITY",
+   "nli": "NEUTRAL",
+   "qwen": "AMBIGUOUS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "deterministic",
+   "layerRule": "R7_HEDGED_QUANTITY",
+   "qwenReason": "The evidence uses hedging language ('may exceed') and 'early indications' rather than stating a confirmed fact, making the direction of support indeterminate. ",
+   "nliProbs": {
+    "entailment": 0.0128,
+    "neutral": 0.9851,
+    "contradiction": 0.0021,
+    "minicheck": 0.143
+   }
+  },
+  {
+   "id": "DEV-033",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_metric_unstated",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence states the specific December figure was 57 USD, which is greater than the claimed threshold of 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0149,
+    "neutral": 0.954,
+    "contradiction": 0.0311,
+    "minicheck": 0.0127
+   }
+  },
+  {
+   "id": "DEV-034",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_table_header_missing",
+   "deterministic": null,
+   "deterministicRule": null,
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "qwen",
+   "layerRule": "L3_QWEN_FALLBACK",
+   "qwenReason": "The evidence states a December value of 57 USD, which is greater than the claimed 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0237,
+    "neutral": 0.676,
+    "contradiction": 0.3003,
+    "minicheck": 0.0136
+   }
+  },
+  {
+   "id": "DEV-035",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_period_unstated",
+   "deterministic": "AMBIGUOUS",
+   "deterministicRule": "R8_PERIOD_MISSING",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "deterministic",
+   "layerRule": "R8_PERIOD_MISSING",
+   "qwenReason": "The evidence states a specific revenue of 57 USD, which is greater than the claimed threshold of 40 USD for the same subject and period.",
+   "nliProbs": {
+    "entailment": 0.0058,
+    "neutral": 0.9837,
+    "contradiction": 0.0104,
+    "minicheck": 0.0185
+   }
+  },
+  {
+   "id": "DEV-036",
+   "expected": "AMBIGUOUS",
+   "category": "ambiguous_scale_ambiguous",
+   "deterministic": "AMBIGUOUS",
+   "deterministicRule": "R7_HEDGED_QUANTITY",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "AMBIGUOUS",
+   "decidedBy": "deterministic",
+   "layerRule": "R7_HEDGED_QUANTITY",
+   "qwenReason": "The evidence states a specific December tool revenue of 57 million, which is greater than the claimed 40 million. ",
+   "nliProbs": {
+    "entailment": 0.0167,
+    "neutral": 0.978,
+    "contradiction": 0.0053,
+    "minicheck": 0.0176
+   }
+  },
+  {
+   "id": "DEV-037",
+   "expected": "SUPPORTS",
+   "category": "support_after_knowledge_cutoff_shape",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a specific December tool revenue of 57 USD, which is greater than the 40 USD claimed.",
+   "nliProbs": {
+    "entailment": 0.0021,
+    "neutral": 0.9969,
+    "contradiction": 0.001,
+    "minicheck": 0.0173
+   }
+  },
+  {
+   "id": "DEV-038",
+   "expected": "COUNTERS",
+   "category": "counter_threshold_boundary_strict",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "COUNTERS",
+   "qwen": "COUNTERS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the revenue was exactly 40 USD, which contradicts the claim that it was greater than 40 USD.",
+   "nliProbs": {
+    "entailment": 0.0018,
+    "neutral": 0.0177,
+    "contradiction": 0.9805,
+    "minicheck": 0.0171
+   }
+  },
+  {
+   "id": "DEV-039",
+   "expected": "SUPPORTS",
+   "category": "support_threshold_boundary_inclusive",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states the exact value is 40 USD, which satisfies the claim that the revenue was at least 40 USD.",
+   "nliProbs": {
+    "entailment": 0.015,
+    "neutral": 0.9187,
+    "contradiction": 0.0664,
+    "minicheck": 0.0396
+   }
+  },
+  {
+   "id": "DEV-040",
+   "expected": "COUNTERS",
+   "category": "counter_arithmetic_two_periods",
+   "deterministic": "COUNTERS",
+   "deterministicRule": "R2_PERCENT_ARITHMETIC",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "COUNTERS",
+   "decidedBy": "deterministic",
+   "layerRule": "R2_PERCENT_ARITHMETIC",
+   "qwenReason": "The evidence states that tool revenue increased from 100 USD in 2025 to 106 USD in 2026, which is a 6% increase, contradicting the claim of more than 10 percent.",
+   "nliProbs": {
+    "entailment": 0.0098,
+    "neutral": 0.9882,
+    "contradiction": 0.0021,
+    "minicheck": 0.0247
+   }
+  },
+  {
+   "id": "DEV-041",
+   "expected": "SUPPORTS",
+   "category": "support_conflicting_pair_support_item",
+   "deterministic": "SUPPORTS",
+   "deterministicRule": "R1_NUMERIC_COMPARATOR",
+   "nli": "NEUTRAL",
+   "qwen": "SUPPORTS",
+   "hybridWithQwen": "SUPPORTS",
+   "decidedBy": "deterministic",
+   "layerRule": "R1_NUMERIC_COMPARATOR",
+   "qwenReason": "The evidence states a specific service revenue figure of 65 USD for December, which is greater than the claimed threshold of 52 USD.",
+   "nliProbs": {
+    "entailment": 0.0022,
+    "neutral": 0.9963,
+    "contradiction": 0.0015,
+    "minicheck": 0.0332
+   }
+  }
+ ],
+ "bundles": [
+  {
+   "id": "BND-001",
+   "expected": "CONFLICT",
+   "aggregate": "CONFLICT",
+   "relations": [
+    "COUNTERS",
+    "SUPPORTS"
+   ]
+  },
+  {
+   "id": "BND-002",
+   "expected": "ALL_SUPPORT",
+   "aggregate": "SUPPORT_DOMINANT",
+   "relations": [
+    "SUPPORTS",
+    "SUPPORTS"
+   ]
+  },
+  {
+   "id": "BND-003",
+   "expected": "NO_RELEVANT_EVIDENCE",
+   "aggregate": "NO_RELEVANT_EVIDENCE",
+   "relations": [
+    "NEUTRAL",
+    "NEUTRAL"
+   ]
+  },
+  {
+   "id": "BND-004",
+   "expected": "COUNTER_DOMINANT",
+   "aggregate": "COUNTER_DOMINANT",
+   "relations": [
+    "AMBIGUOUS",
+    "COUNTERS"
+   ]
+  }
+ ]
+}

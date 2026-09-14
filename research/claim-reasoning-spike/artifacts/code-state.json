@@ -1,0 +1,29 @@
+{
+ "version": "claim-relation-spike-code-state/v1",
+ "recordedAt": "2026-09-14T08:47:30.895Z",
+ "note": "Final source hashes of the spike (this file excluded to avoid a self-reference). Files that changed after artifacts/preregistration.json was frozen are listed in RESULTS.md.",
+ "files": {
+  "ATOMIC_FACT_PROPOSAL.md": "sha256:978b217e0eb7ede177926a10b5de4804a653b9099be02c4e24470d06d3ff7149",
+  "DELIVERY.md": "sha256:71e49cd6609bcf5af8e23138ee6f0f54bcf87cb52ff138d4a8f11d7094e9d8cc",
+  "EXTERNAL_REPOS_AUDIT.md": "sha256:8aad27ab490641d13201c72473021875a746508c4b14134b71c3539df1cb2e66",
+  "FLOWCREDIT_V012_AUDIT.md": "sha256:456a29e152488bf59615df7140eb3410fd703b9a0f2e14209972d27c59bc7f27",
+  "README.md": "sha256:0fd73a9b18b87bf75a72bcab0cb19f7d00692cce0ea046cf4754a3c1e2500860",
+  "RELATION_PROVIDER.md": "sha256:869c2977b88ffa29ad8600a7b280a19ce603771d897d2a88b3f4ac7bb519be83",
+  "RESULTS.md": "sha256:fa2bc2613b73fa836a0a5e24055444c9f4ff4501b8c12cac39384c168a3c7bde",
+  "TABLE_TAXONOMY.md": "sha256:102689de0475112ac4c2ce79110a2b896d4fc4fa40f8e4e7889f3e99eddedc64",
+  "artifacts/cleanup.json": "sha256:c4c45e5a05cc32e6c6a824a4f5b32b4186b4d3a251e06babbd2e1157cd97c1c2",
+  "artifacts/nli-output.json": "sha256:619b81d69f4b4e781daec0e32b820e6ff42661803fea4983cc9975e321b36126",
+  "artifacts/preregistration.json": "sha256:d67f12a023fba3debfd534e02092d09e4cf27fab8fb5627dd4f2b9984a948720",
+  "artifacts/qwen-output.json": "sha256:fb79c2d2e293e847bd349f45f5c6a0e61a63b29f5e4a57223db9086e5d23c5e1",
+  "artifacts/qwen-resource.json": "sha256:311f30f33afd34f150b55bbb523e9896bce16b25e6c48715e63bfa36349e4ea1",
+  "artifacts/results.json": "sha256:9c4ae91c7de427c0605ef71954dc53429dec606ef10249a980f7fcd72d7bd0b8",
+  "cli.js": "sha256:e69e73dc4784c2f395603f150783367df8ff681f1574e9145c249aa093849f77",
+  "dev-set.json": "sha256:5aee9f1571050251011a61f1ffb7f0b24004d545f5683f06bc05a6797e7ffcf0",
+  "lib/contract.js": "sha256:ad6c55668b5a990c430e0d5d1ccd4bdde64fbaea9e45a0b24e81372e641b57aa",
+  "lib/deterministic.js": "sha256:daac7e62427807d8e818be67a9d1acd71575519daae919bb0da21b40dd7117fb",
+  "lib/hybrid.js": "sha256:4b86520ee5c58de384df5aecc3c0d56d1bbde02c9afeeac8982d098432e7cb5d",
+  "lib/metrics.js": "sha256:04e16b99d16bcf4755f66e8c32a0b77235c678c6cc837eabea4386af71f0469d",
+  "lib/text.js": "sha256:e361172ebd6a1bf71cc1af3880f1ddfd9f452c72c00a35ed9f0843e2c648df7f",
+  "nli/run_nli.py": "sha256:89d91836dd65c5afa4f1e3f19ceb8feea6d46c83b0c571aee148c899c7844b5d"
+ }
+}

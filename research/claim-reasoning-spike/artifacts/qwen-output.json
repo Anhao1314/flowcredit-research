@@ -1,0 +1,1161 @@
+{
+ "provider": {
+  "kind": "real",
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "temperature": 0,
+  "contextLength": 8192,
+  "think": false,
+  "structuredOutputMode": "ollama_json_schema",
+  "endpointOrigin": "http://127.0.0.1:11434",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  },
+  "modelInfo": {
+   "size": 6594474711,
+   "family": "qwen35",
+   "parameterSize": "9.7B",
+   "quantization": "Q4_K_M",
+   "contextLength": 262144,
+   "format": "gguf"
+  }
+ },
+ "preflight": {
+  "runtimeVersion": "0.34.0",
+  "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "modelInfo": {
+   "size": 6594474711,
+   "family": "qwen35",
+   "parameterSize": "9.7B",
+   "quantization": "Q4_K_M",
+   "contextLength": 262144,
+   "format": "gguf"
+  },
+  "contextLength": 8192,
+  "think": false,
+  "format": "schema"
+ },
+ "warm": {
+  "coldStartMs": 290,
+  "loadMs": 1,
+  "keepAlive": "30m"
+ },
+ "instructionsHash": "sha256:21ececda08f528b398dfa11f27c874d69739d7cc1fbff1b91fc4a44bb67d5ad1",
+ "calls": 41,
+ "medianLatencyMs": 6066.283540999997,
+ "maxLatencyMs": 10618.837709,
+ "rows": {
+  "DEV-001": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the specific revenue amount of 57 USD, which is greater than the claimed threshold of 40 USD for the same subject and period.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the specific revenue amount of 57 USD, which is greater than the claimed threshold of 40 USD for the same subject and period.\"\n}",
+   "error": null,
+   "latencyMs": 4389.608958000001
+  },
+  "DEV-002": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the specific revenue amount is 57 USD, which satisfies the claim that it was greater than 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the specific revenue amount is 57 USD, which satisfies the claim that it was greater than 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3734.4432910000005
+  },
+  "DEV-003": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the specific revenue amount was 57 USD, which is greater than the claimed threshold of 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the specific revenue amount was 57 USD, which is greater than the claimed threshold of 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3724.4667910000007
+  },
+  "DEV-004": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states a specific December tool revenue of 57 USD, which is greater than the claimed amount of 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states a specific December tool revenue of 57 USD, which is greater than the claimed amount of 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3783.9452500000007
+  },
+  "DEV-005": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence confirms that December tool revenue met the earlier expectation of being above 40 USD by reaching 57 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence confirms that December tool revenue met the earlier expectation of being above 40 USD by reaching 57 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3750.7884589999994
+  },
+  "DEV-006": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the December tool revenue was 57,000 USD, which is greater than the 40,000 USD claimed.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the December tool revenue was 57,000 USD, which is greater than the 40,000 USD claimed.\"\n}",
+   "error": null,
+   "latencyMs": 3871.3749580000003
+  },
+  "DEV-007": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the specific value of 57 USD for tool revenue in December, which is greater than the claimed threshold of 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the specific value of 57 USD for tool revenue in December, which is greater than the claimed threshold of 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3822.895124999999
+  },
+  "DEV-008": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states that all three segments reported growth in December, which directly affirms the claim that they all grew during that period.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states that all three segments reported growth in December, which directly affirms the claim that they all grew during that period.\"\n}",
+   "error": null,
+   "latencyMs": 4100.596750000001
+  },
+  "DEV-009": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states a specific value of 22 USD, which is incompatible with the claim that revenue was greater than 40 USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states a specific value of 22 USD, which is incompatible with the claim that revenue was greater than 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3900.2470829999984
+  },
+  "DEV-010": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states a corrected value of 22 USD, which is incompatible with the claim that revenue was greater than 40 USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states a corrected value of 22 USD, which is incompatible with the claim that revenue was greater than 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3653.543958000002
+  },
+  "DEV-011": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states a specific value of 31 USD for the latest period, which is incompatible with the claim that the revenue exceeds 40 USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states a specific value of 31 USD for the latest period, which is incompatible with the claim that the revenue exceeds 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 3767.1397080000024
+  },
+  "DEV-012": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states that a smaller unit declined, which contradicts the claim that revenue expansion is broadly maintained across the company.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states that a smaller unit declined, which contradicts the claim that revenue expansion is broadly maintained across the company.\"\n}",
+   "error": null,
+   "latencyMs": 3867.7941659999997
+  },
+  "DEV-013": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states the revenue was 0.9 million USD, which is an incompatible value to the claim that it was greater than 1.0 million USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states the revenue was 0.9 million USD, which is an incompatible value to the claim that it was greater than 1.0 million USD.\"\n}",
+   "error": null,
+   "latencyMs": 4957.908458999998
+  },
+  "DEV-014": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states that 2026 tool revenue (96 USD) is lower than 2025 tool revenue (120 USD), which contradicts the claim that it grew.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states that 2026 tool revenue (96 USD) is lower than 2025 tool revenue (120 USD), which contradicts the claim that it grew.\"\n}",
+   "error": null,
+   "latencyMs": 4795.7017080000005
+  },
+  "DEV-015": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states the specific December service margin was 17 percent, which directly contradicts the claim that it was above 20 percent.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states the specific December service margin was 17 percent, which directly contradicts the claim that it was above 20 percent.\"\n}",
+   "error": null,
+   "latencyMs": 4445.574124999999
+  },
+  "DEV-016": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states a specific value of 40 USD for December service revenue, which contradicts the claim that it exceeded 52 USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states a specific value of 40 USD for December service revenue, which contradicts the claim that it exceeded 52 USD.\"\n}",
+   "error": null,
+   "latencyMs": 4357.936874999999
+  },
+  "DEV-017": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states that the services division did not grow in April, which directly contradicts the claim that it grew in every month of the year.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states that the services division did not grow in April, which directly contradicts the claim that it grew in every month of the year.\"\n}",
+   "error": null,
+   "latencyMs": 4866.075125000003
+  },
+  "DEV-018": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states that December tool revenue was 22 USD, which directly contradicts the claim that it was expected to be above 40 USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states that December tool revenue was 22 USD, which directly contradicts the claim that it was expected to be above 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 6066.283540999997
+  },
+  "DEV-019": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence describes a change in the team's location and does not provide any information regarding the specific revenue amount. ",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence describes a change in the team's location and does not provide any information regarding the specific revenue amount. \"\n}",
+   "error": null,
+   "latencyMs": 6757.02350000001
+  },
+  "DEV-020": {
+   "relation": "AMBIGUOUS",
+   "reason": "The evidence provides a margin percentage but lacks the revenue figure or total sales needed to determine if revenue exceeded 40 USD. ",
+   "raw": "{\n  \"relation\": \"AMBIGUOUS\",\n  \"reason\": \"The evidence provides a margin percentage but lacks the revenue figure or total sales needed to determine if revenue exceeded 40 USD. \"\n}",
+   "error": null,
+   "latencyMs": 7308.275458000004
+  },
+  "DEV-021": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence refers to February revenue, whereas the claim specifies December revenue, so they address different periods.",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence refers to February revenue, whereas the claim specifies December revenue, so they address different periods.\"\n}",
+   "error": null,
+   "latencyMs": 6968.962791999991
+  },
+  "DEV-022": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence refers to a different subject (a comparable peer) rather than the specific entity making the claim.",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence refers to a different subject (a comparable peer) rather than the specific entity making the claim.\"\n}",
+   "error": null,
+   "latencyMs": 6834.585875000004
+  },
+  "DEV-023": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states the subsidiary's revenue was 57 USD, which contradicts the claim that group revenue was greater than 40 USD by implying a specific lower value for the whole or a component inconsistent with the broad claim.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states the subsidiary's revenue was 57 USD, which contradicts the claim that group revenue was greater than 40 USD by implying a specific lower value for the whole or a component inconsistent with the broad claim.\"\n}",
+   "error": null,
+   "latencyMs": 10618.837709
+  },
+  "DEV-024": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence describes the reporting location of tool revenue but provides no information regarding its specific monetary value or period. ",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence describes the reporting location of tool revenue but provides no information regarding its specific monetary value or period. \"\n}",
+   "error": null,
+   "latencyMs": 7503.207999999999
+  },
+  "DEV-025": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence provides data for January, which differs from the December period specified in the claim.",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence provides data for January, which differs from the December period specified in the claim.\"\n}",
+   "error": null,
+   "latencyMs": 6698.055708
+  },
+  "DEV-026": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence provides headcount data which does not address the claim regarding revenue figures.",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence provides headcount data which does not address the claim regarding revenue figures.\"\n}",
+   "error": null,
+   "latencyMs": 6550.2580840000155
+  },
+  "DEV-027": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence lists the table's column headers but does not provide any data regarding tool revenue. ",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence lists the table's column headers but does not provide any data regarding tool revenue. \"\n}",
+   "error": null,
+   "latencyMs": 7666.9185
+  },
+  "DEV-028": {
+   "relation": "NEUTRAL",
+   "reason": "The evidence refers to February, which is a different period than the December specified in the claim.",
+   "raw": "{\n  \"relation\": \"NEUTRAL\",\n  \"reason\": \"The evidence refers to February, which is a different period than the December specified in the claim.\"\n}",
+   "error": null,
+   "latencyMs": 7029.184249999991
+  },
+  "DEV-029": {
+   "relation": "AMBIGUOUS",
+   "reason": "The evidence mentions favorable description but lacks the specific revenue amount and reporting period needed to verify the claim.",
+   "raw": "{\n  \"relation\": \"AMBIGUOUS\",\n  \"reason\": \"The evidence mentions favorable description but lacks the specific revenue amount and reporting period needed to verify the claim.\"\n}",
+   "error": null,
+   "latencyMs": 6874.3943750000035
+  },
+  "DEV-030": {
+   "relation": "AMBIGUOUS",
+   "reason": "The evidence is incomplete and does not provide the specific revenue value needed to determine if it exceeds 40 USD.",
+   "raw": "{\n  \"relation\": \"AMBIGUOUS\",\n  \"reason\": \"The evidence is incomplete and does not provide the specific revenue value needed to determine if it exceeds 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 6775.550958000007
+  },
+  "DEV-031": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the December tool revenue was 57, which is greater than the claimed value of 40.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the December tool revenue was 57, which is greater than the claimed value of 40.\"\n}",
+   "error": null,
+   "latencyMs": 7639.982749999996
+  },
+  "DEV-032": {
+   "relation": "AMBIGUOUS",
+   "reason": "The evidence uses hedging language ('may exceed') and 'early indications' rather than stating a confirmed fact, making the direction of support indeterminate. ",
+   "raw": "{\n  \"relation\": \"AMBIGUOUS\",\n  \"reason\": \"The evidence uses hedging language ('may exceed') and 'early indications' rather than stating a confirmed fact, making the direction of support indeterminate. \"\n}",
+   "error": null,
+   "latencyMs": 7721.509667000006
+  },
+  "DEV-033": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the specific December figure was 57 USD, which is greater than the claimed threshold of 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the specific December figure was 57 USD, which is greater than the claimed threshold of 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 5986.05258399999
+  },
+  "DEV-034": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states a December value of 57 USD, which is greater than the claimed 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states a December value of 57 USD, which is greater than the claimed 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 5372.364000000001
+  },
+  "DEV-035": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states a specific revenue of 57 USD, which is greater than the claimed threshold of 40 USD for the same subject and period.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states a specific revenue of 57 USD, which is greater than the claimed threshold of 40 USD for the same subject and period.\"\n}",
+   "error": null,
+   "latencyMs": 7460.609750000003
+  },
+  "DEV-036": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states a specific December tool revenue of 57 million, which is greater than the claimed 40 million. ",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states a specific December tool revenue of 57 million, which is greater than the claimed 40 million. \"\n}",
+   "error": null,
+   "latencyMs": 7002.122417000006
+  },
+  "DEV-037": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states a specific December tool revenue of 57 USD, which is greater than the 40 USD claimed.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states a specific December tool revenue of 57 USD, which is greater than the 40 USD claimed.\"\n}",
+   "error": null,
+   "latencyMs": 7458.426584000001
+  },
+  "DEV-038": {
+   "relation": "COUNTERS",
+   "reason": "The evidence states the revenue was exactly 40 USD, which contradicts the claim that it was greater than 40 USD.",
+   "raw": "{\n  \"relation\": \"COUNTERS\",\n  \"reason\": \"The evidence states the revenue was exactly 40 USD, which contradicts the claim that it was greater than 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 6862.440292000014
+  },
+  "DEV-039": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states the exact value is 40 USD, which satisfies the claim that the revenue was at least 40 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states the exact value is 40 USD, which satisfies the claim that the revenue was at least 40 USD.\"\n}",
+   "error": null,
+   "latencyMs": 6466.49437499998
+  },
+  "DEV-040": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states that tool revenue increased from 100 USD in 2025 to 106 USD in 2026, which is a 6% increase, contradicting the claim of more than 10 percent.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states that tool revenue increased from 100 USD in 2025 to 106 USD in 2026, which is a 6% increase, contradicting the claim of more than 10 percent.\"\n}",
+   "error": null,
+   "latencyMs": 9810.528208000003
+  },
+  "DEV-041": {
+   "relation": "SUPPORTS",
+   "reason": "The evidence states a specific service revenue figure of 65 USD for December, which is greater than the claimed threshold of 52 USD.",
+   "raw": "{\n  \"relation\": \"SUPPORTS\",\n  \"reason\": \"The evidence states a specific service revenue figure of 65 USD for December, which is greater than the claimed threshold of 52 USD.\"\n}",
+   "error": null,
+   "latencyMs": 5988.705167000007
+  }
+ },
+ "receipts": [
+  {
+   "status": "completed",
+   "latencyMs": 4386.090208,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 52,
+    "totalTokens": 545
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1192,
+    "evalMs": 3170,
+    "totalMs": 4385
+   },
+   "tokensPerSecond": 16.401364088834836,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:cafb58f029d2a5751b899cb06a6bb017d80c696066e58d6512eb42990146c012"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3734.3552500000005,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 47,
+    "totalTokens": 544
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1143,
+    "evalMs": 2581,
+    "totalMs": 3734
+   },
+   "tokensPerSecond": 18.20698396662001,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:55577b3b56c457121c9e9a11df14d28971a654ded2908297c55c63c897ce630e"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3724.367666,
+   "usage": {
+    "inputTokens": 495,
+    "outputTokens": 46,
+    "totalTokens": 541
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1160,
+    "evalMs": 2560,
+    "totalMs": 3723
+   },
+   "tokensPerSecond": 17.966307705046347,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:64c99995a762a3562831cd3fcc66f7bf26d67f30add0e8379eab613ab80bbcde"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3783.788958000001,
+   "usage": {
+    "inputTokens": 495,
+    "outputTokens": 47,
+    "totalTokens": 542
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 1170,
+    "evalMs": 2602,
+    "totalMs": 3782
+   },
+   "tokensPerSecond": 18.065548729511455,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:ad1ba81a1bfe96b9a2d91ee9005e5e871ba3fa567a16c75eed82d9a26d2e0894"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3749.6122910000013,
+   "usage": {
+    "inputTokens": 502,
+    "outputTokens": 45,
+    "totalTokens": 547
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1182,
+    "evalMs": 2553,
+    "totalMs": 3746
+   },
+   "tokensPerSecond": 17.623733294169483,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:0ad33f3d5e25e6f682ea735d4e240be3fef21e85f0c3e54551a56ac276f557a6"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3871.1356670000023,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 52,
+    "totalTokens": 549
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 1234,
+    "evalMs": 2621,
+    "totalMs": 3869
+   },
+   "tokensPerSecond": 19.8389534799432,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:8392f97ee56e0d0accb3404e0733d2d95dacf61d7abc6cc8555c4a4137f237f6"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3822.7461669999975,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 50,
+    "totalTokens": 547
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1209,
+    "evalMs": 2604,
+    "totalMs": 3821
+   },
+   "tokensPerSecond": 19.201096152177136,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:2b40e8e6ca17b18715e447420e51bfca06405383995d886d667799b56e69c52b"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 4100.325208000002,
+   "usage": {
+    "inputTokens": 488,
+    "outputTokens": 46,
+    "totalTokens": 534
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1206,
+    "evalMs": 2885,
+    "totalMs": 4098
+   },
+   "tokensPerSecond": 15.942816582747378,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:c6814ea5b5605035ce3b8e48e5bbb706069df3867b44228bfd837518a87320c3"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3900.0483749999985,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 48,
+    "totalTokens": 545
+   },
+   "timings": {
+    "loadMs": 3,
+    "promptEvalMs": 1288,
+    "evalMs": 2598,
+    "totalMs": 3899
+   },
+   "tokensPerSecond": 18.476988066175334,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:e15964145d8cc9a297755ad2af339ccb8dd34d9828d4622bbbd72d1c80849a06"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3653.3899999999994,
+   "usage": {
+    "inputTokens": 506,
+    "outputTokens": 48,
+    "totalTokens": 554
+   },
+   "timings": {
+    "loadMs": 3,
+    "promptEvalMs": 1117,
+    "evalMs": 2523,
+    "totalMs": 3652
+   },
+   "tokensPerSecond": 19.023153158972924,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:8d6cc3ad7801c50727a1c5c3e137a8e8545f64ad279860ccd499588e9e36fcc3"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3767.0017080000034,
+   "usage": {
+    "inputTokens": 496,
+    "outputTokens": 51,
+    "totalTokens": 547
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1148,
+    "evalMs": 2608,
+    "totalMs": 3766
+   },
+   "tokensPerSecond": 19.55810194373019,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:791760e054a59b67cd1715fa0baa7e5ac39cff1c56d5cb1ccc25e5ce60bcbdf0"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 3867.628583000005,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 44,
+    "totalTokens": 541
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1178,
+    "evalMs": 2678,
+    "totalMs": 3866
+   },
+   "tokensPerSecond": 16.431767087170524,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:96f41549be3d239d652fbd48d489d251241c09752a1ca686e940210d6d08079c"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 4957.574124999999,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 53,
+    "totalTokens": 550
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 1433,
+    "evalMs": 3509,
+    "totalMs": 4955
+   },
+   "tokensPerSecond": 15.104491733853155,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:2c7c74235e4377e240589dab4b2a84772aafd3f614785f38a6b48da9582bb901"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 4795.533500000005,
+   "usage": {
+    "inputTokens": 515,
+    "outputTokens": 61,
+    "totalTokens": 576
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 1474,
+    "evalMs": 3303,
+    "totalMs": 4794
+   },
+   "tokensPerSecond": 18.46768473058524,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:600b26f338626aeb338d8c87b5ea91b005b6026bcbbf3c7d7c774aaed4b3380e"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 4445.358042,
+   "usage": {
+    "inputTokens": 498,
+    "outputTokens": 49,
+    "totalTokens": 547
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 1396,
+    "evalMs": 3036,
+    "totalMs": 4443
+   },
+   "tokensPerSecond": 16.140141222941793,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:0ac86f3a7345f0544fd890a145d0ca0dca206714c9635c4af6e69491950315b4"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 4357.790458000003,
+   "usage": {
+    "inputTokens": 496,
+    "outputTokens": 49,
+    "totalTokens": 545
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 1483,
+    "evalMs": 2853,
+    "totalMs": 4357
+   },
+   "tokensPerSecond": 17.17684225138624,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:dc53c3554e5ffda873be4f4d13a11c99218278164a2c679aaf46bce280ad6492"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 4865.9179159999985,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 49,
+    "totalTokens": 542
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 1620,
+    "evalMs": 3231,
+    "totalMs": 4865
+   },
+   "tokensPerSecond": 15.163964231612532,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:942b85830ba3b1f4aeb89b19f8df2225f3e9b37dc4a86e4c61e26684a43fc9ba"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6066.058290999994,
+   "usage": {
+    "inputTokens": 500,
+    "outputTokens": 51,
+    "totalTokens": 551
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 1873,
+    "evalMs": 4182,
+    "totalMs": 6064
+   },
+   "tokensPerSecond": 12.194442538232567,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:3b03e0571284c7dffc3b7b9e149860d676aacd8fe9e199c257f25b0e0070aeb4"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6756.088166999994,
+   "usage": {
+    "inputTokens": 496,
+    "outputTokens": 43,
+    "totalTokens": 539
+   },
+   "timings": {
+    "loadMs": 3,
+    "promptEvalMs": 2321,
+    "evalMs": 4402,
+    "totalMs": 6754
+   },
+   "tokensPerSecond": 9.769385698755311,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:be7334fa588745e5236ecbcb69ca8ae5c41146b1754e6317c8db3a03c7554b33"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7307.882666999998,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 47,
+    "totalTokens": 540
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 2154,
+    "evalMs": 5106,
+    "totalMs": 7303
+   },
+   "tokensPerSecond": 9.204352287771137,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:81f0aa626952b09cf8aefbf55de8711ea5b94ac61df91c86b1478e064e23c6b2"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6967.2129159999895,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 40,
+    "totalTokens": 533
+   },
+   "timings": {
+    "loadMs": 6,
+    "promptEvalMs": 2423,
+    "evalMs": 4484,
+    "totalMs": 6946
+   },
+   "tokensPerSecond": 8.919649787790382,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:8c346cf3250e3b4fd3bd2381bdbeb50084aeed7004d0af3ff5ffea458498fdee"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6833.687542,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 41,
+    "totalTokens": 538
+   },
+   "timings": {
+    "loadMs": 34,
+    "promptEvalMs": 2627,
+    "evalMs": 4077,
+    "totalMs": 6797
+   },
+   "tokensPerSecond": 10.05605638259125,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:13465fc2dad29949fd3f64ce7b2f0b91170d3f3a24e26102e7a7bd18cd7e8990"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 10618.588374999992,
+   "usage": {
+    "inputTokens": 498,
+    "outputTokens": 66,
+    "totalTokens": 564
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 3032,
+    "evalMs": 7565,
+    "totalMs": 10615
+   },
+   "tokensPerSecond": 8.724109552609157,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:4678e6a49c9ffa973ccbb7e0e7a47ec14151696d5f7860dd1fd448cee511f1f8"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7502.906040999995,
+   "usage": {
+    "inputTokens": 494,
+    "outputTokens": 42,
+    "totalTokens": 536
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 2796,
+    "evalMs": 4690,
+    "totalMs": 7500
+   },
+   "tokensPerSecond": 8.955922786298462,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:0fe5fd9fc356ba20bc58a1fc537b294c7312e0cfbe329b8d089df7f13e1bd13f"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6697.965375,
+   "usage": {
+    "inputTokens": 494,
+    "outputTokens": 38,
+    "totalTokens": 532
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 2536,
+    "evalMs": 4151,
+    "totalMs": 6696
+   },
+   "tokensPerSecond": 9.154069986033797,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:a6ea9aba03267fa82111c97bb2f1c7f0c2239b60ae77aa723f658fb2d2b87cba"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6550.05025,
+   "usage": {
+    "inputTokens": 495,
+    "outputTokens": 36,
+    "totalTokens": 531
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 2508,
+    "evalMs": 4030,
+    "totalMs": 6548
+   },
+   "tokensPerSecond": 8.932940416294874,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:f0625320f9654f20fad50caaa11e0a529cba0d2e0714035a5319d13b274e123a"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7666.437959000003,
+   "usage": {
+    "inputTokens": 496,
+    "outputTokens": 39,
+    "totalTokens": 535
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 2921,
+    "evalMs": 4722,
+    "totalMs": 7663
+   },
+   "tokensPerSecond": 8.259329389044698,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:73e00ce283e9b619f95136305f71ba1dc034c56cad2c9d397d6fc3278a3b97e7"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7028.903874999989,
+   "usage": {
+    "inputTokens": 485,
+    "outputTokens": 39,
+    "totalTokens": 524
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 2618,
+    "evalMs": 4381,
+    "totalMs": 7026
+   },
+   "tokensPerSecond": 8.902168591094863,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:70769ad4032d86076246453c956801c290d81dada7a7a7d8063174f3dfa0a3b9"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6874.01204099998,
+   "usage": {
+    "inputTokens": 500,
+    "outputTokens": 41,
+    "totalTokens": 541
+   },
+   "timings": {
+    "loadMs": 4,
+    "promptEvalMs": 2536,
+    "evalMs": 4309,
+    "totalMs": 6869
+   },
+   "tokensPerSecond": 9.51448510739417,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:8810b620265ca3fbf238516eca7b9338469d3cfa6b007b128d735c556a2dbd83"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6775.387291999999,
+   "usage": {
+    "inputTokens": 489,
+    "outputTokens": 44,
+    "totalTokens": 533
+   },
+   "timings": {
+    "loadMs": 7,
+    "promptEvalMs": 2547,
+    "evalMs": 4204,
+    "totalMs": 6774
+   },
+   "tokensPerSecond": 10.466655851122287,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:75959caecf9c05e56e480e413b56342f102a27db4aa5364bca4efde160c5c43c"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7638.28783299998,
+   "usage": {
+    "inputTokens": 492,
+    "outputTokens": 44,
+    "totalTokens": 536
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 2729,
+    "evalMs": 4890,
+    "totalMs": 7629
+   },
+   "tokensPerSecond": 8.997544692747141,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:42afd2b860f847701fa5603f7403c01862d1041f88f000aa8f8aa0d48899ed9f"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7721.075125000003,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 52,
+    "totalTokens": 549
+   },
+   "timings": {
+    "loadMs": 3,
+    "promptEvalMs": 2158,
+    "evalMs": 5533,
+    "totalMs": 7717
+   },
+   "tokensPerSecond": 9.398737460367151,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:d64437ef3f7f10f7c516466b551bfa6ca31807348dedfc435b8b1a7da5ed65fd"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 5985.9044580000045,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 46,
+    "totalTokens": 539
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 2022,
+    "evalMs": 3949,
+    "totalMs": 5984
+   },
+   "tokensPerSecond": 11.64930919596468,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:828ee6eb43a75f14d117236eaee56e4faa533e1203f94c29daa5b05c8f2fd276"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 5372.277166999993,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 43,
+    "totalTokens": 536
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 1924,
+    "evalMs": 3438,
+    "totalMs": 5368
+   },
+   "tokensPerSecond": 12.505856667177564,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:cd3a2bbc5057016ac948f3f21e21dd8d3785b88ef2bd67d7f57d5e319bd0e8ba"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7460.120374999999,
+   "usage": {
+    "inputTokens": 493,
+    "outputTokens": 51,
+    "totalTokens": 544
+   },
+   "timings": {
+    "loadMs": 1,
+    "promptEvalMs": 2178,
+    "evalMs": 5270,
+    "totalMs": 7455
+   },
+   "tokensPerSecond": 9.676853800574843,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:390df9627f1323dd00b91a26a523f49e0d44014f6eec6293b2ef3bc17cf3aabb"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7001.613874999981,
+   "usage": {
+    "inputTokens": 499,
+    "outputTokens": 46,
+    "totalTokens": 545
+   },
+   "timings": {
+    "loadMs": 16,
+    "promptEvalMs": 2654,
+    "evalMs": 4288,
+    "totalMs": 6998
+   },
+   "tokensPerSecond": 10.727306732411064,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:cde6e63a36ac00cb0300dcbf6fa1445b9c0da7a633d1ccbc7370339f05907ad4"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 7457.81475000002,
+   "usage": {
+    "inputTokens": 498,
+    "outputTokens": 45,
+    "totalTokens": 543
+   },
+   "timings": {
+    "loadMs": 3,
+    "promptEvalMs": 2231,
+    "evalMs": 5185,
+    "totalMs": 7447
+   },
+   "tokensPerSecond": 8.679422073930546,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:d1a206844fbeee79529ac6d4057c2925d1368bedbd900f446ce3142bc295474d"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6862.159417000017,
+   "usage": {
+    "inputTokens": 494,
+    "outputTokens": 47,
+    "totalTokens": 541
+   },
+   "timings": {
+    "loadMs": 6,
+    "promptEvalMs": 2718,
+    "evalMs": 4090,
+    "totalMs": 6860
+   },
+   "tokensPerSecond": 11.491639221209166,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:fe77e2c4939c2d2587868860dbf2acc87b7c7771c0dff3f9ac6960d63bd82205"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 6466.359000000026,
+   "usage": {
+    "inputTokens": 494,
+    "outputTokens": 47,
+    "totalTokens": 541
+   },
+   "timings": {
+    "loadMs": 5,
+    "promptEvalMs": 2217,
+    "evalMs": 4226,
+    "totalMs": 6465
+   },
+   "tokensPerSecond": 11.122641319665894,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:638148724ef23e2aa4001ff4fda36813f3c2a60c9e9be60c68ec7701b107a8a4"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 9810.264708000002,
+   "usage": {
+    "inputTokens": 524,
+    "outputTokens": 72,
+    "totalTokens": 596
+   },
+   "timings": {
+    "loadMs": 2,
+    "promptEvalMs": 2574,
+    "evalMs": 7224,
+    "totalMs": 9807
+   },
+   "tokensPerSecond": 9.9662793705907,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:e50ac0d1fb2d57b7a49cfa2c0b481e6800438bc67c756e4f2637b276b43c7b6c"
+  },
+  {
+   "status": "completed",
+   "latencyMs": 5988.577583999984,
+   "usage": {
+    "inputTokens": 497,
+    "outputTokens": 49,
+    "totalTokens": 546
+   },
+   "timings": {
+    "loadMs": 3,
+    "promptEvalMs": 2085,
+    "evalMs": 3878,
+    "totalMs": 5987
+   },
+   "tokensPerSecond": 12.63467532494322,
+   "model": "qwen3.5:9b",
+   "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+   "doneReason": "stop",
+   "rawResponseHash": "sha256:5987832484f4b51b179aade90406ec9bd0704b3fc721b28e67debd1fd6544ec8"
+  }
+ ],
+ "remoteNetworkAttempts": []
+}

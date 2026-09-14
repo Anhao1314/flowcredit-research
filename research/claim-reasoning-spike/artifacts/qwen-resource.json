@@ -1,0 +1,610 @@
+{
+ "samples": 120,
+ "rssBytes": {
+  "first": 6710231040,
+  "peak": 6710231040,
+  "last": 6535888896
+ },
+ "raw": [
+  {
+   "at": "2026-09-14T08:38:26.611Z",
+   "ollamaRssBytes": 6710231040,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:28.575Z",
+   "ollamaRssBytes": 6382206976,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:30.569Z",
+   "ollamaRssBytes": 6481969152,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:32.571Z",
+   "ollamaRssBytes": 6481575936,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:34.573Z",
+   "ollamaRssBytes": 6482657280,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:36.572Z",
+   "ollamaRssBytes": 6481674240,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:38.664Z",
+   "ollamaRssBytes": 6383206400,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:40.643Z",
+   "ollamaRssBytes": 6482034688,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:42.652Z",
+   "ollamaRssBytes": 6480281600,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:44.653Z",
+   "ollamaRssBytes": 6481100800,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:46.651Z",
+   "ollamaRssBytes": 6422446080,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:48.647Z",
+   "ollamaRssBytes": 6481690624,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:50.650Z",
+   "ollamaRssBytes": 6481821696,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:52.649Z",
+   "ollamaRssBytes": 6483329024,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:54.665Z",
+   "ollamaRssBytes": 6383976448,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:56.660Z",
+   "ollamaRssBytes": 6482067456,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:38:58.676Z",
+   "ollamaRssBytes": 6481723392,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:00.671Z",
+   "ollamaRssBytes": 6484082688,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:02.670Z",
+   "ollamaRssBytes": 6471204864,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:04.673Z",
+   "ollamaRssBytes": 6483755008,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:06.672Z",
+   "ollamaRssBytes": 6483804160,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:08.675Z",
+   "ollamaRssBytes": 6485262336,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:10.682Z",
+   "ollamaRssBytes": 6383419392,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:12.661Z",
+   "ollamaRssBytes": 6482280448,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:14.708Z",
+   "ollamaRssBytes": 6381748224,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:16.683Z",
+   "ollamaRssBytes": 6535348224,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:18.685Z",
+   "ollamaRssBytes": 6535479296,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:20.681Z",
+   "ollamaRssBytes": 6535577600,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:22.676Z",
+   "ollamaRssBytes": 6590038016,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:24.694Z",
+   "ollamaRssBytes": 6530465792,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:26.673Z",
+   "ollamaRssBytes": 6536429568,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:28.688Z",
+   "ollamaRssBytes": 6536527872,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:30.670Z",
+   "ollamaRssBytes": 6537691136,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:32.689Z",
+   "ollamaRssBytes": 6537707520,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:34.690Z",
+   "ollamaRssBytes": 6537854976,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:36.693Z",
+   "ollamaRssBytes": 6537756672,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:38.700Z",
+   "ollamaRssBytes": 6491226112,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:40.716Z",
+   "ollamaRssBytes": 6534545408,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:42.695Z",
+   "ollamaRssBytes": 6526746624,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:44.694Z",
+   "ollamaRssBytes": 6534397952,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:46.702Z",
+   "ollamaRssBytes": 6534447104,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:48.697Z",
+   "ollamaRssBytes": 6608011264,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:50.696Z",
+   "ollamaRssBytes": 6605012992,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:52.723Z",
+   "ollamaRssBytes": 6384386048,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:54.745Z",
+   "ollamaRssBytes": 6607503360,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:56.695Z",
+   "ollamaRssBytes": 6649479168,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:39:58.877Z",
+   "ollamaRssBytes": 6526271488,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:00.715Z",
+   "ollamaRssBytes": 6387171328,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:02.726Z",
+   "ollamaRssBytes": 6528565248,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:04.707Z",
+   "ollamaRssBytes": 6438354944,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:06.711Z",
+   "ollamaRssBytes": 6438879232,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:08.705Z",
+   "ollamaRssBytes": 6535675904,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:10.714Z",
+   "ollamaRssBytes": 6535643136,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:12.714Z",
+   "ollamaRssBytes": 6556483584,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:14.704Z",
+   "ollamaRssBytes": 6556516352,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:16.734Z",
+   "ollamaRssBytes": 6556680192,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:18.742Z",
+   "ollamaRssBytes": 6529957888,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:20.732Z",
+   "ollamaRssBytes": 6524190720,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:22.702Z",
+   "ollamaRssBytes": 6439436288,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:24.720Z",
+   "ollamaRssBytes": 6440419328,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:26.709Z",
+   "ollamaRssBytes": 6680854528,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:28.705Z",
+   "ollamaRssBytes": 6680723456,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:30.706Z",
+   "ollamaRssBytes": 6680903680,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:32.712Z",
+   "ollamaRssBytes": 6676692992,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:34.705Z",
+   "ollamaRssBytes": 6679363584,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:36.730Z",
+   "ollamaRssBytes": 6442975232,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:38.721Z",
+   "ollamaRssBytes": 6443270144,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:40.717Z",
+   "ollamaRssBytes": 6537805824,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:42.722Z",
+   "ollamaRssBytes": 6537084928,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:44.734Z",
+   "ollamaRssBytes": 6479921152,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:46.777Z",
+   "ollamaRssBytes": 6385549312,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:48.723Z",
+   "ollamaRssBytes": 6678200320,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:50.731Z",
+   "ollamaRssBytes": 6679183360,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:52.733Z",
+   "ollamaRssBytes": 6660276224,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:54.749Z",
+   "ollamaRssBytes": 6536855552,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:56.773Z",
+   "ollamaRssBytes": 6370787328,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:40:58.752Z",
+   "ollamaRssBytes": 6437240832,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:00.730Z",
+   "ollamaRssBytes": 6428557312,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:02.749Z",
+   "ollamaRssBytes": 6541590528,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:04.745Z",
+   "ollamaRssBytes": 6541787136,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:06.745Z",
+   "ollamaRssBytes": 6542032896,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:08.735Z",
+   "ollamaRssBytes": 6536560640,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:10.738Z",
+   "ollamaRssBytes": 6535135232,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:12.747Z",
+   "ollamaRssBytes": 6535692288,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:14.755Z",
+   "ollamaRssBytes": 6536052736,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:16.750Z",
+   "ollamaRssBytes": 6536577024,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:18.793Z",
+   "ollamaRssBytes": 6536511488,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:20.765Z",
+   "ollamaRssBytes": 6386450432,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:22.773Z",
+   "ollamaRssBytes": 6383927296,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:24.742Z",
+   "ollamaRssBytes": 6662995968,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:26.757Z",
+   "ollamaRssBytes": 6663094272,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:28.755Z",
+   "ollamaRssBytes": 6663192576,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:30.759Z",
+   "ollamaRssBytes": 6664110080,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:32.754Z",
+   "ollamaRssBytes": 6664273920,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:34.750Z",
+   "ollamaRssBytes": 6596116480,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:36.752Z",
+   "ollamaRssBytes": 6458720256,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:38.754Z",
+   "ollamaRssBytes": 6491586560,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:40.875Z",
+   "ollamaRssBytes": 6382698496,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:42.794Z",
+   "ollamaRssBytes": 6542147584,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:44.786Z",
+   "ollamaRssBytes": 6376587264,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:46.802Z",
+   "ollamaRssBytes": 6439747584,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:48.802Z",
+   "ollamaRssBytes": 6440189952,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:50.764Z",
+   "ollamaRssBytes": 6651461632,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:52.890Z",
+   "ollamaRssBytes": 6382862336,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:54.818Z",
+   "ollamaRssBytes": 6384041984,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:56.911Z",
+   "ollamaRssBytes": 6432948224,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:41:58.878Z",
+   "ollamaRssBytes": 6497648640,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:00.799Z",
+   "ollamaRssBytes": 6438027264,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:02.803Z",
+   "ollamaRssBytes": 6439010304,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:04.774Z",
+   "ollamaRssBytes": 6535053312,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:06.794Z",
+   "ollamaRssBytes": 6535168000,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:08.787Z",
+   "ollamaRssBytes": 6535135232,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:10.777Z",
+   "ollamaRssBytes": 6537183232,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:12.776Z",
+   "ollamaRssBytes": 6440976384,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:14.793Z",
+   "ollamaRssBytes": 6382567424,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:16.788Z",
+   "ollamaRssBytes": 6383288320,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:18.803Z",
+   "ollamaRssBytes": 6383403008,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:20.785Z",
+   "ollamaRssBytes": 6535692288,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:22.796Z",
+   "ollamaRssBytes": 6535774208,
+   "ollamaProcesses": 4
+  },
+  {
+   "at": "2026-09-14T08:42:24.795Z",
+   "ollamaRssBytes": 6535888896,
+   "ollamaProcesses": 4
+  }
+ ]
+}
