@@ -43,7 +43,7 @@ quantization, contextLength, format}
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `FC_LLM_MODE` | `cloud` | `off` / `local` / `cloud`; `local` never falls back to cloud |
+| `FC_LLM_MODE` | `off` | `off` / `local` / `cloud` / `deepseek`; with no explicit mode there is no model call at all, cloud inference requires `FC_LLM_MODE=cloud`, and `local` never falls back to cloud (changed in v0.11: the previous default was `cloud`) |
 | `FC_LOCAL_ENDPOINT` | `http://127.0.0.1:11434` | Loopback only; any other host fails as `LOCAL_MODEL_UNAVAILABLE` |
 | `FC_LOCAL_MODEL` | `qwen3.5:9b` | Exact runtime tag |
 | `FC_LOCAL_CTX` | `8192` | `num_ctx` sent with every request |

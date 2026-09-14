@@ -7,6 +7,11 @@ export const defaultEndpoint='http://127.0.0.1:11434';
 export const defaultModel='qwen3.5:9b';
 export const defaultContextLength=8192;
 export const loopbackHosts=['127.0.0.1','::1','localhost'];
+// Every loopback call carries a deadline even when the caller passes no signal:
+// an unanswered request must never leave a run waiting forever.
+export const probeTimeoutMs=30000;
+export const warmUpTimeoutMs=300000;
+export const callTimeoutMs=300000;
 
 // Loopback-only enforcement. LocalProvider may only ever talk to the machine's
 // own inference runtime; any other host is rejected before a socket is opened.
@@ -99,7 +104,7 @@ export function ollamaProvider({endpoint=defaultEndpoint,model=defaultModel,mode
  return {metadata,receipts,
   async preflight({signal}={}){
    let probe;
-   try{probe=await probeRuntime({endpoint:base,transport,signal});}
+   try{probe=await probeRuntime({endpoint:base,transport,signal:signal??AbortSignal.timeout(probeTimeoutMs)});}
    catch{throw new Error('LOCAL_MODEL_UNAVAILABLE');}
    const entry=modelEntryFor(probe.models,model);
    if(!entry||typeof entry.digest!=='string'||!entry.digest)throw new Error('LOCAL_MODEL_UNAVAILABLE');
@@ -110,7 +115,7 @@ export function ollamaProvider({endpoint=defaultEndpoint,model=defaultModel,mode
   },
   async warmUp({signal}={}){
    const started=performance.now();
-   const envelope=await transport(base+'/api/chat',{method:'POST',signal,body:{model,messages:[{role:'user',content:'Reply with the single word READY.'}],stream:false,keep_alive:'30m',think:false,options:{temperature:0,num_ctx:contextLength,num_predict:8}}});
+   const envelope=await transport(base+'/api/chat',{method:'POST',signal:signal??AbortSignal.timeout(warmUpTimeoutMs),body:{model,messages:[{role:'user',content:'Reply with the single word READY.'}],stream:false,keep_alive:'30m',think:false,options:{temperature:0,num_ctx:contextLength,num_predict:8}}});
    const loadMs=Number.isFinite(envelope?.load_duration)?Math.round(envelope.load_duration/1e6):null;
    return {coldStartMs:Math.round(performance.now()-started),loadMs,keepAlive:'30m'};
   },
@@ -120,7 +125,7 @@ export function ollamaProvider({endpoint=defaultEndpoint,model=defaultModel,mode
    if(format==='schema')payload.format=input.outputSchema;
    else payload.format='json';
    let envelope;
-   try{envelope=await transport(base+'/api/chat',{method:'POST',body:payload,signal});}
+   try{envelope=await transport(base+'/api/chat',{method:'POST',body:payload,signal:signal??AbortSignal.timeout(callTimeoutMs)});}
    catch(error){receipts.push({status:'provider_error',latencyMs:performance.now()-started,errorCode:/^(?:PROVIDER_[A-Z0-9_]+|REMOTE_NETWORK_FORBIDDEN)$/.test(error.code??error.message)?(error.code??error.message):'PROVIDER_ERROR'});throw new Error(receipts.at(-1).errorCode);}
    const content=envelope?.message?.content;
    const usage={inputTokens:Number.isFinite(envelope?.prompt_eval_count)?envelope.prompt_eval_count:null,outputTokens:Number.isFinite(envelope?.eval_count)?envelope.eval_count:null,totalTokens:Number.isFinite(envelope?.prompt_eval_count)&&Number.isFinite(envelope?.eval_count)?envelope.prompt_eval_count+envelope.eval_count:null};

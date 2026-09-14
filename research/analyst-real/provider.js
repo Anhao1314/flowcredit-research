@@ -40,7 +40,9 @@ export function responsesProvider({key,model='deepseek-v4-flash',modelVersion='p
   }};
 }
 export function configuredProvider({env=process.env,credentialPath,provider=null}={}){
- const mode=provider??env.FC_LLM_MODE??'cloud';
+ // Safe default: with no explicit provider selection there is no model call at
+ // all. Cloud inference now requires FC_LLM_MODE=cloud.
+ const mode=provider??env.FC_LLM_MODE??'off';
  if(mode==='unavailable'||mode==='off')return null;
  if(mode==='local')return configuredLocalProvider({env});
  if(mode!=='cloud'&&mode!=='deepseek')throw new Error('Unknown provider mode; expected off|local|cloud');

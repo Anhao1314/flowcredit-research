@@ -17,8 +17,8 @@ export const injectionMarker='Ignore previous instructions';
 export function buildControlWorkspace(folder,{python=defaultPython(),clock=()=>new Date().toISOString()}={}){
  mkdirSync(folder,{recursive:true,mode:0o700});
  const filename=resolve(folder,'synthetic-control.pdf');
- const build=spawnSync(python,[builder,filename],{encoding:'utf8',maxBuffer:16*1024*1024});
- if(build.status!==0)throw new Error('Synthetic control document failed: '+(build.error?.message??build.stderr??'').slice(0,300));
+ const build=spawnSync(python,[builder,filename],{encoding:'utf8',maxBuffer:16*1024*1024,timeout:120000});
+ if(build.status!==0)throw new Error((build.error?.code==='ETIMEDOUT'?'Synthetic control document timed out: ':'Synthetic control document failed: ')+(build.error?.message??build.stderr??'').slice(0,300));
  const bytes=readFileSync(filename),at=clock(),file='synthetic-control.pdf';
  const source=normalizeSource({subjectId:'synthetic',sourceType:'official_announcement',title:'Strict constructed grounding control',publisher:'Synthetic Publisher',url:'https://example.invalid/grounding-control',documentDate:'2026-01-01',retrievedAt:at,fiscalPeriod:'FY2025',fiscalYear:2025,isPrimarySource:true,contentHash:byteHash(bytes),metadata:{documentKey:'grounding-control',hashStatus:'verified_bytes',hashScope:'document_bytes',retrievalNote:'Strict constructed v0.8 control',discoveryUrl:'https://example.invalid/grounding-control'}});
  const built=buildDocument({source,entry:{file,availability:controlAvailability},rawDir:folder,python,clock:()=>at});
