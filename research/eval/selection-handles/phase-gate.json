@@ -1,0 +1,62 @@
+{
+ "version": "selection-handles-gate/v0.11.1",
+ "phase": "Model-facing Selection Handle Hardening",
+ "registeredAt": "2026-09-14T05:42:32.429Z",
+ "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+ "frozenK": 8,
+ "fusionMode": "hybrid",
+ "retrieval": {
+  "k": 8,
+  "limit": 8,
+  "goldRetrievalRecallAtK": 0.9
+ },
+ "embedding": {
+  "model": "nomic-embed-text",
+  "modelDigest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+ },
+ "selection": {
+  "interface": "handles",
+  "promptVersion": "span-selection/v3",
+  "resolution": "exact",
+  "handleSpace": 8,
+  "fuzzyRepair": "forbidden"
+ },
+ "baseline": {
+  "phase": "v0.11",
+  "decision": "STAY ON RETRIEVAL",
+  "targetSelectionRate": 0.75,
+  "candidateConversionRate": 0.6875,
+  "timeouts": 0,
+  "invalidSelectionHandles": null,
+  "fabricatedSupport": 1,
+  "chainCorrectRate": 0.375,
+  "retrievalRecallAt8": 0.9375,
+  "artifacts": [
+   "research/eval/local-retrieval/results.json",
+   "research/eval/local-retrieval/comparison.json"
+  ]
+ },
+ "safety": {
+  "invalidSelectionHandles": 0,
+  "fabricatedSupport": 0,
+  "sourceSupportFidelity": 1,
+  "falseAccept": 0,
+  "futureLeakage": 0,
+  "wrongSubject": 0,
+  "claimMutation": 0
+ },
+ "capability": {
+  "targetSelectionRate": 0.75,
+  "candidateConversionRate": 0.6875
+ },
+ "efficiency": {
+  "timeoutsExact": 0
+ },
+ "frozen": {
+  "model": "qwen3.5:9b Q4_K_M non-thinking temperature 0",
+  "retrieval": "hybrid K=8, embedding model and policy unchanged",
+  "prompts": "semantic task unchanged; only the identity representation changes",
+  "validator": "Grounded Validator V2, SourceSupport and Candidate conversion unchanged",
+  "instructions": "the locked 16 Gold cases, the frozen Gold hash and the v0.11 artifacts stay immutable"
+ }
+}
