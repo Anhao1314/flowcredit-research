@@ -62,6 +62,8 @@ jobs:
         run: node --test ../research/local-model-test/*.test.js
       - name: Local Hybrid Retrieval offline tests
         run: node --test ../research/local-retrieval-test/*.test.js
+      - name: Selection Handle offline tests
+        run: node --test ../research/selection-handles-test/*.test.js
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract

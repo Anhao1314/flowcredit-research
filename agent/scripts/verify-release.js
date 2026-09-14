@@ -93,6 +93,8 @@ const localModelTests = (await readdir(resolve(REPOSITORY_ROOT, "research/local-
 run("Local LLM Validation offline tests", ["--test", ...localModelTests]);
 const localRetrievalTests = (await readdir(resolve(REPOSITORY_ROOT, "research/local-retrieval-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/local-retrieval-test/${name}`);
 run("Local Hybrid Retrieval offline tests", ["--test", ...localRetrievalTests]);
+const selectionHandleTests = (await readdir(resolve(REPOSITORY_ROOT, "research/selection-handles-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/selection-handles-test/${name}`);
+run("Selection Handle offline tests", ["--test", ...selectionHandleTests]);
 run("Public API tests", ["--test", "test/public-api.test.js"]);
 run("Finch contract tests", ["--test", "test/finch-contract.test.js"]);
 run("Public API validator", ["scripts/validate-public-api.js"]);

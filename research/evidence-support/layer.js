@@ -3,6 +3,7 @@ import {instant} from '../memory/time.js';
 import {RetrievalLayer} from '../retrieval/layer.js';
 import {sourceQuote,placeholderCell} from '../grounding/facts.js';
 import {selectionInstructions,selectionSchema,selectionPromptVersion,selectionPromptHash,interpretationInstructions,interpretationPromptVersion,interpretationPromptHash,parseSelection,parseInterpretation,validateProvider} from './contract.js';
+import {buildSelectionHandles,handleAt,parseHandleSelection,selectionHandlesInstructions,selectionHandlesPromptVersion,selectionHandlesPromptHash,selectionHandlesSchema,selectionHandleVersion} from '../selection-handles/handles.js';
 import {tableSupportFromSpan,textSupportFromSpan,freezeSupport,supportHash} from './support.js';
 import {validateSupportV2,validateFactV2,validationVersionV2,validatorV2Hash} from './validator.js';
 import {buildProposalV2,provenanceOf,proposalFactV2} from './proposal.js';
@@ -40,13 +41,16 @@ export function identitySalt(value){
  if(!/^[0-9a-f]+$/.test(hex))throw new Error('Identity salt requires a hex digest');
  return [...hex].map(char=>saltSymbols[parseInt(char,16)]).join('');
 }
-export function renderSupport(support){
+// The identity line is the only model-facing difference between the canonical
+// interface (v0.10/v0.11: "SPAN <id>") and the handle interface (v0.11.1:
+// "[S3]"). The body of a span is rendered identically in both.
+export function renderSupport(support,{handle=null}={}){
  if(support.type==='table'){
-  const lines=['SPAN '+support.spanId,'TABLE: '+(support.tableTitle??'table row'),'ROW: '+(support.rowLabel||'(none)'),'COLUMN: '+support.headerPath.join(', '),'VALUE: '+support.cellText];
+  const lines=[handle?'['+handle+']':'SPAN '+support.spanId,'TABLE: '+(support.tableTitle??'table row'),'ROW: '+(support.rowLabel||'(none)'),'COLUMN: '+support.headerPath.join(', '),'VALUE: '+support.cellText];
   if(support.unitContext)lines.push('UNIT CONTEXT: '+support.unitContext.match);
   return lines.join('\n');
  }
- return ['SPAN '+support.spanId,'TEXT: '+support.text].join('\n');
+ return [handle?'['+handle+']':'SPAN '+support.spanId,'TEXT: '+support.text].join('\n');
 }
 export function supportCandidates(sentenceIndex,tableIndex,{documentId,page}){
  const sentences=sentenceIndex.list({documentId,page}).sort((a,b)=>a.documentCharStart-b.documentCharStart||a.id.localeCompare(b.id));
@@ -56,13 +60,14 @@ export function supportCandidates(sentenceIndex,tableIndex,{documentId,page}){
 }
 
 export class EvidenceSupportAnalyst {
- #index;#registry;#sentences;#tables;#store;#provider;#metadata;#clock;#timeout;#maxSpansPerCase;#retrieve;#onCall;
- constructor(index,registry,{sentences,tables,store,provider=null,clock=()=>new Date().toISOString(),timeoutMs=60000,maxSpansPerCase=24,retrieve=null,onCall=null}={}){
+ #index;#registry;#sentences;#tables;#store;#provider;#metadata;#clock;#timeout;#maxSpansPerCase;#retrieve;#onCall;#selectionInterface;
+ constructor(index,registry,{sentences,tables,store,provider=null,clock=()=>new Date().toISOString(),timeoutMs=60000,maxSpansPerCase=24,retrieve=null,onCall=null,selectionInterface='spans'}={}){
   if(!Number.isInteger(timeoutMs)||timeoutMs<1||timeoutMs>60000)throw new Error('Bounded timeout required');
   if(!Number.isInteger(maxSpansPerCase)||maxSpansPerCase<1||maxSpansPerCase>60)throw new Error('Bounded interpretation budget required');
   if(retrieve!==null&&typeof retrieve!=='function')throw new Error('Retrieval hook must be a function');
   if(onCall!==null&&typeof onCall!=='function')throw new Error('Progress hook must be a function');
-  this.#index=index;this.#registry=registry;this.#sentences=sentences;this.#tables=tables;this.#store=store;this.#clock=clock;this.#timeout=timeoutMs;this.#maxSpansPerCase=maxSpansPerCase;this.#retrieve=retrieve;
+  if(!['spans','handles'].includes(selectionInterface))throw new Error('Unknown selection interface');
+  this.#index=index;this.#registry=registry;this.#sentences=sentences;this.#tables=tables;this.#store=store;this.#clock=clock;this.#timeout=timeoutMs;this.#maxSpansPerCase=maxSpansPerCase;this.#retrieve=retrieve;this.#selectionInterface=selectionInterface;
   this.#onCall=onCall;
   this.#provider=provider?validateProvider(provider):null;this.#metadata=provider?structuredClone(provider.metadata):null;
  }
@@ -80,7 +85,7 @@ export class EvidenceSupportAnalyst {
  async #call(input,name,{caseId=null,spanId=null}={}){
   if(!this.#provider)return {status:'unavailable',error:'PROVIDER_UNAVAILABLE'};
  const frozen=freeze(input),inputHash=digest(frozen),started=performance.now(),controller=new AbortController();let timer,raw=null,error=null;
-  this.#onCall?.({event:'start',phase:name,caseId,candidateCount:input.data?.availableSpanIds?.length??null,contextChars:input.data?.context?.length??null});
+  this.#onCall?.({event:'start',phase:name,caseId,candidateCount:input.data?.availableSpanIds?.length??input.data?.availableHandles?.length??null,contextChars:input.data?.context?.length??null});
   try{raw=await Promise.race([this.#provider.analyzeEvidence(frozen,{signal:controller.signal}),new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('PROVIDER_TIMEOUT'));},this.#timeout);})]);
    if(digest(frozen)!==inputHash||digest(this.#provider.metadata)!==digest(this.#metadata))throw new Error('INPUT_OR_PROVIDER_MUTATION');
   }catch(caught){error=/^(?:PROVIDER_[A-Z_]+|INPUT_OR_PROVIDER_MUTATION)$/.test(caught.message)?caught.message:'PROVIDER_ERROR';}finally{clearTimeout(timer);}
@@ -106,32 +111,45 @@ export class EvidenceSupportAnalyst {
    const abstained={caseId,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,status:'RETRIEVAL_ABSTAINED',candidateCount:candidates.length,retrievedCount:0,retrieval,selectionRun:null,fabricated:[],selectedSpanIds:[],selections:[],errors:[]};
    this.#store.save('case',abstained);return abstained;
   }
-  const availableSpanIds=supports.map(support=>support.spanId),selectionContext=supports.map(renderSupport).join('\n\n');
-  const selectionInput={instructions:selectionInstructions,outputSchema:selectionSchema,promptVersion:selectionPromptVersion,promptHash:selectionPromptHash,data:{subjectId,asOf:context.asOf,timeMode:context.timeMode,generatedAt:this.#clock(),document:{id:document.id,sourceId:document.sourceId,page},page,availableSpanIds,context:selectionContext}};
+  // v0.11.1: the model selects invocation-local handles (S1..SN over the frozen
+  // candidate order) instead of copying canonical span ids. The canonical set is
+  // still what the prompt is built from and still what every downstream record
+  // carries; only the model-facing label changes.
+  const handleMode=this.#selectionInterface==='handles';
+  const handles=handleMode?buildSelectionHandles(supports.map(support=>support.spanId)):null;
+  const handleOfSpan=handleMode?new Map(handles.entries.map(entry=>[entry.spanId,entry.handle])):null;
+  const availableSpanIds=supports.map(support=>support.spanId);
+  const selectionContext=handleMode?supports.map((support,index)=>renderSupport(support,{handle:handleAt(index+1)})).join('\n\n'):supports.map(renderSupport).join('\n\n');
+  const selectionInput=handleMode?{instructions:selectionHandlesInstructions,outputSchema:selectionHandlesSchema(handles.availableHandles),promptVersion:selectionHandlesPromptVersion,promptHash:selectionHandlesPromptHash,data:{subjectId,asOf:context.asOf,timeMode:context.timeMode,generatedAt:this.#clock(),document:{id:document.id,sourceId:document.sourceId,page},page,availableHandles:handles.availableHandles,context:selectionContext}}:{instructions:selectionInstructions,outputSchema:selectionSchema,promptVersion:selectionPromptVersion,promptHash:selectionPromptHash,data:{subjectId,asOf:context.asOf,timeMode:context.timeMode,generatedAt:this.#clock(),document:{id:document.id,sourceId:document.sourceId,page},page,availableSpanIds,context:selectionContext}};
   const selectionRun=await this.#call(selectionInput,'selection',{caseId});
-  const caseRecord={caseId,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,selectionRun:selectionRun.run,candidateCount:candidates.length,retrievedCount:supports.length,retrieval,fabricated:[],selectedSpanIds:[],selections:[],errors:[]};
+  const caseRecord={caseId,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,selectionRun:selectionRun.run,candidateCount:candidates.length,retrievedCount:supports.length,retrieval,fabricated:[],invalidHandles:[],selectedSpanIds:[],selections:[],errors:[]};
+  if(handleMode)caseRecord.selectionInterface={version:selectionHandleVersion,handles:handles.entries.map(entry=>({handle:entry.handle,spanId:entry.spanId,rank:entry.rank}))};
   if(selectionRun.status==='provider_error'){caseRecord.status=selectionRun.error;this.#store.save('case',caseRecord);return caseRecord;}
-  let parsed;
-  try{parsed=parseSelection(selectionRun.raw,availableSpanIds);}
-  catch(error){
-   caseRecord.status=error.message==='INVALID_SPAN_REFERENCE'?'FABRICATED_SPAN':'SPAN_SCHEMA_ERROR';
+  let parsed,items;
+  try{
+   if(handleMode){parsed=parseHandleSelection(selectionRun.raw,handles);items=parsed.selections.map(selection=>({spanIds:[selection.spanId],factKind:selection.factKind}));}
+   else{parsed=parseSelection(selectionRun.raw,availableSpanIds);items=parsed.value;}
+  }catch(error){
+   caseRecord.status=error.message==='INVALID_SPAN_REFERENCE'?'FABRICATED_SPAN':['INVALID_SELECTION_HANDLE','DUPLICATE_SELECTION_HANDLE'].includes(error.message)?error.message:'SPAN_SCHEMA_ERROR';
    if(error.fabricated)caseRecord.fabricated=error.fabricated;
+   if(error.invalid)caseRecord.invalidHandles=error.invalid;
    caseRecord.rawResponse=selectionRun.raw;this.#store.save('case',caseRecord);return caseRecord;
   }
   caseRecord.wrapperRemoved=parsed.wrapperRemoved;
   const bySpan=new Map(supports.map(support=>[support.spanId,support]));
   const seen=new Set(),queue=[];
-  for(const item of parsed.value)for(const spanId of item.spanIds)if(!seen.has(spanId)){seen.add(spanId);queue.push({spanId,factKind:item.factKind});}
+  for(const item of items)for(const spanId of item.spanIds)if(!seen.has(spanId)){seen.add(spanId);queue.push({spanId,factKind:item.factKind});}
   if(queue.length>this.#maxSpansPerCase)queue.length=this.#maxSpansPerCase;
   caseRecord.selectedSpanIds=queue.map(entry=>entry.spanId);
-  const selectionProposal={id:stableId('SUPPSEL',{caseId,documentId,page,inputHash:selectionRun.run.inputHash,outputHash:selectionRun.run.outputHash,ids:queue.map(q=>q.spanId)}),caseId,subjectId,documentId,page,spanIds:queue.map(entry=>entry.spanId),factKind:queue[0]?.factKind??null,provider:this.#metadata?.provider??null,model:this.#metadata?.model??null,promptVersion:selectionPromptVersion,promptHash:selectionPromptHash,inputHash:selectionRun.run.inputHash,outputHash:selectionRun.run.outputHash,createdAt:this.#clock()};
+  const selectionProposal={id:stableId('SUPPSEL',{caseId,documentId,page,inputHash:selectionRun.run.inputHash,outputHash:selectionRun.run.outputHash,ids:queue.map(q=>q.spanId)}),caseId,subjectId,documentId,page,interface:handleMode?'handles':'spans',spanIds:queue.map(entry=>entry.spanId),handles:handleMode?queue.map(entry=>({handle:handleOfSpan.get(entry.spanId),spanId:entry.spanId})):null,factKind:queue[0]?.factKind??null,provider:this.#metadata?.provider??null,model:this.#metadata?.model??null,promptVersion:handleMode?selectionHandlesPromptVersion:selectionPromptVersion,promptHash:handleMode?selectionHandlesPromptHash:selectionPromptHash,inputHash:selectionRun.run.inputHash,outputHash:selectionRun.run.outputHash,createdAt:this.#clock()};
   this.#store.save('selectionProposal',selectionProposal);
   caseRecord.selectionProposalId=selectionProposal.id;
   for(const {spanId,factKind} of queue){
    const support=bySpan.get(spanId);
    const supportVerdict=validateSupportV2({registry:this.#registry,sentenceIndex:this.#sentences,tableIndex:this.#tables},support,{subjectId,asOf:context.asOf,timeMode,documentId});
    if(!supportVerdict.valid){caseRecord.errors.push({spanId,error:'SUPPORT_INVALID',findings:supportVerdict.findings});continue;}
-   const interpretationInput={instructions:interpretationInstructions,outputSchema:interpretationSchema,promptVersion:interpretationPromptVersion,promptHash:interpretationPromptHash,data:{subjectId,asOf:context.asOf,timeMode:context.timeMode,span:{id:support.spanId,spanType:support.type,page:support.page,factKind},evidenceText:renderSupport(support),source:{id:document.sourceId,documentDate:document.availableAt}}};
+   const interpretationSpan=handleMode?{handle:handleOfSpan.get(support.spanId),spanType:support.type,page:support.page,factKind}:{id:support.spanId,spanType:support.type,page:support.page,factKind};
+   const interpretationInput={instructions:interpretationInstructions,outputSchema:interpretationSchema,promptVersion:interpretationPromptVersion,promptHash:interpretationPromptHash,data:{subjectId,asOf:context.asOf,timeMode:context.timeMode,span:interpretationSpan,evidenceText:handleMode?renderSupport(support,{handle:handleOfSpan.get(support.spanId)}):renderSupport(support),source:{id:document.sourceId,documentDate:document.availableAt}}};
    const interpretation=await this.#call(interpretationInput,'interpretation',{caseId,spanId});
    const record={spanId,factKind,supportType:support.type,run:interpretation.run};
    if(interpretation.status==='provider_error'){record.status=interpretation.error;caseRecord.selections.push(record);continue;}
@@ -143,7 +161,10 @@ export class EvidenceSupportAnalyst {
    this.#store.save('factV2',factRecord);
    record.factId=factRecord.id;record.status='interpreted';record.findings=validated.findings;record.value=fact.value;
    record.parse={status:validated.status,findings:validated.findings,numeric:validated.parse.numeric,period:validated.parse.period};
-   const provenance=provenanceOf(this.#metadata??{provider:'unavailable',model:'unavailable',modelVersion:'unavailable',kind:'test',temperature:0},{parserVersion:support.parserVersion,groundingVersion:support.groundingVersion,segmentationVersion:support.type==='text'?support.segmentationVersion:null,selection:{version:selectionPromptVersion,hash:selectionPromptHash},interpretation:{version:interpretationPromptVersion,hash:interpretationPromptHash}});
+   // Provenance records the interface that actually produced the selection, so a
+   // handle-mode proposal can never claim to come from the canonical prompt.
+   const selectionPrompt=handleMode?{version:selectionHandlesPromptVersion,hash:selectionHandlesPromptHash}:{version:selectionPromptVersion,hash:selectionPromptHash};
+   const provenance=provenanceOf(this.#metadata??{provider:'unavailable',model:'unavailable',modelVersion:'unavailable',kind:'test',temperature:0},{parserVersion:support.parserVersion,groundingVersion:support.groundingVersion,segmentationVersion:support.type==='text'?support.segmentationVersion:null,selection:selectionPrompt,interpretation:{version:interpretationPromptVersion,hash:interpretationPromptHash}});
    const proposal=buildProposalV2({support,fact:fact.value,validated,provenance,createdAt:this.#clock(),outputHash:interpretation.run.outputHash,inputHash:digest({selection:selectionRun.run.inputHash,interpretation:interpretation.run.inputHash,support:support.supportHash})});
    this.#store.save('proposalV2',proposal);
    record.proposal={id:proposal.id,validationStatus:proposal.validation.status,validationFindings:proposal.validation.findings};

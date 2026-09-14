@@ -25,6 +25,9 @@ import {SpanRetrievalLayer,embedSupports,defaultRetrievalLimit,retrievalText} fr
 import {spanRenderVersion} from './render.js';
 import {lockedRetrievalCases,coreweaveSpanQueries,negativeRetrievalCases,questionHash} from './queries.js';
 import {retrievalMetrics,candidateReduction,stats,tokenReduction,retrievalRecallKs,retrievalTopKs,failureDecomposition,evaluateRetrievalGate,readRetrievalGate,retrievalFailureKinds,similaritySensitivity} from './eval.js';
+import {assembleHandleRun} from '../selection-handles/assembly.js';
+import {classifyCase} from '../selection-handles/eval.js';
+import {selectionHandlesPromptVersion} from '../selection-handles/handles.js';
 
 const repository=fileURLToPath(new URL('../../',import.meta.url));
 export const defaultResults=resolve(repository,'..','fc-agent','research-local-retrieval');
@@ -33,7 +36,7 @@ export function portablePath(path){const home=homedir();return path===home?'~':p
 export const defaultArtifacts=resolve(repository,'research','eval','local-retrieval');
 export const OPT_IN='FC_LOCAL_RETRIEVAL_OPT_IN';
 const modes=['preflight','index','benchmark','locked'];
-const flagKeys=new Set(['results','artifacts','index','span-index','limit','mode','label','set','topk','model','rebuild','tokens','strategy','resume']);
+const flagKeys=new Set(['results','artifacts','index','span-index','limit','mode','label','set','topk','model','rebuild','tokens','strategy','resume','selection','gate','arms']);
 function parseFlags(argv){
  const flags={};
  for(let n=0;n<argv.length;n+=1){
@@ -320,11 +323,22 @@ function readStoredArtifact(artifacts,name){
  try{return JSON.parse(readFileSync(resolve(artifacts,name),'utf8'));}catch{return null;}
 }
 async function runLockedBenchmark({env,flags,artifacts,runFolder,store,context,embedding,chat,scanning,findings,spanIndex,limit,results}){
- const phaseGate=readRetrievalGate();
+ const phaseGate=readRetrievalGate(flags.gate?resolve(flags.gate):undefined);
  if(phaseGate.goldHash!==locked.goldHash)throw new Error('Registered gate Gold hash drift');
  if(flags.limit!==undefined&&Number(flags.limit)!==phaseGate.frozenK)throw new Error('Locked run requires the frozen Top-K from the registered gate');
  if(phaseGate.embedding.model!==embedding.metadata.model||phaseGate.embedding.modelDigest!==embedding.metadata.modelVersion)throw new Error('Embedding model drift against the registered gate');
  const frozenK=phaseGate.frozenK,retrievalMode=phaseGate.fusionMode,retrievalLimit=phaseGate.retrieval.limit??frozenK;
+ // v0.11.1: the only experimental variable is the model-facing identity
+ // representation. Retrieval, K, fusion, model and prompts' semantic task stay
+ // frozen, and the canonical arm is the v0.11 measurement recorded in the gate.
+ const selectionInterface=flags.selection??'spans';
+ if(!['spans','handles'].includes(selectionInterface))throw new Error('Unknown selection interface: '+selectionInterface);
+ const handleRun=selectionInterface==='handles',retrievalLabel=handleRun?'v0.11.1-handles':'v0.11-hybrid';
+ const armPlan=(flags.arms??(handleRun?'retrieval':'control,retrieval')).split(',').map(name=>name.trim()).filter(Boolean);
+ for(const name of armPlan)if(!['control','retrieval'].includes(name))throw new Error('Unknown arm: '+name);
+ if(handleRun&&armPlan.includes('control'))throw new Error('Handle runs reuse the frozen v0.11 canonical arm; do not re-run it');
+ if(!armPlan.length)throw new Error('At least one arm required');
+ const selectionPromptVersionForRun=handleRun?selectionHandlesPromptVersion:selectionPromptVersion;
  const resumeFolder=flags.resume?externalDirectory(resolve(flags.resume)):null,progress=progressStream;
  const layer=new SpanRetrievalLayer({provider:embedding,index:spanIndex,limit:retrievalLimit,mode:retrievalMode});
  const lockedCases=lockedRetrievalCases({registry:context.registry,sentences:context.sentences,cases:context.cases,annotation:context.annotation});
@@ -333,7 +347,7 @@ async function runLockedBenchmark({env,flags,artifacts,runFolder,store,context,e
  await chat.preflight();
  if(resumeFolder){
   const stored=JSON.parse(readFileSync(resolve(resumeFolder,'preregistration.json'),'utf8'));
-  const drift=resumeDrift({stored,current:{goldHash:locked.goldHash,gateHash:digest(phaseGate),provider:chat.metadata,embedding:{modelDigest:embedding.metadata.modelVersion},retrieval:{mode:retrievalMode,limit:retrievalLimit},frozenK,versions:{layoutParserVersion,groundingVersion,segmentationVersion,supportVersion,validationVersion:validationVersionV2,selectionPromptVersion,interpretationPromptVersion,spanRenderVersion,spanIndexVersion}}});
+  const drift=resumeDrift({stored,current:{goldHash:locked.goldHash,gateHash:digest(phaseGate),provider:chat.metadata,embedding:{modelDigest:embedding.metadata.modelVersion},retrieval:{mode:retrievalMode,limit:retrievalLimit},frozenK,versions:{layoutParserVersion,groundingVersion,segmentationVersion,supportVersion,validationVersion:validationVersionV2,selectionPromptVersion:selectionPromptVersionForRun,interpretationPromptVersion,spanRenderVersion,spanIndexVersion}}});
   if(drift.length)throw new Error('Resume refused, frozen input drift: '+drift.join('; '));
  }
  // A resumed run does not touch the model, so the machine facts (cold start,
@@ -343,7 +357,7 @@ async function runLockedBenchmark({env,flags,artifacts,runFolder,store,context,e
  const warm=resumeFolder?{coldStartMs:storedHardware?.coldStartMs??null,loadMs:storedHardware?.modelLoadMs??null,note:storedHardware?null:'resumed run: the source run recorded no hardware facts'}:await chat.warmUp();
  let memory=null;
  try{memory=claimsReader(env.FC_RESEARCH_MEMORY_DB??resolve(repository,'..','fc-agent','research-memory','v0.2-coreweave.sqlite'));}catch{memory=null;}
- const preregistration={registeredAt:phaseGate.registeredAt,mode:'locked',beforeLockedEvaluation:true,resumedFrom:resumeFolder??null,layoutParserVersion,groundingVersion,segmentationVersion,supportVersion,validationVersion:validationVersionV2,selectionPromptVersion,interpretationPromptVersion,spanRenderVersion,spanIndexVersion,codeHashes:codeHashes(),gateHash:digest(phaseGate),goldHash:locked.goldHash,provider:chat.metadata,embedding:{model:embedding.metadata.model,modelDigest:embedding.metadata.modelVersion,dimension:embedding.metadata.dimension},retrieval:{mode:retrievalMode,limit:retrievalLimit,indexRecords:spanIndex.count()},frozenK};
+ const preregistration={registeredAt:phaseGate.registeredAt,mode:'locked',beforeLockedEvaluation:true,resumedFrom:resumeFolder??null,selectionInterface,arms:armPlan,layoutParserVersion,groundingVersion,segmentationVersion,supportVersion,validationVersion:validationVersionV2,selectionPromptVersion:selectionPromptVersionForRun,interpretationPromptVersion,spanRenderVersion,spanIndexVersion,codeHashes:codeHashes(),gateHash:digest(phaseGate),goldHash:locked.goldHash,provider:chat.metadata,embedding:{model:embedding.metadata.model,modelDigest:embedding.metadata.modelVersion,dimension:embedding.metadata.dimension},retrieval:{mode:retrievalMode,limit:retrievalLimit,indexRecords:spanIndex.count()},frozenK};
  writeFileSync(resolve(runFolder,'preregistration.json'),JSON.stringify(preregistration,null,1));
  // A resumed run performs no inference, so it neither samples the runtime nor
  // rebuilds the synthetic control workspace: both come from the stored artifacts.
@@ -355,7 +369,7 @@ const runArm=async({label,retrieve,retrieveControl})=>{
   if(resumeFolder){progress?.({event:'arm',label,status:'resumed',note:'from '+resolve(resumeFolder)});return loadArmCheckpoint({label,folder:resumeFolder});}
   progress?.({event:'arm',label,status:'started'});
   const armStore=new SupportStore(resolve(runFolder,'arm-'+label));
-  const analyst=new EvidenceSupportAnalyst(context.index,context.registry,{sentences:context.sentences,tables:context.tables,store:armStore,provider:scanning,maxSpansPerCase:24,retrieve,onCall:progress});
+  const analyst=new EvidenceSupportAnalyst(context.index,context.registry,{sentences:context.sentences,tables:context.tables,store:armStore,provider:scanning,maxSpansPerCase:24,retrieve,onCall:progress,selectionInterface});
   const receiptStart=chat.receipts.length;
   const result=await runEvaluation({registry:context.registry,sentenceIndex:context.sentences,tableIndex:context.tables,index:context.index,analyst,cases:context.cases,annotation:context.annotation,provider:scanning,readClaimsSnapshot:memory?memory.read:null,promote:true,onCase:progress?event=>progress({event:'case',...event}):null});
   const goldReceipts=chat.receipts.slice(receiptStart);
@@ -372,7 +386,7 @@ const runArm=async({label,retrieve,retrieveControl})=>{
   });
   const injectionStart=chat.receipts.length,injectionRuns=[];
   for(const entry of control.cases){
-   const controlAnalyst=new EvidenceSupportAnalyst(control.index,control.registry,{sentences:control.sentences,tables:control.tables,store:new SupportStore(resolve(runFolder,'arm-'+label+'-injection')),provider:scanning,maxSpansPerCase:24,retrieve:retrieveControl});
+   const controlAnalyst=new EvidenceSupportAnalyst(control.index,control.registry,{sentences:control.sentences,tables:control.tables,store:new SupportStore(resolve(runFolder,'arm-'+label+'-injection')),provider:scanning,maxSpansPerCase:24,retrieve:retrieveControl,selectionInterface});
    const caseResult=await controlAnalyst.analyzeCase({caseId:entry.caseId,documentId:entry.documentId,page:entry.page,subjectId:entry.subjectId,asOf:gate.asOf});
    const promotions=[];
    for(const selection of caseResult.selections??[]){
@@ -383,9 +397,12 @@ const runArm=async({label,retrieve,retrieveControl})=>{
    injectionRuns.push(injectionRunOf({result:caseResult,entry,promotions}));
   }
   const injectionUsage=usageOfReceipts(chat.receipts.slice(injectionStart));
+  const classify=handleRun?classifyCase:decomposeCase;
   const caseRows=result.scores.map(score=>{
    const expected=context.annotation.cases.find(entry=>entry.caseId===score.caseId).expectedSpanIds;
-   return {caseId:score.caseId,failure:decomposeCase({caseRecord:caseRecords.get(score.caseId),score,expectedSpanIds:expected,retrievalReceipt:caseRecords.get(score.caseId)?.retrieval??null}).failure,detail:decomposeCase({caseRecord:caseRecords.get(score.caseId),score,expectedSpanIds:expected,retrievalReceipt:caseRecords.get(score.caseId)?.retrieval??null}).detail};
+   const record=caseRecords.get(score.caseId)??null;
+   const decomposition=classify({caseRecord:record,score,expectedSpanIds:expected,retrievalReceipt:record?.retrieval??null});
+   return {caseId:score.caseId,failure:decomposition.failure,detail:decomposition.detail};
   });
   progress?.({event:'arm',label,status:'finished',note:'cases='+result.scores.length+' timeouts='+caseRows.filter(row=>row.failure==='PROVIDER_TIMEOUT').length});
   const tokenStats=[...attribute.attributed.values()].map(usage=>usage.inputTokens).filter(Number.isFinite);
@@ -397,10 +414,10 @@ const runArm=async({label,retrieve,retrieveControl})=>{
   // must survive a later failure in the assembly step.
   writeFileSync(resolve(runFolder,'arm-'+label+'.json'),JSON.stringify({label,payload,measurement,caseRows,tokens:usageOfReceipts(goldReceipts),responses,injectionRuns,injectionUsage,metrics:result.metrics,splits:result.splits,gateResult:result.gateResult,latency:result.latency,claimsProtection:result.claimsProtection,futureLeakage:payload.extra.futureLeakage},null,1));
   armStore.close();
-  return {label,result,payload,measurement,caseRows,tokens:usageOfReceipts(goldReceipts),responses,attribute,injectionRuns,injectionUsage,futureLeakage:payload.extra.futureLeakage};
+  return {label,result,payload,measurement,caseRows,tokens:usageOfReceipts(goldReceipts),responses,attribute,injectionRuns,injectionUsage,futureLeakage:payload.extra.futureLeakage,caseRecords};
  };
- const controlArm=await runArm({label:'v0.10-control',retrieve:null,retrieveControl:null});
- const retrievalArm=await runArm({label:'v0.11-hybrid',retrieve:async request=>{
+ const controlArm=armPlan.includes('control')?await runArm({label:'v0.10-control',retrieve:null,retrieveControl:null}):null;
+ const retrievalArm=armPlan.includes('retrieval')?await runArm({label:retrievalLabel,retrieve:async request=>{
   const entry=lockedCases.find(item=>item.caseId===request.caseId);
   if(!entry)throw new Error('Missing retrieval question for '+request.caseId);
   const outcome=await layer.retrieve({supports:request.candidates,query:entry.question,subjectId:request.subjectId,asOf:request.asOf,timeMode:request.timeMode,caseId:request.caseId});
@@ -408,8 +425,19 @@ const runArm=async({label,retrieve,retrieveControl})=>{
  },retrieveControl:async request=>{
   const outcome=await layer.retrieve({supports:request.candidates,query:controlQueryFor(request.caseId==='INJECTION-02'?'narrative_injection':'table_injection'),subjectId:request.subjectId,asOf:request.asOf,timeMode:request.timeMode,caseId:request.caseId});
   return {supports:outcome.supports,receipt:outcome.receipt};
- }});
+ }}):null;
  const resource=sampler?await sampler.stop():(storedHardware?.resource??{samples:0,ollamaRssBytes:{first:null,peak:null,last:null},swapUsedBytes:{first:null,peak:null,last:null},swapDeltaBytes:null,note:'resumed run: no inference was executed'});
+ if(handleRun){
+  const assembledHandleRun=assembleHandleRun({arm:retrievalArm,gate:phaseGate,context,embedding,chat,spanIndex,findings,resource,warm,hardware:hardwareSnapshot(),sessionUsage:usageOf(chat)});
+  const {resultsPayload:handleResults,comparison:handleComparison,runtimeCosts:handleCosts,hardware:handleHardware,decision:handleDecision,gateResult:handleGateResult,efficiency:handleEfficiency,safety:handleSafety,capability:handleCapability,decomposition:handleDecomposition,invalidHandles}=assembledHandleRun;
+  writeFileSync(resolve(artifacts,'results.json'),JSON.stringify(handleResults,null,1));
+  writeFileSync(resolve(artifacts,'comparison.json'),JSON.stringify(handleComparison,null,1));
+  writeFileSync(resolve(artifacts,'runtime-costs.json'),JSON.stringify(handleCosts,null,1));
+  writeFileSync(resolve(artifacts,'hardware.json'),JSON.stringify(handleHardware,null,1));
+  writeFileSync(resolve(runFolder,'benchmark.raw.json'),JSON.stringify({preregistration,gate:handleGateResult,decision:handleDecision,arm:retrievalArm.payload,efficiency:handleEfficiency,safety:handleSafety,capability:handleCapability,invalidHandles,decomposition:handleDecomposition,comparison:handleComparison},null,1));
+  control?.close();spanIndex.close();
+  return {mode:'locked',status:'SELECTION_HANDLES_BENCHMARK_COMPLETE',artifacts,runFolder,decision:handleDecision,gate:handleGateResult,efficiency:handleEfficiency,safety:handleSafety,capability:handleCapability,invalidHandles,decomposition:handleDecomposition,selection:{interface:selectionInterface,promptVersion:selectionPromptVersionForRun},retrieval:{mode:retrievalMode,limit:retrievalLimit,recallAtK:handleResults.retrieval.recallAtK},arm:{targetSelectionRate:handleCapability.targetSelectionRate,candidateConversionRate:handleCapability.candidateConversionRate,tokens:retrievalArm.payload.extra.tokenStats,timeouts:handleEfficiency.timeouts},embedding:handleResults.embedding,forbiddenFindings:findings,resource};
+ }
  const assembled=assembleLockedRun({controlArm,retrievalArm,context,phaseGate,embedding,chat,spanIndex,findings,resource,warm,decisions:{ready:'LOCAL HYBRID RETRIEVAL READY',stay:'STAY ON RETRIEVAL',throughput:'LOCAL MODEL THROUGHPUT STILL BLOCKING'}});
  const {resultsPayload,comparison,runtimeCosts,hardware,decision,gateResult,efficiency,safety,capability,decomposition,latencyDecomposition,retrievalMetricsReport}=assembled;
  const lockedRecall=retrievalMetricsReport.recallAtK['recallAt'+phaseGate.retrieval.k],candidateReductionReport=retrievalArm.measurement.candidateReduction;

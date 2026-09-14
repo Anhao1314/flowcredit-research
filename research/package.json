@@ -25,7 +25,9 @@
     "local-model": "node local-model/cli.js",
     "test:local-model": "node --test local-model-test/*.test.js",
     "local-retrieval": "node local-retrieval/cli.js",
-    "test:local-retrieval": "node --test local-retrieval-test/*.test.js"
+    "test:local-retrieval": "node --test local-retrieval-test/*.test.js",
+    "selection-handles": "node local-retrieval/cli.js locked",
+    "test:selection-handles": "node --test selection-handles-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

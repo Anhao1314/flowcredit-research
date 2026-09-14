@@ -18,6 +18,10 @@ export function scoreCase(annotation,result,{expected}={}){
  const findings=[],selections=result.selections??[];
  if(result.status==='SPAN_SCHEMA_ERROR')findings.push('SPAN_SCHEMA_ERROR');
  if(result.status==='FABRICATED_SPAN')findings.push('FABRICATED_SPAN');
+ // v0.11.1 handle interface. These statuses cannot occur on the canonical path,
+ // so the v0.11 scores, findings and failure breakdown stay byte-identical.
+ if(result.status==='INVALID_SELECTION_HANDLE')findings.push('INVALID_SELECTION_HANDLE');
+ if(result.status==='DUPLICATE_SELECTION_HANDLE')findings.push('DUPLICATE_SELECTION_HANDLE');
  for(const error of result.errors??[])if(error.error==='SUPPORT_INVALID')findings.push('SUPPORT_INVALID');
  if(selections.some(entry=>entry.status==='INTERPRETATION_SCHEMA_ERROR'))findings.push('INTERPRETATION_SCHEMA_ERROR');
  const targetIds=new Set(annotation.expectedSpanIds);
@@ -74,7 +78,7 @@ export async function runEvaluation({registry,sentenceIndex,tableIndex,index,ana
  const tableValid=tableSelections.filter(tableOf),tableInvalid=supportErrors.filter(tableOf);
  const failedChecks=scores.filter(score=>score.conversionStatus==='rejected').length;
  const metric={
-  selectionSchemaValidity:rate(scores.filter(score=>!score.findings.includes('SPAN_SCHEMA_ERROR')&&!score.findings.includes('FABRICATED_SPAN')).length,scores.length),
+  selectionSchemaValidity:rate(scores.filter(score=>!score.findings.includes('SPAN_SCHEMA_ERROR')&&!score.findings.includes('FABRICATED_SPAN')&&!score.findings.includes('INVALID_SELECTION_HANDLE')&&!score.findings.includes('DUPLICATE_SELECTION_HANDLE')).length,scores.length),
   fabricatedSupportRate:rate(results.reduce((total,result)=>total+(result.fabricated?.length??0),0),totalSelected||1),
   sourceSupportFidelity:rate(totalSelected-supportErrors.length,totalSelected),
   tableStructuralFidelity:rate(tableValid.length,tableValid.length+tableInvalid.length),
