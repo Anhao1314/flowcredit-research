@@ -1,0 +1,2892 @@
+{
+  "version": "selector-ranking/v0.11.2",
+  "mode": "dev",
+  "binding": {
+    "promptVersion": "span-ranking-handles/v1",
+    "schemaVersion": "ranked-handles/v1",
+    "promptHash": "sha256:2b1b338d42ca0fc20991d1b69aedd6348c795dd37b44b21afeedf5152be66ba9",
+    "mode": "dev",
+    "entriesHash": "sha256:f04ec73203c1f138b3c0b208d025e6b1c3c62234e8570dc12b52d566c6286d5e",
+    "retrievalArtifactHash": "sha256:97f8d67e84d57b036bb53d77e487c654e3b9b12fdb5552ac5e5fde991b678913",
+    "gateHash": null
+  },
+  "provider": {
+    "kind": "real",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "temperature": 0,
+    "contextLength": 8192,
+    "think": false,
+    "structuredOutputMode": "ollama_json_schema",
+    "endpointOrigin": "http://127.0.0.1:11434",
+    "runtime": {
+      "name": "ollama",
+      "version": "0.34.0"
+    },
+    "modelInfo": {
+      "size": 6594474711,
+      "family": "qwen35",
+      "parameterSize": "9.7B",
+      "quantization": "Q4_K_M",
+      "contextLength": 262144,
+      "format": "gguf"
+    }
+  },
+  "metrics": {
+    "retrieval": {
+      "cases": 17,
+      "positiveCases": 17,
+      "hitAtK": {
+        "1": 0.4117647058823529,
+        "2": 0.6470588235294118,
+        "3": 0.8235294117647058,
+        "5": 0.9411764705882353,
+        "8": 1
+      },
+      "mrr": 0.6220588235294118,
+      "targetHitRate": 1,
+      "selectionPrecision": 0.22794117647058823,
+      "totalSelections": 136,
+      "targetSelections": 31,
+      "nonTargetSelections": 105,
+      "averageSelectedHandles": 8,
+      "abstentionRate": 0
+    },
+    "multi": {
+      "cases": 17,
+      "positiveCases": 17,
+      "hitAtK": "unavailable: unordered multi-select",
+      "mrr": "unavailable: unordered multi-select",
+      "targetHitRate": 0.5294117647058824,
+      "selectionPrecision": 0.23255813953488372,
+      "totalSelections": 43,
+      "targetSelections": 10,
+      "nonTargetSelections": 33,
+      "averageSelectedHandles": 2.5294117647058822,
+      "abstentionRate": 0.29411764705882354
+    },
+    "ranked": {
+      "cases": 17,
+      "positiveCases": 17,
+      "hitAtK": {
+        "1": 0.6470588235294118,
+        "2": 0.9411764705882353,
+        "3": 1
+      },
+      "mrr": 0.8137254901960783,
+      "targetHitRate": 1,
+      "selectionPrecision": 0.5,
+      "totalSelections": 42,
+      "targetSelections": 21,
+      "nonTargetSelections": 21,
+      "averageSelectedHandles": 2.4705882352941178,
+      "abstentionRate": 0
+    }
+  },
+  "safety": {
+    "invalidHandle": 0,
+    "fabricatedCanonicalSupport": 0,
+    "sourceFidelity": 1,
+    "falseAccept": 0,
+    "futureLeakage": 0,
+    "wrongSubject": 0,
+    "claimMutation": 0,
+    "timeout": 0
+  },
+  "claimsProtection": {
+    "before": {
+      "claims": 4,
+      "revisions": 4,
+      "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+    },
+    "after": {
+      "claims": 4,
+      "revisions": 4,
+      "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+    },
+    "unchanged": true
+  },
+  "excludedDevelopmentCases": [
+    {
+      "caseId": "controls",
+      "pageFallback": true
+    },
+    {
+      "caseId": "capex",
+      "pageFallback": true
+    },
+    {
+      "caseId": "negative-token",
+      "pageFallback": false
+    },
+    {
+      "caseId": "negative-quantum",
+      "pageFallback": false
+    }
+  ],
+  "conversion": null,
+  "latency": {
+    "ranking": {
+      "count": 17,
+      "median": 2049.3802920000016,
+      "p95": 3296.035791999995,
+      "min": 1393.8661670000001,
+      "max": 3296.035791999995,
+      "total": 36026.252290000004,
+      "mean": 2119.1913111764707
+    },
+    "interpretationByRank": {
+      "1": {
+        "count": 0,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "total": null,
+        "mean": null
+      },
+      "2": {
+        "count": 0,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "total": null,
+        "mean": null
+      },
+      "3": {
+        "count": 0,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "total": null,
+        "mean": null
+      }
+    },
+    "endToEnd": {
+      "count": 51,
+      "median": 1734.9709999999977,
+      "p95": 3312.793208000003,
+      "min": 0.03437500000291038,
+      "max": 11720.057125,
+      "total": 86302.420541,
+      "mean": 1692.2043243333333
+    },
+    "note": "offline replay excludes retrieval execution; end-to-end covers ranking, interpretation and validation only"
+  },
+  "tokens": {
+    "calls": 34,
+    "input": 28620,
+    "output": 616,
+    "total": 29236
+  },
+  "paidInferenceApiCostUsd": 0,
+  "paidEmbeddingApiCostUsd": 0,
+  "paidInferenceApiCalls": 0,
+  "paidEmbeddingApiCalls": 0,
+  "rows": [
+    {
+      "caseId": "annual-revenue",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-9318bafd3ead97babf00c85c"
+      ],
+      "selectedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "RANKING_MISS",
+      "endToEndLatencyMs": 0.19258300000001327,
+      "receipts": []
+    },
+    {
+      "caseId": "annual-revenue",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-9318bafd3ead97babf00c85c"
+      ],
+      "selectedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-9318bafd3ead97babf00c85c"
+      ],
+      "rankingLatencyMs": 11719.210458,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S4",
+        "S3",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S1\",\"S2\",\"S4\"],\"factKind\":\"financial_metric\"},{\"selectedHandles\":[\"S3\",\"S5\",\"S6\"],\"factKind\":\"financial_metric\"},{\"selectedHandles\":[\"S7\",\"S8\"],\"factKind\":\"financial_metric\"}]",
+      "rankingInputHash": "sha256:cb04e2c668a0df7ba3d1be7d93e480e738814ca417443eac02b94502a41ccd76",
+      "failure": "NONE",
+      "endToEndLatencyMs": 11720.057125,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 11693.006458,
+          "usage": {
+            "inputTokens": 1156,
+            "outputTokens": 55,
+            "totalTokens": 1211
+          },
+          "timings": {
+            "loadMs": 5992,
+            "promptEvalMs": 2804,
+            "evalMs": 2834,
+            "totalMs": 11676
+          },
+          "tokensPerSecond": 19.409150179181744,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:049cc5af9f3c275dc53ab984e10ed177e61c934b554fa8c5fc6e0f73099dc2e9"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-revenue",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-9318bafd3ead97babf00c85c"
+      ],
+      "selectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-40c79dd0a87e4532745dcc6e"
+      ],
+      "rankingLatencyMs": 2524.5405409999985,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S4",
+        "S2",
+        "S1"
+      ],
+      "raw": "{\"rankedHandles\":[\"S4\",\"S2\",\"S1\"]}",
+      "rankingInputHash": "sha256:724153c5f3701a4779d7d30bf8dd78746314789b5ab9d601389c09e3d9f41473",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2524.6939999999995,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2509.9687919999997,
+          "usage": {
+            "inputTokens": 778,
+            "outputTokens": 15,
+            "totalTokens": 793
+          },
+          "timings": {
+            "loadMs": 3,
+            "promptEvalMs": 1715,
+            "evalMs": 738,
+            "totalMs": 2508
+          },
+          "tokensPerSecond": 20.3357017647322,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:15af59df4d8d0e6943cc7df3d9f239e22d51484f54e99f4e4d3141a0eb4dd88c"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-prior-revenue",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-a5d8c1cfe7eff58d77334151"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-0d1e5f81921a92867089eb12"
+      ],
+      "selectedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.08954199999789125,
+      "receipts": []
+    },
+    {
+      "caseId": "annual-prior-revenue",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-a5d8c1cfe7eff58d77334151"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-0d1e5f81921a92867089eb12"
+      ],
+      "selectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-0d1e5f81921a92867089eb12"
+      ],
+      "rankingLatencyMs": 2929.068124999998,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S5\",\"S6\"],\"factKind\":\"financial_metric\"},{\"selectedHandles\":[\"S7\",\"S8\"],\"factKind\":\"financial_metric\"}]",
+      "rankingInputHash": "sha256:656c5c79d6ce9c6cafb40b2336c281ff8dd1ee687fdde7d81c663b92ea3fb9d1",
+      "failure": "RANKING_MISS",
+      "endToEndLatencyMs": 2929.2598749999997,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2928.6878749999996,
+          "usage": {
+            "inputTokens": 1155,
+            "outputTokens": 34,
+            "totalTokens": 1189
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1123,
+            "evalMs": 1713,
+            "totalMs": 2927
+          },
+          "tokensPerSecond": 19.847953004717393,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:9f5cdd8666877d52ed65981c268ef8d3751739049ba01a9230d552cb2717d005"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-prior-revenue",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-a5d8c1cfe7eff58d77334151"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-34935b6bbfed81087cccae64",
+        "SPAN-0d1e5f81921a92867089eb12"
+      ],
+      "selectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-40c79dd0a87e4532745dcc6e"
+      ],
+      "rankingLatencyMs": 2192.542916999999,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S5",
+        "S2",
+        "S1"
+      ],
+      "raw": "{\"rankedHandles\":[\"S5\",\"S2\",\"S1\"]}",
+      "rankingInputHash": "sha256:e27e9a38720aed56c95c23ae32cb2c260adae19c39e032146ae09429a9ff305e",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2192.806708,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2175.5213339999973,
+          "usage": {
+            "inputTokens": 777,
+            "outputTokens": 15,
+            "totalTokens": 792
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1239,
+            "evalMs": 790,
+            "totalMs": 2172
+          },
+          "tokensPerSecond": 18.976556362270053,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:9a1f6bb2539e7a329596f59cb864fd9a24e8d83ce9771234ba9040adfaf46b27"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-growth",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-b2ff11739ad13c17b50b371c",
+        "SPAN-53735c8f34e746b264e466af"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-d0893e5060fefc32ce53ab25",
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-948ed26c3de481d1b574b717",
+        "SPAN-14aa79c47f4b5e9367f66bbb",
+        "SPAN-c83b19906c4d3d637fdc5537",
+        "SPAN-6ec13d70b3bd0a910725d422",
+        "SPAN-f30798e78d4598cc7dbadc68"
+      ],
+      "selectedSpanIds": [
+        "SPAN-d0893e5060fefc32ce53ab25",
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.1273750000000291,
+      "receipts": []
+    },
+    {
+      "caseId": "annual-growth",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-b2ff11739ad13c17b50b371c",
+        "SPAN-53735c8f34e746b264e466af"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-d0893e5060fefc32ce53ab25",
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-948ed26c3de481d1b574b717",
+        "SPAN-14aa79c47f4b5e9367f66bbb",
+        "SPAN-c83b19906c4d3d637fdc5537",
+        "SPAN-6ec13d70b3bd0a910725d422",
+        "SPAN-f30798e78d4598cc7dbadc68"
+      ],
+      "selectedSpanIds": [
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-c83b19906c4d3d637fdc5537"
+      ],
+      "rankingLatencyMs": 2204.5496669999993,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S3",
+        "S6"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S3\",\"S6\"],\"factKind\":\"financial_metric\"}]",
+      "rankingInputHash": "sha256:799bab66185ee6e8e9ea5824ec8d492a5300f8a74dcb622f24f117e51c178cda",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2204.725584,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2204.111917000002,
+          "usage": {
+            "inputTokens": 1038,
+            "outputTokens": 19,
+            "totalTokens": 1057
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1117,
+            "evalMs": 991,
+            "totalMs": 2201
+          },
+          "tokensPerSecond": 19.16969009673631,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:9153e0cac532b8cb85baf0481e8e63a06d1dd4cbff33f6cc8791bc1c450bac8f"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-growth",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-b2ff11739ad13c17b50b371c",
+        "SPAN-53735c8f34e746b264e466af"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-d0893e5060fefc32ce53ab25",
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-948ed26c3de481d1b574b717",
+        "SPAN-14aa79c47f4b5e9367f66bbb",
+        "SPAN-c83b19906c4d3d637fdc5537",
+        "SPAN-6ec13d70b3bd0a910725d422",
+        "SPAN-f30798e78d4598cc7dbadc68"
+      ],
+      "selectedSpanIds": [
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-c83b19906c4d3d637fdc5537",
+        "SPAN-690dd2e0535bfd8b70733765"
+      ],
+      "rankingLatencyMs": 1916.0543330000037,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S3",
+        "S6",
+        "S2"
+      ],
+      "raw": "{\"rankedHandles\":[\"S3\",\"S6\",\"S2\"]}",
+      "rankingInputHash": "sha256:cfd7422a16cba2cfa719186aa57804f9e80a9989e02a6ce8d222d6fec7dab1fa",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1916.338499999998,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1893.669750000001,
+          "usage": {
+            "inputTokens": 662,
+            "outputTokens": 15,
+            "totalTokens": 677
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1088,
+            "evalMs": 710,
+            "totalMs": 1885
+          },
+          "tokensPerSecond": 21.11875923065768,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:cb012e721776b7e85de5c74c1532fbed7e5d87af2e18703434eb4c2f6468e282"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-largest-customer",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-b502422d221dc8456a0341ec",
+        "SPAN-bb2df9101c5477edd352e179",
+        "SPAN-ae50872aa46468ee67fadf50",
+        "SPAN-0844885b8c5f32024d87ae52",
+        "SPAN-a7d391a241066ef6711cfb52",
+        "SPAN-f7cb689b413300716275a7a9",
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-3b32df3d98322bea946b0418",
+        "SPAN-59ae50e91207605cd7676fc3",
+        "SPAN-37ff6a2d9e175b1d405cba67",
+        "SPAN-c0be195643dc4a5f76640252",
+        "SPAN-f5e6423b079413de5cbcce58",
+        "SPAN-5aa2a327409cc14458b6ecbb",
+        "SPAN-e837f703da908ef84f054000",
+        "SPAN-1e32ed2e9735e53262723f64",
+        "SPAN-0b974131f5076fae684a05e0",
+        "SPAN-9f0e24e54c644afd11426b3d",
+        "SPAN-a5c562ceb4bf4e39d5b275eb",
+        "SPAN-0d90ba263129301a16c7fdd8"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-920b6d2977307838b3c7f479",
+        "SPAN-18901a16b3dca17bc89c9361",
+        "SPAN-9d46be848a4d453b5204fc7c",
+        "SPAN-7d05af082dad024655e8b8cd",
+        "SPAN-f5e6423b079413de5cbcce58",
+        "SPAN-0d90ba263129301a16c7fdd8",
+        "SPAN-e837f703da908ef84f054000"
+      ],
+      "selectedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-920b6d2977307838b3c7f479",
+        "SPAN-18901a16b3dca17bc89c9361"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.09741699999722186,
+      "receipts": []
+    },
+    {
+      "caseId": "annual-largest-customer",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-b502422d221dc8456a0341ec",
+        "SPAN-bb2df9101c5477edd352e179",
+        "SPAN-ae50872aa46468ee67fadf50",
+        "SPAN-0844885b8c5f32024d87ae52",
+        "SPAN-a7d391a241066ef6711cfb52",
+        "SPAN-f7cb689b413300716275a7a9",
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-3b32df3d98322bea946b0418",
+        "SPAN-59ae50e91207605cd7676fc3",
+        "SPAN-37ff6a2d9e175b1d405cba67",
+        "SPAN-c0be195643dc4a5f76640252",
+        "SPAN-f5e6423b079413de5cbcce58",
+        "SPAN-5aa2a327409cc14458b6ecbb",
+        "SPAN-e837f703da908ef84f054000",
+        "SPAN-1e32ed2e9735e53262723f64",
+        "SPAN-0b974131f5076fae684a05e0",
+        "SPAN-9f0e24e54c644afd11426b3d",
+        "SPAN-a5c562ceb4bf4e39d5b275eb",
+        "SPAN-0d90ba263129301a16c7fdd8"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-920b6d2977307838b3c7f479",
+        "SPAN-18901a16b3dca17bc89c9361",
+        "SPAN-9d46be848a4d453b5204fc7c",
+        "SPAN-7d05af082dad024655e8b8cd",
+        "SPAN-f5e6423b079413de5cbcce58",
+        "SPAN-0d90ba263129301a16c7fdd8",
+        "SPAN-e837f703da908ef84f054000"
+      ],
+      "selectedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-920b6d2977307838b3c7f479",
+        "SPAN-18901a16b3dca17bc89c9361"
+      ],
+      "rankingLatencyMs": 3312.523500000003,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S1\"],\"factKind\":\"customer_concentration\"},{\"selectedHandles\":[\"S2\"],\"factKind\":\"customer_concentration\"},{\"selectedHandles\":[\"S3\"],\"factKind\":\"customer_concentration\"}]",
+      "rankingInputHash": "sha256:0f2248d566fdce8191347e6c5d3e4431bd8cfd7540348c802b7b8d95c6ebe5cf",
+      "failure": "NONE",
+      "endToEndLatencyMs": 3312.793208000003,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3311.6081669999985,
+          "usage": {
+            "inputTokens": 1024,
+            "outputTokens": 43,
+            "totalTokens": 1067
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 845,
+            "evalMs": 2263,
+            "totalMs": 3307
+          },
+          "tokensPerSecond": 18.99995713963157,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:8d38d8daa8a8a4beb916d3b2517e35bc52f4a72f23fd428e325b3868d8a621b3"
+        }
+      ]
+    },
+    {
+      "caseId": "annual-largest-customer",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-b502422d221dc8456a0341ec",
+        "SPAN-bb2df9101c5477edd352e179",
+        "SPAN-ae50872aa46468ee67fadf50",
+        "SPAN-0844885b8c5f32024d87ae52",
+        "SPAN-a7d391a241066ef6711cfb52",
+        "SPAN-f7cb689b413300716275a7a9",
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-3b32df3d98322bea946b0418",
+        "SPAN-59ae50e91207605cd7676fc3",
+        "SPAN-37ff6a2d9e175b1d405cba67",
+        "SPAN-c0be195643dc4a5f76640252",
+        "SPAN-f5e6423b079413de5cbcce58",
+        "SPAN-5aa2a327409cc14458b6ecbb",
+        "SPAN-e837f703da908ef84f054000",
+        "SPAN-1e32ed2e9735e53262723f64",
+        "SPAN-0b974131f5076fae684a05e0",
+        "SPAN-9f0e24e54c644afd11426b3d",
+        "SPAN-a5c562ceb4bf4e39d5b275eb",
+        "SPAN-0d90ba263129301a16c7fdd8"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-920b6d2977307838b3c7f479",
+        "SPAN-18901a16b3dca17bc89c9361",
+        "SPAN-9d46be848a4d453b5204fc7c",
+        "SPAN-7d05af082dad024655e8b8cd",
+        "SPAN-f5e6423b079413de5cbcce58",
+        "SPAN-0d90ba263129301a16c7fdd8",
+        "SPAN-e837f703da908ef84f054000"
+      ],
+      "selectedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc"
+      ],
+      "rankingLatencyMs": 1593.239125,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\"]}",
+      "rankingInputHash": "sha256:1b895463e2d2857866cc308cad7952186ef23d6f6d9c03f395f5f967fa4b59e9",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1593.498332999996,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1582.8301250000004,
+          "usage": {
+            "inputTokens": 647,
+            "outputTokens": 9,
+            "totalTokens": 656
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 923,
+            "evalMs": 478,
+            "totalMs": 1574
+          },
+          "tokensPerSecond": 18.839763623765734,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:2230d7eb6c13462f10ac7a4e01ddf6a6b9d925ec19d02559730457ab29c6ca56"
+        }
+      ]
+    },
+    {
+      "caseId": "geographic-revenue",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-e0d1db2a83338062249e5c36"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-68dd70deec34f0686a1837be",
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-57265a1e8b757d696e715026",
+        "SPAN-7c532ec13bd0c48e058a47f8",
+        "SPAN-b9de5bb60643e511933abe4e",
+        "SPAN-3aad467599de9b15c6fd000a",
+        "SPAN-8be23231d2f90b1a38c279ef"
+      ],
+      "selectedSpanIds": [
+        "SPAN-68dd70deec34f0686a1837be",
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-e0d1db2a83338062249e5c36"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.2809999999954016,
+      "receipts": []
+    },
+    {
+      "caseId": "geographic-revenue",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-e0d1db2a83338062249e5c36"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-68dd70deec34f0686a1837be",
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-57265a1e8b757d696e715026",
+        "SPAN-7c532ec13bd0c48e058a47f8",
+        "SPAN-b9de5bb60643e511933abe4e",
+        "SPAN-3aad467599de9b15c6fd000a",
+        "SPAN-8be23231d2f90b1a38c279ef"
+      ],
+      "selectedSpanIds": [
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-3aad467599de9b15c6fd000a",
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-8be23231d2f90b1a38c279ef"
+      ],
+      "rankingLatencyMs": 3281.5702919999967,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S2",
+        "S7",
+        "S3",
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S2\",\"S7\"],\"factKind\":\"financial_metric\"},{\"selectedHandles\":[\"S3\",\"S8\"],\"factKind\":\"financial_metric\"}]",
+      "rankingInputHash": "sha256:e46f42c6df041ffa24b3e55432a44a991f80542e420aa713b3381adae3e4a106",
+      "failure": "NONE",
+      "endToEndLatencyMs": 3281.8358750000043,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3279.5417920000036,
+          "usage": {
+            "inputTokens": 1097,
+            "outputTokens": 34,
+            "totalTokens": 1131
+          },
+          "timings": {
+            "loadMs": 5,
+            "promptEvalMs": 1160,
+            "evalMs": 1949,
+            "totalMs": 3269
+          },
+          "tokensPerSecond": 17.44287458573173,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:9e9be9ff2dd96e65b65ff4aececc5924d4c7c4e4a66b819d4a6a1971feef47c2"
+        }
+      ]
+    },
+    {
+      "caseId": "geographic-revenue",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-e0d1db2a83338062249e5c36"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-68dd70deec34f0686a1837be",
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-57265a1e8b757d696e715026",
+        "SPAN-7c532ec13bd0c48e058a47f8",
+        "SPAN-b9de5bb60643e511933abe4e",
+        "SPAN-3aad467599de9b15c6fd000a",
+        "SPAN-8be23231d2f90b1a38c279ef"
+      ],
+      "selectedSpanIds": [
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-3aad467599de9b15c6fd000a"
+      ],
+      "rankingLatencyMs": 2167.7468329999974,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S2",
+        "S3",
+        "S7"
+      ],
+      "raw": "{\"rankedHandles\":[\"S2\",\"S3\",\"S7\"]}",
+      "rankingInputHash": "sha256:61aa586f236b09166a8dead83e466bdd98916cb0a1d561d4ef9bf91255dbd312",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2168.0121670000008,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2150.133708000001,
+          "usage": {
+            "inputTokens": 720,
+            "outputTokens": 15,
+            "totalTokens": 735
+          },
+          "timings": {
+            "loadMs": 7,
+            "promptEvalMs": 1194,
+            "evalMs": 752,
+            "totalMs": 2145
+          },
+          "tokensPerSecond": 19.937264075708438,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:17930bbff6eeb3a236d25749893f17fbbead3f5eb51fcd6c5bc3299ebfb0786d"
+        }
+      ]
+    },
+    {
+      "caseId": "q2-revenue",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-88a9b7b151e96b2751279350"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-6c01a61ab909f5e203039ac3",
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-d8239e9a33aca660689b3cd8",
+        "SPAN-3a7fd1f07ba73dc16b3551f6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-0b0d2f195b1144e3474b4c8b"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.10525000000052387,
+      "receipts": []
+    },
+    {
+      "caseId": "q2-revenue",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-88a9b7b151e96b2751279350"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-6c01a61ab909f5e203039ac3",
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-d8239e9a33aca660689b3cd8",
+        "SPAN-3a7fd1f07ba73dc16b3551f6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-6c01a61ab909f5e203039ac3",
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-d8239e9a33aca660689b3cd8",
+        "SPAN-3a7fd1f07ba73dc16b3551f6"
+      ],
+      "rankingLatencyMs": 3276.568625,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S4\",\"S5\",\"S6\"],\"factKind\":\"financial_metric\"},{\"selectedHandles\":[\"S7\",\"S8\"],\"factKind\":\"financial_metric\"}]",
+      "rankingInputHash": "sha256:2edb737f2e1f8f91d74f19732f14dc8dbbaadac66536821f348cd488df364239",
+      "failure": "NONE",
+      "endToEndLatencyMs": 3277.3125419999997,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3271.2748340000035,
+          "usage": {
+            "inputTokens": 1060,
+            "outputTokens": 37,
+            "totalTokens": 1097
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1165,
+            "evalMs": 1942,
+            "totalMs": 3259
+          },
+          "tokensPerSecond": 19.053729973628606,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:8a5384e2a633b0e980bcebe2708603c9dcc264d4acd2bd1927b73dc6f7196993"
+        }
+      ]
+    },
+    {
+      "caseId": "q2-revenue",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-88a9b7b151e96b2751279350"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-6c01a61ab909f5e203039ac3",
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-d8239e9a33aca660689b3cd8",
+        "SPAN-3a7fd1f07ba73dc16b3551f6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-6c01a61ab909f5e203039ac3",
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "rankingLatencyMs": 2091.4949579999957,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "raw": "{\"rankedHandles\":[\"S4\",\"S5\",\"S6\"]}",
+      "rankingInputHash": "sha256:e173599b5429f59daca040d970d02c6752f461d985b1f4a26ba5c384132be42d",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2095.321624999997,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2065.5314170000056,
+          "usage": {
+            "inputTokens": 682,
+            "outputTokens": 15,
+            "totalTokens": 697
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1135,
+            "evalMs": 808,
+            "totalMs": 2057
+          },
+          "tokensPerSecond": 18.575851393188856,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:1033fcc272a338344e05efc990c1291798457e293f1573f7c7428f7f524618af"
+        }
+      ]
+    },
+    {
+      "caseId": "cost-revenue",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-8f88895f680f03b68831fce4",
+        "SPAN-7a2f323abe2fe27bbcc19a7d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-794b76ee82d02bf8dce91d0f",
+        "SPAN-dbdc95c9f5f01a5577d37731",
+        "SPAN-c591e82a19e556d9ecc6dfbf",
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "selectedSpanIds": [
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-794b76ee82d02bf8dce91d0f"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.06812499999796273,
+      "receipts": []
+    },
+    {
+      "caseId": "cost-revenue",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-8f88895f680f03b68831fce4",
+        "SPAN-7a2f323abe2fe27bbcc19a7d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-794b76ee82d02bf8dce91d0f",
+        "SPAN-dbdc95c9f5f01a5577d37731",
+        "SPAN-c591e82a19e556d9ecc6dfbf",
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "selectedSpanIds": [
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "rankingLatencyMs": 2266.4613329999993,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S7",
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S7\",\"S8\"],\"factKind\":\"financial_metric\"}]",
+      "rankingInputHash": "sha256:72a05ea0f3a75a8e4584ef7dc0339f828723828a91a84cb20037f4429457a266",
+      "failure": "RANKING_MISS",
+      "endToEndLatencyMs": 2267.2374590000036,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2265.267667,
+          "usage": {
+            "inputTokens": 1063,
+            "outputTokens": 19,
+            "totalTokens": 1082
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1134,
+            "evalMs": 987,
+            "totalMs": 2256
+          },
+          "tokensPerSecond": 19.248127613059957,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:b91aabf8204a433a12c78ca330d57b70db333bd4821687148876acdc14253376"
+        }
+      ]
+    },
+    {
+      "caseId": "cost-revenue",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-8f88895f680f03b68831fce4",
+        "SPAN-7a2f323abe2fe27bbcc19a7d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-794b76ee82d02bf8dce91d0f",
+        "SPAN-dbdc95c9f5f01a5577d37731",
+        "SPAN-c591e82a19e556d9ecc6dfbf",
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "selectedSpanIds": [
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-794b76ee82d02bf8dce91d0f",
+        "SPAN-dbdc95c9f5f01a5577d37731"
+      ],
+      "rankingLatencyMs": 2021.1435839999976,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "raw": "{\"rankedHandles\":[\"S2\",\"S3\",\"S4\"]}",
+      "rankingInputHash": "sha256:c75adc6802ec6563ec0b5cfeb8b78f94fb1ca9c665e2e1fc0cc57c158e99a7c2",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2021.2676659999997,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2008.155541,
+          "usage": {
+            "inputTokens": 685,
+            "outputTokens": 15,
+            "totalTokens": 700
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1154,
+            "evalMs": 708,
+            "totalMs": 2007
+          },
+          "tokensPerSecond": 21.195152244778573,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:0e58bb46624a6750de618242aa52034bf21aa62937c5cd06cc8240ce2e1f2be4"
+        }
+      ]
+    },
+    {
+      "caseId": "technology",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-26aec07d43a043304ba9dc14"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a961ac8456c03adc3fa3da7c",
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-5ce438a9893b4fd181b3925e",
+        "SPAN-6a98c253bf1f87bfcb545741",
+        "SPAN-ab42b43d0050c1c6a9ca18d9",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-9b035d0c801be4eac15ab9f6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-a961ac8456c03adc3fa3da7c",
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-26aec07d43a043304ba9dc14"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.046916999999666587,
+      "receipts": []
+    },
+    {
+      "caseId": "technology",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-26aec07d43a043304ba9dc14"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a961ac8456c03adc3fa3da7c",
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-5ce438a9893b4fd181b3925e",
+        "SPAN-6a98c253bf1f87bfcb545741",
+        "SPAN-ab42b43d0050c1c6a9ca18d9",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-9b035d0c801be4eac15ab9f6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-6a98c253bf1f87bfcb545741"
+      ],
+      "rankingLatencyMs": 2100.6703750000015,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S3",
+        "S5"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S3\",\"S5\"],\"factKind\":\"capex_fact\"}]",
+      "rankingInputHash": "sha256:65e0802513df88b925dd33b7aacb7851d3544629786d460ac4e5bde00aea1402",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2100.7495419999977,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2100.506957999998,
+          "usage": {
+            "inputTokens": 1052,
+            "outputTokens": 20,
+            "totalTokens": 1072
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1120,
+            "evalMs": 923,
+            "totalMs": 2099
+          },
+          "tokensPerSecond": 21.666594444685185,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:a51032b2cc383c71b38ead51d9a9fda50cb4d87852c6271b79291227de4fd3e6"
+        }
+      ]
+    },
+    {
+      "caseId": "technology",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-26aec07d43a043304ba9dc14"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a961ac8456c03adc3fa3da7c",
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-5ce438a9893b4fd181b3925e",
+        "SPAN-6a98c253bf1f87bfcb545741",
+        "SPAN-ab42b43d0050c1c6a9ca18d9",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-9b035d0c801be4eac15ab9f6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "rankingLatencyMs": 1926.3741660000014,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S2",
+        "S3",
+        "S7"
+      ],
+      "raw": "{\"rankedHandles\":[\"S2\",\"S3\",\"S7\"]}",
+      "rankingInputHash": "sha256:b873ca60f3740afadff5685ae9859d129b8fa3764918c2e0fe433445159ff003",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1926.4444999999978,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1919.882458,
+          "usage": {
+            "inputTokens": 675,
+            "outputTokens": 15,
+            "totalTokens": 690
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1118,
+            "evalMs": 712,
+            "totalMs": 1919
+          },
+          "tokensPerSecond": 21.05833580183825,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:17930bbff6eeb3a236d25749893f17fbbead3f5eb51fcd6c5bc3299ebfb0786d"
+        }
+      ]
+    },
+    {
+      "caseId": "significant-customers",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-34084942012415a83188e287",
+        "SPAN-c2c40c016e6a492124f6a4e7",
+        "SPAN-99566db088adaae178a4968d",
+        "SPAN-846e00ee48fc07138f6adcfe",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "selectedSpanIds": [
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-34084942012415a83188e287"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "RANKING_MISS",
+      "endToEndLatencyMs": 0.03437500000291038,
+      "receipts": []
+    },
+    {
+      "caseId": "significant-customers",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-34084942012415a83188e287",
+        "SPAN-c2c40c016e6a492124f6a4e7",
+        "SPAN-99566db088adaae178a4968d",
+        "SPAN-846e00ee48fc07138f6adcfe",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "selectedSpanIds": [
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-20e2f4688883f89b371d340e"
+      ],
+      "rankingLatencyMs": 1877.1907500000016,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S1\",\"S2\"],\"factKind\":\"customer_concentration\"}]",
+      "rankingInputHash": "sha256:1a61e9ac5d7fcf4c0f7725d945f360d863ea68d9ea03f1d62bc4c8216542906e",
+      "failure": "RANKING_MISS",
+      "endToEndLatencyMs": 1877.3491250000006,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1876.9410830000052,
+          "usage": {
+            "inputTokens": 966,
+            "outputTokens": 20,
+            "totalTokens": 986
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 864,
+            "evalMs": 966,
+            "totalMs": 1875
+          },
+          "tokensPerSecond": 20.704619614728436,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:e7981f91fb95e2709e43e94473cb8471aa80b97bffd768db5484ddb953eb190f"
+        }
+      ]
+    },
+    {
+      "caseId": "significant-customers",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-34084942012415a83188e287",
+        "SPAN-c2c40c016e6a492124f6a4e7",
+        "SPAN-99566db088adaae178a4968d",
+        "SPAN-846e00ee48fc07138f6adcfe",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "selectedSpanIds": [
+        "SPAN-34084942012415a83188e287",
+        "SPAN-c2c40c016e6a492124f6a4e7",
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "rankingLatencyMs": 1734.8405420000054,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "raw": "{\"rankedHandles\":[\"S3\",\"S4\",\"S5\"]}",
+      "rankingInputHash": "sha256:a71188e834825cd31abdc2ab779da8d5717c35596ac42090b5a69cbd06988e88",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1734.9709999999977,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1721.1173750000016,
+          "usage": {
+            "inputTokens": 589,
+            "outputTokens": 15,
+            "totalTokens": 604
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 871,
+            "evalMs": 745,
+            "totalMs": 1720
+          },
+          "tokensPerSecond": 20.146640681977217,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:f490dc662731d369fc559752e3d7d5411299d7b680dad02cf0ea40bb43808b90"
+        }
+      ]
+    },
+    {
+      "caseId": "customer-b",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-f74384d64517ea826d224fa1",
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-7092c5398c0ea8823ad75585",
+        "SPAN-c2c40c016e6a492124f6a4e7"
+      ],
+      "selectedSpanIds": [
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-a477f1aa95268caa19ccf229"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.05816700000286801,
+      "receipts": []
+    },
+    {
+      "caseId": "customer-b",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-f74384d64517ea826d224fa1",
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-7092c5398c0ea8823ad75585",
+        "SPAN-c2c40c016e6a492124f6a4e7"
+      ],
+      "selectedSpanIds": [
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "rankingLatencyMs": 1907.7065830000065,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S1\",\"S2\"],\"factKind\":\"customer_concentration\"}]",
+      "rankingInputHash": "sha256:96dd8f6c5688e446bca025a3d2c24c778f931dfd3e7d286632014789bb180138",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1907.9125420000055,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1907.228624999996,
+          "usage": {
+            "inputTokens": 936,
+            "outputTokens": 20,
+            "totalTokens": 956
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 832,
+            "evalMs": 945,
+            "totalMs": 1903
+          },
+          "tokensPerSecond": 21.170786854635026,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:e7981f91fb95e2709e43e94473cb8471aa80b97bffd768db5484ddb953eb190f"
+        }
+      ]
+    },
+    {
+      "caseId": "customer-b",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-a477f1aa95268caa19ccf229",
+        "SPAN-f74384d64517ea826d224fa1",
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-20e2f4688883f89b371d340e",
+        "SPAN-7092c5398c0ea8823ad75585",
+        "SPAN-c2c40c016e6a492124f6a4e7"
+      ],
+      "selectedSpanIds": [
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-3e05b10fdb9ebfa6c915c1ef"
+      ],
+      "rankingLatencyMs": 1756.1193330000024,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S2",
+        "S1",
+        "S5"
+      ],
+      "raw": "{\"rankedHandles\":[\"S2\",\"S1\",\"S5\"]}",
+      "rankingInputHash": "sha256:79f9251148b0a1d8161ad7f50be5df72fb9ab4ef79f005b677d79f51e988e1d2",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1756.2559589999946,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1741.9947079999984,
+          "usage": {
+            "inputTokens": 559,
+            "outputTokens": 15,
+            "totalTokens": 574
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 857,
+            "evalMs": 767,
+            "totalMs": 1741
+          },
+          "tokensPerSecond": 19.546036780428945,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:def1b6ac406325b6e040cddef101270580b79d9e37338d9d46cd235fd8fd60bc"
+        }
+      ]
+    },
+    {
+      "caseId": "rpo",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-e3b68704873788086acdc74e",
+        "SPAN-7364872b18af9d12c0ef9591",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-e5637494cec61384ade2512b",
+        "SPAN-d8fa39b17832f50081508c68",
+        "SPAN-d10ec623ea6ed81912acf77d",
+        "SPAN-8c9dbe09b4eb75eaff815d56",
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "selectedSpanIds": [
+        "SPAN-e3b68704873788086acdc74e",
+        "SPAN-7364872b18af9d12c0ef9591",
+        "SPAN-9cd8a931e5c0e3c3a8745422"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "RANKING_MISS",
+      "endToEndLatencyMs": 0.052082999995036516,
+      "receipts": []
+    },
+    {
+      "caseId": "rpo",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-e3b68704873788086acdc74e",
+        "SPAN-7364872b18af9d12c0ef9591",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-e5637494cec61384ade2512b",
+        "SPAN-d8fa39b17832f50081508c68",
+        "SPAN-d10ec623ea6ed81912acf77d",
+        "SPAN-8c9dbe09b4eb75eaff815d56",
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "selectedSpanIds": [
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "rankingLatencyMs": 2101.032250000004,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S8\"],\"factKind\":\"backlog_or_rpo\"}]",
+      "rankingInputHash": "sha256:b9935ab2976c9209a8c066aca1490a273d139daef88332fb681f5f5e93d5f965",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2101.2367499999964,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2100.5909590000083,
+          "usage": {
+            "inputTokens": 1102,
+            "outputTokens": 19,
+            "totalTokens": 1121
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1138,
+            "evalMs": 893,
+            "totalMs": 2098
+          },
+          "tokensPerSecond": 21.28684584962524,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:4ab67a7453f2aa831142d4a2967378d9d99eb3a22683115eff6765f51c44b252"
+        }
+      ]
+    },
+    {
+      "caseId": "rpo",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-e3b68704873788086acdc74e",
+        "SPAN-7364872b18af9d12c0ef9591",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-e5637494cec61384ade2512b",
+        "SPAN-d8fa39b17832f50081508c68",
+        "SPAN-d10ec623ea6ed81912acf77d",
+        "SPAN-8c9dbe09b4eb75eaff815d56",
+        "SPAN-0807cb012a8b778a8f3d69f9"
+      ],
+      "selectedSpanIds": [
+        "SPAN-e3b68704873788086acdc74e",
+        "SPAN-0807cb012a8b778a8f3d69f9",
+        "SPAN-d8fa39b17832f50081508c68"
+      ],
+      "rankingLatencyMs": 2049.3802920000016,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S8",
+        "S5"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\",\"S8\",\"S5\"]}",
+      "rankingInputHash": "sha256:f4e1bc19805d176ac72d78061b5d995ac1c9309a7b6a22853e5d70b07ec48662",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2049.622834000009,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2032.852583999993,
+          "usage": {
+            "inputTokens": 725,
+            "outputTokens": 15,
+            "totalTokens": 740
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1170,
+            "evalMs": 783,
+            "totalMs": 2030
+          },
+          "tokensPerSecond": 19.16852068858438,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:7153f2fd3568eeb778055240f691c6663ccc2a971d14ccc14d9486376ac4f89c"
+        }
+      ]
+    },
+    {
+      "caseId": "history",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27",
+        "SPAN-deec43e2c82c5b16d2a9849a",
+        "SPAN-d2910ee25263ca4ebe46a24c",
+        "SPAN-6f3956626d9fa293eae0b4cc",
+        "SPAN-16c16d080ac7dd4b5944f953",
+        "SPAN-4de06b779b7e2bc840218f44",
+        "SPAN-b6f6efb0a0dfe77a3a3219f2",
+        "SPAN-2f1300ed63819e4eea1921fe"
+      ],
+      "selectedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27",
+        "SPAN-deec43e2c82c5b16d2a9849a",
+        "SPAN-d2910ee25263ca4ebe46a24c"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.06054200000653509,
+      "receipts": []
+    },
+    {
+      "caseId": "history",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27",
+        "SPAN-deec43e2c82c5b16d2a9849a",
+        "SPAN-d2910ee25263ca4ebe46a24c",
+        "SPAN-6f3956626d9fa293eae0b4cc",
+        "SPAN-16c16d080ac7dd4b5944f953",
+        "SPAN-4de06b779b7e2bc840218f44",
+        "SPAN-b6f6efb0a0dfe77a3a3219f2",
+        "SPAN-2f1300ed63819e4eea1921fe"
+      ],
+      "selectedSpanIds": [],
+      "rankingLatencyMs": 989.2794580000045,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [],
+      "raw": "[]",
+      "rankingInputHash": "sha256:b011798cde7e95108bf1ea9137dc11ab355006f4c12c79f1da1a3d5b29119f4f",
+      "failure": "MODEL_ABSTENTION",
+      "endToEndLatencyMs": 989.3630419999972,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 989.0906250000116,
+          "usage": {
+            "inputTokens": 1008,
+            "outputTokens": 2,
+            "totalTokens": 1010
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 830,
+            "evalMs": 52,
+            "totalMs": 988
+          },
+          "tokensPerSecond": 38.39877123932034,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b"
+        }
+      ]
+    },
+    {
+      "caseId": "history",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27",
+        "SPAN-deec43e2c82c5b16d2a9849a",
+        "SPAN-d2910ee25263ca4ebe46a24c",
+        "SPAN-6f3956626d9fa293eae0b4cc",
+        "SPAN-16c16d080ac7dd4b5944f953",
+        "SPAN-4de06b779b7e2bc840218f44",
+        "SPAN-b6f6efb0a0dfe77a3a3219f2",
+        "SPAN-2f1300ed63819e4eea1921fe"
+      ],
+      "selectedSpanIds": [
+        "SPAN-16c38afa5739f5d03bd31c27"
+      ],
+      "rankingLatencyMs": 1393.8661670000001,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\"]}",
+      "rankingInputHash": "sha256:8de86e3e4a9f2cbf958339942ef419cc080d0896bb2046cdceaf2ce4e6daadae",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1394.0560000000114,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1384.5817090000055,
+          "usage": {
+            "inputTokens": 631,
+            "outputTokens": 9,
+            "totalTokens": 640
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 936,
+            "evalMs": 412,
+            "totalMs": 1382
+          },
+          "tokensPerSecond": 21.840790345399963,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:2230d7eb6c13462f10ac7a4e01ddf6a6b9d925ec19d02559730457ab29c6ca56"
+        }
+      ]
+    },
+    {
+      "caseId": "rate-risk",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-914ff314071fb25335d103b9",
+        "SPAN-be9aeeaf9f9f3dea7c92472c",
+        "SPAN-20f1e3d007ce701433e57b78",
+        "SPAN-5ad83c1563fb727cb18a2976",
+        "SPAN-8a0ad9ca0f4c30db69c0452a",
+        "SPAN-630dfaf2f6e095909bc83da4",
+        "SPAN-822f873518354e05bba590c7",
+        "SPAN-9811f95ce682220d2f5a4fca",
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-7ce7bf6d1e0bc669212cfba0",
+        "SPAN-9f99380da22b4b09f0e2a764",
+        "SPAN-598104bcc416e6b3644effd3",
+        "SPAN-122bd9cf14264a59437dc08b",
+        "SPAN-0ccfbdb278478ec22517a7f7",
+        "SPAN-29634a517b33e91121bdf93a",
+        "SPAN-512c6f75730d46695b234ae5",
+        "SPAN-afcd11a2c7cc22160ebafbb1",
+        "SPAN-84dfa4ddf41d478b3e33281b",
+        "SPAN-c72d0473a1f45d14e1225211",
+        "SPAN-7d81579618e8fd71283f8914"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-76a822a8459a1f735ff7b2c3",
+        "SPAN-84eb98a0b90c5904d2631b77",
+        "SPAN-4c55f87a31112b55fcda43ff",
+        "SPAN-55cf26d9578cc73fe51a511d",
+        "SPAN-9f99380da22b4b09f0e2a764",
+        "SPAN-be9aeeaf9f9f3dea7c92472c",
+        "SPAN-9811f95ce682220d2f5a4fca"
+      ],
+      "selectedSpanIds": [
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-76a822a8459a1f735ff7b2c3",
+        "SPAN-84eb98a0b90c5904d2631b77"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.05770800000755116,
+      "receipts": []
+    },
+    {
+      "caseId": "rate-risk",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-914ff314071fb25335d103b9",
+        "SPAN-be9aeeaf9f9f3dea7c92472c",
+        "SPAN-20f1e3d007ce701433e57b78",
+        "SPAN-5ad83c1563fb727cb18a2976",
+        "SPAN-8a0ad9ca0f4c30db69c0452a",
+        "SPAN-630dfaf2f6e095909bc83da4",
+        "SPAN-822f873518354e05bba590c7",
+        "SPAN-9811f95ce682220d2f5a4fca",
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-7ce7bf6d1e0bc669212cfba0",
+        "SPAN-9f99380da22b4b09f0e2a764",
+        "SPAN-598104bcc416e6b3644effd3",
+        "SPAN-122bd9cf14264a59437dc08b",
+        "SPAN-0ccfbdb278478ec22517a7f7",
+        "SPAN-29634a517b33e91121bdf93a",
+        "SPAN-512c6f75730d46695b234ae5",
+        "SPAN-afcd11a2c7cc22160ebafbb1",
+        "SPAN-84dfa4ddf41d478b3e33281b",
+        "SPAN-c72d0473a1f45d14e1225211",
+        "SPAN-7d81579618e8fd71283f8914"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-76a822a8459a1f735ff7b2c3",
+        "SPAN-84eb98a0b90c5904d2631b77",
+        "SPAN-4c55f87a31112b55fcda43ff",
+        "SPAN-55cf26d9578cc73fe51a511d",
+        "SPAN-9f99380da22b4b09f0e2a764",
+        "SPAN-be9aeeaf9f9f3dea7c92472c",
+        "SPAN-9811f95ce682220d2f5a4fca"
+      ],
+      "selectedSpanIds": [],
+      "rankingLatencyMs": 1514.0434999999998,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [],
+      "raw": "[]",
+      "rankingInputHash": "sha256:31b322fc12c82c174e1a56bfe29cf3476f218666888ecd84537d9fbaa6e98f65",
+      "failure": "MODEL_ABSTENTION",
+      "endToEndLatencyMs": 1514.2662910000072,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1513.7534589999996,
+          "usage": {
+            "inputTokens": 1046,
+            "outputTokens": 2,
+            "totalTokens": 1048
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1358,
+            "evalMs": 57,
+            "totalMs": 1511
+          },
+          "tokensPerSecond": 34.91742030098816,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b"
+        }
+      ]
+    },
+    {
+      "caseId": "rate-risk",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-914ff314071fb25335d103b9",
+        "SPAN-be9aeeaf9f9f3dea7c92472c",
+        "SPAN-20f1e3d007ce701433e57b78",
+        "SPAN-5ad83c1563fb727cb18a2976",
+        "SPAN-8a0ad9ca0f4c30db69c0452a",
+        "SPAN-630dfaf2f6e095909bc83da4",
+        "SPAN-822f873518354e05bba590c7",
+        "SPAN-9811f95ce682220d2f5a4fca",
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-7ce7bf6d1e0bc669212cfba0",
+        "SPAN-9f99380da22b4b09f0e2a764",
+        "SPAN-598104bcc416e6b3644effd3",
+        "SPAN-122bd9cf14264a59437dc08b",
+        "SPAN-0ccfbdb278478ec22517a7f7",
+        "SPAN-29634a517b33e91121bdf93a",
+        "SPAN-512c6f75730d46695b234ae5",
+        "SPAN-afcd11a2c7cc22160ebafbb1",
+        "SPAN-84dfa4ddf41d478b3e33281b",
+        "SPAN-c72d0473a1f45d14e1225211",
+        "SPAN-7d81579618e8fd71283f8914"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-76a822a8459a1f735ff7b2c3",
+        "SPAN-84eb98a0b90c5904d2631b77",
+        "SPAN-4c55f87a31112b55fcda43ff",
+        "SPAN-55cf26d9578cc73fe51a511d",
+        "SPAN-9f99380da22b4b09f0e2a764",
+        "SPAN-be9aeeaf9f9f3dea7c92472c",
+        "SPAN-9811f95ce682220d2f5a4fca"
+      ],
+      "selectedSpanIds": [
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-4c55f87a31112b55fcda43ff",
+        "SPAN-9811f95ce682220d2f5a4fca"
+      ],
+      "rankingLatencyMs": 2804.677667000011,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S4",
+        "S8"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\",\"S4\",\"S8\"]}",
+      "rankingInputHash": "sha256:4b934f8eba41e167cb78fd1c5c1249c67c4f6a736133761fb321f7bbd767cdf9",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2804.8179999999993,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2797.3649580000056,
+          "usage": {
+            "inputTokens": 670,
+            "outputTokens": 15,
+            "totalTokens": 685
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1890,
+            "evalMs": 835,
+            "totalMs": 2795
+          },
+          "tokensPerSecond": 17.964545173645295,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:3d26275e3c85011752771eb87baedc7b48565a057d5f2742c83188b8da8a4ccc"
+        }
+      ]
+    },
+    {
+      "caseId": "cash",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-76c8af382e47adc54b0e59a8"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-76c8af382e47adc54b0e59a8",
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-4eff0daa781bf5efc6416cbc",
+        "SPAN-4304d0b2ee0c36920e346bb1",
+        "SPAN-9a196c94788684bbf7cd71e0",
+        "SPAN-f06263ae2dfa0350a7fc1caa",
+        "SPAN-43dda19e2b2d512f200adb1b",
+        "SPAN-41a3f18bf004a54d3d32682d"
+      ],
+      "selectedSpanIds": [
+        "SPAN-76c8af382e47adc54b0e59a8",
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-4eff0daa781bf5efc6416cbc"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.045165999996243045,
+      "receipts": []
+    },
+    {
+      "caseId": "cash",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-76c8af382e47adc54b0e59a8"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-76c8af382e47adc54b0e59a8",
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-4eff0daa781bf5efc6416cbc",
+        "SPAN-4304d0b2ee0c36920e346bb1",
+        "SPAN-9a196c94788684bbf7cd71e0",
+        "SPAN-f06263ae2dfa0350a7fc1caa",
+        "SPAN-43dda19e2b2d512f200adb1b",
+        "SPAN-41a3f18bf004a54d3d32682d"
+      ],
+      "selectedSpanIds": [
+        "SPAN-76c8af382e47adc54b0e59a8",
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-4eff0daa781bf5efc6416cbc",
+        "SPAN-4304d0b2ee0c36920e346bb1",
+        "SPAN-9a196c94788684bbf7cd71e0",
+        "SPAN-f06263ae2dfa0350a7fc1caa",
+        "SPAN-43dda19e2b2d512f200adb1b",
+        "SPAN-41a3f18bf004a54d3d32682d"
+      ],
+      "rankingLatencyMs": 6922.676667000007,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "raw": "[{\"selectedHandles\":[\"S1\",\"S2\",\"S3\"],\"factKind\":\"liquidity_fact\"},{\"selectedHandles\":[\"S4\",\"S5\",\"S6\"],\"factKind\":\"liquidity_fact\"},{\"selectedHandles\":[\"S7\",\"S8\"],\"factKind\":\"operating_fact\"}]",
+      "rankingInputHash": "sha256:5744ed42ebee9844263108a08f833d1ce064707e1569b84edfcefd70783764d8",
+      "failure": "NONE",
+      "endToEndLatencyMs": 6923.496333000003,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 6920.9803329999995,
+          "usage": {
+            "inputTokens": 1170,
+            "outputTokens": 58,
+            "totalTokens": 1228
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 2306,
+            "evalMs": 4477,
+            "totalMs": 6917
+          },
+          "tokensPerSecond": 12.954256064992842,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:c746be5b33a53c101199e728db8208380efde1eaaa92d53813680e90f09a177d"
+        }
+      ]
+    },
+    {
+      "caseId": "cash",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-76c8af382e47adc54b0e59a8"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-76c8af382e47adc54b0e59a8",
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-4eff0daa781bf5efc6416cbc",
+        "SPAN-4304d0b2ee0c36920e346bb1",
+        "SPAN-9a196c94788684bbf7cd71e0",
+        "SPAN-f06263ae2dfa0350a7fc1caa",
+        "SPAN-43dda19e2b2d512f200adb1b",
+        "SPAN-41a3f18bf004a54d3d32682d"
+      ],
+      "selectedSpanIds": [
+        "SPAN-76c8af382e47adc54b0e59a8",
+        "SPAN-9deb66d832bd42a2b58d1e5f",
+        "SPAN-4eff0daa781bf5efc6416cbc"
+      ],
+      "rankingLatencyMs": 3296.035791999995,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\",\"S2\",\"S3\"]}",
+      "rankingInputHash": "sha256:be212041813f7c503ac6618d44e4bce647b5b66d1b46f3e1e3f7511e0ca29ea9",
+      "failure": "NONE",
+      "endToEndLatencyMs": 3296.1668749999953,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3288.917916000006,
+          "usage": {
+            "inputTokens": 792,
+            "outputTokens": 15,
+            "totalTokens": 807
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 2230,
+            "evalMs": 885,
+            "totalMs": 3287
+          },
+          "tokensPerSecond": 16.94511252119551,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:d87ae0dcb8b210d77d0908c010e03e9da22100572ad38ee61bfa338adea48a4d"
+        }
+      ]
+    },
+    {
+      "caseId": "debt",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e",
+        "SPAN-56f636a4601ce14eaf5eb302"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e",
+        "SPAN-56f636a4601ce14eaf5eb302",
+        "SPAN-e70a0560c8320a81c71ab2aa",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e",
+        "SPAN-50faca7c11e1bfc580dbbc1d"
+      ],
+      "selectedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.0704999999870779,
+      "receipts": []
+    },
+    {
+      "caseId": "debt",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e",
+        "SPAN-56f636a4601ce14eaf5eb302"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e",
+        "SPAN-56f636a4601ce14eaf5eb302",
+        "SPAN-e70a0560c8320a81c71ab2aa",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e",
+        "SPAN-50faca7c11e1bfc580dbbc1d"
+      ],
+      "selectedSpanIds": [],
+      "rankingLatencyMs": 1479.6600830000098,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [],
+      "raw": "[]",
+      "rankingInputHash": "sha256:c80030773aa520d0d547f7cc6979ece518c998b8e7b0244385324389a2126080",
+      "failure": "MODEL_ABSTENTION",
+      "endToEndLatencyMs": 1479.7200409999932,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1479.5254580000037,
+          "usage": {
+            "inputTokens": 872,
+            "outputTokens": 2,
+            "totalTokens": 874
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1263,
+            "evalMs": 77,
+            "totalMs": 1479
+          },
+          "tokensPerSecond": 26.109660574412533,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b"
+        }
+      ]
+    },
+    {
+      "caseId": "debt",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e",
+        "SPAN-56f636a4601ce14eaf5eb302"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-050cbf8a3d8d52993281895c",
+        "SPAN-22e1fc582a689cfef41ffe1e",
+        "SPAN-56f636a4601ce14eaf5eb302",
+        "SPAN-e70a0560c8320a81c71ab2aa",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e",
+        "SPAN-50faca7c11e1bfc580dbbc1d"
+      ],
+      "selectedSpanIds": [
+        "SPAN-912bdc6b23a7a0c9c3191603",
+        "SPAN-22e1fc582a689cfef41ffe1e"
+      ],
+      "rankingLatencyMs": 2200.4287909999985,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S3"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\",\"S3\"]}",
+      "rankingInputHash": "sha256:5b9720c1d4ba4b3589792bcc73c185ca2e80eff53d025750f480e88168c08256",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2200.8125419999997,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2191.8577499999956,
+          "usage": {
+            "inputTokens": 496,
+            "outputTokens": 12,
+            "totalTokens": 508
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1357,
+            "evalMs": 794,
+            "totalMs": 2190
+          },
+          "tokensPerSecond": 15.12180614852638,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:2eddf6b8670acc410414fe7f53ec55aca9078ddf92e81e07c85d93bcae98bf6c"
+        }
+      ]
+    },
+    {
+      "caseId": "liquidity",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e",
+        "SPAN-537ffd971e706ca4081cc473",
+        "SPAN-008e81da045cfc2c153c05cd",
+        "SPAN-308077d302244d6982b0062c",
+        "SPAN-50faca7c11e1bfc580dbbc1d",
+        "SPAN-f59670fd3b65c16bc67a69cc"
+      ],
+      "selectedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.06495800000266172,
+      "receipts": []
+    },
+    {
+      "caseId": "liquidity",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e",
+        "SPAN-537ffd971e706ca4081cc473",
+        "SPAN-008e81da045cfc2c153c05cd",
+        "SPAN-308077d302244d6982b0062c",
+        "SPAN-50faca7c11e1bfc580dbbc1d",
+        "SPAN-f59670fd3b65c16bc67a69cc"
+      ],
+      "selectedSpanIds": [],
+      "rankingLatencyMs": 1188.9733330000017,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [],
+      "raw": "[]",
+      "rankingInputHash": "sha256:b288d6962a89e2a31d70636523c9d31e92300f03bc2e4736ae6f07038ebe6f00",
+      "failure": "MODEL_ABSTENTION",
+      "endToEndLatencyMs": 1189.0289159999957,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1188.8212499999936,
+          "usage": {
+            "inputTokens": 853,
+            "outputTokens": 2,
+            "totalTokens": 855
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 989,
+            "evalMs": 68,
+            "totalMs": 1188
+          },
+          "tokensPerSecond": 29.27443317378767,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b"
+        }
+      ]
+    },
+    {
+      "caseId": "liquidity",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095",
+        "SPAN-2d6db85e9d1be683b951a404",
+        "SPAN-0800e2d233365e691164629e",
+        "SPAN-537ffd971e706ca4081cc473",
+        "SPAN-008e81da045cfc2c153c05cd",
+        "SPAN-308077d302244d6982b0062c",
+        "SPAN-50faca7c11e1bfc580dbbc1d",
+        "SPAN-f59670fd3b65c16bc67a69cc"
+      ],
+      "selectedSpanIds": [
+        "SPAN-b0a45cb6678b9436c4ce3095"
+      ],
+      "rankingLatencyMs": 1633.0935409999947,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1"
+      ],
+      "raw": "{\"rankedHandles\":[\"S1\"]}",
+      "rankingInputHash": "sha256:f792ca3dd1abc3aa1a22f630777b7f033f6d7a3c5c447033b2653d26c6cc3c51",
+      "failure": "NONE",
+      "endToEndLatencyMs": 1633.2111250000016,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1620.1786659999925,
+          "usage": {
+            "inputTokens": 477,
+            "outputTokens": 9,
+            "totalTokens": 486
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1018,
+            "evalMs": 557,
+            "totalMs": 1619
+          },
+          "tokensPerSecond": 16.152537384150413,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:2230d7eb6c13462f10ac7a4e01ddf6a6b9d925ec19d02559730457ab29c6ca56"
+        }
+      ]
+    },
+    {
+      "caseId": "cash-flow",
+      "policy": "retrieval",
+      "expectedSpanIds": [
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-b01ee71ae209b3fe33ca9245"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-b01ee71ae209b3fe33ca9245",
+        "SPAN-8c2e8dd192581e01b1a0cd6e",
+        "SPAN-1d9671d3d8a54990f51cdad1",
+        "SPAN-025b75afd1f17c6e610bf1e0",
+        "SPAN-d42de3cde3ef08e68612ed5f",
+        "SPAN-4ec545f8a105e429ef6a8b4c"
+      ],
+      "selectedSpanIds": [
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-b01ee71ae209b3fe33ca9245"
+      ],
+      "rankingLatencyMs": 0,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "raw": null,
+      "rankingInputHash": null,
+      "failure": "NONE",
+      "endToEndLatencyMs": 0.0810419999907026,
+      "receipts": []
+    },
+    {
+      "caseId": "cash-flow",
+      "policy": "multi",
+      "expectedSpanIds": [
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-b01ee71ae209b3fe33ca9245"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-b01ee71ae209b3fe33ca9245",
+        "SPAN-8c2e8dd192581e01b1a0cd6e",
+        "SPAN-1d9671d3d8a54990f51cdad1",
+        "SPAN-025b75afd1f17c6e610bf1e0",
+        "SPAN-d42de3cde3ef08e68612ed5f",
+        "SPAN-4ec545f8a105e429ef6a8b4c"
+      ],
+      "selectedSpanIds": [],
+      "rankingLatencyMs": 1191.2526250000083,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [],
+      "raw": "[]",
+      "rankingInputHash": "sha256:04948e313c897c6358bc2367e5eb87ad2fad475a7f64a3949b4b5a7f5f19e615",
+      "failure": "MODEL_ABSTENTION",
+      "endToEndLatencyMs": 1191.3837910000002,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 1191.1471660000097,
+          "usage": {
+            "inputTokens": 916,
+            "outputTokens": 2,
+            "totalTokens": 918
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1098,
+            "evalMs": 70,
+            "totalMs": 1190
+          },
+          "tokensPerSecond": 28.5673475217826,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:b3283bf184bb082f364b8537776bc6b15fce2ff9f9acb3fb11ae87da394bfd4b"
+        }
+      ]
+    },
+    {
+      "caseId": "cash-flow",
+      "policy": "ranked",
+      "expectedSpanIds": [
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-b01ee71ae209b3fe33ca9245"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-88efc5a0a42e8032f4986bec",
+        "SPAN-cecff6d8b260654b5587e8f8",
+        "SPAN-b01ee71ae209b3fe33ca9245",
+        "SPAN-8c2e8dd192581e01b1a0cd6e",
+        "SPAN-1d9671d3d8a54990f51cdad1",
+        "SPAN-025b75afd1f17c6e610bf1e0",
+        "SPAN-d42de3cde3ef08e68612ed5f",
+        "SPAN-4ec545f8a105e429ef6a8b4c"
+      ],
+      "selectedSpanIds": [
+        "SPAN-b01ee71ae209b3fe33ca9245"
+      ],
+      "rankingLatencyMs": 2724.673708000002,
+      "retrievalLatencyMs": null,
+      "retrievalLatencyNote": "offline replay: no new retrieval; historical query latency not in ranking artifact",
+      "candidateFoundAtRank": null,
+      "attempts": [],
+      "rankedHandles": [
+        "S3"
+      ],
+      "raw": "{\"rankedHandles\":[\"S3\"]}",
+      "rankingInputHash": "sha256:0ff1a484933d3581bb0d87312066e6926e5325c2ccaf5d2b4321ea686b9deceb",
+      "failure": "NONE",
+      "endToEndLatencyMs": 2724.861916000009,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2696.6036250000034,
+          "usage": {
+            "inputTokens": 541,
+            "outputTokens": 9,
+            "totalTokens": 550
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1924,
+            "evalMs": 754,
+            "totalMs": 2693
+          },
+          "tokensPerSecond": 11.92928320913624,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:dcf46950e07e162d4943e6d7c91ca06dc3aa359683a2a2d6bc04cf4070c0bc14"
+        }
+      ]
+    }
+  ]
+}

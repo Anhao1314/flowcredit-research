@@ -27,7 +27,9 @@
     "local-retrieval": "node local-retrieval/cli.js",
     "test:local-retrieval": "node --test local-retrieval-test/*.test.js",
     "selection-handles": "node local-retrieval/cli.js locked",
-    "test:selection-handles": "node --test selection-handles-test/*.test.js"
+    "test:selection-handles": "node --test selection-handles-test/*.test.js",
+    "selector-ranking": "node selector-ranking/cli.js",
+    "test:selector-ranking": "node --test selector-ranking-test/*.test.js"
   },
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

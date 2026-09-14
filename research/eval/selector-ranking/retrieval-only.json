@@ -1,0 +1,331 @@
+{
+  "dev-coreweave-v0.3": {
+    "cases": 19,
+    "Hit@K": {
+      "1": 0.8947368421052632,
+      "2": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "8": 1.0
+    },
+    "MRR": 0.9473684210526315,
+    "rows": [
+      {
+        "caseId": "annual-revenue",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "annual-prior-revenue",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "annual-growth",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "annual-largest-customer",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "geographic-revenue",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "q2-revenue",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "cost-revenue",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "technology",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "significant-customers",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "customer-b",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "rpo",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "history",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "rate-risk",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "controls",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "cash",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "debt",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "liquidity",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "cash-flow",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "capex",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "negative-token",
+        "targetRank": null,
+        "uncappedRank": null
+      },
+      {
+        "caseId": "negative-quantum",
+        "targetRank": null,
+        "uncappedRank": null
+      }
+    ]
+  },
+  "dev-coreweave-v0.3-answerfree": {
+    "cases": 19,
+    "Hit@K": {
+      "1": 0.47368421052631576,
+      "2": 0.6842105263157895,
+      "3": 0.8421052631578947,
+      "5": 0.9473684210526315,
+      "8": 1.0
+    },
+    "MRR": 0.6618421052631579,
+    "rows": [
+      {
+        "caseId": "annual-revenue",
+        "targetRank": 4,
+        "uncappedRank": 4
+      },
+      {
+        "caseId": "annual-prior-revenue",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "annual-growth",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "annual-largest-customer",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "geographic-revenue",
+        "targetRank": 3,
+        "uncappedRank": 3
+      },
+      {
+        "caseId": "q2-revenue",
+        "targetRank": 3,
+        "uncappedRank": 3
+      },
+      {
+        "caseId": "cost-revenue",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "technology",
+        "targetRank": 3,
+        "uncappedRank": 3
+      },
+      {
+        "caseId": "significant-customers",
+        "targetRank": 5,
+        "uncappedRank": 5
+      },
+      {
+        "caseId": "customer-b",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "rpo",
+        "targetRank": 8,
+        "uncappedRank": 8
+      },
+      {
+        "caseId": "history",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "rate-risk",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "controls",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "cash",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "debt",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "liquidity",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "cash-flow",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "capex",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "negative-token",
+        "targetRank": null,
+        "uncappedRank": null
+      },
+      {
+        "caseId": "negative-quantum",
+        "targetRank": null,
+        "uncappedRank": null
+      }
+    ]
+  },
+  "locked-16": {
+    "cases": 16,
+    "Hit@K": {
+      "1": 0.0625,
+      "2": 0.3125,
+      "3": 0.4375,
+      "5": 0.5,
+      "8": 0.9375
+    },
+    "MRR": 0.307514880952381,
+    "rows": [
+      {
+        "caseId": "GOLD-01",
+        "targetRank": 6,
+        "uncappedRank": 6
+      },
+      {
+        "caseId": "GOLD-02",
+        "targetRank": 3,
+        "uncappedRank": 3
+      },
+      {
+        "caseId": "GOLD-03",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "GOLD-04",
+        "targetRank": 5,
+        "uncappedRank": 5
+      },
+      {
+        "caseId": "GOLD-05",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "GOLD-06",
+        "targetRank": 6,
+        "uncappedRank": 6
+      },
+      {
+        "caseId": "GOLD-07",
+        "targetRank": 7,
+        "uncappedRank": 7
+      },
+      {
+        "caseId": "GOLD-08",
+        "targetRank": 1,
+        "uncappedRank": 1
+      },
+      {
+        "caseId": "GOLD-09",
+        "targetRank": 3,
+        "uncappedRank": 3
+      },
+      {
+        "caseId": "GOLD-10",
+        "targetRank": 2,
+        "uncappedRank": 2
+      },
+      {
+        "caseId": "GOLD-11",
+        "targetRank": null,
+        "uncappedRank": 11
+      },
+      {
+        "caseId": "GOLD-12",
+        "targetRank": 7,
+        "uncappedRank": 7
+      },
+      {
+        "caseId": "GOLD-13",
+        "targetRank": 6,
+        "uncappedRank": 6
+      },
+      {
+        "caseId": "GOLD-14",
+        "targetRank": 8,
+        "uncappedRank": 8
+      },
+      {
+        "caseId": "GOLD-15",
+        "targetRank": 7,
+        "uncappedRank": 7
+      },
+      {
+        "caseId": "GOLD-16",
+        "targetRank": 2,
+        "uncappedRank": 2
+      }
+    ]
+  }
+}

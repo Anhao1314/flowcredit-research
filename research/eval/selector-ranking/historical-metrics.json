@@ -1,0 +1,430 @@
+{
+  "v0.11": {
+    "selections": 81,
+    "targetHits": 12,
+    "nonTargetSelections": 69,
+    "selectionPrecision": 0.14814814814814814,
+    "nonTargetSelectionRate": 0.8518518518518519,
+    "targetHitRate": 0.75,
+    "averageSelections": 5.0625,
+    "breadthHitCorrelation": 0.7814734827244895,
+    "Hit@1": "unavailable: historical output is unordered multi-select, array position is not relevance rank",
+    "targetRank": "unavailable",
+    "broadHits": [
+      "GOLD-02",
+      "GOLD-03",
+      "GOLD-04",
+      "GOLD-09",
+      "GOLD-10",
+      "GOLD-13",
+      "GOLD-14",
+      "GOLD-15",
+      "GOLD-16"
+    ],
+    "rows": [
+      {
+        "caseId": "GOLD-01",
+        "selections": 3,
+        "targetHit": true,
+        "nonTarget": 2,
+        "selectedSpanIds": [
+          "SPAN-68dd70deec34f0686a1837be",
+          "SPAN-fed0548cc5586fc7f8c10b48",
+          "SPAN-e0d1db2a83338062249e5c36"
+        ]
+      },
+      {
+        "caseId": "GOLD-02",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-a5d8c1cfe7eff58d77334151",
+          "SPAN-1ce8872206cfc2993fcd3502",
+          "SPAN-40c79dd0a87e4532745dcc6e",
+          "SPAN-cd6c0d8f643719446eeb5e2a",
+          "SPAN-65ba590f0b1b66b6e18283e7",
+          "SPAN-739a02257e1593f2fd82b824",
+          "SPAN-fa7d82bd52d2702634ad3019"
+        ]
+      },
+      {
+        "caseId": "GOLD-03",
+        "selections": 8,
+        "targetHit": true,
+        "nonTarget": 7,
+        "selectedSpanIds": [
+          "SPAN-27615720736bec33c34434e2",
+          "SPAN-cd6c0d8f643719446eeb5e2a",
+          "SPAN-65ba590f0b1b66b6e18283e7",
+          "SPAN-1ce8872206cfc2993fcd3502",
+          "SPAN-a5d8c1cfe7eff58d77334151",
+          "SPAN-739a02257e1593f2fd82b824",
+          "SPAN-40c79dd0a87e4532745dcc6e",
+          "SPAN-9318bafd3ead97babf00c85c"
+        ]
+      },
+      {
+        "caseId": "GOLD-04",
+        "selections": 8,
+        "targetHit": true,
+        "nonTarget": 7,
+        "selectedSpanIds": [
+          "SPAN-13f57d5a120990520d240cf9",
+          "SPAN-c591e82a19e556d9ecc6dfbf",
+          "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "SPAN-3a7fd1f07ba73dc16b3551f6",
+          "SPAN-794b76ee82d02bf8dce91d0f",
+          "SPAN-45d3fe4a685d2f749cafbdaf",
+          "SPAN-dbdc95c9f5f01a5577d37731",
+          "SPAN-7ffa27fa51d013557c59574c"
+        ]
+      },
+      {
+        "caseId": "GOLD-05",
+        "selections": 0,
+        "targetHit": false,
+        "nonTarget": 0,
+        "selectedSpanIds": []
+      },
+      {
+        "caseId": "GOLD-06",
+        "selections": 0,
+        "targetHit": false,
+        "nonTarget": 0,
+        "selectedSpanIds": []
+      },
+      {
+        "caseId": "GOLD-07",
+        "selections": 4,
+        "targetHit": true,
+        "nonTarget": 3,
+        "selectedSpanIds": [
+          "SPAN-13f57d5a120990520d240cf9",
+          "SPAN-88a9b7b151e96b2751279350",
+          "SPAN-3a7fd1f07ba73dc16b3551f6",
+          "SPAN-6c01a61ab909f5e203039ac3"
+        ]
+      },
+      {
+        "caseId": "GOLD-08",
+        "selections": 0,
+        "targetHit": false,
+        "nonTarget": 0,
+        "selectedSpanIds": []
+      },
+      {
+        "caseId": "GOLD-09",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-41e0c84eab1468399180f726",
+          "SPAN-3aad467599de9b15c6fd000a",
+          "SPAN-8be23231d2f90b1a38c279ef",
+          "SPAN-183f2695b1a3d9d02877b5c2",
+          "SPAN-2b154eca7884845aeb9320a3",
+          "SPAN-b9de5bb60643e511933abe4e",
+          "SPAN-57265a1e8b757d696e715026"
+        ]
+      },
+      {
+        "caseId": "GOLD-10",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-920b6d2977307838b3c7f479",
+          "SPAN-2f18f201b5eacc83deb308bc",
+          "SPAN-18901a16b3dca17bc89c9361",
+          "SPAN-7d05af082dad024655e8b8cd",
+          "SPAN-37ff6a2d9e175b1d405cba67",
+          "SPAN-59ae50e91207605cd7676fc3",
+          "SPAN-9d46be848a4d453b5204fc7c"
+        ]
+      },
+      {
+        "caseId": "GOLD-11",
+        "selections": 5,
+        "targetHit": false,
+        "nonTarget": 5,
+        "selectedSpanIds": [
+          "SPAN-9cd8a931e5c0e3c3a8745422",
+          "SPAN-1e8b7a749e0876befa757ce5",
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-34084942012415a83188e287"
+        ]
+      },
+      {
+        "caseId": "GOLD-12",
+        "selections": 4,
+        "targetHit": true,
+        "nonTarget": 3,
+        "selectedSpanIds": [
+          "SPAN-3a7fd1f07ba73dc16b3551f6",
+          "SPAN-6a98c253bf1f87bfcb545741",
+          "SPAN-13f57d5a120990520d240cf9",
+          "SPAN-26aec07d43a043304ba9dc14"
+        ]
+      },
+      {
+        "caseId": "GOLD-13",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "SPAN-1e8b7a749e0876befa757ce5",
+          "SPAN-9cd8a931e5c0e3c3a8745422",
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-210e0be057e8d54a4818886a",
+          "SPAN-99566db088adaae178a4968d"
+        ]
+      },
+      {
+        "caseId": "GOLD-14",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "SPAN-1e8b7a749e0876befa757ce5",
+          "SPAN-9cd8a931e5c0e3c3a8745422",
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-210e0be057e8d54a4818886a",
+          "SPAN-99566db088adaae178a4968d"
+        ]
+      },
+      {
+        "caseId": "GOLD-15",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "SPAN-1e8b7a749e0876befa757ce5",
+          "SPAN-9cd8a931e5c0e3c3a8745422",
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-210e0be057e8d54a4818886a",
+          "SPAN-99566db088adaae178a4968d"
+        ]
+      },
+      {
+        "caseId": "GOLD-16",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-40c79dd0a87e4532745dcc6e",
+          "SPAN-a5d8c1cfe7eff58d77334151",
+          "SPAN-cd6c0d8f643719446eeb5e2a",
+          "SPAN-739a02257e1593f2fd82b824",
+          "SPAN-1ce8872206cfc2993fcd3502",
+          "SPAN-65ba590f0b1b66b6e18283e7",
+          "SPAN-9318bafd3ead97babf00c85c"
+        ]
+      }
+    ],
+    "sourceArtifact": "research-local-retrieval/session-1789360831087/arm-v0.11-hybrid-raw.json"
+  },
+  "v0.11.1": {
+    "selections": 52,
+    "targetHits": 8,
+    "nonTargetSelections": 44,
+    "selectionPrecision": 0.15384615384615385,
+    "nonTargetSelectionRate": 0.8461538461538461,
+    "targetHitRate": 0.5,
+    "averageSelections": 3.25,
+    "breadthHitCorrelation": 0.6437263095787181,
+    "Hit@1": "unavailable: historical output is unordered multi-select, array position is not relevance rank",
+    "targetRank": "unavailable",
+    "broadHits": [
+      "GOLD-02",
+      "GOLD-03"
+    ],
+    "rows": [
+      {
+        "caseId": "GOLD-01",
+        "selections": 0,
+        "targetHit": false,
+        "nonTarget": 0,
+        "selectedSpanIds": []
+      },
+      {
+        "caseId": "GOLD-02",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-a5d8c1cfe7eff58d77334151",
+          "SPAN-40c79dd0a87e4532745dcc6e",
+          "SPAN-65ba590f0b1b66b6e18283e7",
+          "SPAN-cd6c0d8f643719446eeb5e2a",
+          "SPAN-1ce8872206cfc2993fcd3502",
+          "SPAN-739a02257e1593f2fd82b824",
+          "SPAN-fa7d82bd52d2702634ad3019"
+        ]
+      },
+      {
+        "caseId": "GOLD-03",
+        "selections": 7,
+        "targetHit": true,
+        "nonTarget": 6,
+        "selectedSpanIds": [
+          "SPAN-cd6c0d8f643719446eeb5e2a",
+          "SPAN-a5d8c1cfe7eff58d77334151",
+          "SPAN-65ba590f0b1b66b6e18283e7",
+          "SPAN-1ce8872206cfc2993fcd3502",
+          "SPAN-739a02257e1593f2fd82b824",
+          "SPAN-40c79dd0a87e4532745dcc6e",
+          "SPAN-9318bafd3ead97babf00c85c"
+        ]
+      },
+      {
+        "caseId": "GOLD-04",
+        "selections": 5,
+        "targetHit": true,
+        "nonTarget": 4,
+        "selectedSpanIds": [
+          "SPAN-13f57d5a120990520d240cf9",
+          "SPAN-3a7fd1f07ba73dc16b3551f6",
+          "SPAN-c591e82a19e556d9ecc6dfbf",
+          "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "SPAN-794b76ee82d02bf8dce91d0f"
+        ]
+      },
+      {
+        "caseId": "GOLD-05",
+        "selections": 0,
+        "targetHit": false,
+        "nonTarget": 0,
+        "selectedSpanIds": []
+      },
+      {
+        "caseId": "GOLD-06",
+        "selections": 0,
+        "targetHit": false,
+        "nonTarget": 0,
+        "selectedSpanIds": []
+      },
+      {
+        "caseId": "GOLD-07",
+        "selections": 4,
+        "targetHit": true,
+        "nonTarget": 3,
+        "selectedSpanIds": [
+          "SPAN-13f57d5a120990520d240cf9",
+          "SPAN-88a9b7b151e96b2751279350",
+          "SPAN-3a7fd1f07ba73dc16b3551f6",
+          "SPAN-6c01a61ab909f5e203039ac3"
+        ]
+      },
+      {
+        "caseId": "GOLD-08",
+        "selections": 2,
+        "targetHit": false,
+        "nonTarget": 2,
+        "selectedSpanIds": [
+          "SPAN-62e029512b0f5661dc59a0be",
+          "SPAN-e01cd2a68842fefdfdf652ce"
+        ]
+      },
+      {
+        "caseId": "GOLD-09",
+        "selections": 5,
+        "targetHit": true,
+        "nonTarget": 4,
+        "selectedSpanIds": [
+          "SPAN-3aad467599de9b15c6fd000a",
+          "SPAN-8be23231d2f90b1a38c279ef",
+          "SPAN-41e0c84eab1468399180f726",
+          "SPAN-183f2695b1a3d9d02877b5c2",
+          "SPAN-2b154eca7884845aeb9320a3"
+        ]
+      },
+      {
+        "caseId": "GOLD-10",
+        "selections": 3,
+        "targetHit": true,
+        "nonTarget": 2,
+        "selectedSpanIds": [
+          "SPAN-920b6d2977307838b3c7f479",
+          "SPAN-2f18f201b5eacc83deb308bc",
+          "SPAN-18901a16b3dca17bc89c9361"
+        ]
+      },
+      {
+        "caseId": "GOLD-11",
+        "selections": 5,
+        "targetHit": false,
+        "nonTarget": 5,
+        "selectedSpanIds": [
+          "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "SPAN-1e8b7a749e0876befa757ce5",
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-34084942012415a83188e287"
+        ]
+      },
+      {
+        "caseId": "GOLD-12",
+        "selections": 2,
+        "targetHit": false,
+        "nonTarget": 2,
+        "selectedSpanIds": [
+          "SPAN-3a7fd1f07ba73dc16b3551f6",
+          "SPAN-13f57d5a120990520d240cf9"
+        ]
+      },
+      {
+        "caseId": "GOLD-13",
+        "selections": 3,
+        "targetHit": true,
+        "nonTarget": 2,
+        "selectedSpanIds": [
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-210e0be057e8d54a4818886a"
+        ]
+      },
+      {
+        "caseId": "GOLD-14",
+        "selections": 3,
+        "targetHit": false,
+        "nonTarget": 3,
+        "selectedSpanIds": [
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-210e0be057e8d54a4818886a"
+        ]
+      },
+      {
+        "caseId": "GOLD-15",
+        "selections": 3,
+        "targetHit": true,
+        "nonTarget": 2,
+        "selectedSpanIds": [
+          "SPAN-9319f06810062011dd4117a7",
+          "SPAN-b0a98a249d8ab690bff97711",
+          "SPAN-210e0be057e8d54a4818886a"
+        ]
+      },
+      {
+        "caseId": "GOLD-16",
+        "selections": 3,
+        "targetHit": false,
+        "nonTarget": 3,
+        "selectedSpanIds": [
+          "SPAN-a5d8c1cfe7eff58d77334151",
+          "SPAN-65ba590f0b1b66b6e18283e7",
+          "SPAN-cd6c0d8f643719446eeb5e2a"
+        ]
+      }
+    ],
+    "sourceArtifact": "research-local-retrieval/session-1789364659077/arm-v0.11.1-handles-raw.json"
+  }
+}

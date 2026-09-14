@@ -1,0 +1,75 @@
+{
+  "version": "selector-value-gate/v0.11.2",
+  "registeredAt": "2026-09-14T06:58:46.536Z",
+  "registeredBefore": "Only one frozen ranked-handle policy on locked 16; no locked inference yet",
+  "promptVersion": "span-ranking-handles/v1",
+  "schemaVersion": "ranked-handles/v1",
+  "promptHash": "sha256:2b1b338d42ca0fc20991d1b69aedd6348c795dd37b44b21afeedf5152be66ba9",
+  "developmentHash": "sha256:540b3fa16558091ff63d482fcacedc7b5b92be9448bde5bb2b15c1331aad8e84",
+  "selectedPolicy": "ranked",
+  "model": {
+    "kind": "real",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "temperature": 0,
+    "contextLength": 8192,
+    "think": false,
+    "structuredOutputMode": "ollama_json_schema",
+    "endpointOrigin": "http://127.0.0.1:11434",
+    "runtime": {
+      "name": "ollama",
+      "version": "0.34.0"
+    },
+    "modelInfo": {
+      "size": 6594474711,
+      "family": "qwen35",
+      "parameterSize": "9.7B",
+      "quantization": "Q4_K_M",
+      "contextLength": 262144,
+      "format": "gguf"
+    }
+  },
+  "retrieval": {
+    "mode": "hybrid",
+    "k": 8,
+    "parameters": "unchanged v0.11"
+  },
+  "safety": {
+    "invalidHandle": 0,
+    "fabricatedCanonicalSupport": 0,
+    "sourceFidelity": 1,
+    "falseAccept": 0,
+    "futureLeakage": 0,
+    "wrongSubject": 0,
+    "claimMutation": 0,
+    "timeout": 0
+  },
+  "value": {
+    "minimumAbsoluteMrrUplift": 0.05,
+    "minimumAbsoluteHit1Uplift": 0.0625,
+    "rationale": "Require both at least 0.05 MRR and one additional rank-1 hit on 16 cases; substantially below measured answer-free exact-label development uplift, but excludes tiny or broad-hit improvements."
+  },
+  "decisionRule": "Both value uplifts and all safety gates plus injection pass: SELECTOR READY. Retrieval MRR and Hit@1 both >= Qwen with safety pass: BYPASS LLM SELECTOR. Otherwise STAY ON SELECTOR CALIBRATION. No Claim Revision.",
+  "codeHashes": {
+    "research/local-retrieval/layer.js": "sha256:d4da461abf5d127d3009e528e39d333b99e3225597e4c6926676d6aca5b7d3c8",
+    "research/local-retrieval/search.js": "sha256:7a9b3609ad91c0253ee142917be105fa304bda2cb1524eda81f1df1f8fd6f445",
+    "research/local-retrieval/lexical.js": "sha256:76b99aaff591f7b63fb78ff8ac20aebf9bcfd45a574829160937a8018f93f8dd",
+    "research/local-retrieval/provider.js": "sha256:32571d06ea0a6b76d87c08d4e01c6db818d0267814e14ed7b7d5c535c7b3257f",
+    "research/local-retrieval/render.js": "sha256:5eaf1d08e490bdef09338f51c8029b694c1c14bb2d83586fe38559182730f684",
+    "research/local-retrieval/queries.js": "sha256:91926ab8c31c2856a986e434a0928f95453c9a840c054ded41c8c43cd0b424d1",
+    "research/evidence-support/layer.js": "sha256:9fdefe957d6969c30812f0baac55ea57600ddc947d4e6ac2a62b6bdc70cd0c97",
+    "research/evidence-support/validator.js": "sha256:c5ab58bf344e0b02f4dd0f999976ae7c952db7e6e230abd1ca11a11f2ea743c4",
+    "research/evidence-support/support.js": "sha256:2a0dcb9940464cbe45eb11f3a68af2aa2f1faba28626884700812f7863c97202",
+    "research/evidence-support/proposal.js": "sha256:3b3b3c9e407325b279a4fe830a1f279d0eacba6279049964d55c1d9862bf94ed",
+    "research/evidence-support/contract.js": "sha256:c8b4e7d91bb06d93df74aab178ce5bab17416659386c58c65fd21b7685b9d917",
+    "research/selection-handles/handles.js": "sha256:fdded6b88d624b2fd864bb38f8de33df28ac2821e7e3a39a4c3047defba0af60",
+    "research/local-model/provider.js": "sha256:ca31dbf50641bf37798df4ea09809e5ba04bbd84a619b9b754644b8377901549",
+    "research/selector-ranking/contract.js": "sha256:dd0d130f14dc22f9fa324e621ee0570e3bab6196e0b744a7b91914b360e94a82",
+    "research/selector-ranking/layer.js": "sha256:d7baf18eb6900b6e86520c071aa329ccc591b43b03ebe68404430d7d95f2185a",
+    "research/selector-ranking/metrics.js": "sha256:00c44bcecc10b3c3f43e8c4d3535e6e1686b0093d896f96ce44f8f06b45cb8d3",
+    "research/selector-ranking/cli.js": "sha256:6080af0eaa267ff508ad15e82ba1386a2ea3d9b097e68fa7288a4484e26b5e1f",
+    "research/selector-ranking/security.js": "sha256:46b48c7c7715495f146ff33df128d457a89e0c12f87152fe16cb19e98513663e",
+    "research/selector-ranking/ranking-output.schema.json": "sha256:8e9392d803f29d7ba6235f2ca01df1b6fd7747ee9cfb44063bc4a29e01d4eb8d"
+  }
+}
