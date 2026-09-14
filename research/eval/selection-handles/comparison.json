@@ -1,0 +1,1960 @@
+{
+ "version": "selection-handles-comparison/v0.11.1",
+ "generatedAt": "2026-09-14T05:51:49.655Z",
+ "subject": "locked 16 CoreWeave Gold; v0.11 hybrid retrieval (K=8) and the frozen Qwen model, with the model-facing selection interface as the only experimental variable: canonical span ids in v0.11 against invocation-local handles in v0.11.1",
+ "baseline": {
+  "phase": "v0.11",
+  "decision": "STAY ON RETRIEVAL",
+  "targetSelectionRate": 0.75,
+  "candidateConversionRate": 0.6875,
+  "timeouts": 0,
+  "invalidSelectionHandles": null,
+  "fabricatedSupport": 1,
+  "chainCorrectRate": 0.375,
+  "retrievalRecallAt8": 0.9375,
+  "artifacts": [
+   "research/eval/local-retrieval/results.json",
+   "research/eval/local-retrieval/comparison.json"
+  ]
+ },
+ "table": [
+  {
+   "metric": "target selection",
+   "v011": 0.75,
+   "v0111": 0.5,
+   "delta": -0.25
+  },
+  {
+   "metric": "candidate conversion",
+   "v011": 0.6875,
+   "v0111": 0.5625,
+   "delta": -0.125
+  },
+  {
+   "metric": "timeouts",
+   "v011": 0,
+   "v0111": 0,
+   "delta": 0
+  },
+  {
+   "metric": "invalid selection handles",
+   "v011": null,
+   "v0111": 0,
+   "delta": null
+  },
+  {
+   "metric": "fabricated canonical support",
+   "v011": 1,
+   "v0111": 0,
+   "delta": -1
+  },
+  {
+   "metric": "full chain",
+   "v011": 0.375,
+   "v0111": 0.1875,
+   "delta": -0.1875
+  }
+ ],
+ "retrieval": {
+  "mode": "hybrid",
+  "limit": 8,
+  "recallAtK": {
+   "numerator": 15,
+   "denominator": 16,
+   "rate": 0.9375
+  },
+  "retrievalMetrics": {
+   "version": "span-retrieval-metrics/v1",
+   "retrievalVersion": "span-hybrid-retrieval/v1",
+   "rows": [
+    {
+     "caseId": "GOLD-01",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 140,
+     "question": "CoreWeave FY2025 us geographic revenue concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 6,
+     "candidateCount": 43,
+     "visibleCount": 43,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.68688,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-7c532ec13bd0c48e058a47f8",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.68688,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-57265a1e8b757d696e715026",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.673321,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-b9de5bb60643e511933abe4e",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.669934,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-68dd70deec34f0686a1837be",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.647356,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-fed0548cc5586fc7f8c10b48",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.64659,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-e0d1db2a83338062249e5c36",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.645084,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-2b154eca7884845aeb9320a3",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.641268,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-41e0c84eab1468399180f726",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.637556,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-02",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 93,
+     "question": "CoreWeave FY2024 consolidated revenue",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 3,
+     "candidateCount": 32,
+     "visibleCount": 32,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.731667,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-27615720736bec33c34434e2",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.731667,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-1ce8872206cfc2993fcd3502",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.563153,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.562202,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-739a02257e1593f2fd82b824",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.558842,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-65ba590f0b1b66b6e18283e7",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.555696,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.554829,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.549543,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-fa7d82bd52d2702634ad3019",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.537142,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-03",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 93,
+     "question": "CoreWeave FY2025 consolidated revenue",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 2,
+     "candidateCount": 32,
+     "visibleCount": 32,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.741728,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-27615720736bec33c34434e2",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.741728,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.562515,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-65ba590f0b1b66b6e18283e7",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.562359,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-1ce8872206cfc2993fcd3502",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.561668,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.561355,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-739a02257e1593f2fd82b824",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.559331,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.558907,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-9318bafd3ead97babf00c85c",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.544147,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-04",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 46,
+     "question": "CoreWeave Q2 2026 cost of revenue compute spend",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 5,
+     "candidateCount": 62,
+     "visibleCount": 62,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.672969,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-13f57d5a120990520d240cf9",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.672969,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-3a7fd1f07ba73dc16b3551f6",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.669698,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-45d3fe4a685d2f749cafbdaf",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.644763,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-c591e82a19e556d9ecc6dfbf",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.605066,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.601911,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-794b76ee82d02bf8dce91d0f",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.601249,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-7ffa27fa51d013557c59574c",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.597861,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-dbdc95c9f5f01a5577d37731",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.597417,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-05",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 18,
+     "question": "CoreWeave 2026-06-30 remaining performance obligations backlog rpo",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 2,
+     "candidateCount": 33,
+     "visibleCount": 33,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.768398,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-e3b68704873788086acdc74e",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.768398,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-0807cb012a8b778a8f3d69f9",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.664295,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-7364872b18af9d12c0ef9591",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.649989,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-e5637494cec61384ade2512b",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.60566,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-9cd8a931e5c0e3c3a8745422",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.550902,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-4fdd91066a426b9ddfa2fab6",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.540635,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-12ccb18f72e61bcc5a86dff6",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.525072,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-0eb586e17cad21c74d6be32b",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.519939,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-06",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 52,
+     "question": "CoreWeave Q2 2026 interest rate sensitivity risk factors",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 6,
+     "candidateCount": 34,
+     "visibleCount": 34,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.711068,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-76a822a8459a1f735ff7b2c3",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.711068,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-4c55f87a31112b55fcda43ff",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.685573,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-9811f95ce682220d2f5a4fca",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.654549,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-eca9529648de339d45174e8b",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.636967,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-55cf26d9578cc73fe51a511d",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.6172,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-dbde93f78879bd6f2866c40a",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.608921,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-aaf5231be75bf257aff08a7b",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.600939,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-20f1e3d007ce701433e57b78",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.573565,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-07",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 46,
+     "question": "CoreWeave Q2 2026 consolidated revenue",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 7,
+     "candidateCount": 62,
+     "visibleCount": 62,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.669375,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-13f57d5a120990520d240cf9",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.669375,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-3a7fd1f07ba73dc16b3551f6",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.666923,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-7ffa27fa51d013557c59574c",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.613879,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-5bfb1f24372b1c61cdb21aed",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.590936,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-ea51cf6816a0a084a8804685",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.579191,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-0b0d2f195b1144e3474b4c8b",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.579054,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-88a9b7b151e96b2751279350",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.57786,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-6c01a61ab909f5e203039ac3",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.577309,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-08",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 77,
+     "question": "CoreWeave FY2025 revenue yoy growth",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 1,
+     "candidateCount": 52,
+     "visibleCount": 52,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.654629,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-ab6a4f2666baf76a412ce7ef",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.654629,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-d0893e5060fefc32ce53ab25",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.603268,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-690dd2e0535bfd8b70733765",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.601739,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-0c00fb823a48bbd7d3ddb6ae",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.587861,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-c83b19906c4d3d637fdc5537",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.538986,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-62e029512b0f5661dc59a0be",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.538228,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-e01cd2a68842fefdfdf652ce",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.538125,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-240b92c16fd8c32c14f80c98",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.536368,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-09",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 140,
+     "question": "CoreWeave FY2025 other geographic revenue concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 3,
+     "candidateCount": 43,
+     "visibleCount": 43,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": 3.375386,
+      "semanticScore": 0.638197,
+      "hybridScore": 0.03175403
+     },
+     "results": [
+      {
+       "spanId": "SPAN-2b154eca7884845aeb9320a3",
+       "finalRank": 1,
+       "lexicalRank": 2,
+       "semanticRank": 4,
+       "lexicalScore": 3.375386,
+       "semanticScore": 0.638197,
+       "hybridScore": 0.03175403
+      },
+      {
+       "spanId": "SPAN-183f2695b1a3d9d02877b5c2",
+       "finalRank": 2,
+       "lexicalRank": 1,
+       "semanticRank": 6,
+       "lexicalScore": 3.375386,
+       "semanticScore": 0.633697,
+       "hybridScore": 0.03154496
+      },
+      {
+       "spanId": "SPAN-41e0c84eab1468399180f726",
+       "finalRank": 3,
+       "lexicalRank": 3,
+       "semanticRank": 5,
+       "lexicalScore": 3.375386,
+       "semanticScore": 0.633963,
+       "hybridScore": 0.03125763
+      },
+      {
+       "spanId": "SPAN-7c532ec13bd0c48e058a47f8",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.68686,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-b9de5bb60643e511933abe4e",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.677119,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-57265a1e8b757d696e715026",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.655535,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-8be23231d2f90b1a38c279ef",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.623502,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-3aad467599de9b15c6fd000a",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.622663,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-10",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 26,
+     "question": "CoreWeave FY2025 top1 revenue share top customer concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 2,
+     "candidateCount": 29,
+     "visibleCount": 29,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.726806,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-920b6d2977307838b3c7f479",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.726806,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-2f18f201b5eacc83deb308bc",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.683479,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-18901a16b3dca17bc89c9361",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.682974,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-7d05af082dad024655e8b8cd",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.658068,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-37ff6a2d9e175b1d405cba67",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.63517,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-59ae50e91207605cd7676fc3",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.615247,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-9d46be848a4d453b5204fc7c",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.611969,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-e837f703da908ef84f054000",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.602661,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-11",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 18,
+     "question": "CoreWeave Q2 2026 top1 revenue share top customer concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": false,
+     "firstRelevantRank": null,
+     "candidateCount": 33,
+     "visibleCount": 33,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.674005,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.674005,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-9cd8a931e5c0e3c3a8745422",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.652615,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-1e8b7a749e0876befa757ce5",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.637059,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-7092c5398c0ea8823ad75585",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.618547,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-9319f06810062011dd4117a7",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.606885,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-9fbfdc23312d010decb76127",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.601834,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-b0a98a249d8ab690bff97711",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.600187,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-34084942012415a83188e287",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.598644,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-12",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 46,
+     "question": "CoreWeave Q2 2026 technology infrastructure expense compute spend",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 7,
+     "candidateCount": 62,
+     "visibleCount": 62,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.6356,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-a961ac8456c03adc3fa3da7c",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.6356,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-3a7fd1f07ba73dc16b3551f6",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.580852,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-13f57d5a120990520d240cf9",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.577188,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-5ce438a9893b4fd181b3925e",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.573625,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-6a98c253bf1f87bfcb545741",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.572643,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-1418dfba22fa066ca2d079be",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.57217,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-26aec07d43a043304ba9dc14",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.564307,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-3b8004d958ed6f829437f52b",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.55928,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-13",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 18,
+     "question": "CoreWeave Q2 2026 significant customer share concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 6,
+     "candidateCount": 33,
+     "visibleCount": 33,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.68363,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.68363,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-1e8b7a749e0876befa757ce5",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.650793,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-9cd8a931e5c0e3c3a8745422",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.638062,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-f74384d64517ea826d224fa1",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.625626,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-9319f06810062011dd4117a7",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.625443,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-b0a98a249d8ab690bff97711",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.621687,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-210e0be057e8d54a4818886a",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.616789,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-99566db088adaae178a4968d",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.61582,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-14",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 18,
+     "question": "CoreWeave Q2 2026 significant customer share concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 8,
+     "candidateCount": 33,
+     "visibleCount": 33,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.68363,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.68363,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-1e8b7a749e0876befa757ce5",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.650793,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-9cd8a931e5c0e3c3a8745422",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.638062,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-f74384d64517ea826d224fa1",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.625626,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-9319f06810062011dd4117a7",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.625443,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-b0a98a249d8ab690bff97711",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.621687,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-210e0be057e8d54a4818886a",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.616789,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-99566db088adaae178a4968d",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.61582,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-15",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 18,
+     "question": "CoreWeave Q2 2026 significant customer share concentration",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 7,
+     "candidateCount": 33,
+     "visibleCount": 33,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.68363,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.68363,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-1e8b7a749e0876befa757ce5",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.650793,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-9cd8a931e5c0e3c3a8745422",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.638062,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-f74384d64517ea826d224fa1",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.625626,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-9319f06810062011dd4117a7",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.625443,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-b0a98a249d8ab690bff97711",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.621687,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-210e0be057e8d54a4818886a",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.616789,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-99566db088adaae178a4968d",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.61582,
+       "hybridScore": 0.01470588
+      }
+     ]
+    },
+    {
+     "caseId": "GOLD-16",
+     "kind": "gold",
+     "subjectId": "coreweave",
+     "page": 93,
+     "question": "CoreWeave FY2023 consolidated revenue",
+     "expectedSpanCount": 1,
+     "expectedInTop": true,
+     "firstRelevantRank": 2,
+     "candidateCount": 32,
+     "visibleCount": 32,
+     "retrievedCount": 8,
+     "abstained": false,
+     "topScore": {
+      "lexicalScore": null,
+      "semanticScore": 0.745147,
+      "hybridScore": 0.01639344
+     },
+     "results": [
+      {
+       "spanId": "SPAN-27615720736bec33c34434e2",
+       "finalRank": 1,
+       "lexicalRank": null,
+       "semanticRank": 1,
+       "lexicalScore": null,
+       "semanticScore": 0.745147,
+       "hybridScore": 0.01639344
+      },
+      {
+       "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+       "finalRank": 2,
+       "lexicalRank": null,
+       "semanticRank": 2,
+       "lexicalScore": null,
+       "semanticScore": 0.566289,
+       "hybridScore": 0.01612903
+      },
+      {
+       "spanId": "SPAN-739a02257e1593f2fd82b824",
+       "finalRank": 3,
+       "lexicalRank": null,
+       "semanticRank": 3,
+       "lexicalScore": null,
+       "semanticScore": 0.564474,
+       "hybridScore": 0.01587302
+      },
+      {
+       "spanId": "SPAN-1ce8872206cfc2993fcd3502",
+       "finalRank": 4,
+       "lexicalRank": null,
+       "semanticRank": 4,
+       "lexicalScore": null,
+       "semanticScore": 0.563472,
+       "hybridScore": 0.015625
+      },
+      {
+       "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+       "finalRank": 5,
+       "lexicalRank": null,
+       "semanticRank": 5,
+       "lexicalScore": null,
+       "semanticScore": 0.561727,
+       "hybridScore": 0.01538462
+      },
+      {
+       "spanId": "SPAN-65ba590f0b1b66b6e18283e7",
+       "finalRank": 6,
+       "lexicalRank": null,
+       "semanticRank": 6,
+       "lexicalScore": null,
+       "semanticScore": 0.560383,
+       "hybridScore": 0.01515152
+      },
+      {
+       "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+       "finalRank": 7,
+       "lexicalRank": null,
+       "semanticRank": 7,
+       "lexicalScore": null,
+       "semanticScore": 0.557537,
+       "hybridScore": 0.01492537
+      },
+      {
+       "spanId": "SPAN-9318bafd3ead97babf00c85c",
+       "finalRank": 8,
+       "lexicalRank": null,
+       "semanticRank": 8,
+       "lexicalScore": null,
+       "semanticScore": 0.54457,
+       "hybridScore": 0.01470588
+      }
+     ]
+    }
+   ],
+   "negativeAnalysis": {
+    "cases": 0,
+    "abstained": 0,
+    "topSemanticScores": {
+     "count": 0,
+     "median": null,
+     "p95": null,
+     "min": null,
+     "max": null,
+     "total": null,
+     "mean": null
+    },
+    "topLexicalScores": {
+     "count": 0,
+     "median": null,
+     "p95": null,
+     "min": null,
+     "max": null,
+     "total": null,
+     "mean": null
+    },
+    "topLexicalCoverage": {
+     "count": 0,
+     "median": null,
+     "p95": null,
+     "min": null,
+     "max": null,
+     "total": null,
+     "mean": null
+    }
+   },
+   "positiveCount": 16,
+   "negativeCount": 0,
+   "recallAtK": {
+    "recallAt1": {
+     "numerator": 1,
+     "denominator": 16,
+     "rate": 0.0625
+    },
+    "recallAt3": {
+     "numerator": 7,
+     "denominator": 16,
+     "rate": 0.4375
+    },
+    "recallAt5": {
+     "numerator": 8,
+     "denominator": 16,
+     "rate": 0.5
+    },
+    "recallAt8": {
+     "numerator": 15,
+     "denominator": 16,
+     "rate": 0.9375
+    },
+    "recallAt10": {
+     "numerator": 15,
+     "denominator": 16,
+     "rate": 0.9375
+    }
+   },
+   "mrr": {
+    "numerator": 4.920238095238096,
+    "denominator": 16,
+    "rate": 0.307514880952381
+   },
+   "retrieved": {
+    "numerator": 16,
+    "denominator": 16,
+    "rate": 1
+   },
+   "misses": [
+    "GOLD-11"
+   ],
+   "abstainedNegatives": [],
+   "retrievalMisses": [
+    {
+     "caseId": "GOLD-11",
+     "candidateCount": 33,
+     "visibleCount": 33,
+     "retrieved": [
+      "SPAN-3e05b10fdb9ebfa6c915c1ef",
+      "SPAN-9cd8a931e5c0e3c3a8745422",
+      "SPAN-1e8b7a749e0876befa757ce5",
+      "SPAN-7092c5398c0ea8823ad75585",
+      "SPAN-9319f06810062011dd4117a7",
+      "SPAN-9fbfdc23312d010decb76127",
+      "SPAN-b0a98a249d8ab690bff97711",
+      "SPAN-34084942012415a83188e287"
+     ]
+    }
+   ]
+  }
+ },
+ "decomposition": {
+  "counts": {
+   "INVALID_SELECTION_HANDLE": 0,
+   "DUPLICATE_SELECTION_HANDLE": 0,
+   "WRONG_SUPPORT_SELECTION": 4,
+   "RETRIEVAL_MISS": 1,
+   "MODEL_ABSTENTION": 3,
+   "PARSER_ERROR": 3,
+   "VALIDATOR_REJECT": 2,
+   "PROVIDER_TIMEOUT": 0
+  },
+  "succeeded": 3,
+  "examples": [
+   {
+    "caseId": "GOLD-01",
+    "failure": "MODEL_ABSTENTION",
+    "detail": "model returned no handle"
+   },
+   {
+    "caseId": "GOLD-04",
+    "failure": "PARSER_ERROR",
+    "detail": "VALIDATOR_FALSE_REJECT,DERIVED_NOT_ADMISSIBLE"
+   },
+   {
+    "caseId": "GOLD-05",
+    "failure": "MODEL_ABSTENTION",
+    "detail": "model returned no handle"
+   },
+   {
+    "caseId": "GOLD-06",
+    "failure": "MODEL_ABSTENTION",
+    "detail": "model returned no handle"
+   },
+   {
+    "caseId": "GOLD-08",
+    "failure": "WRONG_SUPPORT_SELECTION",
+    "detail": "target span was offered but not selected"
+   },
+   {
+    "caseId": "GOLD-09",
+    "failure": "PARSER_ERROR",
+    "detail": "VALIDATOR_FALSE_REJECT,DERIVED_NOT_ADMISSIBLE"
+   },
+   {
+    "caseId": "GOLD-10",
+    "failure": "PARSER_ERROR",
+    "detail": "DETERMINISTIC_PARSE_UNSUPPORTED"
+   },
+   {
+    "caseId": "GOLD-11",
+    "failure": "RETRIEVAL_MISS",
+    "detail": "expected span never entered the Top-K"
+   },
+   {
+    "caseId": "GOLD-12",
+    "failure": "WRONG_SUPPORT_SELECTION",
+    "detail": "target span was offered but not selected"
+   },
+   {
+    "caseId": "GOLD-13",
+    "failure": "VALIDATOR_REJECT",
+    "detail": "VALIDATOR_FALSE_REJECT,DERIVED_NOT_ADMISSIBLE"
+   },
+   {
+    "caseId": "GOLD-14",
+    "failure": "WRONG_SUPPORT_SELECTION",
+    "detail": "target span was offered but not selected"
+   },
+   {
+    "caseId": "GOLD-15",
+    "failure": "VALIDATOR_REJECT",
+    "detail": "VALIDATOR_FALSE_REJECT,DERIVED_NOT_ADMISSIBLE"
+   },
+   {
+    "caseId": "GOLD-16",
+    "failure": "WRONG_SUPPORT_SELECTION",
+    "detail": "target span was offered but not selected"
+   }
+  ]
+ },
+ "resolvedHandles": [
+  {
+   "caseId": "GOLD-01",
+   "selectedHandles": [],
+   "selectedSpanIds": [],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-02",
+   "selectedHandles": [
+    "S3",
+    "S6",
+    "S5",
+    "S7",
+    "S2",
+    "S4",
+    "S8"
+   ],
+   "selectedSpanIds": [
+    "SPAN-a5d8c1cfe7eff58d77334151",
+    "SPAN-40c79dd0a87e4532745dcc6e",
+    "SPAN-65ba590f0b1b66b6e18283e7",
+    "SPAN-cd6c0d8f643719446eeb5e2a",
+    "SPAN-1ce8872206cfc2993fcd3502",
+    "SPAN-739a02257e1593f2fd82b824",
+    "SPAN-fa7d82bd52d2702634ad3019"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-03",
+   "selectedHandles": [
+    "S2",
+    "S5",
+    "S3",
+    "S4",
+    "S6",
+    "S7",
+    "S8"
+   ],
+   "selectedSpanIds": [
+    "SPAN-cd6c0d8f643719446eeb5e2a",
+    "SPAN-a5d8c1cfe7eff58d77334151",
+    "SPAN-65ba590f0b1b66b6e18283e7",
+    "SPAN-1ce8872206cfc2993fcd3502",
+    "SPAN-739a02257e1593f2fd82b824",
+    "SPAN-40c79dd0a87e4532745dcc6e",
+    "SPAN-9318bafd3ead97babf00c85c"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-04",
+   "selectedHandles": [
+    "S1",
+    "S2",
+    "S4",
+    "S5",
+    "S6"
+   ],
+   "selectedSpanIds": [
+    "SPAN-13f57d5a120990520d240cf9",
+    "SPAN-3a7fd1f07ba73dc16b3551f6",
+    "SPAN-c591e82a19e556d9ecc6dfbf",
+    "SPAN-7a2f323abe2fe27bbcc19a7d",
+    "SPAN-794b76ee82d02bf8dce91d0f"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-05",
+   "selectedHandles": [],
+   "selectedSpanIds": [],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-06",
+   "selectedHandles": [],
+   "selectedSpanIds": [],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-07",
+   "selectedHandles": [
+    "S1",
+    "S7",
+    "S2",
+    "S8"
+   ],
+   "selectedSpanIds": [
+    "SPAN-13f57d5a120990520d240cf9",
+    "SPAN-88a9b7b151e96b2751279350",
+    "SPAN-3a7fd1f07ba73dc16b3551f6",
+    "SPAN-6c01a61ab909f5e203039ac3"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-08",
+   "selectedHandles": [
+    "S6",
+    "S7"
+   ],
+   "selectedSpanIds": [
+    "SPAN-62e029512b0f5661dc59a0be",
+    "SPAN-e01cd2a68842fefdfdf652ce"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-09",
+   "selectedHandles": [
+    "S8",
+    "S7",
+    "S3",
+    "S2",
+    "S1"
+   ],
+   "selectedSpanIds": [
+    "SPAN-3aad467599de9b15c6fd000a",
+    "SPAN-8be23231d2f90b1a38c279ef",
+    "SPAN-41e0c84eab1468399180f726",
+    "SPAN-183f2695b1a3d9d02877b5c2",
+    "SPAN-2b154eca7884845aeb9320a3"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-10",
+   "selectedHandles": [
+    "S1",
+    "S2",
+    "S3"
+   ],
+   "selectedSpanIds": [
+    "SPAN-920b6d2977307838b3c7f479",
+    "SPAN-2f18f201b5eacc83deb308bc",
+    "SPAN-18901a16b3dca17bc89c9361"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-11",
+   "selectedHandles": [
+    "S1",
+    "S3",
+    "S5",
+    "S7",
+    "S8"
+   ],
+   "selectedSpanIds": [
+    "SPAN-3e05b10fdb9ebfa6c915c1ef",
+    "SPAN-1e8b7a749e0876befa757ce5",
+    "SPAN-9319f06810062011dd4117a7",
+    "SPAN-b0a98a249d8ab690bff97711",
+    "SPAN-34084942012415a83188e287"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-12",
+   "selectedHandles": [
+    "S2",
+    "S3"
+   ],
+   "selectedSpanIds": [
+    "SPAN-3a7fd1f07ba73dc16b3551f6",
+    "SPAN-13f57d5a120990520d240cf9"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-13",
+   "selectedHandles": [
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "selectedSpanIds": [
+    "SPAN-9319f06810062011dd4117a7",
+    "SPAN-b0a98a249d8ab690bff97711",
+    "SPAN-210e0be057e8d54a4818886a"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-14",
+   "selectedHandles": [
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "selectedSpanIds": [
+    "SPAN-9319f06810062011dd4117a7",
+    "SPAN-b0a98a249d8ab690bff97711",
+    "SPAN-210e0be057e8d54a4818886a"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-15",
+   "selectedHandles": [
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "selectedSpanIds": [
+    "SPAN-9319f06810062011dd4117a7",
+    "SPAN-b0a98a249d8ab690bff97711",
+    "SPAN-210e0be057e8d54a4818886a"
+   ],
+   "invalidHandles": []
+  },
+  {
+   "caseId": "GOLD-16",
+   "selectedHandles": [
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "selectedSpanIds": [
+    "SPAN-a5d8c1cfe7eff58d77334151",
+    "SPAN-65ba590f0b1b66b6e18283e7",
+    "SPAN-cd6c0d8f643719446eeb5e2a"
+   ],
+   "invalidHandles": []
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "version": "selection-handles-runtime-costs/v0.11.1",
+ "generatedAt": "2026-09-14T05:51:49.655Z",
+ "provider": {
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  }
+ },
+ "embedding": {
+  "provider": "ollama",
+  "model": "nomic-embed-text",
+  "modelDigest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  },
+  "dimension": 768
+ },
+ "paidInferenceApiCostUsd": 0,
+ "paidInferenceApiCalls": 0,
+ "paidEmbeddingApiCostUsd": 0,
+ "paidEmbeddingApiCalls": 0,
+ "coldStartMs": 1782,
+ "modelLoadMs": 12,
+ "gold": {
+  "v0111": {
+   "calls": 68,
+   "inputTokens": 63496,
+   "outputTokens": 5048,
+   "totalTokens": 68544,
+   "callLatency": {
+    "count": 68,
+    "median": 6562.855917000008,
+    "p95": 8032.21079099999,
+    "min": 1496.112541999988,
+    "max": 8551.883583999996
+   },
+   "tokensPerSecond": {
+    "count": 68,
+    "median": 15.205194094302614,
+    "p95": 19.38775700429327,
+    "min": 14.052716321328802,
+    "max": 37.26060064088233
+   },
+   "failureCodes": []
+  }
+ },
+ "injection": {
+  "v0111": {
+   "calls": 0,
+   "inputTokens": null,
+   "outputTokens": null,
+   "totalTokens": null,
+   "callLatency": {
+    "count": 0,
+    "median": null,
+    "p95": null,
+    "min": null,
+    "max": null
+   },
+   "tokensPerSecond": {
+    "count": 0,
+    "median": null,
+    "p95": null,
+    "min": null,
+    "max": null
+   },
+   "failureCodes": []
+  }
+ },
+ "total": {
+  "session": {
+   "calls": 68,
+   "inputTokens": 63496,
+   "outputTokens": 5048,
+   "totalTokens": 68544,
+   "callLatency": {
+    "count": 68,
+    "median": 6562.855917000008,
+    "p95": 8032.21079099999,
+    "min": 1496.112541999988,
+    "max": 8551.883583999996
+   },
+   "tokensPerSecond": {
+    "count": 68,
+    "median": 15.205194094302614,
+    "p95": 19.38775700429327,
+    "min": 14.052716321328802,
+    "max": 37.26060064088233
+   },
+   "failureCodes": []
+  }
+ },
+ "phases": {
+  "v0111": {
+   "selection": {
+    "count": 16,
+    "median": 3349.480749999988,
+    "p95": 6373.211291999993,
+    "min": 1496.4932079999999,
+    "max": 6373.211291999993
+   },
+   "interpretation": {
+    "count": 52,
+    "median": 7603.637083000009,
+    "p95": 8340.382500000007,
+    "min": 5273.58587499999,
+    "max": 8552.444750000024
+   }
+  }
+ },
+ "resource": {
+  "samples": 90,
+  "ollamaRssBytes": {
+   "first": 498728960,
+   "peak": 910655488,
+   "last": 178847744
+  },
+  "swapUsedBytes": {
+   "first": 14597027267,
+   "peak": 14597027267,
+   "last": 13867354685
+  },
+  "swapDeltaBytes": -729672582
+ },
+ "note": "Paid inference API cost is zero and paid embedding API cost is zero because no paid inference or embedding API was called. Hardware, electricity, disk and elapsed wall time are not zero and are reported separately."
+}
