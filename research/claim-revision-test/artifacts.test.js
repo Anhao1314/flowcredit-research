@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {digest} from '../src/identity.js';
-import {frozenHashes,codeHashes} from '../claim-revision/cli.js';
+import {codeHashes} from '../claim-revision/cli.js';
+import {conformanceReport} from '../claim-revision/conformance.js';
 import {promptHash,outputSchema,proposalSchema} from '../claim-revision/contract.js';
 import {aggregate,decide} from '../claim-revision/eval.js';
 import {validateProposal} from '../claim-revision/validation.js';
@@ -10,7 +11,8 @@ const base=new URL('../eval/claim-revision/',import.meta.url),read=n=>JSON.parse
 test('one locked impact benchmark preserves authority, frozen acquisition and exact proposal bindings',()=>{
  const path=new URL('results.json',base);assert.ok(existsSync(path),'Final locked artifact is required for CI');
  const r=read('results'),g=read('phase-gate'),suite=read('locked-set');
- assert.deepEqual(frozenHashes(),g.frozenHashes);assert.deepEqual(codeHashes(),g.codeHashes);assert.equal(g.promptHash,promptHash);assert.equal(g.schemaHash,digest({outputSchema,proposalSchema}));assert.equal(g.lockedSetHash,digest(suite));assert.equal(r.binding.gateHash,digest(g));
+ const conformance=conformanceReport();assert.equal(conformance.status,'CONFORMANT');assert.deepEqual(conformance.semanticDrift,[]);assert.ok(conformance.semanticBindings.every(entry=>entry.ok));assert.equal(conformance.historical.parentGateOk,true);assert.equal(conformance.historical.bindingOk,true);assert.equal(conformance.historical.recordedSetDigest,conformance.historical.expectedSetDigest);assert.deepEqual(conformance.scope.closureUncovered,[]);assert.ok(conformance.repositoryDrift.every(entry=>entry.semanticClass==='REPOSITORY_NON_SEMANTIC'));
+ assert.deepEqual(codeHashes(),g.codeHashes);assert.equal(g.promptHash,promptHash);assert.equal(g.schemaHash,digest({outputSchema,proposalSchema}));assert.equal(g.lockedSetHash,digest(suite));assert.equal(r.binding.gateHash,digest(g));
  assert.equal(r.rows.length,18);assert.equal(new Set(r.rows.map(x=>x.caseId)).size,18);assert.deepEqual(r.metrics,aggregate(r.rows));assert.deepEqual({decision:r.decision,safetyPass:r.safetyPass,capabilityPass:r.capabilityPass},decide(r.metrics,r.safety,g));
  for(const row of r.rows){
   assert.deepEqual(row.authorityBefore,row.authorityAfter);assert.equal(row.request.timeMode,'audit');

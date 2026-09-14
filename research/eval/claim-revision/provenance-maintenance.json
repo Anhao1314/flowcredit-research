@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "claim-impact-provenance-maintenance/v1",
+  "createdAt": "2026-09-14T16:58:00.000Z",
+  "maintenanceReason": "The v0.12 phase gate froze a global repository snapshot (432 paths) at registration. Two later, human-approved presentation changes (README showcase rewrite, .gitignore runtime-artifact hardening) drifted that snapshot without touching any input capable of changing the claim-impact benchmark. This record keeps the original gate byte-immutable and separates it from the active semantic conformance scope, so non-semantic repository drift is reported instead of being silently tolerated or retroactively rewritten.",
+  "parentPhaseGate": {
+    "path": "research/eval/claim-revision/phase-gate.json",
+    "version": "claim-impact-gate/v0.12",
+    "registeredAt": "2026-09-14T07:52:21.578Z",
+    "gateHash": "sha256:c697aa506652640f25e9179b0fe168dace90d93e7aabc58dbfbb8cefa3f5df79",
+    "frozenPaths": 432,
+    "frozenSourceCommit": "bb66cc1",
+    "frozenSetDigest": "sha256:25914aec5cf6fbc18a766ca4b10f7356d79bebca1347dc0ff8603f5c38f38e9f",
+    "codeHashes": 10,
+    "codeHashesDigest": "sha256:f38aff76edff1ee5d9251e219e1eb732351be20c63a412051fbbd6301c97e19b"
+  },
+  "parentResults": {
+    "path": "research/eval/claim-revision/results.json",
+    "version": "claim-impact-results/v0.12",
+    "bindingGateHash": "sha256:c697aa506652640f25e9179b0fe168dace90d93e7aabc58dbfbb8cefa3f5df79",
+    "bindingLockedSetHash": "sha256:00cab5ff245082c8c8e0de139271263e16962bc323b40ec7066587a7c6f691ff"
+  },
+  "activeConformancePolicy": {
+    "model": "historical-global-snapshot + active-semantic-conformance-scope",
+    "rule": "A path is a semantic input only if an executable, fixture, prompt or dependency-lock artifact of the claim-impact pipeline can reach it. Everything else is repository presentation or unrelated product code: its drift is reported, never blocking.",
+    "scopeRules": [
+      {"kind": "directory", "pattern": "research/claim-revision/**", "class": "BENCHMARK_IMPLEMENTATION", "rationale": "pipeline code, proposal contract and JSON schemas"},
+      {"kind": "directory", "pattern": "research/eval/claim-revision/**", "class": "BENCHMARK_FIXTURE_AND_RESULT", "rationale": "locked set, prompt freeze, development run, phase gate and locked result"},
+      {"kind": "glob", "pattern": "research/prompts/claim-impact-*.txt", "class": "MODEL_PROMPT_INPUT", "rationale": "the prompt contract.js reads and hashes into every proposal"},
+      {"kind": "directory", "pattern": "research/src/**", "class": "EXECUTABLE_CODE", "rationale": "shared primitives, including the digest used by every binding"},
+      {"kind": "directory", "pattern": "research/memory/**", "class": "EXECUTABLE_CODE", "rationale": "research memory core that opens the authority databases"},
+      {"kind": "directory", "pattern": "research/retrieval/**", "class": "EXECUTABLE_CODE", "rationale": "retrieval layer used to assemble proposal context"},
+      {"kind": "directory", "pattern": "research/analyst/**", "class": "EXECUTABLE_CODE", "rationale": "evidence analyst"},
+      {"kind": "directory", "pattern": "research/analyst-real/**", "class": "EXECUTABLE_CODE", "rationale": "claims reader behind the pipeline"},
+      {"kind": "directory", "pattern": "research/admission/**", "class": "EXECUTABLE_CODE", "rationale": "evidence admission"},
+      {"kind": "directory", "pattern": "research/local-model/**", "class": "EXECUTABLE_CODE", "rationale": "local provider and its configuration validation"},
+      {"kind": "file", "pattern": "agent/package.json", "class": "DEPENDENCY_LOCK", "rationale": "the contract validator resolves ajv through this manifest"},
+      {"kind": "file", "pattern": "agent/package-lock.json", "class": "DEPENDENCY_LOCK", "rationale": "pinned validator dependency of the locked run"}
+    ],
+    "boundary": {
+      "testSurfaces": "excluded by construction: the repository keeps tests in sibling directories (research/claim-revision-test, agent/test), which no rule matches. Tests are consumers of the policy, not semantic inputs.",
+      "repositoryPresentation": "reported as drift and never blocking.",
+      "noCatchAll": "no rule uses a repository-wide wildcard; widening the scope is an explicit, reviewable edit of this file."
+    },
+    "contentBindings": [
+      {"binding": "codeHashes", "path": "research/claim-revision/<module>", "note": "the ten pipeline modules the gate hashed by name"},
+      {"binding": "promptHash", "path": "research/prompts/claim-impact-v012.txt", "encoding": "text", "note": "the prompt contract.js reads and hashes into every proposal"},
+      {"binding": "lockedSetHash", "path": "research/eval/claim-revision/locked-set.json", "encoding": "json", "note": "the held-out fixture set, hashed as parsed JSON like register() does"},
+      {"binding": "developmentHash", "path": "research/eval/claim-revision/development.json", "encoding": "json", "note": "the offline development run the gate froze before registration"}
+    ]
+  },
+  "observedRepositoryDrift": [
+    {"path": ".gitignore", "class": "REPOSITORY_PRESENTATION", "recorded": "sha256:74121766f8ae038ce0ea1aa2b10061ba79fa1af9091da0b794d3d2acede50857", "actual": "sha256:a6890cdfa26fab9cebbc82a6a25a3b29cf2dfd31b771c29e139a8235ac508bc8"},
+    {"path": "README.md", "class": "REPOSITORY_PRESENTATION", "recorded": "sha256:721e9eda1f3ba75b008303ab10ee51365d998cdab2d472a67c5600f2b860de54", "actual": "sha256:cf4e974afd217e2b2d51351c80439e56b049b8aad93d5ff700e17c1ad17ab48a"}
+  ],
+  "checker": {
+    "module": "research/claim-revision/conformance.js",
+    "version": "claim-impact-conformance/v1"
+  }
+}
