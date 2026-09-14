@@ -1,0 +1,326 @@
+{
+  "version": "research-requests/v1",
+  "note": "Answer-free research requests. Customer/geography dimensions state what is sought, not values or support identities. Gold linkage lives only in evaluator.",
+  "requests": [
+    {
+      "requestId": "geographic-us",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue_concentration",
+        "targetMetricOrConcept": "geographic_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "geography",
+          "value": "United States"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "revenue-2024",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2024-01-01",
+          "end": "2024-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "revenue-2025",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "cost-of-revenue-q2",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "compute_spend",
+        "targetMetricOrConcept": "cost_of_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "rpo-balance",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "backlog_rpo",
+        "targetMetricOrConcept": "unsatisfied_rpo",
+        "timeScope": {
+          "kind": "as_of",
+          "start": null,
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "rate-sensitivity-q2",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "quantitative_risk_disclosure",
+        "targetCategory": "risk_factors",
+        "targetMetricOrConcept": "interest_rate_sensitivity",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "risk_disclosure",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "revenue-q2",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "revenue-growth",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "growth",
+        "targetMetricOrConcept": "revenue_yoy_growth",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "geographic-other",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue_concentration",
+        "targetMetricOrConcept": "geographic_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "geography",
+          "value": "All other countries"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "named-customer-share",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "largest-customer-share",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "top_customer_concentration",
+        "targetMetricOrConcept": "top1_revenue_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "technology-expense-q2",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "compute_spend",
+        "targetMetricOrConcept": "technology_infrastructure_expense",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "anonymous-customer-b",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "customer_label",
+          "value": "Customer B"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "anonymous-customer-a",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "customer_label",
+          "value": "Customer A"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "anonymous-customer-c",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "customer_label",
+          "value": "Customer C"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    },
+    {
+      "requestId": "revenue-2023",
+      "request": {
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2023-01-01",
+          "end": "2023-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit"
+      }
+    }
+  ]
+}

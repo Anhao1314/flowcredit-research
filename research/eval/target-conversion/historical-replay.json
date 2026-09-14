@@ -1,0 +1,64 @@
+{
+  "version": "post-ranking-loss-audit/v1",
+  "offline": true,
+  "retrievalCeiling": 15,
+  "rankingCeiling": 14,
+  "strictTargetConversions": 5,
+  "postRankingLoss": 9,
+  "validCandidates": 11,
+  "validButWrongTargetCandidates": 6,
+  "losses": [
+    {
+      "caseId": "GOLD-01",
+      "kind": "CATEGORY_ERROR",
+      "detail": "Geographic revenue labelled generic revenue; value/unit/period correct."
+    },
+    {
+      "caseId": "GOLD-04",
+      "kind": "INTERPRETATION_ERROR",
+      "detail": "Direct cost-of-revenue table cell incorrectly marked derived and revenue; deterministic numeric/period known."
+    },
+    {
+      "caseId": "GOLD-06",
+      "kind": "COMPOUND_LITERAL_ERROR",
+      "detail": "Three/six-month respectively binding is compound; frozen period parser cannot parse the joint phrase and numeric risk_disclosure remains inadmissible."
+    },
+    {
+      "caseId": "GOLD-08",
+      "kind": "TARGET_MISMATCH",
+      "detail": "Early legal revenue amount stops before rank-3 growth percentage in a two-metric/two-period sentence."
+    },
+    {
+      "caseId": "GOLD-09",
+      "kind": "INTERPRETATION_ERROR",
+      "detail": "Explicit geographic revenue marked derived; fallback accepts unrelated geographic assets."
+    },
+    {
+      "caseId": "GOLD-10",
+      "kind": "PARSER_ERROR",
+      "detail": "Numeric literal includes approximately; category revenue_concentration differs from intended customer_concentration."
+    },
+    {
+      "caseId": "GOLD-12",
+      "kind": "INTERPRETATION_ERROR",
+      "detail": "Explicit technology/infrastructure expense mislabelled revenue and derived."
+    },
+    {
+      "caseId": "GOLD-13",
+      "kind": "TARGET_MISMATCH",
+      "detail": "Accounts-receivable percentage at rank 1 stops before rank-3 Q2 customer revenue share."
+    },
+    {
+      "caseId": "GOLD-14",
+      "kind": "TARGET_MISMATCH",
+      "detail": "Accounts-receivable percentage at rank 1 stops before rank-2 Q2 customer revenue share."
+    }
+  ],
+  "counts": {
+    "CATEGORY_ERROR": 1,
+    "COMPOUND_LITERAL_ERROR": 1,
+    "INTERPRETATION_ERROR": 3,
+    "PARSER_ERROR": 1,
+    "TARGET_MISMATCH": 3
+  }
+}

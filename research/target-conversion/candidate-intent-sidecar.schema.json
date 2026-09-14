@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "candidateId",
+    "supportCandidateId",
+    "proposalId",
+    "intentId",
+    "intentVersion",
+    "intentHash",
+    "targetMatch",
+    "sourceSupportId",
+    "sourceSupportHash",
+    "rankUsed"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "candidate-intent-sidecar/v1"
+    },
+    "candidateId": {
+      "type": "string"
+    },
+    "supportCandidateId": {
+      "type": "string"
+    },
+    "proposalId": {
+      "type": "string"
+    },
+    "intentId": {
+      "type": "string",
+      "pattern": "^INTENT-[a-f0-9]{24}$"
+    },
+    "intentVersion": {
+      "const": "research-intent/v1"
+    },
+    "intentHash": {
+      "type": "string"
+    },
+    "targetMatch": {
+      "const": "supported"
+    },
+    "sourceSupportId": {
+      "type": "string"
+    },
+    "sourceSupportHash": {
+      "type": "string"
+    },
+    "rankUsed": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    }
+  }
+}

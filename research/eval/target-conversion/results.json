@@ -1,0 +1,3550 @@
+{
+  "version": "target-conversion-results/v0.11.3",
+  "binding": {
+    "gateHash": "sha256:60ffc96550906effcd5e2eb8240e3dae2c202c76380fb84e11d0beb925bdd8b4",
+    "historyHash": "sha256:647dda7a487a8ecb45ad2c52a4acbea299480ef8f170de19035719883559400d"
+  },
+  "registeredAt": "2026-09-14T07:25:12.848Z",
+  "startedAt": "2026-09-14T07:25:25.768Z",
+  "finishedAt": "2026-09-14T07:29:22.818Z",
+  "decision": "EVIDENCE ACQUISITION READY",
+  "passed": true,
+  "checks": {
+    "fabricatedSupport": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "invalidHandle": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "sourceFidelity": {
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    "falseAccept": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "futureLeakage": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "wrongSubject": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "claimMutation": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "providerTimeout": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "providerError": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "strict": {
+      "actual": 11,
+      "expected": 10,
+      "passed": true
+    },
+    "conditional": {
+      "actual": 0.7857142857142857,
+      "expected": 0.7142857142857143,
+      "passed": true
+    },
+    "wrongTarget": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "complete": {
+      "actual": 16,
+      "expected": 16,
+      "passed": true
+    }
+  },
+  "metrics": {
+    "cases": 16,
+    "retrievalCeiling": 15,
+    "rankingCeiling": 14,
+    "strictTargetConversion": 11,
+    "strictTargetConversionRate": 0.6875,
+    "strictGivenTop3": {
+      "numerator": 11,
+      "denominator": 14,
+      "rate": 0.7857142857142857
+    },
+    "validButWrongTargetCandidates": 0,
+    "genericCandidateConversion": 11,
+    "rankConversion": {
+      "1": 8,
+      "2": 10,
+      "3": 11
+    }
+  },
+  "safety": {
+    "fabricatedSupport": 0,
+    "invalidHandle": 0,
+    "sourceFidelity": 1,
+    "falseAccept": 0,
+    "futureLeakage": 0,
+    "wrongSubject": 0,
+    "claimMutation": 0,
+    "providerTimeout": 0,
+    "providerError": 0
+  },
+  "provider": {
+    "kind": "real",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "temperature": 0,
+    "contextLength": 8192,
+    "think": false,
+    "structuredOutputMode": "ollama_json_schema",
+    "endpointOrigin": "http://127.0.0.1:11434",
+    "runtime": {
+      "name": "ollama",
+      "version": "0.34.0"
+    },
+    "modelInfo": {
+      "size": 6594474711,
+      "family": "qwen35",
+      "parameterSize": "9.7B",
+      "quantization": "Q4_K_M",
+      "contextLength": 262144,
+      "format": "gguf"
+    }
+  },
+  "claimsProtection": {
+    "before": {
+      "claims": 4,
+      "revisions": 4,
+      "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+    },
+    "after": {
+      "claims": 4,
+      "revisions": 4,
+      "payloadHash": "sha256:893ea5e78b0dd6332bf7c239c53cf9ffd9233bf9471478d77d89274ffcfc60a3"
+    },
+    "unchanged": true
+  },
+  "latency": {
+    "ranking": {
+      "historical": true,
+      "newModelCalls": 0,
+      "count": 16,
+      "median": 3697.1462499999907,
+      "p95": 4679.788124999992,
+      "min": 978.5820419999654,
+      "max": 4679.788124999992,
+      "total": 58248.925251999965,
+      "mean": 3640.557828249998
+    },
+    "targetMatchAndInterpretation": {
+      "sharedCall": true,
+      "count": 25,
+      "median": 7050.054541999998,
+      "p95": 17437.325916999995,
+      "min": 2007.798999999999,
+      "max": 22975.209749999995,
+      "total": 226427.724751,
+      "mean": 9057.10899004
+    },
+    "targetMatch": "shared with interpretation; no invented separate measurement",
+    "interpretation": "shared with target match; one bounded model call per eligible rank",
+    "parserValidator": {
+      "count": 30,
+      "median": 9.885875000007218,
+      "p95": 1249.6840830000292,
+      "min": 2.293582999998762,
+      "max": 1277.4144169999927,
+      "total": 10335.277916000017,
+      "mean": 344.50926386666725
+    },
+    "endToEnd": {
+      "excludesFrozenRetrievalAndRanking": true,
+      "count": 16,
+      "median": 13144.925207999999,
+      "p95": 44898.19816700001,
+      "min": 4341.359250000009,
+      "max": 44898.19816700001,
+      "total": 236960.965417,
+      "mean": 14810.0603385625
+    }
+  },
+  "tokens": {
+    "calls": 25,
+    "input": 25904,
+    "output": 1991,
+    "total": 27895
+  },
+  "resource": {
+    "offlineDevelopment": true,
+    "realSmokeCases": 0,
+    "realLockedCases": 16,
+    "retrievalCalls": 0,
+    "embeddingCalls": 0,
+    "rankingCalls": 0,
+    "interpretationCalls": 25,
+    "modelStartedOnlyAfterGate": true
+  },
+  "paidInferenceApiCostUsd": 0,
+  "paidEmbeddingApiCostUsd": 0,
+  "paidInferenceApiCalls": 0,
+  "paidEmbeddingApiCalls": 0,
+  "failures": {
+    "TARGET_MISMATCH": 0,
+    "INTERPRETATION_ERROR": 0,
+    "COMPOUND_LITERAL_ERROR": 1,
+    "CATEGORY_ERROR": 0,
+    "PARSER_ERROR": 2,
+    "VALIDATOR_REJECT": 0,
+    "SUPPORT_AMBIGUOUS": 0,
+    "UNKNOWN": 0,
+    "RETRIEVAL_MISS": 1,
+    "RANKING_MISS": 1,
+    "INVALID_SELECTION_HANDLE": 0,
+    "PROVIDER_TIMEOUT": 0,
+    "PROVIDER_ERROR": 0
+  },
+  "rows": [
+    {
+      "caseId": "GOLD-01",
+      "requestId": "geographic-us",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue_concentration",
+        "targetMetricOrConcept": "geographic_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "geography",
+          "value": "United States"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-466d74003581d9f9ec529d6a"
+      },
+      "rankedHandles": [
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "selectedSpanIds": [
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-2b154eca7884845aeb9320a3",
+        "SPAN-41e0c84eab1468399180f726"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-7c532ec13bd0c48e058a47f8",
+        "SPAN-57265a1e8b757d696e715026",
+        "SPAN-b9de5bb60643e511933abe4e",
+        "SPAN-68dd70deec34f0686a1837be",
+        "SPAN-fed0548cc5586fc7f8c10b48",
+        "SPAN-e0d1db2a83338062249e5c36",
+        "SPAN-2b154eca7884845aeb9320a3",
+        "SPAN-41e0c84eab1468399180f726"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3970.8482089999998,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-e0d1db2a83338062249e5c36",
+          "handle": "S6",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 12315.388708999999,
+          "parserValidatorLatencyMs": 822.8162499999994,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "geographic_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"revenue_concentration\",\n    \"metric\": \"geographic_revenue\",\n    \"rawValueText\": \"$ 4,801\",\n    \"rawUnitText\": \"(in millions)\",\n    \"periodText\": \"Year Ended December 31,, 2025\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:e4f46d3c406f644200d276971880aa8df52760eca4ead73b08b2b0cd3e7fd93c",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "revenue_concentration",
+              "metric": "geographic_revenue",
+              "rawValueText": "$ 4,801",
+              "rawUnitText": "(in millions)",
+              "periodText": "Year Ended December 31,, 2025",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "revenue_concentration",
+            "metric": "geographic_revenue",
+            "rawValueText": "$ 4,801",
+            "rawUnitText": "(in millions)",
+            "periodText": "Year Ended December 31,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 4801,
+              "normalizedValue": 4801000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 4,801 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-d57e2461c45ebdca7077e2ab",
+            "supportCandidateId": "SCAND-a171750fa66283cfadd3a262",
+            "candidateId": "CANDIDATE-b141d221b8161c7d00e8bf3e",
+            "anchor": {
+              "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+              "quotedText": "United States\n$ \n4,801",
+              "words": 4
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-d57e2461c45ebdca7077e2ab",
+          "sidecar": {
+            "id": "INTENTBIND-fd6f69ee1f9ecb428ae6c3c3",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-b141d221b8161c7d00e8bf3e",
+            "supportCandidateId": "SCAND-a171750fa66283cfadd3a262",
+            "proposalId": "EPROP-d57e2461c45ebdca7077e2ab",
+            "intentId": "INTENT-466d74003581d9f9ec529d6a",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:dab80e452ec444893d751ef0821f48eb9b3ff52b9cb5c88a5eb3f416736ebd4b",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-e0d1db2a83338062249e5c36",
+            "sourceSupportHash": "sha256:a73889ee4b08076c39982641c8780b6d4e4ffa493aedc72b4e3ab8e07e6725ea",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-01",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 13144.925207999999,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 12313.946834,
+          "usage": {
+            "inputTokens": 1050,
+            "outputTokens": 113,
+            "totalTokens": 1163
+          },
+          "timings": {
+            "loadMs": 4387,
+            "promptEvalMs": 2203,
+            "evalMs": 5698,
+            "totalMs": 12306
+          },
+          "tokensPerSecond": 19.831620764654648,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:4647e01bf6b3d1e2e7fb62876ad0d51059b6a644c097a01e21b19507a243fa16"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-02",
+      "requestId": "revenue-2024",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2024-01-01",
+          "end": "2024-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-a8864c73f4964f702f98cb79"
+      },
+      "rankedHandles": [
+        "S3"
+      ],
+      "selectedSpanIds": [
+        "SPAN-a5d8c1cfe7eff58d77334151"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-27615720736bec33c34434e2",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-fa7d82bd52d2702634ad3019"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3623.455249999999,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+          "handle": "S3",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 7050.054541999998,
+          "parserValidatorLatencyMs": 744.3219589999972,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "consolidated_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"revenue\",\n    \"metric\": \"consolidated_revenue\",\n    \"rawValueText\": \"$ 1,915\",\n    \"rawUnitText\": \"(in millions, except per share data)\",\n    \"periodText\": \"Year Ended December 31,, 2024\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:52d5d919d9fd7a624dc0b3836d2bb1124046d89c170a425614ba975f5ff57321",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "revenue",
+              "metric": "consolidated_revenue",
+              "rawValueText": "$ 1,915",
+              "rawUnitText": "(in millions, except per share data)",
+              "periodText": "Year Ended December 31,, 2024",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "consolidated_revenue",
+            "rawValueText": "$ 1,915",
+            "rawUnitText": "(in millions, except per share data)",
+            "periodText": "Year Ended December 31,, 2024",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 1915,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 1,915 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2024",
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "observedAt": "2024-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-92906d4ed41284a05164116d",
+            "supportCandidateId": "SCAND-fe3449ccc35ca8c8f393ea6d",
+            "candidateId": "CANDIDATE-aa62a3ce9253c3d5fa9f0de2",
+            "anchor": {
+              "chunkId": "CHUNK-2223cab8302d364a8440382e",
+              "quotedText": "$ \n1,915",
+              "words": 2
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-92906d4ed41284a05164116d",
+          "sidecar": {
+            "id": "INTENTBIND-337d2875e1a129dcb032f887",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-aa62a3ce9253c3d5fa9f0de2",
+            "supportCandidateId": "SCAND-fe3449ccc35ca8c8f393ea6d",
+            "proposalId": "EPROP-92906d4ed41284a05164116d",
+            "intentId": "INTENT-a8864c73f4964f702f98cb79",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:ebc4efb69fbc954ebdf305e010a22f0cc47f1836fedeec1eba5e4c2c5b76d074",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-a5d8c1cfe7eff58d77334151",
+            "sourceSupportHash": "sha256:65ee60ae40e9ddec9e57306c754eec13846a1f8ca896c924b3c8da96ef2b3bc4",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-02",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 7798.206792000001,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 7049.764167000001,
+          "usage": {
+            "inputTokens": 1046,
+            "outputTokens": 117,
+            "totalTokens": 1163
+          },
+          "timings": {
+            "loadMs": 3,
+            "promptEvalMs": 1060,
+            "evalMs": 5978,
+            "totalMs": 7048
+          },
+          "tokensPerSecond": 19.5733871528986,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:d740888a87af161177448f10ef39be8dee7d92703f8c6cdfe67625a7a56521ec"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-03",
+      "requestId": "revenue-2025",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-17ce0b74828bc2056ca65155"
+      },
+      "rankedHandles": [
+        "S2"
+      ],
+      "selectedSpanIds": [
+        "SPAN-cd6c0d8f643719446eeb5e2a"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-27615720736bec33c34434e2",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-9318bafd3ead97babf00c85c"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3309.682667000001,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+          "handle": "S2",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 7003.789957999998,
+          "parserValidatorLatencyMs": 718.5384169999998,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "consolidated_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"revenue\",\n    \"metric\": \"consolidated_revenue\",\n    \"rawValueText\": \"$ 5,131\",\n    \"rawUnitText\": \"(in millions, except per share data)\",\n    \"periodText\": \"Year Ended December 31,, 2025\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:0123607e13e288774e8661e238e8563e4ea7b4e859f91443968293a911d4cd1b",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "revenue",
+              "metric": "consolidated_revenue",
+              "rawValueText": "$ 5,131",
+              "rawUnitText": "(in millions, except per share data)",
+              "periodText": "Year Ended December 31,, 2025",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "consolidated_revenue",
+            "rawValueText": "$ 5,131",
+            "rawUnitText": "(in millions, except per share data)",
+            "periodText": "Year Ended December 31,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 5131,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 5,131 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-efe762a4b893f5bf5ae66b8b",
+            "supportCandidateId": "SCAND-9b3434c5a0d6e6e7f0334c3f",
+            "candidateId": "CANDIDATE-d832d51b17dfd2c59019041b",
+            "anchor": {
+              "chunkId": "CHUNK-2223cab8302d364a8440382e",
+              "quotedText": "Revenue\n$ \n5,131",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-efe762a4b893f5bf5ae66b8b",
+          "sidecar": {
+            "id": "INTENTBIND-ca58300f4ee985cd3f7d64e8",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-d832d51b17dfd2c59019041b",
+            "supportCandidateId": "SCAND-9b3434c5a0d6e6e7f0334c3f",
+            "proposalId": "EPROP-efe762a4b893f5bf5ae66b8b",
+            "intentId": "INTENT-17ce0b74828bc2056ca65155",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:1f4dff734b67d483df67761c82adc95b21f026446fb162861b5c4ff7d05d7ae3",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-cd6c0d8f643719446eeb5e2a",
+            "sourceSupportHash": "sha256:fe4bcfbc7fa193066ddb8f92c7d9c55eab660e5a544dc4fbfa01ed79d62c0f0c",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-03",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 7725.895417,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 7003.703874999999,
+          "usage": {
+            "inputTokens": 1045,
+            "outputTokens": 117,
+            "totalTokens": 1162
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1050,
+            "evalMs": 5947,
+            "totalMs": 7002
+          },
+          "tokensPerSecond": 19.674612183125237,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:ec434b120d2836fd2e8bc28ae8c3b6363187bdd20910590be02fab8373d3ac48"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-04",
+      "requestId": "cost-of-revenue-q2",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "compute_spend",
+        "targetMetricOrConcept": "cost_of_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-30f8a63d42fa388c8a1a49ce"
+      },
+      "rankedHandles": [
+        "S5",
+        "S8"
+      ],
+      "selectedSpanIds": [
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-dbdc95c9f5f01a5577d37731"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-3a7fd1f07ba73dc16b3551f6",
+        "SPAN-45d3fe4a685d2f749cafbdaf",
+        "SPAN-c591e82a19e556d9ecc6dfbf",
+        "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "SPAN-794b76ee82d02bf8dce91d0f",
+        "SPAN-7ffa27fa51d013557c59574c",
+        "SPAN-dbdc95c9f5f01a5577d37731"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 4527.574583000001,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "handle": "S5",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 6567.459125000001,
+          "parserValidatorLatencyMs": 662.3564160000024,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "cost_of_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"compute_spend\",\n    \"metric\": \"cost_of_revenue\",\n    \"rawValueText\": \"879\",\n    \"rawUnitText\": \"(in millions)\",\n    \"periodText\": \"Three Months Ended June 30, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:653ef3f3aaba9375aad14e78910bdd54e58725dc763d0a8c913da9ede458798e",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "compute_spend",
+              "metric": "cost_of_revenue",
+              "rawValueText": "879",
+              "rawUnitText": "(in millions)",
+              "periodText": "Three Months Ended June 30, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "compute_spend",
+            "metric": "cost_of_revenue",
+            "rawValueText": "879",
+            "rawUnitText": "(in millions)",
+            "periodText": "Three Months Ended June 30, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 879,
+              "normalizedValue": 879000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 879 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-354f932c3e53f7d71d918f36",
+            "supportCandidateId": "SCAND-e1a0c0f5dc35d92c690a997d",
+            "candidateId": "CANDIDATE-dd0fe5f945f48fef07b152e4",
+            "anchor": {
+              "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+              "quotedText": "Cost of revenue\n879",
+              "words": 4
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-354f932c3e53f7d71d918f36",
+          "sidecar": {
+            "id": "INTENTBIND-cece1b1612faa839b711c716",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-dd0fe5f945f48fef07b152e4",
+            "supportCandidateId": "SCAND-e1a0c0f5dc35d92c690a997d",
+            "proposalId": "EPROP-354f932c3e53f7d71d918f36",
+            "intentId": "INTENT-30f8a63d42fa388c8a1a49ce",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:56f2c81bc341c7ae880f7c1c705b6767ece9225cc3e30d2c09b8b905a838a1a2",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+            "sourceSupportHash": "sha256:9547e88d02d9578b275d61a9a2a0515bb4592bab4b547ff49ec26793287b8b44",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-04",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 7233.336625,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 6567.213374999999,
+          "usage": {
+            "inputTokens": 1039,
+            "outputTokens": 110,
+            "totalTokens": 1149
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1044,
+            "evalMs": 5512,
+            "totalMs": 6564
+          },
+          "tokensPerSecond": 19.955415972460074,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:895631aa9147b5753787c921478dd2c428c6c52a0a0b62a151da8d6ac7843aac"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-05",
+      "requestId": "rpo-balance",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "backlog_rpo",
+        "targetMetricOrConcept": "unsatisfied_rpo",
+        "timeScope": {
+          "kind": "as_of",
+          "start": null,
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-4996cdf85b9676312b1d027e"
+      },
+      "rankedHandles": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "selectedSpanIds": [
+        "SPAN-0807cb012a8b778a8f3d69f9",
+        "SPAN-7364872b18af9d12c0ef9591",
+        "SPAN-e5637494cec61384ade2512b"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-e3b68704873788086acdc74e",
+        "SPAN-0807cb012a8b778a8f3d69f9",
+        "SPAN-7364872b18af9d12c0ef9591",
+        "SPAN-e5637494cec61384ade2512b",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-4fdd91066a426b9ddfa2fab6",
+        "SPAN-12ccb18f72e61bcc5a86dff6",
+        "SPAN-0eb586e17cad21c74d6be32b"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3952.8061670000025,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-0807cb012a8b778a8f3d69f9",
+          "handle": "S2",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 6868.582875,
+          "parserValidatorLatencyMs": 695.4445829999968,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"backlog_rpo\",\n    \"metric\": \"unsatisfied_rpo\",\n    \"rawValueText\": \"$103.7 billion\",\n    \"rawUnitText\": null,\n    \"periodText\": \"As of June 30, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:79554d9ee439e36cec1c4bf91afe36d664e20f10e1f47c4071e780d7e9a349bd",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "backlog_rpo",
+              "metric": "unsatisfied_rpo",
+              "rawValueText": "$103.7 billion",
+              "rawUnitText": null,
+              "periodText": "As of June 30, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "backlog_rpo",
+            "metric": "unsatisfied_rpo",
+            "rawValueText": "$103.7 billion",
+            "rawUnitText": null,
+            "periodText": "As of June 30, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 103.7,
+              "normalizedValue": 103700000000,
+              "rawUnit": "USD_billions",
+              "unit": "USD",
+              "scale": 1000000000,
+              "normalization": "usd_billions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$103.7 billion",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "As of June 30, 2026",
+              "start": null,
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "as_of"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-cf43454199257262b0f6f67f",
+            "supportCandidateId": "SCAND-1febe79e2e414027e9086ce4",
+            "candidateId": "CANDIDATE-f49b093302a1ce9539684341",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "As of June 30, 2026, the Company had $103.7 billion of unsatisfied RPO, of which 41% was expected to be recognized over the initial 24 months ending\nJune 30, 2028, 39% between months 25 and 48, and the remaining balance recognized between months 49 and 78.",
+              "words": 46
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-cf43454199257262b0f6f67f",
+          "sidecar": {
+            "id": "INTENTBIND-b60bd82f34d4046c03e034ca",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-f49b093302a1ce9539684341",
+            "supportCandidateId": "SCAND-1febe79e2e414027e9086ce4",
+            "proposalId": "EPROP-cf43454199257262b0f6f67f",
+            "intentId": "INTENT-4996cdf85b9676312b1d027e",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:7574b228aecce951b8fd996472617bf4734db8add07fcc0efa56d59fabafa729",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-0807cb012a8b778a8f3d69f9",
+            "sourceSupportHash": "sha256:48ea39eddb4edbd73c6c1bbd312b7054156f83e4c7159a4c43c00b2494ef2ca9",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-05",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": false,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 7569.4307499999995,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 6868.285875000001,
+          "usage": {
+            "inputTokens": 1077,
+            "outputTokens": 111,
+            "totalTokens": 1188
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1279,
+            "evalMs": 5574,
+            "totalMs": 6864
+          },
+          "tokensPerSecond": 19.913800155865854,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:19bf40d488675e753a4048efd3ef77a107c0d86185c361c6ef9f68b8131bbeeb"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-06",
+      "requestId": "rate-sensitivity-q2",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "quantitative_risk_disclosure",
+        "targetCategory": "risk_factors",
+        "targetMetricOrConcept": "interest_rate_sensitivity",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "risk_disclosure",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-b3659e7ac00a65370b02dc86"
+      },
+      "rankedHandles": [
+        "S3",
+        "S6",
+        "S5"
+      ],
+      "selectedSpanIds": [
+        "SPAN-9811f95ce682220d2f5a4fca",
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-55cf26d9578cc73fe51a511d"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-76a822a8459a1f735ff7b2c3",
+        "SPAN-4c55f87a31112b55fcda43ff",
+        "SPAN-9811f95ce682220d2f5a4fca",
+        "SPAN-eca9529648de339d45174e8b",
+        "SPAN-55cf26d9578cc73fe51a511d",
+        "SPAN-dbde93f78879bd6f2866c40a",
+        "SPAN-aaf5231be75bf257aff08a7b",
+        "SPAN-20f1e3d007ce701433e57b78"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 4042.8387089999887,
+      "candidateFoundAtRank": null,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-9811f95ce682220d2f5a4fca",
+          "handle": "S3",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 2007.798999999999,
+          "parserValidatorLatencyMs": 2.293582999998762,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:62dadd99c6210f830d9e0c608f0106681d49a5ec3860ed9fe2fa861b2f3c506e",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-dbde93f78879bd6f2866c40a",
+          "handle": "S6",
+          "targetMatch": "supported",
+          "status": "COMPOUND_LITERAL_ERROR",
+          "modelLatencyMs": 7437.6685,
+          "parserValidatorLatencyMs": 2.971916999995301,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"risk_factors\",\n    \"metric\": \"interest_rate_sensitivity\",\n    \"rawValueText\": \"$30 million and $61 million, respectively\",\n    \"rawUnitText\": null,\n    \"periodText\": \"three and six months ended June 30, 2026\",\n    \"actualOrGuidance\": \"risk_disclosure\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:53526144e195641f11af3d204b5fa60105b8222950c2733b3a45ff0f16c4f3ec",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "risk_factors",
+              "metric": "interest_rate_sensitivity",
+              "rawValueText": "$30 million and $61 million, respectively",
+              "rawUnitText": null,
+              "periodText": "three and six months ended June 30, 2026",
+              "actualOrGuidance": "risk_disclosure",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-55cf26d9578cc73fe51a511d",
+          "handle": "S5",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 2328.8296250000058,
+          "parserValidatorLatencyMs": 7.644915999997465,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:22ee43f0232fa10efb8b6298a008ebe9afde8fdf300b45e8c7820f7ac5974bba",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-06",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": false,
+      "targetCorrect": false,
+      "failure": "COMPOUND_LITERAL_ERROR",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 11802.585416000002,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 2007.7146670000002,
+          "usage": {
+            "inputTokens": 1032,
+            "outputTokens": 20,
+            "totalTokens": 1052
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1092,
+            "evalMs": 906,
+            "totalMs": 2007
+          },
+          "tokensPerSecond": 22.078393752697703,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 7436.767792000006,
+          "usage": {
+            "inputTokens": 1082,
+            "outputTokens": 118,
+            "totalTokens": 1200
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1360,
+            "evalMs": 6062,
+            "totalMs": 7433
+          },
+          "tokensPerSecond": 19.466409226154145,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:0da384233f27881bd9de54b7bcd7c60a5e83382ef5af4ce3e17d431592561eb3"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 2328.1438750000016,
+          "usage": {
+            "inputTokens": 1021,
+            "outputTokens": 20,
+            "totalTokens": 1041
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1372,
+            "evalMs": 932,
+            "totalMs": 2326
+          },
+          "tokensPerSecond": 21.454577441370002,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-07",
+      "requestId": "revenue-q2",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-6d444006cb21fae72763bb06"
+      },
+      "rankedHandles": [
+        "S7",
+        "S8",
+        "S1"
+      ],
+      "selectedSpanIds": [
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-6c01a61ab909f5e203039ac3",
+        "SPAN-13f57d5a120990520d240cf9"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-3a7fd1f07ba73dc16b3551f6",
+        "SPAN-7ffa27fa51d013557c59574c",
+        "SPAN-5bfb1f24372b1c61cdb21aed",
+        "SPAN-ea51cf6816a0a084a8804685",
+        "SPAN-0b0d2f195b1144e3474b4c8b",
+        "SPAN-88a9b7b151e96b2751279350",
+        "SPAN-6c01a61ab909f5e203039ac3"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3553.551416000002,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-88a9b7b151e96b2751279350",
+          "handle": "S7",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 7376.420959000003,
+          "parserValidatorLatencyMs": 706.5275829999955,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "consolidated_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"revenue\",\n    \"metric\": \"consolidated_revenue\",\n    \"rawValueText\": \"$ 2,575\",\n    \"rawUnitText\": \"(in millions)\",\n    \"periodText\": \"Three Months Ended June 30,, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:18dcf542677d1318aed0e9066a036e806562e466ff0606c8146871b51b4d322c",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "revenue",
+              "metric": "consolidated_revenue",
+              "rawValueText": "$ 2,575",
+              "rawUnitText": "(in millions)",
+              "periodText": "Three Months Ended June 30,, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "consolidated_revenue",
+            "rawValueText": "$ 2,575",
+            "rawUnitText": "(in millions)",
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 2575,
+              "normalizedValue": 2575000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 2,575 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-ab9c3fd50ce6e9e608c1aade",
+            "supportCandidateId": "SCAND-32b6ca0e64a22d40f65b6a6e",
+            "candidateId": "CANDIDATE-db36a6e31b5493e5bf105681",
+            "anchor": {
+              "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+              "quotedText": "Revenue\n$\n2,575",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-ab9c3fd50ce6e9e608c1aade",
+          "sidecar": {
+            "id": "INTENTBIND-c7c01510f6d0b4066fe60975",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-db36a6e31b5493e5bf105681",
+            "supportCandidateId": "SCAND-32b6ca0e64a22d40f65b6a6e",
+            "proposalId": "EPROP-ab9c3fd50ce6e9e608c1aade",
+            "intentId": "INTENT-6d444006cb21fae72763bb06",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:4b5751187f43f510effbeeac51c6168901dc4ef094aeb4bc95b88e726f31fb49",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-88a9b7b151e96b2751279350",
+            "sourceSupportHash": "sha256:963f5f52ce1c4fcb2f82695954bd243bf14b96f6278102c2cd7b31a45a6b05fd",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-07",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 8087.080333999991,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 7375.945458000002,
+          "usage": {
+            "inputTokens": 1036,
+            "outputTokens": 113,
+            "totalTokens": 1149
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1387,
+            "evalMs": 5979,
+            "totalMs": 7373
+          },
+          "tokensPerSecond": 18.90106213933261,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:d6cb2c64d1b3c0021537a0deeb5ee66607258d8c58db835b1d1bef3b05a72198"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-08",
+      "requestId": "revenue-growth",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "growth",
+        "targetMetricOrConcept": "revenue_yoy_growth",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-1c4d96b1846e69607a9c0be6"
+      },
+      "rankedHandles": [
+        "S3",
+        "S6",
+        "S1"
+      ],
+      "selectedSpanIds": [
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-62e029512b0f5661dc59a0be",
+        "SPAN-ab6a4f2666baf76a412ce7ef"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-ab6a4f2666baf76a412ce7ef",
+        "SPAN-d0893e5060fefc32ce53ab25",
+        "SPAN-690dd2e0535bfd8b70733765",
+        "SPAN-0c00fb823a48bbd7d3ddb6ae",
+        "SPAN-c83b19906c4d3d637fdc5537",
+        "SPAN-62e029512b0f5661dc59a0be",
+        "SPAN-e01cd2a68842fefdfdf652ce",
+        "SPAN-240b92c16fd8c32c14f80c98"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3670.001042000018,
+      "candidateFoundAtRank": null,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-690dd2e0535bfd8b70733765",
+          "handle": "S3",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 3205.792167000007,
+          "parserValidatorLatencyMs": 3.592791999995825,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:c744ff2e1da65d01f218a16a2849fdd322ece12d063725b360235349f1644e45",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-62e029512b0f5661dc59a0be",
+          "handle": "S6",
+          "targetMatch": null,
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 0,
+          "parserValidatorLatencyMs": 9.060417000000598,
+          "precheck": {
+            "status": "TARGET_MISMATCH",
+            "reason": "Known table row/header concept mismatch",
+            "concept": "consolidated_revenue"
+          }
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-ab6a4f2666baf76a412ce7ef",
+          "handle": "S1",
+          "targetMatch": "supported",
+          "status": "PARSER_ERROR",
+          "modelLatencyMs": 10868.752500000002,
+          "parserValidatorLatencyMs": 14.560041999997338,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"growth\",\n    \"metric\": \"revenue_yoy_growth\",\n    \"rawValueText\": \"168%\",\n    \"rawUnitText\": null,\n    \"periodText\": \"2025-01-01 to 2025-12-31\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:3a9ef2d0355c881f981b2cb3645037659397aa6791b84eaf53e519bdca28e398",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "growth",
+              "metric": "revenue_yoy_growth",
+              "rawValueText": "168%",
+              "rawUnitText": null,
+              "periodText": "2025-01-01 to 2025-12-31",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "growth",
+            "metric": "revenue_yoy_growth",
+            "rawValueText": "168%",
+            "rawUnitText": null,
+            "periodText": "2025-01-01 to 2025-12-31",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 168,
+              "normalizedValue": 168,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "168%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "ambiguous_or_unsupported_period",
+              "periodText": "2025-01-01 to 2025-12-31",
+              "start": null,
+              "end": null,
+              "observedAt": null
+            }
+          },
+          "findings": [
+            "PERIOD_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "targetVerdict": {
+            "valid": false,
+            "failure": "PARSER_ERROR"
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-08",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": false,
+        "categoryCorrect": true,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": false,
+      "targetCorrect": false,
+      "failure": "PARSER_ERROR",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 14115.890167000005,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3205.39224999999,
+          "usage": {
+            "inputTokens": 1035,
+            "outputTokens": 20,
+            "totalTokens": 1055
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 1847,
+            "evalMs": 1337,
+            "totalMs": 3200
+          },
+          "tokensPerSecond": 14.959098086058196,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 10868.504040999993,
+          "usage": {
+            "inputTokens": 1042,
+            "outputTokens": 116,
+            "totalTokens": 1158
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 1765,
+            "evalMs": 9082,
+            "totalMs": 10866
+          },
+          "tokensPerSecond": 12.772803969611296,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:247f4335e2aa712d04a6e47e9b66de2b9bccb2a4d3fe3310750907b79f17007a"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-09",
+      "requestId": "geographic-other",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue_concentration",
+        "targetMetricOrConcept": "geographic_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "geography",
+          "value": "All other countries"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-7b022dabb06b122df1fa5e30"
+      },
+      "rankedHandles": [
+        "S3",
+        "S6",
+        "S7"
+      ],
+      "selectedSpanIds": [
+        "SPAN-41e0c84eab1468399180f726",
+        "SPAN-57265a1e8b757d696e715026",
+        "SPAN-8be23231d2f90b1a38c279ef"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-2b154eca7884845aeb9320a3",
+        "SPAN-183f2695b1a3d9d02877b5c2",
+        "SPAN-41e0c84eab1468399180f726",
+        "SPAN-7c532ec13bd0c48e058a47f8",
+        "SPAN-b9de5bb60643e511933abe4e",
+        "SPAN-57265a1e8b757d696e715026",
+        "SPAN-8be23231d2f90b1a38c279ef",
+        "SPAN-3aad467599de9b15c6fd000a"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3395.3965409999946,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-41e0c84eab1468399180f726",
+          "handle": "S3",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 13476.835208000004,
+          "parserValidatorLatencyMs": 1092.129541000002,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "geographic_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"revenue_concentration\",\n    \"metric\": \"geographic_revenue\",\n    \"rawValueText\": \"330\",\n    \"rawUnitText\": \"(in millions)\",\n    \"periodText\": \"Year Ended December 31, 2025\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:3a7d45eb884da4df7b0e52e5a50ed6354f3c7d51e3b1178a51dce4145dca06c8",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "revenue_concentration",
+              "metric": "geographic_revenue",
+              "rawValueText": "330",
+              "rawUnitText": "(in millions)",
+              "periodText": "Year Ended December 31, 2025",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "revenue_concentration",
+            "metric": "geographic_revenue",
+            "rawValueText": "330",
+            "rawUnitText": "(in millions)",
+            "periodText": "Year Ended December 31, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 330,
+              "normalizedValue": 330000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 330 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-3c42d39a22ae15b982b8f80d",
+            "supportCandidateId": "SCAND-b9c9c4f10ce32b7f0d5b7866",
+            "candidateId": "CANDIDATE-95c5e61f7c6b0af007732dea",
+            "anchor": {
+              "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+              "quotedText": "All other countries\n \n330",
+              "words": 4
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-3c42d39a22ae15b982b8f80d",
+          "sidecar": {
+            "id": "INTENTBIND-bf47b57f2fb116567e4901b8",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-95c5e61f7c6b0af007732dea",
+            "supportCandidateId": "SCAND-b9c9c4f10ce32b7f0d5b7866",
+            "proposalId": "EPROP-3c42d39a22ae15b982b8f80d",
+            "intentId": "INTENT-7b022dabb06b122df1fa5e30",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:2a44d3c584cc1fb6931c3c1eb0fdd20715fa70f6d7d42b35ef0e7ef0b952b753",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-41e0c84eab1468399180f726",
+            "sourceSupportHash": "sha256:33c0ae09a75ed1a2ff04ede6d03bc363eed6b9a5e5cc1710afe673661cc76bd5",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-09",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 14574.687416,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 13476.659874999998,
+          "usage": {
+            "inputTokens": 1046,
+            "outputTokens": 110,
+            "totalTokens": 1156
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 2233,
+            "evalMs": 11220,
+            "totalMs": 13475
+          },
+          "tokensPerSecond": 9.803489935469864,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:afd69daa3ba7c5f23e273424cabdc2f93c13409e100710fefe90f3b75fc29eba"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-10",
+      "requestId": "named-customer-share",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-0466d1d453dacb3e5333f80c"
+      },
+      "rankedHandles": [
+        "S2",
+        "S4",
+        "S7"
+      ],
+      "selectedSpanIds": [
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-7d05af082dad024655e8b8cd",
+        "SPAN-9d46be848a4d453b5204fc7c"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-920b6d2977307838b3c7f479",
+        "SPAN-2f18f201b5eacc83deb308bc",
+        "SPAN-18901a16b3dca17bc89c9361",
+        "SPAN-7d05af082dad024655e8b8cd",
+        "SPAN-37ff6a2d9e175b1d405cba67",
+        "SPAN-59ae50e91207605cd7676fc3",
+        "SPAN-9d46be848a4d453b5204fc7c",
+        "SPAN-e837f703da908ef84f054000"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3697.1462499999907,
+      "candidateFoundAtRank": null,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-2f18f201b5eacc83deb308bc",
+          "handle": "S2",
+          "targetMatch": "supported",
+          "status": "PARSER_ERROR",
+          "modelLatencyMs": 17437.325916999995,
+          "parserValidatorLatencyMs": 4.371417000016663,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"customer_concentration\",\n    \"metric\": \"significant_customer_share\",\n    \"rawValueText\": \"approximately 67%\",\n    \"rawUnitText\": null,\n    \"periodText\": \"year ended December 31, 2025\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:d1a1f471f4246d1c8cff7ac88ece49841e73c88e6ba13cb1dce39c5032cda1c9",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "customer_concentration",
+              "metric": "significant_customer_share",
+              "rawValueText": "approximately 67%",
+              "rawUnitText": null,
+              "periodText": "year ended December 31, 2025",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "significant_customer_share",
+            "rawValueText": "approximately 67%",
+            "rawUnitText": null,
+            "periodText": "year ended December 31, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "rawValueText": "approximately 67%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "year ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "targetVerdict": {
+            "valid": false,
+            "failure": "PARSER_ERROR"
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-7d05af082dad024655e8b8cd",
+          "handle": "S4",
+          "targetMatch": "supported",
+          "status": "PARSER_ERROR",
+          "modelLatencyMs": 22975.209749999995,
+          "parserValidatorLatencyMs": 12.646833999999217,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"customer_concentration\",\n    \"metric\": \"significant_customer_share\",\n    \"rawValueText\": \"None of our other customers represented 10% or more of our revenue for the year ended December 31, 2025.\",\n    \"rawUnitText\": null,\n    \"periodText\": \"year ended December 31, 2025\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:510fe7353f103af064480b395238991d2b47142a0ab515187d1ec673e3180aaf",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "customer_concentration",
+              "metric": "significant_customer_share",
+              "rawValueText": "None of our other customers represented 10% or more of our revenue for the year ended December 31, 2025.",
+              "rawUnitText": null,
+              "periodText": "year ended December 31, 2025",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [
+            {
+              "version": "exact-local-extraction/v1",
+              "rule": "identical_tokens_unique_source_whitespace",
+              "field": "rawValueText",
+              "proposedText": "None of our other customers represented 10% or more of our revenue for the year ended December 31, 2025.",
+              "exactSourceText": "None of our other customers represented 10% or more of our revenue for the year ended \nDecember 31, 2025.",
+              "offset": 1,
+              "sourceSupportId": "SPAN-7d05af082dad024655e8b8cd",
+              "sourceSupportHash": "sha256:655c87db4b9e7e6a253adc28babc04e2b38fd0bd936455e249255e993d05bb86"
+            },
+            {
+              "version": "exact-local-extraction/v1",
+              "rule": "identical_tokens_unique_source_whitespace",
+              "field": "periodText",
+              "proposedText": "year ended December 31, 2025",
+              "exactSourceText": "year ended \nDecember 31, 2025",
+              "offset": 76,
+              "sourceSupportId": "SPAN-7d05af082dad024655e8b8cd",
+              "sourceSupportHash": "sha256:655c87db4b9e7e6a253adc28babc04e2b38fd0bd936455e249255e993d05bb86"
+            }
+          ],
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "significant_customer_share",
+            "rawValueText": "None of our other customers represented 10% or more of our revenue for the year ended \nDecember 31, 2025.",
+            "rawUnitText": null,
+            "periodText": "year ended \nDecember 31, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "rawValueText": "None of our other customers represented 10% or more of our revenue for the year ended \nDecember 31, 2025.",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "year ended \nDecember 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ],
+          "targetVerdict": {
+            "valid": false,
+            "failure": "PARSER_ERROR"
+          }
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-9d46be848a4d453b5204fc7c",
+          "handle": "S7",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 4416.834292000014,
+          "parserValidatorLatencyMs": 13.39329100001487,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:c1225584f0021984591ff9d5975cb43f9f45f8e1c6bcf2c192f7b31c9456b37d",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-10",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": true,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": false,
+      "targetCorrect": false,
+      "failure": "PARSER_ERROR",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 44898.19816700001,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 17437.144333000004,
+          "usage": {
+            "inputTokens": 1032,
+            "outputTokens": 107,
+            "totalTokens": 1139
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 2818,
+            "evalMs": 14605,
+            "totalMs": 17434
+          },
+          "tokensPerSecond": 7.326097112141527,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:3f518909b3bd96057d0885cded0e15e038c163916f8dddf4fc205ac0b3923c23"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 22974.81850000001,
+          "usage": {
+            "inputTokens": 1027,
+            "outputTokens": 132,
+            "totalTokens": 1159
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 3325,
+            "evalMs": 19601,
+            "totalMs": 22969
+          },
+          "tokensPerSecond": 6.734192936056083,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:29ad3cd75729533bda22df011fb4ea5dd63b14bd9ef45c4f3e591a99b2429115"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 4416.539083999989,
+          "usage": {
+            "inputTokens": 1009,
+            "outputTokens": 20,
+            "totalTokens": 1029
+          },
+          "timings": {
+            "loadMs": 5,
+            "promptEvalMs": 2585,
+            "evalMs": 1797,
+            "totalMs": 4413
+          },
+          "tokensPerSecond": 11.132020756765904,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-11",
+      "requestId": "largest-customer-share",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "top_customer_concentration",
+        "targetMetricOrConcept": "top1_revenue_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-e1e08b73b5683c31412f72fe"
+      },
+      "rankedHandles": [
+        "S7",
+        "S5",
+        "S4"
+      ],
+      "selectedSpanIds": [
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-7092c5398c0ea8823ad75585"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-1e8b7a749e0876befa757ce5",
+        "SPAN-7092c5398c0ea8823ad75585",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-9fbfdc23312d010decb76127",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-34084942012415a83188e287"
+      ],
+      "targetInTop3": false,
+      "historicalRankingLatencyMs": 4679.788124999992,
+      "candidateFoundAtRank": null,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "handle": "S7",
+          "targetMatch": "supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 16367.540584000002,
+          "parserValidatorLatencyMs": 4.402999999991152,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Unknown row semantics require model proposal",
+            "concept": null
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"top_customer_concentration\",\n    \"metric\": \"significant_customer_share\",\n    \"rawValueText\": \"26%\",\n    \"rawUnitText\": null,\n    \"periodText\": \"Three Months Ended June 30,, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:2d47d5de06fee275e5b49466ce60ed25551b790ef44081e732552c30922ec9f5",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "top_customer_concentration",
+              "metric": "significant_customer_share",
+              "rawValueText": "26%",
+              "rawUnitText": null,
+              "periodText": "Three Months Ended June 30,, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "top_customer_concentration",
+            "metric": "significant_customer_share",
+            "rawValueText": "26%",
+            "rawUnitText": null,
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 26,
+              "normalizedValue": 26,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "26%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": false,
+            "failure": "TARGET_MISMATCH"
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "handle": "S5",
+          "targetMatch": null,
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 0,
+          "parserValidatorLatencyMs": 6.220124999992549,
+          "precheck": {
+            "status": "TARGET_MISMATCH",
+            "reason": "Verified header period conflicts with intent",
+            "period": {
+              "status": "known",
+              "periodText": "Six Months Ended June 30, 2026",
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "six_months"
+            }
+          }
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-7092c5398c0ea8823ad75585",
+          "handle": "S4",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 5034.975583000021,
+          "parserValidatorLatencyMs": 28.471000000019558,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:cb8adb6f8b3275adae708bda635ed9a030e6125af8323ba0ca1418bcd829fd46",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-11",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": false,
+        "nonTargetSelections": 3,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "genericCandidate": false,
+      "targetCorrect": false,
+      "failure": "RETRIEVAL_MISS",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 21478.648874999984,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 16367.170083000005,
+          "usage": {
+            "inputTokens": 1027,
+            "outputTokens": 107,
+            "totalTokens": 1134
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 2753,
+            "evalMs": 13600,
+            "totalMs": 16363
+          },
+          "tokensPerSecond": 7.867557391809137,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:f5d1220031b8fd239f94a6906ca50e7e31c00e39feb5ae077d1bf949b41ed4f5"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 5033.668207999988,
+          "usage": {
+            "inputTokens": 1018,
+            "outputTokens": 20,
+            "totalTokens": 1038
+          },
+          "timings": {
+            "loadMs": 4,
+            "promptEvalMs": 3347,
+            "evalMs": 1614,
+            "totalMs": 5026
+          },
+          "tokensPerSecond": 12.393754539212601,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-12",
+      "requestId": "technology-expense-q2",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "compute_spend",
+        "targetMetricOrConcept": "technology_infrastructure_expense",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-c55d6fdfcceb7c91c5ae0e27"
+      },
+      "rankedHandles": [
+        "S7",
+        "S6",
+        "S5"
+      ],
+      "selectedSpanIds": [
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-6a98c253bf1f87bfcb545741"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-a961ac8456c03adc3fa3da7c",
+        "SPAN-3a7fd1f07ba73dc16b3551f6",
+        "SPAN-13f57d5a120990520d240cf9",
+        "SPAN-5ce438a9893b4fd181b3925e",
+        "SPAN-6a98c253bf1f87bfcb545741",
+        "SPAN-1418dfba22fa066ca2d079be",
+        "SPAN-26aec07d43a043304ba9dc14",
+        "SPAN-3b8004d958ed6f829437f52b"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 4477.916499999992,
+      "candidateFoundAtRank": 1,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-26aec07d43a043304ba9dc14",
+          "handle": "S7",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 14839.069999999978,
+          "parserValidatorLatencyMs": 1277.4144169999927,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "technology_infrastructure_expense"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"compute_spend\",\n    \"metric\": \"technology_infrastructure_expense\",\n    \"rawValueText\": \"1,507\",\n    \"rawUnitText\": \"(in millions)\",\n    \"periodText\": \"Three Months Ended June 30,, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:923ac0dd60e0acaf8df1a4b26594939cb6945e7c4919896ca199ae6386d8ce2d",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "compute_spend",
+              "metric": "technology_infrastructure_expense",
+              "rawValueText": "1,507",
+              "rawUnitText": "(in millions)",
+              "periodText": "Three Months Ended June 30,, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "compute_spend",
+            "metric": "technology_infrastructure_expense",
+            "rawValueText": "1,507",
+            "rawUnitText": "(in millions)",
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 1507,
+              "normalizedValue": 1507000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 1,507 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-ef0119fc4cea97b9e194109a",
+            "supportCandidateId": "SCAND-91a212cb0ef3f8b52d906ae9",
+            "candidateId": "CANDIDATE-9298e019380bba5d7b1ad7ad",
+            "anchor": {
+              "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+              "quotedText": "Technology and infrastructure\n1,507",
+              "words": 4
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-ef0119fc4cea97b9e194109a",
+          "sidecar": {
+            "id": "INTENTBIND-090ca2580e20be9340fe72b6",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-9298e019380bba5d7b1ad7ad",
+            "supportCandidateId": "SCAND-91a212cb0ef3f8b52d906ae9",
+            "proposalId": "EPROP-ef0119fc4cea97b9e194109a",
+            "intentId": "INTENT-c55d6fdfcceb7c91c5ae0e27",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:8faea4ed3cbde8cb35601d0d96267e8d6f280caf6b98caa87b2bc42cb72de44b",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-26aec07d43a043304ba9dc14",
+            "sourceSupportHash": "sha256:cb0cdd280ba2f11f7f88ccc2e79db59f30276ccdfe80cd9f3964b6eca936a13e",
+            "rankUsed": 1
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-12",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 16130.831042000005,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 14833.260332999984,
+          "usage": {
+            "inputTokens": 1038,
+            "outputTokens": 113,
+            "totalTokens": 1151
+          },
+          "timings": {
+            "loadMs": 3,
+            "promptEvalMs": 2412,
+            "evalMs": 12338,
+            "totalMs": 14797
+          },
+          "tokensPerSecond": 9.158812512137452,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:5edf9d1b2583ebbfaaed69de88605a44941f98fc0a5799365af14c9f12db8b54"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-13",
+      "requestId": "anonymous-customer-b",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "customer_label",
+          "value": "Customer B"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-166f9cc5809b328400d99e8c"
+      },
+      "rankedHandles": [
+        "S1",
+        "S8",
+        "S6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-99566db088adaae178a4968d",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-1e8b7a749e0876befa757ce5",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-f74384d64517ea826d224fa1",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-210e0be057e8d54a4818886a",
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 4581.405417000002,
+      "candidateFoundAtRank": 3,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "handle": "S1",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 4178.912958000001,
+          "parserValidatorLatencyMs": 2.9887499999895226,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:69f97f136147bf23817942ce11f7e9cf3c1839281d8436e1f40cbf161a9dcf52",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "handle": "S8",
+          "targetMatch": null,
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 0,
+          "parserValidatorLatencyMs": 9.885875000007218,
+          "precheck": {
+            "status": "TARGET_MISMATCH",
+            "reason": "Explicit requested row dimension mismatch"
+          }
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "handle": "S6",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 14979.153208999982,
+          "parserValidatorLatencyMs": 1233.3442910000158,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Unknown row semantics require model proposal",
+            "concept": null
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"customer_concentration\",\n    \"metric\": \"significant_customer_share\",\n    \"rawValueText\": \"26%\",\n    \"rawUnitText\": null,\n    \"periodText\": \"Three Months Ended June 30,, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:acf8ee4a36d58e3f0ae33fd1df0621460b647633b1307ee6ae3dad272cb9fdb2",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "customer_concentration",
+              "metric": "significant_customer_share",
+              "rawValueText": "26%",
+              "rawUnitText": null,
+              "periodText": "Three Months Ended June 30,, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "significant_customer_share",
+            "rawValueText": "26%",
+            "rawUnitText": null,
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 26,
+              "normalizedValue": 26,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "26%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-522dec832d8ad3735ead77a9",
+            "supportCandidateId": "SCAND-db131070dd434b4a93b990d4",
+            "candidateId": "CANDIDATE-b5c15d167d51459c82f058a6",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "Customer B\n26%",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-522dec832d8ad3735ead77a9",
+          "sidecar": {
+            "id": "INTENTBIND-8f9fdd5d10eda2d48eb29942",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-b5c15d167d51459c82f058a6",
+            "supportCandidateId": "SCAND-db131070dd434b4a93b990d4",
+            "proposalId": "EPROP-522dec832d8ad3735ead77a9",
+            "intentId": "INTENT-166f9cc5809b328400d99e8c",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:b59391b37dd6521d0f9242094be960db8f72e9bf7c28e711fdaff71e24ad210f",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-b0a98a249d8ab690bff97711",
+            "sourceSupportHash": "sha256:b6ee85984de733fd4d51694621df05b8f221e947d2757e5084f08b4702d1886f",
+            "rankUsed": 3
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-13",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 20417.58366600002,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 4178.058833000017,
+          "usage": {
+            "inputTokens": 1034,
+            "outputTokens": 20,
+            "totalTokens": 1054
+          },
+          "timings": {
+            "loadMs": 11,
+            "promptEvalMs": 2334,
+            "evalMs": 1805,
+            "totalMs": 4170
+          },
+          "tokensPerSecond": 11.082518214118686,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 14975.44079199998,
+          "usage": {
+            "inputTokens": 1027,
+            "outputTokens": 106,
+            "totalTokens": 1133
+          },
+          "timings": {
+            "loadMs": 4,
+            "promptEvalMs": 2928,
+            "evalMs": 11946,
+            "totalMs": 14955
+          },
+          "tokensPerSecond": 8.873611394922502,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:476d26a67caf0626475e6f4d2f6351a57a04387f1950deff673698feaa11f770"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-14",
+      "requestId": "anonymous-customer-a",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "customer_label",
+          "value": "Customer A"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-e6cf1f0d24a2867c3f16b461"
+      },
+      "rankedHandles": [
+        "S1",
+        "S8",
+        "S6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-99566db088adaae178a4968d",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-1e8b7a749e0876befa757ce5",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-f74384d64517ea826d224fa1",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-210e0be057e8d54a4818886a",
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 1895.1427920000278,
+      "candidateFoundAtRank": 2,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "handle": "S1",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 3994.6304579999996,
+          "parserValidatorLatencyMs": 2.817917000007583,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:dd4da54806e0dd45bf3c50a2a869c18e88a202b86dc7dde3653d8085aadcf217",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "handle": "S8",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 13053.885165999993,
+          "parserValidatorLatencyMs": 991.225541999971,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Unknown row semantics require model proposal",
+            "concept": null
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"customer_concentration\",\n    \"metric\": \"significant_customer_share\",\n    \"rawValueText\": \"36%\",\n    \"rawUnitText\": null,\n    \"periodText\": \"Three Months Ended June 30,, 2026\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:34524b1be56d60243743281e75c278c330b1cf77f6854bad8284a8052a766098",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "customer_concentration",
+              "metric": "significant_customer_share",
+              "rawValueText": "36%",
+              "rawUnitText": null,
+              "periodText": "Three Months Ended June 30,, 2026",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "significant_customer_share",
+            "rawValueText": "36%",
+            "rawUnitText": null,
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 36,
+              "normalizedValue": 36,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "36%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-7fa54fc9f5b4d543755e655a",
+            "supportCandidateId": "SCAND-8dfbac1da59d97f4165cd927",
+            "candidateId": "CANDIDATE-489202b6b4fcc84e269e7e10",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "Customer A\n36%",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-7fa54fc9f5b4d543755e655a",
+          "sidecar": {
+            "id": "INTENTBIND-ad593f346fa1f354b0866fba",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-489202b6b4fcc84e269e7e10",
+            "supportCandidateId": "SCAND-8dfbac1da59d97f4165cd927",
+            "proposalId": "EPROP-7fa54fc9f5b4d543755e655a",
+            "intentId": "INTENT-e6cf1f0d24a2867c3f16b461",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:9c8d1cceaf170a9383cdbb3cf3a864fb5e8e42d0f0c89fafb1c2ae4c157e4a56",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-99566db088adaae178a4968d",
+            "sourceSupportHash": "sha256:8fb9be7ba08c16f02f61caec9c082810ab2ad14509e7aa1922d05ccc8c23a594",
+            "rankUsed": 2
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-14",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 1,
+        "selectedCount": 2,
+        "factKindCorrect": false,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 18051.404291999992,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 3993.876750000025,
+          "usage": {
+            "inputTokens": 1033,
+            "outputTokens": 20,
+            "totalTokens": 1053
+          },
+          "timings": {
+            "loadMs": 9,
+            "promptEvalMs": 2469,
+            "evalMs": 1489,
+            "totalMs": 3984
+          },
+          "tokensPerSecond": 13.428920388659815,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 13053.438166000007,
+          "usage": {
+            "inputTokens": 1026,
+            "outputTokens": 106,
+            "totalTokens": 1132
+          },
+          "timings": {
+            "loadMs": 2,
+            "promptEvalMs": 2726,
+            "evalMs": 10292,
+            "totalMs": 13049
+          },
+          "tokensPerSecond": 10.29953976603721,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:001c014e6f8cfc6a509376d4769f8f9a39c7ee7d779075a94bd946ec4e5f6047"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-15",
+      "requestId": "anonymous-customer-c",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "customer_concentration",
+        "targetMetricOrConcept": "significant_customer_share",
+        "timeScope": {
+          "kind": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "dimension": {
+          "kind": "customer_label",
+          "value": "Customer C"
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-351d7f7961b04561429c2621"
+      },
+      "rankedHandles": [
+        "S1",
+        "S8",
+        "S6"
+      ],
+      "selectedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-99566db088adaae178a4968d",
+        "SPAN-b0a98a249d8ab690bff97711"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-3e05b10fdb9ebfa6c915c1ef",
+        "SPAN-1e8b7a749e0876befa757ce5",
+        "SPAN-9cd8a931e5c0e3c3a8745422",
+        "SPAN-f74384d64517ea826d224fa1",
+        "SPAN-9319f06810062011dd4117a7",
+        "SPAN-b0a98a249d8ab690bff97711",
+        "SPAN-210e0be057e8d54a4818886a",
+        "SPAN-99566db088adaae178a4968d"
+      ],
+      "targetInTop3": false,
+      "historicalRankingLatencyMs": 978.5820419999654,
+      "candidateFoundAtRank": null,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "handle": "S1",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 4318.7351250000065,
+          "parserValidatorLatencyMs": 2.7530409999890253,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:4e4d26451d3128ab1d997e134a5edb61460b9fe9e3677bbef557b06297851987",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "handle": "S8",
+          "targetMatch": null,
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 0,
+          "parserValidatorLatencyMs": 4.57912499998929,
+          "precheck": {
+            "status": "TARGET_MISMATCH",
+            "reason": "Explicit requested row dimension mismatch"
+          }
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "handle": "S6",
+          "targetMatch": null,
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 0,
+          "parserValidatorLatencyMs": 2.4239999999990687,
+          "precheck": {
+            "status": "TARGET_MISMATCH",
+            "reason": "Explicit requested row dimension mismatch"
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-15",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": false,
+        "nonTargetSelections": 3,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "genericCandidate": false,
+      "targetCorrect": false,
+      "failure": "RANKING_MISS",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 4341.359250000009,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 4318.432208999991,
+          "usage": {
+            "inputTokens": 1035,
+            "outputTokens": 20,
+            "totalTokens": 1055
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 2166,
+            "evalMs": 2139,
+            "totalMs": 4316
+          },
+          "tokensPerSecond": 9.351960568393459,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        }
+      ]
+    },
+    {
+      "caseId": "GOLD-16",
+      "requestId": "revenue-2023",
+      "intent": {
+        "intentVersion": "research-intent/v1",
+        "createdAt": "2026-09-14T07:25:12.848Z",
+        "subjectId": "coreweave",
+        "targetKind": "financial_fact",
+        "targetCategory": "revenue",
+        "targetMetricOrConcept": "consolidated_revenue",
+        "timeScope": {
+          "kind": "period",
+          "start": "2023-01-01",
+          "end": "2023-12-31"
+        },
+        "dimension": {
+          "kind": "none",
+          "value": null
+        },
+        "actualOrGuidance": "actual",
+        "explicitOrDerived": "explicit",
+        "intentId": "INTENT-433b1e56024ab12650c23099"
+      },
+      "rankedHandles": [
+        "S1",
+        "S2"
+      ],
+      "selectedSpanIds": [
+        "SPAN-27615720736bec33c34434e2",
+        "SPAN-40c79dd0a87e4532745dcc6e"
+      ],
+      "retrievedSpanIds": [
+        "SPAN-27615720736bec33c34434e2",
+        "SPAN-40c79dd0a87e4532745dcc6e",
+        "SPAN-739a02257e1593f2fd82b824",
+        "SPAN-1ce8872206cfc2993fcd3502",
+        "SPAN-a5d8c1cfe7eff58d77334151",
+        "SPAN-65ba590f0b1b66b6e18283e7",
+        "SPAN-cd6c0d8f643719446eeb5e2a",
+        "SPAN-9318bafd3ead97babf00c85c"
+      ],
+      "targetInTop3": true,
+      "historicalRankingLatencyMs": 3892.789541999984,
+      "candidateFoundAtRank": 2,
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-27615720736bec33c34434e2",
+          "handle": "S1",
+          "targetMatch": "not_supported",
+          "status": "TARGET_MISMATCH",
+          "modelLatencyMs": 4092.8465410000063,
+          "parserValidatorLatencyMs": 6.396792000014102,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Text semantic match requires bounded interpretation"
+          },
+          "raw": "{\n  \"targetMatch\": \"not_supported\",\n  \"fact\": null\n}",
+          "inputHash": "sha256:5a340da1f805072bd5325d4682f4835a254f0d2b4dab3050f5facd6d951a30d4",
+          "bound": {
+            "targetMatch": "not_supported",
+            "fact": null
+          }
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+          "handle": "S2",
+          "targetMatch": "supported",
+          "status": "converted",
+          "modelLatencyMs": 14231.231999999989,
+          "parserValidatorLatencyMs": 1249.6840830000292,
+          "precheck": {
+            "status": "eligible",
+            "reason": "Exact known row/header metadata",
+            "concept": "consolidated_revenue"
+          },
+          "raw": "{\n  \"targetMatch\": \"supported\",\n  \"fact\": {\n    \"metricOrCategory\": \"revenue\",\n    \"metric\": \"consolidated_revenue\",\n    \"rawValueText\": \"$ 229\",\n    \"rawUnitText\": \"(in millions, except per share data)\",\n    \"periodText\": \"Year Ended December 31,, 2023\",\n    \"actualOrGuidance\": \"actual\",\n    \"explicitOrDerived\": \"explicit\"\n  }\n}",
+          "inputHash": "sha256:cae669c4dd9fa7a988d95f76e96245c4f206aece00ff9b681f6e7e5e5ceb6a6c",
+          "bound": {
+            "targetMatch": "supported",
+            "fact": {
+              "metricOrCategory": "revenue",
+              "metric": "consolidated_revenue",
+              "rawValueText": "$ 229",
+              "rawUnitText": "(in millions, except per share data)",
+              "periodText": "Year Ended December 31,, 2023",
+              "actualOrGuidance": "actual",
+              "explicitOrDerived": "explicit"
+            }
+          },
+          "extractionProof": null,
+          "whitespaceProof": [],
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "consolidated_revenue",
+            "rawValueText": "$ 229",
+            "rawUnitText": "(in millions, except per share data)",
+            "periodText": "Year Ended December 31,, 2023",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 229,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 229 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2023",
+              "start": "2023-01-01",
+              "end": "2023-12-31",
+              "observedAt": "2023-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [],
+          "targetVerdict": {
+            "valid": true,
+            "failure": null
+          },
+          "candidate": {
+            "proposalId": "EPROP-babb4e3850b603511840a475",
+            "supportCandidateId": "SCAND-43ee8f364bb17402501c12bc",
+            "candidateId": "CANDIDATE-b10a3428bb2eb47e584c2b9c",
+            "anchor": {
+              "chunkId": "CHUNK-2223cab8302d364a8440382e",
+              "quotedText": "$ \n229",
+              "words": 2
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          },
+          "proposalId": "EPROP-babb4e3850b603511840a475",
+          "sidecar": {
+            "id": "INTENTBIND-c596b739d6d06cd741e028d2",
+            "version": "candidate-intent-sidecar/v1",
+            "candidateId": "CANDIDATE-b10a3428bb2eb47e584c2b9c",
+            "supportCandidateId": "SCAND-43ee8f364bb17402501c12bc",
+            "proposalId": "EPROP-babb4e3850b603511840a475",
+            "intentId": "INTENT-433b1e56024ab12650c23099",
+            "intentVersion": "research-intent/v1",
+            "intentHash": "sha256:6819e4fd7aad2183aed4abc472c8023b8f844be27d9b05d5791b05bea1a33db5",
+            "targetMatch": "supported",
+            "sourceSupportId": "SPAN-40c79dd0a87e4532745dcc6e",
+            "sourceSupportHash": "sha256:5fec3a92a940d67e568c731ceafa99463762dc5ed5257f3a42057ae696d47580",
+            "rankUsed": 2
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-16",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 1,
+        "selectedCount": 2,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "genericCandidate": true,
+      "targetCorrect": true,
+      "failure": "NONE",
+      "contractFalseAccept": false,
+      "fidelity": true,
+      "futureLeakage": 0,
+      "wrongSubject": 0,
+      "endToEndLatencyMs": 19590.902000000002,
+      "receipts": [
+        {
+          "status": "completed",
+          "latencyMs": 4092.662500000006,
+          "usage": {
+            "inputTokens": 1002,
+            "outputTokens": 20,
+            "totalTokens": 1022
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 2379,
+            "evalMs": 1702,
+            "totalMs": 4091
+          },
+          "tokensPerSecond": 11.748541271744347,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:be951f87b5c0bd9a4037f024c2facdae9f4ec69b6b68f8dcbce308f3be278751"
+        },
+        {
+          "status": "completed",
+          "latencyMs": 14229.367916999996,
+          "usage": {
+            "inputTokens": 1045,
+            "outputTokens": 115,
+            "totalTokens": 1160
+          },
+          "timings": {
+            "loadMs": 1,
+            "promptEvalMs": 3032,
+            "evalMs": 11171,
+            "totalMs": 14217
+          },
+          "tokensPerSecond": 10.294729143438252,
+          "model": "qwen3.5:9b",
+          "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "doneReason": "stop",
+          "rawResponseHash": "sha256:bcd2fd2e361d7785f8508d696ca3646855caf1940c3bbdcd1801af83f0ea0cf4"
+        }
+      ]
+    }
+  ]
+}

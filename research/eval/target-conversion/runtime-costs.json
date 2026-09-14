@@ -1,0 +1,516 @@
+{
+  "version": "target-conversion-runtime-costs/v0.11.3",
+  "provider": {
+    "kind": "real",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "temperature": 0,
+    "contextLength": 8192,
+    "think": false,
+    "structuredOutputMode": "ollama_json_schema",
+    "endpointOrigin": "http://127.0.0.1:11434",
+    "runtime": {
+      "name": "ollama",
+      "version": "0.34.0"
+    },
+    "modelInfo": {
+      "size": 6594474711,
+      "family": "qwen35",
+      "parameterSize": "9.7B",
+      "quantization": "Q4_K_M",
+      "contextLength": 262144,
+      "format": "gguf"
+    }
+  },
+  "tokens": {
+    "calls": 25,
+    "input": 25904,
+    "output": 1991,
+    "total": 27895
+  },
+  "latency": {
+    "ranking": {
+      "historical": true,
+      "newModelCalls": 0,
+      "count": 16,
+      "median": 3697.1462499999907,
+      "p95": 4679.788124999992,
+      "min": 978.5820419999654,
+      "max": 4679.788124999992,
+      "total": 58248.925251999965,
+      "mean": 3640.557828249998
+    },
+    "targetMatchAndInterpretation": {
+      "sharedCall": true,
+      "count": 25,
+      "median": 7050.054541999998,
+      "p95": 17437.325916999995,
+      "min": 2007.798999999999,
+      "max": 22975.209749999995,
+      "total": 226427.724751,
+      "mean": 9057.10899004
+    },
+    "targetMatch": "shared with interpretation; no invented separate measurement",
+    "interpretation": "shared with target match; one bounded model call per eligible rank",
+    "parserValidator": {
+      "count": 30,
+      "median": 9.885875000007218,
+      "p95": 1249.6840830000292,
+      "min": 2.293582999998762,
+      "max": 1277.4144169999927,
+      "total": 10335.277916000017,
+      "mean": 344.50926386666725
+    },
+    "endToEnd": {
+      "excludesFrozenRetrievalAndRanking": true,
+      "count": 16,
+      "median": 13144.925207999999,
+      "p95": 44898.19816700001,
+      "min": 4341.359250000009,
+      "max": 44898.19816700001,
+      "total": 236960.965417,
+      "mean": 14810.0603385625
+    }
+  },
+  "resource": {
+    "offlineDevelopment": true,
+    "realSmokeCases": 0,
+    "realLockedCases": 16,
+    "retrievalCalls": 0,
+    "embeddingCalls": 0,
+    "rankingCalls": 0,
+    "interpretationCalls": 25,
+    "modelStartedOnlyAfterGate": true,
+    "samples": {
+      "cpu": "Apple M5",
+      "totalMemoryBytes": 17179869184,
+      "samples": [
+        {
+          "at": "2026-09-14T07:25:55.995Z",
+          "ollamaAndRunnerRssBytes": 6546259968
+        },
+        {
+          "at": "2026-09-14T07:25:58.008Z",
+          "ollamaAndRunnerRssBytes": 6497255424
+        },
+        {
+          "at": "2026-09-14T07:26:00.018Z",
+          "ollamaAndRunnerRssBytes": 6496436224
+        },
+        {
+          "at": "2026-09-14T07:26:01.998Z",
+          "ollamaAndRunnerRssBytes": 6542229504
+        },
+        {
+          "at": "2026-09-14T07:26:04.013Z",
+          "ollamaAndRunnerRssBytes": 6534152192
+        },
+        {
+          "at": "2026-09-14T07:26:06.019Z",
+          "ollamaAndRunnerRssBytes": 6500253696
+        },
+        {
+          "at": "2026-09-14T07:26:08.016Z",
+          "ollamaAndRunnerRssBytes": 6380290048
+        },
+        {
+          "at": "2026-09-14T07:26:10.001Z",
+          "ollamaAndRunnerRssBytes": 6533496832
+        },
+        {
+          "at": "2026-09-14T07:26:12.002Z",
+          "ollamaAndRunnerRssBytes": 6542114816
+        },
+        {
+          "at": "2026-09-14T07:26:14.016Z",
+          "ollamaAndRunnerRssBytes": 6541606912
+        },
+        {
+          "at": "2026-09-14T07:26:16.020Z",
+          "ollamaAndRunnerRssBytes": 6537199616
+        },
+        {
+          "at": "2026-09-14T07:26:18.024Z",
+          "ollamaAndRunnerRssBytes": 6382534656
+        },
+        {
+          "at": "2026-09-14T07:26:20.007Z",
+          "ollamaAndRunnerRssBytes": 6535266304
+        },
+        {
+          "at": "2026-09-14T07:26:22.019Z",
+          "ollamaAndRunnerRssBytes": 6533300224
+        },
+        {
+          "at": "2026-09-14T07:26:24.011Z",
+          "ollamaAndRunnerRssBytes": 6438289408
+        },
+        {
+          "at": "2026-09-14T07:26:26.022Z",
+          "ollamaAndRunnerRssBytes": 6434816000
+        },
+        {
+          "at": "2026-09-14T07:26:28.032Z",
+          "ollamaAndRunnerRssBytes": 6435848192
+        },
+        {
+          "at": "2026-09-14T07:26:30.046Z",
+          "ollamaAndRunnerRssBytes": 6377717760
+        },
+        {
+          "at": "2026-09-14T07:26:32.034Z",
+          "ollamaAndRunnerRssBytes": 6433964032
+        },
+        {
+          "at": "2026-09-14T07:26:34.011Z",
+          "ollamaAndRunnerRssBytes": 6537052160
+        },
+        {
+          "at": "2026-09-14T07:26:36.033Z",
+          "ollamaAndRunnerRssBytes": 6537183232
+        },
+        {
+          "at": "2026-09-14T07:26:38.015Z",
+          "ollamaAndRunnerRssBytes": 6482296832
+        },
+        {
+          "at": "2026-09-14T07:26:40.017Z",
+          "ollamaAndRunnerRssBytes": 6482116608
+        },
+        {
+          "at": "2026-09-14T07:26:42.054Z",
+          "ollamaAndRunnerRssBytes": 6482444288
+        },
+        {
+          "at": "2026-09-14T07:26:44.019Z",
+          "ollamaAndRunnerRssBytes": 6537838592
+        },
+        {
+          "at": "2026-09-14T07:26:46.019Z",
+          "ollamaAndRunnerRssBytes": 6537838592
+        },
+        {
+          "at": "2026-09-14T07:26:48.022Z",
+          "ollamaAndRunnerRssBytes": 6537789440
+        },
+        {
+          "at": "2026-09-14T07:26:50.031Z",
+          "ollamaAndRunnerRssBytes": 6537396224
+        },
+        {
+          "at": "2026-09-14T07:26:52.027Z",
+          "ollamaAndRunnerRssBytes": 6519898112
+        },
+        {
+          "at": "2026-09-14T07:26:54.031Z",
+          "ollamaAndRunnerRssBytes": 6378799104
+        },
+        {
+          "at": "2026-09-14T07:26:56.028Z",
+          "ollamaAndRunnerRssBytes": 6379536384
+        },
+        {
+          "at": "2026-09-14T07:26:58.027Z",
+          "ollamaAndRunnerRssBytes": 6537297920
+        },
+        {
+          "at": "2026-09-14T07:27:00.028Z",
+          "ollamaAndRunnerRssBytes": 6530007040
+        },
+        {
+          "at": "2026-09-14T07:27:02.040Z",
+          "ollamaAndRunnerRssBytes": 6531252224
+        },
+        {
+          "at": "2026-09-14T07:27:04.035Z",
+          "ollamaAndRunnerRssBytes": 6378029056
+        },
+        {
+          "at": "2026-09-14T07:27:06.037Z",
+          "ollamaAndRunnerRssBytes": 6378389504
+        },
+        {
+          "at": "2026-09-14T07:27:08.041Z",
+          "ollamaAndRunnerRssBytes": 6378799104
+        },
+        {
+          "at": "2026-09-14T07:27:10.039Z",
+          "ollamaAndRunnerRssBytes": 6379159552
+        },
+        {
+          "at": "2026-09-14T07:27:12.047Z",
+          "ollamaAndRunnerRssBytes": 6379339776
+        },
+        {
+          "at": "2026-09-14T07:27:14.043Z",
+          "ollamaAndRunnerRssBytes": 6378881024
+        },
+        {
+          "at": "2026-09-14T07:27:16.066Z",
+          "ollamaAndRunnerRssBytes": 6536724480
+        },
+        {
+          "at": "2026-09-14T07:27:18.040Z",
+          "ollamaAndRunnerRssBytes": 6530695168
+        },
+        {
+          "at": "2026-09-14T07:27:20.058Z",
+          "ollamaAndRunnerRssBytes": 6536445952
+        },
+        {
+          "at": "2026-09-14T07:27:22.060Z",
+          "ollamaAndRunnerRssBytes": 6535839744
+        },
+        {
+          "at": "2026-09-14T07:27:24.044Z",
+          "ollamaAndRunnerRssBytes": 6377439232
+        },
+        {
+          "at": "2026-09-14T07:27:26.045Z",
+          "ollamaAndRunnerRssBytes": 6377455616
+        },
+        {
+          "at": "2026-09-14T07:27:28.066Z",
+          "ollamaAndRunnerRssBytes": 6377259008
+        },
+        {
+          "at": "2026-09-14T07:27:30.058Z",
+          "ollamaAndRunnerRssBytes": 6377275392
+        },
+        {
+          "at": "2026-09-14T07:27:32.129Z",
+          "ollamaAndRunnerRssBytes": 6399852544
+        },
+        {
+          "at": "2026-09-14T07:27:34.137Z",
+          "ollamaAndRunnerRssBytes": 6378520576
+        },
+        {
+          "at": "2026-09-14T07:27:36.148Z",
+          "ollamaAndRunnerRssBytes": 6378962944
+        },
+        {
+          "at": "2026-09-14T07:27:38.093Z",
+          "ollamaAndRunnerRssBytes": 6379175936
+        },
+        {
+          "at": "2026-09-14T07:27:40.071Z",
+          "ollamaAndRunnerRssBytes": 6535823360
+        },
+        {
+          "at": "2026-09-14T07:27:42.073Z",
+          "ollamaAndRunnerRssBytes": 6537936896
+        },
+        {
+          "at": "2026-09-14T07:27:44.080Z",
+          "ollamaAndRunnerRssBytes": 6379569152
+        },
+        {
+          "at": "2026-09-14T07:27:46.063Z",
+          "ollamaAndRunnerRssBytes": 6435799040
+        },
+        {
+          "at": "2026-09-14T07:27:48.107Z",
+          "ollamaAndRunnerRssBytes": 6434045952
+        },
+        {
+          "at": "2026-09-14T07:27:50.088Z",
+          "ollamaAndRunnerRssBytes": 6379192320
+        },
+        {
+          "at": "2026-09-14T07:27:52.107Z",
+          "ollamaAndRunnerRssBytes": 6378094592
+        },
+        {
+          "at": "2026-09-14T07:27:54.085Z",
+          "ollamaAndRunnerRssBytes": 6376849408
+        },
+        {
+          "at": "2026-09-14T07:27:56.095Z",
+          "ollamaAndRunnerRssBytes": 6377308160
+        },
+        {
+          "at": "2026-09-14T07:27:58.092Z",
+          "ollamaAndRunnerRssBytes": 6377373696
+        },
+        {
+          "at": "2026-09-14T07:28:00.247Z",
+          "ollamaAndRunnerRssBytes": 6528909312
+        },
+        {
+          "at": "2026-09-14T07:28:02.159Z",
+          "ollamaAndRunnerRssBytes": 6364643328
+        },
+        {
+          "at": "2026-09-14T07:28:04.104Z",
+          "ollamaAndRunnerRssBytes": 6432915456
+        },
+        {
+          "at": "2026-09-14T07:28:06.095Z",
+          "ollamaAndRunnerRssBytes": 6537576448
+        },
+        {
+          "at": "2026-09-14T07:28:08.144Z",
+          "ollamaAndRunnerRssBytes": 6433095680
+        },
+        {
+          "at": "2026-09-14T07:28:10.318Z",
+          "ollamaAndRunnerRssBytes": 6377078784
+        },
+        {
+          "at": "2026-09-14T07:28:12.470Z",
+          "ollamaAndRunnerRssBytes": 6370705408
+        },
+        {
+          "at": "2026-09-14T07:28:14.161Z",
+          "ollamaAndRunnerRssBytes": 6370672640
+        },
+        {
+          "at": "2026-09-14T07:28:16.126Z",
+          "ollamaAndRunnerRssBytes": 6371573760
+        },
+        {
+          "at": "2026-09-14T07:28:18.128Z",
+          "ollamaAndRunnerRssBytes": 6372851712
+        },
+        {
+          "at": "2026-09-14T07:28:20.107Z",
+          "ollamaAndRunnerRssBytes": 6380306432
+        },
+        {
+          "at": "2026-09-14T07:28:22.109Z",
+          "ollamaAndRunnerRssBytes": 6531121152
+        },
+        {
+          "at": "2026-09-14T07:28:24.124Z",
+          "ollamaAndRunnerRssBytes": 6531792896
+        },
+        {
+          "at": "2026-09-14T07:28:26.141Z",
+          "ollamaAndRunnerRssBytes": 6539018240
+        },
+        {
+          "at": "2026-09-14T07:28:28.200Z",
+          "ollamaAndRunnerRssBytes": 6445891584
+        },
+        {
+          "at": "2026-09-14T07:28:30.295Z",
+          "ollamaAndRunnerRssBytes": 6370803712
+        },
+        {
+          "at": "2026-09-14T07:28:32.239Z",
+          "ollamaAndRunnerRssBytes": 6370836480
+        },
+        {
+          "at": "2026-09-14T07:28:34.362Z",
+          "ollamaAndRunnerRssBytes": 6370050048
+        },
+        {
+          "at": "2026-09-14T07:28:36.317Z",
+          "ollamaAndRunnerRssBytes": 6370689024
+        },
+        {
+          "at": "2026-09-14T07:28:38.224Z",
+          "ollamaAndRunnerRssBytes": 6371262464
+        },
+        {
+          "at": "2026-09-14T07:28:40.209Z",
+          "ollamaAndRunnerRssBytes": 6380273664
+        },
+        {
+          "at": "2026-09-14T07:28:42.214Z",
+          "ollamaAndRunnerRssBytes": 6528303104
+        },
+        {
+          "at": "2026-09-14T07:28:44.210Z",
+          "ollamaAndRunnerRssBytes": 6433161216
+        },
+        {
+          "at": "2026-09-14T07:28:46.218Z",
+          "ollamaAndRunnerRssBytes": 6536282112
+        },
+        {
+          "at": "2026-09-14T07:28:48.192Z",
+          "ollamaAndRunnerRssBytes": 6536380416
+        },
+        {
+          "at": "2026-09-14T07:28:50.209Z",
+          "ollamaAndRunnerRssBytes": 6447349760
+        },
+        {
+          "at": "2026-09-14T07:28:52.204Z",
+          "ollamaAndRunnerRssBytes": 6384975872
+        },
+        {
+          "at": "2026-09-14T07:28:54.202Z",
+          "ollamaAndRunnerRssBytes": 6385401856
+        },
+        {
+          "at": "2026-09-14T07:28:56.202Z",
+          "ollamaAndRunnerRssBytes": 6386089984
+        },
+        {
+          "at": "2026-09-14T07:28:58.212Z",
+          "ollamaAndRunnerRssBytes": 6390792192
+        },
+        {
+          "at": "2026-09-14T07:29:00.201Z",
+          "ollamaAndRunnerRssBytes": 6535741440
+        },
+        {
+          "at": "2026-09-14T07:29:02.204Z",
+          "ollamaAndRunnerRssBytes": 6531317760
+        },
+        {
+          "at": "2026-09-14T07:29:04.210Z",
+          "ollamaAndRunnerRssBytes": 6537871360
+        },
+        {
+          "at": "2026-09-14T07:29:06.226Z",
+          "ollamaAndRunnerRssBytes": 6534529024
+        },
+        {
+          "at": "2026-09-14T07:29:08.207Z",
+          "ollamaAndRunnerRssBytes": 6536708096
+        },
+        {
+          "at": "2026-09-14T07:29:10.207Z",
+          "ollamaAndRunnerRssBytes": 6534135808
+        },
+        {
+          "at": "2026-09-14T07:29:12.210Z",
+          "ollamaAndRunnerRssBytes": 6536593408
+        },
+        {
+          "at": "2026-09-14T07:29:14.218Z",
+          "ollamaAndRunnerRssBytes": 6528204800
+        },
+        {
+          "at": "2026-09-14T07:29:16.224Z",
+          "ollamaAndRunnerRssBytes": 6379356160
+        },
+        {
+          "at": "2026-09-14T07:29:18.229Z",
+          "ollamaAndRunnerRssBytes": 6379978752
+        },
+        {
+          "at": "2026-09-14T07:29:20.232Z",
+          "ollamaAndRunnerRssBytes": 6379913216
+        },
+        {
+          "at": "2026-09-14T07:29:22.225Z",
+          "ollamaAndRunnerRssBytes": 6383124480
+        },
+        {
+          "at": "2026-09-14T07:29:24.230Z",
+          "ollamaAndRunnerRssBytes": 6383435776
+        }
+      ]
+    }
+  },
+  "paidInferenceApiCostUsd": 0,
+  "paidEmbeddingApiCostUsd": 0,
+  "paidInferenceApiCalls": 0,
+  "paidEmbeddingApiCalls": 0
+}

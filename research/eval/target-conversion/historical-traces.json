@@ -1,0 +1,3966 @@
+{
+  "version": "target-conversion-historical-trace/v1",
+  "offline": true,
+  "rows": [
+    {
+      "caseId": "GOLD-01",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "revenue_concentration",
+        "metric": "us_geographic_revenue",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31"
+      },
+      "expectedGold": {
+        "researchField": "revenue_concentration",
+        "category": "revenue_concentration",
+        "metric": "us_geographic_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2025 US revenue by customer contract address reported in USD millions.",
+        "rawValue": 4801,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Note 15 \u2014 geographic information",
+        "page": 140,
+        "location": "Printed p134; US row, FY2025 column",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 4801000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:01e98f7104a3898b7856189249f36e3ba730c7e7d92f9006807fecdeaee42532",
+        "id": "EVID-01e98f7104a3898b78561892"
+      },
+      "retrievalRank": 6,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-e0d1db2a83338062249e5c36",
+          "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+          "page": 140,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "United States",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2025"
+          ],
+          "cellText": "$ 4,801",
+          "cellHash": "sha256:f59692c5b94f8ccd456c8a80f551e5e7750595afdf816909db5b29dffbc84e33",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "following table sets forth revenue by geographic area (in millions):"
+          },
+          "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:f25d96a729a7481217f9f04495a95035e86234b6e839e8678fdb51632f554d83",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:a73889ee4b08076c39982641c8780b6d4e4ffa493aedc72b4e3ab8e07e6725ea"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-2b154eca7884845aeb9320a3",
+          "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+          "page": 140,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 1,
+          "rowLabel": "All other countries",
+          "columnLabel": "2024",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2024"
+          ],
+          "cellText": "118",
+          "cellHash": "sha256:246d38f588b6877eff0ae0eda9fc88f54c88482cbc3c1d83e86bdac2d43097e1",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "following table sets forth revenue by geographic area (in millions):"
+          },
+          "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:c7313ecd5b7525b5a8f2fa1e53d8cbc4f0ea131b50ea2d3c5dec103cd25ac447",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:6fb8e53b91f1cc5a9a19b5c0ab8c80f6323233d3613d7b602e465c476006891e"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-41e0c84eab1468399180f726",
+          "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+          "page": 140,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "All other countries",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2025"
+          ],
+          "cellText": "330",
+          "cellHash": "sha256:a35ced0ad946d0000479b94a8612c14a110ae157f201272c072dc671b5adc985",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "following table sets forth revenue by geographic area (in millions):"
+          },
+          "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:cfb8eb3cf5814a33f6f827338f1588a3842a16cb8c0204778ed307475258853c",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:33c0ae09a75ed1a2ff04ede6d03bc363eed6b9a5e5cc1710afe673661cc76bd5"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-e0d1db2a83338062249e5c36",
+        "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+        "page": 140,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 0,
+        "rowLabel": "United States",
+        "columnLabel": "2025",
+        "headerPath": [
+          "Year Ended December 31,",
+          "2025"
+        ],
+        "cellText": "$ 4,801",
+        "cellHash": "sha256:f59692c5b94f8ccd456c8a80f551e5e7750595afdf816909db5b29dffbc84e33",
+        "unitContext": {
+          "match": "(in millions)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "following table sets forth revenue by geographic area (in millions):"
+        },
+        "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:f25d96a729a7481217f9f04495a95035e86234b6e839e8678fdb51632f554d83",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:a73889ee4b08076c39982641c8780b6d4e4ffa493aedc72b4e3ab8e07e6725ea"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-e0d1db2a83338062249e5c36",
+          "latencyMs": 10639.996000000001,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "us_revenue_millions",
+            "rawValueText": "$ 4,801",
+            "rawUnitText": "(in millions)",
+            "periodText": "Year Ended December 31,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 4801,
+              "normalizedValue": 4801000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 4,801 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "proposalId": "EPROP-067c7d581b6aa472da20fbd7",
+          "candidate": {
+            "proposalId": "EPROP-067c7d581b6aa472da20fbd7",
+            "supportCandidateId": "SCAND-3d3126e3ad001a59559989c6",
+            "candidateId": "CANDIDATE-06cc59c404e92fb3fc9fe4b7",
+            "anchor": {
+              "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+              "quotedText": "United States\n$ \n4,801",
+              "words": 4
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-01",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "CATEGORY_ERROR",
+        "detail": "Geographic revenue labelled generic revenue; value/unit/period correct."
+      }
+    },
+    {
+      "caseId": "GOLD-02",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "periodStart": "2024-01-01",
+        "periodEnd": "2024-12-31"
+      },
+      "expectedGold": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2024 consolidated revenue reported in USD millions.",
+        "rawValue": 1915,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 8 \u2014 consolidated operations",
+        "page": 93,
+        "location": "Printed 10-K p87; revenue row, FY2024 column",
+        "periodStart": "2024-01-01",
+        "periodEnd": "2024-12-31",
+        "observedAt": "2024-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 1915000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:0d73c529dbe08a3224eeae920aad844080067baf5f94350e058b824a8bcfb767",
+        "id": "EVID-0d73c529dbe08a3224eeae92"
+      },
+      "retrievalRank": 3,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+          "tableId": "GTBL-4cae138052223da2904b8b0d",
+          "page": 93,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 1,
+          "rowLabel": "Revenue",
+          "columnLabel": "2024",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2024"
+          ],
+          "cellText": "$ 1,915",
+          "cellHash": "sha256:b25194695acf27b5a755a603d2ee89e45bb3ef215c4d17acbca881f769d99906",
+          "unitContext": {
+            "match": "(in millions, except per share data)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions, except per share data)"
+          },
+          "tableTitle": "(in millions, except per share data)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:9406a849764af712053a83ddaaed528f8a895e89656e7ff98255b86d9585a5a4",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:65ee60ae40e9ddec9e57306c754eec13846a1f8ca896c924b3c8da96ef2b3bc4"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+        "tableId": "GTBL-4cae138052223da2904b8b0d",
+        "page": 93,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 1,
+        "rowLabel": "Revenue",
+        "columnLabel": "2024",
+        "headerPath": [
+          "Year Ended December 31,",
+          "2024"
+        ],
+        "cellText": "$ 1,915",
+        "cellHash": "sha256:b25194695acf27b5a755a603d2ee89e45bb3ef215c4d17acbca881f769d99906",
+        "unitContext": {
+          "match": "(in millions, except per share data)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "(in millions, except per share data)"
+        },
+        "tableTitle": "(in millions, except per share data)",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:9406a849764af712053a83ddaaed528f8a895e89656e7ff98255b86d9585a5a4",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:65ee60ae40e9ddec9e57306c754eec13846a1f8ca896c924b3c8da96ef2b3bc4"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-a5d8c1cfe7eff58d77334151",
+          "latencyMs": 9950.083542,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "revenue",
+            "rawValueText": "$ 1,915",
+            "rawUnitText": "(in millions, except per share data)",
+            "periodText": "Year Ended December 31,, 2024",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 1915,
+              "normalizedValue": 1915000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 1,915 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2024",
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "observedAt": "2024-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "proposalId": "EPROP-f8e8e33b10de428b38f46fe7",
+          "candidate": {
+            "proposalId": "EPROP-f8e8e33b10de428b38f46fe7",
+            "supportCandidateId": "SCAND-12ef2525df3a03bb2c9e6606",
+            "candidateId": "CANDIDATE-47dfd0cc204930b96ed89831",
+            "anchor": {
+              "chunkId": "CHUNK-2223cab8302d364a8440382e",
+              "quotedText": "$ \n1,915",
+              "words": 2
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-02",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": true
+    },
+    {
+      "caseId": "GOLD-03",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31"
+      },
+      "expectedGold": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2025 consolidated revenue reported in USD millions.",
+        "rawValue": 5131,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 8 \u2014 consolidated operations",
+        "page": 93,
+        "location": "Printed 10-K p87; revenue row, FY2025 column",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 5131000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:105cce7840c6d7d991199463bf7c1746ce67092cbaeec697f45ef867a6584716",
+        "id": "EVID-105cce7840c6d7d991199463"
+      },
+      "retrievalRank": 2,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+          "tableId": "GTBL-4cae138052223da2904b8b0d",
+          "page": 93,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "Revenue",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2025"
+          ],
+          "cellText": "$ 5,131",
+          "cellHash": "sha256:e05d967be19d4e1f3b074d509d52a3b77dcc597e62308158526a9f8d6b904e8c",
+          "unitContext": {
+            "match": "(in millions, except per share data)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions, except per share data)"
+          },
+          "tableTitle": "(in millions, except per share data)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:a9176f869e3040458c839b16437b82d6fafcc118e9574ad072fc77bb55d175f3",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:fe4bcfbc7fa193066ddb8f92c7d9c55eab660e5a544dc4fbfa01ed79d62c0f0c"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+        "tableId": "GTBL-4cae138052223da2904b8b0d",
+        "page": 93,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 0,
+        "rowLabel": "Revenue",
+        "columnLabel": "2025",
+        "headerPath": [
+          "Year Ended December 31,",
+          "2025"
+        ],
+        "cellText": "$ 5,131",
+        "cellHash": "sha256:e05d967be19d4e1f3b074d509d52a3b77dcc597e62308158526a9f8d6b904e8c",
+        "unitContext": {
+          "match": "(in millions, except per share data)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "(in millions, except per share data)"
+        },
+        "tableTitle": "(in millions, except per share data)",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:a9176f869e3040458c839b16437b82d6fafcc118e9574ad072fc77bb55d175f3",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:fe4bcfbc7fa193066ddb8f92c7d9c55eab660e5a544dc4fbfa01ed79d62c0f0c"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-cd6c0d8f643719446eeb5e2a",
+          "latencyMs": 12771.547416999994,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "revenue",
+            "rawValueText": "$ 5,131",
+            "rawUnitText": "(in millions, except per share data)",
+            "periodText": "Year Ended December 31,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 5131,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 5,131 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "proposalId": "EPROP-fe3458d9911dc9628035c970",
+          "candidate": {
+            "proposalId": "EPROP-fe3458d9911dc9628035c970",
+            "supportCandidateId": "SCAND-a87dbb422fa11472ce3bdf10",
+            "candidateId": "CANDIDATE-4062dbb0072f56436c28e261",
+            "anchor": {
+              "chunkId": "CHUNK-2223cab8302d364a8440382e",
+              "quotedText": "Revenue\n$ \n5,131",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-03",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": true
+    },
+    {
+      "caseId": "GOLD-04",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "compute_spend",
+        "metric": "cost_of_revenue",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "compute_spend",
+        "category": "compute_spend",
+        "metric": "cost_of_revenue",
+        "scope": "consolidated_company",
+        "statement": "Q2 cost of revenue is an accounting expense line, not separately disclosed inference compute spend.",
+        "rawValue": 879,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 2 \u2014 results of operations",
+        "page": 46,
+        "location": "Printed p43; cost of revenue row, Q2 2026",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 879000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:1bd669d2eaff75004e3144c86f400fb5a005e6976f6133a9b7adf8ea2404241b",
+        "id": "EVID-1bd669d2eaff75004e3144c8"
+      },
+      "retrievalRank": 5,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "Cost of revenue (1)",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "879",
+          "cellHash": "sha256:36372b58aa3aec89972c5894880e7a93bb40399b1e951123621c36069d264168",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:92f066091562990e1eaa68ca3b9178675fce099dd106d996458937ddacd16ae2",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:9547e88d02d9578b275d61a9a2a0515bb4592bab4b547ff49ec26793287b8b44"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-dbdc95c9f5f01a5577d37731",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 1,
+          "rowLabel": "Cost of revenue (1)",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2025"
+          ],
+          "cellText": "313",
+          "cellHash": "sha256:e2b599ba679bae915dfe2d1cc962cc8dad298076c7c53025014d298a2973dadb",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:ae9320e0e1adec11eda2bc3923caaae73c61fa6730b0be09180dbbc78d62e05a",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:c39a6f78102da71e2d3b711238be41a05eecdbdeb7255152c4de613eabdca2d6"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+        "tableId": "GTBL-df008965bafa476b985b67d1",
+        "page": 46,
+        "tableIndex": 0,
+        "rowIndex": 1,
+        "columnIndex": 0,
+        "rowLabel": "Cost of revenue (1)",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "879",
+        "cellHash": "sha256:36372b58aa3aec89972c5894880e7a93bb40399b1e951123621c36069d264168",
+        "unitContext": {
+          "match": "(in millions)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "(in millions)"
+        },
+        "tableTitle": "(in millions)",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:92f066091562990e1eaa68ca3b9178675fce099dd106d996458937ddacd16ae2",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:9547e88d02d9578b275d61a9a2a0515bb4592bab4b547ff49ec26793287b8b44"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-7a2f323abe2fe27bbcc19a7d",
+          "latencyMs": 11310.284041000006,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "cost_of_revenue",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 879,
+              "normalizedValue": 879000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 879 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-dbdc95c9f5f01a5577d37731",
+          "latencyMs": 9552.964166999998,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "cost_of_revenue",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 313,
+              "normalizedValue": 313000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 313 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2025",
+              "start": "2025-04-01",
+              "end": "2025-06-30",
+              "observedAt": "2025-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-04",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 1,
+        "selectedCount": 2,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": true,
+        "findings": [
+          "VALIDATOR_FALSE_REJECT"
+        ]
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "INTERPRETATION_ERROR",
+        "detail": "Direct cost-of-revenue table cell incorrectly marked derived and revenue; deterministic numeric/period known."
+      }
+    },
+    {
+      "caseId": "GOLD-05",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "backlog_rpo",
+        "metric": "remaining_performance_obligations",
+        "periodStart": null,
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "backlog_rpo",
+        "category": "backlog_rpo",
+        "metric": "remaining_performance_obligations",
+        "scope": "consolidated_company",
+        "statement": "Unsatisfied RPO is disclosed as 103.7 billion USD; recognition depends on future performance.",
+        "rawValue": 103.7,
+        "rawUnit": "USD_billions",
+        "unit": "USD",
+        "normalization": "usd_billions_to_usd",
+        "section": "Note 2 \u2014 remaining performance obligations",
+        "page": 18,
+        "location": "Printed p15; unsatisfied RPO as of June 30 2026",
+        "periodStart": null,
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 103700000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:33fce161495522ddc4db205c0c9e0ad16943e2aebb23eb2c769052586934b516",
+        "id": "EVID-33fce161495522ddc4db205c"
+      },
+      "retrievalRank": 2,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-0807cb012a8b778a8f3d69f9",
+          "parentSpanId": "SPAN-d8bd775fee59978a279f8f56",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": "As of June\u00a030, 2026, the Company had $103.7 billion of unsatisfied RPO, of which 41% was expected to be recognized over the initial 24 months ending\nJune\u00a030, 2028, 39% between months 25 and 48, and the remaining balance recognized between months 49 and 78.",
+          "textHash": "sha256:ab5810eac2e34d3fd69995a6717eba15022a54348528285a9681757f1c7a8445",
+          "charStart": 0,
+          "charEnd": 256,
+          "documentCharStart": 37370,
+          "documentCharEnd": 37626,
+          "lineStart": 30,
+          "lineEnd": 31,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:98eb209d1d1651b1c534c49b3a44e6f45406e20c0174a34c8622bd6c110ff642",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:48ea39eddb4edbd73c6c1bbd312b7054156f83e4c7159a4c43c00b2494ef2ca9"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-7364872b18af9d12c0ef9591",
+          "parentSpanId": "SPAN-af4f330abd4289615441fe26",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": "RPO represents the aggregate amount of the transaction price, net of estimated variable consideration, allocated to performance obligations not delivered,\nor partially undelivered, as of the end of the reporting period.",
+          "textHash": "sha256:5ca5b18bd9e030bdad409ccd1d83d4497c686d9522daeb5517271247915bc534",
+          "charStart": 0,
+          "charEnd": 219,
+          "documentCharStart": 36495,
+          "documentCharEnd": 36714,
+          "lineStart": 24,
+          "lineEnd": 25,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:2b645d4cc4e4c1162d4714ddf12da4ad2b3a0c2fda590fafbd9a775d0e94ca0f",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:b07ffef8d9b91407bc4edb59b1361c7756da9ca9db108c6e23061186d627ffd4"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-e5637494cec61384ade2512b",
+          "parentSpanId": "SPAN-af4f330abd4289615441fe26",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": " RPO\nincludes both billed and unbilled consideration from the Company's committed contracts.",
+          "textHash": "sha256:443a30a24c79a268c18f6ddc5058f785b50f8ed1edfe7fc5741ccc889963a2eb",
+          "charStart": 782,
+          "charEnd": 874,
+          "documentCharStart": 37277,
+          "documentCharEnd": 37369,
+          "lineStart": 28,
+          "lineEnd": 29,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:cd4055bdf0c74244c7156fdb74b7662b947ad9508744a2d391552f8ef98bd263",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:a11fbe90fd4e23f8b4e3527433aabb3aab654c38d25899e3e60918577e5e2cc7"
+        }
+      ],
+      "expectedSupport": {
+        "type": "text",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-0807cb012a8b778a8f3d69f9",
+        "parentSpanId": "SPAN-d8bd775fee59978a279f8f56",
+        "page": 18,
+        "section": "PDF page 18",
+        "text": "As of June\u00a030, 2026, the Company had $103.7 billion of unsatisfied RPO, of which 41% was expected to be recognized over the initial 24 months ending\nJune\u00a030, 2028, 39% between months 25 and 48, and the remaining balance recognized between months 49 and 78.",
+        "textHash": "sha256:ab5810eac2e34d3fd69995a6717eba15022a54348528285a9681757f1c7a8445",
+        "charStart": 0,
+        "charEnd": 256,
+        "documentCharStart": 37370,
+        "documentCharEnd": 37626,
+        "lineStart": 30,
+        "lineEnd": 31,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "segmentationVersion": "sentence-segmentation/v1",
+        "spanHash": "sha256:98eb209d1d1651b1c534c49b3a44e6f45406e20c0174a34c8622bd6c110ff642",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:48ea39eddb4edbd73c6c1bbd312b7054156f83e4c7159a4c43c00b2494ef2ca9"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-0807cb012a8b778a8f3d69f9",
+          "latencyMs": 12487.108250000005,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "backlog_rpo",
+            "metric": "unsatisfied_rpo",
+            "rawValueText": "$103.7 billion",
+            "rawUnitText": null,
+            "periodText": "As of June 30, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 103.7,
+              "normalizedValue": 103700000000,
+              "rawUnit": "USD_billions",
+              "unit": "USD",
+              "scale": 1000000000,
+              "normalization": "usd_billions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$103.7 billion",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "As of June 30, 2026",
+              "start": null,
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "as_of"
+            }
+          },
+          "proposalId": "EPROP-d7e33d298f8f33624044cb51",
+          "candidate": {
+            "proposalId": "EPROP-d7e33d298f8f33624044cb51",
+            "supportCandidateId": "SCAND-1febe79e2e414027e9086ce4",
+            "candidateId": "CANDIDATE-f49b093302a1ce9539684341",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "As of June\u00a030, 2026, the Company had $103.7 billion of unsatisfied RPO, of which 41% was expected to be recognized over the initial 24 months ending\nJune\u00a030, 2028, 39% between months 25 and 48, and the remaining balance recognized between months 49 and 78.",
+              "words": 46
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-05",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": false,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": true
+    },
+    {
+      "caseId": "GOLD-06",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "risk_factors",
+        "metric": "interest_rate_sensitivity",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "risk_factors",
+        "category": "risk_factors",
+        "metric": "interest_rate_sensitivity",
+        "scope": "consolidated_company",
+        "statement": "The filing estimates a 100-basis-point rate change would alter Q2 interest expense by about 30 million USD.",
+        "rawValue": 30,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 3 \u2014 interest rate risk",
+        "page": 52,
+        "location": "Printed p49; Q2 interest sensitivity to 100 basis points",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 30000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:430ce62f5da87b41027d09b050c308bc7a42609cc89309f2982f62e604eb9d82",
+        "id": "EVID-430ce62f5da87b41027d09b0"
+      },
+      "retrievalRank": 6,
+      "rankingPosition": 2,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-9811f95ce682220d2f5a4fca",
+          "parentSpanId": "SPAN-2c89e57d6a64fc3f92a7ccae",
+          "page": 52,
+          "section": "PDF page 52",
+          "text": "We are exposed to interest rate risk related to our outstanding floating rate debt, as a rising interest rate environment may increase the amount of interest\npaid on these loans.",
+          "textHash": "sha256:4212c97c37d143be74be35aca6b883dc3fb3a1556b1cfd26e845224828a84dc1",
+          "charStart": 0,
+          "charEnd": 178,
+          "documentCharStart": 146029,
+          "documentCharEnd": 146207,
+          "lineStart": 13,
+          "lineEnd": 14,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:84a0de8a3cec1d29ef284bdbd9f09af55ae62ef0665f6d723c4decf5a74e6edb",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:f5f47cfcb770540ed19cb337b3a5aabcd15991130c5456733822d8573121f323"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-dbde93f78879bd6f2866c40a",
+          "parentSpanId": "SPAN-2c89e57d6a64fc3f92a7ccae",
+          "page": 52,
+          "section": "PDF page 52",
+          "text": " For the three and six months ended June\u00a030, 2026, for every 100-basis point increase or decrease in interest rates, our interest expense\ncould increase or decrease by approximately $30 million and $61 million, respectively, based on the total balance of our outstanding floating rate debt as of\nJune\u00a030, 2026.",
+          "textHash": "sha256:654f2cabe85e640b8693a606fcf402e66769a7a6e018754cecf9198b7ba501d1",
+          "charStart": 178,
+          "charEnd": 488,
+          "documentCharStart": 146207,
+          "documentCharEnd": 146517,
+          "lineStart": 14,
+          "lineEnd": 16,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:a42d588c5fef8e2516552a3c339e6331a874988717989d6de710c39f6429a864",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:0cfc0be4d5cbeca83e7c22661907113518286be30189181a1dd1f91030308134"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-55cf26d9578cc73fe51a511d",
+          "parentSpanId": "SPAN-267fbb44ecc695455e07465f",
+          "page": 52,
+          "section": "PDF page 52",
+          "text": "We have entered into interest rate swaps intended to mitigate the interest rate risk associated with certain floating interest rate debt.",
+          "textHash": "sha256:eb4cc97c5ed6bee64deb366242fb9ae62bf787f18f3dea86d10fa615526c086d",
+          "charStart": 0,
+          "charEnd": 137,
+          "documentCharStart": 146656,
+          "documentCharEnd": 146793,
+          "lineStart": 17,
+          "lineEnd": 17,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:6271c5ed9a73266ea62a0e706660b07f59a598178acf2ddaca667fcca5921b64",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:ac33299d3ffcd6e4d94f381cd50d4427521f64f2b0af1832043174b1ff5ef23b"
+        }
+      ],
+      "expectedSupport": {
+        "type": "text",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-dbde93f78879bd6f2866c40a",
+        "parentSpanId": "SPAN-2c89e57d6a64fc3f92a7ccae",
+        "page": 52,
+        "section": "PDF page 52",
+        "text": " For the three and six months ended June\u00a030, 2026, for every 100-basis point increase or decrease in interest rates, our interest expense\ncould increase or decrease by approximately $30 million and $61 million, respectively, based on the total balance of our outstanding floating rate debt as of\nJune\u00a030, 2026.",
+        "textHash": "sha256:654f2cabe85e640b8693a606fcf402e66769a7a6e018754cecf9198b7ba501d1",
+        "charStart": 178,
+        "charEnd": 488,
+        "documentCharStart": 146207,
+        "documentCharEnd": 146517,
+        "lineStart": 14,
+        "lineEnd": 16,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "segmentationVersion": "sentence-segmentation/v1",
+        "spanHash": "sha256:a42d588c5fef8e2516552a3c339e6331a874988717989d6de710c39f6429a864",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:0cfc0be4d5cbeca83e7c22661907113518286be30189181a1dd1f91030308134"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-9811f95ce682220d2f5a4fca",
+          "latencyMs": 10307.36045800001,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "risk_factors",
+            "metric": "interest_rate_risk_exposure",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "risk_disclosure",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "value_missing"
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "period_missing"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-dbde93f78879bd6f2866c40a",
+          "latencyMs": 11886.841167000006,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "risk_factors",
+            "metric": "interest_rate_sensitivity_exposure",
+            "rawValueText": "$30 million",
+            "rawUnitText": null,
+            "periodText": "three and six months ended June 30, 2026",
+            "actualOrGuidance": "risk_disclosure",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 30,
+              "normalizedValue": 30000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$30 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "ambiguous_period_phrase",
+              "periodText": "three and six months ended June 30, 2026",
+              "start": null,
+              "end": null,
+              "observedAt": null
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED",
+            "ACTUAL_GUIDANCE_ERROR"
+          ]
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-55cf26d9578cc73fe51a511d",
+          "latencyMs": 9969.984041999982,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "risk_factors",
+            "metric": "interest_rate_swap_disclosure",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "risk_disclosure",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "value_missing"
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "period_missing"
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-06",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": false,
+        "categoryCorrect": true,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "COMPOUND_LITERAL_ERROR",
+        "detail": "Three/six-month respectively binding is compound; frozen period parser cannot parse the joint phrase and numeric risk_disclosure remains inadmissible."
+      }
+    },
+    {
+      "caseId": "GOLD-07",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "Q2 2026 consolidated revenue reported in USD millions.",
+        "rawValue": 2575,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 2 \u2014 results of operations",
+        "page": 46,
+        "location": "Printed p43; revenue row, three months ended June 30 2026",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 2575000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:55de53767427d2546ea5a13175e7e25a7ecf7e4a12033b265e3f23794eea0e0e",
+        "id": "EVID-55de53767427d2546ea5a131"
+      },
+      "retrievalRank": 7,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-88a9b7b151e96b2751279350",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "Revenue",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "$ 2,575",
+          "cellHash": "sha256:5feb42c8b45edea94497ee5c6bc3eba33376edd36acb9badaef45176432d13ab",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:620e66a2b270e7220c015a6e71eb2f9986c5e1cdf97f33349f161374e95a16a6",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:963f5f52ce1c4fcb2f82695954bd243bf14b96f6278102c2cd7b31a45a6b05fd"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-6c01a61ab909f5e203039ac3",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 2,
+          "rowLabel": "Revenue",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Six Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "$ 4,653",
+          "cellHash": "sha256:0a6621d109743f20cf5747a49f237119890206589daecd6ce260ab05be517024",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:49888cacfd3b00b92d9bafbd033797e2d30d9059f7401b251fae425d268d1213",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:6a82a235629f2153b3608fe9d845f5f5e12d316976c24cd04ca7647ba0f9c160"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-13f57d5a120990520d240cf9",
+          "parentSpanId": "SPAN-0714a2533213e82c86c472b7",
+          "page": 46,
+          "section": "PDF page 46",
+          "text": "Revenue for the three months ended June\u00a030, 2026 increased by $1.4 billion, or 112%, compared to the three months ended June\u00a030, 2025.",
+          "textHash": "sha256:7a51c93b53937fd370278070f2fbe06d827cba2c1b30af9c9841b93161b485e8",
+          "charStart": 0,
+          "charEnd": 134,
+          "documentCharStart": 126462,
+          "documentCharEnd": 126596,
+          "lineStart": 38,
+          "lineEnd": 38,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:daf7ed48df62b6580f4d8c9f554d1dee2f4a72642c6eb01b59f5952958cf8b98",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:4695c1763ebad2f5312725983863783a20ff5406c743539a792f9e2ec4f38ff6"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-88a9b7b151e96b2751279350",
+        "tableId": "GTBL-df008965bafa476b985b67d1",
+        "page": 46,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 0,
+        "rowLabel": "Revenue",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "$ 2,575",
+        "cellHash": "sha256:5feb42c8b45edea94497ee5c6bc3eba33376edd36acb9badaef45176432d13ab",
+        "unitContext": {
+          "match": "(in millions)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "(in millions)"
+        },
+        "tableTitle": "(in millions)",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:620e66a2b270e7220c015a6e71eb2f9986c5e1cdf97f33349f161374e95a16a6",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:963f5f52ce1c4fcb2f82695954bd243bf14b96f6278102c2cd7b31a45a6b05fd"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-88a9b7b151e96b2751279350",
+          "latencyMs": 12181.722666999995,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "revenue",
+            "rawValueText": "$ 2,575",
+            "rawUnitText": "(in millions)",
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 2575,
+              "normalizedValue": 2575000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 2,575 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "proposalId": "EPROP-af3eb30d553598622120812b",
+          "candidate": {
+            "proposalId": "EPROP-af3eb30d553598622120812b",
+            "supportCandidateId": "SCAND-64850dc45635e0960254af85",
+            "candidateId": "CANDIDATE-fcbb7f5b738a2a08baa84f68",
+            "anchor": {
+              "chunkId": "CHUNK-8796f15b4e42495987a385f3",
+              "quotedText": "Revenue\n$\n2,575",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-07",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 0,
+        "selectedCount": 1,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": true
+    },
+    {
+      "caseId": "GOLD-08",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "growth",
+        "metric": "revenue_yoy_growth",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31"
+      },
+      "expectedGold": {
+        "researchField": "growth",
+        "category": "growth",
+        "metric": "revenue_yoy_growth",
+        "scope": "consolidated_company",
+        "statement": "The annual revenue comparison reports 168 percent year-on-year growth.",
+        "rawValue": 168,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Item 7 \u2014 revenue comparison",
+        "page": 77,
+        "location": "Printed p71; FY2025 versus FY2024 revenue % change",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 168,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:57d9fb7c9e0d01968f63e86d53bfcb26b002e9635400fded7ad252e8bfe769dc",
+        "id": "EVID-57d9fb7c9e0d01968f63e86d"
+      },
+      "retrievalRank": 1,
+      "rankingPosition": 3,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-690dd2e0535bfd8b70733765",
+          "parentSpanId": "SPAN-3288fb121e4ca941dcf02a46",
+          "page": 77,
+          "section": "PDF page 77",
+          "text": "(dollars in millions)\nRevenue\n$ \n5,131 $ \n1,915 $ \n3,216 \n 168 %",
+          "textHash": "sha256:66d329da7dcebe7ab3d94854f8bacd3bb101db0c8bcef16848c365c06a514d8a",
+          "charStart": 0,
+          "charEnd": 64,
+          "documentCharStart": 353567,
+          "documentCharEnd": 353631,
+          "lineStart": 42,
+          "lineEnd": 48,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:17b60c3810ea3cee8e27482d4bad7394941bb590d8e5ae35450e84a351391cdf",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:c46e10f205db06b5cc513ceebaa314f0dfd4bde73234b4e198277954c156226e"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-62e029512b0f5661dc59a0be",
+          "tableId": "GTBL-d6d142f1550cdd192842dbf5",
+          "page": 77,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "Revenue",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2025"
+          ],
+          "cellText": "$ 5,131",
+          "cellHash": "sha256:e05d967be19d4e1f3b074d509d52a3b77dcc597e62308158526a9f8d6b904e8c",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:97a012fd00f68496fb01b8514d62cfb2865569d1648deaf8764c0f81dd048d42",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:e5382aa7e8d3bda7e5f4986e6331e4baec2f298d8667abf90681274e26b8de3d"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-ab6a4f2666baf76a412ce7ef",
+          "parentSpanId": "SPAN-8cd27e3c179a20802c46cfb9",
+          "page": 77,
+          "section": "PDF page 77",
+          "text": "Revenue for the year ended December 31, 2025 increased by $3.2 billion, or 168%, compared to the year ended \nDecember 31, 2024.",
+          "textHash": "sha256:62a52d1a022bf34c574429925eb82741310ce2f3edd6ad9e391db42de4325384",
+          "charStart": 0,
+          "charEnd": 127,
+          "documentCharStart": 353632,
+          "documentCharEnd": 353759,
+          "lineStart": 44,
+          "lineEnd": 45,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:1695cf79be8cac3616f1fbe1747893f2b08e5d9c615d70a8008418693883c3d3",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:f9d7656438a231db11bb0c56e1acb029c0d6cdc9ec48d2bea86f11b88628c037"
+        }
+      ],
+      "expectedSupport": {
+        "type": "text",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-ab6a4f2666baf76a412ce7ef",
+        "parentSpanId": "SPAN-8cd27e3c179a20802c46cfb9",
+        "page": 77,
+        "section": "PDF page 77",
+        "text": "Revenue for the year ended December 31, 2025 increased by $3.2 billion, or 168%, compared to the year ended \nDecember 31, 2024.",
+        "textHash": "sha256:62a52d1a022bf34c574429925eb82741310ce2f3edd6ad9e391db42de4325384",
+        "charStart": 0,
+        "charEnd": 127,
+        "documentCharStart": 353632,
+        "documentCharEnd": 353759,
+        "lineStart": 44,
+        "lineEnd": 45,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "segmentationVersion": "sentence-segmentation/v1",
+        "spanHash": "sha256:1695cf79be8cac3616f1fbe1747893f2b08e5d9c615d70a8008418693883c3d3",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:f9d7656438a231db11bb0c56e1acb029c0d6cdc9ec48d2bea86f11b88628c037"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-690dd2e0535bfd8b70733765",
+          "latencyMs": 10982.139291,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "total_revenue",
+            "rawValueText": "$ 5,131",
+            "rawUnitText": "dollars in millions",
+            "periodText": null,
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "raw_text_not_exact",
+              "rawValueText": "$ 5,131",
+              "rawUnitText": "dollars in millions"
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "period_missing"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE",
+            "VALUE_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-62e029512b0f5661dc59a0be",
+          "latencyMs": 12409.157042000006,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "revenue",
+            "rawValueText": "$ 5,131",
+            "rawUnitText": "(in millions)",
+            "periodText": "Year Ended December 31,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 5131,
+              "normalizedValue": 5131000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 5,131 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "proposalId": "EPROP-184ab6545f8486124b9ba1d6",
+          "candidate": {
+            "proposalId": "EPROP-184ab6545f8486124b9ba1d6",
+            "supportCandidateId": "SCAND-53cb625097bc2deb629f32ef",
+            "candidateId": "CANDIDATE-72d5ab4f53793f217f96c038",
+            "anchor": {
+              "chunkId": "CHUNK-d97b32fd73827505b0e13548",
+              "quotedText": "Revenue\n$ \n5,131",
+              "words": 3
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-08",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": false,
+        "nonTargetSelections": 2,
+        "selectedCount": 2,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "TARGET_MISMATCH",
+        "detail": "Early legal revenue amount stops before rank-3 growth percentage in a two-metric/two-period sentence."
+      }
+    },
+    {
+      "caseId": "GOLD-09",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "revenue_concentration",
+        "metric": "other_geographic_revenue",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31"
+      },
+      "expectedGold": {
+        "researchField": "revenue_concentration",
+        "category": "revenue_concentration",
+        "metric": "other_geographic_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2025 non-US revenue reported in USD millions.",
+        "rawValue": 330,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Note 15 \u2014 geographic information",
+        "page": 140,
+        "location": "Printed p134; all other countries row, FY2025 column",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 330000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:581b270af3a7cb05cb3c8d7643d1c342a327473b612cebadff6adcf5344ca78f",
+        "id": "EVID-581b270af3a7cb05cb3c8d76"
+      },
+      "retrievalRank": 3,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-41e0c84eab1468399180f726",
+          "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+          "page": 140,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "All other countries",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2025"
+          ],
+          "cellText": "330",
+          "cellHash": "sha256:a35ced0ad946d0000479b94a8612c14a110ae157f201272c072dc671b5adc985",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "following table sets forth revenue by geographic area (in millions):"
+          },
+          "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:cfb8eb3cf5814a33f6f827338f1588a3842a16cb8c0204778ed307475258853c",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:33c0ae09a75ed1a2ff04ede6d03bc363eed6b9a5e5cc1710afe673661cc76bd5"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-57265a1e8b757d696e715026",
+          "parentSpanId": "SPAN-a6ab638ceff011961270f884",
+          "page": 140,
+          "section": "PDF page 140",
+          "text": "As of December 31, 2025 and 2024, 88% and 90%, respectively, of the Company's long-lived assets were located in \nthe United States, with no other single country accounting for more than 10% of these assets.",
+          "textHash": "sha256:5548e5f4af6a07b4236dd3ef61464b3c7ec85d1e1ddc491059f544857439ebba",
+          "charStart": 0,
+          "charEnd": 206,
+          "documentCharStart": 558163,
+          "documentCharEnd": 558369,
+          "lineStart": 43,
+          "lineEnd": 44,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:261c1f16da05fec53308ce089faf6befc529526586b026a0d11ee019520810c0",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:1b97f0746668ae16b118cc35019d227e6ed4fbe425fa29455d75af6b827ac474"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-8be23231d2f90b1a38c279ef",
+          "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+          "page": 140,
+          "tableIndex": 0,
+          "rowIndex": 2,
+          "columnIndex": 2,
+          "rowLabel": "Total revenue",
+          "columnLabel": "2023",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2023"
+          ],
+          "cellText": "$ 229",
+          "cellHash": "sha256:4d2673438454aa89e1eae724cbc689e7f8843739ebf87c0484515b6996a764f0",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "following table sets forth revenue by geographic area (in millions):"
+          },
+          "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:7216b1d84fe07a2a3156ed49a7c7dd046b8ed4f3aa6105049421f0172d455ce7",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:33776f129e81b532446cda0ddfbbac04eec193ed65cc7d8e94dbec289cb3d039"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-41e0c84eab1468399180f726",
+        "tableId": "GTBL-02f9e978a56a305a7182e8d4",
+        "page": 140,
+        "tableIndex": 0,
+        "rowIndex": 1,
+        "columnIndex": 0,
+        "rowLabel": "All other countries",
+        "columnLabel": "2025",
+        "headerPath": [
+          "Year Ended December 31,",
+          "2025"
+        ],
+        "cellText": "330",
+        "cellHash": "sha256:a35ced0ad946d0000479b94a8612c14a110ae157f201272c072dc671b5adc985",
+        "unitContext": {
+          "match": "(in millions)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "following table sets forth revenue by geographic area (in millions):"
+        },
+        "tableTitle": "following table sets forth revenue by geographic area (in millions):",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:cfb8eb3cf5814a33f6f827338f1588a3842a16cb8c0204778ed307475258853c",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:33c0ae09a75ed1a2ff04ede6d03bc363eed6b9a5e5cc1710afe673661cc76bd5"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-41e0c84eab1468399180f726",
+          "latencyMs": 11299.631708,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "revenue_all_other_countries_2025",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": "Year Ended December 31,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 330,
+              "normalizedValue": 330000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 330 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-57265a1e8b757d696e715026",
+          "latencyMs": 11541.861958000023,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "risk_factors",
+            "metric": "geographic_asset_concentration",
+            "rawValueText": "88%",
+            "rawUnitText": null,
+            "periodText": "As of December 31, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 88,
+              "normalizedValue": 88,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "88%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "As of December 31, 2025",
+              "start": null,
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "as_of"
+            }
+          },
+          "proposalId": "EPROP-7ac7b805f98850414ce5205d",
+          "candidate": {
+            "proposalId": "EPROP-7ac7b805f98850414ce5205d",
+            "supportCandidateId": "SCAND-b25af6cb5c59842ab6944432",
+            "candidateId": "CANDIDATE-336bcc0b6f8a3059b175b17b",
+            "anchor": {
+              "chunkId": "CHUNK-34a75f1f934c7f3deda4ad44",
+              "quotedText": "As of December 31, 2025 and 2024, 88% and 90%, respectively, of the Company's long-lived assets were located in \nthe United States, with no other single country accounting for more than 10% of these assets.",
+              "words": 35
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-09",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 1,
+        "selectedCount": 2,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": true,
+        "findings": [
+          "VALIDATOR_FALSE_REJECT"
+        ]
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "INTERPRETATION_ERROR",
+        "detail": "Explicit geographic revenue marked derived; fallback accepts unrelated geographic assets."
+      }
+    },
+    {
+      "caseId": "GOLD-10",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "top_customer_concentration",
+        "metric": "top1_revenue_share",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31"
+      },
+      "expectedGold": {
+        "researchField": "top_customer_concentration",
+        "category": "top_customer_concentration",
+        "metric": "top1_revenue_share",
+        "scope": "consolidated_company",
+        "statement": "The filing attributes approximately 67 percent of FY2025 revenue to Microsoft.",
+        "rawValue": 67,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Item 1A \u2014 customer concentration",
+        "page": 26,
+        "location": "Printed p20; named Microsoft annual revenue concentration",
+        "periodStart": "2025-01-01",
+        "periodEnd": "2025-12-31",
+        "observedAt": "2025-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 67,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:9972e75db9572973a07822ea52f03d142cca33e241fbe70676983c4dc65cce7c",
+        "id": "EVID-9972e75db9572973a07822ea"
+      },
+      "retrievalRank": 2,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-2f18f201b5eacc83deb308bc",
+          "parentSpanId": "SPAN-545b278c557735989038df5b",
+          "page": 26,
+          "section": "PDF page 26",
+          "text": " We recognized an aggregate of \napproximately 67% of our revenue from our top customer, Microsoft, for the year ended December 31, 2025.",
+          "textHash": "sha256:919b55b765b8c96f0228e44dd9ce414b4731588a0d846328f24910991b53b651",
+          "charStart": 80,
+          "charEnd": 216,
+          "documentCharStart": 86986,
+          "documentCharEnd": 87122,
+          "lineStart": 12,
+          "lineEnd": 13,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:de3a2a8c0a588009cd57e409237b7d6dc9e5721590d4441b1c63d0747e1be75e",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:2867ae07647206006aa53daf40b431556a327920b7bb0f4916bff45d4f02053c"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-7d05af082dad024655e8b8cd",
+          "parentSpanId": "SPAN-545b278c557735989038df5b",
+          "page": 26,
+          "section": "PDF page 26",
+          "text": " None of our other customers represented 10% or more of our revenue for the year ended \nDecember 31, 2025.",
+          "textHash": "sha256:53cb26c4a9dfa5b2ad4fbe9296937f5a468ef0a1188fbf145d406ac465d2a14b",
+          "charStart": 478,
+          "charEnd": 584,
+          "documentCharStart": 87384,
+          "documentCharEnd": 87490,
+          "lineStart": 16,
+          "lineEnd": 17,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:2d1f50d41d0bebcb89b789d5c345420a062b926e1fc66a12c03102b4d893facc",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:655c87db4b9e7e6a253adc28babc04e2b38fd0bd936455e249255e993d05bb86"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-9d46be848a4d453b5204fc7c",
+          "parentSpanId": "SPAN-545b278c557735989038df5b",
+          "page": 26,
+          "section": "PDF page 26",
+          "text": "A substantial portion of our revenue is driven by a limited number of customers.",
+          "textHash": "sha256:e196a98b7fc500e31f1c9df92d14cca57da28495fb9d72b9773bfe532c27b557",
+          "charStart": 0,
+          "charEnd": 80,
+          "documentCharStart": 86906,
+          "documentCharEnd": 86986,
+          "lineStart": 12,
+          "lineEnd": 12,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:d7deadd395b870089175d1b3c174046cc97a8a7460dd875d3b105aec5c297e2c",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:765133f400a5703bb0d1ed695bc0f8855143057a47a0e3c1afdcde7fb8fefda8"
+        }
+      ],
+      "expectedSupport": {
+        "type": "text",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-2f18f201b5eacc83deb308bc",
+        "parentSpanId": "SPAN-545b278c557735989038df5b",
+        "page": 26,
+        "section": "PDF page 26",
+        "text": " We recognized an aggregate of \napproximately 67% of our revenue from our top customer, Microsoft, for the year ended December 31, 2025.",
+        "textHash": "sha256:919b55b765b8c96f0228e44dd9ce414b4731588a0d846328f24910991b53b651",
+        "charStart": 80,
+        "charEnd": 216,
+        "documentCharStart": 86986,
+        "documentCharEnd": 87122,
+        "lineStart": 12,
+        "lineEnd": 13,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "segmentationVersion": "sentence-segmentation/v1",
+        "spanHash": "sha256:de3a2a8c0a588009cd57e409237b7d6dc9e5721590d4441b1c63d0747e1be75e",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:2867ae07647206006aa53daf40b431556a327920b7bb0f4916bff45d4f02053c"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-2f18f201b5eacc83deb308bc",
+          "latencyMs": 11681.710292000003,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue_concentration",
+            "metric": "top_customer_revenue_percentage",
+            "rawValueText": "approximately 67%",
+            "rawUnitText": null,
+            "periodText": "year ended December 31, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "rawValueText": "approximately 67%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "year ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-7d05af082dad024655e8b8cd",
+          "latencyMs": 12633.179082999995,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "top_customer_revenue_percentage_threshold",
+            "rawValueText": "None of our other customers represented 10% or more",
+            "rawUnitText": null,
+            "periodText": "for the year ended December 31, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "rawValueText": "None of our other customers represented 10% or more",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "for the year ended December 31, 2025",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "observedAt": "2025-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE",
+            "PERIOD_ERROR",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-9d46be848a4d453b5204fc7c",
+          "latencyMs": 9862.498125000013,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue_concentration",
+            "metric": "customer_concentration_statement",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "risk_disclosure",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "value_missing"
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "period_missing"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE",
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-10",
+        "legacyBinding": "narrative",
+        "expectedSupportType": "text",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": true,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "PARSER_ERROR",
+        "detail": "Numeric literal includes approximately; category revenue_concentration differs from intended customer_concentration."
+      }
+    },
+    {
+      "caseId": "GOLD-11",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "top_customer_concentration",
+        "metric": "top1_revenue_share",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "top_customer_concentration",
+        "category": "top_customer_concentration",
+        "metric": "top1_revenue_share",
+        "scope": "consolidated_company",
+        "statement": "The largest disclosed Q2 customer share is 36 percent, without assigning a named identity.",
+        "rawValue": 36,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 \u2014 significant customers",
+        "page": 18,
+        "location": "Printed p15; largest listed customer Q2 share; identity not inferred",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 36,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:9d1a6c004a3030203ca7357b5b42e56ae83e70b0713f6c8323659c6e6a1df488",
+        "id": "EVID-9d1a6c004a3030203ca7357b"
+      },
+      "retrievalRank": null,
+      "rankingPosition": null,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "Customer B",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "26%",
+          "cellHash": "sha256:9f6a95bfc503cd0b26943bd30bcf947cbd7fffe5c06496f4b2825a2f7b0f41ae",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:21ddff9c7811e2dccfd667abec2053600cbf0f25b94e042860b1310aeca05ae2",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:b6ee85984de733fd4d51694621df05b8f221e947d2757e5084f08b4702d1886f"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 2,
+          "rowLabel": "Customer B",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Six Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "23%",
+          "cellHash": "sha256:0c09edefd0ab7ccfea8e15dd66fd5547dee24b09564b35952c62c87c34a8aa13",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:5e7128526da12b7410666c76c28774042c2174db71e9b6c81f048ed8bd520948",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:b1ff894581a4197a4feeb7707de96584827658e2da188f98900c0b1e42318ed4"
+        },
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-7092c5398c0ea8823ad75585",
+          "parentSpanId": "SPAN-bcc20666109af4da966cebeb",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": "The following customers accounted for 10% or more of the Company's revenue for the periods presented:",
+          "textHash": "sha256:e599f9466036951fd2ad4d1cec90b1cfb085a2e20c30a4386b3647b1aff1a666",
+          "charStart": 0,
+          "charEnd": 101,
+          "documentCharStart": 35342,
+          "documentCharEnd": 35443,
+          "lineStart": 7,
+          "lineEnd": 7,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:3d3d54b745c2dc71ab60ccbb1bb368e76131580a487dedbdaba9dec86ff7d3a1",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:faefdcced64b0db151e6876faaddf5d1e133cccb2f5b5847b6f7548de4f7c1d6"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-99566db088adaae178a4968d",
+        "tableId": "GTBL-d66d1552625ed90d9918be61",
+        "page": 18,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 0,
+        "rowLabel": "Customer A",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "36%",
+        "cellHash": "sha256:ac71d887a6c6ada6ecafb72bf5544f556c5446a6caa5539e549209ee23b418df",
+        "unitContext": null,
+        "tableTitle": null,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:4ed7ee7435cae1b61836cd5a27350ee7aaefad4308bfa0d905457df9209d4858",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:8fb9be7ba08c16f02f61caec9c082810ab2ad14509e7aa1922d05ccc8c23a594"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "latencyMs": 12043.370999999985,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue_concentration",
+            "metric": "customer_revenue_percentage",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 26,
+              "normalizedValue": 26,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "26%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-9319f06810062011dd4117a7",
+          "latencyMs": 12292.289374999993,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue_concentration",
+            "metric": "customer_revenue_percentage",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": "Six Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 23,
+              "normalizedValue": 23,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "23%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Six Months Ended June 30, 2026",
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "six_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-7092c5398c0ea8823ad75585",
+          "latencyMs": 10608.20325000002,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "top_customer_percentage",
+            "rawValueText": "10%",
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "other",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 10,
+              "normalizedValue": 10,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "10%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "period_missing"
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-11",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": false,
+        "nonTargetSelections": 3,
+        "selectedCount": 3,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "targetCorrect": false
+    },
+    {
+      "caseId": "GOLD-12",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "compute_spend",
+        "metric": "technology_infrastructure_expense",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "compute_spend",
+        "category": "compute_spend",
+        "metric": "technology_infrastructure_expense",
+        "scope": "consolidated_company",
+        "statement": "Q2 technology and infrastructure expense is separately classified from cost of revenue.",
+        "rawValue": 1507,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 2 \u2014 results of operations",
+        "page": 46,
+        "location": "Printed p43; technology/infrastructure row, Q2 2026",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 1507000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:b5554a7e7040c07b95cf24cc99b3d1dd2f35c9e3e9c1c6c1bb067df55182603d",
+        "id": "EVID-b5554a7e7040c07b95cf24cc"
+      },
+      "retrievalRank": 7,
+      "rankingPosition": 1,
+      "rankedSupports": [
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-26aec07d43a043304ba9dc14",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 2,
+          "columnIndex": 0,
+          "rowLabel": "Technology and infrastructure (1)",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "1,507",
+          "cellHash": "sha256:a4057660c3992e385cd49fb489bffa3b6ff2c1d6396217e08beab78628e32306",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:924153e41c61d41e15aa14b052ba8a05d89606bd8d548390db81b8bb50b4ac4d",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:cb0cdd280ba2f11f7f88ccc2e79db59f30276ccdfe80cd9f3964b6eca936a13e"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-1418dfba22fa066ca2d079be",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 2,
+          "columnIndex": 1,
+          "rowLabel": "Technology and infrastructure (1)",
+          "columnLabel": "2025",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2025"
+          ],
+          "cellText": "670",
+          "cellHash": "sha256:cb3f4ca30e7511f3de34cabe835b001a84ed451ab82a0529b19d16f72da48716",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:09dc99504546acd43838610046fc3de8cf40bae895e11e858fd91294195c560a",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:ee73f39abcb3a935882e523aac3b4544d935ed50fd0334ac317beb093c604e70"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-6a98c253bf1f87bfcb545741",
+          "tableId": "GTBL-df008965bafa476b985b67d1",
+          "page": 46,
+          "tableIndex": 0,
+          "rowIndex": 2,
+          "columnIndex": 2,
+          "rowLabel": "Technology and infrastructure (1)",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Six Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "2,780",
+          "cellHash": "sha256:8f91a36357b71b9191a0e36e61080728389469705a85e026b501333b16ff886f",
+          "unitContext": {
+            "match": "(in millions)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions)"
+          },
+          "tableTitle": "(in millions)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:8b563128f0965bcd1e50a72758611eac528adc4d5d2f749b6039775ddaaf4b23",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:f01882b2859fa8329e705507302ea27d431c7ae01db7c0767b5485664e0e5e05"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-26aec07d43a043304ba9dc14",
+        "tableId": "GTBL-df008965bafa476b985b67d1",
+        "page": 46,
+        "tableIndex": 0,
+        "rowIndex": 2,
+        "columnIndex": 0,
+        "rowLabel": "Technology and infrastructure (1)",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "1,507",
+        "cellHash": "sha256:a4057660c3992e385cd49fb489bffa3b6ff2c1d6396217e08beab78628e32306",
+        "unitContext": {
+          "match": "(in millions)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "(in millions)"
+        },
+        "tableTitle": "(in millions)",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:924153e41c61d41e15aa14b052ba8a05d89606bd8d548390db81b8bb50b4ac4d",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:cb0cdd280ba2f11f7f88ccc2e79db59f30276ccdfe80cd9f3964b6eca936a13e"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-26aec07d43a043304ba9dc14",
+          "latencyMs": 11853.754041000037,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "technology_and_infrastructure_revenue",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": "Three Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 1507,
+              "normalizedValue": 1507000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 1,507 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2026",
+              "start": "2026-04-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-1418dfba22fa066ca2d079be",
+          "latencyMs": 11351.863124999974,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "technology_and_infrastructure_revenue",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": "Three Months Ended June 30,, 2025",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 670,
+              "normalizedValue": 670000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 670 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Three Months Ended June 30, 2025",
+              "start": "2025-04-01",
+              "end": "2025-06-30",
+              "observedAt": "2025-06-30",
+              "basis": "three_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        },
+        {
+          "rank": 3,
+          "spanId": "SPAN-6a98c253bf1f87bfcb545741",
+          "latencyMs": 10567.224583000003,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "technology_and_infrastructure_revenue",
+            "rawValueText": null,
+            "rawUnitText": null,
+            "periodText": "Six Months Ended June 30,, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "derived"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 2780,
+              "normalizedValue": 2780000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 2,780 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Six Months Ended June 30, 2026",
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "six_months"
+            }
+          },
+          "findings": [
+            "DERIVED_NOT_ADMISSIBLE"
+          ]
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-12",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 2,
+        "selectedCount": 3,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": true,
+        "findings": [
+          "VALIDATOR_FALSE_REJECT"
+        ]
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "INTERPRETATION_ERROR",
+        "detail": "Explicit technology/infrastructure expense mislabelled revenue and derived."
+      }
+    },
+    {
+      "caseId": "GOLD-13",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "customer_concentration",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "scope": "consolidated_company",
+        "statement": "Anonymous customer B represents 26 percent of Q2 revenue; labels may change across periods.",
+        "rawValue": 26,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 \u2014 significant customers",
+        "page": 18,
+        "location": "Printed p15; Customer B row, Q2 2026 column; labels are not persistent identities",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 26,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:b7667065291b5ef49830ce7ea3eed5799d100f9dabddad30ef296e6a39c3f14a",
+        "id": "EVID-b7667065291b5ef49830ce7e"
+      },
+      "retrievalRank": 6,
+      "rankingPosition": 3,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "parentSpanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": "Customers A and B accounted for 32% and 32%, of accounts receivable, net, respectively, as of June\u00a030, 2026.",
+          "textHash": "sha256:a31755e5e75e92f103514edb9fbd62062d5c89f7e3883ec06a4865039a437709",
+          "charStart": 0,
+          "charEnd": 108,
+          "documentCharStart": 35686,
+          "documentCharEnd": 35794,
+          "lineStart": 16,
+          "lineEnd": 16,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:326c89bcba64ae854e654a4191a7d708b91fdda81a83e64d9fa062910db6ee80",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:40b8b9aee8a291c28b0964c20f04ab7c44f43ef120989dc0183b89fc5941605b"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "Customer A",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "36%",
+          "cellHash": "sha256:ac71d887a6c6ada6ecafb72bf5544f556c5446a6caa5539e549209ee23b418df",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:4ed7ee7435cae1b61836cd5a27350ee7aaefad4308bfa0d905457df9209d4858",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:8fb9be7ba08c16f02f61caec9c082810ab2ad14509e7aa1922d05ccc8c23a594"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "Customer B",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "26%",
+          "cellHash": "sha256:9f6a95bfc503cd0b26943bd30bcf947cbd7fffe5c06496f4b2825a2f7b0f41ae",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:21ddff9c7811e2dccfd667abec2053600cbf0f25b94e042860b1310aeca05ae2",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:b6ee85984de733fd4d51694621df05b8f221e947d2757e5084f08b4702d1886f"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-b0a98a249d8ab690bff97711",
+        "tableId": "GTBL-d66d1552625ed90d9918be61",
+        "page": 18,
+        "tableIndex": 0,
+        "rowIndex": 1,
+        "columnIndex": 0,
+        "rowLabel": "Customer B",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "26%",
+        "cellHash": "sha256:9f6a95bfc503cd0b26943bd30bcf947cbd7fffe5c06496f4b2825a2f7b0f41ae",
+        "unitContext": null,
+        "tableTitle": null,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:21ddff9c7811e2dccfd667abec2053600cbf0f25b94e042860b1310aeca05ae2",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:b6ee85984de733fd4d51694621df05b8f221e947d2757e5084f08b4702d1886f"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "latencyMs": 13407.052500000049,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "accounts_receivable_net_customer_share",
+            "rawValueText": "32%",
+            "rawUnitText": null,
+            "periodText": "as of June 30, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 32,
+              "normalizedValue": 32,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "32%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "as of June 30, 2026",
+              "start": null,
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "as_of"
+            }
+          },
+          "proposalId": "EPROP-b4dfb81d5714effa5eae59ba",
+          "candidate": {
+            "proposalId": "EPROP-b4dfb81d5714effa5eae59ba",
+            "supportCandidateId": "SCAND-c6e5a46de941eaef3f03e77c",
+            "candidateId": "CANDIDATE-15fa3868583f1bca44800159",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "Customers A and B accounted for 32% and 32%, of accounts receivable, net, respectively, as of June\u00a030, 2026.",
+              "words": 19
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-13",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": false,
+        "nonTargetSelections": 1,
+        "selectedCount": 1,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "TARGET_MISMATCH",
+        "detail": "Accounts-receivable percentage at rank 1 stops before rank-3 Q2 customer revenue share."
+      }
+    },
+    {
+      "caseId": "GOLD-14",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "customer_concentration",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "scope": "consolidated_company",
+        "statement": "Anonymous customer A represents 36 percent of Q2 revenue; labels may change across periods.",
+        "rawValue": 36,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 \u2014 significant customers",
+        "page": 18,
+        "location": "Printed p15; Customer A row, Q2 2026 column; labels are not persistent identities",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 36,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:d6bd9f44f58d10087bfb051f253f4dae314f7b2be4d22c3e321a1bfa44118a0c",
+        "id": "EVID-d6bd9f44f58d10087bfb051f"
+      },
+      "retrievalRank": 8,
+      "rankingPosition": 2,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "parentSpanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": "Customers A and B accounted for 32% and 32%, of accounts receivable, net, respectively, as of June\u00a030, 2026.",
+          "textHash": "sha256:a31755e5e75e92f103514edb9fbd62062d5c89f7e3883ec06a4865039a437709",
+          "charStart": 0,
+          "charEnd": 108,
+          "documentCharStart": 35686,
+          "documentCharEnd": 35794,
+          "lineStart": 16,
+          "lineEnd": 16,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:326c89bcba64ae854e654a4191a7d708b91fdda81a83e64d9fa062910db6ee80",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:40b8b9aee8a291c28b0964c20f04ab7c44f43ef120989dc0183b89fc5941605b"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "Customer A",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "36%",
+          "cellHash": "sha256:ac71d887a6c6ada6ecafb72bf5544f556c5446a6caa5539e549209ee23b418df",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:4ed7ee7435cae1b61836cd5a27350ee7aaefad4308bfa0d905457df9209d4858",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:8fb9be7ba08c16f02f61caec9c082810ab2ad14509e7aa1922d05ccc8c23a594"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "Customer B",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "26%",
+          "cellHash": "sha256:9f6a95bfc503cd0b26943bd30bcf947cbd7fffe5c06496f4b2825a2f7b0f41ae",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:21ddff9c7811e2dccfd667abec2053600cbf0f25b94e042860b1310aeca05ae2",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:b6ee85984de733fd4d51694621df05b8f221e947d2757e5084f08b4702d1886f"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-99566db088adaae178a4968d",
+        "tableId": "GTBL-d66d1552625ed90d9918be61",
+        "page": 18,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 0,
+        "rowLabel": "Customer A",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "36%",
+        "cellHash": "sha256:ac71d887a6c6ada6ecafb72bf5544f556c5446a6caa5539e549209ee23b418df",
+        "unitContext": null,
+        "tableTitle": null,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:4ed7ee7435cae1b61836cd5a27350ee7aaefad4308bfa0d905457df9209d4858",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:8fb9be7ba08c16f02f61caec9c082810ab2ad14509e7aa1922d05ccc8c23a594"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "latencyMs": 10993.012791000016,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "accounts_receivable_net_customer_share",
+            "rawValueText": "32%",
+            "rawUnitText": null,
+            "periodText": "as of June 30, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 32,
+              "normalizedValue": 32,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "32%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "as of June 30, 2026",
+              "start": null,
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "as_of"
+            }
+          },
+          "proposalId": "EPROP-ce659ed110d46702517c98f5",
+          "candidate": {
+            "proposalId": "EPROP-ce659ed110d46702517c98f5",
+            "supportCandidateId": "SCAND-c6e5a46de941eaef3f03e77c",
+            "candidateId": "CANDIDATE-15fa3868583f1bca44800159",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "Customers A and B accounted for 32% and 32%, of accounts receivable, net, respectively, as of June\u00a030, 2026.",
+              "words": 19
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-14",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": false,
+        "nonTargetSelections": 1,
+        "selectedCount": 1,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "targetCorrect": false,
+      "loss": {
+        "kind": "TARGET_MISMATCH",
+        "detail": "Accounts-receivable percentage at rank 1 stops before rank-2 Q2 customer revenue share."
+      }
+    },
+    {
+      "caseId": "GOLD-15",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30"
+      },
+      "expectedGold": {
+        "researchField": "customer_concentration",
+        "category": "customer_concentration",
+        "metric": "significant_customer_share",
+        "scope": "consolidated_company",
+        "statement": "Anonymous customer C represents 10 percent of Q2 revenue; labels may change across periods.",
+        "rawValue": 10,
+        "rawUnit": "percent",
+        "unit": "percent",
+        "normalization": "identity",
+        "section": "Note 2 \u2014 significant customers",
+        "page": 18,
+        "location": "Printed p15; Customer C row, Q2 2026 column; labels are not persistent identities",
+        "periodStart": "2026-04-01",
+        "periodEnd": "2026-06-30",
+        "observedAt": "2026-06-30",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "normalizedValue": 10,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:78b57349a1c8cc04cc2060b94e01ffc3673f8cb66e5c6424ecb36c5cf15ec19a"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:d80a92ea485d42e2b259840f00159698e88e66aad4d1a815bf4001562a902ca4",
+        "id": "EVID-d80a92ea485d42e2b259840f"
+      },
+      "retrievalRank": 7,
+      "rankingPosition": null,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "parentSpanId": "SPAN-4e7cdb7b7f641785dca24225",
+          "page": 18,
+          "section": "PDF page 18",
+          "text": "Customers A and B accounted for 32% and 32%, of accounts receivable, net, respectively, as of June\u00a030, 2026.",
+          "textHash": "sha256:a31755e5e75e92f103514edb9fbd62062d5c89f7e3883ec06a4865039a437709",
+          "charStart": 0,
+          "charEnd": 108,
+          "documentCharStart": 35686,
+          "documentCharEnd": 35794,
+          "lineStart": 16,
+          "lineEnd": 16,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:326c89bcba64ae854e654a4191a7d708b91fdda81a83e64d9fa062910db6ee80",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:40b8b9aee8a291c28b0964c20f04ab7c44f43ef120989dc0183b89fc5941605b"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-99566db088adaae178a4968d",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 0,
+          "rowLabel": "Customer A",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "36%",
+          "cellHash": "sha256:ac71d887a6c6ada6ecafb72bf5544f556c5446a6caa5539e549209ee23b418df",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:4ed7ee7435cae1b61836cd5a27350ee7aaefad4308bfa0d905457df9209d4858",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:8fb9be7ba08c16f02f61caec9c082810ab2ad14509e7aa1922d05ccc8c23a594"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+          "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+          "spanId": "SPAN-b0a98a249d8ab690bff97711",
+          "tableId": "GTBL-d66d1552625ed90d9918be61",
+          "page": 18,
+          "tableIndex": 0,
+          "rowIndex": 1,
+          "columnIndex": 0,
+          "rowLabel": "Customer B",
+          "columnLabel": "2026",
+          "headerPath": [
+            "Three Months Ended June 30,",
+            "2026"
+          ],
+          "cellText": "26%",
+          "cellHash": "sha256:9f6a95bfc503cd0b26943bd30bcf947cbd7fffe5c06496f4b2825a2f7b0f41ae",
+          "unitContext": null,
+          "tableTitle": null,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:21ddff9c7811e2dccfd667abec2053600cbf0f25b94e042860b1310aeca05ae2",
+          "availableAt": "2026-08-11T23:24:42Z",
+          "supportHash": "sha256:b6ee85984de733fd4d51694621df05b8f221e947d2757e5084f08b4702d1886f"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-093bb8c380a4603f1bae97f8",
+        "documentId": "GDOC-ca3e5e49ee77efab5d966c77",
+        "spanId": "SPAN-210e0be057e8d54a4818886a",
+        "tableId": "GTBL-d66d1552625ed90d9918be61",
+        "page": 18,
+        "tableIndex": 0,
+        "rowIndex": 2,
+        "columnIndex": 0,
+        "rowLabel": "Customer C",
+        "columnLabel": "2026",
+        "headerPath": [
+          "Three Months Ended June 30,",
+          "2026"
+        ],
+        "cellText": "10%",
+        "cellHash": "sha256:fdab7ebff00ad0dd939f86573d7d3d46a4f2134cb6f00201c4c592fa39c7cec2",
+        "unitContext": null,
+        "tableTitle": null,
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:f10720f4569f36b3cca67cac6bb9b1f1d2f6118b1d0ca47325c98ba5893ceda3",
+        "availableAt": "2026-08-11T23:24:42Z",
+        "supportHash": "sha256:ee71ae9cc4572c2b0bbdc52beb819c70f3da15e831bbfa6b48e26966dcfb4a16"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-3e05b10fdb9ebfa6c915c1ef",
+          "latencyMs": 10397.847999999998,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "customer_concentration",
+            "metric": "accounts_receivable_net_customer_share",
+            "rawValueText": "32%",
+            "rawUnitText": null,
+            "periodText": "as of June 30, 2026",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 32,
+              "normalizedValue": 32,
+              "rawUnit": "percent",
+              "unit": "percent",
+              "scale": 1,
+              "normalization": "identity",
+              "rawValueText": "32%",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "as of June 30, 2026",
+              "start": null,
+              "end": "2026-06-30",
+              "observedAt": "2026-06-30",
+              "basis": "as_of"
+            }
+          },
+          "proposalId": "EPROP-670007948aa24ff86c87ffe4",
+          "candidate": {
+            "proposalId": "EPROP-670007948aa24ff86c87ffe4",
+            "supportCandidateId": "SCAND-c6e5a46de941eaef3f03e77c",
+            "candidateId": "CANDIDATE-15fa3868583f1bca44800159",
+            "anchor": {
+              "chunkId": "CHUNK-245c272183e7b3d5227f70ff",
+              "quotedText": "Customers A and B accounted for 32% and 32%, of accounts receivable, net, respectively, as of June\u00a030, 2026.",
+              "words": 19
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-15",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": false,
+        "nonTargetSelections": 1,
+        "selectedCount": 1,
+        "factKindCorrect": false,
+        "numericCorrect": false,
+        "unitCorrect": false,
+        "periodCorrect": false,
+        "categoryCorrect": false,
+        "chainParseOnly": false,
+        "chainCorrect": false,
+        "proposalValidated": false,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": [
+          "WRONG_SUPPORT_SELECTION"
+        ]
+      },
+      "targetCorrect": false
+    },
+    {
+      "caseId": "GOLD-16",
+      "researchTarget": {
+        "subjectId": "coreweave",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "periodStart": "2023-01-01",
+        "periodEnd": "2023-12-31"
+      },
+      "expectedGold": {
+        "researchField": "revenue",
+        "category": "revenue",
+        "metric": "consolidated_revenue",
+        "scope": "consolidated_company",
+        "statement": "FY2023 consolidated revenue reported in USD millions.",
+        "rawValue": 229,
+        "rawUnit": "USD_millions",
+        "unit": "USD",
+        "normalization": "usd_millions_to_usd",
+        "section": "Item 8 \u2014 consolidated operations",
+        "page": 93,
+        "location": "Printed 10-K p87; revenue row, FY2023 column",
+        "periodStart": "2023-01-01",
+        "periodEnd": "2023-12-31",
+        "observedAt": "2023-12-31",
+        "confidence": 0.95,
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "normalizedValue": 229000000,
+        "provenance": {
+          "publisher": "CoreWeave, Inc.",
+          "method": "reviewed_primary_disclosure",
+          "sourceContentHash": "sha256:f660a7c2d181ceb77c27e9c58456fd11d08fdee4ff8d5826c71bd631facdee8d"
+        },
+        "verificationLevel": "primary_source",
+        "createdAt": "2026-09-13T08:41:06Z",
+        "contentHash": "sha256:e257578fb0269a439eb67676f0d40b7e2e5d2059edd17cd5bd3cedd8b1fde8ee",
+        "id": "EVID-e257578fb0269a439eb67676"
+      },
+      "retrievalRank": 2,
+      "rankingPosition": 2,
+      "rankedSupports": [
+        {
+          "type": "text",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-27615720736bec33c34434e2",
+          "parentSpanId": "SPAN-078e228973199967a91931df",
+          "page": 93,
+          "section": "PDF page 93",
+          "text": "COREWEAVE, INC.",
+          "textHash": "sha256:7b19cd8f1fabeb32fed8f44e7f08a1fa505d814eba4549974e5d6f130f7b282a",
+          "charStart": 0,
+          "charEnd": 15,
+          "documentCharStart": 397631,
+          "documentCharEnd": 397646,
+          "lineStart": 1,
+          "lineEnd": 1,
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "segmentationVersion": "sentence-segmentation/v1",
+          "spanHash": "sha256:e6db92d999de23de89aca8c9bf7df35529ffee2cc770c5ffc98a41ff0ffe997d",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:49bb72130d1d29446000cbbea50681f91c5d902f34b2a72d743c0dae9970219f"
+        },
+        {
+          "type": "table",
+          "supportVersion": "source-support/v1",
+          "subjectId": "coreweave",
+          "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+          "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+          "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+          "tableId": "GTBL-4cae138052223da2904b8b0d",
+          "page": 93,
+          "tableIndex": 0,
+          "rowIndex": 0,
+          "columnIndex": 2,
+          "rowLabel": "Revenue",
+          "columnLabel": "2023",
+          "headerPath": [
+            "Year Ended December 31,",
+            "2023"
+          ],
+          "cellText": "$ 229",
+          "cellHash": "sha256:4d2673438454aa89e1eae724cbc689e7f8843739ebf87c0484515b6996a764f0",
+          "unitContext": {
+            "match": "(in millions, except per share data)",
+            "scale": "millions",
+            "currency": "USD",
+            "captionText": "(in millions, except per share data)"
+          },
+          "tableTitle": "(in millions, except per share data)",
+          "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+          "groundingVersion": "source-span-registry/v1",
+          "spanHash": "sha256:37678979fbf3a3a1581f59bddfcaa466038b9496f29666be9ad48004f6909d57",
+          "availableAt": "2026-03-02T21:14:01Z",
+          "supportHash": "sha256:5fec3a92a940d67e568c731ceafa99463762dc5ed5257f3a42057ae696d47580"
+        }
+      ],
+      "expectedSupport": {
+        "type": "table",
+        "supportVersion": "source-support/v1",
+        "subjectId": "coreweave",
+        "sourceId": "SRC-537a3ecf4fe45a1032e9b9b2",
+        "documentId": "GDOC-bfab34dbc7ffe20bf43b75d2",
+        "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+        "tableId": "GTBL-4cae138052223da2904b8b0d",
+        "page": 93,
+        "tableIndex": 0,
+        "rowIndex": 0,
+        "columnIndex": 2,
+        "rowLabel": "Revenue",
+        "columnLabel": "2023",
+        "headerPath": [
+          "Year Ended December 31,",
+          "2023"
+        ],
+        "cellText": "$ 229",
+        "cellHash": "sha256:4d2673438454aa89e1eae724cbc689e7f8843739ebf87c0484515b6996a764f0",
+        "unitContext": {
+          "match": "(in millions, except per share data)",
+          "scale": "millions",
+          "currency": "USD",
+          "captionText": "(in millions, except per share data)"
+        },
+        "tableTitle": "(in millions, except per share data)",
+        "parserVersion": "pdf-layout-spans-pymupdf-1.26.5/v1",
+        "groundingVersion": "source-span-registry/v1",
+        "spanHash": "sha256:37678979fbf3a3a1581f59bddfcaa466038b9496f29666be9ad48004f6909d57",
+        "availableAt": "2026-03-02T21:14:01Z",
+        "supportHash": "sha256:5fec3a92a940d67e568c731ceafa99463762dc5ed5257f3a42057ae696d47580"
+      },
+      "attempts": [
+        {
+          "rank": 1,
+          "spanId": "SPAN-27615720736bec33c34434e2",
+          "latencyMs": 11820.962082999991,
+          "status": "PARSER_ERROR",
+          "value": {
+            "metricOrCategory": "operating_history",
+            "metric": "company_name",
+            "rawValueText": "COREWEAVE, INC.",
+            "rawUnitText": null,
+            "periodText": null,
+            "actualOrGuidance": "other",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "unsupported",
+              "reason": "numeric_syntax",
+              "rawValueText": "COREWEAVE, INC.",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "unknown",
+              "reason": "period_missing"
+            }
+          },
+          "findings": [
+            "DETERMINISTIC_PARSE_UNSUPPORTED"
+          ]
+        },
+        {
+          "rank": 2,
+          "spanId": "SPAN-40c79dd0a87e4532745dcc6e",
+          "latencyMs": 12867.544292000006,
+          "status": "converted",
+          "value": {
+            "metricOrCategory": "revenue",
+            "metric": "revenue",
+            "rawValueText": "$ 229",
+            "rawUnitText": "(in millions, except per share data)",
+            "periodText": "Year Ended December 31,, 2023",
+            "actualOrGuidance": "actual",
+            "explicitOrDerived": "explicit"
+          },
+          "parse": {
+            "numeric": {
+              "status": "known",
+              "numericValue": 229,
+              "normalizedValue": 229000000,
+              "rawUnit": "USD_millions",
+              "unit": "USD",
+              "scale": 1000000,
+              "normalization": "usd_millions_to_usd",
+              "currencyExplicit": false,
+              "rawValueText": "$ 229 million",
+              "rawUnitText": null
+            },
+            "period": {
+              "status": "known",
+              "periodText": "Year Ended December 31, 2023",
+              "start": "2023-01-01",
+              "end": "2023-12-31",
+              "observedAt": "2023-12-31",
+              "basis": "calendar_year"
+            }
+          },
+          "proposalId": "EPROP-225a98e9eec8c78ed91e19ce",
+          "candidate": {
+            "proposalId": "EPROP-225a98e9eec8c78ed91e19ce",
+            "supportCandidateId": "SCAND-c68d6fe66e78324ad33a319e",
+            "candidateId": "CANDIDATE-9957013d1f2550dadae2ae19",
+            "anchor": {
+              "chunkId": "CHUNK-2223cab8302d364a8440382e",
+              "quotedText": "$ \n229",
+              "words": 2
+            },
+            "admissionRequired": "Explicit human review through v0.4; no Evidence written",
+            "idempotent": false
+          }
+        }
+      ],
+      "targetScore": {
+        "caseId": "GOLD-16",
+        "legacyBinding": "table_column",
+        "expectedSupportType": "table",
+        "targetSelected": true,
+        "nonTargetSelections": 1,
+        "selectedCount": 2,
+        "factKindCorrect": true,
+        "numericCorrect": true,
+        "unitCorrect": true,
+        "periodCorrect": true,
+        "categoryCorrect": true,
+        "chainParseOnly": true,
+        "chainCorrect": true,
+        "proposalValidated": true,
+        "converted": false,
+        "conversionStatus": null,
+        "validatorFalseReject": false,
+        "findings": []
+      },
+      "targetCorrect": true
+    }
+  ]
+}

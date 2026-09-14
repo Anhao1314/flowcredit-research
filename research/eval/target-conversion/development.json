@@ -1,0 +1,232 @@
+{
+  "version": "target-conversion-dev/v1",
+  "offline": true,
+  "provider": "deterministic-test",
+  "modelCalls": 0,
+  "embeddingCalls": 0,
+  "passed": true,
+  "cases": 21,
+  "rows": [
+    {
+      "name": "correct-table-target",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": 1,
+      "statuses": [
+        "converted"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "wrong-fact-same-span",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "CATEGORY_ERROR"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "two-metrics-target-binding",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": 1,
+      "statuses": [
+        "converted"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "wrong-literal-same-span",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "guidance-is-not-actual",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "CATEGORY_ERROR"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "explicit-guidance",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": 1,
+      "statuses": [
+        "converted"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "right-category-wrong-period",
+      "passed": true,
+      "calls": 0,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "right-period-wrong-metric",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "table-row-mismatch",
+      "passed": true,
+      "calls": 0,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "compound-explicit-clause",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": 1,
+      "statuses": [
+        "converted"
+      ],
+      "extractionProof": {
+        "version": "exact-local-extraction/v1",
+        "sourceSupportId": "SPAN-d7dd77da44ee3c3054874140",
+        "sourceSupportHash": "sha256:c364addd68ba25d5369194a43abf64728763b62a8fb8e946e4533af7dffc1635",
+        "semanticAnchor": "Revenue",
+        "exactSourceQuote": "Revenue was $37 million",
+        "rawValueText": "$37 million",
+        "offset": 0
+      }
+    },
+    {
+      "name": "compound-respectively-no-guess",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "COMPOUND_LITERAL_ERROR"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "ambiguous-support",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "SUPPORT_AMBIGUOUS"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "no-target-support",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "rank-fallback",
+      "passed": true,
+      "calls": 2,
+      "candidateFoundAtRank": 2,
+      "statuses": [
+        "TARGET_MISMATCH",
+        "converted"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "unit-guess-rejected",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "PARSER_ERROR"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "derived-not-coerced",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "untrusted-source-injection",
+      "passed": true,
+      "calls": 1,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "wrong-subject",
+      "passed": true,
+      "calls": 0,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "VALIDATOR_REJECT"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "future-source",
+      "passed": true,
+      "calls": 0,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "VALIDATOR_REJECT"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "rank-three-stop",
+      "passed": true,
+      "calls": 3,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "TARGET_MISMATCH",
+        "TARGET_MISMATCH",
+        "TARGET_MISMATCH"
+      ],
+      "extractionProof": null
+    },
+    {
+      "name": "tampered-source",
+      "passed": true,
+      "calls": 0,
+      "candidateFoundAtRank": null,
+      "statuses": [
+        "VALIDATOR_REJECT"
+      ],
+      "extractionProof": null
+    }
+  ]
+}
