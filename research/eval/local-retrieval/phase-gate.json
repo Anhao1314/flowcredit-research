@@ -1,0 +1,93 @@
+{
+  "version": "local-retrieval-phase-gate/v0.11",
+  "registeredAt": "2026-09-14T09:20:00.000Z",
+  "registeredBefore": "locked end-to-end run (v0.10 control arm and v0.11 hybrid arm in one session)",
+  "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+  "asOf": "2026-09-14T23:59:59.999Z",
+  "frozenK": 8,
+  "fusionMode": "hybrid",
+  "frozenKRule": "smallest K in {3,5,8,10,20} whose answer-free development recall (21 v0.3 CoreWeave topics with every numeric token removed, hybrid) is at least 0.95; K=5 reaches 0.947 and K=8 reaches 1.000",
+  "embedding": {
+    "provider": "ollama",
+    "model": "nomic-embed-text",
+    "modelDigest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+    "dimension": 768,
+    "rendererVersion": "span-retrieval-render/v1",
+    "indexVersion": "span-embedding-index/v1",
+    "indexRecords": 7687,
+    "quantization": "F16",
+    "parameters": "137M",
+    "diskBytes": 274302450
+  },
+  "retrieval": {
+    "k": 8,
+    "limit": 8,
+    "goldRetrievalRecallAtK": 0.9,
+    "fusion": "reciprocal rank fusion, rrfK=60, imported from v0.3 and not tuned on locked Gold",
+    "lexical": "bm25/v1 with the audited v0.3 policy (k1=1.2, b=0.75, minQueryCoverage=0.6, minScore=0.05)",
+    "semantic": "cosine over stored span vectors with the audited v0.3 floor minSimilarity=0.3",
+    "temporal": "availableAt <= asOf filtered before ranking for replay and audit",
+    "subject": "support.subjectId must equal the research subject, filtered before ranking",
+    "query": "answer-free research question built from subject, period and metric family; expected value, unit and location are never in the query (asserted at build time)"
+  },
+  "safety": {
+    "fabricatedSupport": 0,
+    "sourceSupportFidelity": 1,
+    "falseAccept": 0,
+    "futureLeakage": 0,
+    "wrongSubject": 0,
+    "claimMutation": 0,
+    "injectionFollowed": 0
+  },
+  "efficiency": {
+    "candidateReductionRatioMedian": 0.5,
+    "inputTokenReductionRatio": 0.4,
+    "maxTimeouts": 3,
+    "timeoutLimitSeconds": 60,
+    "note": "timeouts must stay below 3/16; the 60 s single call limit is unchanged"
+  },
+  "capability": {
+    "targetSelectionRate": 0.6875,
+    "candidateConversionRate": 0.6875,
+    "note": "floors are the frozen v0.10 local values; v0.11 must not fall below the current local baseline"
+  },
+  "baseline": {
+    "v010": {
+      "provider": "ollama qwen3.5:9b Q4_K_M",
+      "goldHash": "sha256:c5d78e91272e6b97de36e502a5f5f06b85fa27e20280e8087244f4235a2ae739",
+      "targetSelectionRate": 0.6875,
+      "candidateConversionRate": 0.6875,
+      "timeouts": 3,
+      "inputTokens": 166630,
+      "calls": 142,
+      "selectionLatencyMs": { "median": 35566, "p95": 60000 },
+      "artifacts": ["research/eval/local-model/results.json", "research/eval/local-model/comparison.json", "docs/local-llm-validation-v0.10.md"]
+    },
+    "cloud": {
+      "provider": "deepseek-v4-flash",
+      "targetSelectionRate": 0.875,
+      "artifacts": ["research/eval/evidence-support/results.json"]
+    }
+  },
+  "developmentEvidence": {
+    "measuredAt": "2026-09-14T09:10:00.000Z",
+    "set": "21 v0.3 CoreWeave retrieval topics re-grounded at SourceSpan level",
+    "literalQueries": { "hybrid": { "recallAt3": 1.0, "recallAt5": 1.0, "recallAt8": 1.0, "recallAt10": 1.0, "recallAt20": 1.0 }, "lexical": { "recallAt3": 1.0 }, "semantic": { "recallAt3": 0.947, "recallAt8": 1.0 } },
+    "answerFreeQueries": { "hybrid": { "recallAt3": 0.842, "recallAt5": 0.947, "recallAt8": 1.0, "recallAt10": 1.0, "recallAt20": 1.0 }, "lexical": { "recallAt3": 0.737, "recallAt5": 0.842, "recallAt10": 0.842 }, "semantic": { "recallAt3": 0.632, "recallAt5": 0.842, "recallAt8": 1.0 } },
+    "negativeQueries": { "cases": 6, "lexicalAbstentions": 6, "semanticAbstentions": 0, "note": "the v0.3 similarity floor does not separate financial span negatives from positives; abstention stays enforced by the deterministic validator downstream and is reported, not tuned" },
+    "artifacts": ["research/eval/local-retrieval/retrieval-benchmark.json"]
+  },
+  "lockedRetrievalDiagnostic": {
+    "measuredAt": "2026-09-14T09:15:00.000Z",
+    "note": "retrieval-only diagnostic over the locked 16, taken while implementing and before the end-to-end run. It is reported for transparency and was not used to modify the renderer, the query template, the fusion, the similarity floor or the frozen K.",
+    "hybrid": { "recallAt3": 0.438, "recallAt5": 0.5, "recallAt8": 0.938, "recallAt10": 0.938, "recallAt20": 1.0, "missesAt8": ["GOLD-11"] },
+    "lexical": { "recallAt8": 0.063 },
+    "semantic": { "recallAt8": 0.938 }
+  },
+  "decisionRule": {
+    "LOCAL HYBRID RETRIEVAL READY": "every safety item holds, retrieval recall at the frozen K is at least 0.90, candidate and token reduction targets are met, timeouts stay below 3/16, and target selection and candidate conversion do not fall below the v0.10 local baseline",
+    "STAY ON RETRIEVAL": "the expected SourceSpan still cannot enter the Top-K reliably",
+    "LOCAL MODEL THROUGHPUT STILL BLOCKING": "retrieval is correct but local inference remains unacceptable",
+    "noPostHocGateChange": true
+  }
+}

@@ -91,6 +91,8 @@ const supportTests = (await readdir(resolve(REPOSITORY_ROOT, "research/evidence-
 run("Evidence Support Contract offline tests", ["--test", ...supportTests]);
 const localModelTests = (await readdir(resolve(REPOSITORY_ROOT, "research/local-model-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/local-model-test/${name}`);
 run("Local LLM Validation offline tests", ["--test", ...localModelTests]);
+const localRetrievalTests = (await readdir(resolve(REPOSITORY_ROOT, "research/local-retrieval-test"))).filter(name => name.endsWith(".test.js")).sort().map(name => `../research/local-retrieval-test/${name}`);
+run("Local Hybrid Retrieval offline tests", ["--test", ...localRetrievalTests]);
 run("Public API tests", ["--test", "test/public-api.test.js"]);
 run("Finch contract tests", ["--test", "test/finch-contract.test.js"]);
 run("Public API validator", ["scripts/validate-public-api.js"]);

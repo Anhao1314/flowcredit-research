@@ -60,6 +60,8 @@ jobs:
         run: node --test ../research/evidence-support-test/*.test.js
       - name: Local LLM Validation offline tests
         run: node --test ../research/local-model-test/*.test.js
+      - name: Local Hybrid Retrieval offline tests
+        run: node --test ../research/local-retrieval-test/*.test.js
       - name: Public API contract
         run: npm run validate:public-api
       - name: Finch contract

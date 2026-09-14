@@ -1,0 +1,189 @@
+{
+ "version": "local-retrieval-runtime-costs/v0.11",
+ "generatedAt": "2026-09-14T05:27:39.707Z",
+ "provider": {
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  }
+ },
+ "embedding": {
+  "provider": "ollama",
+  "model": "nomic-embed-text",
+  "modelDigest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  },
+  "dimension": 768
+ },
+ "paidInferenceApiCostUsd": 0,
+ "paidInferenceApiCalls": 0,
+ "paidEmbeddingApiCostUsd": 0,
+ "paidEmbeddingApiCalls": 0,
+ "coldStartMs": 733,
+ "modelLoadMs": 8,
+ "gold": {
+  "control": {
+   "calls": 146,
+   "inputTokens": 169462,
+   "outputTokens": 16133,
+   "totalTokens": 185595,
+   "callLatency": {
+    "count": 146,
+    "median": 7350.873125000013,
+    "p95": 33761.21279100003,
+    "min": 5589.751083000003,
+    "max": 55341.04229200003
+   },
+   "tokensPerSecond": {
+    "count": 146,
+    "median": 15.708190686962812,
+    "p95": 17.768213245004652,
+    "min": 12.902938440964462,
+    "max": 30.930545460169192
+   },
+   "failureCodes": []
+  },
+  "retrieval": {
+   "calls": 97,
+   "inputTokens": 96512,
+   "outputTokens": 10466,
+   "totalTokens": 106978,
+   "callLatency": {
+    "count": 97,
+    "median": 7582.25062499987,
+    "p95": 19407.735749999993,
+    "min": 4079.3294999999925,
+    "max": 32666.736250000075
+   },
+   "tokensPerSecond": {
+    "count": 97,
+    "median": 15.814606060741495,
+    "p95": 17.37792989001624,
+    "min": 12.785456628321661,
+    "max": 39.191863769081536
+   },
+   "failureCodes": []
+  }
+ },
+ "injection": {
+  "control": {
+   "calls": 3,
+   "inputTokens": 3347,
+   "outputTokens": 127,
+   "totalTokens": 3474,
+   "callLatency": {
+    "count": 3,
+    "median": 5346.882749999873,
+    "p95": 6968.347708000103,
+    "min": 5110.591665999964,
+    "max": 6968.347708000103
+   },
+   "tokensPerSecond": {
+    "count": 3,
+    "median": 17.46827669014771,
+    "p95": 38.586946036155965,
+    "min": 16.62717235440187,
+    "max": 38.586946036155965
+   },
+   "failureCodes": []
+  },
+  "retrieval": {
+   "calls": 0,
+   "inputTokens": null,
+   "outputTokens": null,
+   "totalTokens": null,
+   "callLatency": {
+    "count": 0,
+    "median": null,
+    "p95": null,
+    "min": null,
+    "max": null
+   },
+   "tokensPerSecond": {
+    "count": 0,
+    "median": null,
+    "p95": null,
+    "min": null,
+    "max": null
+   },
+   "failureCodes": []
+  }
+ },
+ "total": {
+  "session": {
+   "calls": 246,
+   "inputTokens": 269321,
+   "outputTokens": 26726,
+   "totalTokens": 296047,
+   "callLatency": {
+    "count": 246,
+    "median": 7476.403875000076,
+    "p95": 22131.63175,
+    "min": 4079.3294999999925,
+    "max": 55341.04229200003
+   },
+   "tokensPerSecond": {
+    "count": 246,
+    "median": 15.742628556957087,
+    "p95": 17.6288904633843,
+    "min": 12.785456628321661,
+    "max": 39.191863769081536
+   },
+   "failureCodes": []
+  }
+ },
+ "phases": {
+  "control": {
+   "selection": {
+    "count": 16,
+    "median": 34537.02441699989,
+    "p95": 60017.67733400001,
+    "min": 12610.846458000015,
+    "max": 60017.67733400001
+   },
+   "interpretation": {
+    "count": 133,
+    "median": 7278.883416999946,
+    "p95": 8660.10695799999,
+    "min": 5590.188415999997,
+    "max": 10177.960582999978
+   }
+  },
+  "retrieval": {
+   "selection": {
+    "count": 16,
+    "median": 18319.99812500039,
+    "p95": 32667.477124999976,
+    "min": 4079.4172920000274,
+    "max": 32667.477124999976
+   },
+   "interpretation": {
+    "count": 81,
+    "median": 7446.935375000117,
+    "p95": 8677.201792000327,
+    "min": 5763.607040999923,
+    "max": 9925.044208999723
+   }
+  }
+ },
+ "resource": {
+  "samples": 503,
+  "ollamaRssBytes": {
+   "first": 710819840,
+   "peak": 1295515648,
+   "last": 350535680
+  },
+  "swapUsedBytes": {
+   "first": 15617490944,
+   "peak": 15883703419,
+   "last": 15520371835
+  },
+  "swapDeltaBytes": -97119109
+ },
+ "note": "Paid inference API cost is zero and paid embedding API cost is zero because no paid inference or embedding API was called. Hardware, electricity, disk and elapsed time are not zero and are reported separately."
+}

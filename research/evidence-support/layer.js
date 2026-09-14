@@ -56,11 +56,14 @@ export function supportCandidates(sentenceIndex,tableIndex,{documentId,page}){
 }
 
 export class EvidenceSupportAnalyst {
- #index;#registry;#sentences;#tables;#store;#provider;#metadata;#clock;#timeout;#maxSpansPerCase;
- constructor(index,registry,{sentences,tables,store,provider=null,clock=()=>new Date().toISOString(),timeoutMs=60000,maxSpansPerCase=24}={}){
+ #index;#registry;#sentences;#tables;#store;#provider;#metadata;#clock;#timeout;#maxSpansPerCase;#retrieve;#onCall;
+ constructor(index,registry,{sentences,tables,store,provider=null,clock=()=>new Date().toISOString(),timeoutMs=60000,maxSpansPerCase=24,retrieve=null,onCall=null}={}){
   if(!Number.isInteger(timeoutMs)||timeoutMs<1||timeoutMs>60000)throw new Error('Bounded timeout required');
   if(!Number.isInteger(maxSpansPerCase)||maxSpansPerCase<1||maxSpansPerCase>60)throw new Error('Bounded interpretation budget required');
-  this.#index=index;this.#registry=registry;this.#sentences=sentences;this.#tables=tables;this.#store=store;this.#clock=clock;this.#timeout=timeoutMs;this.#maxSpansPerCase=maxSpansPerCase;
+  if(retrieve!==null&&typeof retrieve!=='function')throw new Error('Retrieval hook must be a function');
+  if(onCall!==null&&typeof onCall!=='function')throw new Error('Progress hook must be a function');
+  this.#index=index;this.#registry=registry;this.#sentences=sentences;this.#tables=tables;this.#store=store;this.#clock=clock;this.#timeout=timeoutMs;this.#maxSpansPerCase=maxSpansPerCase;this.#retrieve=retrieve;
+  this.#onCall=onCall;
   this.#provider=provider?validateProvider(provider):null;this.#metadata=provider?structuredClone(provider.metadata):null;
  }
  get provider(){return this.#metadata;}
@@ -76,22 +79,37 @@ export class EvidenceSupportAnalyst {
  chunksFor(document,page){return this.#index.list('chunk').filter(chunk=>chunk.sourceId===document.sourceId&&chunk.page===page);}
  async #call(input,name,{caseId=null,spanId=null}={}){
   if(!this.#provider)return {status:'unavailable',error:'PROVIDER_UNAVAILABLE'};
-  const frozen=freeze(input),inputHash=digest(frozen),started=performance.now(),controller=new AbortController();let timer,raw=null,error=null;
+ const frozen=freeze(input),inputHash=digest(frozen),started=performance.now(),controller=new AbortController();let timer,raw=null,error=null;
+  this.#onCall?.({event:'start',phase:name,caseId,candidateCount:input.data?.availableSpanIds?.length??null,contextChars:input.data?.context?.length??null});
   try{raw=await Promise.race([this.#provider.analyzeEvidence(frozen,{signal:controller.signal}),new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('PROVIDER_TIMEOUT'));},this.#timeout);})]);
    if(digest(frozen)!==inputHash||digest(this.#provider.metadata)!==digest(this.#metadata))throw new Error('INPUT_OR_PROVIDER_MUTATION');
   }catch(caught){error=/^(?:PROVIDER_[A-Z_]+|INPUT_OR_PROVIDER_MUTATION)$/.test(caught.message)?caught.message:'PROVIDER_ERROR';}finally{clearTimeout(timer);}
-  const latencyMs=performance.now()-started,run={id:stableId('SUPPORT-RUN',{name,caseId,spanId,inputHash,rawHash:typeof raw==='string'?digest(raw):null,at:this.#clock()}),name,caseId,spanId,provider:this.#metadata,promptVersion:name==='selection'?selectionPromptVersion:interpretationPromptVersion,inputHash,outputHash:typeof raw==='string'?digest(raw):null,latencyMs,status:error?'provider_error':'completed',error,createdAt:this.#clock()};
-  this.#store.save('providerRun',run);
-  return {status:error?'provider_error':'completed',raw,error,receipts:this.#provider.receipts?.slice(-1)??[],latencyMs,run};
+ const latencyMs=performance.now()-started,run={id:stableId('SUPPORT-RUN',{name,caseId,spanId,inputHash,rawHash:typeof raw==='string'?digest(raw):null,at:this.#clock()}),name,caseId,spanId,provider:this.#metadata,promptVersion:name==='selection'?selectionPromptVersion:interpretationPromptVersion,inputHash,outputHash:typeof raw==='string'?digest(raw):null,latencyMs,status:error?'provider_error':'completed',error,createdAt:this.#clock()};
+ this.#store.save('providerRun',run);
+  const receipts=this.#provider.receipts?.slice(-1)??[];
+  this.#onCall?.({event:'end',phase:name,caseId,elapsedMs:latencyMs,status:error?'provider_error':'completed',error,inputTokens:receipts.at(-1)?.usage?.inputTokens??null,outputTokens:receipts.at(-1)?.usage?.outputTokens??null});
+  return {status:error?'provider_error':'completed',raw,error,receipts,latencyMs,run};
  }
  async analyzeCase({caseId=null,documentId,page,subjectId,asOf,timeMode='replay'}){
   const {document,context}=this.#caseContext({documentId,page,subjectId,asOf,timeMode});
-  const supports=supportCandidates(this.#sentences,this.#tables,{documentId,page});
-  if(!supports.length)throw new Error('NO_SPANS');
+  const candidates=supportCandidates(this.#sentences,this.#tables,{documentId,page});
+  if(!candidates.length)throw new Error('NO_SPANS');
+  // Optional pre-model narrowing. Retrieval only reorders and bounds the already
+  // verified SourceSupports of this page; it never edits a support, never changes
+  // the prompt contract and never touches validation downstream.
+  let supports=candidates,retrieval=null;
+  if(this.#retrieve){
+   const outcome=await this.#retrieve({candidates,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,caseId,document});
+   supports=outcome?.supports??candidates;retrieval=outcome?.receipt??null;
+  }
+  if(!supports.length){
+   const abstained={caseId,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,status:'RETRIEVAL_ABSTAINED',candidateCount:candidates.length,retrievedCount:0,retrieval,selectionRun:null,fabricated:[],selectedSpanIds:[],selections:[],errors:[]};
+   this.#store.save('case',abstained);return abstained;
+  }
   const availableSpanIds=supports.map(support=>support.spanId),selectionContext=supports.map(renderSupport).join('\n\n');
   const selectionInput={instructions:selectionInstructions,outputSchema:selectionSchema,promptVersion:selectionPromptVersion,promptHash:selectionPromptHash,data:{subjectId,asOf:context.asOf,timeMode:context.timeMode,generatedAt:this.#clock(),document:{id:document.id,sourceId:document.sourceId,page},page,availableSpanIds,context:selectionContext}};
   const selectionRun=await this.#call(selectionInput,'selection',{caseId});
-  const caseRecord={caseId,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,selectionRun:selectionRun.run,fabricated:[],selectedSpanIds:[],selections:[],errors:[]};
+  const caseRecord={caseId,documentId,page,subjectId,asOf:context.asOf,timeMode:context.timeMode,selectionRun:selectionRun.run,candidateCount:candidates.length,retrievedCount:supports.length,retrieval,fabricated:[],selectedSpanIds:[],selections:[],errors:[]};
   if(selectionRun.status==='provider_error'){caseRecord.status=selectionRun.error;this.#store.save('case',caseRecord);return caseRecord;}
   let parsed;
   try{parsed=parseSelection(selectionRun.raw,availableSpanIds);}

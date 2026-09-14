@@ -1,0 +1,79 @@
+{
+ "platform": "darwin",
+ "release": "25.6.0",
+ "arch": "arm64",
+ "cpuModel": "Apple M5",
+ "cpuCount": 10,
+ "totalMemoryBytes": 17179869184,
+ "node": "v24.19.0",
+ "process": {
+  "rssBytes": 105005056,
+  "heapUsedBytes": 67507888
+ },
+ "swapUsedBytes": 15520371835,
+ "provider": {
+  "kind": "real",
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+  "temperature": 0,
+  "contextLength": 8192,
+  "think": false,
+  "structuredOutputMode": "ollama_json_schema",
+  "endpointOrigin": "http://127.0.0.1:11434",
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  },
+  "modelInfo": {
+   "size": 6594474711,
+   "family": "qwen35",
+   "parameterSize": "9.7B",
+   "quantization": "Q4_K_M",
+   "contextLength": 262144,
+   "format": "gguf"
+  }
+ },
+ "embedding": {
+  "kind": "real",
+  "provider": "ollama",
+  "model": "nomic-embed-text",
+  "modelVersion": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "dimension": 768,
+  "embeddingVersion": "local-embedding-provider/v1",
+  "endpointOrigin": "http://127.0.0.1:11434",
+  "maxInputChars": 8000,
+  "pooling": "runtime-default",
+  "normalized": true,
+  "runtime": {
+   "name": "ollama",
+   "version": "0.34.0"
+  },
+  "modelInfo": {
+   "size": 274302450,
+   "family": "nomic-bert",
+   "parameterSize": "137M",
+   "quantization": "F16",
+   "embeddingLength": 768,
+   "format": "gguf"
+  }
+ },
+ "endpoint": "http://127.0.0.1:11434",
+ "embeddingEndpoint": "http://127.0.0.1:11434",
+ "coldStartMs": 733,
+ "modelLoadMs": 8,
+ "resource": {
+  "samples": 503,
+  "ollamaRssBytes": {
+   "first": 710819840,
+   "peak": 1295515648,
+   "last": 350535680
+  },
+  "swapUsedBytes": {
+   "first": 15617490944,
+   "peak": 15883703419,
+   "last": 15520371835
+  },
+  "swapDeltaBytes": -97119109
+ }
+}

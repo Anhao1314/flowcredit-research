@@ -42,12 +42,13 @@ function supportTypeOf(spanId,{registry,sentenceIndex}){
  if(sentenceIndex.get(spanId))return 'sentence';
  return 'unknown';
 }
-export async function runEvaluation({registry,sentenceIndex,tableIndex,index,analyst,cases,annotation,provider,allowTest=false,readClaimsSnapshot=null,clock=()=>new Date().toISOString(),promote=false}){
+export async function runEvaluation({registry,sentenceIndex,tableIndex,index,analyst,cases,annotation,provider,allowTest=false,readClaimsSnapshot=null,clock=()=>new Date().toISOString(),promote=false,onCase=null}){
  if(!allowTest&&provider?.metadata?.kind==='test')throw new Error('Offline cases require explicit test mode');
  const gold=allowTest?null:verifyLocked(index),before=readClaimsSnapshot?.()??null,results=[],scores=[];
- for(const entry of cases){
+ for(const [position,entry] of cases.entries()){
   const started=performance.now(),result=await analyst.analyzeCase({caseId:entry.caseId,documentId:entry.documentId,page:entry.page,subjectId:registry.document(entry.documentId).subjectId,asOf:gate.asOf});
   results.push({caseId:entry.caseId,endToEndLatencyMs:performance.now()-started,...result});
+  onCase?.({caseId:entry.caseId,position:position+1,total:cases.length,status:result.status??null,elapsedMs:performance.now()-started,selectedCount:(result.selections??[]).length});
   const score=scoreCase(annotation.cases.find(item=>item.caseId===entry.caseId),result,{expected:entry.expected});
   if(promote){
    const validated=(result.selections??[]).filter(selection=>selection.proposal?.validationStatus==='validated');

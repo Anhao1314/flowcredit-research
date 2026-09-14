@@ -1,0 +1,102 @@
+{
+ "version": "local-retrieval-index/v0.11",
+ "generatedAt": "2026-09-13T18:28:16.838Z",
+ "embedding": {
+  "info": {
+   "runtimeVersion": "0.34.0",
+   "modelDigest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+   "modelInfo": {
+    "size": 274302450,
+    "family": "nomic-bert",
+    "parameterSize": "137M",
+    "quantization": "F16",
+    "embeddingLength": 768,
+    "format": "gguf"
+   },
+   "dimension": 768
+  },
+  "metadata": {
+   "kind": "real",
+   "provider": "ollama",
+   "model": "nomic-embed-text",
+   "modelVersion": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+   "dimension": 768,
+   "embeddingVersion": "local-embedding-provider/v1",
+   "endpointOrigin": "http://127.0.0.1:11434",
+   "maxInputChars": 8000,
+   "pooling": "runtime-default",
+   "normalized": true,
+   "runtime": {
+    "name": "ollama",
+    "version": "0.34.0"
+   },
+   "modelInfo": {
+    "size": 274302450,
+    "family": "nomic-bert",
+    "parameterSize": "137M",
+    "quantization": "F16",
+    "embeddingLength": 768,
+    "format": "gguf"
+   }
+  },
+  "batches": 241,
+  "batchLatencyMs": {
+   "count": 241,
+   "median": 248.97233300000153,
+   "p95": 299.17933300000004,
+   "min": 39.580457999996725,
+   "max": 382.5773339999996
+  },
+  "promptEvalTokens": 239054
+ },
+ "index": {
+  "path": "~/fc-agent/research-local-retrieval/span-index.sqlite",
+  "records": 7687,
+  "inserted": 7687,
+  "reused": 0,
+  "models": [
+   {
+    "model": "nomic-embed-text",
+    "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+    "renderer": "span-retrieval-render/v1",
+    "version": "span-embedding-index/v1",
+    "n": 7687
+   }
+  ],
+  "stale": []
+ },
+ "build": {
+  "supports": 7687,
+  "buildMs": 63877.17625,
+  "perSpanMs": 8.309766651489527,
+  "queryTimeRetrieval": "see benchmark mode"
+ },
+ "resource": {
+  "samples": 14,
+  "ollamaRssBytes": {
+   "first": 775356416,
+   "peak": 775356416,
+   "last": 505085952
+  },
+  "swapUsedBytes": {
+   "first": 7615545344,
+   "peak": 7615545344,
+   "last": 7489716224
+  },
+  "swapDeltaBytes": -125829120
+ },
+ "hardware": {
+  "platform": "darwin",
+  "release": "25.6.0",
+  "arch": "arm64",
+  "cpuModel": "Apple M5",
+  "cpuCount": 10,
+  "totalMemoryBytes": 17179869184,
+  "node": "v24.19.0",
+  "process": {
+   "rssBytes": 272728064,
+   "heapUsedBytes": 105653392
+  },
+  "swapUsedBytes": 7489716224
+ }
+}
