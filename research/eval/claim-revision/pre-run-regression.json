@@ -1,0 +1,17 @@
+{
+  "offline": true,
+  "agentTests": 145,
+  "proposalTests": 21,
+  "developmentScenarios": 9,
+  "syntax": true,
+  "frontendDiscipline": true,
+  "developmentIsolation": true,
+  "verifyRelease": true,
+  "cssBraces": {
+    "open": 2112,
+    "close": 2112
+  },
+  "frozenBaselineHashCheck": true,
+  "unicodePathRegistrationFixBeforeInference": true,
+  "realDevelopmentInferenceCalls": 0
+}

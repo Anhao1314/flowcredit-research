@@ -1,0 +1,10 @@
+{
+  "baseline": "bb66cc1d48524e440ffc678a3d77e75df1802bf6",
+  "completeDelivery": "v0.11.3 EVIDENCE ACQUISITION READY",
+  "workspaceCleanBefore": true,
+  "pushTarget": "origin/main",
+  "pushSucceeded": true,
+  "verifiedRemoteTip": "bb66cc1d48524e440ffc678a3d77e75df1802bf6",
+  "verification": "git ls-remote origin refs/heads/main",
+  "productionPushDisabled": true
+}

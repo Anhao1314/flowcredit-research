@@ -1,0 +1,198 @@
+{
+  "version": "locked-claim-impact/v0.12",
+  "constructedAfterPromptFreeze": true,
+  "constructedAt": "2026-09-14T07:52:21.577Z",
+  "synthetic": true,
+  "cases": [
+    {
+      "name": "LOCK-01",
+      "impact": "confirm",
+      "claim": "The published December receipts were greater than 45 USD.",
+      "old": "December receipts were 58 USD.",
+      "fresh": [
+        "The final December receipts were 58 USD."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-02",
+      "impact": "strengthen",
+      "claim": "December receipts were greater than 45 USD.",
+      "old": "An incomplete preliminary note estimates December receipts above 45 USD.",
+      "fresh": [
+        "The final December receipts were 58 USD."
+      ],
+      "status": "partially_supported"
+    },
+    {
+      "name": "LOCK-03",
+      "impact": "weaken",
+      "claim": "Receipts expansion is broadly maintained across the company.",
+      "old": "All operating divisions reported rising receipts in December.",
+      "fresh": [
+        "In February, a smaller division declined, although the major divisions still grew."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-04",
+      "impact": "contradict",
+      "claim": "Published December receipts were greater than 45 USD.",
+      "old": "December receipts were 58 USD.",
+      "fresh": [
+        "Correction: December receipts were 33 USD, replacing the earlier 58 USD disclosure."
+      ],
+      "status": "supported",
+      "reason": "source_correction",
+      "correction": true
+    },
+    {
+      "name": "LOCK-05",
+      "impact": "no_material_effect",
+      "claim": "Published December receipts were greater than 45 USD.",
+      "old": "December receipts were 58 USD.",
+      "fresh": [
+        "The receipts reporting department changed its office address."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-06",
+      "impact": "insufficient_evidence",
+      "claim": "Published December receipts were greater than 45 USD.",
+      "old": "December receipts were 58 USD.",
+      "fresh": [
+        "Receipts are described favorably, but no amount or reporting period is given."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-07",
+      "impact": "confirm",
+      "claim": "The published December service revenue were greater than 52 USD.",
+      "old": "December service revenue were 65 USD.",
+      "fresh": [
+        "The final December service revenue were 65 USD."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-08",
+      "impact": "strengthen",
+      "claim": "December service revenue were greater than 52 USD.",
+      "old": "An incomplete preliminary note estimates December service revenue above 52 USD.",
+      "fresh": [
+        "The final December service revenue were 65 USD."
+      ],
+      "status": "partially_supported"
+    },
+    {
+      "name": "LOCK-09",
+      "impact": "weaken",
+      "claim": "Service revenue expansion is broadly maintained across the company.",
+      "old": "All operating divisions reported rising service revenue in December.",
+      "fresh": [
+        "In February, a smaller division declined, although the major divisions still grew."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-10",
+      "impact": "contradict",
+      "claim": "Published December service revenue were greater than 52 USD.",
+      "old": "December service revenue were 65 USD.",
+      "fresh": [
+        "A separate finalized statement reports service revenue of 65 USD for December.",
+        "A new direct filing reports December service revenue of 40 USD."
+      ],
+      "status": "supported",
+      "relations": [
+        "supports",
+        "counters"
+      ],
+      "reason": "conflicting_evidence"
+    },
+    {
+      "name": "LOCK-11",
+      "impact": "no_material_effect",
+      "claim": "Published December service revenue were greater than 52 USD.",
+      "old": "December service revenue were 65 USD.",
+      "fresh": [
+        "The service revenue reporting department changed its office address."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-12",
+      "impact": "insufficient_evidence",
+      "claim": "Published December service revenue were greater than 52 USD.",
+      "old": "December service revenue were 65 USD.",
+      "fresh": [
+        "Service revenue are described favorably, but no amount or reporting period is given."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-13",
+      "impact": "confirm",
+      "claim": "The published December subscription revenue were greater than 59 USD.",
+      "old": "December subscription revenue were 72 USD.",
+      "fresh": [
+        "The final December subscription revenue were 72 USD."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-14",
+      "impact": "strengthen",
+      "claim": "December subscription revenue were greater than 59 USD.",
+      "old": "An incomplete preliminary note estimates December subscription revenue above 59 USD.",
+      "fresh": [
+        "The final December subscription revenue were 72 USD."
+      ],
+      "status": "partially_supported"
+    },
+    {
+      "name": "LOCK-15",
+      "impact": "weaken",
+      "claim": "Subscription revenue expansion is broadly maintained across the company.",
+      "old": "All operating divisions reported rising subscription revenue in December.",
+      "fresh": [
+        "In February, a smaller division declined, although the major divisions still grew."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-16",
+      "impact": "contradict",
+      "claim": "The latest disclosed monthly subscription revenue exceeds 59 USD.",
+      "old": "December subscription revenue were 72 USD.",
+      "fresh": [
+        "The newest January subscription revenue was 47 USD."
+      ],
+      "status": "supported",
+      "reason": "period_update",
+      "periodUpdate": true
+    },
+    {
+      "name": "LOCK-17",
+      "impact": "no_material_effect",
+      "claim": "Published December subscription revenue were greater than 59 USD.",
+      "old": "December subscription revenue were 72 USD.",
+      "fresh": [
+        "The subscription revenue reporting department changed its office address."
+      ],
+      "status": "supported"
+    },
+    {
+      "name": "LOCK-18",
+      "impact": "insufficient_evidence",
+      "claim": "Published December subscription revenue were greater than 59 USD.",
+      "old": "December subscription revenue were 72 USD.",
+      "fresh": [
+        "Subscription revenue are described favorably, but no amount or reporting period is given."
+      ],
+      "status": "supported"
+    }
+  ]
+}

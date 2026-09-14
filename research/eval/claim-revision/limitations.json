@@ -1,0 +1,13 @@
+{
+  "decision": "STAY ON CLAIM REASONING",
+  "reasoningLimitation": "LOCAL_MODEL_REASONING_LIMITATION",
+  "rawImpactMatches": 8,
+  "strictImpactMatches": 7,
+  "nonExactQuoteCases": 0,
+  "oldRoleDisagreementCases": 5,
+  "oldRoleLabelNotExplicitInModelInput": true,
+  "rubricUnchanged": true,
+  "thresholdsUnchanged": true,
+  "noRetuningOrReruns": true,
+  "scope": "Narrow synthetic propositions; exact categories only; no arbitrary finance entailment or issuer generalization; role representation and strict rubric alignment require future independent work."
+}

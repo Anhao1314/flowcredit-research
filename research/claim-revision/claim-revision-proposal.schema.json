@@ -1,0 +1,329 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "proposalVersion",
+    "proposalId",
+    "subjectId",
+    "claimId",
+    "baseRevisionId",
+    "baseRevisionHash",
+    "evidenceIds",
+    "impact",
+    "suggestedStatus",
+    "suggestedConfidenceDirection",
+    "reasonCode",
+    "reasonSummary",
+    "attributions",
+    "modelProvider",
+    "modelName",
+    "modelConfig",
+    "promptVersion",
+    "promptHash",
+    "inputHash",
+    "outputHash",
+    "asOf",
+    "timeMode",
+    "newEvidenceAvailableAt",
+    "baseRevisionEffectiveAt",
+    "proposalCreatedAt",
+    "handleMap",
+    "inputSnapshot",
+    "modelOutput",
+    "lifecycle"
+  ],
+  "properties": {
+    "proposalVersion": {
+      "const": "claim-revision-proposal/v0.12"
+    },
+    "proposalId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claimId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseRevisionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseRevisionHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "evidenceIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "impact": {
+      "enum": [
+        "confirm",
+        "strengthen",
+        "weaken",
+        "contradict",
+        "no_material_effect",
+        "insufficient_evidence"
+      ]
+    },
+    "suggestedStatus": {
+      "enum": [
+        "supported",
+        "partially_supported",
+        "disputed",
+        "unverified",
+        "stale"
+      ]
+    },
+    "suggestedConfidenceDirection": {
+      "enum": [
+        "increase",
+        "decrease",
+        "unchanged"
+      ]
+    },
+    "reasonCode": {
+      "enum": [
+        "new_supporting_evidence",
+        "new_counter_evidence",
+        "conflicting_evidence",
+        "period_update",
+        "metric_deterioration",
+        "metric_improvement",
+        "source_correction",
+        "insufficient_support",
+        "no_relevant_change"
+      ]
+    },
+    "reasonSummary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 5000
+    },
+    "attributions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidenceId",
+          "relation",
+          "quote",
+          "contextOnly"
+        ],
+        "properties": {
+          "evidenceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "enum": [
+              "supports",
+              "counters",
+              "context",
+              "unclear"
+            ]
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "contextOnly": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "modelProvider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modelName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modelConfig": {
+      "type": "object"
+    },
+    "promptVersion": {
+      "const": "claim-impact/v0.12"
+    },
+    "promptHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "inputHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "outputHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "asOf": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "timeMode": {
+      "const": "audit"
+    },
+    "newEvidenceAvailableAt": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidenceId",
+          "availableAt",
+          "knowledgeAt"
+        ],
+        "properties": {
+          "evidenceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "availableAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "knowledgeAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "baseRevisionEffectiveAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proposalCreatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "handleMap": {
+      "type": "object"
+    },
+    "inputSnapshot": {
+      "type": "object"
+    },
+    "modelOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claimHandle",
+        "baseRevisionHandle",
+        "impact",
+        "suggestedStatus",
+        "suggestedConfidenceDirection",
+        "reasonCode",
+        "attributions"
+      ],
+      "properties": {
+        "claimHandle": {
+          "const": "C1"
+        },
+        "baseRevisionHandle": {
+          "const": "R1"
+        },
+        "impact": {
+          "enum": [
+            "confirm",
+            "strengthen",
+            "weaken",
+            "contradict",
+            "no_material_effect",
+            "insufficient_evidence"
+          ]
+        },
+        "suggestedStatus": {
+          "enum": [
+            "supported",
+            "partially_supported",
+            "disputed",
+            "unverified",
+            "stale"
+          ]
+        },
+        "suggestedConfidenceDirection": {
+          "enum": [
+            "increase",
+            "decrease",
+            "unchanged"
+          ]
+        },
+        "reasonCode": {
+          "enum": [
+            "new_supporting_evidence",
+            "new_counter_evidence",
+            "conflicting_evidence",
+            "period_update",
+            "metric_deterioration",
+            "metric_improvement",
+            "source_correction",
+            "insufficient_support",
+            "no_relevant_change"
+          ]
+        },
+        "attributions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "evidenceHandle",
+              "relation",
+              "quote"
+            ],
+            "properties": {
+              "evidenceHandle": {
+                "type": "string",
+                "pattern": "^E[1-8]$"
+              },
+              "relation": {
+                "enum": [
+                  "supports",
+                  "counters",
+                  "context",
+                  "unclear"
+                ]
+              },
+              "quote": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            }
+          }
+        }
+      }
+    },
+    "lifecycle": {
+      "const": "pending"
+    }
+  }
+}

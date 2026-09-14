@@ -1,0 +1,952 @@
+{
+  "provider": {
+    "kind": "real",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "modelVersion": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "temperature": 0,
+    "contextLength": 8192,
+    "think": false,
+    "structuredOutputMode": "ollama_json_schema",
+    "endpointOrigin": "http://127.0.0.1:11434",
+    "runtime": {
+      "name": "ollama",
+      "version": "0.34.0"
+    },
+    "modelInfo": {
+      "size": 6594474711,
+      "family": "qwen35",
+      "parameterSize": "9.7B",
+      "quantization": "Q4_K_M",
+      "contextLength": 262144,
+      "format": "gguf"
+    }
+  },
+  "tokens": {
+    "calls": 18,
+    "input": 23970,
+    "output": 2728,
+    "total": 26698
+  },
+  "paidInferenceApiCostUsd": 0,
+  "paidEmbeddingApiCostUsd": 0,
+  "paidInferenceApiCalls": 0,
+  "paidEmbeddingApiCalls": 0,
+  "resource": {
+    "offlineDevelopment": true,
+    "realSmokeCases": 0,
+    "realLockedBenchmarks": 1,
+    "realLockedCases": 18,
+    "retrievalBenchmarkCalls": 0,
+    "embeddingCalls": 0,
+    "rankingCalls": 0,
+    "acquisitionBenchmarkCalls": 0
+  },
+  "samples": {
+    "cpu": "Apple M5",
+    "totalMemoryBytes": 17179869184,
+    "samples": [
+      {
+        "at": "2026-09-14T07:52:48.217Z",
+        "ollamaAndRunnerRssBytes": 6478954496
+      },
+      {
+        "at": "2026-09-14T07:52:50.178Z",
+        "ollamaAndRunnerRssBytes": 6478577664
+      },
+      {
+        "at": "2026-09-14T07:52:52.176Z",
+        "ollamaAndRunnerRssBytes": 6438141952
+      },
+      {
+        "at": "2026-09-14T07:52:54.170Z",
+        "ollamaAndRunnerRssBytes": 6501285888
+      },
+      {
+        "at": "2026-09-14T07:52:56.177Z",
+        "ollamaAndRunnerRssBytes": 6438993920
+      },
+      {
+        "at": "2026-09-14T07:52:58.189Z",
+        "ollamaAndRunnerRssBytes": 6443335680
+      },
+      {
+        "at": "2026-09-14T07:53:00.306Z",
+        "ollamaAndRunnerRssBytes": 6386319360
+      },
+      {
+        "at": "2026-09-14T07:53:02.198Z",
+        "ollamaAndRunnerRssBytes": 6379028480
+      },
+      {
+        "at": "2026-09-14T07:53:04.234Z",
+        "ollamaAndRunnerRssBytes": 6377504768
+      },
+      {
+        "at": "2026-09-14T07:53:06.188Z",
+        "ollamaAndRunnerRssBytes": 6378389504
+      },
+      {
+        "at": "2026-09-14T07:53:08.213Z",
+        "ollamaAndRunnerRssBytes": 6377390080
+      },
+      {
+        "at": "2026-09-14T07:53:11.074Z",
+        "ollamaAndRunnerRssBytes": 6376833024
+      },
+      {
+        "at": "2026-09-14T07:53:12.277Z",
+        "ollamaAndRunnerRssBytes": 6377439232
+      },
+      {
+        "at": "2026-09-14T07:53:14.241Z",
+        "ollamaAndRunnerRssBytes": 6377603072
+      },
+      {
+        "at": "2026-09-14T07:53:16.273Z",
+        "ollamaAndRunnerRssBytes": 6377996288
+      },
+      {
+        "at": "2026-09-14T07:53:18.422Z",
+        "ollamaAndRunnerRssBytes": 6377521152
+      },
+      {
+        "at": "2026-09-14T07:53:20.301Z",
+        "ollamaAndRunnerRssBytes": 6377652224
+      },
+      {
+        "at": "2026-09-14T07:53:22.306Z",
+        "ollamaAndRunnerRssBytes": 6383353856
+      },
+      {
+        "at": "2026-09-14T07:53:27.254Z",
+        "ollamaAndRunnerRssBytes": 6374719488
+      },
+      {
+        "at": "2026-09-14T07:53:27.704Z",
+        "ollamaAndRunnerRssBytes": 6426771456
+      },
+      {
+        "at": "2026-09-14T07:53:29.526Z",
+        "ollamaAndRunnerRssBytes": 6378029056
+      },
+      {
+        "at": "2026-09-14T07:53:31.465Z",
+        "ollamaAndRunnerRssBytes": 6377553920
+      },
+      {
+        "at": "2026-09-14T07:53:33.529Z",
+        "ollamaAndRunnerRssBytes": 6377324544
+      },
+      {
+        "at": "2026-09-14T07:53:35.456Z",
+        "ollamaAndRunnerRssBytes": 6378143744
+      },
+      {
+        "at": "2026-09-14T07:53:37.452Z",
+        "ollamaAndRunnerRssBytes": 6378553344
+      },
+      {
+        "at": "2026-09-14T07:53:39.447Z",
+        "ollamaAndRunnerRssBytes": 6378373120
+      },
+      {
+        "at": "2026-09-14T07:53:41.449Z",
+        "ollamaAndRunnerRssBytes": 6378536960
+      },
+      {
+        "at": "2026-09-14T07:53:43.469Z",
+        "ollamaAndRunnerRssBytes": 6378356736
+      },
+      {
+        "at": "2026-09-14T07:53:47.167Z",
+        "ollamaAndRunnerRssBytes": 6376341504
+      },
+      {
+        "at": "2026-09-14T07:53:50.186Z",
+        "ollamaAndRunnerRssBytes": 6375981056
+      },
+      {
+        "at": "2026-09-14T07:53:51.561Z",
+        "ollamaAndRunnerRssBytes": 6376603648
+      },
+      {
+        "at": "2026-09-14T07:53:54.058Z",
+        "ollamaAndRunnerRssBytes": 6368772096
+      },
+      {
+        "at": "2026-09-14T07:53:54.521Z",
+        "ollamaAndRunnerRssBytes": 6376374272
+      },
+      {
+        "at": "2026-09-14T07:53:56.824Z",
+        "ollamaAndRunnerRssBytes": 6375587840
+      },
+      {
+        "at": "2026-09-14T07:53:58.554Z",
+        "ollamaAndRunnerRssBytes": 6535561216
+      },
+      {
+        "at": "2026-09-14T07:54:00.574Z",
+        "ollamaAndRunnerRssBytes": 6370508800
+      },
+      {
+        "at": "2026-09-14T07:54:02.648Z",
+        "ollamaAndRunnerRssBytes": 6438322176
+      },
+      {
+        "at": "2026-09-14T07:54:04.579Z",
+        "ollamaAndRunnerRssBytes": 6382338048
+      },
+      {
+        "at": "2026-09-14T07:54:06.565Z",
+        "ollamaAndRunnerRssBytes": 6383140864
+      },
+      {
+        "at": "2026-09-14T07:54:08.536Z",
+        "ollamaAndRunnerRssBytes": 6383501312
+      },
+      {
+        "at": "2026-09-14T07:54:10.815Z",
+        "ollamaAndRunnerRssBytes": 6377177088
+      },
+      {
+        "at": "2026-09-14T07:54:12.710Z",
+        "ollamaAndRunnerRssBytes": 6379470848
+      },
+      {
+        "at": "2026-09-14T07:54:14.714Z",
+        "ollamaAndRunnerRssBytes": 6379520000
+      },
+      {
+        "at": "2026-09-14T07:54:16.714Z",
+        "ollamaAndRunnerRssBytes": 6379749376
+      },
+      {
+        "at": "2026-09-14T07:54:18.725Z",
+        "ollamaAndRunnerRssBytes": 6379798528
+      },
+      {
+        "at": "2026-09-14T07:54:20.742Z",
+        "ollamaAndRunnerRssBytes": 6379241472
+      },
+      {
+        "at": "2026-09-14T07:54:22.731Z",
+        "ollamaAndRunnerRssBytes": 6379700224
+      },
+      {
+        "at": "2026-09-14T07:54:24.760Z",
+        "ollamaAndRunnerRssBytes": 6377390080
+      },
+      {
+        "at": "2026-09-14T07:54:26.918Z",
+        "ollamaAndRunnerRssBytes": 6374244352
+      },
+      {
+        "at": "2026-09-14T07:54:29.159Z",
+        "ollamaAndRunnerRssBytes": 6376488960
+      },
+      {
+        "at": "2026-09-14T07:54:31.848Z",
+        "ollamaAndRunnerRssBytes": 6376079360
+      },
+      {
+        "at": "2026-09-14T07:54:35.078Z",
+        "ollamaAndRunnerRssBytes": 6377160704
+      },
+      {
+        "at": "2026-09-14T07:54:35.514Z",
+        "ollamaAndRunnerRssBytes": 6379831296
+      },
+      {
+        "at": "2026-09-14T07:54:38.340Z",
+        "ollamaAndRunnerRssBytes": 6370590720
+      },
+      {
+        "at": "2026-09-14T07:54:39.712Z",
+        "ollamaAndRunnerRssBytes": 6369443840
+      },
+      {
+        "at": "2026-09-14T07:54:42.575Z",
+        "ollamaAndRunnerRssBytes": 6378766336
+      },
+      {
+        "at": "2026-09-14T07:54:43.999Z",
+        "ollamaAndRunnerRssBytes": 6376374272
+      },
+      {
+        "at": "2026-09-14T07:54:46.072Z",
+        "ollamaAndRunnerRssBytes": 6376013824
+      },
+      {
+        "at": "2026-09-14T07:54:47.985Z",
+        "ollamaAndRunnerRssBytes": 6400098304
+      },
+      {
+        "at": "2026-09-14T07:54:50.002Z",
+        "ollamaAndRunnerRssBytes": 6379241472
+      },
+      {
+        "at": "2026-09-14T07:54:51.960Z",
+        "ollamaAndRunnerRssBytes": 6378373120
+      },
+      {
+        "at": "2026-09-14T07:54:53.975Z",
+        "ollamaAndRunnerRssBytes": 6378422272
+      },
+      {
+        "at": "2026-09-14T07:54:56.193Z",
+        "ollamaAndRunnerRssBytes": 6378242048
+      },
+      {
+        "at": "2026-09-14T07:54:58.734Z",
+        "ollamaAndRunnerRssBytes": 6377717760
+      },
+      {
+        "at": "2026-09-14T07:55:00.477Z",
+        "ollamaAndRunnerRssBytes": 6378373120
+      },
+      {
+        "at": "2026-09-14T07:55:02.161Z",
+        "ollamaAndRunnerRssBytes": 6376751104
+      },
+      {
+        "at": "2026-09-14T07:55:04.135Z",
+        "ollamaAndRunnerRssBytes": 6375686144
+      },
+      {
+        "at": "2026-09-14T07:55:06.126Z",
+        "ollamaAndRunnerRssBytes": 6375931904
+      },
+      {
+        "at": "2026-09-14T07:55:08.425Z",
+        "ollamaAndRunnerRssBytes": 6383468544
+      },
+      {
+        "at": "2026-09-14T07:55:10.558Z",
+        "ollamaAndRunnerRssBytes": 6424428544
+      },
+      {
+        "at": "2026-09-14T07:55:12.367Z",
+        "ollamaAndRunnerRssBytes": 6427607040
+      },
+      {
+        "at": "2026-09-14T07:55:14.473Z",
+        "ollamaAndRunnerRssBytes": 6432374784
+      },
+      {
+        "at": "2026-09-14T07:55:16.701Z",
+        "ollamaAndRunnerRssBytes": 6376931328
+      },
+      {
+        "at": "2026-09-14T07:55:18.443Z",
+        "ollamaAndRunnerRssBytes": 6377078784
+      },
+      {
+        "at": "2026-09-14T07:55:20.560Z",
+        "ollamaAndRunnerRssBytes": 6376505344
+      },
+      {
+        "at": "2026-09-14T07:55:22.358Z",
+        "ollamaAndRunnerRssBytes": 6376701952
+      },
+      {
+        "at": "2026-09-14T07:55:24.410Z",
+        "ollamaAndRunnerRssBytes": 6377127936
+      },
+      {
+        "at": "2026-09-14T07:55:26.383Z",
+        "ollamaAndRunnerRssBytes": 6377570304
+      },
+      {
+        "at": "2026-09-14T07:55:28.647Z",
+        "ollamaAndRunnerRssBytes": 6384549888
+      },
+      {
+        "at": "2026-09-14T07:55:30.400Z",
+        "ollamaAndRunnerRssBytes": 6465519616
+      },
+      {
+        "at": "2026-09-14T07:55:32.385Z",
+        "ollamaAndRunnerRssBytes": 6438174720
+      },
+      {
+        "at": "2026-09-14T07:55:34.376Z",
+        "ollamaAndRunnerRssBytes": 6438846464
+      },
+      {
+        "at": "2026-09-14T07:55:36.379Z",
+        "ollamaAndRunnerRssBytes": 6383517696
+      },
+      {
+        "at": "2026-09-14T07:55:38.380Z",
+        "ollamaAndRunnerRssBytes": 6383616000
+      },
+      {
+        "at": "2026-09-14T07:55:40.386Z",
+        "ollamaAndRunnerRssBytes": 6383583232
+      },
+      {
+        "at": "2026-09-14T07:55:42.385Z",
+        "ollamaAndRunnerRssBytes": 6384091136
+      },
+      {
+        "at": "2026-09-14T07:55:44.386Z",
+        "ollamaAndRunnerRssBytes": 6383747072
+      },
+      {
+        "at": "2026-09-14T07:55:46.382Z",
+        "ollamaAndRunnerRssBytes": 6384435200
+      },
+      {
+        "at": "2026-09-14T07:55:48.388Z",
+        "ollamaAndRunnerRssBytes": 6383878144
+      },
+      {
+        "at": "2026-09-14T07:55:50.395Z",
+        "ollamaAndRunnerRssBytes": 6378110976
+      },
+      {
+        "at": "2026-09-14T07:55:52.387Z",
+        "ollamaAndRunnerRssBytes": 6378078208
+      },
+      {
+        "at": "2026-09-14T07:55:54.415Z",
+        "ollamaAndRunnerRssBytes": 6386483200
+      },
+      {
+        "at": "2026-09-14T07:55:56.380Z",
+        "ollamaAndRunnerRssBytes": 6540705792
+      },
+      {
+        "at": "2026-09-14T07:55:58.418Z",
+        "ollamaAndRunnerRssBytes": 6438256640
+      },
+      {
+        "at": "2026-09-14T07:56:00.393Z",
+        "ollamaAndRunnerRssBytes": 6439403520
+      },
+      {
+        "at": "2026-09-14T07:56:02.418Z",
+        "ollamaAndRunnerRssBytes": 6383255552
+      },
+      {
+        "at": "2026-09-14T07:56:04.395Z",
+        "ollamaAndRunnerRssBytes": 6383288320
+      },
+      {
+        "at": "2026-09-14T07:56:06.403Z",
+        "ollamaAndRunnerRssBytes": 6383632384
+      },
+      {
+        "at": "2026-09-14T07:56:08.407Z",
+        "ollamaAndRunnerRssBytes": 6383517696
+      },
+      {
+        "at": "2026-09-14T07:56:10.404Z",
+        "ollamaAndRunnerRssBytes": 6382993408
+      },
+      {
+        "at": "2026-09-14T07:56:12.423Z",
+        "ollamaAndRunnerRssBytes": 6378143744
+      },
+      {
+        "at": "2026-09-14T07:56:14.405Z",
+        "ollamaAndRunnerRssBytes": 6378045440
+      },
+      {
+        "at": "2026-09-14T07:56:16.433Z",
+        "ollamaAndRunnerRssBytes": 6378143744
+      },
+      {
+        "at": "2026-09-14T07:56:18.449Z",
+        "ollamaAndRunnerRssBytes": 6377783296
+      },
+      {
+        "at": "2026-09-14T07:56:20.411Z",
+        "ollamaAndRunnerRssBytes": 6503268352
+      },
+      {
+        "at": "2026-09-14T07:56:22.446Z",
+        "ollamaAndRunnerRssBytes": 6536626176
+      },
+      {
+        "at": "2026-09-14T07:56:24.430Z",
+        "ollamaAndRunnerRssBytes": 6448971776
+      },
+      {
+        "at": "2026-09-14T07:56:26.418Z",
+        "ollamaAndRunnerRssBytes": 6449397760
+      },
+      {
+        "at": "2026-09-14T07:56:28.418Z",
+        "ollamaAndRunnerRssBytes": 6393167872
+      },
+      {
+        "at": "2026-09-14T07:56:30.432Z",
+        "ollamaAndRunnerRssBytes": 6384336896
+      },
+      {
+        "at": "2026-09-14T07:56:32.429Z",
+        "ollamaAndRunnerRssBytes": 6384517120
+      },
+      {
+        "at": "2026-09-14T07:56:34.470Z",
+        "ollamaAndRunnerRssBytes": 6383943680
+      },
+      {
+        "at": "2026-09-14T07:56:36.447Z",
+        "ollamaAndRunnerRssBytes": 6384435200
+      },
+      {
+        "at": "2026-09-14T07:56:38.448Z",
+        "ollamaAndRunnerRssBytes": 6385467392
+      },
+      {
+        "at": "2026-09-14T07:56:40.449Z",
+        "ollamaAndRunnerRssBytes": 6385664000
+      },
+      {
+        "at": "2026-09-14T07:56:42.449Z",
+        "ollamaAndRunnerRssBytes": 6385696768
+      },
+      {
+        "at": "2026-09-14T07:56:44.450Z",
+        "ollamaAndRunnerRssBytes": 6386089984
+      },
+      {
+        "at": "2026-09-14T07:56:46.455Z",
+        "ollamaAndRunnerRssBytes": 6385696768
+      },
+      {
+        "at": "2026-09-14T07:56:48.450Z",
+        "ollamaAndRunnerRssBytes": 6542852096
+      },
+      {
+        "at": "2026-09-14T07:56:50.519Z",
+        "ollamaAndRunnerRssBytes": 6385680384
+      },
+      {
+        "at": "2026-09-14T07:56:52.458Z",
+        "ollamaAndRunnerRssBytes": 6385762304
+      },
+      {
+        "at": "2026-09-14T07:56:54.457Z",
+        "ollamaAndRunnerRssBytes": 6386745344
+      },
+      {
+        "at": "2026-09-14T07:56:56.460Z",
+        "ollamaAndRunnerRssBytes": 6384746496
+      },
+      {
+        "at": "2026-09-14T07:56:58.466Z",
+        "ollamaAndRunnerRssBytes": 6385057792
+      },
+      {
+        "at": "2026-09-14T07:57:00.469Z",
+        "ollamaAndRunnerRssBytes": 6383239168
+      },
+      {
+        "at": "2026-09-14T07:57:02.482Z",
+        "ollamaAndRunnerRssBytes": 6383992832
+      },
+      {
+        "at": "2026-09-14T07:57:04.475Z",
+        "ollamaAndRunnerRssBytes": 6384435200
+      },
+      {
+        "at": "2026-09-14T07:57:06.469Z",
+        "ollamaAndRunnerRssBytes": 6383648768
+      },
+      {
+        "at": "2026-09-14T07:57:08.539Z",
+        "ollamaAndRunnerRssBytes": 6383960064
+      },
+      {
+        "at": "2026-09-14T07:57:10.475Z",
+        "ollamaAndRunnerRssBytes": 6384107520
+      },
+      {
+        "at": "2026-09-14T07:57:12.552Z",
+        "ollamaAndRunnerRssBytes": 6388449280
+      },
+      {
+        "at": "2026-09-14T07:57:14.482Z",
+        "ollamaAndRunnerRssBytes": 6540525568
+      },
+      {
+        "at": "2026-09-14T07:57:16.461Z",
+        "ollamaAndRunnerRssBytes": 6416891904
+      },
+      {
+        "at": "2026-09-14T07:57:19.034Z",
+        "ollamaAndRunnerRssBytes": 6381371392
+      },
+      {
+        "at": "2026-09-14T07:57:20.802Z",
+        "ollamaAndRunnerRssBytes": 6382419968
+      },
+      {
+        "at": "2026-09-14T07:57:22.660Z",
+        "ollamaAndRunnerRssBytes": 6382403584
+      },
+      {
+        "at": "2026-09-14T07:57:24.721Z",
+        "ollamaAndRunnerRssBytes": 6382174208
+      },
+      {
+        "at": "2026-09-14T07:57:26.626Z",
+        "ollamaAndRunnerRssBytes": 6382698496
+      },
+      {
+        "at": "2026-09-14T07:57:28.698Z",
+        "ollamaAndRunnerRssBytes": 6381813760
+      },
+      {
+        "at": "2026-09-14T07:57:30.655Z",
+        "ollamaAndRunnerRssBytes": 6378061824
+      },
+      {
+        "at": "2026-09-14T07:57:32.971Z",
+        "ollamaAndRunnerRssBytes": 6376226816
+      },
+      {
+        "at": "2026-09-14T07:57:34.653Z",
+        "ollamaAndRunnerRssBytes": 6376357888
+      },
+      {
+        "at": "2026-09-14T07:57:36.663Z",
+        "ollamaAndRunnerRssBytes": 6378061824
+      },
+      {
+        "at": "2026-09-14T07:57:38.651Z",
+        "ollamaAndRunnerRssBytes": 6378340352
+      },
+      {
+        "at": "2026-09-14T07:57:40.646Z",
+        "ollamaAndRunnerRssBytes": 6378274816
+      },
+      {
+        "at": "2026-09-14T07:57:42.650Z",
+        "ollamaAndRunnerRssBytes": 6378782720
+      },
+      {
+        "at": "2026-09-14T07:57:44.638Z",
+        "ollamaAndRunnerRssBytes": 6540115968
+      },
+      {
+        "at": "2026-09-14T07:57:46.654Z",
+        "ollamaAndRunnerRssBytes": 6539771904
+      },
+      {
+        "at": "2026-09-14T07:57:48.655Z",
+        "ollamaAndRunnerRssBytes": 6539427840
+      },
+      {
+        "at": "2026-09-14T07:57:50.664Z",
+        "ollamaAndRunnerRssBytes": 6446858240
+      },
+      {
+        "at": "2026-09-14T07:57:52.661Z",
+        "ollamaAndRunnerRssBytes": 6383976448
+      },
+      {
+        "at": "2026-09-14T07:57:54.652Z",
+        "ollamaAndRunnerRssBytes": 6384123904
+      },
+      {
+        "at": "2026-09-14T07:57:56.667Z",
+        "ollamaAndRunnerRssBytes": 6384238592
+      },
+      {
+        "at": "2026-09-14T07:57:58.658Z",
+        "ollamaAndRunnerRssBytes": 6384713728
+      },
+      {
+        "at": "2026-09-14T07:58:00.660Z",
+        "ollamaAndRunnerRssBytes": 6384615424
+      },
+      {
+        "at": "2026-09-14T07:58:02.671Z",
+        "ollamaAndRunnerRssBytes": 6383370240
+      },
+      {
+        "at": "2026-09-14T07:58:04.657Z",
+        "ollamaAndRunnerRssBytes": 6383714304
+      },
+      {
+        "at": "2026-09-14T07:58:06.692Z",
+        "ollamaAndRunnerRssBytes": 6546898944
+      },
+      {
+        "at": "2026-09-14T07:58:08.647Z",
+        "ollamaAndRunnerRssBytes": 6541950976
+      },
+      {
+        "at": "2026-09-14T07:58:10.665Z",
+        "ollamaAndRunnerRssBytes": 6546620416
+      },
+      {
+        "at": "2026-09-14T07:58:12.669Z",
+        "ollamaAndRunnerRssBytes": 6546538496
+      },
+      {
+        "at": "2026-09-14T07:58:14.663Z",
+        "ollamaAndRunnerRssBytes": 6546456576
+      },
+      {
+        "at": "2026-09-14T07:58:16.708Z",
+        "ollamaAndRunnerRssBytes": 6384861184
+      },
+      {
+        "at": "2026-09-14T07:58:18.664Z",
+        "ollamaAndRunnerRssBytes": 6385385472
+      },
+      {
+        "at": "2026-09-14T07:58:20.668Z",
+        "ollamaAndRunnerRssBytes": 6385385472
+      },
+      {
+        "at": "2026-09-14T07:58:22.677Z",
+        "ollamaAndRunnerRssBytes": 6386008064
+      },
+      {
+        "at": "2026-09-14T07:58:24.674Z",
+        "ollamaAndRunnerRssBytes": 6385369088
+      },
+      {
+        "at": "2026-09-14T07:58:26.680Z",
+        "ollamaAndRunnerRssBytes": 6384844800
+      },
+      {
+        "at": "2026-09-14T07:58:28.677Z",
+        "ollamaAndRunnerRssBytes": 6385483776
+      },
+      {
+        "at": "2026-09-14T07:58:30.684Z",
+        "ollamaAndRunnerRssBytes": 6533332992
+      },
+      {
+        "at": "2026-09-14T07:58:32.677Z",
+        "ollamaAndRunnerRssBytes": 6590382080
+      },
+      {
+        "at": "2026-09-14T07:58:34.674Z",
+        "ollamaAndRunnerRssBytes": 6584860672
+      },
+      {
+        "at": "2026-09-14T07:58:36.689Z",
+        "ollamaAndRunnerRssBytes": 6387318784
+      },
+      {
+        "at": "2026-09-14T07:58:38.672Z",
+        "ollamaAndRunnerRssBytes": 6387859456
+      },
+      {
+        "at": "2026-09-14T07:58:40.688Z",
+        "ollamaAndRunnerRssBytes": 6388318208
+      },
+      {
+        "at": "2026-09-14T07:58:42.689Z",
+        "ollamaAndRunnerRssBytes": 6388695040
+      },
+      {
+        "at": "2026-09-14T07:58:44.687Z",
+        "ollamaAndRunnerRssBytes": 6388285440
+      },
+      {
+        "at": "2026-09-14T07:58:46.688Z",
+        "ollamaAndRunnerRssBytes": 6388432896
+      },
+      {
+        "at": "2026-09-14T07:58:48.697Z",
+        "ollamaAndRunnerRssBytes": 6385778688
+      },
+      {
+        "at": "2026-09-14T07:58:50.694Z",
+        "ollamaAndRunnerRssBytes": 6384926720
+      },
+      {
+        "at": "2026-09-14T07:58:52.697Z",
+        "ollamaAndRunnerRssBytes": 6383992832
+      },
+      {
+        "at": "2026-09-14T07:58:54.777Z",
+        "ollamaAndRunnerRssBytes": 6381453312
+      },
+      {
+        "at": "2026-09-14T07:58:56.928Z",
+        "ollamaAndRunnerRssBytes": 6541459456
+      },
+      {
+        "at": "2026-09-14T07:58:58.722Z",
+        "ollamaAndRunnerRssBytes": 6370689024
+      },
+      {
+        "at": "2026-09-14T07:59:00.712Z",
+        "ollamaAndRunnerRssBytes": 6438404096
+      },
+      {
+        "at": "2026-09-14T07:59:02.808Z",
+        "ollamaAndRunnerRssBytes": 6382272512
+      },
+      {
+        "at": "2026-09-14T07:59:04.740Z",
+        "ollamaAndRunnerRssBytes": 6381961216
+      },
+      {
+        "at": "2026-09-14T07:59:06.717Z",
+        "ollamaAndRunnerRssBytes": 6383353856
+      },
+      {
+        "at": "2026-09-14T07:59:08.713Z",
+        "ollamaAndRunnerRssBytes": 6383583232
+      },
+      {
+        "at": "2026-09-14T07:59:10.713Z",
+        "ollamaAndRunnerRssBytes": 6378389504
+      },
+      {
+        "at": "2026-09-14T07:59:12.754Z",
+        "ollamaAndRunnerRssBytes": 6376701952
+      },
+      {
+        "at": "2026-09-14T07:59:14.732Z",
+        "ollamaAndRunnerRssBytes": 6377357312
+      },
+      {
+        "at": "2026-09-14T07:59:16.719Z",
+        "ollamaAndRunnerRssBytes": 6544310272
+      },
+      {
+        "at": "2026-09-14T07:59:18.728Z",
+        "ollamaAndRunnerRssBytes": 6388105216
+      },
+      {
+        "at": "2026-09-14T07:59:20.716Z",
+        "ollamaAndRunnerRssBytes": 6439387136
+      },
+      {
+        "at": "2026-09-14T07:59:22.708Z",
+        "ollamaAndRunnerRssBytes": 6439780352
+      },
+      {
+        "at": "2026-09-14T07:59:24.728Z",
+        "ollamaAndRunnerRssBytes": 6440206336
+      },
+      {
+        "at": "2026-09-14T07:59:26.727Z",
+        "ollamaAndRunnerRssBytes": 6383779840
+      },
+      {
+        "at": "2026-09-14T07:59:28.716Z",
+        "ollamaAndRunnerRssBytes": 6384156672
+      },
+      {
+        "at": "2026-09-14T07:59:30.727Z",
+        "ollamaAndRunnerRssBytes": 6384861184
+      },
+      {
+        "at": "2026-09-14T07:59:32.716Z",
+        "ollamaAndRunnerRssBytes": 6385090560
+      },
+      {
+        "at": "2026-09-14T07:59:34.711Z",
+        "ollamaAndRunnerRssBytes": 6385483776
+      },
+      {
+        "at": "2026-09-14T07:59:36.706Z",
+        "ollamaAndRunnerRssBytes": 6549291008
+      },
+      {
+        "at": "2026-09-14T07:59:38.710Z",
+        "ollamaAndRunnerRssBytes": 6549848064
+      },
+      {
+        "at": "2026-09-14T07:59:40.712Z",
+        "ollamaAndRunnerRssBytes": 6549045248
+      },
+      {
+        "at": "2026-09-14T07:59:42.721Z",
+        "ollamaAndRunnerRssBytes": 6549159936
+      },
+      {
+        "at": "2026-09-14T07:59:44.741Z",
+        "ollamaAndRunnerRssBytes": 6386122752
+      },
+      {
+        "at": "2026-09-14T07:59:46.763Z",
+        "ollamaAndRunnerRssBytes": 6384484352
+      },
+      {
+        "at": "2026-09-14T07:59:48.784Z",
+        "ollamaAndRunnerRssBytes": 6385713152
+      },
+      {
+        "at": "2026-09-14T07:59:50.749Z",
+        "ollamaAndRunnerRssBytes": 6545440768
+      },
+      {
+        "at": "2026-09-14T07:59:52.717Z",
+        "ollamaAndRunnerRssBytes": 6545473536
+      },
+      {
+        "at": "2026-09-14T07:59:54.737Z",
+        "ollamaAndRunnerRssBytes": 6545309696
+      },
+      {
+        "at": "2026-09-14T07:59:56.737Z",
+        "ollamaAndRunnerRssBytes": 6544605184
+      },
+      {
+        "at": "2026-09-14T07:59:58.738Z",
+        "ollamaAndRunnerRssBytes": 6544654336
+      },
+      {
+        "at": "2026-09-14T08:00:00.745Z",
+        "ollamaAndRunnerRssBytes": 6386483200
+      },
+      {
+        "at": "2026-09-14T08:00:02.741Z",
+        "ollamaAndRunnerRssBytes": 6386237440
+      },
+      {
+        "at": "2026-09-14T08:00:04.735Z",
+        "ollamaAndRunnerRssBytes": 6545752064
+      },
+      {
+        "at": "2026-09-14T08:00:06.736Z",
+        "ollamaAndRunnerRssBytes": 6545178624
+      },
+      {
+        "at": "2026-09-14T08:00:08.743Z",
+        "ollamaAndRunnerRssBytes": 6545719296
+      },
+      {
+        "at": "2026-09-14T08:00:10.746Z",
+        "ollamaAndRunnerRssBytes": 6545702912
+      },
+      {
+        "at": "2026-09-14T08:00:12.746Z",
+        "ollamaAndRunnerRssBytes": 6545866752
+      },
+      {
+        "at": "2026-09-14T08:00:14.748Z",
+        "ollamaAndRunnerRssBytes": 6545588224
+      },
+      {
+        "at": "2026-09-14T08:00:16.742Z",
+        "ollamaAndRunnerRssBytes": 6545555456
+      },
+      {
+        "at": "2026-09-14T08:00:18.744Z",
+        "ollamaAndRunnerRssBytes": 6545702912
+      }
+    ]
+  },
+  "latency": {
+    "medianCaseMs": 25443.965063000025,
+    "maxCaseMs": 44757.163416
+  },
+  "registrationDeviation": "Ollama server briefly started by shell after registration failure; immediately stopped; no model loaded or inference calls"
+}

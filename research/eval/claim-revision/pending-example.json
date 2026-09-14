@@ -1,0 +1,21 @@
+{
+  "kind": "isolated synthetic locked artifact, not a post-gate demo",
+  "caseId": "LOCK-03",
+  "proposalId": "CRP-c3de1a896179ba1d9c4c42fd",
+  "claimId": "CLAIM-7c84d8454b661399413f5d3d",
+  "baseRevisionId": "CLAIM-7c84d8454b661399413f5d3d:v1",
+  "impact": "weaken",
+  "suggestedStatus": "partially_supported",
+  "evidenceIds": [
+    "EVID-9d34abd3cc4118513b9727a7",
+    "EVID-778f380fa2ce83e531581fb7"
+  ],
+  "reasonSummary": "counters: In February, a smaller division declined\nsupports: All operating divisions reported rising receipts in December.",
+  "validated": true,
+  "impactCorrect": true,
+  "attributionCorrect": true,
+  "state": "pending",
+  "reviewCount": 0,
+  "authoritativeRevisionWritten": false,
+  "additionalModelCalls": 0
+}

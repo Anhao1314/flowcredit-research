@@ -1,0 +1,109 @@
+{
+  "version": "claim-impact-development/v0.12",
+  "offline": true,
+  "realModelCalls": 0,
+  "embeddingCalls": 0,
+  "passed": true,
+  "cases": 9,
+  "rows": [
+    {
+      "name": "confirm",
+      "impact": "confirm",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-3db8364c6d4c3b28b8a2baa2",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "strengthen",
+      "impact": "strengthen",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-9cda97604790ab188c0b3970",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "weaken",
+      "impact": "weaken",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-71f72925458d998527aea3b8",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "contradict",
+      "impact": "contradict",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-8e93e9425bad2d0354d4ca48",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "no-effect",
+      "impact": "no_material_effect",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-accef28aed21f0f7cb835f3a",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "insufficient",
+      "impact": "insufficient_evidence",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-88cb1780373fd7e742a1855f",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "conflicting",
+      "impact": "contradict",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-11dade7d1814bc334930b9a9",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "latest-period",
+      "impact": "contradict",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-48d5ff93a1b0e54f97648454",
+      "authorityUnchanged": true
+    },
+    {
+      "name": "correction",
+      "impact": "contradict",
+      "valid": true,
+      "pendingBeforeReview": true,
+      "rejectionRetained": true,
+      "idempotent": true,
+      "simulatedCalls": 1,
+      "reviewId": "CRPREVIEW-60536f91f77cbc77c18121a6",
+      "authorityUnchanged": true
+    }
+  ]
+}

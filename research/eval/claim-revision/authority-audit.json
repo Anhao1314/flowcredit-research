@@ -1,0 +1,94 @@
+{
+  "readOnly": true,
+  "snapshot": {
+    "claims": 4,
+    "revisions": 4,
+    "evidence": 32,
+    "admissions": 13,
+    "payloadHash": "sha256:684b5c38c769c70a02c8f6b709aefce158cb285fee4a2a368eba1a55448ccb66",
+    "authorityHash": "sha256:b086eb9a942b7d04b083788992d57a7374f4da0b2fd7b51322a1934297a50beb"
+  },
+  "claims": [
+    {
+      "claimId": "CLAIM-273b3d3c01e52d7679a94ce5",
+      "baseRevisionId": "CLAIM-273b3d3c01e52d7679a94ce5:v1",
+      "status": "supported",
+      "confidence": 0.95,
+      "category": "top_customer_concentration",
+      "statement": "The latest disclosed largest customer contributes at least 30 percent of consolidated revenue.",
+      "effectiveAt": "2026-09-13T13:54:45.090Z",
+      "recordedAt": "2026-09-13T13:54:45.090Z",
+      "supportingEvidenceIds": [
+        "EVID-9d1a6c004a3030203ca7357b"
+      ],
+      "counterEvidenceIds": [],
+      "acceptedLinkedEvidenceIds": []
+    },
+    {
+      "claimId": "CLAIM-28e9bfb9bbf8f4f8dc57da51",
+      "baseRevisionId": "CLAIM-28e9bfb9bbf8f4f8dc57da51:v1",
+      "status": "supported",
+      "confidence": 0.95,
+      "category": "operating_margin",
+      "statement": "The latest disclosed GAAP operating margin is negative.",
+      "effectiveAt": "2026-09-13T13:54:45.090Z",
+      "recordedAt": "2026-09-13T13:54:45.090Z",
+      "supportingEvidenceIds": [
+        "EVID-1b34697cde2429f35b9e1965"
+      ],
+      "counterEvidenceIds": [],
+      "acceptedLinkedEvidenceIds": []
+    },
+    {
+      "claimId": "CLAIM-8cf2b39a23a705485dbae7c5",
+      "baseRevisionId": "CLAIM-8cf2b39a23a705485dbae7c5:v1",
+      "status": "supported",
+      "confidence": 0.95,
+      "category": "growth",
+      "statement": "The reviewed annual revenue growth exceeds 100 percent; this does not imply future growth.",
+      "effectiveAt": "2026-09-13T13:54:45.091Z",
+      "recordedAt": "2026-09-13T13:54:45.091Z",
+      "supportingEvidenceIds": [
+        "EVID-57d9fb7c9e0d01968f63e86d"
+      ],
+      "counterEvidenceIds": [],
+      "acceptedLinkedEvidenceIds": [
+        "EVID-57d9fb7c9e0d01968f63e86d"
+      ]
+    },
+    {
+      "claimId": "CLAIM-9ee1756f6f418da0a6b67601",
+      "baseRevisionId": "CLAIM-9ee1756f6f418da0a6b67601:v1",
+      "status": "supported",
+      "confidence": 0.95,
+      "category": "cash_flow",
+      "statement": "The latest disclosed quarterly operating cash flow is non-negative.",
+      "effectiveAt": "2026-09-13T13:54:45.090Z",
+      "recordedAt": "2026-09-13T13:54:45.091Z",
+      "supportingEvidenceIds": [
+        "EVID-38b0632c4eea3d5dbbb0b850"
+      ],
+      "counterEvidenceIds": [],
+      "acceptedLinkedEvidenceIds": []
+    }
+  ],
+  "acceptedEvidenceIds": [
+    "EVID-0d73c529dbe08a3224eeae92",
+    "EVID-105cce7840c6d7d991199463",
+    "EVID-e257578fb0269a439eb67676",
+    "EVID-57d9fb7c9e0d01968f63e86d",
+    "EVID-9972e75db9572973a07822ea",
+    "EVID-01e98f7104a3898b78561892",
+    "EVID-55de53767427d2546ea5a131",
+    "EVID-1bd669d2eaff75004e3144c8",
+    "EVID-b5554a7e7040c07b95cf24cc",
+    "EVID-b7667065291b5ef49830ce7e",
+    "EVID-d6bd9f44f58d10087bfb051f",
+    "EVID-33fce161495522ddc4db205c",
+    "EVID-430ce62f5da87b41027d09b0"
+  ],
+  "reviewerTypes": [
+    "system_test"
+  ],
+  "notActualHumanReview": true
+}
