@@ -105,8 +105,8 @@ The four frozen layers are the current semantic spine:
 | Grounding Contract v1 | Accepted / Frozen |
 | Hybrid Relation architecture | Research validated |
 | Field Provenance Contract v1 | Accepted / Frozen (runtime integration pending) |
-| RelationInput v1 | Planned next |
-| CompatibilityAssessment | Planned |
+| RelationInput Contract v1 | Accepted / Frozen (runtime integration pending) |
+| CompatibilityAssessment | Next / not started |
 | Production Relation Engine | Not complete |
 | Evidence Delta / Impact | Planned |
 | Real What Changed | Planned |
@@ -260,7 +260,7 @@ Read-only, loopback-only, AI off. It renders a Research Memory SQLite that lives
 
 ## Roadmap
 
-Field Provenance Contract v1 is accepted/frozen. Next is RelationInput v1, then the production relation engine, CompatibilityAssessment, Evidence Delta / Impact, and finally the real What Changed loop. Nothing on this list is claimed as implemented; [public status](docs/public/status.md) is updated when a layer actually lands.
+Field Provenance Contract v1 and RelationInput Contract v1 are accepted/frozen. Next is CompatibilityAssessment, then the production relation engine, Evidence Delta / Impact, and finally the real What Changed loop. Nothing on this list is claimed as implemented; [public status](docs/public/status.md) is updated when a layer actually lands.
 
 ## Status vocabulary
 

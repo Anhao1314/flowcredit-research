@@ -28,6 +28,7 @@ Each has offline test suites; the visible ones run in CI, and the local surface 
 | Qualifier Contract v1 | 2026-09-14 |
 | Grounding Contract v1 | 2026-09-15 |
 | Field Provenance Contract v1 | 2026-09-15 |
+| RelationInput Contract v1 | 2026-09-15 |
 
 Frozen contracts state their own status, parents and revision history. Later sessions extend them; they do not get silently edited.
 
@@ -41,13 +42,12 @@ Frozen contracts state their own status, parents and revision history. Later ses
 
 ## CURRENT
 
-- Field Provenance Contract v1 is accepted/frozen (Grounding = WHERE, Field Provenance = HOW); runtime integration (storage, Admission, Surface) is not yet implemented. Next design session is RelationInput v1.
+- Field Provenance Contract v1 and RelationInput Contract v1 are accepted/frozen; runtime integration for both is not yet implemented. Next design session is CompatibilityAssessment (Session 2.6, not started).
 - The frozen contracts are the semantic spine; runtime work continues against them.
 
 ## PLANNED
 
-- RelationInput v1
-- CompatibilityAssessment
+- CompatibilityAssessment (next; not started)
 - Production relation engine
 - Evidence Delta / Impact
 - Real What Changed loop
