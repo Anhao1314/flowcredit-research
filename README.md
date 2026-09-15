@@ -80,15 +80,15 @@ flowchart TB
     SF[SemanticFrame] --> CP[Core Proposition v1<br/>What was asserted?<br/>Accepted / Frozen]
     SF --> Q[Qualifier v1<br/>Under what context?<br/>Accepted / Frozen]
     SF --> G[Grounding v1<br/>Where is the source support?<br/>Accepted / Frozen]
-    SF --> FP[Field Provenance<br/>How was the structured value produced?<br/>NEXT]
+    SF --> FP[Field Provenance v1<br/>How was the structured value produced?<br/>Accepted / Frozen]
 ```
 
-The three frozen layers are the current semantic spine:
+The four frozen layers are the current semantic spine:
 
 - **Core Proposition** — what was asserted, as a structured proposition rather than prose.
 - **Qualifier** — under what context that proposition holds (period, scope, provenance of derived values).
 - **Grounding** — exactly where in the source the support lives, replayable later.
-- **Field Provenance** — how a structured value was produced (explicit, registry-derived, inferred) is the next session and is not claimed as implemented.
+- **Field Provenance** — how a structured value was produced (Grounding = WHERE, Field Provenance = HOW). Contract v1 is accepted/frozen; runtime integration is not yet implemented.
 
 ## Current status
 
@@ -104,7 +104,7 @@ The three frozen layers are the current semantic spine:
 | Qualifier Contract v1 | Accepted / Frozen |
 | Grounding Contract v1 | Accepted / Frozen |
 | Hybrid Relation architecture | Research validated |
-| Field Provenance | Next |
+| Field Provenance Contract v1 | Accepted / Frozen (runtime integration pending) |
 | RelationInput v1 | Planned next |
 | CompatibilityAssessment | Planned |
 | Production Relation Engine | Not complete |
@@ -256,11 +256,11 @@ node research/surface/server.js      # http://127.0.0.1:4317
 
 Read-only, loopback-only, AI off. It renders a Research Memory SQLite that lives outside this repository; with no local memory present it renders an explicit "Research Memory unavailable" state instead of fake data.
 
-> The current public repository is a research-engineering prototype. Some research fixtures and runtime data are local-only, and there is no one-command end-to-end demo yet. Demo fixture path — planned.
+> The current public repository is a research-engineering prototype. Real research runtime data stays local-only; a reproducible offline public demo (synthetic Northstar Compute, read-only, AI off) is published under `research/surface/fixtures/public-demo/`.
 
 ## Roadmap
 
-Next: Field Provenance, then RelationInput v1 and the production relation engine, CompatibilityAssessment, Evidence Delta / Impact, and finally the real What Changed loop. Nothing on this list is claimed as implemented; [public status](docs/public/status.md) is updated when a layer actually lands.
+Field Provenance Contract v1 is accepted/frozen. Next is RelationInput v1, then the production relation engine, CompatibilityAssessment, Evidence Delta / Impact, and finally the real What Changed loop. Nothing on this list is claimed as implemented; [public status](docs/public/status.md) is updated when a layer actually lands.
 
 ## Status vocabulary
 

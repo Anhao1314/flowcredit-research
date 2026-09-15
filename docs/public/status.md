@@ -14,6 +14,7 @@ Last updated: 2026-09-15 (Asia/Shanghai) · Repository: development workspace, b
 | Text and table grounding pipeline | `research/grounding/` |
 | Hybrid retrieval over the internal corpus | `research/local-retrieval/` |
 | Research workspace surface (local, read-only, loopback-only) | `research/surface/` |
+| Reproducible offline public demo (synthetic Northstar Compute; read-only, AI-off, deterministic) | `research/surface/fixtures/public-demo/` |
 | Deterministic assessment engine and its API contracts (legacy prototype line) | `agent/` |
 
 Each has offline test suites; the visible ones run in CI, and the local surface suite is published (see Repository completeness below); it runs locally from a Research Memory SQLite file or the offline public-demo fixture.
@@ -26,6 +27,7 @@ Each has offline test suites; the visible ones run in CI, and the local surface 
 | Core Proposition Contract v1 | 2026-09-14 |
 | Qualifier Contract v1 | 2026-09-14 |
 | Grounding Contract v1 | 2026-09-15 |
+| Field Provenance Contract v1 | 2026-09-15 |
 
 Frozen contracts state their own status, parents and revision history. Later sessions extend them; they do not get silently edited.
 
@@ -39,18 +41,16 @@ Frozen contracts state their own status, parents and revision history. Later ses
 
 ## CURRENT
 
-- Field Provenance (how a structured value was produced: explicit, registry-derived, inferred) is the next design session.
+- Field Provenance Contract v1 is accepted/frozen (Grounding = WHERE, Field Provenance = HOW); runtime integration (storage, Admission, Surface) is not yet implemented. Next design session is RelationInput v1.
 - The frozen contracts are the semantic spine; runtime work continues against them.
 
 ## PLANNED
 
-- Field Provenance contract
 - RelationInput v1
 - CompatibilityAssessment
 - Production relation engine
 - Evidence Delta / Impact
 - Real What Changed loop
-- Public demo fixture path
 
 ## LEGACY
 
