@@ -11,7 +11,13 @@ import { createRouter } from './routes.js';
 export const DEFAULT_HOST = '127.0.0.1';
 export const DEFAULT_PORT = 4317;
 
-export function createSurfaceServer({ memoryPath = resolveMemoryPath(), demoDir = resolveDemoDir(), demoFallback = undefined, log = console } = {}) {
+// Public-demo mode renders a committed synthetic fixture and labels every page
+// PUBLIC DEMO / READ ONLY / AI OFF. It never shows the on-disk DB path.
+export function isPublicDemo(env = process.env) {
+  return ['1', 'true', 'yes'].includes(String(env.FC_SURFACE_PUBLIC_DEMO ?? '').toLowerCase());
+}
+
+export function createSurfaceServer({ memoryPath = resolveMemoryPath(), demoDir = resolveDemoDir(), demoFallback = undefined, publicDemo = isPublicDemo(), log = console } = {}) {
   let memoryState = null;
   const getMemory = () => {
     if (!memoryState) {
@@ -30,7 +36,7 @@ export function createSurfaceServer({ memoryPath = resolveMemoryPath(), demoDir 
     return demoState;
   };
 
-  const handle = createRouter({ getMemory, getDemoData, log });
+  const handle = createRouter({ getMemory, getDemoData, publicDemo, log });
   const server = createServer((req, res) => {
     try {
       handle(req, res);
@@ -48,8 +54,8 @@ export function createSurfaceServer({ memoryPath = resolveMemoryPath(), demoDir 
   return server;
 }
 
-export async function startSurface({ port = DEFAULT_PORT, host = DEFAULT_HOST, memoryPath = resolveMemoryPath(), demoDir = resolveDemoDir(), demoFallback = undefined, log = console } = {}) {
-  const server = createSurfaceServer({ memoryPath, demoDir, demoFallback, log });
+export async function startSurface({ port = DEFAULT_PORT, host = DEFAULT_HOST, memoryPath = resolveMemoryPath(), demoDir = resolveDemoDir(), demoFallback = undefined, publicDemo = isPublicDemo(), log = console } = {}) {
+  const server = createSurfaceServer({ memoryPath, demoDir, demoFallback, publicDemo, log });
   await new Promise((resolve, reject) => {
     server.once('error', reject);
     server.listen(port, host, () => {
@@ -59,7 +65,8 @@ export async function startSurface({ port = DEFAULT_PORT, host = DEFAULT_HOST, m
   });
   const address = server.address();
   const url = `http://${host}:${address.port}`;
-  log.log(`FlowCredit Research Surface\n${url}\nAI runtime: OFF\nMode: REAL`);
+  log.log(`FlowCredit Research Surface\n${url}\nAI runtime: OFF\nMode: ${publicDemo ? 'PUBLIC DEMO (synthetic, offline)' : 'REAL'}`);
+  // Terminal/debug log may carry the full path; the rendered page never does.
   log.log(`Data source: ${memoryPath} (read-only)\nDemo mode: add ?demo=1 for v0.12 locked synthetic cases`);
   return { server, url, port: address.port };
 }

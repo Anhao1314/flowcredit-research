@@ -16,7 +16,7 @@ Last updated: 2026-09-15 (Asia/Shanghai) · Repository: development workspace, b
 | Research workspace surface (local, read-only, loopback-only) | `research/surface/` |
 | Deterministic assessment engine and its API contracts (legacy prototype line) | `agent/` |
 
-Each has offline test suites; the visible ones run in CI, and the local surface suite is being prepared for publication (see Repository completeness below).
+Each has offline test suites; the visible ones run in CI, and the local surface suite is published (see Repository completeness below); it runs locally from a Research Memory SQLite file or the offline public-demo fixture.
 
 ## ACCEPTED / FROZEN
 
@@ -70,4 +70,4 @@ Frozen contracts state their own status, parents and revision history. Later ses
 
 ## Repository completeness
 
-Some research workspaces (the local surface, the relation spike) and the frozen contract directories are still being prepared for publication, so a public clone can lag the working tree until they are committed. Runtime data — Research Memory databases, model sessions, logs — intentionally lives outside the repository and is never committed.
+The local research surface is published; some remaining research workspaces (the relation spike) and the frozen contract directories can still lag the working tree until they are committed. Runtime data — Research Memory databases, model sessions, logs — intentionally lives outside the repository and is never committed.

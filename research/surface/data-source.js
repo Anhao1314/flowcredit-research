@@ -295,7 +295,9 @@ export function loadDemoCases({ dir = resolveDemoDir(), fallback = DEMO_FALLBACK
     }
   }
   if (cases.length) {
-    return { source: 'locked-runtime', label: `v0.12 locked synthetic proposals (${dir})`, cases: cases.slice(0, 3) };
+    // Public-safety: never echo the runtime directory (an absolute machine
+    // path) into the label that reaches the page; name the fixture kind only.
+    return { source: 'locked-runtime', label: 'v0.12 locked synthetic proposals (local runtime fixture)', cases: cases.slice(0, 3) };
   }
   const example = loadFrozenExample(fallback);
   if (example) {

@@ -9,7 +9,7 @@ import { claimsView } from './render/claims.js';
 import { evidenceView } from './render/evidence.js';
 import { evidenceIndexView } from './render/evidence-index.js';
 import { changesView } from './render/changed.js';
-import { messageBody, page } from './render/layout.js';
+import { messageBody, page, publicSourceLabel } from './render/layout.js';
 import { parseClaimsQuery, parseEvidenceQuery } from './query.js';
 
 const ASSETS = {
@@ -40,7 +40,7 @@ function sendHtml(res, method, status, html) {
   send(res, method, status, 'text/html; charset=utf-8', html);
 }
 
-export function createRouter({ getMemory, getDemoData, log = console }) {
+export function createRouter({ getMemory, getDemoData, publicDemo = false, log = console }) {
   const assetCache = new Map();
   const assetBody = (path) => {
     if (!assetCache.has(path)) assetCache.set(path, readFileSync(ASSETS[path].file, 'utf8'));
@@ -70,8 +70,12 @@ export function createRouter({ getMemory, getDemoData, log = console }) {
 
       const memory = getMemory();
       const demoData = demo ? getDemoData() : null;
-      const dataLabel = memory.source ? `${memory.source.fileLabel} (read-only)` : 'unavailable';
-      const demoLabel = demoData?.label ?? null;
+      // Public demo never names the on-disk file; real mode shows basename only.
+      // publicSourceLabel strips home-directory paths as a final guard.
+      const dataLabel = publicDemo
+        ? 'Synthetic demo data'
+        : memory.source ? `${publicSourceLabel(memory.source.fileLabel)} (read-only)` : 'unavailable';
+      const demoLabel = demoData?.label ? publicSourceLabel(demoData.label) : null;
 
       if (memory.error) {
         const error = memory.error;
@@ -79,6 +83,7 @@ export function createRouter({ getMemory, getDemoData, log = console }) {
           title: 'Research Memory unavailable',
           current: 'inbox',
           demo,
+          publicDemo,
           dataLabel,
           demoLabel,
           body: messageBody({
@@ -98,7 +103,7 @@ export function createRouter({ getMemory, getDemoData, log = console }) {
       const source = memory.source;
 
       const wrap = (view, current, statusOverride) => {
-        const html = page({ title: view.title, current, demo, body: view.body, dataLabel, demoLabel, context: view.context });
+        const html = page({ title: view.title, current, demo, publicDemo, body: view.body, dataLabel, demoLabel, context: view.context });
         sendHtml(res, method, statusOverride ?? view.status, html);
       };
 
@@ -125,7 +130,7 @@ export function createRouter({ getMemory, getDemoData, log = console }) {
         if (!id || !ID_PATTERN.test(id)) {
           const labels = { company: 'Company', claim: 'Claim', evidence: 'Evidence' };
           const html = page({
-            title: `${labels[detail[1]]} not found`, current: detail[1], demo, dataLabel, demoLabel,
+            title: `${labels[detail[1]]} not found`, current: detail[1], demo, publicDemo, dataLabel, demoLabel,
             body: messageBody({
               heading: `${labels[detail[1]]} not found`,
               lead: 'The requested identifier is not a valid record identifier.',
@@ -143,7 +148,7 @@ export function createRouter({ getMemory, getDemoData, log = console }) {
       }
 
       const html = page({
-        title: 'Not found', current: 'inbox', demo, dataLabel, demoLabel,
+        title: 'Not found', current: 'inbox', demo, publicDemo, dataLabel, demoLabel,
         body: messageBody({
           heading: 'Page not found',
           lead: 'This local surface only serves its own read-only pages.',
@@ -155,7 +160,7 @@ export function createRouter({ getMemory, getDemoData, log = console }) {
       log.error(`[surface] render error: ${error?.stack ?? error}`);
       try {
         const html = page({
-          title: 'Surface error', current: 'inbox', demo, dataLabel: 'unavailable', demoLabel: null,
+          title: 'Surface error', current: 'inbox', demo, publicDemo, dataLabel: 'unavailable', demoLabel: null,
           body: messageBody({
             heading: 'Something went wrong rendering this page',
             lead: 'The surface stayed read-only. Nothing was written.',

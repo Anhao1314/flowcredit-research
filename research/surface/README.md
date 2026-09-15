@@ -13,7 +13,24 @@ isolation rule.
 It is **not** a production frontend. It does not deploy, does not call any
 model, does not fetch from the network in the browser, and never writes.
 
-## Run
+## Public demo (offline, synthetic, AI OFF)
+
+For a fully reproducible public demo that needs no private Research Memory, no model runtime and no network, build the deterministic fixture and start the surface in public-demo mode. The subject (`Northstar Compute`), sources and figures are entirely synthetic.
+
+```bash
+# 1) Build a small deterministic Research Memory SQLite outside the repository
+node research/surface/fixtures/public-demo/build.js /tmp/flowcredit-demo.sqlite
+
+# 2) Serve it read-only with the PUBLIC DEMO / READ ONLY / AI OFF labels
+FC_SURFACE_MEMORY_DB=/tmp/flowcredit-demo.sqlite \
+FC_SURFACE_PUBLIC_DEMO=1 \
+node research/surface/server.js
+# open http://127.0.0.1:4317/
+```
+
+The builder is deterministic: re-running it emits the same Claims, Evidence, Sources, ids and timestamps (identical logical records and authority digest). Rendered pages never show the on-disk path or any machine-local path — only `Synthetic demo data`. The `?demo=1` locked What Changed preview is separate and is not required for the public demo.
+
+## Run (real local Research Memory)
 
 ```bash
 node research/surface/server.js

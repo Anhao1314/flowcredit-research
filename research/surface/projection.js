@@ -255,6 +255,7 @@ function latestActivityAt(source) {
 export function buildAttention(source) {
   const linkIndex = evidenceLinkIndex(source);
   const evidence = source.evidenceList();
+  const sourceRecords = new Map(source.sources().map((record) => [record.id, record]));
   const reviewedIds = source.reviewedEvidenceIds();
   const byRecency = evidence.slice().sort((a, b) => String(b.createdAt ?? '').localeCompare(String(a.createdAt ?? '')) || a.id.localeCompare(b.id));
   const unlinked = byRecency.filter((record) => (linkIndex.get(record.id)?.length ?? 0) === 0);
@@ -263,12 +264,16 @@ export function buildAttention(source) {
   const claims = source.identities().map((identity) => claimsRow(source, identity, subjects));
   const thin = claims.filter((claim) => claim.supportCount <= 1);
   const zero = claims.filter((claim) => claim.supportCount === 0);
+  // Additive projection only: surface the already-related Source title and the
+  // recorded category so Inbox evidence rows read Source · Category · Page.
   const toRow = (record) => ({
     evidenceId: record.id,
     subjectId: record.subjectId,
     statement: record.statement ?? null,
     metric: record.metric ?? null,
+    category: record.category ?? null,
     page: record.page ?? null,
+    sourceTitle: sourceRecords.get(record.sourceId)?.title ?? null,
     createdAt: record.createdAt ?? null
   });
   return {

@@ -2,14 +2,36 @@
 // "what deserves attention"; the context column reports real research state.
 import { buildChanges, buildInbox } from '../projection.js';
 import {
-  checkpoint, escapeHtml, icon, panelTitle, tickStrip, timeInstant, truncate, withDemo
+  checkpoint, escapeHtml, icon, panelTitle, sentenceCase, tickStrip, timeInstant, truncate, withDemo
 } from './layout.js';
 
 function recordRow({ href, statement, meta, demo }) {
   return `<li class="record">
       <a href="${escapeHtml(withDemo(href, demo))}">${escapeHtml(statement)}</a>
-      ${meta ? `<span class="meta">${meta}</span>` : ''}
+      ${meta ? `<span class="meta record-meta">${meta}</span>` : ''}
     </li>`;
+}
+
+// Research taxonomy categories are snake_case; keep short acronyms uppercase
+// (ESG, RPO) and sentence-case the rest for quiet secondary type.
+const CATEGORY_ACRONYMS = new Set(['esg', 'rpo', 'kpi', 'cfo', 'ceo', 'ai']);
+function categoryLabel(category) {
+  return sentenceCase(category).split(/\s+/).map((word) => {
+    const lower = word.toLowerCase();
+    return CATEGORY_ACRONYMS.has(lower) ? lower.toUpperCase() : word;
+  }).join(' ');
+}
+
+// Inbox evidence rhythm line: Source title · Category · page, in secondary
+// type, no icon clutter. Missing parts are omitted rather than padded.
+function evidenceMeta(row, { withTime = false } = {}) {
+  const parts = [];
+  if (row.sourceTitle) parts.push(escapeHtml(truncate(row.sourceTitle, 56)));
+  if (row.category) parts.push(escapeHtml(categoryLabel(row.category)));
+  if (row.page !== null && row.page !== undefined && row.page !== '') parts.push(`p.${escapeHtml(row.page)}`);
+  let line = parts.join('<span class="sep">·</span>');
+  if (withTime) line += `${line ? '<span class="sep">·</span>' : ''}recorded ${timeInstant(row.createdAt)}`;
+  return line;
 }
 
 function attentionHead(title, count) {
@@ -44,7 +66,7 @@ export function inboxView({ source, demo }) {
     const examples = attention.unlinked.examples.map((row) => recordRow({
       href: `/evidence/${encodeURIComponent(row.evidenceId)}`,
       statement: truncate(row.statement ?? row.evidenceId, 160),
-      meta: `${escapeHtml(row.metric ?? 'metric not recorded')} · page ${escapeHtml(row.page ?? 'not recorded')}`,
+      meta: evidenceMeta(row),
       demo
     })).join('');
     tiles.push(attentionTile({
@@ -105,7 +127,7 @@ export function inboxView({ source, demo }) {
     const recent = attention.recent.items.map((row) => recordRow({
       href: `/evidence/${encodeURIComponent(row.evidenceId)}`,
       statement: truncate(row.statement ?? row.evidenceId, 160),
-      meta: `recorded ${timeInstant(row.createdAt)}`,
+      meta: evidenceMeta(row, { withTime: true }),
       demo
     })).join('');
     blocks.push(`<li class="attention-block">

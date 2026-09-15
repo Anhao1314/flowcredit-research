@@ -82,6 +82,7 @@ p { margin: 0; }
 
 .note { margin: 8px 0 0; color: var(--ink-2); font-size: 13px; max-width: 84ch; }
 .note.strong { color: var(--ink); font-weight: 600; }
+.note time { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .meta { color: var(--ink-3); font-size: 12.5px; }
 
 .eyebrow {
@@ -228,8 +229,8 @@ p { margin: 0; }
 
 .view { display: block; }
 
-.view-head { margin: 0 0 16px; max-width: 92ch; }
-.view-head .lead { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; }
+.view-head { margin: 0 0 15px; max-width: 92ch; }
+.view-head .lead { color: var(--ink-2); font-size: 14.5px; margin-top: 3px; }
 
 .workspace {
   display: grid;
@@ -239,7 +240,7 @@ p { margin: 0; }
 }
 .ws-head { grid-column: 1 / -1; }
 .ws-main { min-width: 0; }
-.ws-context { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.ws-context { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
 .section { margin-top: 26px; }
 .section:first-child { margin-top: 0; }
@@ -258,7 +259,7 @@ p { margin: 0; }
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 14px 16px;
+  padding: 16px 15px;
 }
 .panel.quiet { background: var(--surface-2); }
 .panel.compact { padding: 11px 14px; }
@@ -269,6 +270,7 @@ p { margin: 0; }
   margin: 0 0 9px;
   font-size: 12px;
   font-weight: 680;
+  letter-spacing: 0.01em;
   color: var(--ink-2);
 }
 .panel-title .icon { color: var(--ink-3); }
@@ -284,7 +286,7 @@ p { margin: 0; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
 }
 .attention-tile {
   display: block;
@@ -311,17 +313,18 @@ p { margin: 0; }
 .attention-tile .tile-hint { display: block; margin-top: 3px; font-size: 12px; color: var(--ink-3); }
 
 .attention-list { list-style: none; margin: 0; padding: 0; }
-.attention-block { padding: 16px 0; border-bottom: 1px solid var(--line); }
-.attention-block:first-child { padding-top: 10px; }
+.attention-block { padding: 21px 0; border-bottom: 1px solid var(--line); }
+.attention-block:first-child { padding-top: 11px; }
 .attention-block:last-child { border-bottom: none; padding-bottom: 0; }
 .attention-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .attention-title { margin: 0; font-size: 14.5px; font-weight: 660; }
 .attention-count { font-size: 20px; font-weight: 720; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.attention-cta { margin: 10px 0 0; font-size: 13px; }
+.attention-block .note { margin-top: 8px; }
+.attention-cta { margin: 12px 0 0; font-size: 13px; }
 
 .record-list { list-style: none; margin: 6px 0 0; padding: 0; }
 .record {
-  padding: 8px 0;
+  padding: 9px 0;
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -330,6 +333,9 @@ p { margin: 0; }
 .record:last-child { border-bottom: none; }
 .record .meta { display: block; }
 .record > a { font-size: 13.5px; }
+/* Inbox evidence rhythm line: Source · Category · page in secondary type. */
+.record-meta { font-variant-numeric: tabular-nums; }
+.record-meta .sep { color: var(--line-strong); margin: 0 6px; }
 
 /* ============================================================
    7. Browsers: index rows (Claims, Evidence)
@@ -417,7 +423,7 @@ p { margin: 0; }
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding: 6px 0;
+  padding: 7px 0;
   border-bottom: 1px solid var(--line);
   font-size: 13px;
 }
@@ -563,6 +569,9 @@ p { margin: 0; }
 .tone-positive { background: var(--support-bg); color: var(--support-ink); }
 .tone-caution { background: var(--counter-bg); color: var(--counter-ink); }
 .tone-attention { background: var(--attention-bg); color: var(--attention-ink); }
+/* PUBLIC DEMO: the quietest state — hairline outline, no fill, never louder
+   than the FlowCredit / Research Inbox wordmark. */
+.tone-public { background: transparent; color: var(--ink-2); border-color: var(--line-strong); }
 
 .chip {
   display: inline-flex;

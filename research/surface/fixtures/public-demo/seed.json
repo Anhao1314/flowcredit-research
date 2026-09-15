@@ -1,0 +1,109 @@
+{
+  "note": "Deterministic, offline, public-safe Research Memory seed for the FlowCredit public demo. The company, documents and figures are entirely synthetic (Northstar Compute is fictional). No real company, person, machine path, timestamp-of-now, network call or random id is used. build.js expands this human-readable seed into a read-only Research Memory SQLite file; re-running it produces identical logical records.",
+  "subject": {
+    "id": "northstar-compute",
+    "fictional": true
+  },
+  "sources": [
+    {
+      "key": "s1",
+      "id": "SRC-NST-0001",
+      "title": "FY2025 Annual Report",
+      "publisher": "Northstar Compute, Inc.",
+      "sourceType": "sec_10k",
+      "documentDate": "2026-03-12",
+      "fiscalPeriod": "FY2025",
+      "fiscalYear": 2025,
+      "url": "https://disclosures.northstar-compute.invalid/FY2025-annual-report"
+    },
+    {
+      "key": "s2",
+      "id": "SRC-NST-0002",
+      "title": "Q2 2026 Earnings Release",
+      "publisher": "Northstar Compute, Inc.",
+      "sourceType": "earnings_release",
+      "documentDate": "2026-08-05",
+      "fiscalPeriod": "Q2 2026",
+      "fiscalYear": 2026,
+      "url": "https://disclosures.northstar-compute.invalid/Q2-2026-earnings-release"
+    },
+    {
+      "key": "s3",
+      "id": "SRC-NST-0003",
+      "title": "Investor Day 2026 Transcript",
+      "publisher": "Northstar Compute, Inc.",
+      "sourceType": "transcript",
+      "documentDate": "2026-06-18",
+      "fiscalPeriod": "FY2026",
+      "fiscalYear": 2026,
+      "url": "https://disclosures.northstar-compute.invalid/investor-day-2026"
+    }
+  ],
+  "evidence": [
+    { "id": "EVID-NST-0001", "source": "s1", "category": "customer_concentration", "page": 84, "section": "Risk Factors", "location": "Printed p84; customer concentration note", "observedAt": "2025-12-31", "periodStart": "2025-01-01", "periodEnd": "2025-12-31", "metric": "top_two_customer_revenue_share", "rawValue": 59, "rawUnit": "percent", "statement": "Two customers accounted for 41% and 18% of FY2025 revenue, respectively." },
+    { "id": "EVID-NST-0002", "source": "s1", "category": "customer_concentration", "page": 42, "section": "Management's Discussion and Analysis", "location": "Printed p42; revenue mix table", "observedAt": "2025-12-31", "periodStart": "2025-01-01", "periodEnd": "2025-12-31", "metric": "top_ten_customer_revenue_share", "rawValue": 78, "rawUnit": "percent", "statement": "The ten largest customers represented 78% of FY2025 revenue, up from 71% in FY2024." },
+    { "id": "EVID-NST-0003", "source": "s1", "category": "customer_concentration", "page": 85, "section": "Risk Factors", "location": "Printed p85; remaining performance obligations note", "observedAt": "2025-12-31", "metric": "largest_contract_rpo_share", "rawValue": 41, "rawUnit": "percent", "statement": "One hyperscale customer is party to a single contract representing 41% of remaining performance obligations." },
+    { "id": "EVID-NST-0004", "source": "s1", "category": "revenue", "page": 39, "section": "Management's Discussion and Analysis", "location": "Printed p39; consolidated results", "observedAt": "2025-12-31", "periodStart": "2025-01-01", "periodEnd": "2025-12-31", "metric": "total_revenue", "rawValue": 2.84, "rawUnit": "USD_billions", "statement": "FY2025 revenue was $2.84 billion, an increase of 58% year over year." },
+    { "id": "EVID-NST-0005", "source": "s1", "category": "margin", "page": 51, "section": "Management's Discussion and Analysis", "location": "Printed p51; margin bridge", "observedAt": "2025-12-31", "periodStart": "2025-01-01", "periodEnd": "2025-12-31", "metric": "gaap_gross_margin", "rawValue": 34.2, "rawUnit": "percent", "statement": "FY2025 GAAP gross margin was 34.2%, compared with 30.7% in FY2024." },
+    { "id": "EVID-NST-0006", "source": "s1", "category": "capital_structure", "page": 57, "section": "Liquidity and Capital Resources", "location": "Printed p57; cash flow summary", "observedAt": "2025-12-31", "periodStart": "2025-01-01", "periodEnd": "2025-12-31", "metric": "operating_cash_flow", "rawValue": 1.06, "rawUnit": "USD_billions", "statement": "Operating cash flow was $1.06 billion in FY2025 while capital expenditures were $1.42 billion." },
+    { "id": "EVID-NST-0007", "source": "s1", "category": "customer_concentration", "page": 86, "section": "Risk Factors", "location": "Printed p86; diversification paragraph", "observedAt": "2025-12-31", "periodStart": "2025-01-01", "periodEnd": "2025-12-31", "metric": "largest_single_customer_revenue_share", "rawValue": 41, "rawUnit": "percent", "statement": "Management states no single customer accounted for more than half of total revenue in FY2025." },
+    { "id": "EVID-NST-0008", "source": "s1", "category": "debt", "page": 63, "section": "Liquidity and Capital Resources", "location": "Printed p63; debt footnote", "observedAt": "2025-12-31", "metric": "total_funded_debt", "rawValue": 1.9, "rawUnit": "USD_billions", "statement": "Total funded debt was $1.9 billion at December 31, 2025, non-recourse at the project level." },
+    { "id": "EVID-NST-0009", "source": "s2", "category": "revenue", "page": 2, "section": "Quarterly Summary", "location": "Printed p2; headline results", "observedAt": "2026-06-30", "periodStart": "2026-04-01", "periodEnd": "2026-06-30", "metric": "quarterly_revenue", "rawValue": 0.91, "rawUnit": "USD_billions", "statement": "Q2 2026 revenue was $0.91 billion, up 63% year over year." },
+    { "id": "EVID-NST-0010", "source": "s2", "category": "cash_flow", "page": 4, "section": "Cash Flow", "location": "Printed p4; quarterly cash flow", "observedAt": "2026-06-30", "periodStart": "2026-04-01", "periodEnd": "2026-06-30", "metric": "quarterly_operating_cash_flow", "rawValue": 0.34, "rawUnit": "USD_billions", "statement": "Operating cash flow was $0.34 billion in Q2 2026." },
+    { "id": "EVID-NST-0011", "source": "s2", "category": "capital_structure", "page": 5, "section": "Liquidity", "location": "Printed p5; revolver note", "observedAt": "2026-06-30", "statement": "The company funded Q2 capacity additions without drawing its revolving credit facility." },
+    { "id": "EVID-NST-0012", "source": "s2", "category": "customer_concentration", "page": 7, "section": "Supplemental Disclosures", "location": "Printed p7; billings mix", "observedAt": "2026-06-30", "periodStart": "2026-04-01", "periodEnd": "2026-06-30", "metric": "top_two_billings_share", "rawValue": 39, "rawUnit": "percent", "statement": "Customer concentration remained elevated; the two largest customers were 39% of quarterly billings." },
+    { "id": "EVID-NST-0013", "source": "s2", "category": "guidance", "page": 3, "section": "Outlook", "location": "Printed p3; full-year outlook", "observedAt": "2026-08-05", "metric": "fy2026_revenue_guidance_low", "rawValue": 4.0, "rawUnit": "USD_billions", "statement": "Management reiterated full-year 2026 revenue guidance of $4.0 to $4.2 billion." },
+    { "id": "EVID-NST-0014", "source": "s3", "category": "margin", "page": 11, "section": "Economics Panel", "location": "Transcript p11; CFO remarks", "observedAt": "2026-06-18", "metric": "target_gross_margin_range_low", "rawValue": 37, "rawUnit": "percent", "statement": "Procurement renegotiation and higher utilization lifted the target gross margin range to 37–39%." },
+    { "id": "EVID-NST-0015", "source": "s3", "category": "capacity", "page": 14, "section": "Backlog Panel", "location": "Transcript p14; CRO remarks", "observedAt": "2026-06-18", "metric": "contracted_backlog", "rawValue": 9.6, "rawUnit": "USD_billions", "statement": "Contracted backlog was approximately $9.6 billion at the end of Q2 2026." },
+    { "id": "EVID-NST-0016", "source": "s3", "category": "revenue_quality", "page": 16, "section": "Backlog Panel", "location": "Transcript p16; RPO coverage", "observedAt": "2026-06-18", "metric": "rpo_quarters_of_coverage", "rawValue": 3.4, "rawUnit": "quarters", "statement": "Remaining performance obligations of $9.6 billion imply roughly 3.4 quarters of coverage at the current run-rate." },
+    { "id": "EVID-NST-0017", "source": "s3", "category": "esg", "page": 22, "section": "Q&A", "location": "Transcript p22; climate question", "observedAt": "2026-06-18", "statement": "Leadership did not provide a quantified climate-transition capital plan during the session." },
+    { "id": "EVID-NST-0018", "source": "s3", "category": "geography", "page": 19, "section": "Footprint Panel", "location": "Transcript p19; footprint map", "observedAt": "2026-06-18", "metric": "north_america_capacity_share", "rawValue": 88, "rawUnit": "percent", "statement": "Roughly 88% of contracted capacity is located in North America." }
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-NST-0001",
+      "category": "customer_concentration",
+      "status": "disputed",
+      "statement": "Revenue is concentrated in a small set of hyperscale customers, with the largest single contract representing roughly two fifths of the business.",
+      "supporting": ["EVID-NST-0001", "EVID-NST-0002", "EVID-NST-0003"],
+      "counter": ["EVID-NST-0007"]
+    },
+    {
+      "id": "CLAIM-NST-0002",
+      "category": "capital_structure",
+      "status": "supported",
+      "statement": "The capacity build-out is funded primarily from operating cash flow rather than incremental revolving debt.",
+      "supporting": ["EVID-NST-0006", "EVID-NST-0010", "EVID-NST-0011"],
+      "counter": []
+    },
+    {
+      "id": "CLAIM-NST-0003",
+      "category": "margin",
+      "status": "partially_supported",
+      "statement": "Gross margin is on an improving trajectory as procurement and utilization gains take hold.",
+      "supporting": ["EVID-NST-0014"],
+      "counter": []
+    },
+    {
+      "id": "CLAIM-NST-0004",
+      "category": "revenue_quality",
+      "status": "supported",
+      "statement": "Contracted remaining performance obligations cover only a few quarters of revenue at the current run-rate.",
+      "supporting": ["EVID-NST-0016"],
+      "counter": []
+    },
+    {
+      "id": "CLAIM-NST-0005",
+      "category": "esg",
+      "status": "partially_supported",
+      "statement": "Northstar Compute has not committed to a quantified climate-transition capital plan.",
+      "supporting": ["EVID-NST-0017"],
+      "counter": []
+    }
+  ],
+  "reviews": [
+    { "evidenceId": "EVID-NST-0001", "reviewId": "REVIEW-NST-0001", "excerpt": "Two customers accounted for 41% and 18% of FY2025 revenue, respectively." },
+    { "evidenceId": "EVID-NST-0010", "reviewId": "REVIEW-NST-0002", "excerpt": "Operating cash flow was $0.34 billion in Q2 2026." },
+    { "evidenceId": "EVID-NST-0016", "reviewId": "REVIEW-NST-0003", "excerpt": "Remaining performance obligations of $9.6 billion imply roughly 3.4 quarters of coverage at the current run-rate." }
+  ]
+}

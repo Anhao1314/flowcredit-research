@@ -12,6 +12,10 @@ This repository is the research-engineering workspace for FlowCredit: the pipeli
 
 FlowCredit is not an AI stock picker, a trading bot, a financial chatbot, generic RAG over filings, an automatic investment-decision engine, or an analyst replacement. It is memory infrastructure with explicit human authority.
 
+![FlowCredit Research Inbox — public synthetic demo](docs/public/assets/research-inbox.png)
+
+*Research Inbox — public synthetic demo.*
+
 ## Why FlowCredit
 
 Investment research teams store documents. They rarely preserve belief state.

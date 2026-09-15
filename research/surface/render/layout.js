@@ -13,6 +13,19 @@ export function escapeHtml(value) {
   })[character]);
 }
 
+// Public-safety guard (P0): a label that reaches the rendered page must never
+// carry an absolute home/machine path. Any /Users/…, /home/… or C:\Users\…
+// fragment is reduced to its basename. Full paths may still appear in the
+// terminal/debug log, never in the UI.
+const HOME_PATH = /(?:\/Users\/|\/home\/|[A-Za-z]:[\\/]Users[\\/])[^\s)]*/g;
+export function publicSourceLabel(label) {
+  if (label === null || label === undefined) return '';
+  return String(label).replace(HOME_PATH, (match) => {
+    const base = match.replace(/\\/g, '/').split('/').filter(Boolean).pop();
+    return base ? `…/${base}` : 'local runtime fixture';
+  });
+}
+
 // Same-origin links keep demo mode when the current page is a demo page.
 // Idempotent: a href that already carries demo=1 is returned unchanged.
 export function withDemo(href, demo = false) {
@@ -306,20 +319,29 @@ export function demoBanner() {
 
 // The workspace shell: topbar (brand, work scope, state badges), left rail
 // with the workspace navigation, the main work zone, and a status rail.
-export function page({ title, current, demo = false, body, dataLabel, demoLabel, context = 'All subjects' }) {
+export function page({ title, current, demo = false, publicDemo = false, body, dataLabel, demoLabel, context = 'All subjects' }) {
   const nav = [
     navLink({ href: '/', label: 'Research Inbox', key: 'inbox', current, demo }),
     navLink({ href: '/claims', label: 'Claims', key: 'claims', current, demo }),
     navLink({ href: '/evidence', label: 'Evidence', key: 'evidence', current, demo }),
     navLink({ href: '/changes', label: 'What Changed', key: 'changes', current, demo })
   ].join('');
-  const badges = [
-    badge('LOCAL', 'neutral'),
-    badge('READ ONLY', 'positive'),
-    badge('AI OFF', 'neutral'),
-    demo ? badge('DEMO', 'caution') : ''
-  ].join('');
-  const demoSource = demo ? ` · Demo source: ${escapeHtml(demoLabel ?? '')}` : '';
+  // Public demo surfaces three quiet system states: PUBLIC DEMO · READ ONLY ·
+  // AI OFF. The real local surface keeps LOCAL · READ ONLY · AI OFF [· DEMO].
+  const badges = publicDemo
+    ? [
+        badge('PUBLIC DEMO', 'public'),
+        badge('READ ONLY', 'positive'),
+        badge('AI OFF', 'neutral')
+      ].join('')
+    : [
+        badge('LOCAL', 'neutral'),
+        badge('READ ONLY', 'positive'),
+        badge('AI OFF', 'neutral'),
+        demo ? badge('DEMO', 'caution') : ''
+      ].join('');
+  const demoSource = demo && !publicDemo ? ` · Demo source: ${escapeHtml(demoLabel ?? '')}` : '';
+  const bodyClass = [publicDemo ? 'is-public-demo' : '', demo ? 'is-demo' : ''].filter(Boolean).join(' ');
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -330,7 +352,7 @@ export function page({ title, current, demo = false, body, dataLabel, demoLabel,
 <link rel="stylesheet" href="/assets/surface.css">
 <script defer src="/assets/surface.js"></script>
 </head>
-<body${demo ? ' class="is-demo"' : ''}>
+<body${bodyClass ? ` class="${bodyClass}"` : ''}>
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="topbar">
   <a class="brand" href="${escapeHtml(withDemo('/', demo))}">
@@ -345,8 +367,8 @@ ${demo ? demoBanner() : ''}
   <aside class="rail">
     <nav class="rail-nav" aria-label="Surface navigation">${nav}</nav>
     <div class="rail-foot">
-      <p class="rail-label">Data source</p>
-      <p class="rail-data">${escapeHtml(dataLabel)}${demoSource ? `<br>Demo: ${escapeHtml(demoLabel ?? '')}` : ''}</p>
+      <p class="rail-label">${publicDemo ? 'Public demo' : 'Data source'}</p>
+      <p class="rail-data">${escapeHtml(dataLabel)}${publicDemo ? '<br>Offline deterministic fixture' : ''}${demoSource ? `<br>Demo: ${escapeHtml(demoLabel ?? '')}` : ''}</p>
     </div>
   </aside>
   <div class="workzone">
@@ -358,7 +380,7 @@ ${body}
 <footer class="statusbar">
   <div class="statusbar-inner">
     <span><strong class="status-strong">AI runtime OFF</strong></span>
-    <span>Data source: ${escapeHtml(dataLabel)}${demoSource}</span>
+    <span>${publicDemo ? 'Public demo: synthetic, offline, deterministic data.' : `Data source: ${escapeHtml(dataLabel)}${demoSource}`}</span>
     <span>Times shown in UTC.</span>
     <span>Development-only research surface. Read-only. Local loopback. Not a production frontend.</span>
     <span>Research-state changes are not investment recommendations.</span>
