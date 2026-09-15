@@ -88,6 +88,11 @@ NEUTRAL
 AMBIGUOUS
 ```
 
+These four labels are Relation outcomes: each describes the result of a
+Relation evaluation that was permitted. They do not describe why Relation was
+not executed. A pair whose evaluation was not permitted receives no Relation
+label (§4.3, §4.5).
+
 Adding further labels is forbidden, explicitly including:
 
 ```text
@@ -193,6 +198,10 @@ not sufficiently understood
 
 NEUTRAL must not be used as a catch-all for "not sure". NEUTRAL is a resolved
 judgment, not a refusal to judge.
+
+NEUTRAL is a Relation outcome for a pair that has entered Relation evaluation.
+The example above illustrates the meaning of the label once a pair has entered
+evaluation; it does not state which pairs are permitted to enter evaluation.
 
 ### 3.4 AMBIGUOUS
 
