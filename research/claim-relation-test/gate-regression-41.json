@@ -1,0 +1,304 @@
+{
+ "version": "claim-relation-gate-regression/v1",
+ "provenance": {
+  "relationPairsPath": "research/claim-reasoning-spike/dev-set.json",
+  "relationPairsSha256": "sha256:5aee9f1571050251011a61f1ffb7f0b24004d545f5683f06bc05a6797e7ffcf0",
+  "dispositionsPath": "docs/audit/session-2.6b3-compatibility-freeze-regression.json",
+  "dispositionsSha256": "sha256:5d0191a432f6ea49129a2e9045dec9dc919e03e5dc2278626a42743863562480",
+  "note": "The 41 frozen Relation spike pairs are used only as a gate-regression dataset; no Relation engine runs in session 2.7B."
+ },
+ "expected": {
+  "pairs": 41,
+  "permitted": 29,
+  "refused": 12
+ },
+ "cases": [
+  {
+   "caseId": "DEV-001",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "December tool revenue was 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-002",
+   "claim": "The published December tool revenue was greater than 40 USD.",
+   "evidence": "The final December tool revenue was 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-003",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "The final December tool revenue was 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-004",
+   "claim": "December tool revenue exceeded 40 USD.",
+   "evidence": "A final statement reports December tool revenue of 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-005",
+   "claim": "Management expected December tool revenue above 40 USD.",
+   "evidence": "December tool revenue came in at 57 USD, in line with the earlier expectation.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-006",
+   "claim": "December tool revenue was greater than 40000 USD.",
+   "evidence": "December tool revenue was 57 thousand USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-007",
+   "claim": "The December table shows tool revenue above 40 USD.",
+   "evidence": "December table, row tool revenue: 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-008",
+   "claim": "All three segments grew in December.",
+   "evidence": "All three segments reported growth in December.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-009",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "A direct filing reports December tool revenue of 22 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-010",
+   "claim": "The published December tool revenue was greater than 40 USD.",
+   "evidence": "Correction: December tool revenue was 22 USD, replacing the earlier 57 USD disclosure.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-011",
+   "claim": "The latest disclosed monthly tool revenue exceeds 40 USD.",
+   "evidence": "The newest January tool revenue was 31 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-012",
+   "claim": "Tool revenue expansion is broadly maintained across the company.",
+   "evidence": "In February a smaller unit declined, although the major units still grew.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-013",
+   "claim": "December tool revenue was greater than 1.0 million USD.",
+   "evidence": "December tool revenue was 0.9 million USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-014",
+   "claim": "2026 tool revenue grew compared with 2025.",
+   "evidence": "Table: 2025 tool revenue 120 USD; 2026 tool revenue 96 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-015",
+   "claim": "Service margin was above 20 percent in December.",
+   "evidence": "December service margin was 17 percent, although service revenue rose.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-016",
+   "claim": "December service revenue exceeded 52 USD.",
+   "evidence": "A new direct filing reports December service revenue of 40 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-017",
+   "claim": "The services division grew in every month of the year.",
+   "evidence": "The services division did not grow in April.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-018",
+   "claim": "Management expected December tool revenue above 40 USD.",
+   "evidence": "December tool revenue came in at 22 USD, below the earlier expectation.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-019",
+   "claim": "The published December tool revenue was greater than 40 USD.",
+   "evidence": "The tool revenue reporting team moved to another office.",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-020",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "December tool margin was 12 percent.",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-021",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "February tool revenue was 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-022",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "A comparable peer reported December tool revenue of 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-023",
+   "claim": "Group December tool revenue was greater than 40 USD.",
+   "evidence": "The subsidiary alone reported December tool revenue of 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-024",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "Tool revenue is reported under the industrial segment heading.",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-025",
+   "claim": "Tool revenue was greater than 40 USD in December.",
+   "evidence": "January tool revenue was 31 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-026",
+   "claim": "December tool revenue was greater than 40 million USD.",
+   "evidence": "December tool headcount was 57 people.",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-027",
+   "claim": "The December table shows tool revenue above 40 USD.",
+   "evidence": "December table columns: headcount, region, office.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-028",
+   "claim": "Tool revenue rose in December.",
+   "evidence": "Tool revenue rose in February.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-029",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "Tool revenue is described favorably, but no amount or reporting period is given.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-030",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "December tool revenue was ...",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-031",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "December tool revenue was 57.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-032",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "Early indications suggest December tool revenue may exceed 40 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-033",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "The December figure was 57 USD.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-034",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "December table row: 57 USD.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-035",
+   "claim": "Tool revenue was greater than 40 USD in December.",
+   "evidence": "Tool revenue was 57 USD.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-036",
+   "claim": "December tool revenue was greater than 40 million USD.",
+   "evidence": "December tool revenue was 57 million, on the reported scale.",
+   "expectedDisposition": "INDETERMINATE",
+   "expectedGate": "REFUSED"
+  },
+  {
+   "caseId": "DEV-037",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "The audited recap states December tool revenue of 57 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-038",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": "December tool revenue was exactly 40 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-039",
+   "claim": "December tool revenue was at least 40 USD.",
+   "evidence": "December tool revenue was exactly 40 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-040",
+   "claim": "Tool revenue increased by more than 10 percent from 2025 to 2026.",
+   "evidence": "Table: 2025 tool revenue 100 USD; 2026 tool revenue 106 USD.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  },
+  {
+   "caseId": "DEV-041",
+   "claim": "December service revenue exceeded 52 USD.",
+   "evidence": "A separate finalized statement reports service revenue of 65 USD for December.",
+   "expectedDisposition": "COMMENSURABLE",
+   "expectedGate": "PERMITTED"
+  }
+ ]
+}

@@ -1,0 +1,990 @@
+{
+ "version": "claim-relation-compatibility-regression/v1",
+ "provenance": {
+  "displacementsPath": "docs/audit/session-2.6b3-compatibility-freeze-regression.json",
+  "matrixPath": "docs/audit/session-2.6a-compatibility-case-matrix.json",
+  "relationPairsPath": "research/claim-reasoning-spike/dev-set.json",
+  "sha256": {
+   "displacements": "sha256:5d0191a432f6ea49129a2e9045dec9dc919e03e5dc2278626a42743863562480",
+   "matrix": "sha256:8ccd81915d92da593a8ed5f95b27d7bc488df95182afeff2c815cc3c3afb22d9",
+   "relationPairs": "sha256:5aee9f1571050251011a61f1ffb7f0b24004d545f5683f06bc05a6797e7ffcf0"
+  },
+  "note": "Frozen 2.6B-3 dispositions over the archived 2.6A case contents. Gold labels are read-only; no label may be edited to make a runtime pass."
+ },
+ "aggregate": {
+  "total": 59,
+  "derived": {
+   "COMMENSURABLE": 40,
+   "NOT_COMMENSURABLE": 7,
+   "INDETERMINATE": 11,
+   "NO_ASSESSMENT": 1
+  },
+  "contract": {
+   "COMMENSURABLE": 40,
+   "NOT_COMMENSURABLE": 7,
+   "INDETERMINATE": 11,
+   "NO_ASSESSMENT": 1
+  },
+  "expected": {
+   "COMMENSURABLE": 40,
+   "NOT_COMMENSURABLE": 7,
+   "INDETERMINATE": 11,
+   "noAssessment": 1
+  },
+  "match": true
+ },
+ "cases": [
+  {
+   "caseId": "DEV-001",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue was 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-002",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The published December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "The final December tool revenue was 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-003",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "The final December tool revenue was 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-004",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue exceeded 40 USD.",
+   "evidence": {
+    "statement": "A final statement reports December tool revenue of 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-005",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Management expected December tool revenue above 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue came in at 57 USD, in line with the earlier expectation.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-006",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40000 USD.",
+   "evidence": {
+    "statement": "December tool revenue was 57 thousand USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-007",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The December table shows tool revenue above 40 USD.",
+   "evidence": {
+    "statement": "December table, row tool revenue: 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-008",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "All three segments grew in December.",
+   "evidence": {
+    "statement": "All three segments reported growth in December.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-009",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "A direct filing reports December tool revenue of 22 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-010",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The published December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "Correction: December tool revenue was 22 USD, replacing the earlier 57 USD disclosure.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-011",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The latest disclosed monthly tool revenue exceeds 40 USD.",
+   "evidence": {
+    "statement": "The newest January tool revenue was 31 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-012",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Tool revenue expansion is broadly maintained across the company.",
+   "evidence": {
+    "statement": "In February a smaller unit declined, although the major units still grew.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-013",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 1.0 million USD.",
+   "evidence": {
+    "statement": "December tool revenue was 0.9 million USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-014",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "2026 tool revenue grew compared with 2025.",
+   "evidence": {
+    "statement": "Table: 2025 tool revenue 120 USD; 2026 tool revenue 96 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-015",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Service margin was above 20 percent in December.",
+   "evidence": {
+    "statement": "December service margin was 17 percent, although service revenue rose.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-016",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December service revenue exceeded 52 USD.",
+   "evidence": {
+    "statement": "A new direct filing reports December service revenue of 40 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-017",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The services division grew in every month of the year.",
+   "evidence": {
+    "statement": "The services division did not grow in April.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-018",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Management expected December tool revenue above 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue came in at 22 USD, below the earlier expectation.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-019",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limb (a)/(b): readable kinds with no common scale (CM-19.2ab)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The published December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "The tool revenue reporting team moved to another office.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-020",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limb (a)/(b): readable kinds with no common scale (CM-19.2ab)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "December tool margin was 12 percent.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-021",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "difference of instance (period/entity/extent), not of kind (CM-19.3) -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "February tool revenue was 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-022",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "difference of instance (period/entity/extent), not of kind (CM-19.3) -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "A comparable peer reported December tool revenue of 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-023",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "difference of instance (period/entity/extent), not of kind (CM-19.3) -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Group December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "The subsidiary alone reported December tool revenue of 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-024",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limb (a)/(b): readable kinds with no common scale (CM-19.2ab)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "Tool revenue is reported under the industrial segment heading.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-025",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "difference of instance (period/entity/extent), not of kind (CM-19.3) -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Tool revenue was greater than 40 USD in December.",
+   "evidence": {
+    "statement": "January tool revenue was 31 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-026",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limbs (b)/(c): non-convertible measurement kinds (CM-19.2bc)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 million USD.",
+   "evidence": {
+    "statement": "December tool headcount was 57 people.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-027",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (claimed column) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "The December table shows tool revenue above 40 USD.",
+   "evidence": {
+    "statement": "December table columns: headcount, region, office.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-028",
+   "family": "DEV",
+   "bucket2_6a": "B",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "difference of instance (period/entity/extent), not of kind (CM-19.3) -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Tool revenue rose in December.",
+   "evidence": {
+    "statement": "Tool revenue rose in February.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-029",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (amount, period) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "Tool revenue is described favorably, but no amount or reporting period is given.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-030",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (value completion) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue was ...",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-031",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (unit) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue was 57.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-032",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "modality hedge only; modality is not a load-bearing path in v1 (CM-24.3) -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "Early indications suggest December tool revenue may exceed 40 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-033",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (metric/referent) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "The December figure was 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-034",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (table header) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "December table row: 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-035",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (period) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Tool revenue was greater than 40 USD in December.",
+   "evidence": {
+    "statement": "Tool revenue was 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-036",
+   "family": "DEV",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (scale) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 million USD.",
+   "evidence": {
+    "statement": "December tool revenue was 57 million, on the reported scale.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-037",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "The audited recap states December tool revenue of 57 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-038",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was greater than 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue was exactly 40 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-039",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December tool revenue was at least 40 USD.",
+   "evidence": {
+    "statement": "December tool revenue was exactly 40 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-040",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "Tool revenue increased by more than 10 percent from 2025 to 2026.",
+   "evidence": {
+    "statement": "Table: 2025 tool revenue 100 USD; 2026 tool revenue 106 USD.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "DEV-041",
+   "family": "DEV",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 1,
+   "pairShape": "single",
+   "claim": "December service revenue exceeded 52 USD.",
+   "evidence": {
+    "statement": "A separate finalized statement reports service revenue of 65 USD for December.",
+    "recorded": null
+   }
+  },
+  {
+   "caseId": "LOCK-01",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "The published December receipts were greater than 45 USD.",
+   "evidence": {
+    "statement": "The final December receipts were 58 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 58,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-02",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "December receipts were greater than 45 USD.",
+   "evidence": {
+    "statement": "The final December receipts were 58 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 58,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-03",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Receipts expansion is broadly maintained across the company.",
+   "evidence": {
+    "statement": "In February, a smaller division declined, although the major divisions still grew.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "In February, a smaller division declined, although the major divisions still grew.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-04",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December receipts were greater than 45 USD.",
+   "evidence": {
+    "statement": "Correction: December receipts were 33 USD, replacing the earlier 58 USD disclosure.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 33,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-05",
+   "family": "LOCK",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limb (a)/(b): readable kinds with no common scale (CM-19.2ab)",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December receipts were greater than 45 USD.",
+   "evidence": {
+    "statement": "The receipts reporting department changed its office address.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "The receipts reporting department changed its office address.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-06",
+   "family": "LOCK",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (amount, period) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December receipts were greater than 45 USD.",
+   "evidence": {
+    "statement": "Receipts are described favorably, but no amount or reporting period is given.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "Receipts are described favorably, but no amount or reporting period is given.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-07",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "The published December service revenue were greater than 52 USD.",
+   "evidence": {
+    "statement": "The final December service revenue were 65 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 65,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-08",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "December service revenue were greater than 52 USD.",
+   "evidence": {
+    "statement": "The final December service revenue were 65 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 65,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-09",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Service revenue expansion is broadly maintained across the company.",
+   "evidence": {
+    "statement": "In February, a smaller division declined, although the major divisions still grew.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "In February, a smaller division declined, although the major divisions still grew.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-10",
+   "family": "LOCK",
+   "bucket2_6a": "D",
+   "expectedDisposition": "NO_ASSESSMENT",
+   "derivationBasis": "bucket D: eligibility/pair shape -> no Compatibility assessment (CM-9.x)",
+   "evidenceRecords": 3,
+   "pairShape": "bundle",
+   "claim": "Published December service revenue were greater than 52 USD.",
+   "evidence": {
+    "statement": "A separate finalized statement reports service revenue of 65 USD for December.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 65,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-11",
+   "family": "LOCK",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limb (a)/(b): readable kinds with no common scale (CM-19.2ab)",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December service revenue were greater than 52 USD.",
+   "evidence": {
+    "statement": "The service revenue reporting department changed its office address.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "The service revenue reporting department changed its office address.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-12",
+   "family": "LOCK",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (amount, period) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December service revenue were greater than 52 USD.",
+   "evidence": {
+    "statement": "Service revenue are described favorably, but no amount or reporting period is given.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "Service revenue are described favorably, but no amount or reporting period is given.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-13",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "The published December subscription revenue were greater than 59 USD.",
+   "evidence": {
+    "statement": "The final December subscription revenue were 72 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 72,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-14",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "December subscription revenue were greater than 59 USD.",
+   "evidence": {
+    "statement": "The final December subscription revenue were 72 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 72,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-15",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Subscription revenue expansion is broadly maintained across the company.",
+   "evidence": {
+    "statement": "In February, a smaller division declined, although the major divisions still grew.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "In February, a smaller division declined, although the major divisions still grew.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-16",
+   "family": "LOCK",
+   "bucket2_6a": "A",
+   "expectedDisposition": "COMMENSURABLE",
+   "derivationBasis": "bucket A: readable, kind-compatible semantics -> permitted",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "The latest disclosed monthly subscription revenue exceeds 59 USD.",
+   "evidence": {
+    "statement": "The newest January subscription revenue was 47 USD.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": 47,
+     "unit": "USD",
+     "periodStart": null,
+     "periodEnd": "2026-01-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-17",
+   "family": "LOCK",
+   "bucket2_6a": "B",
+   "expectedDisposition": "NOT_COMMENSURABLE",
+   "derivationBasis": "kind rule limb (a)/(b): readable kinds with no common scale (CM-19.2ab)",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December subscription revenue were greater than 59 USD.",
+   "evidence": {
+    "statement": "The subscription revenue reporting department changed its office address.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "The subscription revenue reporting department changed its office address.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  },
+  {
+   "caseId": "LOCK-18",
+   "family": "LOCK",
+   "bucket2_6a": "C",
+   "expectedDisposition": "INDETERMINATE",
+   "derivationBasis": "unreadable load-bearing semantics (amount, period) -> readability question (CM-18.3 / CM-22.2 / CM-21.2)",
+   "evidenceRecords": 2,
+   "pairShape": "single",
+   "claim": "Published December subscription revenue were greater than 59 USD.",
+   "evidence": {
+    "statement": "Subscription revenue are described favorably, but no amount or reporting period is given.",
+    "recorded": {
+     "metric": "synthetic_revenue",
+     "normalizedValue": "Subscription revenue are described favorably, but no amount or reporting period is given.",
+     "unit": "quoted_text",
+     "periodStart": null,
+     "periodEnd": "2025-12-31",
+     "observedAt": null
+    }
+   }
+  }
+ ]
+}
