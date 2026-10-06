@@ -1,143 +1,58 @@
-import { readFile, readdir } from "node:fs/promises";
+import assert from "node:assert/strict";
+import { access, readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-// Static enforcement of the AGENTS.md frontend rules that were previously checked by hand:
-// fetch stays in the gated live controller, the zero-build loading model stays intact,
-// no emoji reaches the UI, and no audit wording reaches user-visible copy.
+// UI-2.0 frontend discipline. The only active product UI is research/surface.
+// It remains server-first, read-only and dependency-free in the browser.
 
-const REPOSITORY_ROOT = resolve(fileURLToPath(new URL("../", import.meta.url)), "..");
-const FRONTEND_ROOT = resolve(REPOSITORY_ROOT, "assets/js");
-const ENTRY_HTML = resolve(REPOSITORY_ROOT, "index.html");
-const STYLESHEET = resolve(REPOSITORY_ROOT, "assets/styles.css");
-const LIVE_CONTROLLER = "view-ai-live.js";
+const AGENT_ROOT = resolve(fileURLToPath(new URL("../", import.meta.url)));
+const REPOSITORY_ROOT = resolve(AGENT_ROOT, "..");
+const SURFACE_ROOT = resolve(REPOSITORY_ROOT, "research/surface");
+const PUBLIC_ROOT = resolve(SURFACE_ROOT, "public");
+const RENDER_ROOT = resolve(SURFACE_ROOT, "render");
 
-const violations = [];
-function fail(file, line, rule, text) {
-  violations.push({ file, line, rule, text: String(text).trim().slice(0, 140) });
+async function exists(path) {
+  try { await access(path); return true; } catch { return false; }
 }
 
-// Internal identifiers that AGENTS.md §1.1 explicitly allows in code.
-const ALLOWED_AUDIT_FORMS = [
-  /#\/audit/g,
-  /view-audit/g,
-  /run-audit|reset-audit|audit-report-btn/g,
-  /auditStage|auditDone|auditToastFor|auditToast/g,
-  /\b(?:run|reset)Audit\b/g,
-  /(["'`])audit\1/g,
-  /\baudit\s*:/g,
-  /\|audit\|/g,
-  /\bviews\.audit\b/g,
-  /statutory audit/gi,
-  /audit opinion/gi
-];
+const violations=[];
+const fail=(file,rule)=>violations.push({file,rule});
 
-const ALLOWED_SYMBOLS = new Set([..."→←↑↓↗↘↔…✓✗·×—–±σ≈≤≥‰°∙"]);
-const EMOJI_RANGES = [[0x1f000, 0x1faff], [0x1f1e6, 0x1f1ff], [0x2600, 0x27bf], [0x2b00, 0x2bff], [0xfe00, 0xfe0f], [0x2190, 0x21ff]];
-
-function blankBlockComments(text) {
-  return text.replace(/\/\*[\s\S]*?\*\//g, comment => comment.replace(/[^\n]/g, " "));
+for(const legacy of ["index.html","assets/styles.css","assets/js","assets/img/logo.png"]){
+  if(await exists(resolve(REPOSITORY_ROOT,legacy))) fail(legacy,"legacy frontend must not return after UI-2.0");
 }
 
-function stripLineComment(line) {
-  const index = line.indexOf("//");
-  if (index < 0) return line;
-  return (line.slice(0, index).match(/["'`]/g) || []).length % 2 === 0 ? line.slice(0, index) : line;
+const browserJs=await readFile(resolve(PUBLIC_ROOT,"surface.js"),"utf8");
+for(const [pattern,rule] of [
+  [/\bfetch\s*\(/,"browser JS must not fetch"],
+  [/localStorage|sessionStorage|indexedDB/,"browser JS must not persist state"],
+  [/XMLHttpRequest|WebSocket|EventSource/,"browser JS must not open network channels"],
+  [/https?:\/\//,"browser JS must not reference external origins"]
+]){
+  if(pattern.test(browserJs)) fail("research/surface/public/surface.js",rule);
 }
 
-function emojiIn(line) {
-  const found = new Set();
-  for (const character of line) {
-    if (ALLOWED_SYMBOLS.has(character)) continue;
-    const code = character.codePointAt(0);
-    if (EMOJI_RANGES.some(([low, high]) => code >= low && code <= high)) found.add(character);
-  }
-  return [...found];
+const css=await readFile(resolve(PUBLIC_ROOT,"surface.css"),"utf8");
+if(/@import\b|url\(\s*['"]?https?:/i.test(css)) fail("research/surface/public/surface.css","surface CSS must use no remote asset or import");
+if(!/:focus-visible/.test(css)) fail("research/surface/public/surface.css","keyboard focus style is required");
+if(!/prefers-reduced-motion/.test(css)) fail("research/surface/public/surface.css","reduced-motion guard is required");
+
+const layout=await readFile(resolve(RENDER_ROOT,"layout.js"),"utf8");
+for(const marker of ["Inbox","Beliefs","Review","Evidence","Timeline","Research Workbench","READ ONLY","AI OFF"]){
+  assert.ok(layout.includes(marker),`UI-2.0 layout missing marker: ${marker}`);
+}
+if(/style="/.test(layout)) fail("research/surface/render/layout.js","inline styles are forbidden by the strict CSP");
+if(!/Content-Security-Policy/.test(await readFile(resolve(SURFACE_ROOT,"routes.js"),"utf8"))) fail("research/surface/routes.js","strict CSP header must remain");
+
+for(const name of (await readdir(RENDER_ROOT)).filter(name=>name.endsWith(".js"))){
+  const source=await readFile(resolve(RENDER_ROOT,name),"utf8");
+  if(/style="/.test(source)) fail(`research/surface/render/${name}`,"inline style emitted by renderer");
 }
 
-async function frontendFiles() {
-  return (await readdir(FRONTEND_ROOT)).filter(name => name.endsWith(".js")).sort();
-}
-
-async function checkFrontend() {
-  for (const name of await frontendFiles()) {
-    const raw = await readFile(resolve(FRONTEND_ROOT, name), "utf8");
-    const lines = blankBlockComments(raw).split("\n");
-    lines.forEach((rawLine, index) => {
-      const line = stripLineComment(rawLine);
-      const position = index + 1;
-
-      if (name !== LIVE_CONTROLLER && /\bfetch\s*\(/.test(line)) {
-        fail(`assets/js/${name}`, position, "fetch is only allowed in view-ai-live.js", rawLine);
-      }
-      if (name !== LIVE_CONTROLLER && /\/fc\/ai\//.test(line)) {
-        fail(`assets/js/${name}`, position, "same-origin /fc/ai/ calls are only allowed in view-ai-live.js", rawLine);
-      }
-      if (/\btype\s*=\s*["']module["']|\bdefer\b|\brequire\s*\(|^\s*import\s+[\w{*"']|^\s*export\s/.test(line)) {
-        fail(`assets/js/${name}`, position, "zero-build loading model: no module, defer, import, export or require", rawLine);
-      }
-      if (/https?:\/\//.test(line)) {
-        fail(`assets/js/${name}`, position, "no external URL or CDN reference", rawLine);
-      }
-
-      const emoji = emojiIn(line);
-      if (emoji.length) fail(`assets/js/${name}`, position, `emoji are not allowed in the UI: ${emoji.join(" ")}`, rawLine);
-
-      let remaining = line;
-      for (const pattern of ALLOWED_AUDIT_FORMS) remaining = remaining.replace(pattern, " ");
-      if (/audit/i.test(remaining)) {
-        fail(`assets/js/${name}`, position, "user-visible copy must use risk assessment wording, not audit", rawLine);
-      }
-    });
-  }
-}
-
-async function checkEntryHtml() {
-  const raw = await readFile(ENTRY_HTML, "utf8");
-  const lines = blankBlockComments(raw).split("\n");
-  lines.forEach((rawLine, index) => {
-    const line = stripLineComment(rawLine);
-    const position = index + 1;
-    if (/\btype\s*=\s*["']module["']|\bdefer\b/.test(line)) {
-      fail("index.html", position, "zero-build loading model: no module or defer", rawLine);
-    }
-    if (/https?:\/\//.test(line)) fail("index.html", position, "no external URL or CDN reference", rawLine);
-    const emoji = emojiIn(line);
-    if (emoji.length) fail("index.html", position, `emoji are not allowed in the UI: ${emoji.join(" ")}`, rawLine);
-    let remaining = line;
-    for (const pattern of ALLOWED_AUDIT_FORMS) remaining = remaining.replace(pattern, " ");
-    if (/audit/i.test(remaining)) fail("index.html", position, "user-visible copy must use risk assessment wording, not audit", rawLine);
-  });
-}
-
-async function checkStylesheet() {
-  const raw = await readFile(STYLESHEET, "utf8");
-  blankBlockComments(raw).split("\n").forEach((line, index) => {
-    const emoji = emojiIn(line);
-    if (emoji.length) fail("assets/styles.css", index + 1, `emoji are not allowed in the UI: ${emoji.join(" ")}`, line);
-  });
-}
-
-async function checkDisclaimerIsPreserved() {
-  // The stripping above tolerates "statutory audit" only because the mandated disclaimer uses it;
-  // assert it still exists so the allowlist cannot quietly hide its removal.
-  const shell = await readFile(resolve(FRONTEND_ROOT, "app.js"), "utf8");
-  if (!/not a statutory audit/i.test(shell)) {
-    fail("assets/js/app.js", 0, "the global footer must keep the non-audit disclaimer", "not a statutory audit");
-  }
-}
-
-await checkFrontend();
-await checkEntryHtml();
-await checkStylesheet();
-await checkDisclaimerIsPreserved();
-
-const scanned = (await frontendFiles()).length + 2;
-if (violations.length) {
-  for (const item of violations) {
-    process.stderr.write(`${item.file}:${item.line} [${item.rule}]\n  ${item.text}\n`);
-  }
-  process.stderr.write(`FAIL frontend discipline: ${violations.length} violation(s) across ${scanned} files\n`);
+if(violations.length){
+  for(const item of violations) process.stderr.write(`${item.file}\n  ${item.rule}\n`);
+  process.stderr.write(`FAIL UI-2.0 frontend discipline: ${violations.length} violation(s)\n`);
   process.exit(1);
 }
-process.stdout.write(`PASS frontend discipline across ${scanned} files\n`);
+process.stdout.write("PASS UI-2.0 frontend discipline: one active Workbench, read-only browser, strict CSP\n");
