@@ -168,6 +168,24 @@ What Changed exposes:
 
 The chain still stops before Impact and authoritative Claim mutation.
 
+
+### Blind SEC Holdout v0.2B
+
+The isolated `relation-candidate/v0.2a.1` was frozen before first evaluation on a new 24-case holdout from Amazon, Alphabet and Meta 2025 Form 10-K filings.
+
+| Metric | Result |
+| --- | ---: |
+| Exact state accuracy | **17 / 24 (70.83%)** |
+| Directional accuracy | **66.67%** |
+| Directional inversion | **0%** |
+| Unsafe directional error | **0%** |
+| AMBIGUOUS abstention recall | **66.67%** |
+| Existing phase gate | **FAIL** |
+
+This is the first source-isolated generalization check after the 32/32 SEC development pilot. It demonstrates that the candidate does **not** yet meet the promotion threshold on unseen issuers. The primary observed weakness is under-resolution of causal, metric-binding, mix and second-order relations; no unsafe directional error was observed in this 24-case holdout.
+
+The holdout is single-review and not publication gold. Its bytes, candidate-runtime blobs, and gate are pinned in `research/benchmark/holdout-v0.2b-lock.json`. The failure is retained as research evidence and must not be erased by relabeling or threshold changes.
+
 ## PLANNED
 
 - independently human-labeled 500+ pair semantic Relation benchmark
