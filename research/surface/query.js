@@ -1,7 +1,6 @@
-// Query parsing for the local Research Surface (UI-1).
-//
+// Query parsing for the FlowCredit Research Workbench (UI-2.0).
 // Pure helpers only: normalize search text, validate filter/sort enums, clamp
-// pagination, and build safe same-origin URLs. No DB access, no rendering.
+// pagination, and rebuild safe same-origin return URLs.
 
 export const CLAIM_SORTS = ['recent', 'oldest', 'category', 'status'];
 export const EVIDENCE_SORTS = ['recent', 'oldest', 'category', 'page'];
@@ -71,8 +70,6 @@ export function paginate(items, requestedPage, pageSize) {
   };
 }
 
-// Serialize filter values into a query string. Omits empty values and defaults
-// so canonical URLs stay short and shareable.
 export function toQueryString(values = {}, { keep = [] } = {}) {
   const parts = [];
   for (const [key, value] of Object.entries(values)) {
@@ -87,14 +84,14 @@ export function toQueryString(values = {}, { keep = [] } = {}) {
   return parts.length ? `?${parts.join('&')}` : '';
 }
 
-// ---------------------------------------------------------------- return context
-// Safe index-context mechanics for index → detail → back navigation.
-// Only the two research indexes are accepted as return targets.
-export const RETURN_ROUTES = ['/evidence', '/claims'];
+// Beliefs is the product route. /claims remains accepted as a compatibility
+// alias so historical links and benchmark artifacts keep working.
+export const RETURN_ROUTES = ['/evidence', '/beliefs', '/claims'];
 
-// Serialize an index query object (from parseClaimsQuery/parseEvidenceQuery)
-// back into a canonical query string. Defaults are omitted and unknown values
-// are dropped, so a return target can never smuggle extra parameters.
+function isBeliefRoute(pathname) {
+  return pathname === '/beliefs' || pathname === '/claims';
+}
+
 export function serializeIndexQuery(pathname, query = {}, demo = false) {
   const values = pathname === '/evidence'
     ? {
@@ -109,10 +106,6 @@ export function serializeIndexQuery(pathname, query = {}, demo = false) {
   return toQueryString(values);
 }
 
-// Validate a user-supplied `from` value. Same-origin, relative path, canonical
-// index route only: external hosts, protocol-relative URLs, javascript:/data:
-// URLs and path traversal are rejected. The input string is never echoed back;
-// the result is rebuilt from the parsed, whitelisted parts.
 export function sanitizeReturnTo(value) {
   if (typeof value !== 'string') return '';
   if (value.length === 0 || value.length > 300) return '';
@@ -130,5 +123,6 @@ export function sanitizeReturnTo(value) {
   const normalized = parsed.pathname === '/evidence'
     ? parseEvidenceQuery(parsed.searchParams)
     : parseClaimsQuery(parsed.searchParams);
-  return `${parsed.pathname}${serializeIndexQuery(parsed.pathname, normalized, demo)}`;
+  const canonicalPath = isBeliefRoute(parsed.pathname) ? '/beliefs' : parsed.pathname;
+  return `${canonicalPath}${serializeIndexQuery(canonicalPath, normalized, demo)}`;
 }
