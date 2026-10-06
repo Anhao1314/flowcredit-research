@@ -77,6 +77,21 @@ test('server binds loopback only and serves the inbox', async (t) => {
   });
 });
 
+test('UI-2.0 workbench shell exposes the research workflow without legacy assessment chrome', async (t) => {
+  const fixture = await makeFixture(t);
+  const { server, url } = await startFixtureServer(t, fixture);
+  const response = await httpGet(url);
+  assert.equal(response.status, 200);
+  for (const label of ['FlowCredit Research', 'Belief Workbench', '>Inbox<', '>Beliefs<', '>Evidence<', '>Timeline<']) {
+    assert.ok(response.body.includes(label), `missing workbench shell label: ${label}`);
+  }
+  assert.ok(response.body.includes('What needs your attention'));
+  assert.ok(response.body.includes('Attention queue'));
+  for (const legacy of ['New Assessment', 'TAI', 'CCI', 'Risk intelligence']) {
+    assert.ok(!response.body.includes(legacy), `legacy frontend language leaked into workbench: ${legacy}`);
+  }
+});
+
 test('inbox leads with attention signals recomputed from persisted data', async (t) => {
   await withSurface(t, async ({ url }) => {
     const response = await httpGet(`${url}/`);
@@ -96,7 +111,7 @@ test('inbox leads with attention signals recomputed from persisted data', async 
     assert.ok(response.body.includes('31 with partial provenance'));
     assert.ok(response.body.includes('Latest Research Memory activity: '));
     assert.ok(response.body.includes('2026-05-10 10:30 UTC'));
-    assert.ok(response.body.includes('What Changed'));
+    assert.ok(response.body.includes('Timeline'));
     assert.ok(response.body.includes('Research Memory: 1 company under research'));
     const positionInventory = response.body.indexOf('Research Memory: 1 company under research');
     const positionAttention = response.body.indexOf('Needs attention');
@@ -150,7 +165,7 @@ test('claim page shows belief, evidence links and revision history', async (t) =
     assert.ok(response.body.includes('Revision history'));
     assert.ok(response.body.includes('initial_ingest'));
     assert.ok(response.body.includes('Technical details'));
-    assert.ok(response.body.includes('Back to Claims'));
+    assert.ok(response.body.includes('Back to Beliefs'));
     assert.ok(response.body.includes('Fixture quarterly report'));
     assert.ok(response.body.includes('scope="col"'));
     assert.ok(response.body.includes('<caption'));
@@ -224,7 +239,7 @@ test('claims index lists every Claim with filters and honest empty states', asyn
     assert.ok(searched.body.includes('Fixture claims receipts are rising.'));
     assert.ok(!searched.body.includes('Fixture claims costs are contained.'));
     const empty = await httpGet(`${url}/claims?q=zzz-nothing`);
-    assert.ok(empty.body.includes('No Claims match these filters.'));
+    assert.ok(empty.body.includes('No beliefs match these filters.'));
     assert.ok(empty.body.includes('Clear filters'));
     const invalid = await httpGet(`${url}/claims?sort=bogus&page=-9`);
     assert.equal(invalid.status, 200);
@@ -331,7 +346,7 @@ test('index rows carry a return context and detail pages restore it', async (t) 
     assert.ok(claimsIndex.body.includes(`/claim/${paths.claimOne}?from=${encodeURIComponent(claimsQuery)}`),
       'claim row links carry the searched index URL');
     const claimDetail = await httpGet(`${url}/claim/${paths.claimOne}?from=${encodeURIComponent(claimsQuery)}`);
-    assert.ok(claimDetail.body.includes('>Back to Claims</a>'));
+    assert.ok(claimDetail.body.includes('>Back to Beliefs</a>'));
     assert.ok(claimDetail.body.includes('href="/claims?q=receipts&amp;status=supported"'), 'back link restores search + status');
 
     const plain = await httpGet(`${url}/evidence`);
@@ -358,7 +373,7 @@ test('hostile returnTo values fall back to the plain index without leaking', asy
       assert.ok(!response.body.includes('etc/passwd'), 'no traversal path reaches the page');
     }
     const crossIndex = await httpGet(`${url}/claim/${paths.claimOne}?from=${encodeURIComponent('/evidence?link=linked')}`);
-    assert.ok(crossIndex.body.includes('<p class="back-link"><a href="/claims">Back to Claims</a></p>'),
+    assert.ok(crossIndex.body.includes('<p class="back-link"><a href="/claims">Back to Beliefs</a></p>'),
       'a Claims page never returns to an Evidence URL');
   });
 });
