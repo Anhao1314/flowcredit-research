@@ -1,4 +1,4 @@
-// Unit tests for the pure query helpers (UI-1).
+// Unit tests for the pure query helpers (UI-2.0).
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
@@ -99,8 +99,8 @@ test('toQueryString omits defaults and empty values', () => {
 
 test('query round trip preserves filters, page and demo mode in URLs', () => {
   const parsed = parseClaimsQuery(params('q=growth&category=cash_flow&sort=oldest&page=2&demo=1'));
-  const url = `/claims${toQueryString({ q: parsed.q, category: parsed.category, sort: parsed.sort, page: parsed.page, demo: '1' })}`;
-  assert.equal(url, '/claims?q=growth&category=cash_flow&sort=oldest&page=2&demo=1');
+  const url = `/beliefs${toQueryString({ q: parsed.q, category: parsed.category, sort: parsed.sort, page: parsed.page, demo: '1' })}`;
+  assert.equal(url, '/beliefs?q=growth&category=cash_flow&sort=oldest&page=2&demo=1');
   const reparsed = parseClaimsQuery(params(new URL(url, 'http://x').search.slice(1)));
   assert.equal(reparsed.q, 'growth');
   assert.equal(reparsed.category, 'cash_flow');
@@ -115,13 +115,13 @@ test('serializeIndexQuery rebuilds canonical index URLs and drops defaults', () 
   assert.equal(serializeIndexQuery('/evidence', { q: '', source: '', link: '', review: '', subject: '', sort: 'recent', page: 1 }), '');
   assert.equal(serializeIndexQuery('/evidence', { ...emptyEvidenceQuery(), link: 'linked', sort: 'page', page: 2 }), '?link=linked&sort=page&page=2');
   assert.equal(serializeIndexQuery('/evidence', { ...emptyEvidenceQuery(), link: 'linked' }, true), '?link=linked&demo=1');
-  assert.equal(serializeIndexQuery('/claims', { q: 'revenue', category: '', status: 'supported', subject: '', sort: 'recent', page: 1 }, true), '?q=revenue&status=supported&demo=1');
+  assert.equal(serializeIndexQuery('/beliefs', { q: 'revenue', category: '', status: 'supported', subject: '', sort: 'recent', page: 1 }, true), '?q=revenue&status=supported&demo=1');
 });
 
 test('sanitizeReturnTo keeps valid index context and rebuilds it canonically', () => {
   assert.equal(sanitizeReturnTo('/evidence'), '/evidence');
   assert.equal(sanitizeReturnTo('/evidence?link=linked&sort=page&page=2'), '/evidence?link=linked&sort=page&page=2');
-  assert.equal(sanitizeReturnTo('/claims?q=customer&status=supported&page=3'), '/claims?q=customer&status=supported&page=3');
+  assert.equal(sanitizeReturnTo('/beliefs?q=customer&status=supported&page=3'), '/beliefs?q=customer&status=supported&page=3');\n  assert.equal(sanitizeReturnTo('/claims?q=customer&status=supported&page=3'), '/beliefs?q=customer&status=supported&page=3', 'historical Claim index links canonicalize to Beliefs');
   assert.equal(sanitizeReturnTo('/evidence?demo=1&link=linked'), '/evidence?link=linked&demo=1');
   assert.equal(sanitizeReturnTo('/evidence?unknown=1&link=linked'), '/evidence?link=linked');
   assert.equal(sanitizeReturnTo('/evidence?link=evil'), '/evidence', 'unknown filter values are dropped, not echoed');
