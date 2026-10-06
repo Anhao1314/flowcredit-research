@@ -20,21 +20,35 @@ test('committed What Changed fixture is executed through the real pairwise runti
  assert.deepEqual(demo.receipts.map(item=>item.relation),['SUPPORTS','COUNTERS','AMBIGUOUS',null,'NEUTRAL']);
 });
 
-test('What Changed surface shows runtime receipts and keeps Claim mutation disabled',async()=>{
+test('UI-2 Review preview exposes runtime candidates and keeps Claim mutation disabled',async()=>{
  const path=join(tmpdir(),'fc-what-changed-runtime.sqlite');
  buildPublicDemo(path,{log:{log(){}}});
  await withServer(path,async(base)=>{
-  const response=await fetch(base+'/changes?demo=1');
+  const response=await fetch(base+'/review?demo=1');
   assert.equal(response.status,200);
   const html=await response.text();
-  assert.match(html,/Pairwise Relation runtime/);
+  assert.match(html,/Review Queue/);
+  assert.match(html,/PENDING HUMAN REVIEW/);
   assert.match(html,/SUPPORTS/);
   assert.match(html,/COUNTERS/);
-  assert.match(html,/AMBIGUOUS/);
-  assert.match(html,/NOT_EVALUATED/);
-  assert.match(html,/PENDING HUMAN REVIEW/);
   assert.match(html,/NEEDS INVESTIGATION/);
   assert.match(html,/previous comparable-period rate/);
   assert.match(html,/Claim mutation allowed: no/);
+  assert.match(html,/Preview only/);
+  assert.doesNotMatch(html,/authoritative revision written: yes/i);
+ });
+});
+
+test('UI-2 synthetic Timeline stays isolated from real Research Memory',async()=>{
+ const path=join(tmpdir(),'fc-what-changed-runtime-timeline.sqlite');
+ buildPublicDemo(path,{log:{log(){}}});
+ await withServer(path,async(base)=>{
+  const response=await fetch(base+'/timeline?demo=1');
+  assert.equal(response.status,200);
+  const html=await response.text();
+  assert.match(html,/Synthetic timeline/);
+  assert.match(html,/Synthetic proposal created/);
+  assert.match(html,/PENDING HUMAN REVIEW/);
+  assert.match(html,/Return to real Timeline|Open Review preview/);
  });
 });
