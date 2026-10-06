@@ -26,19 +26,21 @@ test('pilot is explicitly not publication gold and every case preserves review b
 });
 
 test('benchmark evaluator is deterministic and reports safety metrics separately from aggregate accuracy',()=>{
- const first=scoreBenchmark(benchmark);
- const second=scoreBenchmark(benchmark);
+ const first=scoreBenchmark(benchmark,{runtime:'candidate'});
+ const second=scoreBenchmark(benchmark,{runtime:'candidate'});
  assert.deepEqual(second,first);
  assert.equal(first.evaluatedCases,32);
  for(const key of ['overallAccuracy','directionalAccuracy','directionalInversionRate','unsafeDirectionalErrorRate','ambiguousAbstentionRecall']){
   assert.equal(typeof first.metrics[key],'number');
  }
- console.log('REALITY_BENCHMARK_RESULT '+JSON.stringify({metrics:first.metrics,counts:first.counts,byLabel:first.byLabel}));
+ const baseline=scoreBenchmark(benchmark,{runtime:'baseline'});
+ console.log('REALITY_BENCHMARK_BASELINE '+JSON.stringify({metrics:baseline.metrics,counts:baseline.counts,byLabel:baseline.byLabel}));
+ console.log('REALITY_BENCHMARK_CANDIDATE '+JSON.stringify({metrics:first.metrics,counts:first.counts,byLabel:first.byLabel}));
  console.log('REALITY_BENCHMARK_FAILURES '+JSON.stringify(first.rows.filter(row=>!row.correct).map(row=>({caseId:row.caseId,challenge:row.challenge,expected:row.expected,predicted:row.predicted,reasonCodes:row.reasonCodes}))));
 });
 
 test('v0.2A phase gate is allowed to fail; its failure cannot be hidden by aggregate accuracy',()=>{
- const result=scoreBenchmark(benchmark);
+ const result=scoreBenchmark(benchmark,{runtime:'candidate'});
  const phase=evaluateGate(result,gate);
  assert.ok(['PASS','FAIL'].includes(phase.status));
  if(phase.status==='FAIL')assert.ok(Object.values(phase.checks).some(value=>value===false));
@@ -63,9 +65,31 @@ test('runtime import closure cannot reach benchmark cases, gold labels or phase 
 });
 
 test('renaming benchmark case ids cannot change runtime predictions',()=>{
- const baseline=scoreBenchmark(benchmark).rows.map(row=>row.predicted);
+ const baseline=scoreBenchmark(benchmark,{runtime:'candidate'}).rows.map(row=>row.predicted);
  const renamed=structuredClone(benchmark);
  renamed.cases.forEach((item,index)=>{item.caseId='RENAMED-'+String(index).padStart(3,'0');});
- const replay=scoreBenchmark(renamed).rows.map(row=>row.predicted);
+ const replay=scoreBenchmark(renamed,{runtime:'candidate'}).rows.map(row=>row.predicted);
  assert.deepEqual(replay,baseline);
+});
+
+
+test('candidate safety rules are content-based and cover generic non-benchmark examples',async()=>{
+ const {candidateDeterministicRelation}=await import('../relation-runtime/candidate-deterministic.js');
+ const temporal=candidateDeterministicRelation({
+  claim:{statement:'Subscription growth was faster in 2026 than in 2025.'},
+  evidence:{statement:'Subscription growth was 18 percent in 2026 and 12 percent in 2025.'}
+ });
+ const causalNegative=candidateDeterministicRelation({
+  claim:{statement:'Infrastructure investment was the primary driver of revenue growth.'},
+  evidence:{statement:'Revenue increased 20 percent and infrastructure investment also increased.'}
+ });
+ const causalScope=candidateDeterministicRelation({
+  claim:{statement:'Premium sales caused total net sales growth.'},
+  evidence:{statement:'Device net sales increased because of premium sales, while total net sales also increased.'}
+ });
+ const mix=candidateDeterministicRelation({
+  claim:{statement:'Revenue mix shifted toward Services.'},
+  evidence:{statement:'Services net sales grew 14 percent while total net sales grew 6 percent.'}
+ });
+ assert.deepEqual([temporal.relation,causalNegative.relation,causalScope.relation,mix.relation],['SUPPORTS','NEUTRAL','AMBIGUOUS','SUPPORTS']);
 });
