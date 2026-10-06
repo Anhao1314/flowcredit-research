@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {compatibilityAssessment} from '../claim-relation/compatibility.js';
 import {frozenPaths} from '../claim-relation/contract.js';
-import {readPair} from '../claim-relation/legacy-read.js';
+import {quantities,readPair} from '../claim-relation/legacy-read.js';
 import {contractCases,frozenBasis,frozenBasisSha256,publicPairs,publishedFixture,sources} from './regression-fixture.js';
 
 const asOf='2026-03-01T12:00:00.000Z';
@@ -15,6 +15,18 @@ function pair(claimStatement,evidenceStatement,{recorded=null,reading=null}={}){
 }
 const legacyAssessment=(claimStatement,evidenceStatement,recorded=null)=>pair(claimStatement,evidenceStatement).assessment;
 const keysOf=value=>{const out=[];const walk=item=>{if(Array.isArray(item))for(const entry of item)walk(entry);else if(item&&typeof item==='object')for(const [key,entry] of Object.entries(item)){out.push(key);walk(entry);}};walk(value);return out;};
+
+
+test('identifier digits are not promoted into financial quantities',()=>{
+ assert.deepEqual(quantities('The H20 inventory charge contributed to margin pressure.'),[]);
+ assert.deepEqual(quantities('A100 and GPT-5 were referenced in Q2; margin was 71.1 percent.').map(item=>item.value),[71.1]);
+ const assessment=legacyAssessment(
+  'The H20 inventory charge contributed to NVIDIA gross-margin decline in fiscal 2026.',
+  'NVIDIA gross margin decreased from 75.0 percent in fiscal 2025 to 71.1 percent in fiscal 2026, and the filing identifies the H20 inventory-related charge as one contributor.'
+ );
+ assert.equal(assessment.disposition,'COMMENSURABLE');
+ assert.deepEqual(assessment.findings,[]);
+});
 
 test('the three frozen dispositions are produced by the derivation rule (CM-15.3)',()=>{
  assert.equal(legacyAssessment('December tool revenue was greater than 40 USD.','December tool revenue was 57 USD.').disposition,'COMMENSURABLE');
