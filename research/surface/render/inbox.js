@@ -1,20 +1,12 @@
-// Research Inbox (UI-1.5): attention-first workspace. Primary zone answers
-// "what deserves attention"; the context column reports real research state.
+// Research Inbox for FlowCredit Research Workbench UI-2.0.
+// The inbox is action-first: what deserves attention now, not a database inventory.
 import { buildChanges, buildInbox } from '../projection.js';
 import {
-  checkpoint, escapeHtml, icon, panelTitle, sentenceCase, tickStrip, timeInstant, truncate, withDemo
+  checkpoint, escapeHtml, icon, panelTitle, sentenceCase, tickStrip,
+  timeInstant, truncate, withDemo
 } from './layout.js';
 
-function recordRow({ href, statement, meta, demo }) {
-  return `<li class="record">
-      <a href="${escapeHtml(withDemo(href, demo))}">${escapeHtml(statement)}</a>
-      ${meta ? `<span class="meta record-meta">${meta}</span>` : ''}
-    </li>`;
-}
-
-// Research taxonomy categories are snake_case; keep short acronyms uppercase
-// (ESG, RPO) and sentence-case the rest for quiet secondary type.
-const CATEGORY_ACRONYMS = new Set(['esg', 'rpo', 'kpi', 'cfo', 'ceo', 'ai']);
+const CATEGORY_ACRONYMS = new Set(['esg','rpo','kpi','cfo','ceo','ai']);
 function categoryLabel(category) {
   return sentenceCase(category).split(/\s+/).map((word) => {
     const lower = word.toLowerCase();
@@ -22,31 +14,25 @@ function categoryLabel(category) {
   }).join(' ');
 }
 
-// Inbox evidence rhythm line: Source title · Category · page, in secondary
-// type, no icon clutter. Missing parts are omitted rather than padded.
 function evidenceMeta(row, { withTime = false } = {}) {
   const parts = [];
   if (row.sourceTitle) parts.push(escapeHtml(truncate(row.sourceTitle, 56)));
   if (row.category) parts.push(escapeHtml(categoryLabel(row.category)));
   if (row.page !== null && row.page !== undefined && row.page !== '') parts.push(`p.${escapeHtml(row.page)}`);
-  let line = parts.join('<span class="sep">·</span>');
-  if (withTime) line += `${line ? '<span class="sep">·</span>' : ''}recorded ${timeInstant(row.createdAt)}`;
-  return line;
+  if (withTime) parts.push(`recorded ${timeInstant(row.createdAt)}`);
+  return parts.join('<span class="sep">·</span>');
 }
 
-function attentionHead(title, count) {
-  return `<div class="attention-head">
-        <h3 class="attention-title">${escapeHtml(title)}</h3>
-        <span class="attention-count">${escapeHtml(count)}</span>
-      </div>`;
+function recordRow({ href, statement, meta, demo }) {
+  return `<li class="record"><a href="${escapeHtml(withDemo(href, demo))}">${escapeHtml(statement)}</a>${meta ? `<span class="meta record-meta">${meta}</span>` : ''}</li>`;
 }
 
-function attentionTile({ href, number, label, hint, tone, demo }) {
+function tile({ href, number, label, hint, tone = '', demo }) {
   return `<a class="attention-tile${tone ? ` ${tone}` : ''}" href="${escapeHtml(withDemo(href, demo))}">
-      <span class="tile-num">${escapeHtml(number)}</span>
-      <span class="tile-label">${escapeHtml(label)}</span>
-      <span class="tile-hint">${escapeHtml(hint)}</span>
-    </a>`;
+    <span class="tile-num">${escapeHtml(number)}</span>
+    <span class="tile-label">${escapeHtml(label)}</span>
+    <span class="tile-hint">${escapeHtml(hint)}</span>
+  </a>`;
 }
 
 function stateItem(key, value) {
@@ -58,153 +44,125 @@ export function inboxView({ source, demo }) {
   const attention = inbox.attention;
   const totals = inbox.totals;
   const linkedCount = Math.max(totals.evidence - attention.unlinked.count, 0);
-
-  const blocks = [];
+  const changes = buildChanges(source);
   const tiles = [];
+  const blocks = [];
 
-  if (attention.unlinked.count > 0) {
-    const examples = attention.unlinked.examples.map((row) => recordRow({
-      href: `/evidence/${encodeURIComponent(row.evidenceId)}`,
-      statement: truncate(row.statement ?? row.evidenceId, 160),
-      meta: evidenceMeta(row),
-      demo
-    })).join('');
-    tiles.push(attentionTile({
-      href: '/evidence?link=unlinked',
-      number: attention.unlinked.count,
-      label: 'Evidence not linked to a Claim',
-      hint: 'Admitted to Research Memory; no Claim uses them yet.',
-      tone: 'is-attention',
-      demo
+  if (attention.unlinked.count) {
+    tiles.push(tile({
+      href:'/evidence?link=unlinked', number:attention.unlinked.count,
+      label:'Evidence waiting for a belief',
+      hint:'Recorded facts that no current belief references yet.',
+      tone:'is-attention', demo
     }));
+    const rows = attention.unlinked.examples.map((row) => recordRow({
+      href:`/evidence/${encodeURIComponent(row.evidenceId)}`,
+      statement:truncate(row.statement ?? row.evidenceId, 165),
+      meta:evidenceMeta(row), demo
+    })).join('');
     blocks.push(`<li class="attention-block">
-      ${attentionHead('Evidence not yet linked to a Claim', attention.unlinked.count)}
-      <p class="note">Admitted to Research Memory; no Claim uses them yet.</p>
-      <ul class="record-list">${examples}</ul>
-      <p class="attention-cta"><a href="${escapeHtml(withDemo('/evidence?link=unlinked', demo))}">Review Evidence</a></p>
+      <div class="attention-head"><h3 class="attention-title">Unlinked Evidence</h3><span class="attention-count">${escapeHtml(attention.unlinked.count)}</span></div>
+      <p class="note">These facts are admitted to Research Memory but are not used by any current belief.</p>
+      <ul class="record-list">${rows}</ul>
+      <p class="attention-cta"><a href="${escapeHtml(withDemo('/evidence?link=unlinked', demo))}">Inspect unlinked Evidence →</a></p>
     </li>`);
   }
 
-  if (attention.thinSupport.count > 0) {
-    const claims = attention.thinSupport.claims.map((claim) => recordRow({
-      href: `/claim/${encodeURIComponent(claim.claimId)}`,
-      statement: truncate(claim.statement ?? claim.claimId, 160),
-      meta: `${escapeHtml(claim.supportCount)} supporting Evidence`,
-      demo
-    })).join('');
-    tiles.push(attentionTile({
-      href: '/claims',
-      number: `${attention.thinSupport.count} of ${attention.thinSupport.total}`,
-      label: 'Claims with thin evidence coverage',
-      hint: 'Each listed Claim is supported by at most one linked Evidence record.',
-      tone: 'is-counter',
-      demo
+  if (attention.thinSupport.count) {
+    tiles.push(tile({
+      href:'/beliefs', number:`${attention.thinSupport.count} / ${attention.thinSupport.total}`,
+      label:'Beliefs with thin support',
+      hint:'At most one linked supporting Evidence record.',
+      tone:'is-counter', demo
     }));
+    const rows = attention.thinSupport.claims.map((claim) => recordRow({
+      href:`/claim/${encodeURIComponent(claim.claimId)}`,
+      statement:truncate(claim.statement ?? claim.claimId, 165),
+      meta:`${escapeHtml(claim.supportCount)} supporting Evidence`, demo
+    })).join('');
     blocks.push(`<li class="attention-block">
-      ${attentionHead('Claims with thin evidence coverage', `${attention.thinSupport.count} of ${attention.thinSupport.total}`)}
-      <p class="note">Each listed Claim is supported by at most one linked Evidence record. Coverage describes linked evidence volume, not Claim truth or confidence.</p>
-      <ul class="record-list">${claims}</ul>
-      <p class="attention-cta"><a href="${escapeHtml(withDemo('/claims', demo))}">View all Claims</a></p>
+      <div class="attention-head"><h3 class="attention-title">Beliefs with thin evidence coverage</h3><span class="attention-count">${escapeHtml(attention.thinSupport.count)}</span></div>
+      <p class="note">Coverage is evidence volume, not truth or confidence. These beliefs deserve inspection because their recorded support is thin.</p>
+      <ul class="record-list">${rows}</ul>
+      <p class="attention-cta"><a href="${escapeHtml(withDemo('/beliefs', demo))}">Open Beliefs →</a></p>
     </li>`);
   }
 
-  if (attention.zeroSupport.count > 0) {
-    const claims = attention.zeroSupport.claims.map((claim) => recordRow({
-      href: `/claim/${encodeURIComponent(claim.claimId)}`,
-      statement: truncate(claim.statement ?? claim.claimId, 160),
-      meta: 'No supporting Evidence linked',
-      demo
+  if (attention.recent.items.length) {
+    const rows = attention.recent.items.map((row) => recordRow({
+      href:`/evidence/${encodeURIComponent(row.evidenceId)}`,
+      statement:truncate(row.statement ?? row.evidenceId, 165),
+      meta:evidenceMeta(row,{withTime:true}), demo
     })).join('');
     blocks.push(`<li class="attention-block">
-      ${attentionHead('Claims with no supporting Evidence', attention.zeroSupport.count)}
-      <p class="note">These Claims are recorded beliefs without a linked supporting Evidence record yet.</p>
-      <ul class="record-list">${claims}</ul>
-      <p class="attention-cta"><a href="${escapeHtml(withDemo('/claims', demo))}">View all Claims</a></p>
+      <div class="attention-head"><h3 class="attention-title">Recently recorded Evidence</h3><span class="attention-count">${escapeHtml(attention.recent.items.length)} shown</span></div>
+      <p class="note">Newest facts entering Research Memory. Review whether they should affect a belief.</p>
+      <ul class="record-list">${rows}</ul>
+      <p class="attention-cta"><a href="${escapeHtml(withDemo('/timeline', demo))}">Open Timeline →</a></p>
     </li>`);
   }
 
-  if (attention.recent.items.length > 0) {
-    const recent = attention.recent.items.map((row) => recordRow({
-      href: `/evidence/${encodeURIComponent(row.evidenceId)}`,
-      statement: truncate(row.statement ?? row.evidenceId, 160),
-      meta: evidenceMeta(row, { withTime: true }),
-      demo
-    })).join('');
-    blocks.push(`<li class="attention-block">
-      ${attentionHead('Recently recorded Evidence', `${attention.recent.items.length} shown`)}
-      <p class="note">The most recently recorded Evidence records in Research Memory.</p>
-      <ul class="record-list">${recent}</ul>
-      <p class="attention-cta"><a href="${escapeHtml(withDemo('/evidence', demo))}">View recent Evidence</a></p>
-    </li>`);
+  if (!tiles.length) {
+    tiles.push(tile({
+      href:'/beliefs', number:'0', label:'Immediate attention items',
+      hint:'No unlinked Evidence or thin-support signals are present in this projection.', demo
+    }));
   }
 
   const subjectLinks = inbox.subjects.map((subject) => `<a href="${escapeHtml(withDemo(`/company/${encodeURIComponent(subject.subjectId)}`, demo))}">${escapeHtml(subject.displayName)}</a>`).join(', ');
-  const inventory = `Research Memory: ${escapeHtml(totals.subjects)} ${totals.subjects === 1 ? 'company' : 'companies'} under research — ${subjectLinks || 'none recorded'} · ${escapeHtml(totals.claims)} Claims · ${escapeHtml(totals.evidence)} Evidence · ${escapeHtml(totals.sources)} Sources · ${escapeHtml(totals.reviews)} admission review records`;
-
-  const completeness = `<a href="${escapeHtml(withDemo('/evidence?review=reviewed', demo))}">${escapeHtml(attention.reviewed.count)} Evidence with deeper admission provenance</a> · ${escapeHtml(attention.partialProvenance.count)} with partial provenance.`;
-
-  const revisionNote = inbox.revisionsAllVersionOne
-    ? `${escapeHtml(totals.revisions)} revision records, all at v1`
-    : `${escapeHtml(totals.revisions)} revision records`;
-
+  const revisionState = inbox.revisionsAllVersionOne ? 'All recorded beliefs remain at v1' : `${totals.revisions} revisions recorded`;
   const body = `
   <div class="view">
     <div class="workspace">
       <div class="ws-head view-head">
+        <p class="eyebrow">${icon('inbox')}Attention workspace</p>
         <h1>Research Inbox</h1>
-        <p class="lead">What deserves attention in what we currently believe.</p>
+        <p class="lead">What deserves attention in what we currently believe. Start from unresolved evidence and thin beliefs, not from a table of objects.</p>
       </div>
 
       <div class="ws-main">
-        <section aria-label="Needs attention">
-          <div class="section-head"><h2>Needs attention</h2><span class="section-meta">${escapeHtml(totals.evidence)} Evidence · ${escapeHtml(totals.claims)} Claims</span></div>
-          ${tiles.length ? `<div class="attention-grid">${tiles.join('')}</div>` : ''}
+        <section aria-labelledby="needs-attention-title">
+          <div class="section-head"><h2 id="needs-attention-title">Needs attention</h2><span class="section-meta">${escapeHtml(totals.evidence)} Evidence · ${escapeHtml(totals.claims)} Beliefs</span></div>
+          <div class="attention-grid">${tiles.join('')}</div>
           <ul class="attention-list">${blocks.join('')}</ul>
         </section>
-        ${checkpoint('Can you understand what deserves attention?')}
+        ${checkpoint('Can you tell what to inspect next without first understanding the storage model?')}
       </div>
 
       <aside class="ws-context" aria-label="Research state">
         <section class="panel">
-          ${panelTitle('Research state', 'trace')}
+          ${panelTitle('Research state','trace')}
           <ul class="state-list">
-            ${stateItem('Claims', escapeHtml(totals.claims))}
+            ${stateItem('Beliefs', escapeHtml(totals.claims))}
             ${stateItem('Evidence', escapeHtml(totals.evidence))}
             ${stateItem('Sources', escapeHtml(totals.sources))}
             ${stateItem('Admission reviews', escapeHtml(totals.reviews))}
-            ${stateItem('Claims at revision v1', inbox.revisionsAllVersionOne ? 'All' : escapeHtml(totals.revisions))}
+            ${stateItem('Real proposals', escapeHtml(changes.proposals))}
+            ${stateItem('Latest activity', timeInstant(attention.latestActivityAt))}
           </ul>
         </section>
 
         <section class="panel">
-          ${panelTitle('Evidence linking', 'link')}
-          ${tickStrip({ on: linkedCount, total: totals.evidence })}
-          <p class="strip-legend">
-            <span><a href="${escapeHtml(withDemo('/evidence?link=linked', demo))}">Linked ${escapeHtml(linkedCount)}</a></span>
-            <span><a href="${escapeHtml(withDemo('/evidence?link=unlinked', demo))}">Not yet linked ${escapeHtml(attention.unlinked.count)}</a></span>
-          </p>
-          <p class="note">How many recorded Evidence records are referenced by a current Claim.</p>
+          ${panelTitle('Evidence linking','link')}
+          ${tickStrip({on:linkedCount,total:totals.evidence})}
+          <p class="strip-legend"><span>Linked ${escapeHtml(linkedCount)}</span><span>Unlinked ${escapeHtml(attention.unlinked.count)}</span></p>
+          <p class="note">Whether an Evidence record is referenced by a current belief. This is not evidence quality.</p>
         </section>
 
         <section class="panel">
-          ${panelTitle('Research completeness', 'trace')}
-          ${tickStrip({ on: attention.reviewed.count, total: totals.evidence, onClass: 'is-deep' })}
-          <p class="strip-legend"><span>Deeper trace ${escapeHtml(attention.reviewed.count)}</span><span>Partial ${escapeHtml(attention.partialProvenance.count)}</span></p>
-          <p class="note">${completeness}</p>
-          <p class="note">Latest Research Memory activity: ${timeInstant(attention.latestActivityAt)}.</p>
-        </section>
-
-        <section class="panel">
-          ${panelTitle('Belief changes', 'change')}
-          <p class="note">No belief changes recorded yet. ${revisionNote}, and ${escapeHtml(buildChanges(source).proposals)} reviewed Claim proposals. <a href="${escapeHtml(withDemo('/changes', demo))}">What Changed</a> explains when this activates.</p>
+          ${panelTitle('Provenance depth','trace')}
+          ${tickStrip({on:attention.reviewed.count,total:totals.evidence,onClass:'is-deep'})}
+          <p class="strip-legend"><span>Deeper ${escapeHtml(attention.reviewed.count)}</span><span>Partial ${escapeHtml(attention.partialProvenance.count)}</span></p>
+          <p class="note">Deeper trace means an admission review is recorded. SourceSpan-level joins are still unavailable.</p>
         </section>
 
         <section class="panel quiet">
-          ${panelTitle('Inventory', 'source')}
-          <p class="meta inventory-line">${inventory}</p>
+          ${panelTitle('Scope','source')}
+          <p class="meta inventory-line">${escapeHtml(totals.subjects)} subject${totals.subjects===1?'':'s'} under research: ${subjectLinks || 'none recorded'}.</p>
+          <p class="note">${escapeHtml(revisionState)}. Human authority remains above every proposed change.</p>
         </section>
       </aside>
     </div>
   </div>`;
-  return { status: 200, title: 'Research Inbox', body, context: inbox.subjects.length === 1 ? inbox.subjects[0].displayName : 'All subjects' };
+  return { status:200, title:'Research Inbox', body, context:inbox.subjects.length===1?inbox.subjects[0].displayName:'All subjects' };
 }
