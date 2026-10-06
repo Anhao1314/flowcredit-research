@@ -1,0 +1,37 @@
+{
+  "relationInput": {
+    "evidence": {"evidenceId": "EVID-NST-GROWTH-2026"},
+    "claim": {"claimId": "CLAIM-NST-GROWTH", "revisionId": "CLAIM-NST-GROWTH:v1"},
+    "asOf": "2026-08-15T12:00:00.000Z",
+    "evidenceSide": {"semantics": {"state": "NOT_MATERIALIZED"}},
+    "claimSide": {"semantics": {"state": "NOT_MATERIALIZED"}}
+  },
+  "material": {
+    "evidenceId": "EVID-NST-GROWTH-2026",
+    "claimId": "CLAIM-NST-GROWTH",
+    "revisionId": "CLAIM-NST-GROWTH:v1",
+    "asOf": "2026-08-15T12:00:00.000Z",
+    "claim": {"statement": "Revenue growth is accelerating."},
+    "evidence": {"statement": "Revenue grew 40 percent in 2026."}
+  },
+  "metric": "revenue_growth",
+  "currentValue": 40,
+  "currentPeriodEnd": "2026-06-30",
+  "currentUnit": "percent",
+  "evidencePool": [
+    {
+      "evidenceId": "EVID-NST-GROWTH-2025",
+      "metric": "revenue_growth",
+      "value": 22,
+      "periodEnd": "2025-06-30",
+      "sourceRef": "Northstar FY2025 synthetic filing p.31"
+    },
+    {
+      "evidenceId": "EVID-NST-MARGIN-2025",
+      "metric": "gross_margin",
+      "value": 61,
+      "periodEnd": "2025-06-30",
+      "sourceRef": "Northstar FY2025 synthetic filing p.32"
+    }
+  ]
+}

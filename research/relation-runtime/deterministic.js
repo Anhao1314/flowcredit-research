@@ -105,9 +105,19 @@ export function deterministicRelation(material,{reading=null}={}){
   }
  }
 
- // "Growth is accelerating" cannot be resolved from one growth observation.
- // The frozen ADR names this exact shape as a required abstention.
+ // Second-order direction such as acceleration requires at least two comparable
+ // rates. One observation must still abstain; a two-point series may resolve.
  if(requiresSecondOrder(claimStatement)){
+  if(evidenceQuantities.length>=2){
+   const first=scaled(evidenceQuantities[0]);
+   const last=scaled(evidenceQuantities.at(-1));
+   if(first!==last){
+    const accelerating=/\baccelerat(?:e|ed|ing|ion)\b/.test(normalize(claimStatement));
+    const supports=accelerating?last>first:last<first;
+    return result(supports?'SUPPORTS':'COUNTERS','RT_SECOND_ORDER_SERIES',
+     'comparable rate moved from '+String(first)+' to '+String(last));
+   }
+  }
   return result('AMBIGUOUS','RT_SECOND_ORDER_CONTEXT_MISSING','acceleration/deceleration requires a comparison rate or series');
  }
 

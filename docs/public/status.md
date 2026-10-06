@@ -2,26 +2,33 @@
 
 Single source of public-facing maturity truth for FlowCredit Research.
 
-Last updated: 2026-10-06 · Repository: development/test workspace · Branch: `main`.
+Last updated: 2026-10-06 · Repository: development/test workspace · Branch: main after merge.
 
 ## IMPLEMENTED / VALIDATED
 
 | Capability | Where it lives |
 | --- | --- |
-| Research Memory: versioned Claims, revisions and superseded history | `research/memory/` |
-| Evidence admission boundary and review records | `research/admission/` |
-| Text and table grounding pipeline | `research/grounding/` |
-| Hybrid retrieval over the internal corpus | `research/local-retrieval/` |
-| Research workspace surface: local, read-only, loopback-only | `research/surface/` |
-| Reproducible public synthetic demo | `research/surface/fixtures/public-demo/` |
-| RelationInput resolver against read-only Research Memory | `research/claim-relation/resolve.js` |
-| Compatibility runtime and fail-closed Relation gate | `research/claim-relation/compatibility.js`, `gate.js` |
-| Conservative offline Relation runtime baseline | `research/relation-runtime/` |
-| Development RelationReceipt with legal status/relation matrix | `research/relation-runtime/receipt.js` |
-| Pairwise What Changed candidate preview + reproducible CLI fixture | `research/what-changed/` |
-| Legacy deterministic risk-assessment prototype | `agent/` |
+| Research Memory: versioned Claims, revisions and superseded history | research/memory/ |
+| Evidence admission boundary and review records | research/admission/ |
+| Text and table grounding pipeline | research/grounding/ |
+| Hybrid retrieval over the internal corpus | research/local-retrieval/ |
+| Research workspace surface: local, read-only, loopback-only | research/surface/ |
+| RelationInput resolver against read-only Research Memory | research/claim-relation/resolve.js |
+| Compatibility runtime and fail-closed Relation gate | research/claim-relation/compatibility.js, gate.js |
+| Conservative prose/lexical Relation baseline | research/relation-runtime/deterministic.js |
+| **Provenance-aware SemanticFrame projection runtime** | **research/semantic-frame/** |
+| **Research Memory Evidence → SemanticFrame adapter** | **research/semantic-frame/memory-adapter.js** |
+| **Structured Semantic Compatibility + Relation path** | **research/relation-runtime/semantic-*.js** |
+| Development RelationReceipt with legal status/relation matrix | research/relation-runtime/receipt.js |
+| Pairwise What Changed review queue | research/what-changed/ |
+| **Missing-context investigation planning** | **research/investigate/planner.js** |
+| **Bounded local Evidence investigation loop** | **research/investigate/** |
+| **Relation Reality reproducible benchmark + archived result** | **research/eval/relation-reality/** |
+| Legacy deterministic risk-assessment prototype | agent/ |
 
-The Relation runtime is a baseline, not a production hybrid engine. It uses conservative deterministic rules after the frozen Compatibility gate and abstains when it cannot safely resolve a pair.
+SemanticFrame v0.2 consumes already-reviewed recorded fields. It does not yet perform arbitrary free-text semantic extraction.
+
+The Investigate loop is currently an offline bounded behavior prototype over a controlled local Evidence pool. It is not autonomous web research.
 
 ## ACCEPTED / FROZEN
 
@@ -35,57 +42,139 @@ The Relation runtime is a baseline, not a production hybrid engine. It uses cons
 | RelationInput Contract v1 | 2026-09-15 |
 | Compatibility Contract v1 | 2026-09-16 |
 
-The new RelationReceipt and What Changed candidate shapes are explicitly **development schemas**, not frozen contracts.
+The SemanticFrame development encoding, RelationReceipt and Investigation Plan are **not** newly frozen contracts. They remain versioned development runtime artifacts.
 
 ## RESEARCH VALIDATED
+
+### Relation Reality v0.2
+
+The real-source structured-correctness benchmark uses:
+
+- 3 reviewed CoreWeave primary publications
+- 32 reviewed Observations
+- 4 explicit numeric-predicate Claims
+- 128 pairwise evaluations
+
+No LLM generates the oracle labels.
+
+| Runtime | Exact structured-oracle match | Directional correct | Unsafe directional judgments | Runtime errors |
+| --- | ---: | ---: | ---: | ---: |
+| Prose / lexical baseline | 66 / 128 (51.56%) | 1 / 5 (20%) | 8 | 2 |
+| SemanticFrame runtime | 128 / 128 (100%) | 5 / 5 (100%) | 0 | 0 |
+
+Interpretation boundary:
+
+**128 / 128 is not a claim of 100% open-ended financial-language accuracy.**
+
+The benchmark oracle is intentionally limited to recorded metric identity, canonical unit family, recorded numeric value and explicit Claim comparator/threshold. It validates faithful execution of structured recorded facts. It does not validate general management-language interpretation, causal reasoning, arbitrary documents or unseen-domain generalization.
+
+The directional subset is only five pairs.
+
+The result artifact is research/eval/relation-reality/results.json and CI recomputes it.
+
+### Investigate behavior v0.2
+
+A committed synthetic behavior fixture verifies:
+
+~~~text
+Claim:
+Revenue growth is accelerating.
+
+Current Evidence:
+Revenue grew 40 percent.
+
+Initial:
+ABSTAINED + AMBIGUOUS
+
+Missing:
+PRIOR_COMPARABLE_RATE
+
+Retrieved local Evidence:
+22 percent prior comparable rate
+
+Re-evaluated:
+22 -> 40
+RESOLVED + SUPPORTS
+~~~
+
+The test confirms:
+
+- no network call
+- no model call
+- explicit investigation question
+- full trace from abstention through retrieval and re-evaluation
+- missing prior context remains NEEDS_MORE_EVIDENCE
+- no Claim mutation
+
+### Earlier evidence retained
 
 | Area | Evidence |
 | --- | --- |
 | Historical hybrid relation architecture | 38/41 on the synthetic development spike; not a generalization estimate |
 | Hybrid retrieval | Recall@20 = 1.0 on a 16-case internal locked set |
 | Grounded span corpus | 7,687 indexed spans in the internal research corpus |
-| Compatibility gate | Frozen 41-pair regression split: 29 permitted / 12 refused |
-| What Changed runtime behavior | committed 5-pair synthetic fixture covers SUPPORTS / COUNTERS / NEUTRAL / AMBIGUOUS / NOT_EVALUATED |
+| Compatibility gate | 29 permitted / 12 refused on frozen 41-pair regression set |
 
-The 5-pair fixture is a behavior smoke test, not an accuracy benchmark.
+These experiments answer different questions and must not be combined into one accuracy number.
 
 ## CURRENT
 
-The repository now has an executable pairwise chain:
+The repository now has two executable relation paths.
 
-```text
-Accepted Evidence + specific Claim Revision
+Structured recorded facts:
+
+~~~text
+Accepted Evidence / Claim Revision
+  -> SemanticFrame with field origins
   -> RelationInput
-  -> CompatibilityAssessment
-  -> Relation gate
-  -> conservative deterministic Relation
+  -> Compatibility gate
+  -> structured deterministic Relation
   -> RelationReceipt
-  -> directional What Changed review candidate
-```
+~~~
 
-The chain stops at human review. It does not produce Impact and does not mutate Claims.
+Safe abstention:
+
+~~~text
+ABSTAINED + AMBIGUOUS
+  -> Investigation Plan
+  -> bounded local Evidence retrieval
+  -> re-evaluation
+  -> resolved Relation or NEEDS_MORE_EVIDENCE
+~~~
+
+What Changed exposes:
+
+- PENDING_HUMAN_REVIEW for directional SUPPORTS / COUNTERS receipts
+- NEEDS_INVESTIGATION for valid but insufficient AMBIGUOUS receipts
+- no queue promotion for NOT_EVALUATED input
+
+The chain still stops before Impact and authoritative Claim mutation.
 
 ## PLANNED
 
-- larger externalized Relation benchmark with human gold labels
-- semantic projection runtime integration for Field Provenance and RelationInput
-- verifier/model route with visible provenance and safe fallback
+- independently human-labeled 500+ pair semantic Relation benchmark
+- explicit Claim semantic binding for real Research Memory; Evidence adaptation is implemented, while prose-only Claims remain fail-closed
+- model/verifier-assisted semantic projection with explicit model provenance
+- bounded tool-based investigator beyond the controlled local Evidence pool
 - Evidence Delta / Impact
 - persisted human review workflow
 - real multi-document What Changed loop
 
 ## LEGACY
 
-- `agent/` and the static `index.html` are the earlier deterministic risk-assessment prototype line.
+- agent/ and the root static prototype are the earlier deterministic risk-assessment line.
 - Legacy Finch/API artifacts remain for historical regression compatibility.
 - Legacy page-level grounding remains readable but does not satisfy Grounding v1.
+- The prose/lexical Relation runtime is retained as a measured baseline, not the preferred path for structured recorded fields.
 
 ## NOT CLAIMED
 
 - production readiness or production deployment from this repository
 - institutional-grade research quality
+- 100% open-ended financial reasoning accuracy
 - external benchmark parity
 - calibrated model accuracy
+- autonomous arbitrary-company web research
 - autonomous Claim revision
 - automatic investment decisions
 - live customer outcomes or SLAs
@@ -93,8 +182,8 @@ The chain stops at human review. It does not produce Impact and does not mutate 
 
 ## Authority boundary
 
-A RelationReceipt is an analytical artifact. A What Changed candidate is a review queue item.
+A SemanticFrame is a structured projection with provenance. A RelationReceipt is an analytical artifact. An Investigation Plan is a research question.
 
-Neither is authoritative Research Memory truth, Impact, a Claim revision, or an investment recommendation.
+None is authoritative Research Memory truth, Impact, a Claim revision, or an investment recommendation.
 
 Human review remains mandatory before any future belief-state mutation.

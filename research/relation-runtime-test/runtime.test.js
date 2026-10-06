@@ -80,9 +80,13 @@ test('runtime performs no network call',()=>{
 
 test('Northstar What Changed demo exercises all four legal processing outcomes and keeps human authority',()=>{
  const result=runWhatChangedBatch(demo);
- assert.deepEqual(result.counts,{pairs:5,resolved:3,abstained:1,notEvaluated:1,errors:0,candidates:2});
+ assert.deepEqual(result.counts,{pairs:5,resolved:3,abstained:1,notEvaluated:1,errors:0,candidates:2,investigations:1});
  assert.deepEqual(result.receipts.map(item=>item.relation),['SUPPORTS','COUNTERS','AMBIGUOUS',null,'NEUTRAL']);
  assert.equal(result.candidates.length,2);
+ assert.equal(result.investigations.length,1);
+ assert.equal(result.investigations[0].state,'NEEDS_INVESTIGATION');
+ assert.equal(result.investigations[0].requirement,'PRIOR_COMPARABLE_RATE');
+ assert.equal(result.investigations[0].claimMutationAllowed,false);
  for(const candidate of result.candidates){
   assert.equal(candidate.state,'PENDING_HUMAN_REVIEW');
   assert.deepEqual(candidate.humanReview,{required:true,claimMutationAllowed:false});

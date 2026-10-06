@@ -83,6 +83,13 @@ function runtimePreview(data) {
       '<span class="meta">New evidence: ' + escapeHtml(candidate.evidenceStatement) + ' · Claim mutation allowed: no</span>' +
     '</li>'
   ).join('');
+  const investigationRows = (data.investigations ?? []).map((plan) =>
+    '<li class="record">' +
+      '<div class="badge-row">' + badge('NEEDS INVESTIGATION', 'caution') + badge(plan.requirement, 'neutral') + '</div>' +
+      '<span>' + escapeHtml(plan.question) + '</span>' +
+      '<span class="meta">Reason: ' + escapeHtml(plan.reasonCode) + ' · Claim mutation allowed: no</span>' +
+    '</li>'
+  ).join('');
 
   return '<section>' +
     sectionHead('Pairwise Relation runtime', 'reproducible offline demo') +
@@ -92,10 +99,12 @@ function runtimePreview(data) {
       countChip(data.counts?.abstained ?? 0, 'abstained') +
       countChip(data.counts?.notEvaluated ?? 0, 'not evaluated') +
       countChip(data.counts?.candidates ?? 0, 'human-review candidates') +
+      countChip(data.counts?.investigations ?? 0, 'investigations') +
     '</div>' +
     '<p class="note">This preview executes the committed Northstar fixture through RelationInput → Compatibility → gate → deterministic Relation → RelationReceipt. It performs no model or network call and never writes a Claim.</p>' +
     '<ul class="record-list">' + receiptRows + '</ul>' +
     (candidateRows ? '<h3>Directional changes requiring review</h3><ul class="record-list">' + candidateRows + '</ul>' : '') +
+    (investigationRows ? '<h3>Missing context to investigate</h3><ul class="record-list">' + investigationRows + '</ul>' : '') +
   '</section>';
 }
 
