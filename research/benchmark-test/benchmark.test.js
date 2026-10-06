@@ -34,6 +34,7 @@ test('benchmark evaluator is deterministic and reports safety metrics separately
   assert.equal(typeof first.metrics[key],'number');
  }
  console.log('REALITY_BENCHMARK_RESULT '+JSON.stringify({metrics:first.metrics,counts:first.counts,byLabel:first.byLabel}));
+ console.log('REALITY_BENCHMARK_FAILURES '+JSON.stringify(first.rows.filter(row=>!row.correct).map(row=>({caseId:row.caseId,challenge:row.challenge,expected:row.expected,predicted:row.predicted,reasonCodes:row.reasonCodes}))));
 });
 
 test('v0.2A phase gate is allowed to fail; its failure cannot be hidden by aggregate accuracy',()=>{
