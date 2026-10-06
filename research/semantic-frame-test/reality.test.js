@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {buildRealityMatrix,runRealityBenchmark} from '../eval/relation-reality/benchmark.js';
 
+const archived=JSON.parse(readFileSync(new URL('../eval/relation-reality/results.json',import.meta.url),'utf8'));
+
 test('SemanticFrame projects all real-source pairs with explicit field origins',()=>{
  const rows=buildRealityMatrix();
  assert.equal(rows.length,128);
@@ -47,4 +49,12 @@ test('experiment reports the text baseline separately and prints measured compar
   semanticRuntime:result.semanticRuntime,
   failures:result.failures.length
  })+'\n');
+});
+
+
+test('archived Reality benchmark result is exactly reproducible from committed fixtures',()=>{
+ const result=runRealityBenchmark();
+ assert.deepEqual(result.textBaseline,archived.textBaseline);
+ assert.deepEqual(result.semanticRuntime,archived.semanticRuntime);
+ assert.equal(result.failures.length,archived.failuresAgainstOracle.textBaseline);
 });
