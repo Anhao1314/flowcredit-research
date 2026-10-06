@@ -165,12 +165,14 @@ export function candidateDeterministicRelation(material,{reading=null}={}){
  const mixDecision=mixShiftDecision(claimStatement,evidenceStatement);
  if(mixDecision)return mixDecision;
 
+ // Causal scope is evaluated before broad metric rejection. A narrower causal
+ // clause may be relevant but insufficient, which is AMBIGUOUS rather than NEUTRAL.
+ const causal=causalDecision(claimStatement,evidenceStatement);
+ if(causal)return causal;
+
  if(!sharesMetric(claimStatement,evidenceStatement)){
   return result('NEUTRAL','RT_NON_BEARING_METRIC','the readable evidence concerns a different metric or proposition');
  }
-
- const causal=causalDecision(claimStatement,evidenceStatement);
- if(causal)return causal;
 
  const claimQuantities=quantities(claimStatement);
  const evidenceQuantities=quantities(evidenceStatement);
