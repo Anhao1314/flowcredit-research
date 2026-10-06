@@ -109,7 +109,7 @@ function summarize(receipts,rows){
   directionalPairs:loadBearing.length,
   directionalCorrect,
   directionalAccuracy:loadBearing.length?Number((directionalCorrect/loadBearing.length).toFixed(4)):null,
-  unsafeDirectional,
+  unsafeDirectional:unsafe,
   unsafeDirectionalRate:Number((unsafe/total).toFixed(4)),
   resolved:receipts.filter(item=>item.processingStatus==='RESOLVED').length,
   abstained:receipts.filter(item=>item.processingStatus==='ABSTAINED').length,
