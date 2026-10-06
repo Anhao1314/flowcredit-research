@@ -56,7 +56,7 @@ export function claimsView({ source, demo, query }) {
   const emptyState = noClaims
     ? '<p class="note strong empty-state">No research beliefs recorded yet.</p>'
     : noMatches
-      ? `<p class="note strong empty-state">No Claims match these filters.</p>
+      ? `<p class="note strong empty-state">No beliefs match these filters.</p>
       <p><a class="button-link" href="${escapeHtml(withDemo('/claims', demo))}">Clear filters</a></p>`
       : '';
 
@@ -67,14 +67,14 @@ export function claimsView({ source, demo, query }) {
   const body = `
   <div class="view">
     <div class="view-head">
-      <h1>Claims</h1>
+      <p class="eyebrow">Recorded research beliefs</p><h1>Beliefs</h1>
       <p class="lead">${escapeHtml(summary)}.</p>
       ${termHelp('Claim', 'A recorded research belief about the company, with a status and supporting Evidence.')}
     </div>
     ${filterBar({
       action: '/claims',
       demo,
-      search: { name: 'q', value: query.q, label: 'Search Claims', placeholder: 'Search recorded text…' },
+      search: { name: 'q', value: query.q, label: 'Search beliefs', placeholder: 'Search recorded text…' },
       selects: [
         { name: 'category', label: 'Category', allLabel: 'All categories', value: query.category, options: index.categories.map((category) => ({ value: category, label: category })) },
         { name: 'status', label: 'Status', allLabel: 'All statuses', value: query.status, options: index.statuses.map((status) => ({ value: status, label: sentenceCase(status) })) },
@@ -90,7 +90,7 @@ export function claimsView({ source, demo, query }) {
     ${emptyState}
     ${rows ? `<ul class="rows">${rows}</ul>` : ''}
     ${pagination({ base: '/claims', filters: filtersFor(query), pagination: index.pagination, demo })}
-    ${checkpoint('Can you find the belief you need?')}
+    ${checkpoint('Can you find the belief you need and see its evidence coverage?')}
   </div>`;
-  return { status: 200, title: 'Claims', body, context: query.subject ? displayName(query.subject) : 'All subjects' };
+  return { status: 200, title: 'Beliefs', body, context: query.subject ? displayName(query.subject) : 'All subjects' };
 }
