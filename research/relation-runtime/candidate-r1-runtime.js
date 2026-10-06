@@ -14,6 +14,6 @@ export function evaluateCandidateR1Relation({relationInput,material,evaluatedAt=
  const assessment=compatibilityAssessment(relationInput,material,{reading});
  const gate=relationGate({relationInput,assessment});
  if(!gate.mayExecute)return receiptFromEvaluation({relationInput,assessment,gate,evaluatedAt});
- const decision=candidateDeterministicRelation(material,{reading});
+ const decision=candidateR1DeterministicRelation(material,{reading});
  return receiptFromEvaluation({relationInput,assessment,gate,decision,evaluatedAt});
 }
