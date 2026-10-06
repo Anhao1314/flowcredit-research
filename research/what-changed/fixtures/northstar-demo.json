@@ -1,0 +1,55 @@
+{
+  "version": "flowcredit.what_changed_demo/v1",
+  "pairs": [
+    {
+      "caseId": "NST-001",
+      "subjectId": "northstar-compute",
+      "evidenceId": "EVID-NST-1001",
+      "claimId": "CLAIM-NST-1001",
+      "claimRevisionId": "CLAIM-NST-1001:v1",
+      "asOf": "2026-08-15T12:00:00.000Z",
+      "claimStatement": "August cloud revenue was greater than 40 million USD.",
+      "evidenceStatement": "August cloud revenue was 57 million USD."
+    },
+    {
+      "caseId": "NST-002",
+      "subjectId": "northstar-compute",
+      "evidenceId": "EVID-NST-1002",
+      "claimId": "CLAIM-NST-1002",
+      "claimRevisionId": "CLAIM-NST-1002:v1",
+      "asOf": "2026-08-15T12:00:00.000Z",
+      "claimStatement": "Customer concentration increased from 2025 to 2026.",
+      "evidenceStatement": "Customer concentration was 62 percent in 2025 and 48 percent in 2026."
+    },
+    {
+      "caseId": "NST-003",
+      "subjectId": "northstar-compute",
+      "evidenceId": "EVID-NST-1003",
+      "claimId": "CLAIM-NST-1003",
+      "claimRevisionId": "CLAIM-NST-1003:v1",
+      "asOf": "2026-08-15T12:00:00.000Z",
+      "claimStatement": "Revenue growth is accelerating.",
+      "evidenceStatement": "Revenue grew 40 percent in 2026."
+    },
+    {
+      "caseId": "NST-004",
+      "subjectId": "northstar-compute",
+      "evidenceId": "EVID-NST-1004",
+      "claimId": "CLAIM-NST-1004",
+      "claimRevisionId": "CLAIM-NST-1004:v1",
+      "asOf": "2026-08-15T12:00:00.000Z",
+      "claimStatement": "December tool revenue was greater than 40 USD.",
+      "evidenceStatement": "The tool revenue reporting team moved to another office."
+    },
+    {
+      "caseId": "NST-005",
+      "subjectId": "northstar-compute",
+      "evidenceId": "EVID-NST-1005",
+      "claimId": "CLAIM-NST-1005",
+      "claimRevisionId": "CLAIM-NST-1005:v1",
+      "asOf": "2026-08-15T12:00:00.000Z",
+      "claimStatement": "December tool revenue was greater than 40 USD.",
+      "evidenceStatement": "December cash balance was 57 USD."
+    }
+  ]
+}

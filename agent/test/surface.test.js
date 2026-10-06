@@ -4,3 +4,5 @@
 import '../../research/surface-test/surface.test.js';
 import '../../research/surface-test/query.test.js';
 import '../../research/surface-test/public-demo.test.js';
+
+import '../../research/surface-test/what-changed-runtime.test.js';
