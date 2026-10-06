@@ -117,9 +117,21 @@ function summarize(receipts,rows){
  };
 }
 
+function safeTextEvaluation(row){
+ try{return evaluateRelation({relationInput:row.relationInput,material:row.material});}
+ catch(error){
+  return {
+   processingStatus:'ERROR',
+   relation:null,
+   reasonCodes:[String(error?.message??error)],
+   authority:'ANALYTICAL_ONLY'
+  };
+ }
+}
+
 export function runRealityBenchmark(){
  const rows=buildRealityMatrix();
- const textReceipts=rows.map(row=>evaluateRelation({relationInput:row.relationInput,material:row.material}));
+ const textReceipts=rows.map(row=>safeTextEvaluation(row));
  const semanticReceipts=rows.map(row=>evaluateProjectedRelation({
   relationInput:row.relationInput,
   claimFrame:row.claimFrame,
