@@ -1,0 +1,894 @@
+{
+  "version": "flowcredit.fresh_blind_results/v0.2c-first-run",
+  "status": "FIRST_BLIND_ARCHIVED_FAIL",
+  "measuredAt": "2026-10-06T10:18:41.263Z",
+  "run": {
+    "githubActionsRunId": 37448788181,
+    "firstRunCommit": "f0acde852d2007378ec84d3f9a659c32a54926dd",
+    "baseMainCommit": "5bc9b2bd1e59bc40224da323bdc6342b2466712e"
+  },
+  "protocol": "flowcredit.fresh_blind_protocol/v0.2c",
+  "dataset": {
+    "version": "flowcredit.relation_benchmark/real-sec-fresh-blind-v0.2c",
+    "gitBlobSha": "5602c516d3333f1fde665738fc8385bcd7b8a6d0",
+    "cases": 32,
+    "issuers": 4
+  },
+  "runtime": "relation-candidate/v0.2b-r2",
+  "metrics": {
+    "overallAccuracy": 0.5625,
+    "directionalAccuracy": 0.5,
+    "directionalInversionRate": 0.15,
+    "unsafeDirectionalErrorRate": 0.1667,
+    "ambiguousAbstentionRecall": 0.25
+  },
+  "counts": {
+    "correct": 18,
+    "incorrect": 14,
+    "directionalGold": 20,
+    "nonDirectionalGold": 12
+  },
+  "byLabel": {
+    "SUPPORTS": {
+      "n": 14,
+      "correct": 8,
+      "accuracy": 0.5714
+    },
+    "COUNTERS": {
+      "n": 6,
+      "correct": 2,
+      "accuracy": 0.3333
+    },
+    "NEUTRAL": {
+      "n": 8,
+      "correct": 7,
+      "accuracy": 0.875
+    },
+    "AMBIGUOUS": {
+      "n": 4,
+      "correct": 1,
+      "accuracy": 0.25
+    }
+  },
+  "byChallenge": {
+    "numeric_series": {
+      "n": 6,
+      "correct": 6,
+      "accuracy": 1
+    },
+    "hard_negative": {
+      "n": 8,
+      "correct": 7,
+      "accuracy": 0.875
+    },
+    "second_order": {
+      "n": 4,
+      "correct": 1,
+      "accuracy": 0.25
+    },
+    "causal_attribution": {
+      "n": 4,
+      "correct": 1,
+      "accuracy": 0.25
+    },
+    "missing_comparison": {
+      "n": 4,
+      "correct": 1,
+      "accuracy": 0.25
+    },
+    "causal_hard_negative": {
+      "n": 4,
+      "correct": 0,
+      "accuracy": 0
+    },
+    "direction_text": {
+      "n": 2,
+      "correct": 2,
+      "accuracy": 1
+    }
+  },
+  "phaseGate": {
+    "status": "FAIL",
+    "checks": {
+      "overallAccuracy": false,
+      "directionalAccuracy": false,
+      "directionalInversionRate": false,
+      "unsafeDirectionalErrorRate": false,
+      "ambiguousAbstentionRecall": false
+    },
+    "thresholds": {
+      "overallAccuracyMin": 0.85,
+      "directionalAccuracyMin": 0.9,
+      "directionalInversionRateMax": 0.02,
+      "unsafeDirectionalErrorRateMax": 0.05,
+      "ambiguousAbstentionRecallMin": 0.9
+    }
+  },
+  "safety": {
+    "directionalInversions": [
+      "FRESH-JPM-004",
+      "FRESH-CRM-004",
+      "FRESH-CAT-008"
+    ],
+    "unsafeDirectionalOnNonDirectionalGold": [
+      "FRESH-COST-007",
+      "FRESH-JPM-007"
+    ]
+  },
+  "failures": [
+    {
+      "caseId": "FRESH-COST-007",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-COST-008",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-004",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-005",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "reasonCodes": [
+        "RT_CAUSAL_LINK_ABSENT"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-007",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-008",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "reasonCodes": [
+        "RT_NON_BEARING_METRIC"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-003",
+      "bucket": "hard_negative",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-004",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-005",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "reasonCodes": [
+        "RT_CAUSAL_ROLE_MISMATCH"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-007",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-008",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-CAT-004",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "reasonCodes": [
+        "RT_NON_BEARING_METRIC"
+      ]
+    },
+    {
+      "caseId": "FRESH-CAT-005",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "reasonCodes": [
+        "RT_CAUSAL_DRIVER_MISMATCH"
+      ]
+    },
+    {
+      "caseId": "FRESH-CAT-008",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "reasonCodes": [
+        "RT_EXPLICIT_CAUSAL_ATTRIBUTION"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "caseId": "FRESH-COST-001",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "numeric_series",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-COST-002",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "numeric_series",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-COST-003",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "hard_negative",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-COST-004",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-COST-005",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-COST-006",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "scope_or_metric_binding",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-COST-007",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-COST-008",
+      "sourceId": "SEC-COST-2025-10K",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "correct": false,
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-001",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "numeric_series",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-JPM-002",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "direction_text",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-JPM-003",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "hard_negative",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-JPM-004",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-005",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_CAUSAL_LINK_ABSENT"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-006",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "scope_or_metric_binding",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-JPM-007",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-JPM-008",
+      "sourceId": "SEC-JPM-2025-10K",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_NON_BEARING_METRIC"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-001",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "numeric_series",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CRM-002",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "numeric_series",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CRM-003",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "hard_negative",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "correct": false,
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-004",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_SECOND_ORDER_SERIES"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-005",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_CAUSAL_ROLE_MISMATCH"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-006",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "scope_or_metric_binding",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CRM-007",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "correct": false,
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-CRM-008",
+      "sourceId": "SEC-CRM-2026-10K",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "NOT_EVALUATED",
+        "relation": null
+      },
+      "correct": false,
+      "reasonCodes": [
+        "INDETERMINATE"
+      ]
+    },
+    {
+      "caseId": "FRESH-CAT-001",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "numeric_series",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CAT-002",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "numeric_or_trend",
+      "challenge": "direction_text",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CAT-003",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "hard_negative",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CAT-004",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "second_order",
+      "challenge": "second_order",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_NON_BEARING_METRIC"
+      ]
+    },
+    {
+      "caseId": "FRESH-CAT-005",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "causal_attribution",
+      "challenge": "causal_attribution",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_CAUSAL_DRIVER_MISMATCH"
+      ]
+    },
+    {
+      "caseId": "FRESH-CAT-006",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "scope_or_metric_binding",
+      "challenge": "hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CAT-007",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "insufficient_context",
+      "challenge": "missing_comparison",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "correct": true,
+      "reasonCodes": null
+    },
+    {
+      "caseId": "FRESH-CAT-008",
+      "sourceId": "SEC-CAT-2025-10K",
+      "bucket": "mixed_hard",
+      "challenge": "causal_hard_negative",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "correct": false,
+      "reasonCodes": [
+        "RT_EXPLICIT_CAUSAL_ATTRIBUTION"
+      ]
+    }
+  ],
+  "captureNote": "The first CI log emitted aggregate metrics and all incorrect rows. For correct rows, predicted processingStatus/relation is exactly the gold pair by definition of exact-state correctness; correct-row reason codes were not emitted in the first-run log and are recorded as null.",
+  "interpretation": [
+    "R2 failed all five pre-frozen promotion checks on the fresh cross-industry holdout.",
+    "The fresh holdout exposed safety regressions absent from v0.2B: 15% directional inversion and 16.67% unsafe directional error.",
+    "Second-order reasoning, causal hard negatives, causal attribution and insufficient-context handling are the dominant failure families.",
+    "The v0.2C dataset is no longer blind after this run and must be treated only as a repair/regression set.",
+    "No label, threshold, dataset byte or runtime byte was changed before the first prediction."
+  ]
+}
