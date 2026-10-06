@@ -69,5 +69,6 @@ test('v0.2C case composition matches frozen bucket counts exactly',()=>{
 
 test('dataset-construction test does not import or execute any candidate evaluator',()=>{
  const source=readFileSync(new URL('./holdout-v0.2c-dataset-lock.test.js',import.meta.url),'utf8');
- assert.ok(!/scoreBenchmark|evaluateCandidate|candidate-r2-runtime|candidate-r2-deterministic/.test(source));
+ const imports=source.split('\n').filter(line=>line.trim().startsWith('import ')).join('\n');
+ assert.ok(!/benchmark\/evaluate|scoreBenchmark|evaluateCandidate|candidate-r2/.test(imports));
 });
