@@ -59,11 +59,26 @@ The evaluator reports:
 
 The safety metrics matter more than a flattering aggregate. A system that gets many easy numeric cases right but turns insufficient evidence into a directional claim is not ready.
 
+## Measured A/B result
+
+The validated default baseline remains untouched. The v0.2A candidate is evaluated side-by-side on the same 32 cases.
+
+| Runtime | Exact | Directional | Inversion | Unsafe direction | Ambiguous abstention |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Baseline | 71.88% | 78.26% | 4.35% | 33.33% | 80% |
+| v0.2A candidate | **96.88%** | **95.65%** | **0%** | **0%** | **100%** |
+
+The candidate leaves one case unresolved because frozen Compatibility refuses the pair before Relation execution. That refusal is preserved instead of bypassed.
+
+Archived result: `results/real-sec-pilot-v0.1.json`.
+
 ## Phase gate
 
-`phase-gate-v0.2a.json` intentionally sets a hard promotion gate. The current baseline is allowed to FAIL.
+`phase-gate-v0.2a.json` sets a hard experimental promotion gate. The baseline fails it; the isolated candidate passes all five thresholds.
 
-A FAIL means: **do not tune the labels; improve the runtime.**
+Passing this gate means **the candidate may proceed to larger locked evaluation**. It does not mean the candidate replaces the default runtime.
+
+The pilot remains single-review and is not publication gold. A PASS must not be advertised as production or generalization evidence.
 
 ## Run
 
