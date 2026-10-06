@@ -150,3 +150,31 @@ R1 repaired `HOLD-AMZN-005` and no other archived holdout case. Six failures rem
 Archived replay: `results/causal-reflection-r1-replay-v0.2b.json`.
 
 A one-case improvement is evidence for the narrow repair, not evidence that the Relation engine now generalizes.
+
+
+### Repair replay R2 — causal driver/outcome binding
+
+R2 isolates a second semantic repair: explicit causal statements are parsed into two roles, `driver` and `outcome`, then aligned independently across active and passive constructions.
+
+Examples of the supported shape:
+
+~~~text
+Claim:    higher subscription revenue drove operating profit growth
+Evidence: operating profit increased, driven by higher subscription revenue
+~~~
+
+R2 does not treat reversed roles, a different driver, or simple co-occurrence as SUPPORTS.
+
+| Metric | First blind | R1 replay | R2 replay |
+| --- | ---: | ---: | ---: |
+| Exact state accuracy | 17/24 (70.83%) | 18/24 (75.00%) | **19/24 (79.17%)** |
+| Directional accuracy | 66.67% | 72.22% | **77.78%** |
+| Directional inversion | 0% | 0% | **0%** |
+| Unsafe directional error | 0% | 0% | **0%** |
+| AMBIGUOUS abstention recall | 66.67% | 66.67% | **66.67%** |
+| Causal attribution | 1/3 | 2/3 | **3/3** |
+| Phase gate | FAIL | FAIL | **FAIL** |
+
+R2 repaired exactly `HOLD-META-007`. Five non-causal failures remain. The original 17/24 first-blind result remains the only source-isolated estimate; R1 and R2 are post-failure repair replays.
+
+Archived replay: `results/causal-role-r2-replay-v0.2b.json`.
