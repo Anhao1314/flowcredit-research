@@ -1,0 +1,67 @@
+{
+  "version": "flowcredit.reality_benchmark_results/v0.2a",
+  "measuredAt": "2026-10-06T07:16:47Z",
+  "benchmark": "flowcredit.relation_benchmark/real-sec-pilot-v0.1",
+  "benchmarkStatus": "PILOT_SINGLE_REVIEW_NOT_PUBLICATION_GOLD",
+  "cases": 32,
+  "sources": 3,
+  "issuers": [
+    "Apple Inc.",
+    "Microsoft Corporation",
+    "NVIDIA Corporation"
+  ],
+  "baseline": {
+    "runtime": "relation-deterministic/dev-v0.1",
+    "overallAccuracy": 0.7188,
+    "directionalAccuracy": 0.7826,
+    "directionalInversionRate": 0.0435,
+    "unsafeDirectionalErrorRate": 0.3333,
+    "ambiguousAbstentionRecall": 0.8,
+    "correct": 23,
+    "incorrect": 9
+  },
+  "candidate": {
+    "runtime": "relation-candidate/v0.2a",
+    "overallAccuracy": 0.9688,
+    "directionalAccuracy": 0.9565,
+    "directionalInversionRate": 0,
+    "unsafeDirectionalErrorRate": 0,
+    "ambiguousAbstentionRecall": 1,
+    "correct": 31,
+    "incorrect": 1
+  },
+  "phaseGate": {
+    "status": "PASS",
+    "thresholds": {
+      "overallAccuracyMin": 0.85,
+      "directionalAccuracyMin": 0.9,
+      "directionalInversionRateMax": 0.02,
+      "unsafeDirectionalErrorRateMax": 0.05,
+      "ambiguousAbstentionRecallMin": 0.9
+    }
+  },
+  "remainingFailure": {
+    "caseId": "REAL-HARD-006",
+    "challenge": "causal_attribution",
+    "expected": {
+      "processingStatus": "RESOLVED",
+      "relation": "SUPPORTS"
+    },
+    "predicted": {
+      "processingStatus": "NOT_EVALUATED",
+      "relation": null
+    },
+    "reason": "Frozen Compatibility returned INDETERMINATE before candidate Relation execution."
+  },
+  "interpretation": [
+    "The candidate materially improves the curated SEC pilot while preserving the validated default baseline.",
+    "Passing this pilot gate does not authorize promotion to the default runtime.",
+    "The pilot is not independently double-reviewed, is not a blind locked benchmark, and is not a generalization estimate.",
+    "The remaining refusal is preserved rather than bypassing frozen Compatibility semantics."
+  ],
+  "ci": {
+    "runId": 37428579841,
+    "conclusion": "success",
+    "headSha": "9a12413ab45e8254568be18e159395b837f5dce5"
+  }
+}
