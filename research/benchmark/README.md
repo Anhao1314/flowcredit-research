@@ -236,3 +236,43 @@ Current state:
 `DATASET_LOCKED_NOT_EVALUATED`
 
 No R2 prediction or v0.2C score exists yet. The next permitted step is the one-shot first evaluation.
+
+
+## Fresh blind holdout v0.2C — first result archived
+
+The frozen R2 runtime was executed once against the locked 32-case dataset at commit `f0acde852d2007378ec84d3f9a659c32a54926dd`.
+
+| Metric | First blind v0.2C |
+| --- | ---: |
+| Exact state accuracy | **56.25% (18/32)** |
+| Directional accuracy | **50.00%** |
+| Directional inversion | **15.00%** |
+| Unsafe directional error | **16.67%** |
+| AMBIGUOUS abstention recall | **25.00%** |
+| Phase gate | **FAIL — 0/5 checks passed** |
+
+Per-challenge performance:
+
+| Challenge | Accuracy |
+| --- | ---: |
+| numeric_series | **6/6 (100%)** |
+| hard_negative | **7/8 (87.5%)** |
+| direction_text | **2/2 (100%)** |
+| second_order | **1/4 (25%)** |
+| causal_attribution | **1/4 (25%)** |
+| missing_comparison | **1/4 (25%)** |
+| causal_hard_negative | **0/4 (0%)** |
+
+The first-blind failure is more severe than the earlier v0.2B result. It includes:
+
+- three directional inversions;
+- two unsafe directional judgments on NEUTRAL / AMBIGUOUS gold;
+- only one of four AMBIGUOUS cases safely abstained;
+- zero correct causal hard negatives.
+
+The result is archived and locked:
+
+- `results/real-sec-fresh-blind-v0.2c-first-run.json`
+- `holdout-v0.2c-result-lock.json`
+
+v0.2C is no longer blind. All future executions on these 32 cases are repair/regression replays only. The first-run 56.25% result must never be overwritten by later repair scores.
