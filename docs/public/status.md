@@ -72,6 +72,24 @@ The directional subset is only five pairs.
 
 The result artifact is research/eval/relation-reality/results.json and CI recomputes it.
 
+
+### SEC Semantic Relation Pilot v0.2A
+
+A complementary curated pilot evaluates open-text pairwise semantics that the CoreWeave structured oracle intentionally does not cover.
+
+- 32 Evidence × Claim pairs
+- Apple 2025 10-K, Microsoft 2025 10-K, NVIDIA 2026 10-K
+- numeric, temporal-order, hard-negative, second-order, mix and causal challenges
+- evidence statements are paraphrased facts with SEC accession URLs and section locators
+- status: `PILOT_SINGLE_REVIEW_NOT_PUBLICATION_GOLD`
+
+| Runtime | Exact | Directional | Unsafe direction | Inversion | Ambiguous abstention |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Default lexical baseline | 71.88% | 78.26% | 33.33% | 4.35% | 80% |
+| Isolated v0.2A candidate | **96.88%** | **95.65%** | **0%** | **0%** | **100%** |
+
+The v0.2A candidate passes the five experimental thresholds, but it is **not promoted to the default runtime**. The pilot lacks independent double review and a blind locked partition. One causal-attribution pair remains `NOT_EVALUATED` because frozen Compatibility returns `INDETERMINATE`; the candidate does not bypass that gate.
+
 ### Investigate behavior v0.2
 
 A committed synthetic behavior fixture verifies:
