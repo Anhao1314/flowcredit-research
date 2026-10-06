@@ -1,0 +1,56 @@
+{
+  "version": "flowcredit.fresh_blind_dataset_lock/v0.2c",
+  "lockedAt": "2026-10-06T09:35:00.000Z",
+  "protocolPath": "research/benchmark/holdout-v0.2c-protocol.json",
+  "protocolGitBlobSha": "868dcd2322d68fbe9af56347a5b8257c0d6bc7d1",
+  "datasetPath": "research/benchmark/data/real-sec-fresh-blind-v0.2c.json",
+  "datasetGitBlobSha": "5602c516d3333f1fde665738fc8385bcd7b8a6d0",
+  "status": "DATASET_LOCKED_NOT_EVALUATED",
+  "issuers": [
+    {
+      "issuer": "Costco Wholesale Corporation",
+      "sourceId": "SEC-COST-2025-10K",
+      "accession": "0000909832-25-000101"
+    },
+    {
+      "issuer": "JPMorgan Chase & Co.",
+      "sourceId": "SEC-JPM-2025-10K",
+      "accession": "0001628280-26-008131"
+    },
+    {
+      "issuer": "Salesforce, Inc.",
+      "sourceId": "SEC-CRM-2026-10K",
+      "accession": "0001108524-26-000060"
+    },
+    {
+      "issuer": "Caterpillar Inc.",
+      "sourceId": "SEC-CAT-2025-10K",
+      "accession": "0000018230-26-000008"
+    }
+  ],
+  "counts": {
+    "issuers": 4,
+    "cases": 32,
+    "casesPerIssuer": 8,
+    "buckets": {
+      "numeric_or_trend": 8,
+      "hard_negative": 4,
+      "second_order": 4,
+      "causal_attribution": 4,
+      "scope_or_metric_binding": 4,
+      "insufficient_context": 4,
+      "mixed_hard": 4
+    }
+  },
+  "evaluationState": {
+    "r2ExecutedAgainstDataset": false,
+    "firstPredictionExists": false,
+    "scoreExists": false
+  },
+  "policy": [
+    "Dataset bytes are frozen before any relation-candidate/v0.2b-r2 execution.",
+    "Do not modify dataset labels, cases, sources or bucket assignments after this lock.",
+    "Do not modify R2 runtime, evaluator, schema or gate before first evaluation.",
+    "The first evaluation must be one-shot and fully archived whether PASS or FAIL."
+  ]
+}
