@@ -157,6 +157,10 @@ test('archived SEC pilot result remains exactly reproducible from the committed 
  assert.equal(archived.phaseGate.status,phase.status);
  assert.deepEqual(archived.phaseGate.thresholds,phase.thresholds);
  const failures=candidate.rows.filter(row=>!row.correct);
- assert.equal(failures.length,1);
- assert.equal(failures[0].caseId,archived.remainingFailure.caseId);
+ if(archived.remainingFailure===null){
+  assert.equal(failures.length,0);
+ }else{
+  assert.equal(failures.length,1);
+  assert.equal(failures[0].caseId,archived.remainingFailure.caseId);
+ }
 });
