@@ -59,7 +59,8 @@ export function quantities(statement){
  const raw=String(statement??''),out=[];
  // Scan the recorded statement itself so every literal basis is a raw substring
  // of the pinned record (CM-17.3).
- const pattern=/(\d+(?:\.\d+)?)\s*(thousand|million|billion|k|m|bn)?/gi;
+// Do not parse digits embedded in identifier tokens such as H20, A100, Q2 or GPT-5.
+ const pattern=/(?<![A-Za-z0-9])(?<![A-Za-z0-9]-)(\d+(?:\.\d+)?)\s*(thousand|million|billion|k|m|bn)?(?![A-Za-z0-9])/gi;
  let match;
  while((match=pattern.exec(raw))!==null){
   const [full,digits,scaleWord]=match;
