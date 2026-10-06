@@ -93,3 +93,24 @@ test('candidate safety rules are content-based and cover generic non-benchmark e
  });
  assert.deepEqual([temporal.relation,causalNegative.relation,causalScope.relation,mix.relation],['SUPPORTS','NEUTRAL','AMBIGUOUS','SUPPORTS']);
 });
+
+
+test('candidate metric qualifier binds same metric family without collapsing business lines',async()=>{
+ const {candidateDeterministicRelation}=await import('../relation-runtime/candidate-deterministic.js');
+ const companyRevenue=candidateDeterministicRelation({
+  claim:{statement:'ExampleCorp revenue increased from 2025 to 2026.'},
+  evidence:{statement:'ExampleCorp revenue was 120 million USD in 2025 and 150 million USD in 2026.'}
+ });
+ const totalSales=candidateDeterministicRelation({
+  claim:{statement:'ExampleCorp total net sales growth accelerated in 2026 compared with 2025 growth.'},
+  evidence:{statement:'ExampleCorp total net sales growth was 4 percent in 2025 and 9 percent in 2026.'}
+ });
+ const businessLineMismatch=candidateDeterministicRelation({
+  claim:{statement:'ExampleCorp Services net sales increased in 2026.'},
+  evidence:{statement:'ExampleCorp Hardware net sales increased 15 percent in 2026.'}
+ });
+ assert.deepEqual(
+  [companyRevenue.relation,totalSales.relation,businessLineMismatch.relation],
+  ['SUPPORTS','SUPPORTS','NEUTRAL']
+ );
+});
