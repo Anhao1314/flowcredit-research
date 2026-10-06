@@ -66,9 +66,9 @@ The validated default baseline remains untouched. The v0.2A candidate is evaluat
 | Runtime | Exact | Directional | Inversion | Unsafe direction | Ambiguous abstention |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Baseline | 71.88% | 78.26% | 4.35% | 33.33% | 80% |
-| v0.2A candidate | **96.88%** | **95.65%** | **0%** | **0%** | **100%** |
+| v0.2A candidate | **100%** | **100%** | **0%** | **0%** | **100%** |
 
-The candidate leaves one case unresolved because frozen Compatibility refuses the pair before Relation execution. That refusal is preserved instead of bypassed.
+The final pilot failure exposed a generic tokenizer defect: digits inside identifiers such as `H20` were being interpreted as quantities. v0.2A.1 fixes that only in the isolated candidate reader; the validated baseline and its archived measurements remain unchanged.
 
 Archived result: `results/real-sec-pilot-v0.1.json`.
 
