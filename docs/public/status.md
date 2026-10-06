@@ -201,6 +201,28 @@ The first isolated repair adds recognition for the narrow financial attribution 
 R1 repaired exactly one archived case, Amazon's explicit `primarily reflected` attribution. The remaining Meta causal failure is a different driver/outcome metric-role binding problem and is deliberately left for a separate repair cycle.
 
 
+#### Causal repair replay R2
+
+R2 adds a minimal causal-role representation for explicit constructions:
+
+~~~text
+driver -> outcome
+~~~
+
+The runtime aligns the driver and outcome separately instead of relying on undifferentiated lexical overlap between the two financial statements.
+
+| Metric | First blind | R1 | R2 |
+| --- | ---: | ---: | ---: |
+| Exact | 17/24 (70.83%) | 18/24 (75.00%) | **19/24 (79.17%)** |
+| Directional | 66.67% | 72.22% | **77.78%** |
+| Causal attribution | 1/3 | 2/3 | **3/3** |
+| Directional inversion | 0% | 0% | **0%** |
+| Unsafe direction | 0% | 0% | **0%** |
+| Gate | FAIL | FAIL | **FAIL** |
+
+R2 repaired exactly one additional archived case, the Meta driver/outcome role-binding failure. It remains an isolated experimental candidate and is not promoted to the default runtime. R1/R2 replay results are repair evidence, not fresh blind generalization estimates.
+
+
 ## PLANNED
 
 - independently human-labeled 500+ pair semantic Relation benchmark

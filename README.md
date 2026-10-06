@@ -168,6 +168,18 @@ This is the more important number for generalization. The candidate did not meet
 
 The holdout remains locked and single-review. No label, threshold or candidate rule was changed after first evaluation. The failure is preserved at [research/benchmark/results/real-sec-blind-holdout-v0.2b.json](research/benchmark/results/real-sec-blind-holdout-v0.2b.json).
 
+### Isolated repair replays
+
+The locked holdout is reused only as a **repair regression set** after its first blind result. These numbers are not new blind estimates.
+
+| Runtime | Exact | Directional | Causal attribution | Unsafe direction | Gate |
+| --- | ---: | ---: | ---: | ---: | --- |
+| First blind v0.2A.1 | 17/24 (70.83%) | 66.67% | 1/3 | 0% | FAIL |
+| R1 causal reflection | 18/24 (75.00%) | 72.22% | 2/3 | 0% | FAIL |
+| R2 causal role binding | **19/24 (79.17%)** | **77.78%** | **3/3** | **0%** | **FAIL** |
+
+R2 adds a minimal `driver → outcome` role frame for explicit causal constructions such as `A drove B` versus `B was driven by A`. It repaired one additional archived failure and did not change the first-blind result.
+
 # From abstention to investigation
 
 Safe abstention is useful only if it can create a useful next action.
