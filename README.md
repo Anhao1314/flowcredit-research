@@ -130,6 +130,27 @@ node research/eval/relation-reality/cli.js
 
 The measured artifact is committed at [research/eval/relation-reality/results.json](research/eval/relation-reality/results.json) and CI recomputes it from the underlying fixtures.
 
+# SEC Semantic Pilot v0.2A
+
+The structured CoreWeave benchmark proves faithful execution of recorded fields. It does not test harder open-text semantics. A separate 32-pair SEC pilot now stress-tests the lexical Relation path on Apple, Microsoft and NVIDIA filings.
+
+| Runtime | Exact | Directional | Unsafe direction | Inversion | Ambiguous abstention |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Default lexical baseline | 71.88% | 78.26% | 33.33% | 4.35% | 80% |
+| Isolated v0.2A candidate | **96.88%** | **95.65%** | **0%** | **0%** | **100%** |
+
+The candidate passes the five experimental thresholds but remains isolated. The pilot is single-review, not a blind locked benchmark, and does not authorize replacement of the default runtime.
+
+One causal-attribution pair remains safely `NOT_EVALUATED` because frozen Compatibility returns `INDETERMINATE`. The candidate does not bypass the gate to manufacture a perfect score.
+
+Run:
+
+~~~bash
+node research/benchmark/cli.js
+~~~
+
+Archived measurements: [research/benchmark/results/real-sec-pilot-v0.1.json](research/benchmark/results/real-sec-pilot-v0.1.json).
+
 # From abstention to investigation
 
 Safe abstention is useful only if it can create a useful next action.

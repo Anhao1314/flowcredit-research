@@ -1,0 +1,865 @@
+{
+  "version": "flowcredit.relation_benchmark/real-sec-pilot-v0.1",
+  "status": "PILOT_SINGLE_REVIEW_NOT_PUBLICATION_GOLD",
+  "frozenAt": "2026-10-06T06:00:00.000Z",
+  "task": "pairwise Evidence x specific Claim Revision relation classification",
+  "labels": [
+    "SUPPORTS",
+    "COUNTERS",
+    "NEUTRAL",
+    "AMBIGUOUS"
+  ],
+  "notes": [
+    "Evidence statements are concise paraphrases of cited SEC filings, not verbatim filing excerpts.",
+    "This pilot is deliberately small and challenge-heavy. It validates the benchmark harness and exposes baseline failure modes; it is not a generalization estimate.",
+    "Compatibility refusal remains covered by the separate frozen compatibility regression suite."
+  ],
+  "sources": [
+    {
+      "sourceId": "SEC-AAPL-2025-10K",
+      "issuer": "Apple Inc.",
+      "cik": "0000320193",
+      "form": "10-K",
+      "periodEnd": "2025-09-27",
+      "accession": "0000320193-25-000079",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "locators": [
+        "Item 7, net sales by reportable product",
+        "Item 7, Gross Margin"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-MSFT-2025-10K",
+      "issuer": "Microsoft Corporation",
+      "cik": "0000789019",
+      "form": "10-K",
+      "periodEnd": "2025-06-30",
+      "accession": "0000950170-25-100235",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+      "locators": [
+        "Item 7, Summary Results of Operations",
+        "Item 7, Segment Results of Operations",
+        "Item 8, revenue by offering"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-NVDA-2026-10K",
+      "issuer": "NVIDIA Corporation",
+      "cik": "0001045810",
+      "form": "10-K",
+      "periodEnd": "2026-01-25",
+      "accession": "0001045810-26-000021",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "locators": [
+        "Fiscal Year 2026 Summary",
+        "Gross margin discussion",
+        "Operating results"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "REAL-AAPL-001",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-001",
+        "revisionId": "CLAIM-REAL-AAPL-001:v1",
+        "statement": "Apple total net sales increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-001",
+        "statement": "Apple total net sales were 391035 million USD in 2024 and 416161 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2025 total net sales exceed 2024 total net sales.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-002",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-002",
+        "revisionId": "CLAIM-REAL-AAPL-002:v1",
+        "statement": "Apple Services net sales declined from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-002",
+        "statement": "Apple Services net sales were 96169 million USD in 2024 and 109158 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Services net sales rose rather than declined.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-003",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-003",
+        "revisionId": "CLAIM-REAL-AAPL-003:v1",
+        "statement": "Apple Wearables Home and Accessories net sales declined from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-003",
+        "statement": "Apple Wearables Home and Accessories net sales were 37005 million USD in 2024 and 35686 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2025 value is below 2024.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-004",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-004",
+        "revisionId": "CLAIM-REAL-AAPL-004:v1",
+        "statement": "Apple total net sales growth accelerated in 2025 compared with 2024 growth."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-004",
+        "statement": "Apple total net sales growth was 2 percent in 2024 and 6 percent in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The reported growth rate increased from 2% to 6%.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-005",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-005",
+        "revisionId": "CLAIM-REAL-AAPL-005:v1",
+        "statement": "Apple total gross margin exceeded 190000 million USD in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-005",
+        "statement": "Apple total gross margin was 195201 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "195201 is greater than 190000.",
+        "locator": "Item 7, Gross Margin"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-006",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-006",
+        "revisionId": "CLAIM-REAL-AAPL-006:v1",
+        "statement": "Apple iPhone net sales were below 200000 million USD in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-006",
+        "statement": "Apple iPhone net sales were 209586 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "209586 is above 200000.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-007",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-007",
+        "revisionId": "CLAIM-REAL-AAPL-007:v1",
+        "statement": "Apple Services net sales increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-007",
+        "statement": "Apple iPhone net sales were 209586 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The evidence is readable but addresses iPhone, not Services.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-AAPL-008",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-REAL-AAPL-008",
+        "revisionId": "CLAIM-REAL-AAPL-008:v1",
+        "statement": "Apple Services growth is accelerating in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-AAPL-008",
+        "statement": "Apple Services net sales grew 14 percent in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Acceleration requires a comparable prior growth rate.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-001",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-001",
+        "revisionId": "CLAIM-REAL-MSFT-001:v1",
+        "statement": "Microsoft revenue increased from fiscal 2024 to fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-001",
+        "statement": "Microsoft revenue was 245122 million USD in 2024 and 281724 million USD in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2025 revenue exceeds 2024 revenue.",
+        "locator": "Item 7, Summary Results"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-002",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "direction_text",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-002",
+        "revisionId": "CLAIM-REAL-MSFT-002:v1",
+        "statement": "Microsoft Cloud gross margin percentage increased in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-002",
+        "statement": "Microsoft Cloud gross margin percentage decreased to 69 percent in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The filing states a decrease, not an increase.",
+        "locator": "Item 7, Summary Results"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-003",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-003",
+        "revisionId": "CLAIM-REAL-MSFT-003:v1",
+        "statement": "Azure and other cloud services revenue grew more than 30 percent in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-003",
+        "statement": "Azure and other cloud services revenue grew 34 percent in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "34% exceeds 30%.",
+        "locator": "Item 7, Intelligent Cloud"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-004",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "direction_text",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-004",
+        "revisionId": "CLAIM-REAL-MSFT-004:v1",
+        "statement": "Microsoft Intelligent Cloud revenue declined in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-004",
+        "statement": "Microsoft Intelligent Cloud revenue increased 21 percent in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The filing reports growth, not decline.",
+        "locator": "Item 7, Intelligent Cloud"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-005",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "direction_text",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-005",
+        "revisionId": "CLAIM-REAL-MSFT-005:v1",
+        "statement": "Microsoft Gaming revenue increased in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-005",
+        "statement": "Microsoft Gaming revenue increased 9 percent in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The evidence directly reports an increase.",
+        "locator": "Item 7, More Personal Computing"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-006",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-006",
+        "revisionId": "CLAIM-REAL-MSFT-006:v1",
+        "statement": "Microsoft Windows and Devices revenue increased more than 5 percent in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-006",
+        "statement": "Microsoft Windows and Devices revenue increased 2 percent in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2% does not exceed 5%.",
+        "locator": "Item 8, revenue by offering"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-007",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-007",
+        "revisionId": "CLAIM-REAL-MSFT-007:v1",
+        "statement": "Azure revenue growth remained strong in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-007",
+        "statement": "Microsoft net income was 101832 million USD in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Net income does not directionally bear on Azure revenue growth.",
+        "locator": "Item 7, Summary Results"
+      }
+    },
+    {
+      "caseId": "REAL-MSFT-008",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-REAL-MSFT-008",
+        "revisionId": "CLAIM-REAL-MSFT-008:v1",
+        "statement": "Azure growth is accelerating in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-MSFT-008",
+        "statement": "Azure and other cloud services revenue grew 34 percent in fiscal 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "One growth rate does not establish acceleration.",
+        "locator": "Item 7, Intelligent Cloud"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-001",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-001",
+        "revisionId": "CLAIM-REAL-NVDA-001:v1",
+        "statement": "NVIDIA revenue increased from fiscal 2025 to fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-001",
+        "statement": "NVIDIA revenue was 130497 million USD in fiscal 2025 and 215938 million USD in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2026 revenue exceeds 2025 revenue.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-002",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-002",
+        "revisionId": "CLAIM-REAL-NVDA-002:v1",
+        "statement": "NVIDIA gross margin increased from fiscal 2025 to fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-002",
+        "statement": "NVIDIA gross margin was 75.0 percent in fiscal 2025 and 71.1 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Gross margin fell by 3.9 points.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-003",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-003",
+        "revisionId": "CLAIM-REAL-NVDA-003:v1",
+        "statement": "NVIDIA Data Center revenue grew more than 60 percent in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-003",
+        "statement": "NVIDIA Data Center revenue grew 68 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "68% exceeds 60%.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-004",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-004",
+        "revisionId": "CLAIM-REAL-NVDA-004:v1",
+        "statement": "NVIDIA net income grew less than 50 percent in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-004",
+        "statement": "NVIDIA net income grew 65 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "65% is not less than 50%.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-005",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-005",
+        "revisionId": "CLAIM-REAL-NVDA-005:v1",
+        "statement": "NVIDIA operating income increased from fiscal 2025 to fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-005",
+        "statement": "NVIDIA operating income was 81453 million USD in fiscal 2025 and 130387 million USD in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2026 operating income exceeds 2025.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-006",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-006",
+        "revisionId": "CLAIM-REAL-NVDA-006:v1",
+        "statement": "NVIDIA diluted earnings per share increased more than 60 percent in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-006",
+        "statement": "NVIDIA diluted earnings per share increased 67 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "67% exceeds 60%.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-007",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-007",
+        "revisionId": "CLAIM-REAL-NVDA-007:v1",
+        "statement": "NVIDIA gross margin improved in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-007",
+        "statement": "NVIDIA Data Center revenue grew 68 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Data Center revenue growth alone does not establish gross-margin direction.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-NVDA-008",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-REAL-NVDA-008",
+        "revisionId": "CLAIM-REAL-NVDA-008:v1",
+        "statement": "NVIDIA Data Center growth is accelerating in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-NVDA-008",
+        "statement": "NVIDIA Data Center revenue grew 68 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "A prior comparable growth rate is required.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-001",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "temporal_order",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-001",
+        "revisionId": "CLAIM-REAL-HARD-001:v1",
+        "statement": "Apple Services grew faster in 2025 than in 2024."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-001",
+        "statement": "Apple Services net sales growth was 14 percent in 2025 and 13 percent in 2024."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "2025 growth exceeds 2024 growth despite reverse chronological mention order.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-002",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "semantic_state",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-002",
+        "revisionId": "CLAIM-REAL-HARD-002:v1",
+        "statement": "Microsoft Cloud gross margin pressure persisted in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-002",
+        "statement": "Microsoft Cloud gross margin percentage decreased to 69 percent in fiscal 2025 because of scaling AI infrastructure."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "A lower cloud gross-margin percentage is directionally consistent with continuing pressure.",
+        "locator": "Item 7, Summary Results"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-003",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "second_order_missing",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-003",
+        "revisionId": "CLAIM-REAL-HARD-003:v1",
+        "statement": "NVIDIA gross margin compression intensified in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-003",
+        "statement": "NVIDIA gross margin decreased from 75.0 percent in fiscal 2025 to 71.1 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The pair establishes compression, not whether compression intensified versus an earlier change.",
+        "locator": "Fiscal Year 2026 Summary"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-004",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "mix_inference",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-004",
+        "revisionId": "CLAIM-REAL-HARD-004:v1",
+        "statement": "Apple revenue mix shifted toward Services in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-004",
+        "statement": "Apple Services net sales grew 14 percent in 2025 while total net sales grew 6 percent in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Services grew materially faster than the total, increasing its implied share of sales.",
+        "locator": "Item 7, net sales table"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-005",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-005",
+        "revisionId": "CLAIM-REAL-HARD-005:v1",
+        "statement": "AI infrastructure investment pressured Microsoft Cloud gross margin in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-005",
+        "statement": "Microsoft Cloud gross margin percentage decreased to 69 percent in fiscal 2025, driven by scaling AI infrastructure and partly offset by Azure efficiency gains."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The filing explicitly attributes pressure to scaling AI infrastructure.",
+        "locator": "Item 7, Summary Results"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-006",
+      "split": "pilot",
+      "sourceId": "SEC-NVDA-2026-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-006",
+        "revisionId": "CLAIM-REAL-HARD-006:v1",
+        "statement": "The H20 inventory charge contributed to NVIDIA gross-margin decline in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-006",
+        "statement": "NVIDIA gross margin decreased from 75.0 percent in fiscal 2025 to 71.1 percent in fiscal 2026, and the filing identifies the H20 inventory-related charge as one contributor."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The filing attributes part of the decline to the H20 charge.",
+        "locator": "Gross margin discussion"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-007",
+      "split": "pilot",
+      "sourceId": "SEC-MSFT-2025-10K",
+      "challenge": "causal_hard_negative",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-007",
+        "revisionId": "CLAIM-REAL-HARD-007:v1",
+        "statement": "AI infrastructure investment was the primary driver of Microsoft revenue growth in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-007",
+        "statement": "Microsoft revenue increased 15 percent in fiscal 2025, and Microsoft also increased investment in AI infrastructure."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "Co-occurrence does not establish that AI infrastructure investment was the primary revenue-growth driver.",
+        "locator": "Item 7, Summary Results"
+      }
+    },
+    {
+      "caseId": "REAL-HARD-008",
+      "split": "pilot",
+      "sourceId": "SEC-AAPL-2025-10K",
+      "challenge": "causal_insufficiency",
+      "claim": {
+        "claimId": "CLAIM-REAL-HARD-008",
+        "revisionId": "CLAIM-REAL-HARD-008:v1",
+        "statement": "Higher iPhone Pro sales caused Apple's total net sales growth in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-REAL-HARD-008",
+        "statement": "Apple iPhone net sales increased 4 percent in 2025 because of higher Pro-model sales, while Apple total net sales increased 6 percent in 2025."
+      },
+      "asOf": "2026-10-06T05:59:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "pilot-single-review",
+        "basis": "The pair supports an iPhone driver but does not isolate causality for total-company growth.",
+        "locator": "Item 7, net sales discussion"
+      }
+    }
+  ]
+}
