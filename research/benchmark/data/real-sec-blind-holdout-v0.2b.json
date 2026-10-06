@@ -1,0 +1,665 @@
+{
+  "version": "flowcredit.relation_benchmark/real-sec-blind-holdout-v0.2b",
+  "status": "LOCKED_BLIND_HOLDOUT_SINGLE_REVIEW",
+  "frozenAt": "2026-10-06T08:20:00.000Z",
+  "task": "pairwise Evidence x specific Claim Revision relation classification",
+  "labels": [
+    "SUPPORTS",
+    "COUNTERS",
+    "NEUTRAL",
+    "AMBIGUOUS"
+  ],
+  "protocol": {
+    "developmentIsolation": "No holdout case was used to modify relation-candidate/v0.2a.1 before the dataset lock.",
+    "evaluationPolicy": "Run exactly once against the pinned candidate runtime before any further runtime change.",
+    "repairPolicy": "If the holdout fails, archive the result first. Do not edit labels, thresholds, or candidate code in the same evaluation step."
+  },
+  "sources": [
+    {
+      "sourceId": "SEC-AMZN-2025-10K",
+      "issuer": "Amazon.com, Inc.",
+      "cik": "0001018724",
+      "form": "10-K",
+      "periodEnd": "2025-12-31",
+      "accession": "0001018724-26-000004",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "locators": [
+        "Item 7, Net Sales",
+        "Item 7, Operating Income",
+        "Item 7, Free Cash Flow"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-GOOG-2025-10K",
+      "issuer": "Alphabet Inc.",
+      "cik": "0001652044",
+      "form": "10-K",
+      "periodEnd": "2025-12-31",
+      "accession": "0001652044-26-000018",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "locators": [
+        "Item 7, Executive Overview",
+        "Item 7, Segment Profitability"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-META-2025-10K",
+      "issuer": "Meta Platforms, Inc.",
+      "cik": "0001326801",
+      "form": "10-K",
+      "periodEnd": "2025-12-31",
+      "accession": "0001628280-26-003942",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "locators": [
+        "Item 7, Executive Overview of Full Year 2025 Results",
+        "Item 7, Advertising",
+        "Item 7, Consolidated and Segment Results"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "HOLD-AMZN-001",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-001",
+        "revisionId": "CLAIM-HOLD-AMZN-001:v1",
+        "statement": "Amazon consolidated net sales increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-001",
+        "statement": "Amazon consolidated net sales were 637959 million USD in 2024 and 716924 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "2025 consolidated net sales exceed 2024.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-002",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-002",
+        "revisionId": "CLAIM-HOLD-AMZN-002:v1",
+        "statement": "Amazon consolidated net sales growth accelerated in 2025 compared with 2024 growth."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-002",
+        "statement": "Amazon consolidated net sales growth was 11 percent in 2024 and 12 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The reported growth rate increased from 11% to 12%.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-003",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "mix_inference",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-003",
+        "revisionId": "CLAIM-HOLD-AMZN-003:v1",
+        "statement": "Amazon sales mix shifted toward AWS in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-003",
+        "statement": "AWS represented 17 percent of Amazon net sales in 2024 and 18 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "AWS share of consolidated sales increased by one percentage point.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-004",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-004",
+        "revisionId": "CLAIM-HOLD-AMZN-004:v1",
+        "statement": "AWS sales grew more than 25 percent in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-004",
+        "statement": "AWS sales increased 20 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "20% does not exceed 25%.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-005",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-005",
+        "revisionId": "CLAIM-HOLD-AMZN-005:v1",
+        "statement": "Increased customer usage was a primary driver of AWS sales growth in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-005",
+        "statement": "AWS sales increased 20 percent in 2025, and the filing says the sales growth primarily reflected increased customer usage, partially offset by pricing changes."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly attributes AWS sales growth primarily to increased customer usage.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-006",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-006",
+        "revisionId": "CLAIM-HOLD-AMZN-006:v1",
+        "statement": "AWS sales increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-006",
+        "statement": "North America operating income increased from 24967 million USD in 2024 to 29619 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "North America operating income does not directionally establish AWS sales.",
+        "locator": "Item 7, Operating Income"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-007",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-007",
+        "revisionId": "CLAIM-HOLD-AMZN-007:v1",
+        "statement": "AWS sales growth is accelerating in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-007",
+        "statement": "AWS sales increased 20 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "One annual growth rate does not establish acceleration.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "HOLD-AMZN-008",
+      "split": "blind-holdout",
+      "sourceId": "SEC-AMZN-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-AMZN-008",
+        "revisionId": "CLAIM-HOLD-AMZN-008:v1",
+        "statement": "AWS operating income exceeded 50 billion USD in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-AMZN-008",
+        "statement": "AWS operating income was 45606 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "45.606 billion USD is below 50 billion USD.",
+        "locator": "Item 7, Operating Income"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-001",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-001",
+        "revisionId": "CLAIM-HOLD-GOOG-001:v1",
+        "statement": "Alphabet revenue grew more than 10 percent in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-001",
+        "statement": "Alphabet revenue increased 15 percent year over year in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "15% exceeds 10%.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-002",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-002",
+        "revisionId": "CLAIM-HOLD-GOOG-002:v1",
+        "statement": "Google Cloud revenue grew more than 30 percent in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-002",
+        "statement": "Google Cloud revenue increased 36 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "36% exceeds 30%.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-003",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-003",
+        "revisionId": "CLAIM-HOLD-GOOG-003:v1",
+        "statement": "Google Cloud operating income increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-003",
+        "statement": "Google Cloud operating income was 6112 million USD in 2024 and 13910 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "2025 Google Cloud operating income exceeds 2024.",
+        "locator": "Item 7, Segment Profitability"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-004",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "direction_text",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-004",
+        "revisionId": "CLAIM-HOLD-GOOG-004:v1",
+        "statement": "Other Bets operating loss narrowed from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-004",
+        "statement": "Other Bets operating loss increased from 4444 million USD in 2024 to 7515 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The loss increased in magnitude rather than narrowed.",
+        "locator": "Item 7, Segment Profitability"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-005",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-005",
+        "revisionId": "CLAIM-HOLD-GOOG-005:v1",
+        "statement": "Alphabet total operating income exceeded 125 billion USD in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-005",
+        "statement": "Alphabet total operating income was 129039 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "129.039 billion USD exceeds 125 billion USD.",
+        "locator": "Item 7, Segment Profitability"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-006",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-006",
+        "revisionId": "CLAIM-HOLD-GOOG-006:v1",
+        "statement": "Google Cloud revenue increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-006",
+        "statement": "Other Bets operating loss increased from 4444 million USD in 2024 to 7515 million USD in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Other Bets operating loss does not establish Google Cloud revenue direction.",
+        "locator": "Item 7, Segment Profitability"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-007",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-007",
+        "revisionId": "CLAIM-HOLD-GOOG-007:v1",
+        "statement": "Higher revenues were a primary driver of Google Cloud operating income growth in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-007",
+        "statement": "Google Cloud operating income increased by 7.8 billion USD from 2024 to 2025, primarily driven by an increase in revenues and partially offset by higher infrastructure usage and employee compensation costs."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly attributes the operating-income increase primarily to higher revenues.",
+        "locator": "Item 7, Segment Profitability"
+      }
+    },
+    {
+      "caseId": "HOLD-GOOG-008",
+      "split": "blind-holdout",
+      "sourceId": "SEC-GOOG-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-HOLD-GOOG-008",
+        "revisionId": "CLAIM-HOLD-GOOG-008:v1",
+        "statement": "Google Cloud revenue growth is accelerating in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-GOOG-008",
+        "statement": "Google Cloud revenue increased 36 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "A single growth rate does not establish acceleration.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "HOLD-META-001",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-001",
+        "revisionId": "CLAIM-HOLD-META-001:v1",
+        "statement": "Meta total revenue grew more than 20 percent in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-001",
+        "statement": "Meta total revenue increased 22 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "22% exceeds 20%.",
+        "locator": "Item 7, Executive Overview of Full Year 2025 Results"
+      }
+    },
+    {
+      "caseId": "HOLD-META-002",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-002",
+        "revisionId": "CLAIM-HOLD-META-002:v1",
+        "statement": "Meta operating margin increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-002",
+        "statement": "Meta operating margin was 42 percent in 2024 and 41 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Operating margin decreased by one percentage point.",
+        "locator": "Item 7, Consolidated and Segment Results"
+      }
+    },
+    {
+      "caseId": "HOLD-META-003",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-003",
+        "revisionId": "CLAIM-HOLD-META-003:v1",
+        "statement": "Meta ad impression growth accelerated in 2025 compared with 2024."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-003",
+        "statement": "Ad impressions increased 11 percent in 2024 and 12 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The ad-impression growth rate rose from 11% to 12%.",
+        "locator": "Item 7, Advertising"
+      }
+    },
+    {
+      "caseId": "HOLD-META-004",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-004",
+        "revisionId": "CLAIM-HOLD-META-004:v1",
+        "statement": "Meta average price per ad growth accelerated in 2025 compared with 2024."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-004",
+        "statement": "Average price per ad increased 10 percent in 2024 and 9 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The growth rate slowed from 10% to 9%.",
+        "locator": "Item 7, Advertising"
+      }
+    },
+    {
+      "caseId": "HOLD-META-005",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "numeric_threshold",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-005",
+        "revisionId": "CLAIM-HOLD-META-005:v1",
+        "statement": "Reality Labs revenue grew more than 5 percent in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-005",
+        "statement": "Reality Labs revenue increased 3 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "3% does not exceed 5%.",
+        "locator": "Item 7, Consolidated and Segment Results"
+      }
+    },
+    {
+      "caseId": "HOLD-META-006",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-006",
+        "revisionId": "CLAIM-HOLD-META-006:v1",
+        "statement": "Meta average price per ad increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-006",
+        "statement": "Family daily active people were 3.58 billion in December 2025, an increase of 7 percent year over year."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "DAP growth does not directly establish the direction of average price per ad.",
+        "locator": "Item 7, Executive Overview of Full Year 2025 Results"
+      }
+    },
+    {
+      "caseId": "HOLD-META-007",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-007",
+        "revisionId": "CLAIM-HOLD-META-007:v1",
+        "statement": "Higher advertising revenue drove the increase in Family of Apps operating income in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-007",
+        "statement": "Family of Apps operating income increased 18 percent in 2025, driven by higher advertising revenue and partially offset by higher costs and expenses."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly identifies higher advertising revenue as a driver.",
+        "locator": "Item 7, Consolidated and Segment Results"
+      }
+    },
+    {
+      "caseId": "HOLD-META-008",
+      "split": "blind-holdout",
+      "sourceId": "SEC-META-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-HOLD-META-008",
+        "revisionId": "CLAIM-HOLD-META-008:v1",
+        "statement": "Meta advertising revenue growth is accelerating in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-HOLD-META-008",
+        "statement": "Meta advertising revenue increased 22 percent in 2025."
+      },
+      "asOf": "2026-10-06T08:19:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "One annual advertising-revenue growth rate does not establish acceleration.",
+        "locator": "Item 7, Advertising"
+      }
+    }
+  ]
+}

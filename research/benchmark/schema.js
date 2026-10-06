@@ -14,7 +14,7 @@ const fail=message=>{throw new Error('BENCHMARK_INVALID: '+message);};
 export function validateBenchmark(doc){
  if(!isObject(doc))fail('document');
  if(typeof doc.version!=='string'||!doc.version.startsWith('flowcredit.relation_benchmark/'))fail('version');
- if(doc.status!=='PILOT_SINGLE_REVIEW_NOT_PUBLICATION_GOLD'&&doc.status!=='LOCKED_DOUBLE_REVIEW')fail('status');
+ if(!['PILOT_SINGLE_REVIEW_NOT_PUBLICATION_GOLD','LOCKED_BLIND_HOLDOUT_SINGLE_REVIEW','LOCKED_DOUBLE_REVIEW'].includes(doc.status))fail('status');
  if(!Array.isArray(doc.sources)||doc.sources.length<1)fail('sources');
  if(!Array.isArray(doc.cases)||doc.cases.length<1)fail('cases');
  const sourceIds=new Set();
@@ -36,7 +36,7 @@ export function validateBenchmark(doc){
   if(!isObject(item.expected)||!STATUSES.includes(item.expected.processingStatus)||!LABELS.includes(item.expected.relation))fail(item.caseId+' expected');
   if(item.expected.relation==='AMBIGUOUS'&&item.expected.processingStatus!=='ABSTAINED')fail(item.caseId+' ambiguous status');
   if(item.expected.relation!=='AMBIGUOUS'&&item.expected.processingStatus!=='RESOLVED')fail(item.caseId+' resolved status');
-  if(!isObject(item.annotation)||!['pilot-single-review','locked-double-review'].includes(item.annotation.tier))fail(item.caseId+' annotation tier');
+  if(!isObject(item.annotation)||!['pilot-single-review','locked-blind-single-review','locked-double-review'].includes(item.annotation.tier))fail(item.caseId+' annotation tier');
   if(typeof item.annotation.basis!=='string'||!item.annotation.basis.trim())fail(item.caseId+' annotation basis');
   if(typeof item.annotation.locator!=='string'||!item.annotation.locator.trim())fail(item.caseId+' locator');
  }
