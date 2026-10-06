@@ -63,9 +63,30 @@ function metricTokens(statement){
  return [...new Set(referentTokens(statement).filter(token=>token.length>=4&&!GENERIC.has(token)))];
 }
 
+// Last lexical qualifier immediately before a known financial metric phrase.
+// This binds "Services net sales" separately from "iPhone net sales" without
+// hard-coding issuer or benchmark vocabulary. Identical qualifiers such as
+// "total net sales", "Microsoft revenue" or "tool revenue" remain comparable.
+function metricQualifier(statement){
+ const text=normalize(statement);
+ const metric='(?:net sales|revenue|gross[- ]?margin|operating income|net income|(?:diluted )?earnings per share|eps)';
+ const match=text.match(new RegExp('\\b([a-z][a-z0-9-]*)\\s+'+metric+'\\b'));
+ if(!match)return null;
+ const token=match[1];
+ if(['the','latest','disclosed','reported','annual','quarterly','fiscal'].includes(token))return null;
+ return token;
+}
+
 function sharesMetric(claimStatement,evidenceStatement){
  const claimFamily=metricFamily(claimStatement),evidenceFamily=metricFamily(evidenceStatement);
  if(claimFamily&&evidenceFamily&&claimFamily!==evidenceFamily)return false;
+
+ const claimQualifier=metricQualifier(claimStatement);
+ const evidenceQualifier=metricQualifier(evidenceStatement);
+ if(claimFamily&&claimFamily===evidenceFamily&&claimQualifier&&evidenceQualifier){
+  return claimQualifier===evidenceQualifier;
+ }
+
  const claim=metricTokens(claimStatement);
  const evidence=metricTokens(evidenceStatement);
  if(!claim.length&&!evidence.length)return Boolean(claimFamily&&evidenceFamily&&claimFamily===evidenceFamily);
