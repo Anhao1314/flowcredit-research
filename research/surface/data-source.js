@@ -225,7 +225,6 @@ function loadLockedCase(folderName, folder) {
   try {
     const rows = proposalsDb.prepare('SELECT payload,hash FROM proposals ORDER BY id').all();
     const cases = [];
-  const whatChanged = loadWhatChangedDemo();
     let memory = null;
     const memoryFile = join(folder, 'memory.sqlite');
     if (existsSync(memoryFile)) {
@@ -299,6 +298,7 @@ export function loadWhatChangedDemo(file = WHAT_CHANGED_DEMO_FILE) {
 
 export function loadDemoCases({ dir = resolveDemoDir(), fallback = DEMO_FALLBACK_FILE } = {}) {
   const cases = [];
+  const whatChanged = loadWhatChangedDemo();
   if (existsSync(dir)) {
     for (const name of readdirSync(dir).sort()) {
       if (!name.startsWith('LOCK-')) continue;
