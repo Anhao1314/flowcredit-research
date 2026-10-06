@@ -59,37 +59,44 @@ function realChanges({ source, demo }) {
 
 
 function runtimePreview(data) {
-  if (!data) return \`<section class="panel quiet"><p class="note">Pairwise Relation runtime demo unavailable.</p></section>\`;
+  if (!data) return '<section class="panel quiet"><p class="note">Pairwise Relation runtime demo unavailable.</p></section>';
   const pairs = new Map((data.pairs ?? []).map((pair) => [pair.evidenceId, pair]));
   const receiptRows = (data.receipts ?? []).map((receipt) => {
     const pair = pairs.get(receipt.evidenceId);
     const tone = receipt.relation ? relationTone(String(receipt.relation).toLowerCase()) : (receipt.processingStatus === 'NOT_EVALUATED' ? 'caution' : 'neutral');
-    return \`<li class="record">
-      <div class="badge-row">\${badge(receipt.processingStatus, receipt.processingStatus === 'RESOLVED' ? 'positive' : receipt.processingStatus === 'NOT_EVALUATED' ? 'caution' : 'neutral')}\${receipt.relation ? badge(receipt.relation, tone) : badge('relation null', 'neutral')}</div>
-      <span>\${escapeHtml(pair?.claimStatement ?? receipt.claimId)}</span>
-      <span class="meta">Evidence: \${escapeHtml(pair?.evidenceStatement ?? receipt.evidenceId)} · rule \${escapeHtml(receipt.reasonCodes?.[0] ?? 'not recorded')}</span>
-    </li>\`;
+    return '<li class="record">' +
+      '<div class="badge-row">' +
+        badge(receipt.processingStatus, receipt.processingStatus === 'RESOLVED' ? 'positive' : receipt.processingStatus === 'NOT_EVALUATED' ? 'caution' : 'neutral') +
+        (receipt.relation ? badge(receipt.relation, tone) : badge('relation null', 'neutral')) +
+      '</div>' +
+      '<span>' + escapeHtml(pair?.claimStatement ?? receipt.claimId) + '</span>' +
+      '<span class="meta">Evidence: ' + escapeHtml(pair?.evidenceStatement ?? receipt.evidenceId) + ' · rule ' + escapeHtml(receipt.reasonCodes?.[0] ?? 'not recorded') + '</span>' +
+    '</li>';
   }).join('');
-  const candidateRows = (data.candidates ?? []).map((candidate) => \`
-    <li class="record">
-      <div class="badge-row">\${badge(candidate.relation, relationTone(String(candidate.relation).toLowerCase()))}\${badge('PENDING HUMAN REVIEW', 'caution')}</div>
-      <span>\${escapeHtml(candidate.claimStatement)}</span>
-      <span class="meta">New evidence: \${escapeHtml(candidate.evidenceStatement)} · Claim mutation allowed: no</span>
-    </li>\`).join('');
+  const candidateRows = (data.candidates ?? []).map((candidate) =>
+    '<li class="record">' +
+      '<div class="badge-row">' +
+        badge(candidate.relation, relationTone(String(candidate.relation).toLowerCase())) +
+        badge('PENDING HUMAN REVIEW', 'caution') +
+      '</div>' +
+      '<span>' + escapeHtml(candidate.claimStatement) + '</span>' +
+      '<span class="meta">New evidence: ' + escapeHtml(candidate.evidenceStatement) + ' · Claim mutation allowed: no</span>' +
+    '</li>'
+  ).join('');
 
-  return \`<section>
-    \${sectionHead('Pairwise Relation runtime', 'reproducible offline demo')}
-    <div class="count-row">
-      \${countChip(data.counts?.pairs ?? 0, 'pairs')}
-      \${countChip(data.counts?.resolved ?? 0, 'resolved')}
-      \${countChip(data.counts?.abstained ?? 0, 'abstained')}
-      \${countChip(data.counts?.notEvaluated ?? 0, 'not evaluated')}
-      \${countChip(data.counts?.candidates ?? 0, 'human-review candidates')}
-    </div>
-    <p class="note">This preview executes the committed Northstar fixture through RelationInput → Compatibility → gate → deterministic Relation → RelationReceipt. It performs no model or network call and never writes a Claim.</p>
-    <ul class="record-list">\${receiptRows}</ul>
-    \${candidateRows ? \`<h3>Directional changes requiring review</h3><ul class="record-list">\${candidateRows}</ul>\` : ''}
-  </section>\`;
+  return '<section>' +
+    sectionHead('Pairwise Relation runtime', 'reproducible offline demo') +
+    '<div class="count-row">' +
+      countChip(data.counts?.pairs ?? 0, 'pairs') +
+      countChip(data.counts?.resolved ?? 0, 'resolved') +
+      countChip(data.counts?.abstained ?? 0, 'abstained') +
+      countChip(data.counts?.notEvaluated ?? 0, 'not evaluated') +
+      countChip(data.counts?.candidates ?? 0, 'human-review candidates') +
+    '</div>' +
+    '<p class="note">This preview executes the committed Northstar fixture through RelationInput → Compatibility → gate → deterministic Relation → RelationReceipt. It performs no model or network call and never writes a Claim.</p>' +
+    '<ul class="record-list">' + receiptRows + '</ul>' +
+    (candidateRows ? '<h3>Directional changes requiring review</h3><ul class="record-list">' + candidateRows + '</ul>' : '') +
+  '</section>';
 }
 
 function demoCaseCard(demoCase) {
