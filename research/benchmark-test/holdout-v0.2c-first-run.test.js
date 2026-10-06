@@ -9,6 +9,8 @@ const protocol=JSON.parse(readFileSync(new URL('../benchmark/holdout-v0.2c-proto
 const lock=JSON.parse(readFileSync(new URL('../benchmark/holdout-v0.2c-dataset-lock.json',import.meta.url),'utf8'));
 const dataset=loadBenchmark(new URL('../benchmark/data/real-sec-fresh-blind-v0.2c.json',import.meta.url));
 const gate=JSON.parse(readFileSync(new URL('../benchmark/phase-gate-v0.2a.json',import.meta.url),'utf8'));
+const archived=JSON.parse(readFileSync(new URL('../benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json',import.meta.url),'utf8'));
+const resultLock=JSON.parse(readFileSync(new URL('../benchmark/holdout-v0.2c-result-lock.json',import.meta.url),'utf8'));
 
 function gitBlobSha(buffer){
  const bytes=Buffer.isBuffer(buffer)?buffer:Buffer.from(buffer);
@@ -19,7 +21,7 @@ function blobOf(path){
  return gitBlobSha(readFileSync(new URL('../../'+path,import.meta.url)));
 }
 
-test('v0.2C first blind run verifies all frozen bytes before executing R2 exactly once',()=>{
+test('v0.2C reproduces the archived first-blind result against frozen bytes',()=>{
  assert.equal(lock.status,'DATASET_LOCKED_NOT_EVALUATED');
  assert.equal(lock.evaluationState.r2ExecutedAgainstDataset,false);
  assert.equal(lock.evaluationState.firstPredictionExists,false);
@@ -27,6 +29,9 @@ test('v0.2C first blind run verifies all frozen bytes before executing R2 exactl
 
  assert.equal(blobOf(lock.datasetPath),lock.datasetGitBlobSha);
  assert.equal(blobOf(lock.protocolPath),lock.protocolGitBlobSha);
+ assert.equal(blobOf(resultLock.resultPath),resultLock.resultGitBlobSha);
+ assert.equal(resultLock.firstRun.githubActionsRunId,37448788181);
+ assert.equal(resultLock.firstRun.commit,'f0acde852d2007378ec84d3f9a659c32a54926dd');
  for(const [path,sha] of Object.entries(protocol.candidate.files))assert.equal(blobOf(path),sha,path);
  for(const [path,sha] of Object.entries(protocol.harness.files))assert.equal(blobOf(path),sha,path);
  assert.equal(blobOf(protocol.gate.path),protocol.gate.gitBlobSha,protocol.gate.path);
@@ -60,4 +65,14 @@ test('v0.2C first blind run verifies all frozen bytes before executing R2 exactl
   reasonCodes:row.reasonCodes
  }))));
  console.log('FRESH_BLIND_V02C_GATE '+JSON.stringify(phase));
+ assert.deepEqual(result.metrics,archived.metrics);
+ assert.deepEqual(result.counts,archived.counts);
+ assert.deepEqual(result.byLabel,archived.byLabel);
+ assert.deepEqual(result.byChallenge,archived.byChallenge);
+ assert.equal(phase.status,archived.phaseGate.status);
+ assert.deepEqual(phase.checks,archived.phaseGate.checks);
+ assert.deepEqual(
+  result.rows.filter(row=>!row.correct).map(row=>row.caseId),
+  archived.failures.map(row=>row.caseId)
+ );
 });
