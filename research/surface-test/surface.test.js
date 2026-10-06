@@ -78,18 +78,18 @@ test('server binds loopback only and serves the inbox', async (t) => {
 });
 
 test('UI-2.0 workbench shell exposes the research workflow without legacy assessment chrome', async (t) => {
-  const fixture = await makeFixture(t);
-  const { server, url } = await startFixtureServer(t, fixture);
-  const response = await httpGet(url);
-  assert.equal(response.status, 200);
-  for (const label of ['FlowCredit Research', 'Belief Workbench', '>Inbox<', '>Beliefs<', '>Evidence<', '>Timeline<']) {
-    assert.ok(response.body.includes(label), `missing workbench shell label: ${label}`);
-  }
-  assert.ok(response.body.includes('What needs your attention'));
-  assert.ok(response.body.includes('Attention queue'));
-  for (const legacy of ['New Assessment', 'TAI', 'CCI', 'Risk intelligence']) {
-    assert.ok(!response.body.includes(legacy), `legacy frontend language leaked into workbench: ${legacy}`);
-  }
+  await withSurface(t, async ({ url }) => {
+    const response = await httpGet(url);
+    assert.equal(response.status, 200);
+    for (const label of ['FlowCredit Research', 'Belief Workbench', '>Inbox<', '>Beliefs<', '>Evidence<', '>Timeline<']) {
+      assert.ok(response.body.includes(label), `missing workbench shell label: ${label}`);
+    }
+    assert.ok(response.body.includes('What needs your attention'));
+    assert.ok(response.body.includes('Attention queue'));
+    for (const legacy of ['New Assessment', 'TAI', 'CCI', 'Risk intelligence']) {
+      assert.ok(!response.body.includes(legacy), `legacy frontend language leaked into workbench: ${legacy}`);
+    }
+  });
 });
 
 test('inbox leads with attention signals recomputed from persisted data', async (t) => {
@@ -160,7 +160,7 @@ test('claim page shows belief, evidence links and revision history', async (t) =
     const response = await httpGet(`${url}/claim/${paths.claimOne}`);
     assert.equal(response.status, 200);
     assert.ok(response.body.includes('Fixture claims receipts are rising.'));
-    assert.ok(response.body.includes('Evidence behind it'));
+    assert.ok(response.body.includes('Reasoning evidence'));
     assert.ok(response.body.includes(`/evidence/${paths.evidenceOne}`));
     assert.ok(response.body.includes('Revision history'));
     assert.ok(response.body.includes('initial_ingest'));
@@ -407,7 +407,7 @@ test('changes page is honest in real mode and offers an explicit demo switch', a
   await withSurface(t, async ({ url }) => {
     const response = await httpGet(`${url}/changes`);
     assert.equal(response.status, 200);
-    assert.ok(response.body.includes('No real Claim changes yet.'));
+    assert.ok(response.body.includes('No authoritative belief changes yet.'));
     assert.ok(response.body.includes('offline pairwise Relation runtime baseline'));
     assert.ok(response.body.includes('no persisted real RelationReceipts or authoritative Claim proposal'));
     assert.ok(response.body.includes('<strong>0</strong> real Claim revision proposals'));
