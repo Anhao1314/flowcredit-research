@@ -1,7 +1,7 @@
 import {evaluateRelation} from '../relation-runtime/runtime.js';
+import {evaluateCandidateRelation} from '../relation-runtime/candidate-runtime.js';
 import {validateBenchmark} from './schema.js';
 
-const relationKey=receipt=>receipt.relation??'null';
 const safeDivide=(n,d)=>d?n/d:0;
 const round=value=>Math.round(value*10000)/10000;
 
@@ -25,10 +25,12 @@ function pairOf(item){
  };
 }
 
-export function scoreBenchmark(document){
+export function scoreBenchmark(document,{runtime='candidate'}={}){
  const doc=validateBenchmark(document);
+ const evaluator=runtime==='baseline'?evaluateRelation:runtime==='candidate'?evaluateCandidateRelation:null;
+ if(!evaluator)throw new Error('BENCHMARK_RUNTIME_UNKNOWN: '+runtime);
  const rows=doc.cases.map(item=>{
-  const receipt=evaluateRelation(pairOf(item));
+  const receipt=evaluator(pairOf(item));
   const predicted={processingStatus:receipt.processingStatus,relation:receipt.relation};
   const correct=predicted.processingStatus===item.expected.processingStatus&&predicted.relation===item.expected.relation;
   return {
@@ -65,6 +67,7 @@ export function scoreBenchmark(document){
  return {
   benchmarkVersion:doc.version,
   benchmarkStatus:doc.status,
+  runtime,
   evaluatedCases:rows.length,
   metrics:{
    overallAccuracy:round(safeDivide(correct,rows.length)),
