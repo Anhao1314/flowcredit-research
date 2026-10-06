@@ -276,3 +276,27 @@ The result is archived and locked:
 - `holdout-v0.2c-result-lock.json`
 
 v0.2C is no longer blind. All future executions on these 32 cases are repair/regression replays only. The first-run 56.25% result must never be overwritten by later repair scores.
+
+
+## Safety audit S1 — why v0.2C became unsafe
+
+The immutable first-blind result contains five safety failures. S1 groups them by code path rather than by issuer:
+
+| Family | Cases | Safety effect |
+| --- | ---: | --- |
+| Second-order unsafe fallback | **4** | 2 directional inversions + 2 unsafe directions on AMBIGUOUS gold |
+| Causal contradiction precedence | **1** | 1 COUNTERS → SUPPORTS inversion |
+
+The dominant defect is in second-order resolution. When no explicit comparable rate series is safely recognized, R2 currently falls back to generic Evidence quantities. That allows absolute levels and isolated rates to masquerade as a comparable growth-rate series.
+
+The frozen repair order is:
+
+1. `S1-R1-SECOND-ORDER-FAIL-CLOSED`
+2. `S1-R2-CAUSAL-CONTRADICTION-VETO`
+
+The first repair removes unsafe direction rather than adding semantic coverage: without two explicit comparable rates, second-order Claims must abstain.
+
+Machine-readable audit: `safety-audit-v0.2c-s1.json`  
+Human-readable audit: `SAFETY-AUDIT-v0.2c-S1.md`
+
+No runtime code, benchmark label, dataset byte, first-blind result or phase-gate threshold is changed by S1.

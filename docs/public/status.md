@@ -258,6 +258,19 @@ The result is immutable at `research/benchmark/results/real-sec-fresh-blind-v0.2
 
 Current state: **`FIRST_BLIND_ARCHIVED_FAIL`**. v0.2C is now regression-only.
 
+#### Safety failure audit S1
+
+The five archived safety failures are now traced to two implementation families:
+
+| Root cause | Incidents | Priority |
+| --- | ---: | --- |
+| Second-order generic-number fallback | **4 / 5** | **Repair first** |
+| Causal support before outcome contradiction | **1 / 5** | Repair second |
+
+The second-order path is the broader safety defect: when an explicit comparable rate series is unavailable, generic Evidence quantities can be treated as a rate series and produce unsupported direction. The next candidate repair must remove that fallback and abstain instead.
+
+This audit changes no runtime behavior. Its purpose is to freeze the safety diagnosis and repair order before code changes begin.
+
 
 ## PLANNED
 

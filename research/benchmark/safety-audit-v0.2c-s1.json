@@ -1,0 +1,112 @@
+{
+  "version": "flowcredit.safety_failure_audit/v0.2c-s1",
+  "status": "AUDIT_FROZEN_NO_RUNTIME_CHANGE",
+  "auditedAt": "2026-10-06T10:35:00.000Z",
+  "sourceResult": {
+    "path": "research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json",
+    "gitBlobSha": "0916d30a964d6878d1de8b683c42d37ae9773527",
+    "status": "FIRST_BLIND_ARCHIVED_FAIL"
+  },
+  "safetySummary": {
+    "directionalInversions": 3,
+    "unsafeDirectionalOnNonDirectionalGold": 2,
+    "auditedCases": 5
+  },
+  "families": [
+    {
+      "id": "SF-SECOND-ORDER-UNSAFE-FALLBACK",
+      "severity": "CRITICAL",
+      "cases": [
+        "FRESH-COST-007",
+        "FRESH-JPM-004",
+        "FRESH-JPM-007",
+        "FRESH-CRM-004"
+      ],
+      "observedFailures": {
+        "directionalInversions": [
+          "FRESH-JPM-004",
+          "FRESH-CRM-004"
+        ],
+        "unsafeDirectionalOnNonDirectionalGold": [
+          "FRESH-COST-007",
+          "FRESH-JPM-007"
+        ]
+      },
+      "mechanism": [
+        "The claim is recognized as second-order (for example acceleration).",
+        "orderedRateSeries(evidence) does not produce two safely comparable explicit rates.",
+        "The runtime falls back to generic evidence quantities via evidenceQuantities.map(scaled).",
+        "Absolute financial levels, isolated rates, and other numbers can therefore be treated as if they were a comparable rate series.",
+        "A directional SUPPORTS or COUNTERS result is emitted instead of fail-closed abstention."
+      ],
+      "codePath": [
+        "research/relation-runtime/candidate-r2-deterministic.js::requiresSecondOrder",
+        "research/relation-runtime/candidate-r2-deterministic.js::orderedRateSeries",
+        "research/relation-runtime/candidate-r2-deterministic.js::candidateR2DeterministicRelation"
+      ],
+      "safetyInvariantViolated": "Second-order direction must never be inferred from generic numeric quantities when an explicit comparable rate series is unavailable.",
+      "recommendedRepair": {
+        "id": "S1-R1-SECOND-ORDER-FAIL-CLOSED",
+        "boundary": [
+          "Remove generic-quantity fallback from second-order resolution.",
+          "Resolve second-order direction only from explicitly recognized comparable rates with temporal binding.",
+          "If fewer than two comparable rates are available, return ABSTAINED + AMBIGUOUS.",
+          "Do not attempt to improve total benchmark accuracy in the same repair."
+        ]
+      }
+    },
+    {
+      "id": "SF-CAUSAL-CONTRADICTION-PRECEDENCE",
+      "severity": "CRITICAL",
+      "cases": [
+        "FRESH-CAT-008"
+      ],
+      "observedFailures": {
+        "directionalInversions": [
+          "FRESH-CAT-008"
+        ],
+        "unsafeDirectionalOnNonDirectionalGold": []
+      },
+      "mechanism": [
+        "The claim and evidence both contain causal language and overlapping financial concepts.",
+        "causalDecision can return SUPPORTS before explicit outcome direction is checked.",
+        "The evidence states that operating profit decreased and that higher volume only partially offset negative drivers.",
+        "The claim states that higher volume fully offset the pressure and caused operating profit to increase.",
+        "The causal-support path therefore outranks explicit contradictory outcome evidence."
+      ],
+      "codePath": [
+        "research/relation-runtime/candidate-r2-deterministic.js::causalDecision",
+        "research/relation-runtime/candidate-r2-deterministic.js::candidateR2DeterministicRelation"
+      ],
+      "safetyInvariantViolated": "An explicit contradiction in the claimed outcome must veto a SUPPORTS decision from causal-attribution heuristics.",
+      "recommendedRepair": {
+        "id": "S1-R2-CAUSAL-CONTRADICTION-VETO",
+        "boundary": [
+          "Check explicit claimed-outcome direction against evidence before emitting causal SUPPORTS.",
+          "A clear outcome contradiction must return COUNTERS or safely abstain; it must never return SUPPORTS.",
+          "Preserve causal role alignment for non-contradictory cases.",
+          "Treat fully-offset versus partially-offset wording as an additional contradiction signal only when safely bound."
+        ]
+      }
+    }
+  ],
+  "repairPriority": [
+    {
+      "order": 1,
+      "repairId": "S1-R1-SECOND-ORDER-FAIL-CLOSED",
+      "rationale": "This single unsafe fallback explains four of the five archived safety failures and can be repaired conservatively by removing a directional fallback rather than adding semantic coverage."
+    },
+    {
+      "order": 2,
+      "repairId": "S1-R2-CAUSAL-CONTRADICTION-VETO",
+      "rationale": "This addresses the most severe single inversion, COUNTERS→SUPPORTS, but is isolated after the broader second-order safety defect."
+    }
+  ],
+  "nonGoals": [
+    "Do not repair general causal-attribution recall.",
+    "Do not repair mix inference, scope binding, or ordinary hard negatives.",
+    "Do not change v0.2C gold labels, gate thresholds, dataset bytes, or first-blind result.",
+    "Do not promote R2 to the default runtime.",
+    "Do not optimize overall accuracy during the safety-repair phase."
+  ]
+}
