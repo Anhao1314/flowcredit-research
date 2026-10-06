@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {buildRealityMatrix,runRealityBenchmark} from '../eval/relation-reality/benchmark.js';
 
 const archived=JSON.parse(readFileSync(new URL('../eval/relation-reality/results.json',import.meta.url),'utf8'));
