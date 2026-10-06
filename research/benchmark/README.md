@@ -178,3 +178,29 @@ R2 does not treat reversed roles, a different driver, or simple co-occurrence as
 R2 repaired exactly `HOLD-META-007`. Five non-causal failures remain. The original 17/24 first-blind result remains the only source-isolated estimate; R1 and R2 are post-failure repair replays.
 
 Archived replay: `results/causal-role-r2-replay-v0.2b.json`.
+
+
+## Fresh blind holdout v0.2C — protocol frozen
+
+R2 has now been frozen for the next source-isolated generalization check **before any v0.2C source or case is selected**.
+
+The protocol pins:
+
+- base commit `b7817dedd1c6d9b59cde15558b2036ca421c4ff7`;
+- R2 runtime Git blob SHAs;
+- benchmark evaluator and schema Git blob SHAs;
+- the existing phase-gate Git blob SHA and thresholds;
+- four unseen issuers × eight cases = 32 total cases;
+- fixed challenge-bucket counts;
+- the one-shot first-run and archival rules.
+
+Current state:
+
+`PROTOCOL_FROZEN_NO_DATASET`
+
+There is intentionally **no v0.2C score yet**.
+
+Protocol: `holdout-v0.2c-protocol.json`  
+Human-readable rules: `HOLDOUT-v0.2c.md`
+
+The next step is data collection under this frozen protocol, not runtime development.

@@ -223,6 +223,25 @@ The runtime aligns the driver and outcome separately instead of relying on undif
 R2 repaired exactly one additional archived case, the Meta driver/outcome role-binding failure. It remains an isolated experimental candidate and is not promoted to the default runtime. R1/R2 replay results are repair evidence, not fresh blind generalization estimates.
 
 
+### Fresh Blind Holdout v0.2C — PROTOCOL FROZEN
+
+The next source-isolated evaluation is frozen before dataset construction.
+
+| Item | Frozen state |
+| --- | --- |
+| Runtime | `relation-candidate/v0.2b-r2` |
+| Base commit | `b7817dedd1c6d9b59cde15558b2036ca421c4ff7` |
+| Issuers | 4 previously unused issuers |
+| Cases | 32 total, 8 per issuer |
+| Gate | unchanged v0.2A thresholds |
+| Dataset | **not created yet** |
+| Score | **does not exist yet** |
+
+Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta and CoreWeave are explicitly excluded from issuer selection.
+
+The runtime, evaluator, schema and gate Git blob SHAs are pinned in `research/benchmark/holdout-v0.2c-protocol.json`. CI verifies those locks. No v0.2C case may be probed against R2 before the complete dataset is committed and hashed.
+
+
 ## PLANNED
 
 - independently human-labeled 500+ pair semantic Relation benchmark
