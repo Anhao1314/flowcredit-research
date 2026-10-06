@@ -1,16 +1,33 @@
 {
   "version": "flowcredit.safety_failure_audit/v0.2c-s1",
   "status": "AUDIT_FROZEN_NO_RUNTIME_CHANGE",
-  "auditedAt": "2026-10-06T10:35:00.000Z",
+  "auditedAt": "2026-10-06T11:12:00.000Z",
   "sourceResult": {
     "path": "research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json",
     "gitBlobSha": "0916d30a964d6878d1de8b683c42d37ae9773527",
     "status": "FIRST_BLIND_ARCHIVED_FAIL"
   },
+  "sourceDataset": {
+    "path": "research/benchmark/data/real-sec-fresh-blind-v0.2c.json",
+    "gitBlobSha": "5602c516d3333f1fde665738fc8385bcd7b8a6d0",
+    "version": "flowcredit.relation_benchmark/real-sec-fresh-blind-v0.2c",
+    "cases": 32,
+    "issuers": 4
+  },
+  "sourceRuntime": {
+    "name": "relation-candidate/v0.2b-r2",
+    "path": "research/relation-runtime/candidate-r2-deterministic.js",
+    "gitBlobSha": "2b8b612e2f27fbf67722ba26a9f8e06cb6244676"
+  },
   "safetySummary": {
     "directionalInversions": 3,
     "unsafeDirectionalOnNonDirectionalGold": 2,
-    "auditedCases": 5
+    "auditedCases": 5,
+    "genericDefects": 2
+  },
+  "severityPolicy": {
+    "CRITICAL": "A resolved directional judgment is inverted against a directional gold label, including explicit COUNTERS evidence returned as SUPPORTS.",
+    "HIGH": "A directional judgment is emitted where the locked gold requires ABSTAINED + AMBIGUOUS because the evidence cannot establish the requested comparison."
   },
   "families": [
     {
@@ -32,28 +49,14 @@
           "FRESH-JPM-007"
         ]
       },
-      "mechanism": [
-        "The claim is recognized as second-order (for example acceleration).",
-        "orderedRateSeries(evidence) does not produce two safely comparable explicit rates.",
-        "The runtime falls back to generic evidence quantities via evidenceQuantities.map(scaled).",
-        "Absolute financial levels, isolated rates, and other numbers can therefore be treated as if they were a comparable rate series.",
-        "A directional SUPPORTS or COUNTERS result is emitted instead of fail-closed abstention."
-      ],
+      "genericDefect": "When orderedRateSeries does not yield two safely comparable explicit rates, the second-order path falls back to evidenceQuantities.map(scaled), allowing semantically incompatible numbers to determine acceleration/deceleration.",
+      "affectedRule": "RT_SECOND_ORDER_SERIES",
       "codePath": [
         "research/relation-runtime/candidate-r2-deterministic.js::requiresSecondOrder",
         "research/relation-runtime/candidate-r2-deterministic.js::orderedRateSeries",
-        "research/relation-runtime/candidate-r2-deterministic.js::candidateR2DeterministicRelation"
+        "research/relation-runtime/candidate-r2-deterministic.js::candidateR2DeterministicRelation/second-order"
       ],
-      "safetyInvariantViolated": "Second-order direction must never be inferred from generic numeric quantities when an explicit comparable rate series is unavailable.",
-      "recommendedRepair": {
-        "id": "S1-R1-SECOND-ORDER-FAIL-CLOSED",
-        "boundary": [
-          "Remove generic-quantity fallback from second-order resolution.",
-          "Resolve second-order direction only from explicitly recognized comparable rates with temporal binding.",
-          "If fewer than two comparable rates are available, return ABSTAINED + AMBIGUOUS.",
-          "Do not attempt to improve total benchmark accuracy in the same repair."
-        ]
-      }
+      "safetyInvariantViolated": "Second-order direction must never be inferred from generic numeric quantities when two safely comparable explicit rates are unavailable."
     },
     {
       "id": "SF-CAUSAL-CONTRADICTION-PRECEDENCE",
@@ -67,46 +70,160 @@
         ],
         "unsafeDirectionalOnNonDirectionalGold": []
       },
-      "mechanism": [
-        "The claim and evidence both contain causal language and overlapping financial concepts.",
-        "causalDecision can return SUPPORTS before explicit outcome direction is checked.",
-        "The evidence states that operating profit decreased and that higher volume only partially offset negative drivers.",
-        "The claim states that higher volume fully offset the pressure and caused operating profit to increase.",
-        "The causal-support path therefore outranks explicit contradictory outcome evidence."
-      ],
+      "genericDefect": "causalDecision can emit SUPPORTS before the claimed outcome direction is checked against explicit contradictory outcome evidence.",
+      "affectedRule": "RT_EXPLICIT_CAUSAL_ATTRIBUTION",
       "codePath": [
         "research/relation-runtime/candidate-r2-deterministic.js::causalDecision",
         "research/relation-runtime/candidate-r2-deterministic.js::candidateR2DeterministicRelation"
       ],
-      "safetyInvariantViolated": "An explicit contradiction in the claimed outcome must veto a SUPPORTS decision from causal-attribution heuristics.",
-      "recommendedRepair": {
-        "id": "S1-R2-CAUSAL-CONTRADICTION-VETO",
-        "boundary": [
-          "Check explicit claimed-outcome direction against evidence before emitting causal SUPPORTS.",
-          "A clear outcome contradiction must return COUNTERS or safely abstain; it must never return SUPPORTS.",
-          "Preserve causal role alignment for non-contradictory cases.",
-          "Treat fully-offset versus partially-offset wording as an additional contradiction signal only when safely bound."
-        ]
-      }
+      "safetyInvariantViolated": "Explicit contradiction of the claimed outcome must veto causal SUPPORTS."
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "FRESH-COST-007",
+      "failureType": "UNSAFE_DIRECTION_ON_AMBIGUOUS",
+      "rootCauseFamily": "SF-SECOND-ORDER-UNSAFE-FALLBACK",
+      "severity": "HIGH",
+      "affectedRule": "RT_SECOND_ORDER_SERIES",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "trigger": "Evidence contains 2024 and 2025 absolute membership-fee revenue levels but no prior comparable growth rate. orderedRateSeries cannot establish acceleration, then generic numeric fallback supplies a false series.",
+      "contributingDefects": [],
+      "repairPriority": 1,
+      "repairDisposition": "Fail closed when two explicit comparable rates are unavailable. Exact-score improvement is not required."
+    },
+    {
+      "caseId": "FRESH-JPM-004",
+      "failureType": "DIRECTIONAL_INVERSION",
+      "rootCauseFamily": "SF-SECOND-ORDER-UNSAFE-FALLBACK",
+      "severity": "CRITICAL",
+      "affectedRule": "RT_SECOND_ORDER_SERIES",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "trigger": "Evidence explicitly states roughly 9 percent growth in 2024 and 12 percent growth in 2025, but orderedRateSeries does not yield two distinct correctly year-bound rates for this wording and the path falls back to generic quantities.",
+      "contributingDefects": [
+        "RATE_SERIES_TEMPORAL_BINDING_GAP"
+      ],
+      "repairPriority": 1,
+      "repairDisposition": "First eliminate the unsafe fallback. A later isolated coverage repair may recover the explicit 9%→12% rate series; do not combine that parser expansion with the safety repair."
+    },
+    {
+      "caseId": "FRESH-JPM-007",
+      "failureType": "UNSAFE_DIRECTION_ON_AMBIGUOUS",
+      "rootCauseFamily": "SF-SECOND-ORDER-UNSAFE-FALLBACK",
+      "severity": "HIGH",
+      "affectedRule": "RT_SECOND_ORDER_SERIES",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "trigger": "Evidence provides only one annual growth rate, 3 percent, plus an absolute net-interest-income level. A single growth observation cannot establish acceleration, but generic quantities are used as a second-order series.",
+      "contributingDefects": [],
+      "repairPriority": 1,
+      "repairDisposition": "Fail closed to AMBIGUOUS when a prior comparable rate is absent."
+    },
+    {
+      "caseId": "FRESH-CRM-004",
+      "failureType": "DIRECTIONAL_INVERSION",
+      "rootCauseFamily": "SF-SECOND-ORDER-UNSAFE-FALLBACK",
+      "severity": "CRITICAL",
+      "affectedRule": "RT_SECOND_ORDER_SERIES",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "trigger": "Evidence explicitly states roughly 9 percent growth in fiscal 2025 and 10 percent growth in fiscal 2026, but orderedRateSeries does not yield two distinct correctly year-bound rates for this wording and the path falls back to generic quantities.",
+      "contributingDefects": [
+        "RATE_SERIES_TEMPORAL_BINDING_GAP"
+      ],
+      "repairPriority": 1,
+      "repairDisposition": "First eliminate the unsafe fallback. Rate-series parser coverage remains a separate follow-up."
+    },
+    {
+      "caseId": "FRESH-CAT-008",
+      "failureType": "DIRECTIONAL_INVERSION",
+      "rootCauseFamily": "SF-CAUSAL-CONTRADICTION-PRECEDENCE",
+      "severity": "CRITICAL",
+      "affectedRule": "RT_EXPLICIT_CAUSAL_ATTRIBUTION",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "predicted": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "trigger": "Claim says higher volume fully offset pressure and operating profit increased; evidence says operating profit decreased 15 percent and higher volume only partially offset unfavorable drivers. causalDecision returns SUPPORTS before explicit outcome contradiction can veto it.",
+      "contributingDefects": [],
+      "repairPriority": 2,
+      "repairDisposition": "Add an explicit claimed-outcome contradiction veto in a separate repair after the second-order fail-closed repair."
     }
   ],
   "repairPriority": [
     {
       "order": 1,
       "repairId": "S1-R1-SECOND-ORDER-FAIL-CLOSED",
-      "rationale": "This single unsafe fallback explains four of the five archived safety failures and can be repaired conservatively by removing a directional fallback rather than adding semantic coverage."
+      "targetFamily": "SF-SECOND-ORDER-UNSAFE-FALLBACK",
+      "rationale": "One generic unsafe fallback explains four of five archived safety incidents. Removing it is conservative and reduces unsupported direction without adding semantic coverage.",
+      "acceptance": [
+        "No second-order directional decision may be produced from evidenceQuantities.map(scaled) when an explicit comparable rate series is unavailable.",
+        "The four audited cases must no longer fail through RT_SECOND_ORDER_SERIES on a generic-number fallback.",
+        "No new directional inversion or unsafe directional-on-non-directional-gold failure may be introduced on the locked v0.2C regression set.",
+        "Do not require overall accuracy to improve; JPM-004 and CRM-004 may safely abstain until a later parser-coverage repair."
+      ]
     },
     {
       "order": 2,
       "repairId": "S1-R2-CAUSAL-CONTRADICTION-VETO",
-      "rationale": "This addresses the most severe single inversion, COUNTERS→SUPPORTS, but is isolated after the broader second-order safety defect."
+      "targetFamily": "SF-CAUSAL-CONTRADICTION-PRECEDENCE",
+      "rationale": "This addresses the remaining explicit COUNTERS→SUPPORTS inversion after the broader second-order unsafe fallback is isolated.",
+      "acceptance": [
+        "Explicit contradiction of the claimed outcome must veto causal SUPPORTS.",
+        "FRESH-CAT-008 must never resolve SUPPORTS under the repaired rule.",
+        "Preserve causal role alignment on non-contradictory regression cases."
+      ]
+    }
+  ],
+  "followUps": [
+    {
+      "id": "FOLLOWUP-RATE-SERIES-TEMPORAL-BINDING",
+      "status": "DEFERRED",
+      "cases": [
+        "FRESH-JPM-004",
+        "FRESH-CRM-004"
+      ],
+      "note": "These cases contain valid explicit comparable rates that the current parser fails to bind correctly. This is a coverage defect, not the generic safety defect. Repair only after fail-closed behavior is proven."
     }
   ],
   "nonGoals": [
+    "Do not modify R2 runtime during S1.",
+    "Do not repair rate-series parser coverage during S1.",
     "Do not repair general causal-attribution recall.",
     "Do not repair mix inference, scope binding, or ordinary hard negatives.",
-    "Do not change v0.2C gold labels, gate thresholds, dataset bytes, or first-blind result.",
+    "Do not change v0.2C benchmark cases, gold labels, phase-gate thresholds, dataset bytes, or first-blind result.",
     "Do not promote R2 to the default runtime.",
-    "Do not optimize overall accuracy during the safety-repair phase."
+    "Do not optimize overall accuracy during the safety-repair phase.",
+    "Do not describe any v0.2C replay after the archived first run as blind."
   ]
 }
