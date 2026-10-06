@@ -1,0 +1,919 @@
+{
+  "version": "flowcredit.relation_benchmark/real-sec-fresh-blind-v0.2c",
+  "status": "LOCKED_BLIND_HOLDOUT_SINGLE_REVIEW",
+  "frozenAt": "2026-10-06T09:31:00.000Z",
+  "protocol": "flowcredit.fresh_blind_protocol/v0.2c",
+  "task": "pairwise Evidence x specific Claim Revision relation classification",
+  "labels": [
+    "SUPPORTS",
+    "COUNTERS",
+    "NEUTRAL",
+    "AMBIGUOUS"
+  ],
+  "notes": [
+    "Dataset authored after the v0.2C protocol freeze and before any R2 evaluation.",
+    "Evidence statements are concise paraphrases or arithmetic summaries of cited primary SEC filing facts.",
+    "R1/R2 repair results and the prior v0.2B holdout were not used to select or relabel individual v0.2C cases.",
+    "This dataset is a single-review engineering holdout, not publication-grade gold."
+  ],
+  "sources": [
+    {
+      "sourceId": "SEC-COST-2025-10K",
+      "issuer": "Costco Wholesale Corporation",
+      "cik": "0000909832",
+      "form": "10-K",
+      "periodEnd": "2025-08-31",
+      "accession": "0000909832-25-000101",
+      "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+      "locators": [
+        "Item 7, Net Sales",
+        "Item 7, Membership Fees",
+        "Item 7, Gross Margin",
+        "Note on reportable segments"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-JPM-2025-10K",
+      "issuer": "JPMorgan Chase & Co.",
+      "cik": "0000019617",
+      "form": "10-K",
+      "periodEnd": "2025-12-31",
+      "accession": "0001628280-26-008131",
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm",
+      "locators": [
+        "Item 7, Executive Overview",
+        "Consumer & Community Banking results",
+        "Commercial & Investment Bank results",
+        "Asset & Wealth Management results"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-CRM-2026-10K",
+      "issuer": "Salesforce, Inc.",
+      "cik": "0001108524",
+      "form": "10-K",
+      "periodEnd": "2026-01-31",
+      "accession": "0001108524-26-000060",
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm",
+      "locators": [
+        "Item 7, Highlights from Fiscal 2026",
+        "Item 7, Revenues",
+        "Subscription and Support Revenues by Service Offering",
+        "Remaining Performance Obligation"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    },
+    {
+      "sourceId": "SEC-CAT-2025-10K",
+      "issuer": "Caterpillar Inc.",
+      "cik": "0000018230",
+      "form": "10-K",
+      "periodEnd": "2025-12-31",
+      "accession": "0000018230-26-000008",
+      "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231.htm",
+      "locators": [
+        "Item 7, Overview",
+        "Consolidated Operating Profit",
+        "Segment discussion",
+        "Statement 1, Consolidated Results of Operations"
+      ],
+      "evidenceMode": "paraphrased_facts"
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "FRESH-COST-001",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-001",
+        "revisionId": "CLAIM-FRESH-COST-001:v1",
+        "statement": "Costco net sales increased from fiscal 2024 to fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-001",
+        "statement": "Costco net sales were 249625 million USD in 2024 and 269912 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "2025 net sales exceed 2024 net sales.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-002",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-002",
+        "revisionId": "CLAIM-FRESH-COST-002:v1",
+        "statement": "Costco gross margin percentage increased from fiscal 2024 to fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-002",
+        "statement": "Costco gross margin percentage was 10.92 percent in 2024 and 11.12 percent in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Gross margin percentage rose by 20 basis points.",
+        "locator": "Item 7, Gross Margin"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-003",
+      "split": "fresh-blind",
+      "bucket": "hard_negative",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-003",
+        "revisionId": "CLAIM-FRESH-COST-003:v1",
+        "statement": "Costco membership fee revenue increased in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-003",
+        "statement": "Costco United States operating income was 6217 million USD in 2024 and 6878 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "United States operating income does not directionally establish membership fee revenue.",
+        "locator": "Note on reportable segments"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-004",
+      "split": "fresh-blind",
+      "bucket": "second_order",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-004",
+        "revisionId": "CLAIM-FRESH-COST-004:v1",
+        "statement": "Costco total-company comparable sales growth accelerated in fiscal 2025 compared with fiscal 2024."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-004",
+        "statement": "Costco total-company comparable sales growth was 5 percent in 2024 and 6 percent in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Comparable-sales growth increased from 5% to 6%.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-005",
+      "split": "fresh-blind",
+      "bucket": "causal_attribution",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-005",
+        "revisionId": "CLAIM-FRESH-COST-005:v1",
+        "statement": "Higher comparable sales were a primary driver of Costco's net sales increase in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-005",
+        "statement": "Costco net sales increased 20287 million USD or 8 percent in 2025, and the filing says the improvement was primarily attributable to a 14788 million USD or 6 percent increase in comparable sales."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly attributes most of the net-sales improvement to comparable sales.",
+        "locator": "Item 7, Net Sales"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-006",
+      "split": "fresh-blind",
+      "bucket": "scope_or_metric_binding",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-006",
+        "revisionId": "CLAIM-FRESH-COST-006:v1",
+        "statement": "Costco Canada operating income increased from fiscal 2024 to fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-006",
+        "statement": "Costco Other International operating income was 1420 million USD in 2024 and 1656 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The metric matches but the segment scope is Other International, not Canada.",
+        "locator": "Note on reportable segments"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-007",
+      "split": "fresh-blind",
+      "bucket": "insufficient_context",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-007",
+        "revisionId": "CLAIM-FRESH-COST-007:v1",
+        "statement": "Costco membership fee revenue growth accelerated in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-007",
+        "statement": "Costco membership fee revenue was 4828 million USD in 2024 and 5323 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The pair establishes 2025 growth but provides no prior comparable growth rate for acceleration.",
+        "locator": "Item 7, Membership Fees"
+      }
+    },
+    {
+      "caseId": "FRESH-COST-008",
+      "split": "fresh-blind",
+      "bucket": "mixed_hard",
+      "sourceId": "SEC-COST-2025-10K",
+      "challenge": "causal_hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-COST-008",
+        "revisionId": "CLAIM-FRESH-COST-008:v1",
+        "statement": "Fresh foods were the sole cause of Costco's gross margin percentage improvement in fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-COST-008",
+        "statement": "Costco gross margin percentage increased 20 basis points; core merchandise contributed positively, primarily due to fresh foods and the co-branded credit card program, while other factors including a LIFO charge were negative."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing identifies multiple positive and negative contributors, so fresh foods were not the sole cause.",
+        "locator": "Item 7, Gross Margin"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-001",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-001",
+        "revisionId": "CLAIM-FRESH-JPM-001:v1",
+        "statement": "JPMorgan Chase total net revenue increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-001",
+        "statement": "JPMorgan Chase total net revenue was 177556 million USD in 2024 and 182447 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "2025 total net revenue exceeds 2024.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-002",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "direction_text",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-002",
+        "revisionId": "CLAIM-FRESH-JPM-002:v1",
+        "statement": "JPMorgan Chase net income increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-002",
+        "statement": "JPMorgan Chase reported net income of 57.0 billion USD for 2025, down 2 percent from 2024."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly reports a 2% decline in net income.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-003",
+      "split": "fresh-blind",
+      "bucket": "hard_negative",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-003",
+        "revisionId": "CLAIM-FRESH-JPM-003:v1",
+        "statement": "JPMorgan Chase net interest income increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-003",
+        "statement": "Firmwide Wealth Management client assets were 3756 billion USD in 2024 and 4521 billion USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Client assets do not directionally establish firmwide net interest income.",
+        "locator": "Asset & Wealth Management results"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-004",
+      "split": "fresh-blind",
+      "bucket": "second_order",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-004",
+        "revisionId": "CLAIM-FRESH-JPM-004:v1",
+        "statement": "Asset & Wealth Management net revenue growth accelerated in 2025 compared with 2024."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-004",
+        "statement": "Asset & Wealth Management net revenue was 19827 million USD in 2023, 21578 million USD in 2024 and 24073 million USD in 2025, corresponding to roughly 9 percent growth in 2024 and 12 percent growth in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The annual growth rate increased from about 9% to about 12%.",
+        "locator": "Asset & Wealth Management results"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-005",
+      "split": "fresh-blind",
+      "bucket": "causal_attribution",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-005",
+        "revisionId": "CLAIM-FRESH-JPM-005:v1",
+        "statement": "Higher Markets net interest income contributed to JPMorgan Chase's firmwide net interest income growth in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-005",
+        "statement": "Firmwide net interest income was 95.4 billion USD, up 3 percent in 2025, driven in part by higher Markets net interest income, alongside higher revolving balances, wholesale deposit balances and investment-securities activity."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly lists higher Markets net interest income as a driver.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-006",
+      "split": "fresh-blind",
+      "bucket": "scope_or_metric_binding",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-006",
+        "revisionId": "CLAIM-FRESH-JPM-006:v1",
+        "statement": "Consumer & Community Banking net income increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-006",
+        "statement": "Commercial & Investment Bank net income was 24846 million USD in 2024 and 27761 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The metric matches but the business segment is Commercial & Investment Bank, not Consumer & Community Banking.",
+        "locator": "Commercial & Investment Bank results"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-007",
+      "split": "fresh-blind",
+      "bucket": "insufficient_context",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-007",
+        "revisionId": "CLAIM-FRESH-JPM-007:v1",
+        "statement": "JPMorgan Chase net interest income growth accelerated in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-007",
+        "statement": "JPMorgan Chase net interest income was 95.4 billion USD in 2025, up 3 percent from 2024."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "A single annual growth rate does not establish acceleration.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-JPM-008",
+      "split": "fresh-blind",
+      "bucket": "mixed_hard",
+      "sourceId": "SEC-JPM-2025-10K",
+      "challenge": "causal_hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-JPM-008",
+        "revisionId": "CLAIM-FRESH-JPM-008:v1",
+        "statement": "JPMorgan Chase net income increased in 2025 because total net revenue increased."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-JPM-008",
+        "statement": "JPMorgan Chase total net revenue increased 3 percent in 2025, while net income declined 2 percent to 57.0 billion USD."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The claimed outcome is directly contradicted: net income declined despite higher revenue.",
+        "locator": "Item 7, Executive Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-001",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-001",
+        "revisionId": "CLAIM-FRESH-CRM-001:v1",
+        "statement": "Salesforce total revenue increased from fiscal 2025 to fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-001",
+        "statement": "Salesforce total revenue was 37895 million USD in fiscal 2025 and 41525 million USD in fiscal 2026."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Fiscal 2026 revenue exceeds fiscal 2025 revenue.",
+        "locator": "Item 7, Revenues"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-002",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-002",
+        "revisionId": "CLAIM-FRESH-CRM-002:v1",
+        "statement": "Salesforce operating margin increased from fiscal 2025 to fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-002",
+        "statement": "Salesforce operating margin was approximately 19 percent in fiscal 2025 and approximately 20 percent in fiscal 2026."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Operating margin increased by about one percentage point.",
+        "locator": "Item 7, Highlights from Fiscal 2026"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-003",
+      "split": "fresh-blind",
+      "bucket": "hard_negative",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-003",
+        "revisionId": "CLAIM-FRESH-CRM-003:v1",
+        "statement": "Salesforce remaining performance obligation increased by January 31, 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-003",
+        "statement": "Salesforce cash, cash equivalents and marketable securities were 14032 million USD at January 31, 2025 and 9565 million USD at January 31, 2026."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Cash and marketable securities do not directionally establish remaining performance obligation.",
+        "locator": "Item 7, selected balance-sheet metrics"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-004",
+      "split": "fresh-blind",
+      "bucket": "second_order",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-004",
+        "revisionId": "CLAIM-FRESH-CRM-004:v1",
+        "statement": "Salesforce total revenue growth accelerated in fiscal 2026 compared with fiscal 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-004",
+        "statement": "Salesforce total revenue was 34857 million USD in fiscal 2024, 37895 million USD in fiscal 2025 and 41525 million USD in fiscal 2026, corresponding to roughly 9 percent growth in fiscal 2025 and 10 percent growth in fiscal 2026."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The annual growth rate increased from roughly 9% to roughly 10%.",
+        "locator": "Consolidated revenue table"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-005",
+      "split": "fresh-blind",
+      "bucket": "causal_attribution",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-005",
+        "revisionId": "CLAIM-FRESH-CRM-005:v1",
+        "statement": "Volume-driven new business was the primary cause of Salesforce subscription and support revenue growth in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-005",
+        "statement": "Salesforce says the increase in subscription and support revenue in fiscal 2026 was primarily caused by volume-driven increases from new business, including new customers, upgrades and additional subscriptions from existing customers."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly identifies volume-driven new business as the primary cause.",
+        "locator": "Item 7, Revenues"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-006",
+      "split": "fresh-blind",
+      "bucket": "scope_or_metric_binding",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-006",
+        "revisionId": "CLAIM-FRESH-CRM-006:v1",
+        "statement": "Salesforce Europe revenue increased in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-006",
+        "statement": "Salesforce Americas revenue was 25143 million USD in fiscal 2025 and 27193 million USD in fiscal 2026."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The metric matches but the geography is Americas, not Europe.",
+        "locator": "Item 7, Revenues by Geography"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-007",
+      "split": "fresh-blind",
+      "bucket": "insufficient_context",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-007",
+        "revisionId": "CLAIM-FRESH-CRM-007:v1",
+        "statement": "Salesforce remaining performance obligation growth accelerated by January 31, 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-007",
+        "statement": "Salesforce remaining performance obligation was 63.4 billion USD at January 31, 2025 and 72.4 billion USD at January 31, 2026, an increase of about 14 percent."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The pair provides only the latest growth interval, not a prior comparable growth rate.",
+        "locator": "Remaining Performance Obligation"
+      }
+    },
+    {
+      "caseId": "FRESH-CRM-008",
+      "split": "fresh-blind",
+      "bucket": "mixed_hard",
+      "sourceId": "SEC-CRM-2026-10K",
+      "challenge": "causal_hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CRM-008",
+        "revisionId": "CLAIM-FRESH-CRM-008:v1",
+        "statement": "Pricing was a significant driver of Salesforce subscription and support revenue growth in fiscal 2026."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CRM-008",
+        "statement": "Salesforce says subscription and support revenue growth was primarily caused by volume-driven new business and that pricing was not a significant driver of the increase."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing explicitly states that pricing was not a significant driver.",
+        "locator": "Item 7, Revenues"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-001",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "numeric_series",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-001",
+        "revisionId": "CLAIM-FRESH-CAT-001:v1",
+        "statement": "Caterpillar total sales and revenues increased from 2024 to 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-001",
+        "statement": "Caterpillar total sales and revenues were 64809 million USD in 2024 and 67589 million USD in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "2025 total sales and revenues exceed 2024.",
+        "locator": "Item 7, Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-002",
+      "split": "fresh-blind",
+      "bucket": "numeric_or_trend",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "direction_text",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-002",
+        "revisionId": "CLAIM-FRESH-CAT-002:v1",
+        "statement": "Caterpillar operating profit margin increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-002",
+        "statement": "Caterpillar operating profit margin was 20.2 percent in 2024 and 16.5 percent in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Operating profit margin decreased by 3.7 percentage points.",
+        "locator": "Item 7, Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-003",
+      "split": "fresh-blind",
+      "bucket": "hard_negative",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-003",
+        "revisionId": "CLAIM-FRESH-CAT-003:v1",
+        "statement": "Caterpillar profit per share increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-003",
+        "statement": "Caterpillar total sales and revenues increased 4 percent in 2025 to 67.589 billion USD."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Sales growth does not directionally establish profit per share.",
+        "locator": "Item 7, Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-004",
+      "split": "fresh-blind",
+      "bucket": "second_order",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "second_order",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-004",
+        "revisionId": "CLAIM-FRESH-CAT-004:v1",
+        "statement": "Caterpillar total sales and revenue growth accelerated in 2025 compared with 2024."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-004",
+        "statement": "Caterpillar total sales and revenues were 67060 million USD in 2023, 64809 million USD in 2024 and 67589 million USD in 2025, corresponding to about negative 3 percent growth in 2024 and positive 4 percent growth in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "Growth improved from a decline in 2024 to positive growth in 2025.",
+        "locator": "Statement 1, Consolidated Results of Operations"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-005",
+      "split": "fresh-blind",
+      "bucket": "causal_attribution",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "causal_attribution",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-005",
+        "revisionId": "CLAIM-FRESH-CAT-005:v1",
+        "statement": "Higher sales volume was a primary driver of Caterpillar's increase in total sales and revenues in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-005",
+        "statement": "Caterpillar says the 2025 increase in total sales and revenues reflected higher sales volume, partially offset by unfavorable price realization; higher sales volume was primarily driven by higher equipment sales to end users."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "SUPPORTS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing directly attributes the increase to higher sales volume, with price realization as an offset.",
+        "locator": "Item 7, Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-006",
+      "split": "fresh-blind",
+      "bucket": "scope_or_metric_binding",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-006",
+        "revisionId": "CLAIM-FRESH-CAT-006:v1",
+        "statement": "Caterpillar Construction Industries sales increased in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-006",
+        "statement": "Caterpillar reports that sales were higher in Power & Energy in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "NEUTRAL"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The sales direction is for Power & Energy, not Construction Industries.",
+        "locator": "Item 7, segment overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-007",
+      "split": "fresh-blind",
+      "bucket": "insufficient_context",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "missing_comparison",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-007",
+        "revisionId": "CLAIM-FRESH-CAT-007:v1",
+        "statement": "Caterpillar operating profit margin compression intensified in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-007",
+        "statement": "Caterpillar operating profit margin decreased from 20.2 percent in 2024 to 16.5 percent in 2025."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "ABSTAINED",
+        "relation": "AMBIGUOUS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The pair establishes compression in 2025 but not whether the compression intensified versus a prior change.",
+        "locator": "Item 7, Overview"
+      }
+    },
+    {
+      "caseId": "FRESH-CAT-008",
+      "split": "fresh-blind",
+      "bucket": "mixed_hard",
+      "sourceId": "SEC-CAT-2025-10K",
+      "challenge": "causal_hard_negative",
+      "claim": {
+        "claimId": "CLAIM-FRESH-CAT-008",
+        "revisionId": "CLAIM-FRESH-CAT-008:v1",
+        "statement": "Higher sales volume fully offset manufacturing-cost and price-realization pressure, causing Caterpillar operating profit to increase in 2025."
+      },
+      "evidence": {
+        "evidenceId": "EVID-FRESH-CAT-008",
+        "statement": "Caterpillar operating profit decreased 15 percent in 2025, primarily due to unfavorable manufacturing costs and unfavorable price realization, partially offset by the profit impact of higher sales volume."
+      },
+      "asOf": "2026-10-06T09:30:00.000Z",
+      "expected": {
+        "processingStatus": "RESOLVED",
+        "relation": "COUNTERS"
+      },
+      "annotation": {
+        "tier": "locked-blind-single-review",
+        "basis": "The filing reports that higher sales volume only partially offset the pressures and operating profit decreased.",
+        "locator": "Consolidated Operating Profit"
+      }
+    }
+  ]
+}
