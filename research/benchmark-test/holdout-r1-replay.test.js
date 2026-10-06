@@ -7,6 +7,7 @@ import {scoreBenchmark,evaluateGate} from '../benchmark/evaluate.js';
 const holdout=loadBenchmark(new URL('../benchmark/data/real-sec-blind-holdout-v0.2b.json',import.meta.url));
 const original=JSON.parse(readFileSync(new URL('../benchmark/results/real-sec-blind-holdout-v0.2b.json',import.meta.url),'utf8'));
 const gate=JSON.parse(readFileSync(new URL('../benchmark/phase-gate-v0.2a.json',import.meta.url),'utf8'));
+const archivedR1=JSON.parse(readFileSync(new URL('../benchmark/results/causal-reflection-r1-replay-v0.2b.json',import.meta.url),'utf8'));
 
 test('R1 replays the locked holdout without altering the archived first-blind result',()=>{
  assert.equal(original.metrics.overallAccuracy,0.7083);
@@ -33,4 +34,11 @@ test('R1 replays the locked holdout without altering the archived first-blind re
  }))));
  console.log('CAUSAL_R1_HOLDOUT_GATE '+JSON.stringify(phase));
  assert.equal(result.evaluatedCases,24);
+ assert.deepEqual(result.metrics,archivedR1.metrics);
+ assert.deepEqual(result.counts,archivedR1.counts);
+ assert.equal(phase.status,archivedR1.phaseGate.status);
+ assert.deepEqual(
+  result.rows.filter(row=>!row.correct).map(row=>row.caseId),
+  archivedR1.remainingFailures
+ );
 });
