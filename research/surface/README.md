@@ -1,14 +1,13 @@
-# FlowCredit Local Research Surface (UI-1.5)
+# FlowCredit Research Workbench (UI-2.0A)
 
-A development-only, read-only, loopback-only web surface that renders the real
-Research Memory (Claims, Evidence, Sources, provenance) through server-side
-HTML. It exists so the project owner can experience the current information
-architecture before any production frontend work is considered.
+A development-only, read-only, loopback-only Research Workbench for the real
+Research Memory. UI-2.0A replaces the previous object-browser presentation with
+an attention-first research shell: Inbox, Beliefs, Evidence and Timeline.
 
-UI-1.5 is a visual-architecture pass only: it changes composition and styling
-(workspace shell, dense rows, context panels, lineage lanes) without touching
-any product semantics, data source, route contract, query behavior, or demo
-isolation rule.
+UI-2.0A is presentation-only. It changes visual hierarchy, product language,
+workspace composition and the active product entry point without changing
+Research Memory semantics, route contracts, query behavior, authority rules,
+relation runtime behavior, data sources or demo isolation.
 
 It is **not** a production frontend. It does not deploy, does not call any
 model, does not fetch from the network in the browser, and never writes.
@@ -118,12 +117,12 @@ completeness" summary (deeper admission provenance vs partial provenance,
 latest activity). These are research workflow signals; they do not express
 risk, quality or investment views.
 
-## Workspace shell (UI-1.5)
+## Workbench shell (UI-2.0A)
 
 ```text
 topbar        brand · current work scope · LOCAL / READ ONLY / AI OFF[/DEMO]
 ───────────────────────────────────────────────────────────────────────
-left rail     Research Inbox · Claims · Evidence · What Changed
+left rail     Inbox · Beliefs · Evidence · Timeline
               (current item marked with aria-current + accent rail mark)
 main zone     the page itself, max 1280px, no centered-article column
 context zone  quiet side panels with real research state where useful
@@ -198,7 +197,17 @@ The same tests run under the repository release gate through
 `agent/test/surface.test.js` (thin importer). Real-data assertions skip
 automatically when the runtime Research Memory is not present.
 
-## Known limitations (UI-1.5)
+
+## Legacy frontend retirement
+
+The root static risk-assessment UI is no longer an active product entry point.
+The repository may temporarily retain legacy `assets/` files only because older
+regression tests still execute those frozen browser artifacts. They are not
+loaded by the root page and are not part of the Research Workbench. Physical
+asset/test deletion is intentionally deferred to a separate retirement branch
+after equivalent Research Workbench protections exist.
+
+## Known limitations (UI-2.0A)
 
 - No real ClaimRevisionProposal exists for real data yet; `/changes` states this.
 - No `Needs Review` backend state exists; it is a demo-only preview control.
