@@ -1,0 +1,180 @@
+{
+  "version": "flowcredit.blind_holdout_results/v0.2b",
+  "measuredAt": "2026-10-06T08:18:41Z",
+  "benchmark": "flowcredit.relation_benchmark/real-sec-blind-holdout-v0.2b",
+  "benchmarkStatus": "LOCKED_BLIND_HOLDOUT_SINGLE_REVIEW",
+  "baseCommit": "c3ee41224f2dc4245461ecb12b43dcf69f178667",
+  "frozenDatasetGitBlobSha": "2ea85efabde4014eb21fa6ff69b3a9d97058fe74",
+  "candidateRuntime": "relation-candidate/v0.2a.1",
+  "cases": 24,
+  "sources": 3,
+  "issuers": [
+    "Amazon.com, Inc.",
+    "Alphabet Inc.",
+    "Meta Platforms, Inc."
+  ],
+  "metrics": {
+    "overallAccuracy": 0.7083,
+    "directionalAccuracy": 0.6667,
+    "directionalInversionRate": 0,
+    "unsafeDirectionalErrorRate": 0,
+    "ambiguousAbstentionRecall": 0.6667
+  },
+  "counts": {
+    "correct": 17,
+    "incorrect": 7,
+    "directionalGold": 18,
+    "nonDirectionalGold": 6
+  },
+  "byLabel": {
+    "SUPPORTS": {
+      "n": 12,
+      "correct": 8,
+      "accuracy": 0.6667
+    },
+    "COUNTERS": {
+      "n": 6,
+      "correct": 4,
+      "accuracy": 0.6667
+    },
+    "NEUTRAL": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    "AMBIGUOUS": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    }
+  },
+  "byChallenge": {
+    "numeric_series": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    "second_order": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    },
+    "mix_inference": {
+      "n": 1,
+      "correct": 0,
+      "accuracy": 0
+    },
+    "numeric_threshold": {
+      "n": 7,
+      "correct": 6,
+      "accuracy": 0.8571
+    },
+    "causal_attribution": {
+      "n": 3,
+      "correct": 1,
+      "accuracy": 0.3333
+    },
+    "hard_negative": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    "missing_comparison": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    },
+    "direction_text": {
+      "n": 1,
+      "correct": 0,
+      "accuracy": 0
+    }
+  },
+  "phaseGate": {
+    "status": "FAIL",
+    "checks": {
+      "overallAccuracy": false,
+      "directionalAccuracy": false,
+      "directionalInversionRate": true,
+      "unsafeDirectionalErrorRate": true,
+      "ambiguousAbstentionRecall": false
+    },
+    "thresholds": {
+      "overallAccuracyMin": 0.85,
+      "directionalAccuracyMin": 0.9,
+      "directionalInversionRateMax": 0.02,
+      "unsafeDirectionalErrorRateMax": 0.05,
+      "ambiguousAbstentionRecallMin": 0.9
+    }
+  },
+  "failures": [
+    {
+      "caseId": "HOLD-AMZN-003",
+      "challenge": "mix_inference",
+      "expected": "SUPPORTS",
+      "predicted": "AMBIGUOUS",
+      "processingStatus": "ABSTAINED",
+      "reason": "RT_MIX_COMPARISON_MISSING"
+    },
+    {
+      "caseId": "HOLD-AMZN-004",
+      "challenge": "numeric_threshold",
+      "expected": "COUNTERS",
+      "predicted": "NEUTRAL",
+      "processingStatus": "RESOLVED",
+      "reason": "RT_NON_BEARING_METRIC"
+    },
+    {
+      "caseId": "HOLD-AMZN-005",
+      "challenge": "causal_attribution",
+      "expected": "SUPPORTS",
+      "predicted": "NEUTRAL",
+      "processingStatus": "RESOLVED",
+      "reason": "RT_CAUSAL_LINK_ABSENT"
+    },
+    {
+      "caseId": "HOLD-AMZN-007",
+      "challenge": "missing_comparison",
+      "expected": "AMBIGUOUS",
+      "predicted": "NEUTRAL",
+      "processingStatus": "RESOLVED",
+      "reason": "RT_NON_BEARING_METRIC"
+    },
+    {
+      "caseId": "HOLD-GOOG-004",
+      "challenge": "direction_text",
+      "expected": "COUNTERS",
+      "predicted": "AMBIGUOUS",
+      "processingStatus": "ABSTAINED",
+      "reason": "RT_DETERMINISTIC_WITHHELD"
+    },
+    {
+      "caseId": "HOLD-META-003",
+      "challenge": "second_order",
+      "expected": "SUPPORTS",
+      "predicted": "NEUTRAL",
+      "processingStatus": "RESOLVED",
+      "reason": "RT_NON_BEARING_METRIC"
+    },
+    {
+      "caseId": "HOLD-META-007",
+      "challenge": "causal_attribution",
+      "expected": "SUPPORTS",
+      "predicted": "NEUTRAL",
+      "processingStatus": "RESOLVED",
+      "reason": "RT_NON_BEARING_METRIC"
+    }
+  ],
+  "interpretation": [
+    "The v0.2A.1 candidate does not generalize at the pilot-level promotion threshold on this unseen holdout.",
+    "Zero directional inversions and zero unsafe directional errors indicate the dominant failure mode is under-resolution rather than unsafe directional overclaiming.",
+    "Causal attribution, metric binding, mix inference and second-order language are the primary next investigation targets.",
+    "The holdout is single-review and only 24 cases; it is diagnostic evidence, not publication-grade generalization evidence.",
+    "No candidate rule, benchmark label, or gate threshold was changed after the holdout was first evaluated."
+  ],
+  "ci": {
+    "runId": 37435204682,
+    "conclusion": "success",
+    "headSha": "0c776b4b9c1c34f8eb1a2d16cae1c2f98b2d0c43"
+  }
+}
