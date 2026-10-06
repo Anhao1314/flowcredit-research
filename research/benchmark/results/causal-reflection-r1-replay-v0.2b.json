@@ -1,0 +1,135 @@
+{
+  "version": "flowcredit.repair_replay_results/v0.2b-r1",
+  "measuredAt": "2026-10-06T08:39:56Z",
+  "parentBlindResult": "research/benchmark/results/real-sec-blind-holdout-v0.2b.json",
+  "holdout": "flowcredit.relation_benchmark/real-sec-blind-holdout-v0.2b",
+  "runtime": "relation-candidate/v0.2b-r1",
+  "repairScope": "explicit causal attribution expressed as primarily/largely/mainly reflected",
+  "metrics": {
+    "overallAccuracy": 0.75,
+    "directionalAccuracy": 0.7222,
+    "directionalInversionRate": 0,
+    "unsafeDirectionalErrorRate": 0,
+    "ambiguousAbstentionRecall": 0.6667
+  },
+  "counts": {
+    "correct": 18,
+    "incorrect": 6,
+    "directionalGold": 18,
+    "nonDirectionalGold": 6
+  },
+  "byLabel": {
+    "SUPPORTS": {
+      "n": 12,
+      "correct": 9,
+      "accuracy": 0.75
+    },
+    "COUNTERS": {
+      "n": 6,
+      "correct": 4,
+      "accuracy": 0.6667
+    },
+    "NEUTRAL": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    "AMBIGUOUS": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    }
+  },
+  "byChallenge": {
+    "numeric_series": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    "second_order": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    },
+    "mix_inference": {
+      "n": 1,
+      "correct": 0,
+      "accuracy": 0
+    },
+    "numeric_threshold": {
+      "n": 7,
+      "correct": 6,
+      "accuracy": 0.8571
+    },
+    "causal_attribution": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    },
+    "hard_negative": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    "missing_comparison": {
+      "n": 3,
+      "correct": 2,
+      "accuracy": 0.6667
+    },
+    "direction_text": {
+      "n": 1,
+      "correct": 0,
+      "accuracy": 0
+    }
+  },
+  "phaseGate": {
+    "status": "FAIL",
+    "checks": {
+      "overallAccuracy": false,
+      "directionalAccuracy": false,
+      "directionalInversionRate": true,
+      "unsafeDirectionalErrorRate": true,
+      "ambiguousAbstentionRecall": false
+    },
+    "thresholds": {
+      "overallAccuracyMin": 0.85,
+      "directionalAccuracyMin": 0.9,
+      "directionalInversionRateMax": 0.02,
+      "unsafeDirectionalErrorRateMax": 0.05,
+      "ambiguousAbstentionRecallMin": 0.9
+    }
+  },
+  "repairedCase": {
+    "caseId": "HOLD-AMZN-005",
+    "before": {
+      "processingStatus": "RESOLVED",
+      "relation": "NEUTRAL",
+      "reason": "RT_CAUSAL_LINK_ABSENT"
+    },
+    "after": {
+      "processingStatus": "RESOLVED",
+      "relation": "SUPPORTS",
+      "reason": "RT_EXPLICIT_CAUSAL_ATTRIBUTION"
+    }
+  },
+  "remainingFailures": [
+    "HOLD-AMZN-003",
+    "HOLD-AMZN-004",
+    "HOLD-AMZN-007",
+    "HOLD-GOOG-004",
+    "HOLD-META-003",
+    "HOLD-META-007"
+  ],
+  "interpretation": [
+    "R1 repaired exactly one previously archived holdout failure: explicit attribution phrased with primarily reflected.",
+    "Causal-attribution accuracy improved from 1/3 to 2/3 without increasing directional inversion or unsafe directional error.",
+    "The existing promotion gate remains FAIL; R1 is not promoted to the default runtime.",
+    "The remaining Meta causal failure is a different metric-role binding problem and is intentionally not addressed in R1.",
+    "The original 17/24 blind result remains the authoritative first-blind generalization measurement."
+  ],
+  "ci": {
+    "runId": 37437485043,
+    "conclusion": "success",
+    "headSha": "bdf43b848aa6c70d2bd4cc08d84c85a047ca7d0e"
+  }
+}

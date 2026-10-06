@@ -1,5 +1,6 @@
 import {evaluateRelation} from '../relation-runtime/runtime.js';
 import {evaluateCandidateRelation} from '../relation-runtime/candidate-runtime.js';
+import {evaluateCandidateR1Relation} from '../relation-runtime/candidate-r1-runtime.js';
 import {validateBenchmark} from './schema.js';
 
 const safeDivide=(n,d)=>d?n/d:0;
@@ -27,7 +28,7 @@ function pairOf(item){
 
 export function scoreBenchmark(document,{runtime='candidate'}={}){
  const doc=validateBenchmark(document);
- const evaluator=runtime==='baseline'?evaluateRelation:runtime==='candidate'?evaluateCandidateRelation:null;
+ const evaluator=runtime==='baseline'?evaluateRelation:runtime==='candidate'?evaluateCandidateRelation:runtime==='candidate-r1'?evaluateCandidateR1Relation:null;
  if(!evaluator)throw new Error('BENCHMARK_RUNTIME_UNKNOWN: '+runtime);
  const rows=doc.cases.map(item=>{
   const receipt=evaluator(pairOf(item));
