@@ -10,10 +10,10 @@ The benchmark reuses the existing reviewed CoreWeave corpus:
 
 - 3 primary publications
 - 32 reviewed Observations
-- 4 explicit numeric predicate Claims
+- 4 explicit numeric-predicate Claims
 - 128 pairwise Evidence × Claim evaluations
 
-The documents include a 2025 10-K, Q2 2026 10-Q and Q2 2026 SEC-filed earnings release. Source URLs and available byte hashes stay attached to the benchmark output.
+The source set includes a 2025 Form 10-K, Q2 2026 Form 10-Q and Q2 2026 SEC-filed earnings release. Source URLs and available document-byte hashes remain in the benchmark output.
 
 ## Gold authority
 
@@ -26,17 +26,48 @@ The structured oracle uses only:
 3. recorded numeric value,
 4. explicit Claim comparator and threshold.
 
-That makes this a **structured correctness benchmark**, not a general semantic benchmark. It is deliberately honest about the distinction.
+That makes this a **structured correctness benchmark**, not a general semantic benchmark.
 
 ## Compared systems
 
-- **text baseline** — current legacy prose reader + Compatibility + deterministic Relation baseline
-- **semantic runtime** — explicit SemanticFrame + structured Compatibility + deterministic predicate Relation
+- **text baseline** — legacy prose reader + Compatibility + deterministic Relation baseline
+- **SemanticFrame runtime** — recorded-field projection + structured Compatibility + deterministic predicate Relation
+
+Baseline runtime failures are recorded as ERROR + null instead of aborting or being silently repaired out of the experiment.
+
+## Measured result
+
+| Runtime | Exact | Directional correct | Unsafe direction | Runtime errors |
+| --- | ---: | ---: | ---: | ---: |
+| Text baseline | 66 / 128 (51.56%) | 1 / 5 (20%) | 8 | 2 |
+| SemanticFrame | 128 / 128 (100%) | 5 / 5 (100%) | 0 | 0 |
+
+Measured result artifact: [results.json](results.json).
+
+CI recomputes both summaries from the source fixtures and requires exact equality with the archived artifact.
+
+## Interpretation boundary
+
+128 / 128 means the structured runtime exactly reproduced this benchmark's explicit structured oracle.
+
+It does **not** mean:
+
+- 100% open-ended financial-language accuracy,
+- arbitrary filing understanding,
+- general causal reasoning,
+- production accuracy,
+- external benchmark parity.
+
+Only five pairs in this corpus are directional under the explicit structured oracle. A much larger independently human-labeled semantic Relation benchmark remains necessary.
 
 ## Run
 
-```bash
+~~~bash
 node research/eval/relation-reality/cli.js
-```
+~~~
 
-The regression suite recomputes the experiment from source fixtures. A committed result artifact is added only after CI has produced and verified the measured numbers.
+For regression tests:
+
+~~~bash
+node --test research/semantic-frame-test/*.test.js
+~~~
