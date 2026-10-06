@@ -1,0 +1,16 @@
+{
+  "version": "flowcredit.relation_benchmark_gate/v0.2a",
+  "purpose": "Promotion gate from deterministic baseline to hybrid Relation experimentation",
+  "thresholds": {
+    "overallAccuracyMin": 0.85,
+    "directionalAccuracyMin": 0.9,
+    "directionalInversionRateMax": 0.02,
+    "unsafeDirectionalErrorRateMax": 0.05,
+    "ambiguousAbstentionRecallMin": 0.9
+  },
+  "policy": [
+    "A FAIL is informative and must not be fixed by editing benchmark labels to match runtime output.",
+    "Pilot data cannot be called publication gold until independent double review and adjudication are completed.",
+    "Promotion requires passing the locked benchmark that replaces this pilot."
+  ]
+}
