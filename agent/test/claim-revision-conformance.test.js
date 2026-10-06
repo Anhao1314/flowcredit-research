@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {digest} from '../../research/src/identity.js';
-import {conformanceReport,historicalSnapshot,isSemantic,readGate,readMaintenance,fileHash} from '../../research/claim-revision/conformance.js';
+import {conformanceReport,historicalSnapshot,isSemantic,readGate,readMaintenance,currentHashes} from '../../research/claim-revision/conformance.js';
 
 const gate=readGate(),maintenance=readMaintenance(),registered=gate.frozenHashes,hash=value=>'sha256:'+value.repeat(64).slice(0,64);
 const withDrift=(overrides,contents)=>conformanceReport({current:{...registered,...overrides},contents});
@@ -22,7 +22,7 @@ test('live tree is semantically conformant while repository drift stays observab
  const original=readFileSync(probe);
  try{
   writeFileSync(probe,Buffer.concat([original,Buffer.from('\n<!-- conformance-drift-probe -->\n')]));
-  const report=conformanceReport(),recomputed=Object.keys(registered).filter(path=>fileHash(path)!==registered[path]).sort();
+  const report=conformanceReport(),observed=currentHashes(Object.keys(registered)),recomputed=Object.keys(registered).filter(path=>observed[path]!==registered[path]).sort();
   assert.equal(report.status,'CONFORMANT');
   assert.deepEqual(report.semanticDrift,[]);
   assert.ok(report.semanticBindings.every(entry=>entry.ok));
