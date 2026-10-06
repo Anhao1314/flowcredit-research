@@ -42,7 +42,7 @@ function writeMemory(path, { records, reviews = [] }) {
   db.close();
 }
 
-export function buildFixture({ extraEvidence = 0 } = {}) {
+export function buildFixture({ extraEvidence = 0, counterLink = false } = {}) {
   const root = mkdtempSync(join(tmpdir(), 'fc-surface-'));
   const memoryPath = join(root, 'fixture-memory.sqlite');
   const demoDir = join(root, 'demo');
@@ -133,7 +133,7 @@ export function buildFixture({ extraEvidence = 0 } = {}) {
       category: 'revenue',
       method: 'Fixture predicate for surface tests.',
       supportingEvidenceIds: [evidenceOne.id],
-      counterEvidenceIds: [],
+      counterEvidenceIds: counterLink ? [evidenceTwo.id] : [],
       createdAt: '2026-05-05T00:00:00Z',
       updatedAt: '2026-05-05T00:00:00Z'
     }
