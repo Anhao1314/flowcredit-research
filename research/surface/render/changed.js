@@ -21,7 +21,7 @@ function realChanges({ source, demo }) {
   <div class="view">
     <div class="view-head">
       <h1>No real Claim changes yet.</h1>
-      <p class="lead">FlowCredit has stored Claims and Evidence, but the Claim reasoning layer has not yet produced an authoritative real proposal.</p>
+      <p class="lead">FlowCredit has stored Claims and Evidence, and now has an offline pairwise Relation runtime baseline. This data set still has no persisted real RelationReceipts or authoritative Claim proposal.</p>
     </div>
 
     <section class="panel quiet">
@@ -30,7 +30,7 @@ function realChanges({ source, demo }) {
         ${countChip(changes.revisionCount, `revisions${changes.revisionVersions.length === 1 ? ` (all v${changes.revisionVersions[0]})` : ''}`)}
         ${countChip(changes.proposals, 'real Claim revision proposals')}
       </div>
-      <p class="note">When Claim reasoning produces a reviewed proposal, this page will show: base revision → new evidence → relation → impact. That pipeline has not produced a real proposal for this data yet.</p>
+      <p class="note">The runtime can now produce pairwise RelationReceipts and human-review candidates. Impact aggregation and authoritative Claim revision remain separate, unimplemented steps.</p>
     </section>
 
     <section>
@@ -38,10 +38,10 @@ function realChanges({ source, demo }) {
       <div class="lanes">
         ${lane({ name: 'New information', state: 'READY', note: `${changes.sourceCount} recorded sources`, ready: true })}
         ${lane({ name: 'Evidence', state: 'READY', note: `${changes.evidenceCount} Evidence records`, ready: true })}
-        ${lane({ name: 'Claim relation', state: 'NOT PRODUCTIONIZED', note: 'no relation records for real Claims yet' })}
+        ${lane({ name: 'Claim relation', state: 'BASELINE AVAILABLE', note: 'offline deterministic runtime; no persisted real receipts yet', ready: true })}
         ${lane({ name: 'Proposed impact', state: 'NOT READY', note: 'no impact records for real Claims yet' })}
         ${lane({ name: 'ClaimRevisionProposal', state: '0', note: '0 real proposals' })}
-        ${lane({ name: 'Human review', state: 'NOT READY', note: 'no real reviews' })}
+        ${lane({ name: 'Human review', state: 'PAIRWISE CANDIDATES', note: 'runtime can queue review candidates; no write path', ready: true })}
         ${lane({ name: 'Research Memory', state: 'UNCHANGED', note: `claims remain at revision v${version}` })}
       </div>
       <p class="note">This board reflects what the product can do today. Nothing here is a progress estimate; each state is derived from recorded records.</p>
@@ -55,6 +55,41 @@ function realChanges({ source, demo }) {
     ${checkpoint('Can you understand what changed and why?')}
   </div>`;
   return { status: 200, title: 'What Changed', body };
+}
+
+
+function runtimePreview(data) {
+  if (!data) return \`<section class="panel quiet"><p class="note">Pairwise Relation runtime demo unavailable.</p></section>\`;
+  const pairs = new Map((data.pairs ?? []).map((pair) => [pair.evidenceId, pair]));
+  const receiptRows = (data.receipts ?? []).map((receipt) => {
+    const pair = pairs.get(receipt.evidenceId);
+    const tone = receipt.relation ? relationTone(String(receipt.relation).toLowerCase()) : (receipt.processingStatus === 'NOT_EVALUATED' ? 'caution' : 'neutral');
+    return \`<li class="record">
+      <div class="badge-row">\${badge(receipt.processingStatus, receipt.processingStatus === 'RESOLVED' ? 'positive' : receipt.processingStatus === 'NOT_EVALUATED' ? 'caution' : 'neutral')}\${receipt.relation ? badge(receipt.relation, tone) : badge('relation null', 'neutral')}</div>
+      <span>\${escapeHtml(pair?.claimStatement ?? receipt.claimId)}</span>
+      <span class="meta">Evidence: \${escapeHtml(pair?.evidenceStatement ?? receipt.evidenceId)} · rule \${escapeHtml(receipt.reasonCodes?.[0] ?? 'not recorded')}</span>
+    </li>\`;
+  }).join('');
+  const candidateRows = (data.candidates ?? []).map((candidate) => \`
+    <li class="record">
+      <div class="badge-row">\${badge(candidate.relation, relationTone(String(candidate.relation).toLowerCase()))}\${badge('PENDING HUMAN REVIEW', 'caution')}</div>
+      <span>\${escapeHtml(candidate.claimStatement)}</span>
+      <span class="meta">New evidence: \${escapeHtml(candidate.evidenceStatement)} · Claim mutation allowed: no</span>
+    </li>\`).join('');
+
+  return \`<section>
+    \${sectionHead('Pairwise Relation runtime', 'reproducible offline demo')}
+    <div class="count-row">
+      \${countChip(data.counts?.pairs ?? 0, 'pairs')}
+      \${countChip(data.counts?.resolved ?? 0, 'resolved')}
+      \${countChip(data.counts?.abstained ?? 0, 'abstained')}
+      \${countChip(data.counts?.notEvaluated ?? 0, 'not evaluated')}
+      \${countChip(data.counts?.candidates ?? 0, 'human-review candidates')}
+    </div>
+    <p class="note">This preview executes the committed Northstar fixture through RelationInput → Compatibility → gate → deterministic Relation → RelationReceipt. It performs no model or network call and never writes a Claim.</p>
+    <ul class="record-list">\${receiptRows}</ul>
+    \${candidateRows ? \`<h3>Directional changes requiring review</h3><ul class="record-list">\${candidateRows}</ul>\` : ''}
+  </section>\`;
 }
 
 function demoCaseCard(demoCase) {
@@ -147,7 +182,8 @@ function demoChanges({ demoData }) {
       <p class="lead">Examples from the v0.12 locked benchmark. They illustrate the intended product shape and are not authoritative research records.</p>
       ${termHelp('ClaimRevisionProposal', 'A proposed change to a Claim, awaiting review. AI-suggested; not part of Research Memory until accepted.')}
     </div>
-    ${cases.length ? cases.map(demoCaseCard).join('') : '<p class="note">No synthetic demo cases are available in this deployment.</p>'}
+    ${runtimePreview(demoData?.whatChanged)}
+    ${cases.length ? cases.map(demoCaseCard).join('') : '<p class="note">No legacy synthetic proposal cases are available in this deployment.</p>'}
     <p class="note">Demo source: ${escapeHtml(demoData?.label ?? 'not available')}. <a href="/changes">Back to real mode</a></p>
     ${checkpoint('Can you understand what changed and why?')}
   </div>`;
