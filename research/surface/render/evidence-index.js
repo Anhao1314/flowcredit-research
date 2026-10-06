@@ -1,4 +1,4 @@
-// Evidence index (UI-1.5): high-density research browser over all recorded
+// Evidence index (UI-2.0): high-density factual browser for the Research Workbench.
 // Evidence. Dense rows with a stable metadata rhythm for fast scanning.
 import { buildEvidenceIndex, displayName } from '../projection.js';
 import { serializeIndexQuery } from '../query.js';
@@ -57,8 +57,8 @@ export function evidenceIndexView({ source, demo, query }) {
       : '';
 
   const summary = index.filtersActive && !noMatches
-    ? `All recorded facts · ${index.pagination.total} of ${index.total} match the current filters`
-    : `All recorded facts · ${index.total} records`;
+    ? `Recorded facts · ${index.pagination.total} of ${index.total} match the current filters`
+    : `Recorded facts · ${index.total} records`;
 
   const body = `
   <div class="view">
@@ -73,9 +73,9 @@ export function evidenceIndexView({ source, demo, query }) {
       search: { name: 'q', value: query.q, label: 'Search Evidence', placeholder: 'Search recorded text…' },
       selects: [
         { name: 'source', label: 'Source', allLabel: 'All sources', value: query.source, options: index.sources.map((record) => ({ value: record.id, label: truncate(record.title, 60) })) },
-        { name: 'link', label: 'Claim link', allLabel: 'Link: any', value: query.link, options: [
-          { value: 'linked', label: 'Linked to a Claim' },
-          { value: 'unlinked', label: 'Not linked to a Claim' }
+        { name: 'link', label: 'Belief link', allLabel: 'Link: any', value: query.link, options: [
+          { value: 'linked', label: 'Linked to a Belief' },
+          { value: 'unlinked', label: 'Not linked to a Belief' }
         ] },
         { name: 'review', label: 'Admission review', allLabel: 'Review: any', value: query.review, options: [
           { value: 'reviewed', label: 'Has admission review' },
@@ -92,7 +92,7 @@ export function evidenceIndexView({ source, demo, query }) {
     ${emptyState}
     ${rows ? `<ul class="rows">${rows}</ul>` : ''}
     ${pagination({ base: '/evidence', filters: filtersFor(query), pagination: index.pagination, demo })}
-    ${checkpoint('Can you locate any recorded fact you remember?')}
+    ${checkpoint('Can you locate a recorded fact without knowing its Evidence id??')}
   </div>`;
   return { status: 200, title: 'Evidence', body, context: query.subject ? displayName(query.subject) : 'All subjects' };
 }
