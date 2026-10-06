@@ -1,0 +1,22 @@
+{
+  "version": "flowcredit.blind_holdout_lock/v0.2b",
+  "lockedAt": "2026-10-06T08:20:00.000Z",
+  "baseCommit": "c3ee41224f2dc4245461ecb12b43dcf69f178667",
+  "datasetPath": "research/benchmark/data/real-sec-blind-holdout-v0.2b.json",
+  "datasetGitBlobSha": "2ea85efabde4014eb21fa6ff69b3a9d97058fe74",
+  "candidateRuntime": {
+    "research/relation-runtime/candidate-reading.js": "164a052edda4a4e890832aef8e211e10dca8d58d",
+    "research/relation-runtime/candidate-deterministic.js": "953e1d61f96978205000a5dd2c9b293235f7dd75",
+    "research/relation-runtime/candidate-runtime.js": "b91ab69dfb37ed7b7b4ee3d32f5c013545828cc7"
+  },
+  "phaseGate": {
+    "path": "research/benchmark/phase-gate-v0.2a.json",
+    "gitBlobSha": "9a333049f61662f7bdb68109ccc4000e839783ce"
+  },
+  "policy": [
+    "The candidate runtime is frozen before holdout evaluation.",
+    "The holdout labels and gate thresholds must not be edited after the first candidate evaluation.",
+    "A failure is archived before any follow-up repair.",
+    "This 24-case single-review holdout is not publication gold."
+  ]
+}
