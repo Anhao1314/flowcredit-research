@@ -151,6 +151,23 @@ node research/benchmark/cli.js
 
 Archived measurements: [research/benchmark/results/real-sec-pilot-v0.1.json](research/benchmark/results/real-sec-pilot-v0.1.json).
 
+## Blind holdout v0.2B
+
+To test whether the 32/32 pilot generalized, the v0.2A.1 candidate was frozen and evaluated without code changes on 24 new pairs from **Amazon, Alphabet and Meta** 2025 Form 10-K filings.
+
+| Metric | Blind holdout |
+| --- | ---: |
+| Exact state accuracy | **17 / 24 (70.83%)** |
+| Directional accuracy | **66.67%** |
+| Directional inversion | **0%** |
+| Unsafe directional error | **0%** |
+| AMBIGUOUS abstention recall | **66.67%** |
+| Phase gate | **FAIL** |
+
+This is the more important number for generalization. The candidate did not meet the existing promotion threshold on unseen issuers. Its strongest property remained safety: no directional inversions and no unsafe directional judgments were observed. Its weakness was under-resolution, especially causal attribution, metric binding, mix inference and second-order language.
+
+The holdout remains locked and single-review. No label, threshold or candidate rule was changed after first evaluation. The failure is preserved at [research/benchmark/results/real-sec-blind-holdout-v0.2b.json](research/benchmark/results/real-sec-blind-holdout-v0.2b.json).
+
 # From abstention to investigation
 
 Safe abstention is useful only if it can create a useful next action.
