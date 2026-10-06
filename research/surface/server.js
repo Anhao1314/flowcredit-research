@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// FlowCredit Local Research Surface (UI-1).
+// FlowCredit Research Workbench (UI-2.0).
 //
 // Development-only, read-only, loopback-only, AI-off surface for the real
 // Research Memory. No build step, no npm dependencies, no client fetch.
@@ -65,7 +65,7 @@ export async function startSurface({ port = DEFAULT_PORT, host = DEFAULT_HOST, m
   });
   const address = server.address();
   const url = `http://${host}:${address.port}`;
-  log.log(`FlowCredit Research Surface\n${url}\nAI runtime: OFF\nMode: ${publicDemo ? 'PUBLIC DEMO (synthetic, offline)' : 'REAL'}`);
+  log.log(`FlowCredit Research Workbench\n${url}\nAI runtime: OFF\nMode: ${publicDemo ? 'PUBLIC DEMO (synthetic, offline)' : 'REAL'}`);
   // Terminal/debug log may carry the full path; the rendered page never does.
   log.log(`Data source: ${memoryPath} (read-only)\nDemo mode: add ?demo=1 for v0.12 locked synthetic cases`);
   return { server, url, port: address.port };
@@ -94,7 +94,7 @@ export function parseArgs(argv) {
 
 const HELP = `Usage: node research/surface/server.js [--port 4317]
 
-FlowCredit Local Research Surface (development-only, read-only, AI-off).
+FlowCredit Research Workbench (development-only, read-only, AI-off).
 Binds 127.0.0.1 only. Reads Research Memory read-only.
 Environment:
   FC_SURFACE_MEMORY_DB  Research Memory SQLite file (default: ~/fc-agent/research-memory)
