@@ -87,8 +87,8 @@ export function claimView({ source, demo, from = '' }, claimId) {
   <div class="view">
     <div class="workspace">
       <div class="ws-head">
-        <p class="back-link"><a href="${escapeHtml(backHref)}">Back to Claims</a></p>
-        <p class="eyebrow">${icon('claim')}Claim · <a href="${escapeHtml(subjectHref)}">${escapeHtml(claim.subjectId)}</a> (${escapeHtml(claim.subjectName)})</p>
+        <p class="back-link"><a href="${escapeHtml(backHref)}">Back to Beliefs</a></p>
+        <p class="eyebrow">${icon('claim')}Belief · <a href="${escapeHtml(subjectHref)}">${escapeHtml(claim.subjectId)}</a> (${escapeHtml(claim.subjectName)})</p>
         <h1>${escapeHtml(current.statement ?? 'Claim statement not recorded')}</h1>
         <p class="badge-row">
           ${badge(statusLabel(current.status), statusTone(current.status))}
@@ -103,7 +103,7 @@ export function claimView({ source, demo, from = '' }, claimId) {
 
       <div class="ws-main">
         <section>
-          ${sectionHead('Evidence behind it', `${supports + counters} linked`)}
+          ${sectionHead('Reasoning evidence', `${supports + counters} linked`)}
           ${termHelp('Evidence', 'A verified factual record extracted from a source document.')}
           ${supportingRows ? `<ul class="rows">${supportingRows}</ul>` : '<p class="note">No supporting Evidence records are linked to this Claim.</p>'}
           ${counterRows ? `<h3 class="section-block-label">Counter evidence</h3><ul class="rows">${counterRows}</ul>` : ''}
@@ -137,7 +137,7 @@ export function claimView({ source, demo, from = '' }, claimId) {
 
       <aside class="ws-context" aria-label="Claim state">
         <section class="panel">
-          ${panelTitle('Claim state', 'claim')}
+          ${panelTitle('Belief state', 'claim')}
           <ul class="state-list">
             ${stateItem('Status', badge(statusLabel(current.status), statusTone(current.status)))}
             ${stateItem('Category', escapeHtml(current.category ?? 'not recorded'))}
@@ -162,5 +162,5 @@ export function claimView({ source, demo, from = '' }, claimId) {
       </aside>
     </div>
   </div>`;
-  return { status: 200, title: 'Claim', body, context: claim.subjectName };
+  return { status: 200, title: 'Belief', body, context: claim.subjectName };
 }
