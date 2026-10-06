@@ -5,9 +5,10 @@
 // inspectable rules. Anything else abstains as AMBIGUOUS.
 //
 // It does not read gold labels, benchmark ids, models, providers or network state.
-import {normalize, quantities, referentTokens, readPair} from '../claim-relation/legacy-read.js';
+import {normalize, referentTokens} from '../claim-relation/legacy-read.js';
+import {candidateQuantities as quantities,candidateReadPair as readPair} from './candidate-reading.js';
 
-export const DETERMINISTIC_PROVIDER='relation-candidate/v0.2a';
+export const DETERMINISTIC_PROVIDER='relation-candidate/v0.2a.1';
 
 const SCALE=Object.freeze({thousand:1e3,k:1e3,million:1e6,m:1e6,billion:1e9,bn:1e9});
 const GENERIC=new Set([

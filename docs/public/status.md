@@ -86,9 +86,9 @@ A complementary curated pilot evaluates open-text pairwise semantics that the Co
 | Runtime | Exact | Directional | Unsafe direction | Inversion | Ambiguous abstention |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Default lexical baseline | 71.88% | 78.26% | 33.33% | 4.35% | 80% |
-| Isolated v0.2A candidate | **96.88%** | **95.65%** | **0%** | **0%** | **100%** |
+| Isolated v0.2A candidate | **100%** | **100%** | **0%** | **0%** | **100%** |
 
-The v0.2A candidate passes the five experimental thresholds, but it is **not promoted to the default runtime**. The pilot lacks independent double review and a blind locked partition. One causal-attribution pair remains `NOT_EVALUATED` because frozen Compatibility returns `INDETERMINATE`; the candidate does not bypass that gate.
+The v0.2A.1 candidate passes all five experimental thresholds and reproduces all 32 pilot labels, but it is **not promoted to the default runtime**. The pilot lacks independent double review and a blind locked partition. The final fix was a generic candidate-only tokenizer repair for embedded identifier digits (`H20`, `A100`, `Q2`, `GPT-5`); benchmark labels, frozen Compatibility semantics, and the validated baseline were not changed.
 
 ### Investigate behavior v0.2
 

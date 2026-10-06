@@ -137,11 +137,11 @@ The structured CoreWeave benchmark proves faithful execution of recorded fields.
 | Runtime | Exact | Directional | Unsafe direction | Inversion | Ambiguous abstention |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Default lexical baseline | 71.88% | 78.26% | 33.33% | 4.35% | 80% |
-| Isolated v0.2A candidate | **96.88%** | **95.65%** | **0%** | **0%** | **100%** |
+| Isolated v0.2A candidate | **100%** | **100%** | **0%** | **0%** | **100%** |
 
 The candidate passes the five experimental thresholds but remains isolated. The pilot is single-review, not a blind locked benchmark, and does not authorize replacement of the default runtime.
 
-One causal-attribution pair remains safely `NOT_EVALUATED` because frozen Compatibility returns `INDETERMINATE`. The candidate does not bypass the gate to manufacture a perfect score.
+The final causal-attribution failure traced to a generic lexical bug: `H20` was read as a quantity with a missing unit. v0.2A.1 fixes embedded identifier digits only in the isolated candidate reader; no benchmark label, frozen Compatibility rule, or default baseline was changed.
 
 Run:
 

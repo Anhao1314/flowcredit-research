@@ -1,6 +1,6 @@
 {
   "version": "flowcredit.reality_benchmark_results/v0.2a",
-  "measuredAt": "2026-10-06T07:16:47Z",
+  "measuredAt": "2026-10-06T07:58:38Z",
   "benchmark": "flowcredit.relation_benchmark/real-sec-pilot-v0.1",
   "benchmarkStatus": "PILOT_SINGLE_REVIEW_NOT_PUBLICATION_GOLD",
   "cases": 32,
@@ -21,14 +21,14 @@
     "incorrect": 9
   },
   "candidate": {
-    "runtime": "relation-candidate/v0.2a",
-    "overallAccuracy": 0.9688,
-    "directionalAccuracy": 0.9565,
+    "runtime": "relation-candidate/v0.2a.1",
+    "overallAccuracy": 1,
+    "directionalAccuracy": 1,
     "directionalInversionRate": 0,
     "unsafeDirectionalErrorRate": 0,
     "ambiguousAbstentionRecall": 1,
-    "correct": 31,
-    "incorrect": 1
+    "correct": 32,
+    "incorrect": 0
   },
   "phaseGate": {
     "status": "PASS",
@@ -40,28 +40,16 @@
       "ambiguousAbstentionRecallMin": 0.9
     }
   },
-  "remainingFailure": {
-    "caseId": "REAL-HARD-006",
-    "challenge": "causal_attribution",
-    "expected": {
-      "processingStatus": "RESOLVED",
-      "relation": "SUPPORTS"
-    },
-    "predicted": {
-      "processingStatus": "NOT_EVALUATED",
-      "relation": null
-    },
-    "reason": "Frozen Compatibility returned INDETERMINATE before candidate Relation execution."
-  },
+  "remainingFailure": null,
   "interpretation": [
-    "The candidate materially improves the curated SEC pilot while preserving the validated default baseline.",
+    "The candidate now resolves all 32 curated SEC pilot cases while preserving the validated default baseline.",
+    "The final repair is generic: digits embedded in identifier tokens such as H20, A100, Q2 and GPT-5 are excluded from candidate quantity parsing.",
     "Passing this pilot gate does not authorize promotion to the default runtime.",
-    "The pilot is not independently double-reviewed, is not a blind locked benchmark, and is not a generalization estimate.",
-    "The remaining refusal is preserved rather than bypassing frozen Compatibility semantics."
+    "The pilot is not independently double-reviewed, is not a blind locked benchmark, and is not a generalization estimate."
   ],
   "ci": {
-    "runId": 37428579841,
-    "conclusion": "success",
-    "headSha": "9a12413ab45e8254568be18e159395b837f5dce5"
+    "runId": 37433000802,
+    "conclusion": "measurement_reproduced; archived-result assertion intentionally stale in that run",
+    "headSha": "8517cbe1ee8dd942a538aa11682cdabf704c5660"
   }
 }
