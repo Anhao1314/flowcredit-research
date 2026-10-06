@@ -4,11 +4,12 @@ import {readFileSync} from 'node:fs';
 import {digest} from '../src/identity.js';
 import {decide} from '../target-conversion/eval.js';
 import {assertIntent} from '../target-conversion/contract.js';
-import {frozenHashes,conversionHashes} from '../target-conversion/cli.js';
+import {conversionHashes} from '../target-conversion/cli.js';
+import {historicalFrozenHashes} from './frozen-tree.js';
 const read=n=>JSON.parse(readFileSync(new URL('../eval/target-conversion/'+n+'.json',import.meta.url),'utf8'));
 test('one locked run preserves frozen selector/history and recomputes strict intent success',()=>{
  const r=read('results'),g=read('phase-gate'),old=JSON.parse(readFileSync(new URL('../eval/selector-ranking/results.json',import.meta.url),'utf8'));
- assert.equal(digest(frozenHashes()),digest(g.frozenHashes));assert.equal(digest(conversionHashes()),digest(g.codeHashes));assert.equal(g.historyHash,digest(old));assert.equal(r.binding.gateHash,digest(g));
+ assert.equal(digest(historicalFrozenHashes()),digest(g.frozenHashes));assert.equal(digest(conversionHashes()),digest(g.codeHashes));assert.equal(g.historyHash,digest(old));assert.equal(r.binding.gateHash,digest(g));
  assert.equal(r.rows.length,16);assert.equal(new Set(r.rows.map(x=>x.caseId)).size,16);assert.equal(r.rows.filter(x=>x.targetInTop3).length,14);
  assert.equal(r.metrics.strictTargetConversion,r.rows.filter(x=>x.targetCorrect).length);assert.equal(r.metrics.strictTargetConversionRate,r.metrics.strictTargetConversion/16);assert.equal(r.metrics.strictGivenTop3.denominator,14);
  assert.equal(r.metrics.validButWrongTargetCandidates,r.rows.filter(x=>x.genericCandidate&&!x.targetCorrect).length);
