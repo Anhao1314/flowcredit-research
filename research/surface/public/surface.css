@@ -457,3 +457,150 @@ time, .num { font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
 }
+
+
+/* ============================================================
+   UI-2.0B · Belief reasoning workbench
+   ============================================================ */
+.belief-head {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.belief-head h1 { max-width: 980px; }
+.belief-asof {
+  margin: 10px 0 0;
+  color: var(--ink-3);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.reasoning-intro { margin-bottom: 22px; }
+.reasoning-boundary-note {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--ink-2);
+  font-size: 12px;
+}
+.reasoning-boundary-note strong { color: var(--accent-strong); }
+.reasoning-group {
+  padding: 20px 0 6px;
+  border-top: 1px solid var(--line);
+}
+.reasoning-group + .reasoning-group { margin-top: 12px; }
+.reasoning-group-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 7px;
+}
+.reasoning-group-head .eyebrow { margin-bottom: 3px; }
+.reasoning-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.reasoning-row {
+  display: grid;
+  gap: 6px;
+  padding: 15px 2px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.reasoning-row:hover {
+  background: linear-gradient(90deg, rgba(49,95,135,.035), transparent 70%);
+}
+.reasoning-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.reasoning-statement {
+  max-width: 82ch;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 640;
+  line-height: 1.48;
+}
+.reasoning-statement:hover { color: var(--accent); }
+.reasoning-admission { margin: 0; }
+.reasoning-open {
+  width: fit-content;
+  min-height: 31px;
+  margin-top: 3px;
+  padding: 5px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 11px;
+  font-weight: 650;
+}
+.reasoning-open:hover {
+  background: var(--surface-subtle);
+  border-color: #aeb8c2;
+  color: var(--ink);
+}
+.reasoning-open[aria-pressed="true"] {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.reasoning-unresolved {
+  margin-top: 20px;
+  border-top-color: var(--counter);
+}
+.belief-context { top: 78px; }
+.relation-inspector-stack { min-width: 0; }
+.relation-inspector {
+  border-color: #ccd7e0;
+  background: linear-gradient(180deg, #fff, #fbfcfd);
+}
+.relation-boundary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+.relation-fields { margin-top: 12px; }
+.relation-fields .state-item {
+  align-items: flex-start;
+}
+.relation-fields .state-value {
+  max-width: 58%;
+  overflow-wrap: anywhere;
+}
+.relation-missing {
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 560;
+}
+.relation-provenance {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+}
+.relation-provenance .panel-title { margin-bottom: 4px; }
+.relation-provenance .record-list { margin-top: 0; }
+.relation-provenance .record {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 8px;
+}
+.relation-empty { background: var(--surface-subtle); }
+
+@media (max-width: 899px) {
+  .belief-context { position: static; }
+  .relation-inspector-stack { grid-column: 1 / -1; }
+}
+@media (max-width: 639px) {
+  .reasoning-boundary-note { grid-template-columns: 1fr; gap: 4px; }
+  .reasoning-group-head { align-items: flex-start; }
+  .relation-provenance .record { grid-template-columns: 1fr; gap: 2px; }
+}

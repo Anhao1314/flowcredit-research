@@ -28,4 +28,27 @@
       note.hidden = false;
     }
   });
+
+  // Belief reasoning inspector is a local disclosure only. It switches between
+  // server-rendered panels and never fetches, stores, scores, or mutates.
+  document.addEventListener('click', function (event) {
+    var trigger = event.target.closest('[data-reasoning-target]');
+    if (!trigger) return;
+    var targetId = trigger.getAttribute('data-reasoning-target');
+    if (!targetId) return;
+    var panel = document.getElementById(targetId);
+    if (!panel) return;
+
+    var triggers = document.querySelectorAll('[data-reasoning-target]');
+    for (var triggerIndex = 0; triggerIndex < triggers.length; triggerIndex += 1) {
+      var candidateTrigger = triggers[triggerIndex];
+      candidateTrigger.setAttribute('aria-pressed', candidateTrigger === trigger ? 'true' : 'false');
+    }
+
+    var panels = document.querySelectorAll('[data-reasoning-panel]');
+    for (var panelIndex = 0; panelIndex < panels.length; panelIndex += 1) {
+      panels[panelIndex].hidden = panels[panelIndex] !== panel;
+    }
+  });
+
 })();

@@ -6,3 +6,5 @@ import '../../research/surface-test/query.test.js';
 import '../../research/surface-test/public-demo.test.js';
 
 import '../../research/surface-test/what-changed-runtime.test.js';
+
+import '../../research/surface-test/belief-workbench.test.js';

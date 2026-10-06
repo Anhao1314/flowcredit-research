@@ -1,11 +1,12 @@
-# FlowCredit Research Workbench (UI-2.0A)
+# FlowCredit Research Workbench (UI-2.0B)
 
 A development-only, read-only, loopback-only Research Workbench for the real
-Research Memory. UI-2.0A replaces the previous object-browser presentation with
-an attention-first research shell: Inbox, Beliefs, Evidence and Timeline.
+Research Memory. UI-2.0B keeps the attention-first shell from UI-2.0A and upgrades Belief detail
+into a reasoning-first workbench: current belief, recorded supporting/counter
+Evidence links, explicit missing-link states, and a local Relation inspector.
 
-UI-2.0A is presentation-only. It changes visual hierarchy, product language,
-workspace composition and the active product entry point without changing
+UI-2.0B remains presentation-only. It changes Belief-detail hierarchy and local
+inspector interaction without changing
 Research Memory semantics, route contracts, query behavior, authority rules,
 relation runtime behavior, data sources or demo isolation.
 
@@ -117,7 +118,7 @@ completeness" summary (deeper admission provenance vs partial provenance,
 latest activity). These are research workflow signals; they do not express
 risk, quality or investment views.
 
-## Workbench shell (UI-2.0A)
+## Workbench shell (UI-2.0B)
 
 ```text
 topbar        brand · current work scope · LOCAL / READ ONLY / AI OFF[/DEMO]
@@ -198,6 +199,28 @@ The same tests run under the repository release gate through
 automatically when the runtime Research Memory is not present.
 
 
+
+## Belief reasoning boundary (UI-2.0B)
+
+Belief detail groups Evidence using the **current Claim revision's recorded
+`supportingEvidenceIds` / `counterEvidenceIds` links**. Those roles are not
+silently promoted to pairwise Relation results.
+
+The Relation inspector therefore shows:
+
+- the Evidence id and current Claim revision,
+- the recorded link role and revision effective time,
+- available source/admission provenance,
+- and explicit `Not persisted` / `Not recorded` states for RelationReceipt,
+  relation, compatibility, reason code, runtime and relation as-of.
+
+The inspector is local-only progressive enhancement: it switches between
+server-rendered panels and performs no fetch, storage, model call or write.
+
+This is deliberate. Real Research Memory still has no persisted pairwise
+RelationReceipts; UI-2.0B exposes that capability boundary rather than
+manufacturing one from Claim link roles.
+
 ## Legacy frontend retirement
 
 The root static risk-assessment UI is no longer an active product entry point.
@@ -207,7 +230,7 @@ loaded by the root page and are not part of the Research Workbench. Physical
 asset/test deletion is intentionally deferred to a separate retirement branch
 after equivalent Research Workbench protections exist.
 
-## Known limitations (UI-2.0A)
+## Known limitations (UI-2.0B)
 
 - No real ClaimRevisionProposal exists for real data yet; `/changes` states this.
 - No `Needs Review` backend state exists; it is a demo-only preview control.
