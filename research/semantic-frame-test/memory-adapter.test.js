@@ -20,7 +20,7 @@ test('real Research Memory Evidence materializes without prose reconstruction',(
  const frame=projectMemoryEvidence(revenue,{source:sourceById.get(revenue.sourceId)});
  assert.equal(frame.kind,'EVIDENCE');
  assert.equal(frame.proposition.metric,'consolidated_revenue');
- assert.equal(frame.proposition.objectValue,5131e6);
+ assert.equal(frame.proposition.objectValue,revenue.rawValue*1e6);
  assert.equal(frame.fieldOrigins['proposition.objectValue'].kind,'DERIVED_NORMALIZATION');
  assert.equal(frame.fieldOrigins['proposition.objectValue'].transformation,'usd_millions_to_usd');
  assert.equal(frame.grounding.sourceHash,revenue.provenance.sourceContentHash);
