@@ -393,10 +393,13 @@ test('changes page is honest in real mode and offers an explicit demo switch', a
     const response = await httpGet(`${url}/changes`);
     assert.equal(response.status, 200);
     assert.ok(response.body.includes('No real Claim changes yet.'));
-    assert.ok(response.body.includes('has not yet produced an authoritative real proposal'));
+    assert.ok(response.body.includes('offline pairwise Relation runtime baseline'));
+    assert.ok(response.body.includes('no persisted real RelationReceipts or authoritative Claim proposal'));
     assert.ok(response.body.includes('<strong>0</strong> real Claim revision proposals'));
     assert.ok(response.body.includes('/changes?demo=1'));
-    assert.ok(response.body.includes('base revision → new evidence → relation → impact'));
+    assert.ok(response.body.includes('Impact aggregation and authoritative Claim revision remain separate'));
+    assert.ok(response.body.includes('BASELINE AVAILABLE'));
+    assert.ok(response.body.includes('PAIRWISE CANDIDATES'));
     assert.ok(response.body.includes('Browse Claims'));
     assert.ok(response.body.includes('Browse Evidence'));
     assert.ok(!response.body.includes('LOCK-99'));
