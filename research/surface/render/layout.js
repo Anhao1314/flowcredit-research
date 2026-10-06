@@ -321,10 +321,10 @@ export function demoBanner() {
 // with the workspace navigation, the main work zone, and a status rail.
 export function page({ title, current, demo = false, publicDemo = false, body, dataLabel, demoLabel, context = 'All subjects' }) {
   const nav = [
-    navLink({ href: '/', label: 'Research Inbox', key: 'inbox', current, demo }),
-    navLink({ href: '/claims', label: 'Claims', key: 'claims', current, demo }),
+    navLink({ href: '/', label: 'Inbox', key: 'inbox', current, demo }),
+    navLink({ href: '/claims', label: 'Beliefs', key: 'claims', current, demo }),
     navLink({ href: '/evidence', label: 'Evidence', key: 'evidence', current, demo }),
-    navLink({ href: '/changes', label: 'What Changed', key: 'changes', current, demo })
+    navLink({ href: '/changes', label: 'Timeline', key: 'changes', current, demo })
   ].join('');
   // Public demo surfaces three quiet system states: PUBLIC DEMO · READ ONLY ·
   // AI OFF. The real local surface keeps LOCAL · READ ONLY · AI OFF [· DEMO].
@@ -357,7 +357,7 @@ export function page({ title, current, demo = false, publicDemo = false, body, d
 <header class="topbar">
   <a class="brand" href="${escapeHtml(withDemo('/', demo))}">
     <span class="brand-mark" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 32 32" focusable="false"><path d="M9 23V15M16 23V9M23 23V18" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/></svg></span>
-    <span class="brand-text"><span class="brand-name">FlowCredit</span><span class="brand-sub">Research Memory</span></span>
+    <span class="brand-text"><span class="brand-name">FlowCredit Research</span><span class="brand-sub">Belief Workbench</span></span>
   </a>
   <span class="topbar-context" title="Current work scope">${escapeHtml(context)}</span>
   <div class="state-badges">${badges}</div>
@@ -383,7 +383,7 @@ ${body}
     <span>${publicDemo ? 'Public demo: synthetic, offline, deterministic data.' : `Data source: ${escapeHtml(dataLabel)}${demoSource}`}</span>
     <span>Times shown in UTC.</span>
     <span>Development-only research surface. Read-only. Local loopback. Not a production frontend.</span>
-    <span>Research-state changes are not investment recommendations.</span>
+    <span>Evidence ≠ Claim · AI proposal ≠ truth · human authority above all.</span>
   </div>
 </footer>
 </body>
