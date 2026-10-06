@@ -1,0 +1,14 @@
+{
+  "version": "flowcredit.fresh_blind_result_lock/v0.2c",
+  "lockedAt": "2026-10-06T10:20:00.000Z",
+  "status": "FIRST_BLIND_ARCHIVED_FAIL",
+  "resultPath": "research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json",
+  "resultGitBlobSha": "0916d30a964d6878d1de8b683c42d37ae9773527",
+  "datasetPath": "research/benchmark/data/real-sec-fresh-blind-v0.2c.json",
+  "datasetGitBlobSha": "5602c516d3333f1fde665738fc8385bcd7b8a6d0",
+  "firstRun": {
+    "githubActionsRunId": 37448788181,
+    "commit": "f0acde852d2007378ec84d3f9a659c32a54926dd"
+  },
+  "rule": "The archived first-blind result is immutable. Future v0.2C executions are regression replays only."
+}
