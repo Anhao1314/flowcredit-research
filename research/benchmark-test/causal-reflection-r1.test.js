@@ -15,10 +15,10 @@ test('R1 recognizes explicit financial reflection attribution without changing t
 });
 
 test('R1 accepts largely/mainly reflected as explicit attribution variants',()=>{
- const claim='Higher enterprise usage drove platform revenue growth.';
+ const claim='Higher enterprise usage was a primary driver of platform revenue expansion.';
  for(const evidence of [
-  'Platform revenue growth largely reflected higher enterprise usage.',
-  'Platform revenue growth mainly reflected higher enterprise usage.'
+  'Platform revenue expansion largely reflected higher enterprise usage.',
+  'Platform revenue expansion mainly reflected higher enterprise usage.'
  ]){
   const result=candidateR1DeterministicRelation(material(claim,evidence));
   assert.equal(result.relation,'SUPPORTS',evidence);
@@ -27,16 +27,16 @@ test('R1 accepts largely/mainly reflected as explicit attribution variants',()=>
 });
 
 test('R1 does not promote bare reflected language or simple co-occurrence into causality',()=>{
- const claim='Higher customer usage drove subscription revenue growth.';
+ const claim='Higher customer usage was the primary driver of subscription revenue expansion.';
  const bare=candidateR1DeterministicRelation(material(
   claim,
-  'The customer mix reflected increased usage while subscription revenue also increased.'
+  'The customer mix reflected increased usage, and subscription revenue was 120 million USD.'
  ));
  const cooccurrence=candidateR1DeterministicRelation(material(
   claim,
-  'Subscription revenue increased and customer usage increased.'
+  'Subscription revenue was 120 million USD and customer usage was higher.'
  ));
- assert.notEqual(bare.relation,'SUPPORTS');
+ assert.equal(bare.relation,'NEUTRAL');
  assert.equal(cooccurrence.relation,'NEUTRAL');
 });
 
