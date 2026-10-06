@@ -1,192 +1,193 @@
-# FlowCredit Local Research Surface (UI-1.5)
+# FlowCredit Research Workbench — UI-2.0
 
-A development-only, read-only, loopback-only web surface that renders the real
-Research Memory (Claims, Evidence, Sources, provenance) through server-side
-HTML. It exists so the project owner can experience the current information
-architecture before any production frontend work is considered.
+A development-only, read-only, loopback-only web workbench for **Auditable Belief Memory & Evidence Reasoning Infrastructure for Research Agents**.
 
-UI-1.5 is a visual-architecture pass only: it changes composition and styling
-(workspace shell, dense rows, context panels, lineage lanes) without touching
-any product semantics, data source, route contract, query behavior, or demo
-isolation rule.
+UI-2.0 replaces the previous FlowCredit risk-assessment frontend and the earlier object-browser Research Surface with one active product UI.
 
-It is **not** a production frontend. It does not deploy, does not call any
-model, does not fetch from the network in the browser, and never writes.
+The product question is no longer “which database object do I want to browse?” It is:
 
-## Public demo (offline, synthetic, AI OFF)
+> **What do we currently believe, why, what counters it, what changed, and what requires human attention?**
 
-For a fully reproducible public demo that needs no private Research Memory, no model runtime and no network, build the deterministic fixture and start the surface in public-demo mode. The subject (`Northstar Compute`), sources and figures are entirely synthetic.
+## Product model
 
-```bash
-# 1) Build a small deterministic Research Memory SQLite outside the repository
-node research/surface/fixtures/public-demo/build.js /tmp/flowcredit-demo.sqlite
-
-# 2) Serve it read-only with the PUBLIC DEMO / READ ONLY / AI OFF labels
-FC_SURFACE_MEMORY_DB=/tmp/flowcredit-demo.sqlite \
-FC_SURFACE_PUBLIC_DEMO=1 \
-node research/surface/server.js
-# open http://127.0.0.1:4317/
+```text
+Research Inbox
+    ↓
+Belief
+    ↓
+Evidence roles / pairwise reasoning boundary
+    ↓
+Provenance + as-of
+    ↓
+Proposed change
+    ↓
+Human Review
+    ↓
+Future authoritative revision
 ```
 
-The builder is deterministic: re-running it emits the same Claims, Evidence, Sources, ids and timestamps (identical logical records and authority digest). Rendered pages never show the on-disk path or any machine-local path — only `Synthetic demo data`. The `?demo=1` locked What Changed preview is separate and is not required for the public demo.
+Hard semantic boundaries remain unchanged:
 
-## Run (real local Research Memory)
+- Evidence ≠ Claim.
+- Recorded Evidence link role ≠ persisted RelationReceipt.
+- Relation ≠ Impact.
+- AI proposal ≠ truth.
+- Human authority remains above every authoritative belief change.
+- Historical and as-of provenance must remain reproducible.
+
+## Run
 
 ```bash
 node research/surface/server.js
-# optional port
+# optional
 node research/surface/server.js --port 4317
 ```
 
-Then open:
+Open:
 
 ```text
 http://127.0.0.1:4317
 ```
 
-Startup prints:
+The server binds loopback only.
 
-```text
-FlowCredit Research Surface
-http://127.0.0.1:4317
-AI runtime: OFF
-Mode: REAL
-```
+## Active routes
 
-The server binds `127.0.0.1` only. Do not expose it beyond loopback.
-
-## Routes
-
-| Route | Page |
+| Route | Product surface |
 |---|---|
-| `GET /` | Research Inbox (attention workspace) |
-| `GET /claims` | Claims index (all recorded beliefs) |
-| `GET /claim/:claimId` | Claim detail (belief, evidence, revision history, provenance) |
-| `GET /evidence` | Evidence index (all recorded facts) |
-| `GET /evidence/:evidenceId` | Evidence detail (fact, referenced-by Claims, source, admission review, provenance depth) |
-| `GET /company/:subjectId` | Company context view (Claims, Evidence, Sources) |
-| `GET /changes` | What Changed (honest real-mode state) |
-| `GET /changes?demo=1` | Synthetic Claim Proposal preview (demo only) |
-| `GET /favicon.svg` | Local favicon (also served at `/favicon.ico`) |
+| `/` | Research Inbox — attention-first workspace |
+| `/beliefs` | Beliefs — current recorded Claims in product language |
+| `/claim/:claimId` | Belief Workbench — belief state, supporting/counter Evidence, history, reasoning boundary |
+| `/review` | Human Review — real capability boundary; synthetic preview with `?demo=1` |
+| `/evidence` | Evidence index |
+| `/evidence/:evidenceId` | Evidence Receipt — fact, source, admission, provenance, belief links |
+| `/timeline` | Research Timeline — persisted events in recorded time order |
+| `/company/:subjectId` | Research subject context |
 
-`GET` and `HEAD` only; any other method returns `405`.
+Historical compatibility aliases remain read-only:
 
-## Index queries (deterministic GET, no JS)
+- `/claims` → Beliefs renderer
+- `/changes` → Timeline renderer
 
-```text
-/claims?q=&category=&status=&subject=&sort=recent|oldest|category|status&page=1
-/evidence?q=&source=<sourceId>&subject=&link=linked|unlinked&review=reviewed|unreviewed&sort=recent|oldest|category|page&page=1
+They are not part of the UI-2.0 navigation.
+
+## Why server-first
+
+UI-2.0 intentionally keeps the existing server-first model instead of introducing a SPA framework merely for fashion.
+
+The current product benefits from:
+
+- deterministic SSR;
+- zero browser fetch;
+- zero browser storage;
+- zero browser mutation;
+- strict CSP;
+- all persisted strings escaped before HTML output;
+- no remote assets or CDN dependencies;
+- predictable, inspectable GET URLs;
+- browser JavaScript limited to keyboard focus and synthetic review-preview toggles.
+
+The backend Research Memory and Relation semantics remain the authority.
+
+## Research Inbox
+
+Inbox is action-first. It surfaces real signals computed from Research Memory:
+
+- admitted Evidence not referenced by a current belief;
+- beliefs with thin recorded supporting Evidence;
+- recently recorded Evidence;
+- linking counts;
+- admission provenance depth;
+- latest recorded activity.
+
+These are workflow signals, not risk scores, confidence scores or investment opinions.
+
+## Belief Workbench
+
+A Belief Workbench page shows:
+
+- the current recorded Claim statement and status;
+- current revision;
+- supporting Evidence;
+- counter Evidence;
+- revision timeline;
+- recorded Evidence link roles;
+- provenance and authority boundaries.
+
+Important: supporting/counter links stored on a Claim revision are displayed as **recorded roles**, not as fabricated RelationReceipts. When no persisted real RelationReceipt exists, the inspector says so explicitly.
+
+## Evidence Receipt
+
+Evidence is rendered as an auditable factual receipt:
+
+- recorded statement;
+- metric/value/period/scope;
+- Source;
+- source location;
+- Admission review records;
+- provenance depth;
+- beliefs that currently reference it;
+- correction/supersession state where present.
+
+Evidence never becomes a Claim or investment conclusion merely because it was admitted.
+
+## Human Review
+
+Real mode is intentionally empty until a real ClaimRevisionProposal + Human Review Receipt write contract exists.
+
+`/review?demo=1` may display isolated synthetic proposal examples. Review buttons are preview-only:
+
+- no request is sent;
+- nothing is stored;
+- no Claim is revised;
+- refresh restores the initial state.
+
+This is deliberate. A believable review UI is not permission to invent a write path.
+
+## Timeline
+
+Timeline is generated from persisted Research Memory events:
+
+- Evidence recording;
+- Evidence admission reviews;
+- corrections;
+- Claim revision records.
+
+It separates **when information arrived** from **when a belief changed**.
+
+UI-2.0 does not yet reconstruct a historical full snapshot at an arbitrary `asOf`. The interface states that limitation instead of simulating time travel.
+
+## Public synthetic demo
+
+A deterministic public demo remains available:
+
+```bash
+node research/surface/fixtures/public-demo/build.js /tmp/flowcredit-demo.sqlite
+
+FC_SURFACE_MEMORY_DB=/tmp/flowcredit-demo.sqlite \
+FC_SURFACE_PUBLIC_DEMO=1 \
+node research/surface/server.js
 ```
 
-- Search is a deterministic, case-insensitive substring match over recorded
-  text (statements, categories, metrics, sections, locations, source titles,
-  periods, raw/normalized values). It never searches hashes and never calls a
-  model. An exact Evidence id match is honored as a secondary path.
-- Filters are whitelisted; invalid values fall back to defaults instead of
-  erroring. Filter options come from recorded data only.
-- Pagination: page size 25 (Claims) / 20 (Evidence); `page` is clamped to the
-  last page. Page links are plain `GET` links and reset to page 1 when filters
-  change. `?demo=1` is preserved through filters and pagination.
-- Claim/Evidence lists never show canonical ids in the row; ids move to each
-  detail page's "Technical details" disclosure.
+Rendered pages never expose the local file path.
 
-### Index return context (UI-1.6)
+## Security and integrity
 
-Detail links opened from a filtered index carry that index URL forward:
-
-```text
-/evidence?link=linked&sort=page
-  → /evidence/EVID-…?from=%2Fevidence%3Flink%3Dlinked%26sort%3Dpage
-  → "Back to Evidence" → /evidence?link=linked&sort=page
-```
-
-- `from` is validated by `sanitizeReturnTo()` in `query.js`: same-origin
-  relative path, `/evidence` or `/claims` only, and the query is re-parsed and
-  re-serialized from whitelisted values. External hosts, protocol-relative
-  URLs, `javascript:`/`data:` values and path traversal are dropped, and the
-  back link falls back to the plain index.
-- The context is a navigation hint only — no storage, no session, no server
-  state. An index URL with default filters adds no `from`, and a Claims page
-  never returns to an Evidence URL (or the reverse).
-
-## Attention layer (Inbox)
-
-The Inbox leads with needs-attention blocks computed live from Research Memory
-(never hard-coded): Evidence not yet linked to a Claim, Claims with thin
-evidence coverage, recently recorded Evidence, plus a small "Research
-completeness" summary (deeper admission provenance vs partial provenance,
-latest activity). These are research workflow signals; they do not express
-risk, quality or investment views.
-
-## Workspace shell (UI-1.5)
-
-```text
-topbar        brand · current work scope · LOCAL / READ ONLY / AI OFF[/DEMO]
-───────────────────────────────────────────────────────────────────────
-left rail     Research Inbox · Claims · Evidence · What Changed
-              (current item marked with aria-current + accent rail mark)
-main zone     the page itself, max 1280px, no centered-article column
-context zone  quiet side panels with real research state where useful
-───────────────────────────────────────────────────────────────────────
-status rail   AI OFF · data source · UTC · read-only development notes
-```
-
-- Desktop uses a persistent left rail; ≤899px the rail becomes a compact
-  horizontal nav under the topbar (nothing hidden, no horizontal overflow).
-- Detail pages (Claim / Evidence) use a main column + context column on
-  desktop and stack on mobile. List pages use the full workspace width.
-- The lineage lane `Source → Evidence → Claim → Change` appears on Claim
-  detail; Evidence detail carries a provenance rail
-  (`● Source → ● Admission review → ● Evidence → ○ SourceSpan`), where solid
-  nodes are available trace steps and hollow nodes are stated as not
-  available. Every visual state has adjacent text.
-- The claim evidence-coverage meter is a count of linked Evidence records
-  (one mark per record), labelled "not Claim confidence". Corpus strips in
-  the Inbox show real linked/unlinked and deeper/partial provenance counts.
-- Tokens (surfaces, hairlines, ink, one accent, support/counter/attention
-  semantics) live at the top of `public/surface.css`. No inline styles are
-  emitted anywhere, so the strict CSP is unchanged.
-
-## Time display
-
-Dates (`YYYY-MM-DD`) and instants (`YYYY-MM-DD HH:MM UTC`) are shown in UTC,
-wrapped in `<time>` elements. There is no other time format on the surface.
-
-## Demo mode
-
-`?demo=1` renders 1–3 synthetic cases from the v0.12 locked benchmark
-(never from Research Memory). Demo pages carry a persistent banner
-(`Synthetic proposal examples — not Research Memory.`) and every case is
-labelled with a single `Demo` badge plus its case id in the metadata.
-Review buttons are UX previews only: they start `aria-pressed="false"`, write
-nothing, persist nothing and reset on refresh.
-
-## Data sources
-
-| Purpose | Default | Override |
-|---|---|---|
-| Real Research Memory (SQLite, read-only) | `~/fc-agent/research-memory/v0.4-recovery-final.sqlite`, else `v0.2-coreweave.sqlite` | `FC_SURFACE_MEMORY_DB` |
-| Demo locked cases | `~/fc-agent/research-claim-revision/locked` | `FC_SURFACE_DEMO_DIR` |
-
-If the locked runtime is absent, demo mode falls back to the frozen artifact
-`research/eval/claim-revision/pending-example.json`. If no Research Memory file
-can be opened, pages render a friendly read-only notice instead of failing.
-
-## Guarantees
-
-- Read-only: SQLite opened with `readOnly: true` + `PRAGMA query_only=ON`;
-  proposal stores are opened read-only as well. Verified by the no-mutation
-  test (stores stay byte-identical across all routes).
-- Loopback only (`127.0.0.1`), no file paths taken from the URL, no shell.
-- Restrictive headers: `Content-Security-Policy: default-src 'none'` with only
-  local directives (`style-src 'self'`, `script-src 'self'`, `img-src 'self'
-  data:`, `form-action 'self'` so the server-rendered filter GET forms work),
-  `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, `no-store`.
-- All persisted strings are HTML-escaped before rendering.
-- Zero client fetch: pages are server-rendered; browser JS only sets initial
-  `aria-pressed` states and toggles local demo previews (no storage, no network).
-- Zero dependencies, zero build, system font stack, no remote assets.
-- AI runtime is never started and never imported. Ollama stays off.
+- GET / HEAD only. Other methods return 405.
+- SQLite opened read-only with query-only behavior.
+- restrictive CSP:
+  - `default-src 'none'`
+  - local styles/scripts/images only
+  - `form-action 'self'`
+  - `base-uri 'none'`
+  - `frame-ancestors 'none'`
+- `Cache-Control: no-store`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: no-referrer`
+- no remote frontend dependencies.
+- no inline styles.
+- no client network calls.
+- no browser persistence.
 
 ## Tests
 
@@ -194,17 +195,18 @@ can be opened, pages render a friendly read-only notice instead of failing.
 node --test research/surface-test/*.test.js
 ```
 
-The same tests run under the repository release gate through
-`agent/test/surface.test.js` (thin importer). Real-data assertions skip
-automatically when the runtime Research Memory is not present.
+Repository CI also imports the surface suite through `agent/test/surface.test.js`.
 
-## Known limitations (UI-1.5)
+The frontend discipline gate additionally asserts that the legacy root frontend does not return.
 
-- No real ClaimRevisionProposal exists for real data yet; `/changes` states this.
-- No `Needs Review` backend state exists; it is a demo-only preview control.
-- Evidence → Admission → Source is the deepest available trace; sentence /
-  table-cell SourceSpan joins are not exposed.
-- One real company (coreweave) is under research.
-- Review mutation is disabled in this surface (read-only / preview only).
-- Search is deterministic substring matching — no semantic or AI search.
-- No LLM-Wiki, no generated summaries, no open questions.
+## Current limitations
+
+- no persisted real RelationReceipts in the real Research Memory surface;
+- no persisted real ClaimRevisionProposal queue;
+- no human-review write path;
+- no arbitrary historical as-of reconstruction;
+- no SourceSpan sentence/table-cell joins;
+- search remains deterministic substring search;
+- AI runtime remains OFF in this surface.
+
+Those are product boundaries, not CSS bugs.
