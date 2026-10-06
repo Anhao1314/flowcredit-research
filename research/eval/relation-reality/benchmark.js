@@ -113,7 +113,8 @@ function summarize(receipts,rows){
   unsafeDirectionalRate:Number((unsafe/total).toFixed(4)),
   resolved:receipts.filter(item=>item.processingStatus==='RESOLVED').length,
   abstained:receipts.filter(item=>item.processingStatus==='ABSTAINED').length,
-  notEvaluated:receipts.filter(item=>item.processingStatus==='NOT_EVALUATED').length
+  notEvaluated:receipts.filter(item=>item.processingStatus==='NOT_EVALUATED').length,
+  errors:receipts.filter(item=>item.processingStatus==='ERROR').length
  };
 }
 
