@@ -40,7 +40,8 @@ test('experiment reports the text baseline separately and prints measured compar
  assert.equal(result.textBaseline.directionalPairs,5);
  assert.equal(typeof result.textBaseline.exactRate,'number');
  assert.equal(typeof result.textBaseline.directionalAccuracy,'number');
- assert.equal(result.textBaseline.unsafeDirectional,0);
+ assert.ok(result.textBaseline.unsafeDirectional>result.semanticRuntime.unsafeDirectional);
+ assert.equal(result.semanticRuntime.unsafeDirectional,0);
  process.stdout.write('REALITY_BENCHMARK '+JSON.stringify({
   textBaseline:result.textBaseline,
   semanticRuntime:result.semanticRuntime,
