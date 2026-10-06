@@ -14,7 +14,10 @@ const GENERIC=new Set([
  'greater','less','more','most','least','above','below','over','under','exactly',
  'published','final','reported','statement','table','row','figure','value','number',
  'amount','latest','newest','recent','growth','increase','increased','decrease',
- 'decreased','decline','declined','higher','lower','high','low','remains','remain'
+ 'decreased','decline','declined','higher','lower','high','low','remains','remain',
+ 'sales','revenue','gross','margin','net','income','operating','earnings','share','shares',
+ 'percentage','grew','grow','accelerating','decelerating','faster','slower','shifted','toward',
+ 'away','primary','driver','driven','caused','because','contributed','contributor','investment'
 ]);
 
 function scaled(quantity){
@@ -41,24 +44,96 @@ function compare(value,threshold,operation){
  return null;
 }
 
+const METRIC_FAMILIES=Object.freeze([
+ ['gross_margin',/\bgross[- ]?margin\b/],
+ ['operating_income',/\boperating income\b/],
+ ['net_income',/\bnet income\b/],
+ ['eps',/\b(?:diluted )?earnings per share\b|\beps\b/],
+ ['sales',/\bnet sales\b|\brevenue\b/],
+ ['cash',/\bcash(?: balance)?\b/],
+ ['headcount',/\bheadcount\b|\bemployees?\b/]
+]);
+
+function metricFamily(statement){
+ const text=normalize(statement);
+ return METRIC_FAMILIES.find(([,pattern])=>pattern.test(text))?.[0]??null;
+}
+
 function metricTokens(statement){
  return [...new Set(referentTokens(statement).filter(token=>token.length>=4&&!GENERIC.has(token)))];
 }
 
 function sharesMetric(claimStatement,evidenceStatement){
+ const claimFamily=metricFamily(claimStatement),evidenceFamily=metricFamily(evidenceStatement);
+ if(claimFamily&&evidenceFamily&&claimFamily!==evidenceFamily)return false;
  const claim=metricTokens(claimStatement);
  const evidence=metricTokens(evidenceStatement);
- if(!claim.length||!evidence.length)return false;
+ if(!claim.length&&!evidence.length)return Boolean(claimFamily&&evidenceFamily&&claimFamily===evidenceFamily);
+ if(!claim.length||!evidence.length)return Boolean(claimFamily&&evidenceFamily&&claimFamily===evidenceFamily);
  const evidenceSet=new Set(evidence);
  const common=claim.filter(token=>evidenceSet.has(token));
- if(common.some(token=>token.length>=7))return true;
  if(common.length>=2)return true;
  const union=new Set([...claim,...evidence]).size;
- return union>0&&common.length/union>=0.34;
+ if(common.length===1&&union<=2)return true;
+ return union>0&&common.length/union>=0.5;
 }
 
 function requiresSecondOrder(statement){
- return /\b(accelerat(?:e|ed|ing|ion)|decelerat(?:e|ed|ing|ion))\b/.test(normalize(statement));
+ return /\b(accelerat(?:e|ed|ing|ion)|decelerat(?:e|ed|ing|ion)|faster|slower)\b/.test(normalize(statement));
+}
+
+function orderedRateSeries(statement){
+ const text=normalize(statement),rows=[];
+ const valueThenYear=/(\d+(?:\.\d+)?)\s*(?:percent|%)\s+in\s+((?:19|20)\d{2})/g;
+ let match;
+ while((match=valueThenYear.exec(text))!==null)rows.push({year:Number(match[2]),value:Number(match[1])});
+ if(rows.length<2){
+  const yearThenValue=/\b((?:19|20)\d{2})\b[^.;]{0,70}?(\d+(?:\.\d+)?)\s*(?:percent|%)/g;
+  while((match=yearThenValue.exec(text))!==null)rows.push({year:Number(match[1]),value:Number(match[2])});
+ }
+ const unique=new Map(rows.map(row=>[row.year,row]));
+ return [...unique.values()].sort((a,b)=>a.year-b.year);
+}
+
+function causalClaim(statement){
+ return /\b(caus(?:e|ed|es)|primary driver|driv(?:e|en|ing)|due to|contribut(?:e|ed|es|or)|pressur(?:e|ed|ing)|attribut(?:e|ed|able))\b/.test(normalize(statement));
+}
+function causalEvidence(statement){
+ return /\b(caus(?:e|ed|es|ed by)|driven by|due to|because(?: of)?|contribut(?:e|ed|es|or)|attribut(?:e|ed|able)|impact of)\b/.test(normalize(statement));
+}
+function causalClause(statement){
+ return normalize(statement).split(/\bwhile\b|[.;]/).find(part=>causalEvidence(part))??'';
+}
+function causalDecision(claimStatement,evidenceStatement){
+ if(!causalClaim(claimStatement))return null;
+ if(!causalEvidence(evidenceStatement))return result('NEUTRAL','RT_CAUSAL_LINK_ABSENT','evidence mentions related facts but states no causal link');
+ const clause=causalClause(evidenceStatement);
+ if(/\b(total|consolidated)\b/.test(normalize(claimStatement))&&!/\b(total|consolidated)\b/.test(clause)){
+  return result('AMBIGUOUS','RT_CAUSAL_SCOPE_MISSING','causal evidence is stated for a narrower scope than the claim');
+ }
+ const claimTokens=metricTokens(claimStatement),evidenceTokens=metricTokens(clause);
+ const common=claimTokens.filter(token=>evidenceTokens.includes(token));
+ if(common.length<1)return result('AMBIGUOUS','RT_CAUSAL_DRIVER_UNBOUND','causal wording is present but the claim driver is not safely bound');
+ return result('SUPPORTS','RT_EXPLICIT_CAUSAL_ATTRIBUTION','evidence explicitly attributes the relevant outcome to the claimed driver');
+}
+
+function mixShiftDecision(claimStatement,evidenceStatement){
+ const claim=normalize(claimStatement);
+ const match=claim.match(/\bmix\s+shift(?:ed|s|ing)?\s+(toward|away from)\s+([a-z0-9-]+)/);
+ if(!match)return null;
+ const direction=match[1],target=match[2];
+ const clauses=normalize(evidenceStatement).split(/\bwhile\b|[.;]/);
+ let targetRate=null,totalRate=null;
+ for(const clause of clauses){
+  const rate=quantities(clause).find(item=>item.family==='percent'||/percent|%/.test(item.literal??''));
+  if(!rate)continue;
+  if(clause.includes(target))targetRate=rate.value;
+  if(/\btotal\b/.test(clause))totalRate=rate.value;
+ }
+ if(targetRate===null||totalRate===null)return result('AMBIGUOUS','RT_MIX_COMPARISON_MISSING','mix claim requires target and total comparable growth rates');
+ const toward=targetRate>totalRate;
+ const supports=direction==='toward'?toward:!toward;
+ return result(supports?'SUPPORTS':'COUNTERS','RT_MIX_SHARE_INFERENCE','target growth '+targetRate+' vs total growth '+totalRate);
 }
 
 function directionOf(statement){
@@ -87,12 +162,19 @@ export function deterministicRelation(material,{reading=null}={}){
   return result('SUPPORTS','RT_EXACT_ASSERTION','claim and evidence assertions are textually identical');
  }
 
+ const mixDecision=mixShiftDecision(claimStatement,evidenceStatement);
+ if(mixDecision)return mixDecision;
+
  if(!sharesMetric(claimStatement,evidenceStatement)){
   return result('NEUTRAL','RT_NON_BEARING_METRIC','the readable evidence concerns a different metric or proposition');
  }
 
+ const causal=causalDecision(claimStatement,evidenceStatement);
+ if(causal)return causal;
+
  const claimQuantities=quantities(claimStatement);
  const evidenceQuantities=quantities(evidenceStatement);
+ const chronologicalRates=orderedRateSeries(evidenceStatement);
  const operation=comparator(claimStatement);
 
  if(operation&&claimQuantities.length&&evidenceQuantities.length){
@@ -108,23 +190,28 @@ export function deterministicRelation(material,{reading=null}={}){
  // Second-order direction such as acceleration requires at least two comparable
  // rates. One observation must still abstain; a two-point series may resolve.
  if(requiresSecondOrder(claimStatement)){
-  if(evidenceQuantities.length>=2){
-   const first=scaled(evidenceQuantities[0]);
-   const last=scaled(evidenceQuantities.at(-1));
+  const series=chronologicalRates.length>=2
+   ?chronologicalRates.map(item=>item.value)
+   :evidenceQuantities.map(scaled);
+  if(series.length>=2){
+   const first=series[0],last=series.at(-1);
    if(first!==last){
-    const accelerating=/\baccelerat(?:e|ed|ing|ion)\b/.test(normalize(claimStatement));
-    const supports=accelerating?last>first:last<first;
+    const text=normalize(claimStatement);
+    const positiveSecondOrder=/\b(accelerat(?:e|ed|ing|ion)|faster)\b/.test(text);
+    const supports=positiveSecondOrder?last>first:last<first;
     return result(supports?'SUPPORTS':'COUNTERS','RT_SECOND_ORDER_SERIES',
      'comparable rate moved from '+String(first)+' to '+String(last));
    }
   }
-  return result('AMBIGUOUS','RT_SECOND_ORDER_CONTEXT_MISSING','acceleration/deceleration requires a comparison rate or series');
+  return result('AMBIGUOUS','RT_SECOND_ORDER_CONTEXT_MISSING','second-order direction requires a comparable rate series');
  }
 
  const claimDirection=directionOf(claimStatement);
  if(claimDirection&&evidenceQuantities.length>=2){
-  const first=scaled(evidenceQuantities[0]);
-  const last=scaled(evidenceQuantities.at(-1));
+  const series=chronologicalRates.length>=2
+   ?chronologicalRates.map(item=>item.value)
+   :evidenceQuantities.map(scaled);
+  const first=series[0],last=series.at(-1);
   if(first!==last){
    const evidenceDirection=last>first?1:-1;
    return result(evidenceDirection===claimDirection?'SUPPORTS':'COUNTERS','RT_SERIES_DIRECTION',
