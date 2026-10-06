@@ -1,5 +1,5 @@
-// Request routing for the local Research Surface. GET / HEAD only.
-// Every render path is read-only; there is no mutation endpoint.
+// Request routing for FlowCredit Research Workbench UI-2.0.
+// GET / HEAD only. Every render path remains read-only.
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { inboxView } from './render/inbox.js';
@@ -8,7 +8,8 @@ import { claimView } from './render/claim.js';
 import { claimsView } from './render/claims.js';
 import { evidenceView } from './render/evidence.js';
 import { evidenceIndexView } from './render/evidence-index.js';
-import { changesView } from './render/changed.js';
+import { timelineView } from './render/changed.js';
+import { reviewView } from './render/review.js';
 import { messageBody, page, publicSourceLabel } from './render/layout.js';
 import { parseClaimsQuery, parseEvidenceQuery } from './query.js';
 
@@ -53,14 +54,15 @@ export function createRouter({ getMemory, getDemoData, publicDemo = false, log =
       send(res, method, 405, 'text/plain; charset=utf-8', 'Method Not Allowed\n', { Allow: 'GET, HEAD' });
       return;
     }
+
     let url;
-    try {
-      url = new URL(req.url, 'http://127.0.0.1');
-    } catch {
+    try { url = new URL(req.url, 'http://127.0.0.1'); }
+    catch {
       send(res, method, 400, 'text/plain; charset=utf-8', 'Bad Request\n');
       return;
     }
     const demo = url.searchParams.get('demo') === '1';
+
     try {
       const asset = ASSETS[url.pathname];
       if (asset) {
@@ -70,8 +72,6 @@ export function createRouter({ getMemory, getDemoData, publicDemo = false, log =
 
       const memory = getMemory();
       const demoData = demo ? getDemoData() : null;
-      // Public demo never names the on-disk file; real mode shows basename only.
-      // publicSourceLabel strips home-directory paths as a final guard.
       const dataLabel = publicDemo
         ? 'Synthetic demo data'
         : memory.source ? `${publicSourceLabel(memory.source.fileLabel)} (read-only)` : 'unavailable';
@@ -80,19 +80,14 @@ export function createRouter({ getMemory, getDemoData, publicDemo = false, log =
       if (memory.error) {
         const error = memory.error;
         const html = page({
-          title: 'Research Memory unavailable',
-          current: 'inbox',
-          demo,
-          publicDemo,
-          dataLabel,
-          demoLabel,
-          body: messageBody({
-            heading: 'Research Memory unavailable',
-            lead: `${error.code ?? 'DATA_UNAVAILABLE'}: the configured Research Memory database could not be opened read-only.`,
-            lines: [
-              'This surface never creates or repairs data; it only reads existing persisted records.',
-              'Point FC_SURFACE_MEMORY_DB at an existing Research Memory SQLite file, then reload this page.',
-              'No model runtime is used to render any page of this surface.'
+          title:'Research Memory unavailable', current:'inbox', demo, publicDemo, dataLabel, demoLabel,
+          body:messageBody({
+            heading:'Research Memory unavailable',
+            lead:`${error.code ?? 'DATA_UNAVAILABLE'}: the configured Research Memory database could not be opened read-only.`,
+            lines:[
+              'This Workbench never creates or repairs data; it only reads persisted records.',
+              'Point FC_SURFACE_MEMORY_DB at an existing Research Memory SQLite file, then reload.',
+              'No model runtime is used to render any page.'
             ]
           })
         });
@@ -101,73 +96,87 @@ export function createRouter({ getMemory, getDemoData, publicDemo = false, log =
       }
 
       const source = memory.source;
-
-      const wrap = (view, current, statusOverride) => {
-        const html = page({ title: view.title, current, demo, publicDemo, body: view.body, dataLabel, demoLabel, context: view.context });
-        sendHtml(res, method, statusOverride ?? view.status, html);
+      const wrap = (view,current,statusOverride) => {
+        const html = page({title:view.title,current,demo,publicDemo,body:view.body,dataLabel,demoLabel,context:view.context});
+        sendHtml(res,method,statusOverride ?? view.status,html);
       };
 
       if (url.pathname === '/') {
-        wrap(inboxView({ source, demo }), 'inbox');
+        wrap(inboxView({source,demo}),'inbox');
         return;
       }
-      if (url.pathname === '/claims') {
-        wrap(claimsView({ source, demo, query: parseClaimsQuery(url.searchParams) }), 'claims');
+
+      if (url.pathname === '/beliefs' || url.pathname === '/claims') {
+        wrap(claimsView({source,demo,query:parseClaimsQuery(url.searchParams)}),'beliefs');
         return;
       }
+
+      if (url.pathname === '/review') {
+        wrap(reviewView({source,demo,demoData}),'review');
+        return;
+      }
+
       if (url.pathname === '/evidence') {
-        wrap(evidenceIndexView({ source, demo, query: parseEvidenceQuery(url.searchParams) }), 'evidence');
+        wrap(evidenceIndexView({source,demo,query:parseEvidenceQuery(url.searchParams)}),'evidence');
         return;
       }
-      if (url.pathname === '/changes') {
-        wrap(changesView({ source, demo, demoData }), 'changes');
+
+      if (url.pathname === '/timeline' || url.pathname === '/changes') {
+        wrap(timelineView({source,demo,demoData}),'timeline');
         return;
       }
+
       const detail = url.pathname.match(/^\/(company|claim|evidence)\/(.+)$/);
       if (detail) {
         let id;
         try { id = decodeURIComponent(detail[2]); } catch { id = null; }
         if (!id || !ID_PATTERN.test(id)) {
-          const labels = { company: 'Company', claim: 'Claim', evidence: 'Evidence' };
+          const labels = { company:'Research subject', claim:'Belief', evidence:'Evidence' };
           const html = page({
-            title: `${labels[detail[1]]} not found`, current: detail[1], demo, publicDemo, dataLabel, demoLabel,
-            body: messageBody({
-              heading: `${labels[detail[1]]} not found`,
-              lead: 'The requested identifier is not a valid record identifier.',
-              lines: ['Identifiers are displayed on the list pages of this surface.']
+            title:`${labels[detail[1]]} not found`,
+            current:detail[1] === 'claim' ? 'beliefs' : detail[1] === 'evidence' ? 'evidence' : 'inbox',
+            demo,publicDemo,dataLabel,demoLabel,
+            body:messageBody({
+              heading:`${labels[detail[1]]} not found`,
+              lead:'The requested identifier is not a valid record identifier.',
+              lines:['Use the Workbench indexes to navigate to recorded objects.']
             })
           });
-          sendHtml(res, method, 404, html);
+          sendHtml(res,method,404,html);
           return;
         }
-        const view = detail[1] === 'company' ? companyView({ source, demo }, id)
-          : detail[1] === 'claim' ? claimView({ source, demo, from: url.searchParams.get('from') ?? '' }, id)
-            : evidenceView({ source, demo, from: url.searchParams.get('from') ?? '' }, id);
-        wrap(view, detail[1]);
+
+        const view = detail[1] === 'company'
+          ? companyView({source,demo},id)
+          : detail[1] === 'claim'
+            ? claimView({source,demo,from:url.searchParams.get('from') ?? ''},id)
+            : evidenceView({source,demo,from:url.searchParams.get('from') ?? ''},id);
+
+        wrap(view,detail[1] === 'claim' ? 'claim' : detail[1] === 'evidence' ? 'evidence-detail' : 'inbox');
         return;
       }
 
       const html = page({
-        title: 'Not found', current: 'inbox', demo, publicDemo, dataLabel, demoLabel,
-        body: messageBody({
-          heading: 'Page not found',
-          lead: 'This local surface only serves its own read-only pages.',
-          lines: ['Known routes: / , /claims , /evidence , /company/:subjectId , /claim/:claimId , /evidence/:evidenceId , /changes , with optional ?demo=1.']
+        title:'Not found',current:'inbox',demo,publicDemo,dataLabel,demoLabel,
+        body:messageBody({
+          heading:'Page not found',
+          lead:'This local Workbench only serves its own read-only research pages.',
+          lines:['Known routes: / , /beliefs , /review , /evidence , /timeline , /company/:id , /claim/:id , /evidence/:id. Historical /claims and /changes routes remain compatibility aliases.']
         })
       });
-      sendHtml(res, method, 404, html);
+      sendHtml(res,method,404,html);
     } catch (error) {
       log.error(`[surface] render error: ${error?.stack ?? error}`);
       try {
         const html = page({
-          title: 'Surface error', current: 'inbox', demo, publicDemo, dataLabel: 'unavailable', demoLabel: null,
-          body: messageBody({
-            heading: 'Something went wrong rendering this page',
-            lead: 'The surface stayed read-only. Nothing was written.',
-            lines: ['Retry the page. If the problem persists, check the server log in the terminal that started the surface.']
+          title:'Workbench error',current:'inbox',demo,publicDemo,dataLabel:'unavailable',demoLabel:null,
+          body:messageBody({
+            heading:'Something went wrong rendering this page',
+            lead:'The Workbench stayed read-only. Nothing was written.',
+            lines:['Retry the page. If the problem persists, check the terminal that started the local surface.']
           })
         });
-        sendHtml(res, method, 500, html);
+        sendHtml(res,method,500,html);
       } catch {
         res.destroy();
       }
