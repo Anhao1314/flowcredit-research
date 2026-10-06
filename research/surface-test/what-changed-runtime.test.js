@@ -16,7 +16,7 @@ async function withServer(memoryPath,fn){
 test('committed What Changed fixture is executed through the real pairwise runtime',()=>{
  const demo=loadWhatChangedDemo();
  assert.ok(demo);
- assert.deepEqual(demo.counts,{pairs:5,resolved:3,abstained:1,notEvaluated:1,errors:0,candidates:2});
+ assert.deepEqual(demo.counts,{pairs:5,resolved:3,abstained:1,notEvaluated:1,errors:0,candidates:2,investigations:1});
  assert.deepEqual(demo.receipts.map(item=>item.relation),['SUPPORTS','COUNTERS','AMBIGUOUS',null,'NEUTRAL']);
 });
 
@@ -33,6 +33,8 @@ test('What Changed surface shows runtime receipts and keeps Claim mutation disab
   assert.match(html,/AMBIGUOUS/);
   assert.match(html,/NOT_EVALUATED/);
   assert.match(html,/PENDING HUMAN REVIEW/);
+  assert.match(html,/NEEDS INVESTIGATION/);
+  assert.match(html,/previous comparable-period rate/);
   assert.match(html,/Claim mutation allowed: no/);
  });
 });
