@@ -17,6 +17,7 @@ Last updated: 2026-10-06 · Repository: development/test workspace · Branch: ma
 | Compatibility runtime and fail-closed Relation gate | research/claim-relation/compatibility.js, gate.js |
 | Conservative prose/lexical Relation baseline | research/relation-runtime/deterministic.js |
 | **Provenance-aware SemanticFrame projection runtime** | **research/semantic-frame/** |
+| **Research Memory Evidence → SemanticFrame adapter** | **research/semantic-frame/memory-adapter.js** |
 | **Structured Semantic Compatibility + Relation path** | **research/relation-runtime/semantic-*.js** |
 | Development RelationReceipt with legal status/relation matrix | research/relation-runtime/receipt.js |
 | Pairwise What Changed review queue | research/what-changed/ |
@@ -152,7 +153,7 @@ The chain still stops before Impact and authoritative Claim mutation.
 ## PLANNED
 
 - independently human-labeled 500+ pair semantic Relation benchmark
-- SemanticFrame materialization directly from real Research Memory + Grounding
+- explicit Claim semantic binding for real Research Memory; Evidence adaptation is implemented, while prose-only Claims remain fail-closed
 - model/verifier-assisted semantic projection with explicit model provenance
 - bounded tool-based investigator beyond the controlled local Evidence pool
 - Evidence Delta / Impact
