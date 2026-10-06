@@ -234,12 +234,16 @@ The next source-isolated evaluation is frozen before dataset construction.
 | Issuers | 4 previously unused issuers |
 | Cases | 32 total, 8 per issuer |
 | Gate | unchanged v0.2A thresholds |
-| Dataset | **not created yet** |
+| Dataset | **locked: 32 cases / 4 issuers** |
 | Score | **does not exist yet** |
 
-Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta and CoreWeave are explicitly excluded from issuer selection.
+The selected unseen issuers are Costco Wholesale Corporation, JPMorgan Chase & Co., Salesforce, Inc. and Caterpillar Inc. Each contributes exactly eight cases. Apple, Microsoft, NVIDIA, Amazon, Alphabet, Meta and CoreWeave remain excluded.
 
-The runtime, evaluator, schema and gate Git blob SHAs are pinned in `research/benchmark/holdout-v0.2c-protocol.json`. CI verifies those locks. No v0.2C case may be probed against R2 before the complete dataset is committed and hashed.
+Dataset Git blob SHA: `5602c516d3333f1fde665738fc8385bcd7b8a6d0`.
+
+The runtime, evaluator, schema and gate Git blob SHAs remain pinned in `research/benchmark/holdout-v0.2c-protocol.json`; dataset bytes are pinned separately in `research/benchmark/holdout-v0.2c-dataset-lock.json`. CI verifies both locks. R2 has **not** been executed against v0.2C yet.
+
+Current state: **`DATASET_LOCKED_NOT_EVALUATED`**.
 
 
 ## PLANNED
