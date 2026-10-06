@@ -116,6 +116,29 @@ test('candidate metric qualifier binds same metric family without collapsing bus
 });
 
 
+
+test('candidate reader ignores digits embedded in alphanumeric identifiers without changing the baseline reader',async()=>{
+ const {candidateQuantities}=await import('../relation-runtime/candidate-reading.js');
+ const {evaluateCandidateRelation}=await import('../relation-runtime/candidate-runtime.js');
+ assert.deepEqual(candidateQuantities('A100, H20, Q2 and GPT-5 were discussed; gross margin was 71.1 percent.').map(item=>item.value),[71.1]);
+ const asOf='2026-10-06T05:59:00.000Z';
+ const relationInput={
+  evidence:{evidenceId:'GENERIC-EVID-H20'},
+  claim:{claimId:'GENERIC-CLAIM-H20',revisionId:'GENERIC-CLAIM-H20:v1'},
+  asOf,
+  evidenceSide:{semantics:{state:'NOT_MATERIALIZED'}},
+  claimSide:{semantics:{state:'NOT_MATERIALIZED'}}
+ };
+ const material={
+  evidenceId:'GENERIC-EVID-H20',claimId:'GENERIC-CLAIM-H20',revisionId:'GENERIC-CLAIM-H20:v1',asOf,
+  claim:{statement:'The H20 inventory charge contributed to gross-margin decline in fiscal 2026.'},
+  evidence:{statement:'Gross margin decreased from 75.0 percent in fiscal 2025 to 71.1 percent in fiscal 2026, and the filing identifies the H20 inventory-related charge as one contributor.'}
+ };
+ const receipt=evaluateCandidateRelation({relationInput,material});
+ assert.equal(receipt.processingStatus,'RESOLVED');
+ assert.equal(receipt.relation,'SUPPORTS');
+});
+
 test('archived SEC pilot result remains exactly reproducible from the committed benchmark',()=>{
  const archived=JSON.parse(readFileSync(new URL('../benchmark/results/real-sec-pilot-v0.1.json',import.meta.url),'utf8'));
  const baseline=scoreBenchmark(benchmark,{runtime:'baseline'});
