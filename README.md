@@ -222,6 +222,17 @@ Current state: **`FIRST_BLIND_ARCHIVED_FAIL`**.
 
 The immutable result is archived at [research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json](research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json). From this point onward, v0.2C is a repair/regression set, not a blind test.
 
+### Safety audit S1
+
+The five v0.2C safety failures collapse into two root-cause families:
+
+- **4/5 — second-order unsafe fallback:** when an explicit comparable rate series is not safely parsed, R2 falls back to generic numeric quantities and can emit a directional acceleration/deceleration result from incompatible numbers.
+- **1/5 — causal contradiction precedence:** causal-attribution support can be emitted before an explicit contradictory outcome direction is allowed to veto it.
+
+The next repair is deliberately fail-closed: **remove the generic-number fallback from second-order resolution**. Causal contradiction veto follows as a separate repair. Aggregate accuracy is not the optimization target during this safety phase.
+
+Audit: [research/benchmark/SAFETY-AUDIT-v0.2c-S1.md](research/benchmark/SAFETY-AUDIT-v0.2c-S1.md).
+
 # From abstention to investigation
 
 Safe abstention is useful only if it can create a useful next action.
