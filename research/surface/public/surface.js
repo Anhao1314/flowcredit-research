@@ -1,10 +1,30 @@
-// Minimal local interactions for the Research Surface.
-// No fetch, no storage, no network mutation. Refreshing restores defaults.
+// Minimal enhancement layer for FlowCredit Research Workbench UI-2.0.
+// No fetch, no storage, no mutation. The server remains the source of truth.
 (function () {
   'use strict';
 
-  // Review preview buttons start unselected in the SSR markup; make the
-  // initial pressed state explicit for assistive technology.
+  function focusSearch() {
+    var input = document.getElementById('global-q');
+    if (!input) return false;
+    input.focus();
+    input.select();
+    return true;
+  }
+
+  document.addEventListener('keydown', function (event) {
+    var target = event.target;
+    var typing = target && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName);
+    if ((event.metaKey || event.ctrlKey) && String(event.key).toLowerCase() === 'k') {
+      event.preventDefault();
+      focusSearch();
+      return;
+    }
+    if (!typing && event.key === '/') {
+      event.preventDefault();
+      focusSearch();
+    }
+  });
+
   var initial = document.querySelectorAll('[data-preview-button]');
   for (var index = 0; index < initial.length; index += 1) {
     if (!initial[index].hasAttribute('aria-pressed')) initial[index].setAttribute('aria-pressed', 'false');
@@ -24,7 +44,7 @@
       candidate.setAttribute('aria-pressed', selected ? 'true' : 'false');
     }
     if (note) {
-      note.textContent = group.getAttribute('data-preview-note') || 'Preview only.';
+      note.textContent = group.getAttribute('data-preview-note') || 'Preview only. No research record was changed.';
       note.hidden = false;
     }
   });
