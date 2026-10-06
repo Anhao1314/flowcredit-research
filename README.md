@@ -180,6 +180,22 @@ The locked holdout is reused only as a **repair regression set** after its first
 
 R2 adds a minimal `driver → outcome` role frame for explicit causal constructions such as `A drove B` versus `B was driven by A`. It repaired one additional archived failure and did not change the first-blind result.
 
+### Fresh blind v0.2C protocol
+
+The next generalization test is frozen **before source or case collection**.
+
+- runtime: `relation-candidate/v0.2b-r2`
+- base commit: `b7817dedd1c6d9b59cde15558b2036ca421c4ff7`
+- 4 previously unused issuers
+- 8 cases per issuer
+- 32 cases total
+- unchanged promotion gate
+- one-shot first evaluation after dataset hash lock
+
+Current state: **`PROTOCOL_FROZEN_NO_DATASET`**.
+
+No v0.2C issuer, filing, case, label or score exists yet. The protocol and pinned blob SHAs live at [research/benchmark/holdout-v0.2c-protocol.json](research/benchmark/holdout-v0.2c-protocol.json).
+
 # From abstention to investigation
 
 Safe abstention is useful only if it can create a useful next action.
@@ -358,7 +374,7 @@ CI also runs the memory, retrieval, admission, analyst, grounding, evidence-supp
 
 The next work is not another vocabulary layer.
 
-1. **Build an independently human-labeled 500+ pair semantic Relation benchmark** across filings, earnings calls, guidance, tables and management language.
+1. **Execute the frozen v0.2C fresh blind protocol**: collect and lock 32 cases from four previously unused issuers, then run R2 once and archive the result. Only after that should the benchmark scale toward 500+ independently reviewed pairs.
 2. **Complete Claim semantic binding for real Research Memory.** Evidence now materializes directly; current prose-only Claims intentionally remain NOT_MATERIALIZED until an explicit provenance-bearing Claim projection exists.
 3. Add a **verifier/model semantic route** whose proposed fields carry explicit model provenance and can never masquerade as deterministic truth.
 4. Extend the investigator from the controlled Evidence pool to **bounded tool-based retrieval**, preserving as-of and source-grounding constraints.

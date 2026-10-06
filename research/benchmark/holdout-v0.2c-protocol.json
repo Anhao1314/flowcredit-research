@@ -1,0 +1,95 @@
+{
+  "version": "flowcredit.fresh_blind_protocol/v0.2c",
+  "status": "PROTOCOL_FROZEN_NO_DATASET",
+  "frozenAt": "2026-10-06T09:15:00.000Z",
+  "baseCommit": "b7817dedd1c6d9b59cde15558b2036ca421c4ff7",
+  "candidate": {
+    "name": "relation-candidate/v0.2b-r2",
+    "files": {
+      "research/relation-runtime/candidate-r2-causal-roles.js": "0b5b0b210ea7a0cafaec3ae6e2d0560ea4fd2588",
+      "research/relation-runtime/candidate-r2-deterministic.js": "2b8b612e2f27fbf67722ba26a9f8e06cb6244676",
+      "research/relation-runtime/candidate-r2-runtime.js": "44472e4bf4616587a6df466e594eea7ca372184f"
+    }
+  },
+  "harness": {
+    "files": {
+      "research/benchmark/evaluate.js": "7af01d4b0637ae446dff4db3ee6d1006f4514845",
+      "research/benchmark/schema.js": "aa3c5b17c595da93f3831ae92214ef71d77e30a0"
+    }
+  },
+  "gate": {
+    "path": "research/benchmark/phase-gate-v0.2a.json",
+    "gitBlobSha": "9a333049f61662f7bdb68109ccc4000e839783ce",
+    "thresholds": {
+      "overallAccuracyMin": 0.85,
+      "directionalAccuracyMin": 0.9,
+      "directionalInversionRateMax": 0.02,
+      "unsafeDirectionalErrorRateMax": 0.05,
+      "ambiguousAbstentionRecallMin": 0.9
+    }
+  },
+  "corpusPlan": {
+    "issuersRequired": 4,
+    "casesPerIssuer": 8,
+    "totalCases": 32,
+    "sourcePolicy": "PRIMARY_SEC_FILINGS_ONLY",
+    "issuerIsolation": "NO_ISSUER_USED_IN_PRIOR_RELATION_BENCHMARKS",
+    "excludedIssuers": [
+      "Apple Inc.",
+      "Microsoft Corporation",
+      "NVIDIA Corporation",
+      "Amazon.com, Inc.",
+      "Alphabet Inc.",
+      "Meta Platforms, Inc.",
+      "CoreWeave, Inc."
+    ],
+    "buckets": [
+      {
+        "name": "numeric_or_trend",
+        "cases": 8
+      },
+      {
+        "name": "hard_negative",
+        "cases": 4
+      },
+      {
+        "name": "second_order",
+        "cases": 4
+      },
+      {
+        "name": "causal_attribution",
+        "cases": 4
+      },
+      {
+        "name": "scope_or_metric_binding",
+        "cases": 4
+      },
+      {
+        "name": "insufficient_context",
+        "cases": 4
+      },
+      {
+        "name": "mixed_hard",
+        "cases": 4
+      }
+    ]
+  },
+  "evaluationPolicy": {
+    "datasetBeforeRuntimeExecution": true,
+    "datasetMustBeHashedAndLocked": true,
+    "firstRunMustBeOneShot": true,
+    "networkCallsFromRelationRuntimeForbidden": true,
+    "noLabelChangesAfterFirstPrediction": true,
+    "noThresholdChangesAfterFirstPrediction": true,
+    "noRuntimeChangesBetweenDatasetLockAndFirstRun": true,
+    "firstResultMustBeArchivedWhetherPassOrFail": true,
+    "afterFirstRunDatasetBecomesRepairRegressionOnly": true,
+    "passDoesNotAuthorizeDefaultPromotion": true,
+    "failDoesNotAuthorizeThresholdRelaxation": true
+  },
+  "publicationBoundary": {
+    "singleReviewAllowedForEngineeringHoldout": true,
+    "publicationGold": false,
+    "generalizationClaimAllowed": "DIAGNOSTIC_ONLY"
+  }
+}
