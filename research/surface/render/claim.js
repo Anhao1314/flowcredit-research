@@ -1,166 +1,143 @@
-// Claim detail (UI-1.5): evidence-centric workspace. The Claim header carries
-// identity; the main column is the Evidence itself; the context column holds
-// recorded Claim state and the revision rail.
+// Belief Workbench (UI-2.0). The persisted domain object is still Claim.
+// This view makes belief state, evidence roles, provenance and revision time legible
+// without pretending that recorded links are persisted RelationReceipts.
 import { buildClaim } from '../projection.js';
 import {
-  badge, checkpoint, escapeHtml, icon, lineageLane, panelTitle, railViz,
-  backToIndex, sectionHead, statusLabel, statusTone, termHelp, tickStrip,
-  timeInstant, truncate, withDemo
+  badge, backToIndex, checkpoint, escapeHtml, icon, panelTitle, railViz,
+  statusLabel, statusTone, timeInstant, truncate, withDemo
 } from './layout.js';
-
-function admissionLine(admission) {
-  if (!admission) return '<span class="meta">No admission review recorded for this Evidence record.</span>';
-  return `<span class="meta">Admission review: ${escapeHtml(admission.decision ?? 'recorded')} · ${escapeHtml(admission.reviewerType ?? 'reviewer not recorded')} · ${escapeHtml(admission.reasonCode ?? 'reason not recorded')} · recorded ${timeInstant(admission.recordedAt)}</span>`;
-}
-
-function evidenceRow(item, demo, role) {
-  return `<li class="row">
-      <span class="row-marker" aria-hidden="true">${icon('evidence')}</span>
-      <div class="row-body">
-        <a class="row-title" href="${escapeHtml(withDemo(`/evidence/${encodeURIComponent(item.evidenceId)}`, demo))}">${escapeHtml(truncate(item.statement ?? item.evidenceId, 200))}</a>
-        <p class="row-meta">${escapeHtml(item.metric ?? 'metric not recorded')}<span class="sep">·</span>page ${escapeHtml(item.page ?? 'not recorded')}<span class="sep">·</span>${escapeHtml(item.sourceTitle ?? 'source not recorded')}<span class="sep">·</span>recorded ${timeInstant(item.createdAt)}</p>
-        ${admissionLine(item.admission)}
-        ${role === 'counter' ? `<p class="row-chips">${badge('counter evidence', 'caution')}</p>` : ''}
-      </div>
-    </li>`;
-}
 
 function stateItem(key, value) {
   return `<li class="state-item"><span class="state-key">${escapeHtml(key)}</span><span class="state-value">${value}</span></li>`;
 }
 
-function coverageTicks(supportCount, counterCount) {
-  const support = Math.min(supportCount, 10);
-  const counter = Math.min(counterCount, 10);
-  const overflow = supportCount > 10 || counterCount > 10 ? '<span class="tick-gap" aria-hidden="true"></span>' : '';
-  if (!support && !counter) return '';
-  return `<span class="count-marks">${support ? tickStrip({ on: support, total: support }) : ''}${counter ? tickStrip({ on: counter, total: counter, onClass: 'is-counter' }) : ''}${overflow}</span>`;
+function reasoningItem(item, demo, role) {
+  const tone = role === 'supporting' ? 'positive' : 'caution';
+  const label = role === 'supporting' ? 'SUPPORTS' : 'COUNTERS';
+  return `<article class="reasoning-item">
+    <div class="reasoning-role">${badge(label,tone)}</div>
+    <div class="reasoning-body">
+      <a class="reasoning-statement" href="${escapeHtml(withDemo(`/evidence/${encodeURIComponent(item.evidenceId)}`,demo))}">${escapeHtml(truncate(item.statement ?? item.evidenceId,260))}</a>
+      <p class="reasoning-meta">${escapeHtml(item.sourceTitle ?? 'source not recorded')}<span class="sep">·</span>page ${escapeHtml(item.page ?? 'not recorded')}<span class="sep">·</span>recorded ${timeInstant(item.createdAt)}</p>
+      <p class="reasoning-note"><strong>Recorded role:</strong> ${label}. This is the Claim revision's persisted Evidence link role, not a persisted pairwise RelationReceipt.</p>
+    </div>
+  </article>`;
 }
 
 export function claimView({ source, demo, from = '' }, claimId) {
-  const claim = buildClaim(source, claimId);
-  const backHref = backToIndex('/claims', from, demo);
-  if (!claim) {
+  const belief = buildClaim(source, claimId);
+  const backHref = backToIndex('/beliefs', from, demo);
+  if (!belief) {
     return {
-      status: 404,
-      title: 'Claim not found',
-      body: `<div class="view"><p class="eyebrow">Research Memory</p><h1>Claim not found</h1>
-      <p class="lead">No Claim exists with id <code>${escapeHtml(claimId)}</code> in the current Research Memory.</p>
-      <p class="note">Try the <a href="${escapeHtml(backHref)}">Claims index</a> to browse recorded Claims.</p></div>`
+      status:404,
+      title:'Belief not found',
+      body:`<div class="view"><div class="view-head"><p class="eyebrow">Belief memory</p><h1>Belief not found</h1><p class="lead">No recorded Claim exists with id <code>${escapeHtml(claimId)}</code>.</p></div><p><a class="button-link" href="${escapeHtml(backHref)}">Back to Beliefs</a></p></div>`
     };
   }
-  const current = claim.claim ?? {};
-  const subjectHref = withDemo(`/company/${encodeURIComponent(claim.subjectId)}`, demo);
-  const supports = claim.provenance.length;
-  const counters = claim.counterProvenance.length;
-  const currentVersion = claim.current?.version ?? null;
 
-  const supportingRows = claim.provenance.map((item) => evidenceRow(item, demo, 'supporting')).join('');
-  const counterRows = claim.counterProvenance.map((item) => evidenceRow(item, demo, 'counter')).join('');
+  const currentClaim = belief.claim ?? {};
+  const currentVersion = belief.current?.version ?? null;
+  const supports = belief.provenance.length;
+  const counters = belief.counterProvenance.length;
+  const unresolved = belief.supporting.missing.length + belief.counter.missing.length;
+  const subjectHref = withDemo(`/company/${encodeURIComponent(belief.subjectId)}`,demo);
+  const reasoning = [
+    ...belief.provenance.map((item)=>reasoningItem(item,demo,'supporting')),
+    ...belief.counterProvenance.map((item)=>reasoningItem(item,demo,'counter'))
+  ].join('');
 
-  const historyRows = claim.revisions.map((revision) => `
-    <tr>
-      <td data-label="Revision">v${escapeHtml(revision.version)}</td>
-      <td data-label="Status">${badge(statusLabel(revision.claim?.status), statusTone(revision.claim?.status))}</td>
-      <td data-label="Confidence">${escapeHtml(revision.claim?.confidence ?? 'not recorded')}</td>
-      <td data-label="Reason">${escapeHtml(revision.revisionReason ?? 'not recorded')}</td>
-      <td data-label="Effective">${timeInstant(revision.effectiveAt)}</td>
-      <td data-label="Recorded">${timeInstant(revision.createdAt)}</td>
-    </tr>`).join('');
+  const revisionRail = belief.revisions.map((revision) => `<div class="revision-node${revision.version===currentVersion?' is-current':''}">
+    <strong>v${escapeHtml(revision.version)}</strong>
+    <span>${escapeHtml(statusLabel(revision.claim?.status))}</span>
+    <span>${timeInstant(revision.effectiveAt)}</span>
+  </div>`).join('');
 
-  const revisionSteps = claim.revisions.slice(-4).map((revision) => ({
-    label: `v${revision.version} · ${statusLabel(revision.claim?.status)}`,
-    meta: `effective ${revision.effectiveAt ? revision.effectiveAt.slice(0, 10) : 'not recorded'}`,
-    state: revision.version === currentVersion ? 'on' : 'off'
-  }));
+  const provenanceSteps = [
+    {label:'Recorded Claim',meta:`v${currentVersion ?? '?'}`,state:'on'},
+    {label:'Evidence links',meta:`${supports} supporting · ${counters} counter`,state:(supports+counters)?'on':'off'},
+    {label:'RelationReceipt',meta:'not persisted for real Research Memory',state:'off'},
+    {label:'Human review',meta:'required before authoritative change',state:'off'}
+  ];
 
-  const sourceCount = new Set([...claim.provenance, ...claim.counterProvenance].map((item) => item.sourceTitle).filter(Boolean)).size;
-  const lineage = lineageLane([
-    { iconName: 'source', label: sourceCount === 1 ? 'Source' : 'Sources', count: sourceCount },
-    { iconName: 'evidence', label: 'Evidence', count: supports + counters },
-    { iconName: 'claim', label: 'Claim', count: null, current: true },
-    { iconName: 'change', label: 'No belief changes yet', count: null }
-  ]);
-
-  const unresolved = claim.supporting.missing.length + claim.counter.missing.length;
-  const body = `
-  <div class="view">
+  const body=`
+  <div class="view belief-view">
     <div class="workspace">
-      <div class="ws-head">
-        <p class="back-link"><a href="${escapeHtml(backHref)}">Back to Claims</a></p>
-        <p class="eyebrow">${icon('claim')}Claim · <a href="${escapeHtml(subjectHref)}">${escapeHtml(claim.subjectId)}</a> (${escapeHtml(claim.subjectName)})</p>
-        <h1>${escapeHtml(current.statement ?? 'Claim statement not recorded')}</h1>
-        <p class="badge-row">
-          ${badge(statusLabel(current.status), statusTone(current.status))}
-          ${badge(`revision v${currentVersion ?? '?'}`, 'neutral')}
-          ${current.category ? badge(current.category, 'neutral') : ''}
-          ${supports ? badge(`${supports} supporting Evidence`, 'neutral') : ''}
-          ${counters ? badge(`${counters} counter Evidence`, 'caution') : ''}
-          ${current.confidence !== undefined && current.confidence !== null ? badge(`confidence ${current.confidence}`, 'neutral') : ''}
-        </p>
-        ${lineage}
-      </div>
+      <header class="ws-head">
+        <p class="back-link"><a href="${escapeHtml(backHref)}">← Back to Beliefs</a></p>
+        <p class="eyebrow">${icon('belief')}Belief Workbench · <a href="${escapeHtml(subjectHref)}">${escapeHtml(belief.subjectName)}</a></p>
+        <div class="belief-hero">
+          <div class="belief-hero-main">
+            <h1 class="belief-statement">${escapeHtml(currentClaim.statement ?? 'Belief statement not recorded')}</h1>
+            <p class="badge-row">
+              ${badge(statusLabel(currentClaim.status),statusTone(currentClaim.status))}
+              ${badge(`revision v${currentVersion ?? '?'}`,'neutral')}
+              ${currentClaim.category?badge(currentClaim.category,'neutral'):''}
+              ${supports?badge(`${supports} supporting`,'positive'):''}
+              ${counters?badge(`${counters} counter`,'caution'):''}
+            </p>
+          </div>
+        </div>
+      </header>
 
       <div class="ws-main">
         <section>
-          ${sectionHead('Evidence behind it', `${supports + counters} linked`)}
-          ${termHelp('Evidence', 'A verified factual record extracted from a source document.')}
-          ${supportingRows ? `<ul class="rows">${supportingRows}</ul>` : '<p class="note">No supporting Evidence records are linked to this Claim.</p>'}
-          ${counterRows ? `<h3 class="section-block-label">Counter evidence</h3><ul class="rows">${counterRows}</ul>` : ''}
-          ${unresolved ? `<p class="note">${escapeHtml(unresolved)} linked Evidence reference(s) could not be resolved in the current Research Memory.</p>` : ''}
-          <p class="note">Coverage describes linked evidence volume, not Claim truth or confidence. Explanation source: recorded revision method and linked Evidence records only. No generated explanation is produced by this surface.</p>
+          <div class="section-head"><h2>Reasoning</h2><span class="section-meta">${escapeHtml(supports+counters)} linked Evidence</span></div>
+          ${reasoning ? `<div class="reasoning-stack">${reasoning}</div>` : '<p class="note strong">No Evidence is linked to this belief.</p>'}
+          ${unresolved ? `<div class="reasoning-note"><strong>Unresolved references:</strong> ${escapeHtml(unresolved)} Evidence id(s) recorded on the Claim could not be resolved in the current Research Memory.</div>` : ''}
+          <p class="note">The Workbench does not upgrade an Evidence link into a RelationReceipt. Pairwise Relation remains a separate runtime result and must preserve its own provenance, as-of and reproducibility.</p>
         </section>
 
-        <section>
-          ${sectionHead('Revision history')}
-          <table class="table stack">
-            <caption class="table-caption">Recorded revisions of this Claim</caption>
-            <thead><tr><th scope="col">Revision</th><th scope="col">Status</th><th scope="col">Confidence</th><th scope="col">Reason</th><th scope="col">Effective</th><th scope="col">Recorded</th></tr></thead>
-            <tbody>${historyRows}</tbody>
-          </table>
+        <section class="section">
+          <div class="section-head"><h2>Belief history</h2><span class="section-meta">${escapeHtml(belief.revisions.length)} revision record${belief.revisions.length===1?'':'s'}</span></div>
+          <div class="revision-timeline">${revisionRail}</div>
+          <p class="note">Effective time and recorded time remain distinct. This surface shows persisted history only and never rewrites an earlier revision.</p>
         </section>
 
         <details class="technical">
-          <summary>Technical details</summary>
-          <ul class="record-list">
-            <li class="record"><span>Claim id</span><code>${escapeHtml(claim.identity.id)}</code></li>
-            <li class="record"><span>Subject</span><code>${escapeHtml(claim.subjectId)}</code></li>
-            <li class="record"><span>Current revision</span><code>${escapeHtml(claim.current ? `${claim.current.id}` : 'not recorded')}</code></li>
-            <li class="record"><span>Revision reason</span><code>${escapeHtml(claim.current?.revisionReason ?? 'not recorded')}</code></li>
-            <li class="record"><span>Linked Evidence ids</span><code>${escapeHtml([...(current.supportingEvidenceIds ?? []), ...(current.counterEvidenceIds ?? [])].join(', ') || 'none recorded')}</code></li>
-            <li class="record"><span>Recorded method</span><span>${escapeHtml(current.method ?? 'not recorded')}</span></li>
+          <summary>Technical record</summary>
+          <ul class="record-list meta-grid">
+            <li class="record"><span>Claim id</span><code>${escapeHtml(belief.identity.id)}</code></li>
+            <li class="record"><span>Current revision</span><code>${escapeHtml(belief.current?.id ?? 'not recorded')}</code></li>
+            <li class="record"><span>Revision reason</span><span>${escapeHtml(belief.current?.revisionReason ?? 'not recorded')}</span></li>
+            <li class="record"><span>Recorded method</span><span>${escapeHtml(currentClaim.method ?? 'not recorded')}</span></li>
+            <li class="record"><span>Supporting Evidence ids</span><code class="wrap">${escapeHtml((currentClaim.supportingEvidenceIds ?? []).join(', ') || 'none recorded')}</code></li>
+            <li class="record"><span>Counter Evidence ids</span><code class="wrap">${escapeHtml((currentClaim.counterEvidenceIds ?? []).join(', ') || 'none recorded')}</code></li>
           </ul>
         </details>
-
-        ${checkpoint('Can you understand why this belief exists?')}
+        ${checkpoint('Can you explain what this belief is based on, what counters it, and what remains unproven?')}
       </div>
 
-      <aside class="ws-context" aria-label="Claim state">
+      <aside class="ws-context" aria-label="Belief inspector">
         <section class="panel">
-          ${panelTitle('Claim state', 'claim')}
+          ${panelTitle('Belief state','belief')}
           <ul class="state-list">
-            ${stateItem('Status', badge(statusLabel(current.status), statusTone(current.status)))}
-            ${stateItem('Category', escapeHtml(current.category ?? 'not recorded'))}
-            ${stateItem('Revision', `v${escapeHtml(currentVersion ?? '?')}`)}
-            ${stateItem('Evidence count', `${escapeHtml(supports)} supporting · ${escapeHtml(counters)} counter`)}
-            ${stateItem('Subject', `<a href="${escapeHtml(subjectHref)}">${escapeHtml(claim.subjectName)}</a>`)}
-            ${stateItem('Last updated', timeInstant(current.updatedAt ?? claim.current?.createdAt))}
+            ${stateItem('Status',badge(statusLabel(currentClaim.status),statusTone(currentClaim.status)))}
+            ${stateItem('Category',escapeHtml(currentClaim.category ?? 'not recorded'))}
+            ${stateItem('Revision',`v${escapeHtml(currentVersion ?? '?')}`)}
+            ${stateItem('Supporting',escapeHtml(supports))}
+            ${stateItem('Counter',escapeHtml(counters))}
+            ${stateItem('Last updated',timeInstant(currentClaim.updatedAt ?? belief.current?.createdAt))}
+          </ul>
+        </section>
+
+        <section class="panel receipt">
+          ${panelTitle('Reasoning integrity','trace')}
+          <div class="receipt-warning">No persisted real RelationReceipt exists for this belief yet. Recorded Evidence roles are shown honestly without manufacturing a runtime decision.</div>
+          <ul class="state-list">
+            ${stateItem('Claim revision',escapeHtml(belief.current?.id ?? 'not recorded'))}
+            ${stateItem('Relation runtime','available offline')}
+            ${stateItem('Persisted receipt','no')}
+            ${stateItem('Human authority','required')}
           </ul>
         </section>
 
         <section class="panel">
-          ${panelTitle('Evidence coverage', 'link')}
-          ${coverageTicks(supports, counters) || '<p class="meta">No linked Evidence records.</p>'}
-          <p class="strip-legend"><span>${escapeHtml(supports)} supporting</span><span>${escapeHtml(counters)} counter</span></p>
-          <p class="note">Linked Evidence volume — not Claim confidence.</p>
+          ${panelTitle('Trace','trace')}
+          ${railViz(provenanceSteps)}
         </section>
-
-        ${revisionSteps.length ? `<section class="panel">
-          ${panelTitle('Revision rail', 'trace')}
-          ${railViz(revisionSteps)}
-        </section>` : ''}
       </aside>
     </div>
   </div>`;
-  return { status: 200, title: 'Claim', body, context: claim.subjectName };
+
+  return {status:200,title:'Belief Workbench',body,context:belief.subjectName};
 }
