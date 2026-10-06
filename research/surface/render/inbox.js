@@ -151,22 +151,22 @@ export function inboxView({ source, demo }) {
   <div class="view">
     <div class="workspace">
       <div class="ws-head view-head">
-        <h1>Research Inbox</h1>
-        <p class="lead">What deserves attention in what we currently believe.</p>
+        <p class="eyebrow">Research state · attention first</p><h1>What needs your attention</h1>
+        <p class="lead">Start with unresolved evidence and fragile beliefs, not inventory. Every signal below is derived from recorded Research Memory.</p>
       </div>
 
       <div class="ws-main">
         <section aria-label="Needs attention">
-          <div class="section-head"><h2>Needs attention</h2><span class="section-meta">${escapeHtml(totals.evidence)} Evidence · ${escapeHtml(totals.claims)} Claims</span></div>
+          <div class="section-head"><h2>Attention queue</h2><span class="section-meta">${escapeHtml(totals.evidence)} Evidence · ${escapeHtml(totals.claims)} Claims</span></div>
           ${tiles.length ? `<div class="attention-grid">${tiles.join('')}</div>` : ''}
           <ul class="attention-list">${blocks.join('')}</ul>
         </section>
-        ${checkpoint('Can you understand what deserves attention?')}
+        ${checkpoint('Can you tell what deserves attention, why, and where to inspect next?')}
       </div>
 
       <aside class="ws-context" aria-label="Research state">
         <section class="panel">
-          ${panelTitle('Research state', 'trace')}
+          ${panelTitle('Current research state', 'trace')}
           <ul class="state-list">
             ${stateItem('Claims', escapeHtml(totals.claims))}
             ${stateItem('Evidence', escapeHtml(totals.evidence))}
@@ -195,8 +195,8 @@ export function inboxView({ source, demo }) {
         </section>
 
         <section class="panel">
-          ${panelTitle('Belief changes', 'change')}
-          <p class="note">No belief changes recorded yet. ${revisionNote}, and ${escapeHtml(buildChanges(source).proposals)} reviewed Claim proposals. <a href="${escapeHtml(withDemo('/changes', demo))}">What Changed</a> explains when this activates.</p>
+          ${panelTitle('Belief timeline', 'change')}
+          <p class="note">No belief changes recorded yet. ${revisionNote}, and ${escapeHtml(buildChanges(source).proposals)} reviewed Claim proposals. <a href="${escapeHtml(withDemo('/changes', demo))}">Timeline</a> explains when this activates.</p>
         </section>
 
         <section class="panel quiet">
