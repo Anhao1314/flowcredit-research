@@ -114,3 +114,26 @@ test('candidate metric qualifier binds same metric family without collapsing bus
   ['SUPPORTS','SUPPORTS','NEUTRAL']
  );
 });
+
+
+test('archived SEC pilot result remains exactly reproducible from the committed benchmark',()=>{
+ const archived=JSON.parse(readFileSync(new URL('../benchmark/results/real-sec-pilot-v0.1.json',import.meta.url),'utf8'));
+ const baseline=scoreBenchmark(benchmark,{runtime:'baseline'});
+ const candidate=scoreBenchmark(benchmark,{runtime:'candidate'});
+ const phase=evaluateGate(candidate,gate);
+ assert.equal(archived.baseline.overallAccuracy,baseline.metrics.overallAccuracy);
+ assert.equal(archived.baseline.directionalAccuracy,baseline.metrics.directionalAccuracy);
+ assert.equal(archived.baseline.directionalInversionRate,baseline.metrics.directionalInversionRate);
+ assert.equal(archived.baseline.unsafeDirectionalErrorRate,baseline.metrics.unsafeDirectionalErrorRate);
+ assert.equal(archived.baseline.ambiguousAbstentionRecall,baseline.metrics.ambiguousAbstentionRecall);
+ assert.equal(archived.candidate.overallAccuracy,candidate.metrics.overallAccuracy);
+ assert.equal(archived.candidate.directionalAccuracy,candidate.metrics.directionalAccuracy);
+ assert.equal(archived.candidate.directionalInversionRate,candidate.metrics.directionalInversionRate);
+ assert.equal(archived.candidate.unsafeDirectionalErrorRate,candidate.metrics.unsafeDirectionalErrorRate);
+ assert.equal(archived.candidate.ambiguousAbstentionRecall,candidate.metrics.ambiguousAbstentionRecall);
+ assert.equal(archived.phaseGate.status,phase.status);
+ assert.deepEqual(archived.phaseGate.thresholds,phase.thresholds);
+ const failures=candidate.rows.filter(row=>!row.correct);
+ assert.equal(failures.length,1);
+ assert.equal(failures[0].caseId,archived.remainingFailure.caseId);
+});
