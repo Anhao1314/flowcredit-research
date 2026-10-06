@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {evaluateRelation} from '../relation-runtime/runtime.js';
+import {deterministicRelation} from '../relation-runtime/deterministic.js';
 import {runWhatChangedBatch} from '../what-changed/index.js';
 
 const asOf='2026-08-15T12:00:00.000Z';
@@ -95,4 +96,64 @@ test('Northstar What Changed demo exercises all four legal processing outcomes a
   assert.ok(!serialized.includes('"suggestedStatus"'));
   assert.ok(!serialized.includes('"confidence"'));
  }
+});
+
+
+test('deterministic relation orders explicit rates by year instead of mention order',()=>{
+ const decision=deterministicRelation({
+  claim:{statement:'Subscription growth was faster in 2026 than in 2025.'},
+  evidence:{statement:'Subscription growth was 18 percent in 2026 and 12 percent in 2025.'}
+ });
+ assert.equal(decision.relation,'SUPPORTS');
+ assert.equal(decision.rule,'RT_SECOND_ORDER_SERIES');
+});
+
+test('broad financial words do not collapse different metrics or business lines',()=>{
+ const lineMismatch=deterministicRelation({
+  claim:{statement:'Services net sales increased in 2026.'},
+  evidence:{statement:'Hardware net sales increased 15 percent in 2026.'}
+ });
+ const metricMismatch=deterministicRelation({
+  claim:{statement:'Gross margin improved in 2026.'},
+  evidence:{statement:'Data Center revenue grew 70 percent in 2026.'}
+ });
+ assert.equal(lineMismatch.relation,'NEUTRAL');
+ assert.equal(metricMismatch.relation,'NEUTRAL');
+ assert.equal(metricMismatch.rule,'RT_NON_BEARING_METRIC');
+});
+
+test('causal claims require an explicit causal link rather than co-occurrence',()=>{
+ const decision=deterministicRelation({
+  claim:{statement:'AI infrastructure investment was the primary driver of revenue growth in 2026.'},
+  evidence:{statement:'Revenue increased 20 percent in 2026 and AI infrastructure investment also increased.'}
+ });
+ assert.equal(decision.relation,'NEUTRAL');
+ assert.equal(decision.rule,'RT_CAUSAL_LINK_ABSENT');
+});
+
+test('explicit causal attribution can support a causal claim',()=>{
+ const decision=deterministicRelation({
+  claim:{statement:'AI infrastructure investment pressured cloud gross margin in 2026.'},
+  evidence:{statement:'Cloud gross margin decreased in 2026, driven by scaling AI infrastructure.'}
+ });
+ assert.equal(decision.relation,'SUPPORTS');
+ assert.equal(decision.rule,'RT_EXPLICIT_CAUSAL_ATTRIBUTION');
+});
+
+test('causal evidence at a narrower scope does not silently prove a total-company claim',()=>{
+ const decision=deterministicRelation({
+  claim:{statement:'Premium product sales caused total net sales growth in 2026.'},
+  evidence:{statement:'Device net sales increased because of premium product sales, while total net sales also increased.'}
+ });
+ assert.equal(decision.relation,'AMBIGUOUS');
+ assert.equal(decision.rule,'RT_CAUSAL_SCOPE_MISSING');
+});
+
+test('mix shift uses target growth relative to total growth',()=>{
+ const decision=deterministicRelation({
+  claim:{statement:'Revenue mix shifted toward Services in 2026.'},
+  evidence:{statement:'Services net sales grew 14 percent in 2026 while total net sales grew 6 percent in 2026.'}
+ });
+ assert.equal(decision.relation,'SUPPORTS');
+ assert.equal(decision.rule,'RT_MIX_SHARE_INFERENCE');
 });
