@@ -192,9 +192,20 @@ The next generalization test is frozen **before source or case collection**.
 - unchanged promotion gate
 - one-shot first evaluation after dataset hash lock
 
-Current state: **`PROTOCOL_FROZEN_NO_DATASET`**.
+Protocol state at freeze time: **`PROTOCOL_FROZEN_NO_DATASET`**.
 
-No v0.2C issuer, filing, case, label or score exists yet. The protocol and pinned blob SHAs live at [research/benchmark/holdout-v0.2c-protocol.json](research/benchmark/holdout-v0.2c-protocol.json).
+Dataset construction has now completed under that frozen protocol:
+
+- Costco Wholesale Corporation
+- JPMorgan Chase & Co.
+- Salesforce, Inc.
+- Caterpillar Inc.
+- 8 cases per issuer, 32 total
+- dataset Git blob SHA: `5602c516d3333f1fde665738fc8385bcd7b8a6d0`
+
+Current execution state: **`DATASET_LOCKED_NOT_EVALUATED`**.
+
+There is still **no v0.2C prediction or score**. R2 has not been executed against the locked dataset. The protocol lives at [research/benchmark/holdout-v0.2c-protocol.json](research/benchmark/holdout-v0.2c-protocol.json); the dataset lock lives at [research/benchmark/holdout-v0.2c-dataset-lock.json](research/benchmark/holdout-v0.2c-dataset-lock.json).
 
 # From abstention to investigation
 

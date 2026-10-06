@@ -204,3 +204,35 @@ Protocol: `holdout-v0.2c-protocol.json`
 Human-readable rules: `HOLDOUT-v0.2c.md`
 
 The next step is data collection under this frozen protocol, not runtime development.
+
+
+### v0.2C dataset locked
+
+The 32-case fresh blind dataset has now been constructed and locked without running R2.
+
+Selected issuers:
+
+- Costco Wholesale Corporation
+- JPMorgan Chase & Co.
+- Salesforce, Inc.
+- Caterpillar Inc.
+
+Each issuer contributes exactly eight cases. The aggregate bucket allocation still matches the frozen protocol exactly.
+
+Dataset:
+
+`data/real-sec-fresh-blind-v0.2c.json`
+
+Dataset Git blob SHA:
+
+`5602c516d3333f1fde665738fc8385bcd7b8a6d0`
+
+Dataset lock:
+
+`holdout-v0.2c-dataset-lock.json`
+
+Current state:
+
+`DATASET_LOCKED_NOT_EVALUATED`
+
+No R2 prediction or v0.2C score exists yet. The next permitted step is the one-shot first evaluation.
