@@ -65,7 +65,7 @@ export function evidenceIndexView({ source, demo, query }) {
     <div class="view-head">
       <h1>Evidence</h1>
       <p class="lead">${escapeHtml(summary)}.</p>
-      ${termHelp('Evidence', 'A verified factual record extracted from a source document.')}
+      ${termHelp('Evidence', 'A factual record admitted from a source document. Evidence is not a Claim or investment conclusion.')}
     </div>
     ${filterBar({
       action: '/evidence',
@@ -92,7 +92,7 @@ export function evidenceIndexView({ source, demo, query }) {
     ${emptyState}
     ${rows ? `<ul class="rows">${rows}</ul>` : ''}
     ${pagination({ base: '/evidence', filters: filtersFor(query), pagination: index.pagination, demo })}
-    ${checkpoint('Can you locate a recorded fact without knowing its Evidence id??')}
+    ${checkpoint('Can you locate a recorded fact without knowing its Evidence id?')}
   </div>`;
   return { status: 200, title: 'Evidence', body, context: query.subject ? displayName(query.subject) : 'All subjects' };
 }
