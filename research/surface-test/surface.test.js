@@ -160,9 +160,9 @@ test('claim page shows belief, evidence links and revision history', async (t) =
     const response = await httpGet(`${url}/claim/${paths.claimOne}`);
     assert.equal(response.status, 200);
     assert.ok(response.body.includes('Fixture claims receipts are rising.'));
-    assert.ok(response.body.includes('Reasoning evidence'));
+    assert.ok(response.body.includes('Reasoning'));
     assert.ok(response.body.includes(`/evidence/${paths.evidenceOne}`));
-    assert.ok(response.body.includes('Revision history'));
+    assert.ok(response.body.includes('Belief history'));
     assert.ok(response.body.includes('initial_ingest'));
     assert.ok(response.body.includes('Technical details'));
     assert.ok(response.body.includes('Back to Beliefs'));
@@ -171,7 +171,7 @@ test('claim page shows belief, evidence links and revision history', async (t) =
     assert.ok(response.body.includes('<caption'));
     const missing = await httpGet(`${url}/claim/CLAIM-0000000000000000000`);
     assert.equal(missing.status, 404);
-    assert.ok(missing.body.includes('Claim not found'));
+    assert.ok(missing.body.includes('Belief not found'));
   });
 });
 
