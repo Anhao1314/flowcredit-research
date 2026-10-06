@@ -12,7 +12,7 @@ Last updated: 2026-10-06 · Repository: development/test workspace · Branch: ma
 | Evidence admission boundary and review records | research/admission/ |
 | Text and table grounding pipeline | research/grounding/ |
 | Hybrid retrieval over the internal corpus | research/local-retrieval/ |
-| Research workspace surface: local, read-only, loopback-only | research/surface/ |
+| Research Workbench UI-2.0: local, read-only, loopback-only | research/surface/ |
 | RelationInput resolver against read-only Research Memory | research/claim-relation/resolve.js |
 | Compatibility runtime and fail-closed Relation gate | research/claim-relation/compatibility.js, gate.js |
 | Conservative prose/lexical Relation baseline | research/relation-runtime/deterministic.js |
