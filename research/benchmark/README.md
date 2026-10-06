@@ -127,3 +127,26 @@ The candidate was **not modified after dataset lock and before this result was a
 The seven failures cluster around causal attribution, metric binding, mix inference, second-order language and one directional-loss formulation. The zero inversion / zero unsafe-direction result is useful: the dominant failure mode is under-resolution, not unsafe overclaiming.
 
 This result supersedes any temptation to treat the v0.2A pilot's 32/32 as generalization evidence. The next runtime repair must be selected from the archived holdout failures and validated on a separate regression set; the holdout itself remains locked.
+
+
+### Repair replay R1 — explicit causal reflection
+
+The first repair cycle targets exactly one archived failure family: financial attribution expressed as `primarily/largely/mainly reflected`.
+
+R1 is isolated as `relation-candidate/v0.2b-r1`; the original v0.2A.1 candidate and the authoritative first-blind 17/24 result are unchanged.
+
+| Metric | First blind v0.2B | R1 replay |
+| --- | ---: | ---: |
+| Exact state accuracy | 70.83% (17/24) | **75.00% (18/24)** |
+| Directional accuracy | 66.67% | **72.22%** |
+| Directional inversion | 0% | **0%** |
+| Unsafe directional error | 0% | **0%** |
+| AMBIGUOUS abstention recall | 66.67% | **66.67%** |
+| Causal attribution | 1/3 | **2/3** |
+| Phase gate | FAIL | **FAIL** |
+
+R1 repaired `HOLD-AMZN-005` and no other archived holdout case. Six failures remain. The Meta causal-attribution failure is intentionally untouched because it is a separate driver/outcome role-binding problem.
+
+Archived replay: `results/causal-reflection-r1-replay-v0.2b.json`.
+
+A one-case improvement is evidence for the narrow repair, not evidence that the Relation engine now generalizes.
