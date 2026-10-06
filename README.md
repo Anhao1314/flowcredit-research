@@ -10,7 +10,8 @@ FlowCredit preserves what a research team believes, why it believes it, what new
 
 This repository is a development and testing workspace. It does not deploy a production service, autonomously revise research beliefs, or make investment decisions.
 
-![FlowCredit Research Inbox — public synthetic demo](docs/public/assets/research-inbox.png)
+The only active product frontend is **Research Workbench UI-2.0** under `research/surface/`. The previous root risk-assessment UI has been removed rather than carried forward as a second product surface.
+
 
 ## The problem
 
@@ -36,7 +37,7 @@ Evidence is not a Claim. A Relation is not Impact. An analytical receipt is not 
 | Evidence admission and review boundary | Implemented / validated |
 | Text and table grounding | Implemented / validated |
 | Hybrid retrieval | Implemented / validated |
-| Local read-only research workspace | Implemented |
+| **Research Workbench UI-2.0 — Inbox / Beliefs / Review / Evidence / Timeline** | **Implemented / read-only** |
 | Core Proposition / Qualifier / Grounding / Field Provenance contracts | Accepted / Frozen |
 | RelationInput Contract v1 | Accepted / Frozen |
 | Compatibility Contract v1 | Accepted / Frozen |
@@ -372,7 +373,7 @@ research/
   relation-runtime/     lexical baseline + structured semantic Relation path
   investigate/          missing-context planner + bounded Evidence loop
   what-changed/         review and investigation queues
-  surface/              read-only local research workspace
+  surface/              UI-2.0 read-only Research Workbench
   eval/
     relation-reality/   reproducible real-source structured correctness benchmark
 
