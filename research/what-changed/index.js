@@ -5,6 +5,7 @@
 import {createHash} from 'node:crypto';
 import {deepFreeze} from '../claim-relation/contract.js';
 import {evaluateRelation} from '../relation-runtime/runtime.js';
+import {planInvestigation} from '../investigate/planner.js';
 
 export const CANDIDATE_VERSION='flowcredit.what_changed_candidate/dev-v0.1';
 
@@ -59,12 +60,15 @@ export function runWhatChangedBatch(document){
  if(!document||typeof document!=='object'||!Array.isArray(document.pairs))throw new Error('WHAT_CHANGED_DOCUMENT_INVALID');
  const receipts=[];
  const candidates=[];
+ const investigations=[];
  for(const item of document.pairs){
   const {relationInput,material}=buildPair(item);
   const receipt=evaluateRelation({relationInput,material,evaluatedAt:item.evaluatedAt??item.asOf});
   receipts.push(receipt);
   const candidate=candidateFromReceipt(receipt,material);
   if(candidate)candidates.push(candidate);
+  const investigation=planInvestigation(receipt,material);
+  if(investigation)investigations.push(investigation);
  }
  const counts={
   pairs:receipts.length,
@@ -72,13 +76,15 @@ export function runWhatChangedBatch(document){
   abstained:receipts.filter(item=>item.processingStatus==='ABSTAINED').length,
   notEvaluated:receipts.filter(item=>item.processingStatus==='NOT_EVALUATED').length,
   errors:receipts.filter(item=>item.processingStatus==='ERROR').length,
-  candidates:candidates.length
+  candidates:candidates.length,
+  investigations:investigations.length
  };
  return deepFreeze({
   version:'flowcredit.what_changed_batch/dev-v0.1',
   sourceVersion:document.version??null,
   counts,
   receipts,
-  candidates
+  candidates,
+  investigations
  });
 }
