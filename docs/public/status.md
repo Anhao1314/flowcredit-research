@@ -186,6 +186,21 @@ This is the first source-isolated generalization check after the 32/32 SEC devel
 
 The holdout is single-review and not publication gold. Its bytes, candidate-runtime blobs, and gate are pinned in `research/benchmark/holdout-v0.2b-lock.json`. The failure is retained as research evidence and must not be erased by relabeling or threshold changes.
 
+#### Causal repair replay R1
+
+The first isolated repair adds recognition for the narrow financial attribution construction `primarily/largely/mainly reflected`. It does not alter the original candidate or first-blind result.
+
+| Metric | First blind | R1 replay |
+| --- | ---: | ---: |
+| Exact | 17/24 (70.83%) | **18/24 (75.00%)** |
+| Directional | 66.67% | **72.22%** |
+| Unsafe direction | 0% | **0%** |
+| Causal attribution | 1/3 | **2/3** |
+| Gate | FAIL | **FAIL** |
+
+R1 repaired exactly one archived case, Amazon's explicit `primarily reflected` attribution. The remaining Meta causal failure is a different driver/outcome metric-role binding problem and is deliberately left for a separate repair cycle.
+
+
 ## PLANNED
 
 - independently human-labeled 500+ pair semantic Relation benchmark
