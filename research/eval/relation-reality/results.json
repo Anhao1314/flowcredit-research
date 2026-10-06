@@ -1,0 +1,55 @@
+{
+  "version": "flowcredit.relation_reality_results/v0.2",
+  "measuredFrom": "real-source structured oracle",
+  "corpus": {
+    "subjectId": "coreweave",
+    "sources": 3,
+    "observations": 32,
+    "claims": 4,
+    "pairs": 128
+  },
+  "textBaseline": {
+    "pairs": 128,
+    "exact": 66,
+    "exactRate": 0.5156,
+    "directionalPairs": 5,
+    "directionalCorrect": 1,
+    "directionalAccuracy": 0.2,
+    "unsafeDirectional": 8,
+    "unsafeDirectionalRate": 0.0625,
+    "resolved": 33,
+    "abstained": 6,
+    "notEvaluated": 87,
+    "errors": 2
+  },
+  "semanticRuntime": {
+    "pairs": 128,
+    "exact": 128,
+    "exactRate": 1,
+    "directionalPairs": 5,
+    "directionalCorrect": 5,
+    "directionalAccuracy": 1,
+    "unsafeDirectional": 0,
+    "unsafeDirectionalRate": 0,
+    "resolved": 42,
+    "abstained": 0,
+    "notEvaluated": 86,
+    "errors": 0
+  },
+  "delta": {
+    "exactRate": 0.4844,
+    "directionalAccuracy": 0.8,
+    "unsafeDirectionalRate": -0.0625,
+    "errors": -2
+  },
+  "failuresAgainstOracle": {
+    "textBaseline": 62,
+    "semanticRuntime": 0
+  },
+  "interpretation": [
+    "The structured SemanticFrame path exactly reproduces the narrow structured oracle on this corpus.",
+    "The result is not an estimate of open-ended financial language understanding or production accuracy.",
+    "The prose/regex baseline produced eight unsafe directional judgments and two runtime errors on the same real-source pair matrix.",
+    "The experiment supports replacing lexical reconstruction with provenance-aware structured semantics for recorded fields."
+  ]
+}
