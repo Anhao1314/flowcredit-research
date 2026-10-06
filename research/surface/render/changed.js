@@ -20,7 +20,7 @@ function realChanges({ source, demo }) {
   const body = `
   <div class="view">
     <div class="view-head">
-      <h1>No real Claim changes yet.</h1>
+      <p class="eyebrow">Belief timeline</p><h1>No authoritative belief changes yet.</h1>
       <p class="lead">FlowCredit has stored Claims and Evidence, and now has an offline pairwise Relation runtime baseline. This data set still has no persisted real RelationReceipts or authoritative Claim proposal.</p>
     </div>
 
@@ -34,7 +34,7 @@ function realChanges({ source, demo }) {
     </section>
 
     <section>
-      ${sectionHead('Change pipeline', 'recorded capability state')}
+      ${sectionHead('Timeline readiness', 'recorded capability state')}
       <div class="lanes">
         ${lane({ name: 'New information', state: 'READY', note: `${changes.sourceCount} recorded sources`, ready: true })}
         ${lane({ name: 'Evidence', state: 'READY', note: `${changes.evidenceCount} Evidence records`, ready: true })}
@@ -54,7 +54,7 @@ function realChanges({ source, demo }) {
     </section>
     ${checkpoint('Can you understand what changed and why?')}
   </div>`;
-  return { status: 200, title: 'What Changed', body };
+  return { status: 200, title: 'Timeline', body };
 }
 
 
@@ -194,7 +194,7 @@ function demoChanges({ demoData }) {
   const body = `
   <div class="view">
     <div class="view-head">
-      <h1>Synthetic Claim Proposal preview</h1>
+      <p class="eyebrow">Timeline preview</p><h1>Synthetic belief-change proposals</h1>
       <p class="lead">Examples from the v0.12 locked benchmark. They illustrate the intended product shape and are not authoritative research records.</p>
       ${termHelp('ClaimRevisionProposal', 'A proposed change to a Claim, awaiting review. AI-suggested; not part of Research Memory until accepted.')}
     </div>
@@ -203,7 +203,7 @@ function demoChanges({ demoData }) {
     <p class="note">Demo source: ${escapeHtml(demoData?.label ?? 'not available')}. <a href="/changes">Back to real mode</a></p>
     ${checkpoint('Can you understand what changed and why?')}
   </div>`;
-  return { status: 200, title: 'What Changed (Demo)', body };
+  return { status: 200, title: 'Timeline (Demo)', body };
 }
 
 export function changesView(context) {
