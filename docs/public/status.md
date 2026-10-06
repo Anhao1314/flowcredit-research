@@ -1,27 +1,31 @@
 # Current status
 
-Single source of public-facing maturity truth for FlowCredit. Other public documents link here instead of restating status.
+Single source of public-facing maturity truth for FlowCredit Research.
 
-Last updated: 2026-09-15 (Asia/Shanghai) · Repository: development workspace, branch `main`.
+Last updated: 2026-10-06 · Repository: development/test workspace · Branch: `main`.
 
 ## IMPLEMENTED / VALIDATED
 
 | Capability | Where it lives |
 | --- | --- |
-| Research Memory (versioned claims, revisions, superseded history) | `research/memory/` |
-| Claim Revision proposal pipeline (proposal → pending human review; no apply writer) | `research/claim-revision/` |
-| Evidence admission boundary (review records, no silent admission) | `research/admission/` |
+| Research Memory: versioned Claims, revisions and superseded history | `research/memory/` |
+| Evidence admission boundary and review records | `research/admission/` |
 | Text and table grounding pipeline | `research/grounding/` |
 | Hybrid retrieval over the internal corpus | `research/local-retrieval/` |
-| Research workspace surface (local, read-only, loopback-only) | `research/surface/` |
-| Reproducible offline public demo (synthetic Northstar Compute; read-only, AI-off, deterministic) | `research/surface/fixtures/public-demo/` |
-| Deterministic assessment engine and its API contracts (legacy prototype line) | `agent/` |
+| Research workspace surface: local, read-only, loopback-only | `research/surface/` |
+| Reproducible public synthetic demo | `research/surface/fixtures/public-demo/` |
+| RelationInput resolver against read-only Research Memory | `research/claim-relation/resolve.js` |
+| Compatibility runtime and fail-closed Relation gate | `research/claim-relation/compatibility.js`, `gate.js` |
+| Conservative offline Relation runtime baseline | `research/relation-runtime/` |
+| Development RelationReceipt with legal status/relation matrix | `research/relation-runtime/receipt.js` |
+| Pairwise What Changed candidate preview + reproducible CLI fixture | `research/what-changed/` |
+| Legacy deterministic risk-assessment prototype | `agent/` |
 
-Each has offline test suites; the visible ones run in CI, and the local surface suite is published (see Repository completeness below); it runs locally from a Research Memory SQLite file or the offline public-demo fixture.
+The Relation runtime is a baseline, not a production hybrid engine. It uses conservative deterministic rules after the frozen Compatibility gate and abstains when it cannot safely resolve a pair.
 
 ## ACCEPTED / FROZEN
 
-| Contract | Frozen |
+| Contract / decision | Frozen |
 | --- | --- |
 | ADR-0.12.1 — Claim Relation Semantics | 2026-09-14 |
 | Core Proposition Contract v1 | 2026-09-14 |
@@ -29,45 +33,68 @@ Each has offline test suites; the visible ones run in CI, and the local surface 
 | Grounding Contract v1 | 2026-09-15 |
 | Field Provenance Contract v1 | 2026-09-15 |
 | RelationInput Contract v1 | 2026-09-15 |
+| Compatibility Contract v1 | 2026-09-16 |
 
-Frozen contracts state their own status, parents and revision history. Later sessions extend them; they do not get silently edited.
+The new RelationReceipt and What Changed candidate shapes are explicitly **development schemas**, not frozen contracts.
 
 ## RESEARCH VALIDATED
 
-| Area | What that means here |
+| Area | Evidence |
 | --- | --- |
-| Hybrid relation architecture (deterministic + verifier + small local model) | Measured 38/41 (0.927) on a synthetic development spike set; the deterministic layer decides 30/41 and is correct on what it decides. Not a generalization estimate. |
-| Hybrid retrieval | Recall@20 = 1.0 on a 16-case internal locked set, with materially lower results at smaller cutoffs. Small internal set, not an external benchmark. |
-| Grounded span corpus | 7,687 indexed spans in the internal research corpus. |
+| Historical hybrid relation architecture | 38/41 on the synthetic development spike; not a generalization estimate |
+| Hybrid retrieval | Recall@20 = 1.0 on a 16-case internal locked set |
+| Grounded span corpus | 7,687 indexed spans in the internal research corpus |
+| Compatibility gate | Frozen 41-pair regression split: 29 permitted / 12 refused |
+| What Changed runtime behavior | committed 5-pair synthetic fixture covers SUPPORTS / COUNTERS / NEUTRAL / AMBIGUOUS / NOT_EVALUATED |
+
+The 5-pair fixture is a behavior smoke test, not an accuracy benchmark.
 
 ## CURRENT
 
-- Field Provenance Contract v1 and RelationInput Contract v1 are accepted/frozen; runtime integration for both is not yet implemented. Next design session is CompatibilityAssessment (Session 2.6, not started).
-- The frozen contracts are the semantic spine; runtime work continues against them.
+The repository now has an executable pairwise chain:
+
+```text
+Accepted Evidence + specific Claim Revision
+  -> RelationInput
+  -> CompatibilityAssessment
+  -> Relation gate
+  -> conservative deterministic Relation
+  -> RelationReceipt
+  -> directional What Changed review candidate
+```
+
+The chain stops at human review. It does not produce Impact and does not mutate Claims.
 
 ## PLANNED
 
-- CompatibilityAssessment (next; not started)
-- Production relation engine
+- larger externalized Relation benchmark with human gold labels
+- semantic projection runtime integration for Field Provenance and RelationInput
+- verifier/model route with visible provenance and safe fallback
 - Evidence Delta / Impact
-- Real What Changed loop
+- persisted human review workflow
+- real multi-document What Changed loop
 
 ## LEGACY
 
-- The deterministic risk-assessment prototype (External Alpha v0.1.x) is retained in `agent/` and `docs/`, with its own release history. It is not the current research direction.
-- The static browser demo (`index.html`) is a historical simulation, not an integrity verification or stress-testing API.
-- Legacy page-level grounding records stay readable and honest, and never satisfy Grounding v1.
-- The earlier prototype's own boundaries still apply: simulated calibration references, no live connector verification, no lending or payment decisions, and a Finch integration contract that is not submitted, approved or certified. Its documentation remains in `docs/` (`docs/public-api-v1.md`, `docs/finch/`).
+- `agent/` and the static `index.html` are the earlier deterministic risk-assessment prototype line.
+- Legacy Finch/API artifacts remain for historical regression compatibility.
+- Legacy page-level grounding remains readable but does not satisfy Grounding v1.
 
 ## NOT CLAIMED
 
-- Production readiness, or any deployment from this repository.
-- Institutional grade, enterprise ready, fully autonomous, or fully reliable behaviour.
-- Live external evidence connectors, real customer data, or customer outcomes.
-- Calibrated model accuracy, external benchmark parity, uptime or SLAs.
-- Automated What Changed: no production loop turns new evidence into a revised belief today.
-- Security certification of any kind.
+- production readiness or production deployment from this repository
+- institutional-grade research quality
+- external benchmark parity
+- calibrated model accuracy
+- autonomous Claim revision
+- automatic investment decisions
+- live customer outcomes or SLAs
+- security certification
 
-## Repository completeness
+## Authority boundary
 
-The local research surface is published; some remaining research workspaces (the relation spike) and the frozen contract directories can still lag the working tree until they are committed. Runtime data — Research Memory databases, model sessions, logs — intentionally lives outside the repository and is never committed.
+A RelationReceipt is an analytical artifact. A What Changed candidate is a review queue item.
+
+Neither is authoritative Research Memory truth, Impact, a Claim revision, or an investment recommendation.
+
+Human review remains mandatory before any future belief-state mutation.
