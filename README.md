@@ -43,6 +43,7 @@ Evidence is not a Claim. A Relation is not Impact. An analytical receipt is not 
 | RelationInput resolver + fail-closed Compatibility gate | Implemented |
 | Conservative prose/lexical Relation runtime | Implemented baseline |
 | **Provenance-aware SemanticFrame runtime** | **Implemented / validated on a structured real-source benchmark** |
+| **Research Memory Evidence → SemanticFrame adapter** | **Implemented / fail-closed** |
 | Development RelationReceipt | Implemented baseline |
 | Pairwise What Changed review candidates | Implemented |
 | **Missing-context investigation planning** | **Implemented** |
@@ -308,7 +309,7 @@ CI also runs the memory, retrieval, admission, analyst, grounding, evidence-supp
 The next work is not another vocabulary layer.
 
 1. **Build an independently human-labeled 500+ pair semantic Relation benchmark** across filings, earnings calls, guidance, tables and management language.
-2. **Integrate SemanticFrame materialization with real Research Memory + Grounding** rather than only curated reviewed fixture fields.
+2. **Complete Claim semantic binding for real Research Memory.** Evidence now materializes directly; current prose-only Claims intentionally remain NOT_MATERIALIZED until an explicit provenance-bearing Claim projection exists.
 3. Add a **verifier/model semantic route** whose proposed fields carry explicit model provenance and can never masquerade as deterministic truth.
 4. Extend the investigator from the controlled Evidence pool to **bounded tool-based retrieval**, preserving as-of and source-grounding constraints.
 5. Design **Evidence Delta / Impact** only after the Relation and investigation layers survive those tests.
