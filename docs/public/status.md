@@ -241,9 +241,22 @@ The selected unseen issuers are Costco Wholesale Corporation, JPMorgan Chase & C
 
 Dataset Git blob SHA: `5602c516d3333f1fde665738fc8385bcd7b8a6d0`.
 
-The runtime, evaluator, schema and gate Git blob SHAs remain pinned in `research/benchmark/holdout-v0.2c-protocol.json`; dataset bytes are pinned separately in `research/benchmark/holdout-v0.2c-dataset-lock.json`. CI verifies both locks. R2 has **not** been executed against v0.2C yet.
+The frozen R2 runtime was executed once against this dataset. The first-run result is:
 
-Current state: **`DATASET_LOCKED_NOT_EVALUATED`**.
+| Metric | Result |
+| --- | ---: |
+| Exact | **18/32 (56.25%)** |
+| Directional accuracy | **50.00%** |
+| Directional inversion | **15.00%** |
+| Unsafe directional error | **16.67%** |
+| AMBIGUOUS abstention recall | **25.00%** |
+| Gate | **FAIL — all five checks** |
+
+This fresh cross-industry result is the current generalization signal. It overrides any temptation to interpret the v0.2B repair progression (17/24 → 18/24 → 19/24) as evidence of broad generalization. R2 is not ready for promotion.
+
+The result is immutable at `research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json`, pinned by `research/benchmark/holdout-v0.2c-result-lock.json`.
+
+Current state: **`FIRST_BLIND_ARCHIVED_FAIL`**. v0.2C is now regression-only.
 
 
 ## PLANNED

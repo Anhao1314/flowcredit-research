@@ -203,9 +203,24 @@ Dataset construction has now completed under that frozen protocol:
 - 8 cases per issuer, 32 total
 - dataset Git blob SHA: `5602c516d3333f1fde665738fc8385bcd7b8a6d0`
 
-Current execution state: **`DATASET_LOCKED_NOT_EVALUATED`**.
+The first v0.2C run has now been executed once against the locked dataset and archived.
 
-There is still **no v0.2C prediction or score**. R2 has not been executed against the locked dataset. The protocol lives at [research/benchmark/holdout-v0.2c-protocol.json](research/benchmark/holdout-v0.2c-protocol.json); the dataset lock lives at [research/benchmark/holdout-v0.2c-dataset-lock.json](research/benchmark/holdout-v0.2c-dataset-lock.json).
+| Metric | Fresh blind v0.2C |
+| --- | ---: |
+| Exact state accuracy | **18 / 32 (56.25%)** |
+| Directional accuracy | **50.00%** |
+| Directional inversion | **15.00%** |
+| Unsafe directional error | **16.67%** |
+| AMBIGUOUS abstention recall | **25.00%** |
+| Phase gate | **FAIL — all five checks** |
+
+This is now the strongest generalization evidence in the repository, and it is negative. R2 did **not** generalize safely across the fresh cross-industry set. The prior 19/24 R2 number remains a post-failure repair replay on v0.2B, not a blind estimate.
+
+The most serious failures are not merely under-resolution: v0.2C introduced three directional inversions and two unsafe directional judgments on non-directional gold cases. Second-order reasoning, causal hard negatives, causal attribution and insufficient-context handling are the primary observed weaknesses.
+
+Current state: **`FIRST_BLIND_ARCHIVED_FAIL`**.
+
+The immutable result is archived at [research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json](research/benchmark/results/real-sec-fresh-blind-v0.2c-first-run.json). From this point onward, v0.2C is a repair/regression set, not a blind test.
 
 # From abstention to investigation
 
@@ -385,7 +400,7 @@ CI also runs the memory, retrieval, admission, analyst, grounding, evidence-supp
 
 The next work is not another vocabulary layer.
 
-1. **Execute the frozen v0.2C fresh blind protocol**: collect and lock 32 cases from four previously unused issuers, then run R2 once and archive the result. Only after that should the benchmark scale toward 500+ independently reviewed pairs.
+1. **Audit the v0.2C safety failures before any new repair**: prioritize directional inversions and unsafe directional judgments, then isolate one failure family at a time. v0.2C is now regression-only; the next true generalization estimate must come from a new fresh holdout.
 2. **Complete Claim semantic binding for real Research Memory.** Evidence now materializes directly; current prose-only Claims intentionally remain NOT_MATERIALIZED until an explicit provenance-bearing Claim projection exists.
 3. Add a **verifier/model semantic route** whose proposed fields carry explicit model provenance and can never masquerade as deterministic truth.
 4. Extend the investigator from the controlled Evidence pool to **bounded tool-based retrieval**, preserving as-of and source-grounding constraints.
