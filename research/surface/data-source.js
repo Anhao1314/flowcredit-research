@@ -12,11 +12,13 @@ import { homedir } from 'node:os';
 import { basename, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { digest } from '../src/identity.js';
+import { runWhatChangedBatch } from '../what-changed/index.js';
 
 export const DEFAULT_MEMORY_DIR = join(homedir(), 'fc-agent', 'research-memory');
 export const DEFAULT_MEMORY_CANDIDATES = ['v0.4-recovery-final.sqlite', 'v0.2-coreweave.sqlite'];
 export const DEFAULT_DEMO_DIR = join(homedir(), 'fc-agent', 'research-claim-revision', 'locked');
 export const DEMO_FALLBACK_FILE = fileURLToPath(new URL('../eval/claim-revision/pending-example.json', import.meta.url));
+export const WHAT_CHANGED_DEMO_FILE = fileURLToPath(new URL('../what-changed/fixtures/northstar-demo.json', import.meta.url));
 
 export class SurfaceDataError extends Error {
   constructor(code, message) {
@@ -223,6 +225,7 @@ function loadLockedCase(folderName, folder) {
   try {
     const rows = proposalsDb.prepare('SELECT payload,hash FROM proposals ORDER BY id').all();
     const cases = [];
+  const whatChanged = loadWhatChangedDemo();
     let memory = null;
     const memoryFile = join(folder, 'memory.sqlite');
     if (existsSync(memoryFile)) {
@@ -284,6 +287,16 @@ function loadFrozenExample(file) {
   }
 }
 
+export function loadWhatChangedDemo(file = WHAT_CHANGED_DEMO_FILE) {
+  try {
+    const document = JSON.parse(readFileSync(file, 'utf8'));
+    const result = runWhatChangedBatch(document);
+    return { ...result, pairs: document.pairs };
+  } catch {
+    return null;
+  }
+}
+
 export function loadDemoCases({ dir = resolveDemoDir(), fallback = DEMO_FALLBACK_FILE } = {}) {
   const cases = [];
   if (existsSync(dir)) {
@@ -297,11 +310,11 @@ export function loadDemoCases({ dir = resolveDemoDir(), fallback = DEMO_FALLBACK
   if (cases.length) {
     // Public-safety: never echo the runtime directory (an absolute machine
     // path) into the label that reaches the page; name the fixture kind only.
-    return { source: 'locked-runtime', label: 'v0.12 locked synthetic proposals (local runtime fixture)', cases: cases.slice(0, 3) };
+    return { source: 'locked-runtime', label: 'v0.12 locked synthetic proposals (local runtime fixture)', cases: cases.slice(0, 3), whatChanged };
   }
   const example = loadFrozenExample(fallback);
   if (example) {
-    return { source: 'frozen-artifact', label: 'v0.12 frozen synthetic pending example (research/eval/claim-revision/pending-example.json)', cases: [example] };
+    return { source: 'frozen-artifact', label: 'v0.12 frozen synthetic pending example (research/eval/claim-revision/pending-example.json)', cases: [example], whatChanged };
   }
-  return { source: 'none', label: 'no synthetic demo cases available', cases: [] };
+  return { source: 'none', label: 'no synthetic demo cases available', cases: [], whatChanged };
 }
