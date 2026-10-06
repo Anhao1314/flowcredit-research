@@ -121,7 +121,8 @@ test('serializeIndexQuery rebuilds canonical index URLs and drops defaults', () 
 test('sanitizeReturnTo keeps valid index context and rebuilds it canonically', () => {
   assert.equal(sanitizeReturnTo('/evidence'), '/evidence');
   assert.equal(sanitizeReturnTo('/evidence?link=linked&sort=page&page=2'), '/evidence?link=linked&sort=page&page=2');
-  assert.equal(sanitizeReturnTo('/beliefs?q=customer&status=supported&page=3'), '/beliefs?q=customer&status=supported&page=3');\n  assert.equal(sanitizeReturnTo('/claims?q=customer&status=supported&page=3'), '/beliefs?q=customer&status=supported&page=3', 'historical Claim index links canonicalize to Beliefs');
+  assert.equal(sanitizeReturnTo('/beliefs?q=customer&status=supported&page=3'), '/beliefs?q=customer&status=supported&page=3');
+  assert.equal(sanitizeReturnTo('/claims?q=customer&status=supported&page=3'), '/beliefs?q=customer&status=supported&page=3', 'historical Claim index links canonicalize to Beliefs');
   assert.equal(sanitizeReturnTo('/evidence?demo=1&link=linked'), '/evidence?link=linked&demo=1');
   assert.equal(sanitizeReturnTo('/evidence?unknown=1&link=linked'), '/evidence?link=linked');
   assert.equal(sanitizeReturnTo('/evidence?link=evil'), '/evidence', 'unknown filter values are dropped, not echoed');
